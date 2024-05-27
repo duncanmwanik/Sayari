@@ -19,10 +19,18 @@ final GoRouter router = GoRouter(
       redirect: (context, state) async => await isFirstTimer() ? '/welcome' : null,
     ),
     GoRoute(path: '/welcome', builder: (context, state) => AuthScreen()),
-    GoRoute(path: '/universe/:id', builder: (context, state) => ShareScreen(shareType: 'share', id: state.pathParameters['id'] ?? 'fun')),
-    GoRoute(path: '/session/:id', builder: (context, state) => ShareScreen(shareType: 'booking', id: state.pathParameters['id'] ?? 'fun')),
-    GoRoute(path: '/links/:id', builder: (context, state) => ShareScreen(shareType: 'links', id: state.pathParameters['id'] ?? 'fun')),
-    GoRoute(path: '/forms/:id', builder: (context, state) => ShareScreen(shareType: 'forms', id: state.pathParameters['id'] ?? 'fun')),
+    GoRoute(
+        path: '/universe/:id',
+        builder: (context, state) => ShareScreen(type: 'share', id: state.pathParameters['id'] ?? 'fun')),
+    GoRoute(
+        path: '/session/:id',
+        builder: (context, state) => ShareScreen(type: 'booking', id: state.pathParameters['id'] ?? 'fun')),
+    GoRoute(
+        path: '/links/:id',
+        builder: (context, state) => ShareScreen(type: 'links', id: state.pathParameters['id'] ?? 'fun')),
+    GoRoute(
+        path: '/forms/:id',
+        builder: (context, state) => ShareScreen(type: 'forms', id: state.pathParameters['id'] ?? 'fun')),
   ],
   errorPageBuilder: (context, state) {
     return MaterialPage(child: ErrorScreen());

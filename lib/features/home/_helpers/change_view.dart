@@ -16,8 +16,8 @@ Widget changeView(String type) {
     return ListOfItems(type: feature.notes.t);
   } else if (type == feature.lists.t) {
     return ListOfItems(type: feature.lists.t);
-  } else if (type == feature.finance.t) {
-    return ListOfItems(type: feature.finance.t);
+  } else if (type == feature.finances.t) {
+    return ListOfItems(type: feature.finances.t);
   } else if (type == feature.explore.t) {
     return ExploreView();
   } else if (type == feature.chat.t) {

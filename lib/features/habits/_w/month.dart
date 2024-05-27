@@ -28,171 +28,133 @@ class HabitMonth extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isInput = item == null;
 
-    return Consumer3<InputProvider, DateTimeProvider, ViewsProvider>(
-        builder: (context, input, dateTime, views, child) {
+    return Consumer3<InputProvider, DateTimeProvider, ViewsProvider>(builder: (context, input, dateTime, views, child) {
       Map data = item != null ? item!.data : input.data;
       String? bgColor = data['c'];
       bool isCustom = data['hf'] == 'custom';
       List<String> customDates = isCustom ? getSplitList(data['hd']) : [];
 
-      return LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
+      return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
         double width = constraints.maxWidth < 400 ? constraints.maxWidth : 400;
         bool isSmall = width < 180;
 
-        return Visibility(
-          visible: views.habitView == 2,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: width),
-            child: SwipeDetector(
-              onSwipeRight: isInput
-                  ? () => swipeToNew(isSwipeRight: true, view: 2)
-                  : null,
-              onSwipeLeft: isInput
-                  ? () => swipeToNew(isSwipeRight: false, view: 2)
-                  : null,
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    //
-                    if (isInput)
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          //
-                          AppButton(
-                            onPressed: () =>
-                                swipeToNew(isSwipeRight: true, view: 2),
-                            child: AppIcon(Icons.keyboard_arrow_left),
-                          ),
-                          //
-                          Flexible(
-                              child: AppText(
-                                  size: normal,
-                                  text: getMonthFull(
-                                      dateTime.monthDatesMap[14] ?? ''),
-                                  fontWeight: FontWeight.bold)),
-                          //
-                          AppButton(
-                            onPressed: () =>
-                                swipeToNew(isSwipeRight: false, view: 2),
-                            child: AppIcon(Icons.keyboard_arrow_right),
-                          ),
-                          //
-                        ],
-                      ),
-                    //
-                    sph(),
-                    //
-                    AppDivider(thickness: 0.1, height: 0),
-                    //
-                    sph(),
-                    //
-                    WeekLabels(
-                        width: width,
-                        isInput: isInput,
-                        bgColor: isInput ? null : bgColor),
-                    //
-                    sph(),
-                    //
-                    Wrap(
-                      spacing: 2,
-                      runSpacing: 2,
-                      children: List.generate(42, (indexDate) {
-                        DateInfo date = DateInfo(
-                            getDatePart(dateTime.monthDatesMap[indexDate]));
-                        String checkedKey = 'hc${date.d()}';
-                        bool isCustomDate = customDates.contains(date.d());
-                        bool isChecked =
-                            data[checkedKey] != null && data[checkedKey] != '0';
-                        bool isMissed = date.isPast() &&
-                            !isChecked &&
-                            ((isCustom && isCustomDate) || !isCustom);
-                        bool isSelectedMonth = date
-                            .isSelectedMonth(dateTime.monthDatesMap[14] ?? '');
-
-                        return AppButton(
-                          onPressed: ((isCustom && isCustomDate) ||
-                                      !isCustom ||
-                                      isChecked) &&
-                                  isSelectedMonth
-                              ? () {
-                                  if (isInput) {
-                                    input.update(
-                                        action: isChecked ? 'remove' : 'add',
-                                        key: checkedKey,
-                                        value: isChecked ? '0' : getUniqueId());
-                                  } else {
-                                    editItemExtras(
-                                      type: item!.type,
-                                      itemId: item!.id,
-                                      key: isChecked
-                                          ? 'd/$checkedKey'
-                                          : checkedKey,
-                                      value: isChecked ? '0' : getUniqueId(),
-                                    );
-                                  }
-                                }
-                              : null,
-                          width: width / 8,
-                          height: width / 8,
-                          showBorder: (isCustomDate || !isCustom) &&
-                              !isMissed &&
-                              isSelectedMonth,
-                          borderColor: styler.accentColor(),
-                          borderRadius: isSmall ? borderRadiusTiny : null,
-                          borderWidth: 0.5,
-                          padding: EdgeInsets.zero,
-                          color: isSelectedMonth
-                              ? (isChecked
-                                  ? styler.accentColor()
-                                  : (isMissed ? styler.accentColor(2) : null))
-                              : transparent,
-                          child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              //
-                              AppText(
-                                size: medium,
-                                text: date.dayString(),
-                                fontWeight: FontWeight.w400,
-                                color: isSelectedMonth
-                                    ? (isChecked ? white : null)
-                                    : null,
-                                extraFaded: !isSelectedMonth,
-                                bgColor: isInput || !isSelectedMonth
-                                    ? null
-                                    : bgColor,
-                              ),
-                              //
-                              if (!isSmall && isSelectedMonth)
-                                Positioned(
-                                  right: 2,
-                                  top: 2,
-                                  child: AppIcon(
-                                    isChecked
-                                        ? Icons.done_rounded
-                                        : Icons.close_rounded,
-                                    size: 14,
-                                    color: isChecked
-                                        ? white
-                                        : isMissed
-                                            ? styler.textColor(
-                                                faded: true,
-                                                bgColor:
-                                                    isInput ? null : bgColor)
-                                            : transparent,
-                                  ),
-                                ),
-                              //
-                            ],
-                          ),
-                        );
-                      }),
+        return ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: width),
+          child: SwipeDetector(
+            onSwipeRight: isInput ? () => swipeToNew(isSwipeRight: true, view: 2) : null,
+            onSwipeLeft: isInput ? () => swipeToNew(isSwipeRight: false, view: 2) : null,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //
+                  if (isInput)
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        //
+                        AppButton(
+                          onPressed: () => swipeToNew(isSwipeRight: true, view: 2),
+                          child: AppIcon(Icons.keyboard_arrow_left),
+                        ),
+                        //
+                        Flexible(
+                            child: AppText(
+                                size: normal,
+                                text: getMonthFull(dateTime.monthDatesMap[14] ?? ''),
+                                fontWeight: FontWeight.bold)),
+                        //
+                        AppButton(
+                          onPressed: () => swipeToNew(isSwipeRight: false, view: 2),
+                          child: AppIcon(Icons.keyboard_arrow_right),
+                        ),
+                        //
+                      ],
                     ),
-                  ],
-                ),
+                  //
+                  sph(),
+                  //
+                  AppDivider(thickness: 0.1, height: 0),
+                  //
+                  sph(),
+                  //
+                  WeekLabels(width: width, bgColor: isInput ? null : bgColor),
+                  //
+                  sph(),
+                  //
+                  Wrap(
+                    spacing: 2,
+                    runSpacing: 2,
+                    children: List.generate(42, (indexDate) {
+                      DateInfo date = DateInfo(getDatePart(dateTime.monthDatesMap[indexDate]));
+                      String checkedKey = 'hc${date.d()}';
+                      bool isCustomDate = customDates.contains(date.d());
+                      bool isChecked = data[checkedKey] != null && data[checkedKey] != '0';
+                      bool isMissed = date.isPast() && !isChecked && ((isCustom && isCustomDate) || !isCustom);
+                      bool isSelectedMonth = date.isSelectedMonth(dateTime.monthDatesMap[14] ?? '');
+
+                      return AppButton(
+                        onPressed: ((isCustom && isCustomDate) || !isCustom || isChecked) && isSelectedMonth
+                            ? () {
+                                if (isInput) {
+                                  input.update(
+                                      action: isChecked ? 'remove' : 'add',
+                                      key: checkedKey,
+                                      value: isChecked ? '0' : getUniqueId());
+                                } else {
+                                  editItemExtras(
+                                    type: item!.type,
+                                    itemId: item!.id,
+                                    key: isChecked ? 'd/$checkedKey' : checkedKey,
+                                    value: isChecked ? '0' : getUniqueId(),
+                                  );
+                                }
+                              }
+                            : null,
+                        width: width / 8,
+                        height: width / 8,
+                        showBorder: (isCustomDate || !isCustom) && !isMissed && isSelectedMonth,
+                        borderColor: styler.accentColor(),
+                        borderRadius: isSmall ? borderRadiusTiny : null,
+                        borderWidth: 0.5,
+                        padding: EdgeInsets.zero,
+                        color: isSelectedMonth
+                            ? (isChecked ? styler.accentColor() : (isMissed ? styler.appColor(2) : transparent))
+                            : transparent,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            //
+                            AppText(
+                              size: medium,
+                              text: date.dayString(),
+                              fontWeight: FontWeight.w400,
+                              color: isSelectedMonth ? (isChecked ? white : null) : null,
+                              extraFaded: !isSelectedMonth,
+                              bgColor: isInput || !isSelectedMonth ? null : bgColor,
+                            ),
+                            //
+                            if (!isSmall && isSelectedMonth && isInput)
+                              Positioned(
+                                right: isInput ? 2 : 1,
+                                top: isInput ? 2 : 1,
+                                child: AppIcon(
+                                  isChecked ? Icons.done_rounded : Icons.close_rounded,
+                                  size: isInput ? 14 : 10,
+                                  color: isChecked
+                                      ? white
+                                      : isMissed
+                                          ? styler.textColor(faded: true, bgColor: isInput ? null : bgColor)
+                                          : transparent,
+                                ),
+                              ),
+                            //
+                          ],
+                        ),
+                      );
+                    }),
+                  ),
+                ],
               ),
             ),
           ),

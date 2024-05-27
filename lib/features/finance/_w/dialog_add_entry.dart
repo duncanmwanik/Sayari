@@ -60,10 +60,12 @@ Future showPeriodEntryDialog({required String financeType, String? entryId, Map 
               children: [
                 //
                 AppTypePicker(
-                  type: feature.finance.t,
+                  type: feature.finances.t,
                   subType: financeType,
                   initial: entryType,
-                  typeEntries: financeType == 'Income' ? financeIncomeTypes : (financeType == 'Expense' ? financeExpenseTypes : financeSavingTypes),
+                  typeEntries: financeType == 'Income'
+                      ? financeIncomeTypes
+                      : (financeType == 'Expense' ? financeExpenseTypes : financeSavingTypes),
                   onSelect: (chosenType, chosenValue) => state.input.setEntryType(chosenType),
                 ),
                 //

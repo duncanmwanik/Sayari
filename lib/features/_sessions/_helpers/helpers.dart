@@ -17,7 +17,7 @@ Future<void> prepareSessionCreation({String? date, int? hour}) async {
 
 Future<void> prepareSessionEditing(String sessionDate, String sessionId, Map sessionData) async {
   state.input.resetSessionData();
-  state.input.setInputData(typ: feature.sessions.t, id: sessionDate, sId: sessionId, dta: sessionData);
+  state.input.setInputData(isNw: false, typ: feature.sessions.t, id: sessionDate, sId: sessionId, dta: sessionData);
   showSessionBottomSheet();
 }
 

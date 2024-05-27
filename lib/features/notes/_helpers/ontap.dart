@@ -31,7 +31,7 @@ void onLongPressNote(Item note) {
   }
 }
 
-void whenCompleteNote() {
+void whenCompleteNote(String? id) {
   state.input.update(action: 'add', key: 'n', value: getQuills());
-  state.input.itemId.isEmpty ? createItem() : editItem();
+  state.input.isNew ? createItem(newId: id) : editItem();
 }

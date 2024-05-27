@@ -23,7 +23,7 @@ class Dates extends StatelessWidget {
       String endDate = getDayInfoFullNames(input.data['k'] ?? '');
 
       return Visibility(
-        visible: input.data['h'] != '1',
+        visible: input.data['cx'] != '1',
         child: Padding(
           padding: itemPaddingSmall(bottom: true),
           child: Row(

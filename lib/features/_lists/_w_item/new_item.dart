@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/items/create_item.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/providers.dart';
@@ -96,8 +97,11 @@ class _NewItemInputState extends State<NewItemInput> {
                       textCapitalization: TextCapitalization.sentences,
                       onFieldSubmitted: (value) async {
                         if (controller.text.trim().isNotEmpty) {
-                          state.input.update(action: 'add', key: 't', value: controller.text);
-                          await createItem();
+                          await createItem(
+                            newSubId: 'i${getUniqueId()}',
+                            data: {'t': controller.text},
+                            validate: false,
+                          );
                         }
 
                         // Move to next item input
@@ -134,8 +138,11 @@ class _NewItemInputState extends State<NewItemInput> {
                         AppButton(
                           onPressed: () async {
                             if (controller.text.trim().isNotEmpty) {
-                              state.input.update(action: 'add', key: 't', value: controller.text);
-                              await createItem();
+                              await createItem(
+                                newSubId: 'i${getUniqueId()}',
+                                data: {'t': controller.text},
+                                validate: false,
+                              );
                             }
                             //
                             // Move to next item input

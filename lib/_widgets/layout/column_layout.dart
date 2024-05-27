@@ -9,7 +9,6 @@ import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
 import '../../features/_lists/list.dart';
 import '../../features/_tables/_helpers/common.dart';
-import '../../features/finance/period.dart';
 import '../../features/notes/note.dart';
 import '../others/others/other_widgets.dart';
 import '../others/others/snap_scroll_physics.dart';
@@ -53,9 +52,7 @@ class ColumnLayout extends StatelessWidget {
                       ? Note(item: item)
                       : type == feature.lists.t
                           ? AList(item: item)
-                          : type == feature.finance.t
-                              ? Period(item: item)
-                              : NoWidget(),
+                          : NoWidget(),
                 ),
               ),
             );

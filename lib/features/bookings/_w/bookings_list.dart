@@ -29,20 +29,19 @@ class _BookingState extends State<BookingsList> {
     return Consumer<InputProvider>(builder: (context, input, child) {
       Map data = input.data;
       List allBookings = data.keys.where((key) => key.toString().startsWith('bb')).toList();
-      bool isExpanded = input.data['cxb'] == '1';
+      bool isExpanded = input.data['bx'] == '1';
 
       return Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //
           AppButton(
-            onPressed: () => input.update(action: 'add', key: 'cxb', value: isExpanded ? '0' : '1'),
+            onPressed: () => input.update(action: 'add', key: 'bx', value: isExpanded ? '0' : '1'),
             noStyling: true,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                AppText(text: '${isExpanded ? 'Hide' : 'View'} Bookings'),
+                AppText(text: '${isExpanded ? 'Hide' : 'Show'} Bookings'),
                 spw(),
                 AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, size: 16, faded: true),
               ],
@@ -55,6 +54,7 @@ class _BookingState extends State<BookingsList> {
             allBookings.isNotEmpty
                 ? Column(
                     mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: List.generate(allBookings.length, (index) {
                       String bookingKey = allBookings[index];
                       Map booking = jsonDecode(data[bookingKey]);
@@ -116,7 +116,8 @@ class _BookingState extends State<BookingsList> {
                                                 booking['bbd'] = newDate;
                                                 booking['bbt'] = newTime;
                                                 booking['bbc'] = '0';
-                                                input.update(action: 'add', key: bookingKey, value: jsonEncode(booking));
+                                                input.update(
+                                                    action: 'add', key: bookingKey, value: jsonEncode(booking));
                                               },
                                             );
                                           },
@@ -161,7 +162,9 @@ class _BookingState extends State<BookingsList> {
                                       spw(),
                                       Expanded(child: AppText(text: email)),
                                       spw(),
-                                      Padding(padding: EdgeInsets.only(top: 4), child: AppIcon(Icons.copy_rounded, size: 18, faded: true)),
+                                      Padding(
+                                          padding: EdgeInsets.only(top: 4),
+                                          child: AppIcon(Icons.copy_rounded, size: 18, faded: true)),
                                     ],
                                   ),
                                 ),

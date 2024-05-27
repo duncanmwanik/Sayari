@@ -5,7 +5,7 @@ import '../../_variables/features.dart';
 
 class InputProvider with ChangeNotifier {
   //
-
+  bool isNew = true;
   late Item item;
   String type = '';
   String itemId = '';
@@ -16,8 +16,16 @@ class InputProvider with ChangeNotifier {
 
   bool hasSpecialItem() => data.keys.any((key) => ['ba', 'wa', 'qa', 'ha', 'sa'].contains(key));
 
-  void setInputData({required String typ, Item itm = const Item(), String id = '', String sId = '', Map dta = const {}}) {
+  void setInputData({
+    bool isNw = true,
+    required String typ,
+    Item itm = const Item(),
+    String id = '',
+    String sId = '',
+    Map dta = const {},
+  }) {
     clearData();
+    isNew = isNw;
     item = itm;
     type = typ.toString();
     itemId = id.toString();
@@ -44,6 +52,7 @@ class InputProvider with ChangeNotifier {
   }
 
   void clearData() {
+    isNew = false;
     item = Item();
     data = {};
     previousData = {};

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,7 @@ import '../../_widgets/items/items.dart';
 import '../../_widgets/others/forms/input.dart';
 import '../bookings/booking.dart';
 import '../files/file_overview.dart';
+import '../finance/period_sheet.dart';
 import '../forms/_w/form.dart';
 import '../habits/habit.dart';
 import '../links/_w/links.dart';
@@ -20,13 +22,13 @@ import '_helpers/ontap.dart';
 import '_w/editor.dart';
 import '_w/footer.dart';
 
-Future<void> showNoteBottomSheet({bool isFull = false}) async {
+Future<void> showNoteBottomSheet({String? id}) async {
   await showAppBottomSheet(
-    isFull: isFull,
     //
     header: CommonHeaderActions(),
     //
     content: SingleChildScrollView(
+      padding: EdgeInsets.only(right: kIsWeb ? 10 : 0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,18 +44,21 @@ Future<void> showNoteBottomSheet({bool isFull = false}) async {
             fontWeight: FontWeight.w700,
             textCapitalization: TextCapitalization.sentences,
             filled: false,
+            autofocus: state.input.itemId.isEmpty,
             contentPadding: itemPadding(bottom: true),
           ),
           //
           Share(),
           //
-          Booking(),
+          Finance(),
           //
           Habit(),
           //
           Links(),
           //
           Forms(),
+          //
+          Booking(),
           //
           ItemDetails(),
           //
@@ -67,7 +72,7 @@ Future<void> showNoteBottomSheet({bool isFull = false}) async {
     //
     footer: NoteFooter(),
     //
-    whenComplete: () => whenCompleteNote(),
+    whenComplete: () => whenCompleteNote(id),
     //
   );
 }

@@ -29,10 +29,10 @@ void copySessionToDates({
       state.input.updateSelectedDates('set', dates: newDates);
       createItem();
       if (move) {
-        deleteItemForever(type: feature.sessions.t, itemId: previousDate, subId: sessionId, files: getFiles(sessionData));
+        deleteItemForever(
+            type: feature.sessions.t, itemId: previousDate, subId: sessionId, files: getFiles(sessionData));
       }
     });
-
     //
   } catch (e) {
     errorPrint('${move ? 'move' : 'copy'}-session', e);
@@ -53,7 +53,8 @@ void deleteSession({
         closeDialog(); // close overview dialog
         // TODOs: cancel well reminders
         cancelScheduledNotification(sessionId);
-        deleteItemForever(type: feature.sessions.t, itemId: sessionDate, subId: sessionId, files: getFiles(sessionData));
+        deleteItemForever(
+            type: feature.sessions.t, itemId: sessionDate, subId: sessionId, files: getFiles(sessionData));
       },
     );
   } catch (e) {

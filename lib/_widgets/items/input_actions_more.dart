@@ -8,8 +8,6 @@ import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
 import '../../features/files/_helpers/upload.dart';
-import '../../features/forms/_helpers/helpers.dart';
-import '../../features/links/_helpers/helpers.dart';
 import '../../features/tts/_helpers/tts_service.dart';
 import '../../features/tts/_state/tts_provider.dart';
 import '../abcs/buttons/buttons.dart';
@@ -23,7 +21,6 @@ class MoreInputActions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       bool isArchived = input.data['a'] == '1';
-      bool isNote = feature.isNote(input.type);
 
       return AppButton(
         tooltip: 'More',
@@ -34,45 +31,6 @@ class MoreInputActions extends StatelessWidget {
             iconData: Icons.file_present_outlined,
             onTap: () async => await getFilesToUpload(),
           ),
-          //
-          if (isNote && !input.hasSpecialItem())
-            MenuItem(
-              label: 'Add Habit Tracker',
-              iconData: Icons.grain_rounded,
-              onTap: () => input.update(action: 'add', key: 'ha', value: '1'),
-            ),
-          //
-          if (isNote && !input.hasSpecialItem())
-            MenuItem(
-              label: 'Add Booking Session',
-              iconData: Icons.calendar_month_rounded,
-              onTap: () {
-                input.update(action: 'add', key: 'ba', value: '1');
-                shareItem(type: 'booking', itemId: input.itemId);
-              },
-            ),
-          //
-          if (isNote && !input.hasSpecialItem())
-            MenuItem(
-              label: 'Add Form',
-              iconData: Icons.library_books_outlined,
-              onTap: () {
-                input.update(action: 'add', key: 'qa', value: '1');
-                addForm();
-                shareItem(type: 'forms', itemId: input.itemId);
-              },
-            ),
-          //
-          if (isNote && !input.hasSpecialItem())
-            MenuItem(
-              label: 'Add Links',
-              iconData: Icons.dataset_linked_outlined,
-              onTap: () {
-                input.update(action: 'add', key: 'wa', value: '1');
-                addLink();
-                shareItem(type: 'links', itemId: input.itemId);
-              },
-            ),
           //
           if (feature.isNote(input.item.type))
             Consumer<TTSProvider>(

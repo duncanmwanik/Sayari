@@ -25,7 +25,7 @@ import '../../labels/labels_menu.dart';
 
 Future showCreateListDialog({bool isEdit = false, Map listData = const {}, String listId = ''}) {
   if (isEdit) {
-    state.input.setInputData(typ: feature.lists.t, id: listId, dta: listData);
+    state.input.setInputData(isNw: false, typ: feature.lists.t, id: listId, dta: listData);
   } else {
     state.input.clearData();
     state.input.setInputData(typ: feature.lists.t);

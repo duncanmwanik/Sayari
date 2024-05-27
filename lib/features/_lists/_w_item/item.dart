@@ -40,7 +40,8 @@ class _ItemState extends State<SubItem> {
       padding: EdgeInsets.symmetric(horizontal: 1, vertical: 2),
       child: InkWell(
         onTap: () async {
-          state.input.setInputData(typ: feature.lists.t, id: widget.item.id, sId: widget.subItemId, dta: widget.subItemData);
+          state.input.setInputData(
+              isNw: false, typ: feature.lists.t, id: widget.item.id, sId: widget.subItemId, dta: widget.subItemData);
           showItemDialog(widget.subItemId, widget.subItemData, widget.item.id);
         },
         onHover: (value) => setState(() => isHovered = value),
@@ -56,7 +57,7 @@ class _ItemState extends State<SubItem> {
                       ? white
                       : styler.accentColor()
                   : styler.isDark
-                      ? transparent
+                      ? Colors.grey.withOpacity(0.2)
                       : Colors.grey.withOpacity(0.3),
             ),
           ),
@@ -90,7 +91,12 @@ class _ItemState extends State<SubItem> {
                                   isChecked: isChecked,
                                   margin: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
                                   onTap: () {
-                                    editItemExtras(type: feature.lists.t, itemId: widget.item.id, subId: widget.subItemId, key: 'v', value: isChecked ? '0' : '1');
+                                    editItemExtras(
+                                        type: feature.lists.t,
+                                        itemId: widget.item.id,
+                                        subId: widget.subItemId,
+                                        key: 'v',
+                                        value: isChecked ? '0' : '1');
                                   },
                                 ),
                               ),

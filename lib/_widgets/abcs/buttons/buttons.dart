@@ -83,7 +83,9 @@ class AppButton extends StatelessWidget {
       color: noStyling ? transparent : color ?? styler.appColor(styler.isDark ? 1 : 1.5),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusSmall)),
-        side: showBorder ? BorderSide(color: borderColor ?? Colors.grey.withOpacity(0.3), width: borderWidth ?? 1) : BorderSide.none,
+        side: showBorder
+            ? BorderSide(color: borderColor ?? Colors.grey.withOpacity(0.3), width: borderWidth ?? 1)
+            : BorderSide.none,
       ),
       child: InkWell(
         onTap: isMenu ? () {} : onPressed,
@@ -151,7 +153,9 @@ class AppCloseButton extends StatelessWidget {
       noStyling: !isText,
       padding: EdgeInsets.all(10),
       isSquare: true,
-      child: isText ? AppText(text: 'Close', size: medium, faded: true) : AppIcon(isX ? closeIcon : Icons.arrow_back_rounded, faded: faded),
+      child: isText
+          ? AppText(text: 'Close', size: medium, faded: true)
+          : AppIcon(isX ? closeIcon : Icons.arrow_back_rounded, faded: faded),
     );
   }
 }

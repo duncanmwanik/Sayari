@@ -19,7 +19,7 @@ import 'session_type.dart';
 
 Future showSessionOverviewDialog(String sessionDate, String sessionId, Map sessionData) {
   updateSelectedDate(sessionDate);
-  state.input.setInputData(typ: feature.sessions.t, id: sessionId, dta: sessionData);
+  state.input.setInputData(isNw: false, typ: feature.sessions.t, id: sessionId, dta: sessionData);
   Map fileMap = getFiles(sessionData);
 
   return showAppDialog(

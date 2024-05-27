@@ -5,7 +5,6 @@ import '../../__styling/variables.dart';
 import '../../_models/item.dart';
 import '../../_variables/features.dart';
 import '../../features/_lists/list_sheet.dart';
-import '../../features/finance/_helpers/helpers.dart';
 import '../../features/notes/_helpers/helpers.dart';
 import '../abcs/buttons/buttons.dart';
 import '../others/icons.dart';
@@ -28,8 +27,6 @@ class ListItem extends StatelessWidget {
           onPressed: () {
             if (feature.isNote(item.type)) {
               prepareNoteForEdit(item);
-            } else if (feature.isFinance(item.type)) {
-              preparePeriodForEdit(item);
             } else if (feature.isList(item.type)) {
               showListBottomSheet(item: item);
             }

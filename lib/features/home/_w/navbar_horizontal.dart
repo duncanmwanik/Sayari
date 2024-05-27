@@ -34,17 +34,20 @@ class HorizontalNavigationBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 //
-                navItem(views.view == feature.sessions.t ? Icons.calendar_month : sessionsUnselectedIcon, feature.sessions.t, views.view == feature.sessions.t),
+                navItem(views.view == feature.sessions.t ? Icons.calendar_month : sessionsUnselectedIcon,
+                    feature.sessions.t, views.view == feature.sessions.t),
                 //
-                navItem(views.view == feature.notes.t ? notesSelectedIcon : notesUnselectedIcon, feature.notes.t, views.view == feature.notes.t),
+                navItem(views.view == feature.notes.t ? notesSelectedIcon : notesUnselectedIcon, feature.notes.t,
+                    views.view == feature.notes.t),
                 //
-                navItem(views.view == feature.lists.t ? listsSelectedIcon : listsUnselectedIcon, feature.lists.t, views.view == feature.lists.t),
+                navItem(views.view == feature.lists.t ? listsSelectedIcon : listsUnselectedIcon, feature.lists.t,
+                    views.view == feature.lists.t),
                 //
-                navItem(Icons.attach_money_rounded, feature.finance.t, views.view == feature.finance.t),
+                navItem(views.view == feature.chat.t ? chatSelectedIcon : chatUnselectedIcon, feature.chat.t,
+                    views.view == feature.chat.t),
                 //
-                navItem(views.view == feature.chat.t ? chatSelectedIcon : chatUnselectedIcon, feature.chat.t, views.view == feature.chat.t),
-                //
-                navItem(views.view == feature.explore.t ? moreIcon : moreIcon, feature.explore.t, views.view == feature.explore.t),
+                navItem(views.view == feature.explore.t ? moreIcon : moreIcon, feature.explore.t,
+                    views.view == feature.explore.t),
                 //
               ],
             ),

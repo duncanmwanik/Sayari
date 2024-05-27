@@ -1,4 +1,5 @@
 import '../__styling/helpers.dart';
+import '../_variables/features.dart';
 import '../features/files/_helpers/helper.dart';
 
 class Item {
@@ -21,7 +22,13 @@ class Item {
   bool exists() => data.isNotEmpty;
   bool hasColor() => hasBgColor(data['c']);
   bool hasOverview() => data['w'] != null && data['w'] != '';
-  bool hasHabit() => data['ha'] != null;
+  bool hasFinances() => data[feature.finances.lt] != null;
+  bool hasHabits() => data[feature.habits.lt] != null;
+  bool hasLinks() => data[feature.links.lt] != null;
+  bool hasPortfolios() => data[feature.portfolios.lt] != null;
+  bool hasForms() => data[feature.forms.lt] != null;
+  bool hasBookings() => data[feature.bookings.lt] != null;
+  bool isPureNote() => data[feature.notes.lt] != null;
   bool isShared() => data['sa'] != null;
   bool isPublished() => data['sp'] == '1';
   bool isPinned() => data['p'] == '1';

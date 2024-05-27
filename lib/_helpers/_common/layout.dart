@@ -12,8 +12,8 @@ void resetListLayout() {
     if (globalBox.get('${liveTable()}_layout_${feature.lists.t}', defaultValue: 'grid') == 'list') {
       state.views.setLayout(feature.lists.t, 'grid');
     }
-    if (globalBox.get('${liveTable()}_layout_${feature.finance.t}', defaultValue: 'grid') == 'list') {
-      state.views.setLayout(feature.finance.t, 'grid');
+    if (globalBox.get('${liveTable()}_layout_${feature.finances.t}', defaultValue: 'grid') == 'list') {
+      state.views.setLayout(feature.finances.t, 'grid');
     }
   }
 }

@@ -36,7 +36,7 @@ class DevTools extends StatelessWidget {
           child: AppText(text: 'L'),
         ),
         AppButton(
-          onPressed: () => Hive.box('${liveTable()}_${feature.finance.t}').clear(),
+          onPressed: () => Hive.box('${liveTable()}_${feature.finances.t}').clear(),
           noStyling: true,
           child: AppText(text: 'F'),
         ),

@@ -11,7 +11,7 @@ void prepareTableForCreation() {
 }
 
 void prepareTableForEdit(Map tableData) {
-  state.input.setInputData(typ: feature.table.t, dta: tableData);
+  state.input.setInputData(isNw: false, typ: feature.table.t, dta: tableData);
   showTableBottomSheet(isNewTable: false);
 }
 

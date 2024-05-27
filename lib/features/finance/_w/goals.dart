@@ -20,11 +20,13 @@ class Goals extends StatelessWidget {
       String incomeGoal = input.data['gin'] ?? '';
       String savingsGoal = input.data['gsa'] ?? '';
       bool isBudgetMet = getTotalAmount('ex') >= double.parse(budget.isNotEmpty ? budget : '0') && budget.isNotEmpty;
-      bool isIncomeMet = getTotalAmount('in') >= double.parse(incomeGoal.isNotEmpty ? incomeGoal : '0') && incomeGoal.isNotEmpty;
-      bool isSavingsMet = getTotalAmount('sa') >= double.parse(savingsGoal.isNotEmpty ? savingsGoal : '0') && savingsGoal.isNotEmpty;
+      bool isIncomeMet =
+          getTotalAmount('in') >= double.parse(incomeGoal.isNotEmpty ? incomeGoal : '0') && incomeGoal.isNotEmpty;
+      bool isSavingsMet =
+          getTotalAmount('sa') >= double.parse(savingsGoal.isNotEmpty ? savingsGoal : '0') && savingsGoal.isNotEmpty;
 
       return Visibility(
-        visible: input.data['h'] != '1',
+        visible: input.data['cx'] != '1',
         child: Padding(
           padding: itemPaddingSmall(bottom: true),
           child: Wrap(
@@ -42,7 +44,11 @@ class Goals extends StatelessWidget {
                     if (isBudgetMet) AppIcon(Icons.warning_rounded, color: Colors.red, size: 18),
                     if (budget.isEmpty) AppIcon(Icons.add_rounded, size: 18),
                     tpw(),
-                    Flexible(child: AppText(text: budget.isNotEmpty ? 'Budget: Ksh. ${formatThousands(double.parse(budget))}' : 'Set Budget')),
+                    Flexible(
+                        child: AppText(
+                            text: budget.isNotEmpty
+                                ? 'Budget: Ksh. ${formatThousands(double.parse(budget))}'
+                                : 'Set Budget')),
                   ],
                 ),
               ),
@@ -57,7 +63,11 @@ class Goals extends StatelessWidget {
                     if (isIncomeMet) AppIcon(Icons.check_circle_rounded, color: Colors.green, size: 18),
                     if (incomeGoal.isEmpty) AppIcon(Icons.add_rounded, size: 18),
                     tpw(),
-                    Flexible(child: AppText(text: incomeGoal.isNotEmpty ? 'Income Goal: Ksh. ${formatThousands(double.parse(incomeGoal))}' : 'Set Income Goal')),
+                    Flexible(
+                        child: AppText(
+                            text: incomeGoal.isNotEmpty
+                                ? 'Income Goal: Ksh. ${formatThousands(double.parse(incomeGoal))}'
+                                : 'Set Income Goal')),
                   ],
                 ),
               ),
@@ -72,7 +82,11 @@ class Goals extends StatelessWidget {
                     if (isSavingsMet) AppIcon(Icons.check_circle_rounded, color: Colors.blue, size: 18),
                     if (savingsGoal.isEmpty) AppIcon(Icons.add_rounded, size: 18),
                     tpw(),
-                    Flexible(child: AppText(text: savingsGoal.isNotEmpty ? 'Savings Goal: Ksh. ${formatThousands(double.parse(savingsGoal))}' : 'Set Savings Goal')),
+                    Flexible(
+                        child: AppText(
+                            text: savingsGoal.isNotEmpty
+                                ? 'Savings Goal: Ksh. ${formatThousands(double.parse(savingsGoal))}'
+                                : 'Set Savings Goal')),
                   ],
                 ),
               ),

@@ -5,14 +5,12 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/common/views.dart';
-import '../../../_variables/features.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_lists/_w_list/list_dialog.dart';
 import '../../_sessions/_helpers/helpers.dart';
 import '../../_tables/_helpers/checks_table.dart';
-import '../../finance/_helpers/helpers.dart';
 import '../../notes/_helpers/helpers.dart';
 
 class WebCreator extends StatelessWidget {
@@ -26,7 +24,6 @@ class WebCreator extends StatelessWidget {
       bool isSessionsView = views.isSessions();
       bool isListView = views.isLists();
       bool isNotesView = views.isNotes();
-      bool isFinanceView = views.isFinance();
 
       return AppButton(
         /////////////////////////////////////////////////
@@ -36,18 +33,9 @@ class WebCreator extends StatelessWidget {
         noStyling: true,
         onPressed: isATableSelected()
             ? () {
-                if (isSessionsView) {
-                  prepareSessionCreation();
-                }
-                if (isListView) {
-                  showCreateListDialog();
-                }
-                if (isNotesView) {
-                  prepareNoteForCreation();
-                }
-                if (isFinanceView) {
-                  preparePeriodForCreation();
-                }
+                if (isSessionsView) prepareSessionCreation();
+                if (isListView) showCreateListDialog();
+                if (isNotesView) prepareNoteForCreation();
               }
             : () => openDrawer(),
         child: Container(
@@ -74,11 +62,12 @@ class WebCreator extends StatelessWidget {
                     //
                     AppIcon(Icons.add_circle_rounded, size: 18),
                     if (!isCollapsed) spw(),
-                    if (!isCollapsed) AppText(text: featureData[views.view]!.createMessage),
+                    if (!isCollapsed) AppText(text: 'Create'),
+                    // if (!isCollapsed) AppText(text: featureData[views.view]!.createMessage),
                     //
                   ],
                 )
-              : Center(child: AppText(text: 'Select a table',overflow: TextOverflow.ellipsis)),
+              : Center(child: AppText(text: 'Select a table', overflow: TextOverflow.ellipsis)),
         ),
       );
     });

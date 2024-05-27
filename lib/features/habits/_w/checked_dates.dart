@@ -5,24 +5,20 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/date_info.dart';
 import '../../../_helpers/date_time/misc.dart';
-import '../../../_models/item.dart';
 import '../../../_providers/common/input.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 
 class CheckedDates extends StatelessWidget {
-  const CheckedDates({super.key, this.item});
-
-  final Item? item;
+  const CheckedDates({super.key});
 
   @override
   Widget build(BuildContext context) {
- 
     return Consumer<InputProvider>(builder: (context, input, child) {
-      Map data = item != null ? item!.data : input.data;
+      Map data = input.data;
       List checkedDates = data.keys.where((key) => key.toString().startsWith('hc')).toList();
-      bool isExpanded = data['he'] == '1';
+      bool isExpanded = data['hx'] == '1';
 
       return Padding(
         padding: itemPadding(top: true),
@@ -32,12 +28,12 @@ class CheckedDates extends StatelessWidget {
             Align(
               alignment: Alignment.centerRight,
               child: AppButton(
-                onPressed: () => input.update(action: 'add', key: 'he', value: isExpanded ? '0' : '1'),
+                onPressed: () => input.update(action: 'add', key: 'hx', value: isExpanded ? '0' : '1'),
                 noStyling: true,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    AppText(text: isExpanded ? 'See less' : 'See more'),
+                    AppText(text: isExpanded ? 'Hide Details' : 'View Details'),
                     spw(),
                     AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, size: 16, faded: true),
                   ],
@@ -53,7 +49,7 @@ class CheckedDates extends StatelessWidget {
                   ? Column(
                       children: List.generate(checkedDates.length, (index) {
                         String checkedDate = checkedDates[index];
-      
+
                         return Padding(
                           padding: EdgeInsets.only(top: 4),
                           child: AppButton(
@@ -66,7 +62,8 @@ class CheckedDates extends StatelessWidget {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      AppIcon(Icons.tag_rounded, size: 16, color: styler.accentColor()),
+                                      AppIcon(Icons.check_circle, size: 16, color: styler.accentColor()),
+                                      tpw(),
                                       Flexible(child: AppText(text: getEditDateTime(data[checkedDate]))),
                                     ],
                                   ),

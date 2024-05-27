@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/providers.dart';
 import '../abcs/buttons/buttons.dart';
 import 'icons.dart';
 import 'svg.dart';
@@ -11,7 +10,7 @@ import 'text.dart';
 class EmptyBox extends StatelessWidget {
   const EmptyBox({
     super.key,
-    this.icon = notesUnselectedIcon,
+    this.icon = Icons.list_rounded,
     this.label = 'Nothing here...',
     this.isSpaced = true,
     this.onPressed,
@@ -47,8 +46,8 @@ class EmptyBox extends StatelessWidget {
                 onPressed: onPressed,
                 noStyling: onPressed == null,
                 child: AppText(
-                  text:
-                      '${state.views.isItemView() ? '${state.labels.selectedLabel}: ': ''}$label ',
+                  text: label,
+                  // '${state.views.isItemView() ? '${state.labels.selectedLabel}: ': ''}$label ',
                   faded: true,
                 ),
               ),

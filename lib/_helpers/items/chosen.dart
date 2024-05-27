@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 
+import '../../_providers/providers.dart';
 import '../../features/_tables/_helpers/common.dart';
 import '../_common/global.dart';
 
@@ -16,6 +17,9 @@ List getChosenItems(String type, String currentLabel) {
     bool isPinned = noteData['p'] == '1';
     bool isDeleted = noteData['x'] == '1';
     bool isArchived = noteData['a'] == '1';
+    bool isNoteViewType = noteData.containsKey(state.views.noteView);
+
+    if (!isNoteViewType && state.views.isNotes()) continue;
 
     if (isPinned) pinned.add(itemId);
 

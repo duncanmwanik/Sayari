@@ -10,16 +10,12 @@ import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 
 class LinksOverview extends StatelessWidget {
-  const LinksOverview({super.key, this.item, this.bgColor});
-
-  final Item? item;
-  final String? bgColor;
+  const LinksOverview({super.key, required this.item});
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      Map data = item != null ? item!.data : input.data;
-
       return Align(
         alignment: Alignment.center,
         child: Padding(
@@ -29,15 +25,15 @@ class LinksOverview extends StatelessWidget {
             smallLeftPadding: true,
             child: Row(
               children: [
-                AppIcon(Icons.dataset_linked_outlined, size: 16, faded: true, bgColor: bgColor),
+                AppIcon(Icons.dataset_linked_outlined, size: 16, faded: true, bgColor: item.bgColor()),
                 spw(),
-                Expanded(child: AppText(text: 'Links', bgColor: bgColor)),
+                Expanded(child: AppText(text: 'Links', bgColor: item.bgColor())),
                 mpw(),
                 AppText(
-                  text: data.keys.where((key) => key.toString().startsWith('wk')).length.toString(),
+                  text: item.data.keys.where((key) => key.toString().startsWith('wk')).length.toString(),
                   fontWeight: FontWeight.bold,
                   faded: true,
-                  bgColor: bgColor,
+                  bgColor: item.bgColor(),
                 ),
               ],
             ),

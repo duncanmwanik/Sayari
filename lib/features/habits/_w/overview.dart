@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/common/input.dart';
 import '../../../_variables/date_time.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
+import 'month.dart';
+import 'week.dart';
 
 class WeekLabels extends StatelessWidget {
-  const WeekLabels({super.key, required this.width, required this.isInput, this.bgColor});
+  const WeekLabels({super.key, required this.width, this.bgColor});
 
   final double width;
-  final bool isInput;
   final String? bgColor;
 
   @override
@@ -29,7 +26,7 @@ class WeekLabels extends StatelessWidget {
           width: width / 8,
           child: AppText(
             size: 10,
-            text: isInput ? weekDaysList[index].shortName : weekDaysList[index].superShortName,
+            text: weekDaysList[index].superShortName,
             textAlign: TextAlign.center,
             faded: true,
             bgColor: bgColor,
@@ -41,38 +38,49 @@ class WeekLabels extends StatelessWidget {
 }
 
 class HabitOverview extends StatelessWidget {
-  const HabitOverview({super.key, this.item, this.bgColor});
+  const HabitOverview({super.key, required this.item});
 
-  final Item? item;
-  final String? bgColor;
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<InputProvider>(builder: (context, input, child) {
-      Map data = item != null ? item!.data : input.data;
-      bool isCustom = data['hf'] == 'custom';
-      int customDatesNo = (isCustom ? getSplitList(data['hd']) : []).length;
-      int checkedNo = data.keys.where((key) => key.toString().startsWith('hc')).length;
+    bool isCustom = item.data['hf'] == 'custom';
+    int customDatesNo = (isCustom ? getSplitList(item.data['hd']) : []).length;
+    int checkedNo = item.data.keys.where((key) => key.toString().startsWith('hc')).length;
+    String view = item.data['hv'] ?? '0';
 
-      return Align(
-        alignment: Alignment.center,
-        child: Padding(
-          padding: itemPaddingSmall(bottom: true),
-          child: AppButton(
-            smallLeftPadding: true,
-            borderRadius: borderRadiusSmall,
-            child: Row(
+    return Align(
+      alignment: Alignment.center,
+      child: Padding(
+        padding: itemPaddingSmall(bottom: true),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            //
+            sph(),
+            //
+            Row(
               children: [
-                AppIcon(Icons.grain_rounded, size: 16, faded: true, bgColor: bgColor),
+                AppIcon(Icons.check_circle, size: 16, faded: true, bgColor: item.bgColor()),
                 spw(),
-                Expanded(child: AppText(text: 'Habit', bgColor: bgColor)),
+                Flexible(child: AppText(text: 'Completed', bgColor: item.bgColor())),
                 mpw(),
-                AppText(text: isCustom ? '$checkedNo / $customDatesNo' : '$checkedNo', fontWeight: FontWeight.bold, faded: true, bgColor: bgColor),
+                AppText(
+                    text: isCustom ? '$checkedNo / $customDatesNo' : '$checkedNo',
+                    fontWeight: FontWeight.bold,
+                    faded: true,
+                    bgColor: item.bgColor()),
               ],
             ),
-          ),
+            //
+            sph(),
+            //
+            if (view == '0') HabitWeek(item: item),
+            if (view == '1' || view == '2') HabitMonth(item: item),
+            //
+          ],
         ),
-      );
-    });
+      ),
+    );
   }
 }

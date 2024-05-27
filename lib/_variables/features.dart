@@ -5,9 +5,14 @@ Features feature = Features();
 class Features {
   final Feature table = Feature(t: 'tables', lt: 't');
   final Feature sessions = Feature(t: 'sessions', lt: 's');
-  final Feature notes = Feature(t: 'notes', lt: 'n');
   final Feature lists = Feature(t: 'lists', lt: 'l');
-  final Feature finance = Feature(t: 'finances', lt: 'f');
+  final Feature notes = Feature(t: 'notes', lt: 'na');
+  final Feature finances = Feature(t: 'finances', lt: 'ca');
+  final Feature habits = Feature(t: 'habits', lt: 'ha');
+  final Feature links = Feature(t: 'links', lt: 'wa');
+  final Feature portfolios = Feature(t: 'portfolio', lt: 'pa');
+  final Feature forms = Feature(t: 'forms', lt: 'qa');
+  final Feature bookings = Feature(t: 'bookings', lt: 'ba');
   final Feature chat = Feature(t: 'chat', lt: 'c');
   final Feature code = Feature(t: 'code', lt: 'd');
   final Feature labels = Feature(t: 'labels', lt: 'b');
@@ -17,11 +22,14 @@ class Features {
   final Feature explore = Feature(t: 'explore', lt: 'e');
   final Feature hub = Feature(t: 'home', lt: 'h');
 
-  bool isOrderable(String type) => [notes.t, lists.t, finance.t].contains(type);
+  bool isOrderable(String type) => [notes.t, lists.t, finances.t].contains(type);
   bool isSession(String type) => sessions.t == type;
-  bool isNote(String type) => notes.t == type;
-  bool isFinance(String type) => finance.t == type;
   bool isList(String type) => lists.t == type;
+  bool isNote(String type) => notes.t == type;
+  bool isFinance(String type) => finances.t == type;
+  bool isLink(String type) => links.t == type;
+  bool isBooking(String type) => bookings.t == type;
+  bool isForm(String type) => forms.t == type;
   bool isTable(String type) => table.t == type;
   bool isHome(String type) => hub.t == type;
 }
@@ -31,7 +39,7 @@ Map<String, FeatureData> featureData = {
   feature.sessions.t: FeatureData(title: 'Sessions', createMessage: 'Create Session'),
   feature.notes.t: FeatureData(title: 'Notes', createMessage: 'Create Note'),
   feature.lists.t: FeatureData(title: 'Lists', createMessage: 'Create List'),
-  feature.finance.t: FeatureData(title: 'Finance', createMessage: 'Create Finance Period'),
+  feature.finances.t: FeatureData(title: 'Finance', createMessage: 'Create Finance Period'),
   feature.explore.t: FeatureData(title: 'Explore', createMessage: 'Have Some fun'),
   feature.chat.t: FeatureData(title: 'Chat', createMessage: 'Send Message'),
   feature.pomodoro.t: FeatureData(title: 'Pomodoro', createMessage: 'Pomodoro'),

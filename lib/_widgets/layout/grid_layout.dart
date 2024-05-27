@@ -8,7 +8,6 @@ import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
 import '../../features/_lists/list.dart';
 import '../../features/_tables/_helpers/common.dart';
-import '../../features/finance/period.dart';
 import '../../features/notes/note.dart';
 import '../others/others/other_widgets.dart';
 import 'masonry/rendering/sliver_simple_grid_delegate.dart';
@@ -55,10 +54,6 @@ class GridLayout extends StatelessWidget {
                 //
                 else if (type == feature.lists.t) {
                   return AList(key: Key(item.id), item: item);
-                }
-                //
-                else if (type == feature.finance.t) {
-                  return Period(key: Key(item.id), item: item);
                 }
                 //
                 else {

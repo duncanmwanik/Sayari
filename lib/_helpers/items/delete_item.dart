@@ -6,7 +6,8 @@ import '../../features/files/_helpers/upload.dart';
 import '../_common/global.dart';
 import 'share.dart';
 
-Future<void> deleteItemForever({required String type, required String itemId, String subId = '', required Map files}) async {
+Future<void> deleteItemForever(
+    {required String type, required String itemId, String subId = '', required Map files}) async {
   try {
     String tableId = liveTable();
 
@@ -22,7 +23,7 @@ Future<void> deleteItemForever({required String type, required String itemId, St
       await box.delete(itemId);
     }
 
-    await syncToCloud(db: 'tables', parentId: tableId, type: type, action: 'd', itemId: itemId, subId: subId);
+    syncToCloud(db: 'tables', parentId: tableId, type: type, action: 'd', itemId: itemId, subId: subId);
     shareItem(delete: true, itemId: itemId);
     handleFilesDeletion(tableId, files);
     //

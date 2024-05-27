@@ -4,24 +4,12 @@ import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 
 import '../../../_helpers/_common/global.dart';
-import '../../../_models/item.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
 import '../../_tables/_helpers/common.dart';
-import '../period_sheet.dart';
-
-Future<void> preparePeriodForEdit(Item item, {bool isFull = false}) async {
-  state.input.setInputData(typ: feature.finance.t, itm: item, id: item.id, dta: item.data);
-  showPeriodBottomSheet(isFull: isFull);
-}
-
-Future<void> preparePeriodForCreation() async {
-  state.input.setInputData(typ: feature.finance.t);
-  showPeriodBottomSheet();
-}
 
 List getChosenPeriods(List allPeriods, String currentLabel) {
-  Box box = Hive.box('${liveTable()}_${feature.finance.t}');
+  Box box = Hive.box('${liveTable()}_${feature.finances.t}');
   List chosenPeriods = [];
 
   for (var periodId in allPeriods) {

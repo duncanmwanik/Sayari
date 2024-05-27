@@ -26,8 +26,6 @@ class AList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(item.data);
-    
     return Consumer<SelectionProvider>(builder: (context, selection, child) {
       bool isSelection = selection.isSelection;
       bool isSelected = selection.isSelected(item.id);
@@ -48,7 +46,9 @@ class AList extends StatelessWidget {
                 surfaceTintColor: Colors.amber,
                 shape: RoundedRectangleBorder(
                   side: BorderSide(
-                    color: isSelected ? styler.accentColor() : Colors.grey.withOpacity(styler.isDark && !isBlackTheme() ? 0.05 : 0.4),
+                    color: isSelected
+                        ? styler.accentColor()
+                        : Colors.grey.withOpacity(styler.isDark && !isBlackTheme() ? 0.05 : 0.4),
                     width: isSelected ? 2 : (styler.isDark ? 0.3 : 0.7),
                   ),
                   borderRadius: BorderRadius.circular(borderRadiusSmall),
@@ -92,7 +92,8 @@ class AList extends StatelessWidget {
                                     child: ListView(
                                       shrinkWrap: true,
                                       padding: EdgeInsets.zero,
-                                      physics: isColumn ? TopBlockedBouncingScrollPhysics() : NeverScrollableScrollPhysics(),
+                                      physics:
+                                          isColumn ? TopBlockedBouncingScrollPhysics() : NeverScrollableScrollPhysics(),
                                       children: [
                                         //
                                         ItemDetails(item: item),

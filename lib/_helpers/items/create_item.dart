@@ -12,15 +12,15 @@ import '../_common/global.dart';
 import '../_common/navigation.dart';
 import 'validation.dart';
 
-Future<void> createItem() async {
+Future<void> createItem({String? newId, String? newSubId, Map? data, bool validate = true}) async {
   String type = state.input.type;
-  Map itemData = state.input.data;
+  Map itemData = data ?? state.input.data;
 
   try {
     // only continue if itemData has required data
-    if (validateInput(type: type)) {
-      String itemId = state.input.itemId.isNotEmpty ? state.input.itemId : getUniqueId();
-      String subId = state.input.itemId.isNotEmpty ? getUniqueId() : '';
+    if (validateInput(type: type, validate: validate)) {
+      String itemId = newId ?? (state.input.itemId.isNotEmpty ? state.input.itemId : getUniqueId());
+      String subId = newSubId ?? (state.input.itemId.isNotEmpty ? getUniqueId() : '');
       String extras = '';
 
       printThis('create $type --- $itemId --- $subId --- $itemData');
@@ -28,7 +28,7 @@ Future<void> createItem() async {
       Box box = Hive.box('${liveTable()}_$type');
 
       // for sessions only ----------
-      if (type == feature.sessions.t) {
+      if (feature.isSession(type)) {
         closeBottomSheetIfOpen();
         removeDuplicateReminders(type, itemData);
         itemData.removeWhere((key, value) => value.toString().isEmpty); // remove keys with empty values
@@ -45,7 +45,7 @@ Future<void> createItem() async {
       }
       // for all others ----------
       else {
-        if (state.input.subId.isNotEmpty) {
+        if (subId.isNotEmpty) {
           Map itemData_ = box.get(itemId, defaultValue: {});
           itemData_[subId] = itemData;
           box.put(itemId, itemData_);
@@ -56,7 +56,15 @@ Future<void> createItem() async {
       }
 
       await handleFilesCloud(liveTable(), itemData);
-      await syncToCloud(db: 'tables', parentId: liveTable(), type: type, action: 'c', itemId: itemId, subId: subId, extras: extras, data: itemData);
+      await syncToCloud(
+          db: 'tables',
+          parentId: liveTable(),
+          type: type,
+          action: 'c',
+          itemId: itemId,
+          subId: subId,
+          extras: extras,
+          data: itemData);
     }
 
     //

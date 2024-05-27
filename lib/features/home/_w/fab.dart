@@ -11,7 +11,6 @@ import '../../../_widgets/others/icons.dart';
 import '../../_lists/_w_list/list_dialog.dart';
 import '../../_sessions/_helpers/helpers.dart';
 import '../../_tables/_helpers/checks_table.dart';
-import '../../finance/_helpers/helpers.dart';
 import '../../notes/_helpers/helpers.dart';
 
 class HomeFab extends StatelessWidget {
@@ -20,7 +19,10 @@ class HomeFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer2<ViewsProvider, ThemeProvider>(builder: (context, views, theme, child) {
-      bool showFab = !showVertNav() && isATableSelected() && isAdmin() && (views.isSessions() || views.isNotes() || views.isFinance() || views.isLists());
+      bool showFab = !showVertNav() &&
+          isATableSelected() &&
+          isAdmin() &&
+          (views.isSessions() || views.isNotes() || views.isFinance() || views.isLists());
 
       return Visibility(
         visible: showFab,
@@ -32,8 +34,6 @@ class HomeFab extends StatelessWidget {
                 prepareSessionCreation();
               } else if (state.views.isNotes()) {
                 prepareNoteForCreation();
-              } else if (state.views.isFinance()) {
-                preparePeriodForCreation();
               } else if (state.views.isLists()) {
                 showCreateListDialog();
               }

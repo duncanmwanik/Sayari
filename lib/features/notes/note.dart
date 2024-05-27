@@ -12,11 +12,12 @@ import '../../_providers/providers.dart';
 import '../../_widgets/items/hover_actions.dart';
 import '../../_widgets/items/items.dart';
 import '../../_widgets/items/selector.dart';
-import '../bookings/booking.dart';
+import '../bookings/_w/overview.dart';
 import '../files/file_overview.dart';
-import '../forms/_w/form.dart';
-import '../habits/habit.dart';
-import '../links/_w/links.dart';
+import '../finance/_w/period_overview.dart';
+import '../forms/_w/overview.dart';
+import '../habits/_w/overview.dart';
+import '../links/_w/misc.dart';
 import '_helpers/ontap.dart';
 import '_w/text_overview.dart';
 
@@ -42,7 +43,9 @@ class Note extends StatelessWidget {
               color: styler.getItemColor(item.bgColor(), false, isShadeColor: true),
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: isSelected ? styler.accentColor() : Colors.grey.withOpacity(styler.isDark && !isBlackTheme() ? 0.05 : 0.4),
+                  color: isSelected
+                      ? styler.accentColor()
+                      : Colors.grey.withOpacity(styler.isDark && !isBlackTheme() ? 0.05 : 0.4),
                   width: isSelected ? 2 : (styler.isDark ? 0.3 : 0.7),
                 ),
                 borderRadius: BorderRadius.circular(borderRadiusSmall),
@@ -75,13 +78,13 @@ class Note extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   //
-                                  Booking(item: item),
-                                  Habit(item: item),
-                                  Links(item: item),
-                                  Forms(item: item),
-                                  msph(),
-                                  NoteTextOverview(item: item),
-                                  sph(),
+                                  msph(), if (item.hasFinances()) FinanceOverview(item: item),
+                                  if (item.hasBookings()) BookingOverview(item: item),
+                                  if (item.hasHabits()) HabitOverview(item: item),
+                                  if (item.hasLinks()) LinksOverview(item: item),
+                                  if (item.hasForms()) FormsOverview(item: item),
+                                  if (item.isPureNote()) NoteTextOverview(item: item),
+                                  //
                                   ItemDetails(item: item),
                                   //
                                 ],

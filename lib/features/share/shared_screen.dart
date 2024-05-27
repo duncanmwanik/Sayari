@@ -17,9 +17,9 @@ import '_w/header.dart';
 import '_w/shared_info.dart';
 
 class ShareScreen extends StatefulWidget {
-  const ShareScreen({super.key, required this.id, required this.shareType});
+  const ShareScreen({super.key, required this.id, required this.type});
   final String id;
-  final String shareType;
+  final String type;
 
   @override
   State<ShareScreen> createState() => _ShareScreenState();
@@ -90,23 +90,38 @@ class _ShareScreenState extends State<ShareScreen> {
                                         child: Column(
                                           children: [
                                             //
-                                            if (widget.shareType != 'links') ph(30),
+                                            if (feature.isLink(widget.type)) ph(30),
                                             //
-                                            if (widget.shareType != 'links') SharedHeader(userId: userId),
+                                            if (feature.isLink(widget.type)) SharedHeader(userId: userId),
                                             //
-                                            if (widget.shareType != 'links') sph(),
+                                            if (feature.isLink(widget.type)) sph(),
                                             //
-                                            if (widget.shareType != 'links') AppDivider(height: 0, thickness: 0.05),
+                                            if (feature.isLink(widget.type)) AppDivider(height: 0, thickness: 0.05),
                                             //
                                             Expanded(
-                                              child: widget.shareType == 'share'
+                                              child: widget.type == 'share'
                                                   ? SharedBody(userId: userId, userName: userName, data: data)
-                                                  : widget.shareType == 'booking'
-                                                      ? BookingBody(tableId: tableId, itemId: widget.id, userId: userId, userName: userName, data: data)
-                                                      : widget.shareType == 'links'
-                                                          ? LinksBody(tableId: tableId, itemId: widget.id, userId: userId, userName: userName, data: data)
-                                                          : widget.shareType == 'links'
-                                                              ? FormBody(tableId: tableId, itemId: widget.id, userId: userId, userName: userName, data: data)
+                                                  : feature.isBooking(widget.type)
+                                                      ? BookingBody(
+                                                          tableId: tableId,
+                                                          itemId: widget.id,
+                                                          userId: userId,
+                                                          userName: userName,
+                                                          data: data)
+                                                      : feature.isLink(widget.type)
+                                                          ? LinksBody(
+                                                              tableId: tableId,
+                                                              itemId: widget.id,
+                                                              userId: userId,
+                                                              userName: userName,
+                                                              data: data)
+                                                          : feature.isForm(widget.type)
+                                                              ? FormBody(
+                                                                  tableId: tableId,
+                                                                  itemId: widget.id,
+                                                                  userId: userId,
+                                                                  userName: userName,
+                                                                  data: data)
                                                               : SharedItemInfo(),
                                             ),
                                             //

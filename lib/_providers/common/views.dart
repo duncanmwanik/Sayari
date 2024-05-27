@@ -13,10 +13,10 @@ class ViewsProvider with ChangeNotifier {
   bool isSessions() => view == feature.sessions.t;
   bool isNotes() => view == feature.notes.t;
   bool isLists() => view == feature.lists.t;
-  bool isFinance() => view == feature.finance.t;
+  bool isFinance() => view == feature.finances.t;
   bool isChat() => view == feature.chat.t;
   bool isExplore() => view == feature.explore.t;
-  bool isItemView() => [feature.notes.t, feature.lists.t, feature.finance.t].contains(view);
+  bool isItemView() => [feature.notes.t, feature.lists.t, feature.finances.t].contains(view);
   String defaultLayout() => isLists() ? 'column' : 'grid';
 
   String layout = globalBox.get(
@@ -39,6 +39,16 @@ class ViewsProvider with ChangeNotifier {
   void setSessionsView(int index) {
     sessionsView = index;
     globalBox.put('sessionView', index);
+    notifyListeners();
+  }
+
+  //
+
+  String noteView = globalBox.get('noteView', defaultValue: feature.notes.t);
+
+  void setNotesView(String type) {
+    noteView = type;
+    globalBox.put('noteView', type);
     notifyListeners();
   }
 
@@ -75,11 +85,5 @@ class ViewsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  //
-  int habitView = 1;
-  void updateHabitView(int view) {
-    habitView = view;
-    notifyListeners();
-  }
   //
 }

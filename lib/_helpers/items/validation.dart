@@ -38,7 +38,7 @@ bool validateInput({required String type, bool validate = true}) {
       }
     }
 
-    if (type == feature.finance.t) {
+    if (type == feature.finances.t) {
       if (state.input.data.isEmpty) {
         return false;
       }

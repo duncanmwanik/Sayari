@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/variables.dart';
 import '../../_helpers/items/chosen.dart';
 import '../../_providers/common/views.dart';
 import '../../_providers/providers.dart';
@@ -27,7 +26,7 @@ class ListOfItems extends StatelessWidget {
             state.data.setAll(getChosenItems(type, currentLabel));
 
             return (state.data.isEmpty())
-                ? EmptyBox(label: 'No $type here...', icon: notesUnselectedIcon)
+                ? EmptyBox()
                 : views.isColumn()
                     ? ColumnLayout(type: type)
                     : views.isList()

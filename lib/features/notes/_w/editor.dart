@@ -23,7 +23,7 @@ class _SuperEditorState extends State<SuperEditor> {
       configurations: QuillEditorConfigurations(
         editorKey: editorKey,
         controller: state.quill.quillcontroller,
-        autoFocus: state.input.itemId.isEmpty,
+        // autoFocus: state.input.itemId.isEmpty,
         scrollable: false,
         placeholder: newNoteHintText,
         customStyles: getQuillEditorStyle(),

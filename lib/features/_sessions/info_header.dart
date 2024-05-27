@@ -21,15 +21,9 @@ class InfoHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<DateTimeProvider, ViewsProvider>(
-        builder: (context, dates, views, child) {
+    return Consumer2<DateTimeProvider, ViewsProvider>(builder: (context, dates, views, child) {
       DateInfo date = DateInfo(dates.selectedDate);
-      bool isToday = [
-        date.isToday(),
-        false,
-        date.isCurrentMonth(),
-        date.isCurrentYear()
-      ][views.sessionsView];
+      bool isToday = [date.isToday(), false, date.isCurrentMonth(), date.isCurrentYear()][views.sessionsView];
       List infoList = [
         getDayInfo(dates.selectedDate),
         getWeekInfo(dates.currentWeekDates[0], dates.currentWeekDates[6]),
@@ -60,8 +54,7 @@ class InfoHeader extends StatelessWidget {
                           noStyling: true,
                           tooltip: 'Previous',
                           isSquare: true,
-                          child: AppIcon(Icons.keyboard_arrow_left,
-                              size: 18, faded: true),
+                          child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
                           onPressed: () => swipeToNew(direction: 'left'),
                         ),
                       //
@@ -71,7 +64,7 @@ class InfoHeader extends StatelessWidget {
                           onPressed: () => jumpToDateDialog(),
                           noStyling: true,
                           smallVerticalPadding: true,
-                          borderRadius: borderRadiusSmall,
+                          borderRadius: borderRadiusCrazy,
                           tooltip: 'Go to date',
                           child: FittedBox(
                               child: AppText(
@@ -88,8 +81,7 @@ class InfoHeader extends StatelessWidget {
                           noStyling: true,
                           tooltip: 'Next',
                           isSquare: true,
-                          child: AppIcon(Icons.keyboard_arrow_right,
-                              size: 18, faded: true),
+                          child: AppIcon(Icons.keyboard_arrow_right, size: 18, faded: true),
                           onPressed: () => swipeToNew(direction: 'right'),
                         ),
                       //
@@ -107,8 +99,7 @@ class InfoHeader extends StatelessWidget {
                     children: [
                       //
                       AppButton(
-                        onPressed: () async =>
-                            goToToday(views.sessionsView, isToday),
+                        onPressed: () async => goToToday(views.sessionsView, isToday),
                         tooltip: getDateInfo(getDatePart(date.now)),
                         borderRadius: borderRadiusSmall,
                         child: AppText(text: 'Today'),

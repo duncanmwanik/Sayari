@@ -42,7 +42,7 @@ class MiniBar extends StatelessWidget {
               //
               Expanded(
                 child: AppButton(
-                  onPressed: () => goToView(feature.finance.t),
+                  onPressed: () => goToView(feature.finances.t),
                   height: 20,
                   color: state.views.isFinance() ? null : transparent,
                   padding: EdgeInsets.symmetric(horizontal: 10),

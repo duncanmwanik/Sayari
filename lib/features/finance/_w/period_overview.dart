@@ -5,9 +5,8 @@ import '../../../_models/item.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/helpers.dart';
 
-class PeriodOverview extends StatelessWidget {
-  const PeriodOverview({super.key, required this.item});
-
+class FinanceOverview extends StatelessWidget {
+  const FinanceOverview({super.key, required this.item});
   final Item item;
 
   @override

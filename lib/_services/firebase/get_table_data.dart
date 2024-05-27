@@ -104,9 +104,9 @@ Future<void> getTableAllLists(String tableId) async {
 
 Future<void> getTableAllPeriods(String tableId) async {
   try {
-    await cloudService.getData(db: 'tables', '$tableId/${feature.finance.t}').then((snapshot) async {
+    await cloudService.getData(db: 'tables', '$tableId/${feature.finances.t}').then((snapshot) async {
       Map periodsMap = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${tableId}_${feature.finance.t}').then((box) {
+      await Hive.openBox('${tableId}_${feature.finances.t}').then((box) {
         box.putAll(periodsMap);
       });
     });

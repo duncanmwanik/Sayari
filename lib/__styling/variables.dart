@@ -60,9 +60,14 @@ const double imageSizeLarge = 200.0;
 // global colors
 const Color transparent = Colors.transparent;
 const Color black = Colors.black;
-const Color white = Color.fromARGB(255, 212, 186, 186);
+const Color white = Colors.white;
 
-const List<IconData> toastIcons = [Icons.info_rounded, Icons.check_circle_rounded, Icons.info_rounded, Icons.info_rounded];
+const List<IconData> toastIcons = [
+  Icons.info_rounded,
+  Icons.check_circle_rounded,
+  Icons.info_rounded,
+  Icons.info_rounded
+];
 const List<Color> toastColors = [Colors.red, Colors.green, Colors.blue, Colors.pink];
 
 // icons

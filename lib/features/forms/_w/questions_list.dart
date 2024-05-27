@@ -34,6 +34,7 @@ class _HabitWeekState extends State<QuestionsList> {
           //
           ReorderableListView.builder(
             shrinkWrap: true,
+            buildDefaultDragHandles: false,
             padding: EdgeInsets.zero,
             physics: NeverScrollableScrollPhysics(),
             proxyDecorator: (child, index, animation) => proxyDecorator(child, index, animation),

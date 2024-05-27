@@ -125,7 +125,7 @@ class AppStyles {
     if (hasBgColor(bgColor)) {
       return Colors.white.withOpacity(0.9);
     } else {
-      return isDark ? Colors.white10 : white;
+      return transparent;
     }
   }
 

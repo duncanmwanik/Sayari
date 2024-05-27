@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -7,10 +6,8 @@ import '../../_helpers/_common/navigation.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/abcs/dialogs_sheets/dialog_buttons.dart';
-import '../_tables/_helpers/checks_table.dart';
 import '../_tables/_helpers/common.dart';
 import 'label.dart';
-import 'new_label.dart';
 
 class LabelManager extends StatefulWidget {
   const LabelManager({
@@ -94,7 +91,7 @@ class _LabelManagerState extends State<LabelManager> {
                           isPopup: widget.isPopup,
                           isDefault: true,
                         ),
-                       if (!widget.isSelection)
+                      if (!widget.isSelection)
                         LabelItem(
                           label: 'Archive',
                           iconData: Icons.archive_rounded,
@@ -102,7 +99,7 @@ class _LabelManagerState extends State<LabelManager> {
                           isPopup: widget.isPopup,
                           isDefault: true,
                         ),
-                       if (!widget.isSelection)
+                      if (!widget.isSelection)
                         LabelItem(
                           label: 'Trash',
                           iconData: Icons.delete_rounded,
@@ -116,7 +113,9 @@ class _LabelManagerState extends State<LabelManager> {
                           label: label,
                           isSelection: widget.isSelection,
                           isSelected: selectedLabels.contains(label),
-                          onSelect: () => setState(() => selectedLabels.contains(label) ? selectedLabels.remove(label) : selectedLabels.add(label)),
+                          onSelect: () => setState(() => selectedLabels.contains(label)
+                              ? selectedLabels.remove(label)
+                              : selectedLabels.add(label)),
                           isPopup: widget.isPopup,
                         ),
                       //

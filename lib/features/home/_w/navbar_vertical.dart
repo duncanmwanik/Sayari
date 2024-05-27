@@ -30,31 +30,16 @@ class VeticalNavigationBox extends StatelessWidget {
           children: [
             //
             sph(),
-            //
             navItem(sessionsUnselectedIcon, feature.sessions.t, views.view == feature.sessions.t),
-            //
             mph(),
-            //
             navItem(notesUnselectedIcon, feature.notes.t, views.view == feature.notes.t),
-            //
             mph(),
-            //
             navItem(listsUnselectedIcon, feature.lists.t, views.view == feature.lists.t),
-            //
             mph(),
-            //
-            navItem(financeUnselectedIcon, feature.finance.t, views.view == feature.finance.t),
-            //
-            mph(),
-            //
             navItem(chatUnselectedIcon, feature.chat.t, views.view == feature.chat.t),
-            //
             mph(),
-            //
             navItem(exploreUnSelectedIcon, feature.explore.t, views.view == feature.explore.t),
-            //
             mph(),
-            //
             navItem(codeUnSelectedIcon, feature.code.t, views.view == feature.code.t),
             //
             AppDivider(height: largeHeight()),
