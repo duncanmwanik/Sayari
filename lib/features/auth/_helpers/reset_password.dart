@@ -6,17 +6,22 @@ import '../../../_widgets/others/toast.dart';
 import '../_vars/variables.dart';
 import 'auth_error_handler.dart';
 
-Future<void> resetPassword({required String email, bool validate = true}) async {
+Future<void> resetPassword(
+    {required String email, bool validate = true}) async {
   try {
     if (!validate || signInFormKey.currentState!.validate()) {
-      showToast(2, 'Resetting password...');
+      showToast(2, 'Resetting password...', smallTopMargin: true);
       hasAccessToInternet().then((hasIntenet) async {
         if (hasIntenet) {
-          await FirebaseAuth.instance.sendPasswordResetEmail(email: email).then((_) {
-            showToast(1, 'Check your email for reset link.');
+          await FirebaseAuth.instance
+              .sendPasswordResetEmail(email: email)
+              .then((_) {
+            showToast(1, 'Check your email for reset link.',
+                smallTopMargin: true);
           }).catchError((e) {
             errorPrint('reset_password', e);
-            showToast(0, handleFirebaseAuthError(e, process: 'reset password'));
+            showToast(0, handleFirebaseAuthError(e, process: 'reset password'),
+                smallTopMargin: true);
           });
         }
       });

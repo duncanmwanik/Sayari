@@ -1,6 +1,6 @@
 # Sayari
 
-. Plan . Note . Manage . Code . Play . Share .
+Plan . Note . Manage . Code . Play . Share .
 
 ## Welcome to Sayari !
 

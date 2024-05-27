@@ -25,11 +25,12 @@ Future<void> signUpUsingEmailPassword({
     if (signInFormKey.currentState!.validate()) {
       // Check for password equality
       if (password == confirmPassword) {
-        showToast(2, 'Signing you up...');
+        showToast(2, 'Signing you up...', smallTopMargin: true);
 
         FirebaseAuth auth = FirebaseAuth.instance;
         User? user;
-        UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
+        UserCredential userCredential = await auth
+            .createUserWithEmailAndPassword(email: email, password: password);
         user = userCredential.user;
         await user!.updateDisplayName(name);
         await user.reload();
@@ -38,9 +39,15 @@ Future<void> signUpUsingEmailPassword({
         //
         if (user != null) {
           // save user data to cloud
-          await syncToCloud(db: 'users', parentId: user.uid, type: 'info', action: 'c', data: {'n': name, 'e': email});
-          await cloudService.writeData(db: 'default', 'users/${emailAsKey(email)}', user.uid);
-          showToast(1, 'Sign up successful...');
+          await syncToCloud(
+              db: 'users',
+              parentId: user.uid,
+              type: 'info',
+              action: 'c',
+              data: {'n': name, 'e': email});
+          await cloudService.writeData(
+              db: 'default', 'users/${emailAsKey(email)}', user.uid);
+          showToast(1, 'Sign up successful...', smallTopMargin: true);
 
           // we save user data in the local
           await setUserData(user.uid, name, email);
@@ -52,14 +59,16 @@ Future<void> signUpUsingEmailPassword({
 
         printThis('.......................... SIGN UP COMPLETE!');
       } else {
-        showToast(0, 'Passwords should match');
+        showToast(0, 'Passwords should match', smallTopMargin: true);
       }
     }
   } on FirebaseAuthException catch (error) {
     //
-    showToast(0, handleFirebaseAuthError(error, process: 'sign up'));
+    showToast(0, handleFirebaseAuthError(error, process: 'sign up'),
+        smallTopMargin: true);
   } catch (error) {
     //
-    showToast(0, handleOtherErrors(error, process: 'sign up'));
+    showToast(0, handleOtherErrors(error, process: 'sign up'),
+        smallTopMargin: true);
   }
 }

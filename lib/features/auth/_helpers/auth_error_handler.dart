@@ -39,7 +39,7 @@ String handleFirebaseAuthError(FirebaseAuthException e, {String process = 'proce
   }
   //
   else if (e.code == 'invalid-credential') {
-    return 'Please create an account.';
+    return 'Please ensure your email or password is correct.';
   }
   //
   else if (message.contains('user-not-found')) {

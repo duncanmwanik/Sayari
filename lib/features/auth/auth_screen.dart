@@ -81,7 +81,7 @@ class _SignInScreenState extends State<AuthScreen> {
                           children: [
                             //
                             SignInButton(
-                              onPressed: () => showToast(2, 'Service unavailable. Please sign in with email.'),
+                              onPressed: () => showToast(2, 'Service unavailable. Please sign in with email.',smallTopMargin: true),
                               imagePath: 'assets/images/google.png',
                               label: 'Continue with Google',
                             ),
@@ -89,7 +89,7 @@ class _SignInScreenState extends State<AuthScreen> {
                             ph(6),
                             //
                             SignInButton(
-                              onPressed: () => showToast(2, 'Service unavailable. Please sign in with email.'),
+                              onPressed: () => showToast(2, 'Service unavailable. Please sign in with email.',smallTopMargin: true),
                               imagePath: 'assets/images/apple.png',
                               label: 'Continue with Apple',
                             ),

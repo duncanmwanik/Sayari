@@ -26,6 +26,8 @@ class AList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(item.data);
+    
     return Consumer<SelectionProvider>(builder: (context, selection, child) {
       bool isSelection = selection.isSelection;
       bool isSelected = selection.isSelected(item.id);

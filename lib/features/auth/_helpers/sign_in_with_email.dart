@@ -9,18 +9,20 @@ import '../../../_widgets/others/toast.dart';
 import '../_vars/variables.dart';
 import 'auth_error_handler.dart';
 
-Future<void> signInUsingEmailPassword({required String email, required String password}) async {
+Future<void> signInUsingEmailPassword(
+    {required String email, required String password}) async {
   try {
     hideKeyboard();
 
     // Validate the Sign In Form Input
     if (signInFormKey.currentState!.validate()) {
-      showToast(2, 'Signing you in...');
+      showToast(2, 'Signing you in...', smallTopMargin: true);
 
       FirebaseAuth auth = FirebaseAuth.instance;
       User? user;
 
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(email: email, password: password);
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: email, password: password);
       user = userCredential.user;
       //
       // if user is not null, sign in was successful
@@ -36,9 +38,11 @@ Future<void> signInUsingEmailPassword({required String email, required String pa
     }
   } on FirebaseAuthException catch (error) {
     //
-    showToast(0, handleFirebaseAuthError(error, process: 'sign in'));
+    showToast(0, handleFirebaseAuthError(error, process: 'sign in'),
+        smallTopMargin: true);
   } catch (error) {
     //
-    showToast(0, handleOtherErrors(error, process: 'sign in'));
+    showToast(0, handleOtherErrors(error, process: 'sign in'),
+        smallTopMargin: true);
   }
 }

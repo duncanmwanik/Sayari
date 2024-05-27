@@ -13,7 +13,8 @@ class CloudSyncIndicator extends StatefulWidget {
   State<CloudSyncIndicator> createState() => _CloudSyncIndicatorState();
 }
 
-class _CloudSyncIndicatorState extends State<CloudSyncIndicator> with TickerProviderStateMixin {
+class _CloudSyncIndicatorState extends State<CloudSyncIndicator>
+    with TickerProviderStateMixin {
   late final AnimationController controller = AnimationController(
     duration: const Duration(seconds: 2),
     vsync: this,
@@ -43,14 +44,14 @@ class _CloudSyncIndicatorState extends State<CloudSyncIndicator> with TickerProv
             controller.stop();
           }
 
-          // return showLoader
-          //     ? RotationTransition(
-          //         turns: animation,
-          //         child: AppIcon(Icons.refresh, color: styler.accentColor(), size: 18),
-          //       )
-          //     : NoWidget();
+          return showLoader
+              ? RotationTransition(
+                  turns: animation,
+                  child: AppIcon(Icons.sync, color: styler.accentColor()),
+                )
+              : NoWidget();
 
-          return showLoader ? AppIcon(Icons.cloud_done_rounded, color: styler.accentColor(), size: 16) : NoWidget();
+          // return showLoader ? AppIcon(Icons.cloud_done_rounded, color: styler.accentColor(), size: 16) : NoWidget();
         });
   }
 }
