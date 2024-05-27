@@ -1,0 +1,26 @@
+import '../../_providers/providers.dart';
+import '../../_widgets/abcs/dialogs_sheets/dialog_select_date.dart';
+import 'misc.dart';
+
+Future<void> jumpToDate(DateTime? date) async {
+  if (date != null) {
+    switch (state.views.sessionsView) {
+      case 0:
+        state.dateTime.updateSelectedDate(getDatePart(date));
+        break;
+      case 1:
+        state.dateTime.updateCurrentWeekDates(date);
+        break;
+      case 2:
+        state.dateTime.updateSelectedYear(date.year);
+        state.dateTime.changeSelectedMonth(date.month);
+        await state.dateTime.updateMonthDatesMap();
+        break;
+      default:
+    }
+  }
+}
+
+Future<void> jumpToDateDialog() async {
+  await showSelectDateDialog(actionLabel: 'Jump').then((date) => jumpToDate(date.first));
+}
