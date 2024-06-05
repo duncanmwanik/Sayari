@@ -44,7 +44,15 @@ class ItemSelector extends StatelessWidget {
                 width: 22,
                 height: 22,
                 decoration: BoxDecoration(
-                  color: isChecked ? styler.accentColor() : (isImageTheme() ? Colors.white70 : styler.primaryColor()),
+                  color: isChecked
+                      ? styler.accentColor()
+                      : (isImageTheme()
+                          ? Colors.white70
+                          : isBlackTheme()
+                              ? black
+                              : styler.isDark
+                                  ? styler.tertiaryColor()
+                                  : styler.primaryColor()),
                   shape: BoxShape.circle,
                   border: Border.all(
                     color: isChecked ? transparent : Colors.grey.withOpacity(0.4),
@@ -57,7 +65,7 @@ class ItemSelector extends StatelessWidget {
                           Icons.done_rounded,
                           size: 14,
                           faded: true,
-                          bgColor: item.bgColor(),
+                          bgColor: item.color(),
                           color: isChecked ? white : (isImageTheme() ? black : Colors.grey.withOpacity(0.7)),
                         )
                       : NoWidget(),

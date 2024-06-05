@@ -11,7 +11,7 @@ void showAppMenu(Offset offset, List<Widget> items, {double? width}) async {
   await showCustomMenu(
     context: navigatorState.currentState!.context,
     position: RelativeRect.fromLTRB(left, top + 25, 100.w - offset.dx - 30, 100.h - offset.dy),
-    constraints: BoxConstraints(minWidth: width ?? 150, maxWidth: 300, maxHeight: 400),
+    constraints: BoxConstraints(minWidth: width ?? 200, maxWidth: 300, maxHeight: 400),
     items: [
       for (Widget item in items) CustomPopupMenuItem(child: item),
     ],

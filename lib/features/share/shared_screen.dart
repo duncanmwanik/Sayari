@@ -9,9 +9,9 @@ import '../../_providers/common/theme.dart';
 import '../../_services/firebase/firebase_database.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/others/others/divider.dart';
-import '../bookings/_w_shared/booking_body.dart';
-import '../forms/_w_shared/quest_body.dart';
-import '../links/_w_shared/links_body.dart';
+import '../notes/feat/bookings/_w_shared/booking_body.dart';
+import '../notes/feat/forms/_w_shared/quest_body.dart';
+import '../notes/feat/links/_w_shared/links_body.dart';
 import '_w/body.dart';
 import '_w/header.dart';
 import '_w/shared_info.dart';
@@ -81,6 +81,8 @@ class _ShareScreenState extends State<ShareScreen> {
                               return SharedItemInfo();
                             } else if (snapshot.hasData) {
                               Map data = snapshot.data!.value != null ? snapshot.data!.value as Map : {};
+
+                              print(data);
 
                               return data.isNotEmpty
                                   ? Align(

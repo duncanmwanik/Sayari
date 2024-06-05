@@ -21,6 +21,7 @@ class ListLayout extends StatelessWidget {
       padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: largeHeightPlaceHolder()),
       child: ReorderableListView.builder(
         shrinkWrap: true,
+        buildDefaultDragHandles: false,
         padding: EdgeInsets.zero,
         physics: NeverScrollableScrollPhysics(),
         onReorder: (oldIndex, newIndex) => doNothing(),

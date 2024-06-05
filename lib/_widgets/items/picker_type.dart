@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../__styling/spacing.dart';
 import '../../_variables/features.dart';
 import '../../features/_tables/_helpers/common.dart';
-import '../../features/finance/_w/new_type.dart';
+import '../../features/notes/feat/finance/_w/new_type.dart';
 import '../abcs/buttons/buttons.dart';
 import '../abcs/menu/menu_item.dart';
 import '../others/svg.dart';
@@ -59,7 +59,8 @@ class AppTypePicker extends StatelessWidget {
                       //
                       for (var type in typeKeys) MenuItem(label: type, onTap: () => onSelect(type, typeEntries[type])),
                       //
-                      for (var type in userTypes.keys.toList()) MenuItem(label: type, onTap: () => onSelect(type, typeEntries[type])),
+                      for (var type in userTypes.keys.toList())
+                        MenuItem(label: type, onTap: () => onSelect(type, typeEntries[type])),
                       //
                     ],
                   ),

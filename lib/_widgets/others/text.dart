@@ -15,6 +15,7 @@ class AppText extends StatelessWidget {
     this.textDecoration,
     this.maxlines,
     this.faded = false,
+    this.bold = false,
     this.extraFaded = false,
     this.bgColor,
     this.isCrossed = false,
@@ -28,6 +29,7 @@ class AppText extends StatelessWidget {
   final Color? color;
   final TextDecoration? textDecoration;
   final int? maxlines;
+  final bool bold;
   final bool faded;
   final bool extraFaded;
   final String? bgColor;
@@ -42,7 +44,7 @@ class AppText extends StatelessWidget {
       maxLines: maxlines,
       style: TextStyle(
         fontSize: size ?? medium,
-        fontWeight: fontWeight ?? FontWeight.w600,
+        fontWeight: fontWeight ?? (bold ? FontWeight.bold : FontWeight.w600),
         color: color ?? styler.textColor(faded: faded, extraFaded: extraFaded, bgColor: bgColor),
         decoration: textDecoration ?? (isCrossed ? TextDecoration.lineThrough : null),
         decorationColor: styler.textColor(faded: faded, extraFaded: extraFaded, bgColor: bgColor),
@@ -68,7 +70,8 @@ class HtmlText extends StatelessWidget {
       textAlign: textAlign,
       style: TextStyle(fontSize: size, fontWeight: FontWeight.w600, color: color ?? styler.textColor()),
       tags: {
-        'b': StyledTextTag(style: TextStyle(fontWeight: FontWeight.w700, color: color ?? styler.textColor(), fontSize: size)),
+        'b': StyledTextTag(
+            style: TextStyle(fontWeight: FontWeight.w700, color: color ?? styler.textColor(), fontSize: size)),
       },
     );
   }

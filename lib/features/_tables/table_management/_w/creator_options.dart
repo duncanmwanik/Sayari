@@ -15,7 +15,8 @@ class CreateOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.end,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         AppButton(
           tooltip: 'Create a Table or Group',
@@ -40,15 +41,33 @@ class CreateOptions extends StatelessWidget {
             ),
             //
           ],
-          color: styler.appColor(styler.isDark ? 0.5 : 1),
-          borderRadius: borderRadiusSmall,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AppIcon(Icons.add_rounded, faded: true, size: 18),
-              spw(),
-              AppText(text: 'Create'),
-            ],
+          borderRadius: borderRadiusLarge,
+          padding: EdgeInsets.zero,
+          noStyling: true,
+          child: Container(
+            height: 30,
+            padding: EdgeInsets.only(left: 10, right: 15),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(borderRadiusLarge),
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                transform: GradientRotation(1.5),
+                colors: [
+                  styler.accentColor().withOpacity(0.3),
+                  styler.accentColor().withOpacity(0.15),
+                  styler.accentColor().withOpacity(0.05),
+                ],
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AppIcon(Icons.add_rounded, faded: true, size: 18),
+                spw(),
+                AppText(text: 'Create'),
+              ],
+            ),
           ),
         ),
       ],

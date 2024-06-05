@@ -50,12 +50,14 @@ class LabelList extends StatelessWidget {
                       alreadySelected: labelList,
                       onDone: (newLabels) async {
                         labels != null
-                            ? await editItemExtras(type: type_, itemId: itemId!, key: 'l', value: getJoinedList(newLabels))
+                            ? await editItemExtras(
+                                type: type_, itemId: itemId!, key: 'l', value: getJoinedList(newLabels))
                             : state.input.update(action: 'add', key: 'l', value: getJoinedList(newLabels));
                       },
                     ),
                     borderRadius: borderRadiusSmall,
                     color: hasBgColor(bgColor) ? Colors.white24 : null,
+                    smallVerticalPadding: true,
                     child: AppText(size: 13, text: label, bgColor: bgColor, fontWeight: FontWeight.bold),
                   );
                 }

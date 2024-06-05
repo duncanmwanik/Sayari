@@ -24,7 +24,8 @@ Future<void> addTableToGroup(String tableId) async {
         groupTables[tableId] = 0;
         Hive.box('${liveUser()}_data').put(groupName, groupTables);
 
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'data', action: 'c', itemId: groupName, subId: tableId, data: 0);
+        syncToCloud(
+            db: 'users', parentId: liveUser(), type: 'data', action: 'c', itemId: groupName, subId: tableId, data: 0);
       }
     }
   } catch (e) {
@@ -49,10 +50,17 @@ Future<void> removeTableFromGroup(String tableId, String groupName) async {
   }
 }
 
-Future<void> addTableToUserData(String userId, String tableId, List groupList, {bool isDefault = false}) async {
+Future<void> addTableToUserData(
+  String userId,
+  String tableId,
+  List groupList, {
+  bool isDefault = false,
+}) async {
   try {
+    // add table to user tables data
     syncToCloud(db: 'users', parentId: userId, type: 'data', action: 'c', itemId: tableId, data: isDefault ? 1 : 0);
-    //
+    // save default table id to user info
+    syncToCloud(db: 'users', parentId: userId, type: 'info', action: 'c', itemId: 'd', data: tableId);
     // add table to the selected groups
     if (groupList.isNotEmpty) {
       for (String groupName in groupList) {
@@ -61,7 +69,8 @@ Future<void> addTableToUserData(String userId, String tableId, List groupList, {
         groupTables[tableId] = 0;
         Hive.box('${userId}_data').put(groupName, groupTables);
 
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'data', action: 'c', itemId: groupName, subId: tableId, data: 0);
+        syncToCloud(
+            db: 'users', parentId: liveUser(), type: 'data', action: 'c', itemId: groupName, subId: tableId, data: 0);
       }
     }
 
@@ -113,12 +122,12 @@ Future<void> createGroup(String groupName) async {
       if (isValidGroupName(groupName)) {
         hideKeyboard();
         popWhatsOnTop();
-        showSnackBar('Creating <b>$groupName</b>...');
 
         // {k:0} allows us to keep the group even if it has no table
         Hive.box('${liveUser()}_data').put(groupName, {'k': 0});
 
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'data', action: 'c', itemId: groupName, subId: 'k', data: 0);
+        syncToCloud(
+            db: 'users', parentId: liveUser(), type: 'data', action: 'c', itemId: groupName, subId: 'k', data: 0);
         //
       } else {
         showToast(0, 'Enter a valid name');

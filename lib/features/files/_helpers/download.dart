@@ -1,7 +1,4 @@
-// ignore: avoid_web_libraries_in_flutter
 // ignore_for_file: depend_on_referenced_packages, implementation_imports, avoid_web_libraries_in_flutter, duplicate_ignore
-
-// import 'dart:html';
 
 import 'dart:io' as io;
 
@@ -17,12 +14,14 @@ import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../_tables/_helpers/common.dart';
 
-Future<cfile.File?> getCachedFile({required String fileId, String fileName = '', String? db, String? cloudFilePath}) async {
+Future<cfile.File?> getCachedFile(
+    {required String fileId, String fileName = '', String? db, String? cloudFilePath}) async {
   if (fileId.isNotEmpty) {
     try {
       String fileUrl = cachedFileBox.get(fileId, defaultValue: '');
       if (fileUrl.isEmpty) {
-        fileUrl = await cloudStorage.getFileUrl(db: db ?? 'tables', cloudFilePath: cloudFilePath ?? '${liveTable()}/$fileName');
+        fileUrl = await cloudStorage.getFileUrl(
+            db: db ?? 'tables', cloudFilePath: cloudFilePath ?? '${liveTable()}/$fileName');
         if (fileUrl.isNotEmpty) cachedFileBox.put(fileId, fileUrl);
         print(':: Gotten file url: $fileUrl');
       }
@@ -36,7 +35,13 @@ Future<cfile.File?> getCachedFile({required String fileId, String fileName = '',
   return null;
 }
 
-Future<void> downloadFile({String fileId = '', String fileName = '', String? db, String? cloudFilePath, String? downloadPath, bool fromCloud = false}) async {
+Future<void> downloadFile(
+    {String fileId = '',
+    String fileName = '',
+    String? db,
+    String? cloudFilePath,
+    String? downloadPath,
+    bool fromCloud = false}) async {
   try {
     showToast(2, 'Downloading $fileName...');
     //
@@ -50,7 +55,9 @@ Future<void> downloadFile({String fileId = '', String fileName = '', String? db,
       } else {
         await checkForStoragePermissions();
         io.File file = io.File(
-          downloadPath != null ? '/storage/emulated/0/Sayari/$fileName' : '/storage/emulated/0/Sayari/${getCurrentTableName() ?? 'Others'}/$fileName',
+          downloadPath != null
+              ? '/storage/emulated/0/Sayari/$fileName'
+              : '/storage/emulated/0/Sayari/${getCurrentTableName() ?? 'Others'}/$fileName',
         );
         await file.create(recursive: true);
         var bytes = await io.File(fileBox.get(fileId)).readAsBytes();
@@ -72,7 +79,9 @@ Future<void> downloadFile({String fileId = '', String fileName = '', String? db,
         } else {
           await checkForStoragePermissions();
           io.File file = io.File(
-            downloadPath != null ? '/storage/emulated/0/Sayari/$fileName' : '/storage/emulated/0/Sayari/${getCurrentTableName() ?? 'Others'}/$fileName',
+            downloadPath != null
+                ? '/storage/emulated/0/Sayari/$fileName'
+                : '/storage/emulated/0/Sayari/${getCurrentTableName() ?? 'Others'}/$fileName',
           );
           await file.create(recursive: true);
           await file.writeAsBytes(bytes);
@@ -81,7 +90,13 @@ Future<void> downloadFile({String fileId = '', String fileName = '', String? db,
         showToast(1, 'Downloaded $fileName.');
       } else {
         print('Redownloading from cloud...');
-        downloadFile(fileId: fileId, fileName: fileName, db: db, cloudFilePath: cloudFilePath, downloadPath: downloadPath, fromCloud: true);
+        downloadFile(
+            fileId: fileId,
+            fileName: fileName,
+            db: db,
+            cloudFilePath: cloudFilePath,
+            downloadPath: downloadPath,
+            fromCloud: true);
       }
     }
     //
@@ -101,7 +116,9 @@ Future<void> downloadFile({String fileId = '', String fileName = '', String? db,
           } else {
             await checkForStoragePermissions();
             io.File file = io.File(
-              downloadPath != null ? '/storage/emulated/0/Sayari/$fileName' : '/storage/emulated/0/Sayari/${getCurrentTableName() ?? 'Others'}/$fileName',
+              downloadPath != null
+                  ? '/storage/emulated/0/Sayari/$fileName'
+                  : '/storage/emulated/0/Sayari/${getCurrentTableName() ?? 'Others'}/$fileName',
             );
             await file.create(recursive: true);
             await file.writeAsBytes(bytes);

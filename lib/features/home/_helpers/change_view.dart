@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../../_variables/features.dart';
 import '../../../_providers/providers.dart';
 import '../../../_widgets/layout/list_of_items.dart';
-import '../../_chat/chat_view.dart';
 import '../../_sessions/session_view.dart';
+import '../../chat/chat_view.dart';
 import '../../code/code_view.dart';
 import '../../explore/explore_view.dart';
 import '../../hub/hub_view.dart';
@@ -14,8 +14,8 @@ Widget changeView(String type) {
     return SessionsView();
   } else if (type == feature.notes.t) {
     return ListOfItems(type: feature.notes.t);
-  } else if (type == feature.lists.t) {
-    return ListOfItems(type: feature.lists.t);
+  } else if (type == feature.notes.t) {
+    return ListOfItems(type: feature.notes.t);
   } else if (type == feature.finances.t) {
     return ListOfItems(type: feature.finances.t);
   } else if (type == feature.explore.t) {

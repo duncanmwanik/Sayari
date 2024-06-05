@@ -16,7 +16,6 @@ class TTSButton extends StatelessWidget {
     return Consumer<TTSProvider>(builder: (context, tts, child) {
       return AppButton(
         onPressed: () {
-          print('TTS Text: $text');
           if (text != null) {
             tts.updateTextToSpeak(text ?? '');
           }

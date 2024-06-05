@@ -3,7 +3,7 @@ import 'package:flutter_quill/flutter_quill.dart';
 
 import '../../../_providers/providers.dart';
 import '../../../_variables/strings.dart';
-import '../quill_configs/editor.dart';
+import 'quill_configs/editor.dart';
 
 class SuperEditor extends StatefulWidget {
   const SuperEditor({super.key});

@@ -1,4 +1,5 @@
 import 'package:bot_toast/bot_toast.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -9,7 +10,8 @@ import '../abcs/buttons/buttons.dart';
 import 'icons.dart';
 import 'text.dart';
 
-void showToast(int type, String message, {int duration = 3, bool smallTopMargin = false}) {
+void showToast(int type, String message,
+    {int duration = 3, bool smallTopMargin = false}) {
   late CancelFunc cancel;
 
   void closeToast() => cancel();
@@ -24,7 +26,8 @@ void showToast(int type, String message, {int duration = 3, bool smallTopMargin 
         constraints: BoxConstraints(maxWidth: 380),
         margin: EdgeInsets.symmetric(
           horizontal: isTabAndBelow() ? 5.w : 15,
-          vertical: isTabAndBelow() ? 10 : (smallTopMargin ? 15 : 60),
+          vertical:
+              isTabAndBelow() ? 10 : (smallTopMargin ? 15 : (kIsWeb ? 35 : 60)),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
         decoration: BoxDecoration(

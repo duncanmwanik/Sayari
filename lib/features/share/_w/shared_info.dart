@@ -27,7 +27,7 @@ class SharedItemInfo extends StatelessWidget {
           Flexible(
               child: AppText(
             faded: true,
-            text: "${label ?? 'We cannot find what you are looking for.'}\nBut adventure, awaits...",
+            text: label ?? 'That seems to be missing....',
             textAlign: TextAlign.center,
           )),
           mph(),
@@ -35,6 +35,7 @@ class SharedItemInfo extends StatelessWidget {
             onPressed: () => context.go('/'),
             smallRightPadding: true,
             color: styler.accentColor(),
+            borderRadius: borderRadiusCrazy,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,

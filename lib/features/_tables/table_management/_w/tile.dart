@@ -31,7 +31,7 @@ class Tile extends StatelessWidget {
       elevation: 0,
       color: transparent,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(borderRadiusSmall + 5),
+        borderRadius: BorderRadius.circular(borderRadiusSmall),
         side: styler.lightTableBorder(),
       ),
       clipBehavior: Clip.antiAlias,

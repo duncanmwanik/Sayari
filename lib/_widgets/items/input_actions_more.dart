@@ -8,6 +8,8 @@ import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
 import '../../features/files/_helpers/upload.dart';
+import '../../features/notes/feat/habits/habit_options.dart';
+import '../../features/notes/feat/tasks/task_options.dart';
 import '../../features/tts/_helpers/tts_service.dart';
 import '../../features/tts/_state/tts_provider.dart';
 import '../abcs/buttons/buttons.dart';
@@ -25,6 +27,10 @@ class MoreInputActions extends StatelessWidget {
       return AppButton(
         tooltip: 'More',
         menuItems: [
+          //
+          if (input.isTask()) TaskOptions(),
+          //
+          if (input.isHabit()) HabitOptions(),
           //
           MenuItem(
             label: 'Attach file',

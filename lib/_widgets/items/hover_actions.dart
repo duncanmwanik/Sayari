@@ -43,12 +43,13 @@ class HoverActions extends StatelessWidget {
                   menuItems: labelsMenu(
                     isSelection: true,
                     alreadySelected: getSplitList(item.labels()),
-                    onDone: (newLabels) async => await editItemExtras(type: item.type, itemId: item.id, key: 'l', value: getJoinedList(newLabels)),
+                    onDone: (newLabels) async => await editItemExtras(
+                        type: item.type, itemId: item.id, key: 'l', value: getJoinedList(newLabels)),
                   ),
                   tooltip: 'Label',
                   noStyling: true,
                   isSquare: true,
-                  child: AppIcon(labelIcon, bgColor: item.bgColor(), faded: true, size: 18),
+                  child: AppIcon(labelIcon, bgColor: item.color(), faded: true, size: 18),
                 ),
 
               //
@@ -60,11 +61,12 @@ class HoverActions extends StatelessWidget {
                   menuWidth: 200,
                   menuItems: reminderMenu(
                     reminder: item.reminder(),
-                    onSet: (newReminder) async => await editItemExtras(type: item.type, itemId: item.id, key: 'r', value: newReminder),
+                    onSet: (newReminder) async =>
+                        await editItemExtras(type: item.type, itemId: item.id, key: 'r', value: newReminder),
                   ),
                   noStyling: true,
                   isSquare: true,
-                  child: AppIcon(reminderIcon, bgColor: item.bgColor(), faded: true, size: 18),
+                  child: AppIcon(reminderIcon, bgColor: item.color(), faded: true, size: 18),
                 ),
               //
               tpw(),
@@ -73,13 +75,14 @@ class HoverActions extends StatelessWidget {
                 AppButton(
                   menuWidth: 200,
                   menuItems: colorMenu(
-                    selectedColor: item.bgColor(),
-                    onSelect: (newColor) async => await editItemExtras(type: item.type, itemId: item.id, key: 'c', value: newColor),
+                    selectedColor: item.color(),
+                    onSelect: (newColor) async =>
+                        await editItemExtras(type: item.type, itemId: item.id, key: 'c', value: newColor),
                   ),
                   tooltip: 'Color',
                   noStyling: true,
                   isSquare: true,
-                  child: AppIcon(colorIcon, bgColor: item.bgColor(), faded: true, size: 18),
+                  child: AppIcon(colorIcon, bgColor: item.color(), faded: true, size: 18),
                 ),
               //
               tpw(),
@@ -87,12 +90,14 @@ class HoverActions extends StatelessWidget {
               if (isHovered && isNotSelection && !item.isDeleted())
                 AppButton(
                   onPressed: () async {
-                    await editItemExtras(type: item.type, itemId: item.id, key: 'a', value: item.isArchived() ? '0' : '1');
+                    await editItemExtras(
+                        type: item.type, itemId: item.id, key: 'a', value: item.isArchived() ? '0' : '1');
                   },
                   tooltip: item.isArchived() ? 'Unarchive' : 'Archive',
                   noStyling: true,
                   isSquare: true,
-                  child: AppIcon(item.isArchived() ? unarchiveIcon : archiveIcon, bgColor: item.bgColor(), faded: true, size: 18),
+                  child: AppIcon(item.isArchived() ? unarchiveIcon : archiveIcon,
+                      bgColor: item.color(), faded: true, size: 18),
                 ),
               //
               tpw(),
@@ -105,7 +110,7 @@ class HoverActions extends StatelessWidget {
                   tooltip: 'Restore From Trash',
                   noStyling: true,
                   isSquare: true,
-                  child: AppIcon(restoreIcon, bgColor: item.bgColor(), faded: true, size: 18),
+                  child: AppIcon(restoreIcon, bgColor: item.color(), faded: true, size: 18),
                 ),
               //
               if (item.isDeleted() && isHovered && isNotSelection) tpw(),
@@ -115,23 +120,25 @@ class HoverActions extends StatelessWidget {
                     await showConfirmationDialog(
                       title: 'Delete selected item forever?',
                       yeslabel: 'Delete',
-                      onAccept: () async => await deleteItemForever(type: item.type, itemId: item.id, files: item.files()),
+                      onAccept: () async =>
+                          await deleteItemForever(type: item.type, itemId: item.id, files: item.files()),
                     );
                   },
                   tooltip: 'Delete Forever',
                   noStyling: true,
                   isSquare: true,
-                  child: AppIcon(deleteForeverIcon, bgColor: item.bgColor(), faded: true, size: 18),
+                  child: AppIcon(deleteForeverIcon, bgColor: item.color(), faded: true, size: 18),
                 ),
               //
-              if ((isHovered && isNotSelection && !item.isDeleted())) HoverActionsMore(itemId: item.id, type: item.type, bgColor: item.bgColor()),
+              if ((isHovered && isNotSelection && !item.isDeleted()))
+                HoverActionsMore(itemId: item.id, type: item.type, bgColor: item.color()),
               //
               // shows options are available
               if (showMore && isNotSelection && !isHovered)
                 AppButton(
                   noStyling: true,
                   isSquare: true,
-                  child: AppIcon(moreIcon, bgColor: item.bgColor(), faded: true, size: 18),
+                  child: AppIcon(moreIcon, bgColor: item.color(), faded: true, size: 18),
                 ),
               //
             ],

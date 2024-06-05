@@ -5,7 +5,7 @@ import '../../../_helpers/items/share.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
-import '../../forms/_helpers/helpers.dart';
+import '../feat/forms/_helpers/helpers.dart';
 import '../note_sheet.dart';
 
 Future<void> prepareNoteForEdit(Item item, {bool isFull = false}) async {
@@ -21,6 +21,10 @@ Future<void> prepareNoteForCreation() async {
 
   if (noteView == feature.notes.lt) {
     state.input.setInputData(typ: feature.notes.t, dta: {feature.notes.lt: '1'});
+  }
+  //
+  else if (noteView == feature.tasks.lt) {
+    state.input.setInputData(typ: feature.notes.t, dta: {feature.tasks.lt: '1'});
   }
   //
   else if (noteView == feature.finances.lt) {

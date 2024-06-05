@@ -39,7 +39,7 @@ Future showTableNotificationsDialog() {
               AppDivider(height: 0),
               //
               NotificationItem(
-                  label: feature.lists.t, value: box.get(feature.lists.t, defaultValue: false), type: feature.lists.t),
+                  label: feature.notes.t, value: box.get(feature.notes.t, defaultValue: false), type: feature.notes.t),
               //
               AppDivider(height: 0),
               //

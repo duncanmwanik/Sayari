@@ -81,15 +81,20 @@ class WeeklyView extends StatelessWidget {
                                       bool isToday = dateToday == getDatePart(DateTime.now());
 
                                       return ValueListenableBuilder(
-                                          valueListenable: Hive.box('${liveTable()}_${feature.sessions.t}').listenable(),
+                                          valueListenable:
+                                              Hive.box('${liveTable()}_${feature.sessions.t}').listenable(),
                                           builder: (context, box, widget) {
-                                            Map todaySessionsMap = sortSessionsByTime(box.get(dateToday, defaultValue: {}));
+                                            Map todaySessionsMap =
+                                                sortSessionsByTime(box.get(dateToday, defaultValue: {}));
                                             Map hourMap = getHourMap(getNewMapFrom(todaySessionsMap), indexHour);
 
                                             return Expanded(
                                               child: Material(
                                                 color: transparent,
                                                 child: InkWell(
+                                                  onTap: () {
+                                                    prepareSessionCreation(date: dateToday, hour: indexHour);
+                                                  },
                                                   onDoubleTap: () {
                                                     prepareSessionCreation(date: dateToday, hour: indexHour);
                                                   },
@@ -103,12 +108,15 @@ class WeeklyView extends StatelessWidget {
                                                     constraints: BoxConstraints(minHeight: 36.7),
                                                     decoration: BoxDecoration(
                                                       color: isCurrentHour && isToday ? styler.accentColor(1) : null,
-                                                      border: Border(left: BorderSide(color: styler.borderColor(), width: 0.5)),
+                                                      border: Border(
+                                                          left: BorderSide(color: styler.borderColor(), width: 0.5)),
                                                     ),
                                                     child: Column(
                                                       children: [
                                                         //
-                                                        if (isCurrentHour && isToday) AppDivider(height: 0, thickness: 1, color: styler.accentColor()),
+                                                        if (isCurrentHour && isToday)
+                                                          AppDivider(
+                                                              height: 0, thickness: 1, color: styler.accentColor()),
                                                         // Session List
                                                         Flexible(
                                                           child: Column(

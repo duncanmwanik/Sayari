@@ -8,7 +8,7 @@ import '../../../_helpers/date_time/misc.dart';
 import '../../../_providers/providers.dart';
 import '../../../_widgets/others/text.dart';
 import '../../files/user_dp.dart';
-import '../../notes/quill_configs/editor.dart';
+import '../../notes/_w/quill_configs/editor.dart';
 import 'actions.dart';
 
 class SharedBody extends StatelessWidget {
@@ -44,7 +44,12 @@ class SharedBody extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AppText(text: userName, size: normal, faded: true, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+                      AppText(
+                          text: userName,
+                          size: normal,
+                          faded: true,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis),
                       AppText(text: editTime, faded: true, overflow: TextOverflow.ellipsis),
                     ],
                   )),

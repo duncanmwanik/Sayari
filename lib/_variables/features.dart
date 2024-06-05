@@ -5,7 +5,7 @@ Features feature = Features();
 class Features {
   final Feature table = Feature(t: 'tables', lt: 't');
   final Feature sessions = Feature(t: 'sessions', lt: 's');
-  final Feature lists = Feature(t: 'lists', lt: 'l');
+  final Feature tasks = Feature(t: 'tasks', lt: 'ta');
   final Feature notes = Feature(t: 'notes', lt: 'na');
   final Feature finances = Feature(t: 'finances', lt: 'ca');
   final Feature habits = Feature(t: 'habits', lt: 'ha');
@@ -22,10 +22,11 @@ class Features {
   final Feature explore = Feature(t: 'explore', lt: 'e');
   final Feature hub = Feature(t: 'home', lt: 'h');
 
-  bool isOrderable(String type) => [notes.t, lists.t, finances.t].contains(type);
+  bool isOrderable(String type) => [notes.t].contains(type);
   bool isSession(String type) => sessions.t == type;
-  bool isList(String type) => lists.t == type;
+
   bool isNote(String type) => notes.t == type;
+  bool isTask(String type) => tasks.t == type;
   bool isFinance(String type) => finances.t == type;
   bool isLink(String type) => links.t == type;
   bool isBooking(String type) => bookings.t == type;
@@ -38,7 +39,7 @@ Map<String, FeatureData> featureData = {
   feature.table.t: FeatureData(title: 'Tables', createMessage: 'Create Table'),
   feature.sessions.t: FeatureData(title: 'Sessions', createMessage: 'Create Session'),
   feature.notes.t: FeatureData(title: 'Notes', createMessage: 'Create Note'),
-  feature.lists.t: FeatureData(title: 'Lists', createMessage: 'Create List'),
+  feature.tasks.t: FeatureData(title: 'Tasks', createMessage: 'Create Tasks'),
   feature.finances.t: FeatureData(title: 'Finance', createMessage: 'Create Finance Period'),
   feature.explore.t: FeatureData(title: 'Explore', createMessage: 'Have Some fun'),
   feature.chat.t: FeatureData(title: 'Chat', createMessage: 'Send Message'),

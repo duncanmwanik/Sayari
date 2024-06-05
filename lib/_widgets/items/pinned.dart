@@ -24,10 +24,11 @@ class PinnedIcon extends StatelessWidget {
         },
         tooltip: item.isPinned() ? 'Unpin' : 'Pin',
         noStyling: true,
+        isSquare: true,
         child: AppIcon(
           item.isPinned() ? pinIcon : unpinIcon,
           color: item.isPinned() || isHovered ? null : transparent,
-          bgColor: item.bgColor(),
+          bgColor: item.color(),
           size: 16,
         ),
       );

@@ -47,9 +47,16 @@ class ItemHeader extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Flexible(child: AppText(size: normal, text: item.title(), bgColor: item.bgColor(), maxlines: 2, fontWeight: FontWeight.w700)),
+                Flexible(
+                    child: AppText(
+                        size: normal,
+                        text: item.title(),
+                        bgColor: item.color(),
+                        maxlines: 2,
+                        fontWeight: FontWeight.w700)),
                 if (item.isShared()) spw(),
-                if (item.isShared() && !item.isPublished()) AppIcon(Icons.share, size: 14, faded: true, bgColor: item.bgColor()),
+                if (item.isShared() && !item.isPublished())
+                  AppIcon(Icons.share, size: 14, faded: true, bgColor: item.color()),
                 if (item.isPublished())
                   AppButton(
                     color: Colors.green,
@@ -76,38 +83,35 @@ class ItemDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (item != null) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //
-          if (item!.reminder().isNotEmpty || item!.labels().isNotEmpty || item!.files().isNotEmpty) sph(),
-          //
-          if (item!.reminder().isNotEmpty) Reminder(type: item!.type, itemId: item!.id, reminder: item!.reminder(), bgColor: item!.bgColor()),
-          //
-          if (item!.labels().isNotEmpty) LabelList(type: item!.type, itemId: item!.id, labels: item!.labels(), bgColor: item!.bgColor()),
-          //
-          if (item!.files().isNotEmpty) FileList(fileData: item!.files(), isOverview: true),
-          //
-        ],
-      );
-    } else {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //
-          tph(),
-          //
-          Reminder(),
-          //
-          LabelList(),
-          //
-          FileList(),
-          //
-          tph(),
-          //
-        ],
-      );
-    }
+    return Padding(
+      padding: itemPadding(top: true),
+      child: item != null
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //
+                if (item!.reminder().isNotEmpty)
+                  Reminder(type: item!.type, itemId: item!.id, reminder: item!.reminder(), bgColor: item!.color()),
+                //
+                if (item!.labels().isNotEmpty)
+                  LabelList(type: item!.type, itemId: item!.id, labels: item!.labels(), bgColor: item!.color()),
+                //
+                if (item!.files().isNotEmpty) FileList(fileData: item!.files(), isOverview: true),
+                //
+              ],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //
+                Reminder(),
+                //
+                LabelList(),
+                //
+                FileList(),
+                //
+              ],
+            ),
+    );
   }
 }

@@ -38,7 +38,7 @@ class InfoHeader extends StatelessWidget {
           maxHeight: 40.0,
           child: Container(
             color: styler.navColor(),
-            margin: EdgeInsets.only(left: 5, right: kIsWeb ? 15 : 5),
+            padding: EdgeInsets.only(left: 5, right: kIsWeb ? 15 : 5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -101,7 +101,7 @@ class InfoHeader extends StatelessWidget {
                       AppButton(
                         onPressed: () async => goToToday(views.sessionsView, isToday),
                         tooltip: getDateInfo(getDatePart(date.now)),
-                        borderRadius: borderRadiusSmall,
+                        borderRadius: borderRadiusCrazy,
                         child: AppText(text: 'Today'),
                       ),
                       //

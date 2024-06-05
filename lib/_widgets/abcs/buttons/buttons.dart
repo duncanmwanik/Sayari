@@ -93,6 +93,7 @@ class AppButton extends StatelessWidget {
         onTapDown: isMenu ? (details) => showAppMenu(details.globalPosition, menuItems, width: menuWidth) : null,
         borderRadius: BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusSmall)),
         hoverColor: hoverColor,
+        // hoverColor: hoverColor ?? (styler.isDark ? null : styler.accentColor(0.5)),
         child: Container(
           constraints: BoxConstraints(minHeight: height ?? 0, minWidth: width ?? 0),
           padding: padding ??

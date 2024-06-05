@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -19,9 +18,9 @@ import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/text.dart';
 import '../../_widgets/others/theme.dart';
 import '../../_widgets/others/toast.dart';
+import '_helpers/email_signin.dart';
+import '_helpers/email_signup.dart';
 import '_helpers/reset_password.dart';
-import '_helpers/sign_in_with_email.dart';
-import '_helpers/sign_up_with_email.dart';
 import '_vars/variables.dart';
 import 'button.dart';
 import 'introduction.dart';
@@ -43,6 +42,7 @@ class _SignInScreenState extends State<AuthScreen> {
   bool isSignIn = false;
   bool isResetPassword = false;
   bool isBusy = false;
+  bool isDemo = true;
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,7 @@ class _SignInScreenState extends State<AuthScreen> {
                           children: [
                             //
                             SignInButton(
-                              onPressed: () => showToast(2, 'Service unavailable. Please sign in with email.',smallTopMargin: true),
+                              onPressed: () => showToast(2, 'Oh this is a demo...', smallTopMargin: true),
                               imagePath: 'assets/images/google.png',
                               label: 'Continue with Google',
                             ),
@@ -89,7 +89,7 @@ class _SignInScreenState extends State<AuthScreen> {
                             ph(6),
                             //
                             SignInButton(
-                              onPressed: () => showToast(2, 'Service unavailable. Please sign in with email.',smallTopMargin: true),
+                              onPressed: () => showToast(2, 'Oh this is a demo...', smallTopMargin: true),
                               imagePath: 'assets/images/apple.png',
                               label: 'Continue with Apple',
                             ),
@@ -99,185 +99,199 @@ class _SignInScreenState extends State<AuthScreen> {
                       //
                       ph(6),
                       //
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          //
-                          FormInput(
-                            hintText: 'Email',
-                            controller: emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (value) => Validator.validateEmail(email: value!),
-                          ),
-                          //
-                          ph(6),
-                          //
-                          if (isNewAccount)
-                            FormInput(
-                              hintText: 'Username',
-                              controller: userNameController,
-                              keyboardType: TextInputType.name,
-                              validator: (value) => Validator.validateName(name: value!),
-                            ),
-                          //
-                          if (isNewAccount) ph(6),
-                          //
-                          if (isNewAccount || isSignIn)
-                            FormInput(
-                              hintText: 'Password',
-                              controller: passwordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              textInputAction: isSignIn ? TextInputAction.done : null,
-                              validator: (value) => Validator.validatePassword(password: value!),
-                            ),
-                          //
-                          if (isNewAccount || isSignIn) ph(6),
-                          //
-                          if (isNewAccount)
-                            FormInput(
-                              hintText: 'Confirm Password',
-                              controller: confirmPasswordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              textInputAction: TextInputAction.done,
-                              validator: (value) => Validator.validatePassword(password: value!),
-                            ),
-                          //
-                          if (isNewAccount) ph(6),
-                          //
-                          //
-                          AppButton(
-                            onPressed: () async {
-                              //
-                              hideKeyboard();
+                      if (isDemo)
+                        SignInButton(
+                          onPressed: () async {
+                            setState(() => isBusy = true);
 
-                              if (!isNewAccount && !isSignIn && !isResetPassword && !isBusy) {
-                                if (signInFormKey.currentState!.validate()) {
+                            printThis('Signing in......');
+                            await signInUsingEmailPassword(
+                              email: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                            );
+                            setState(() => isBusy = false);
+                          },
+                          imagePath: 'assets/images/sayari.png',
+                          label: 'Continue to Demo',
+                          isLoading: isBusy,
+                        ),
+                      //
+                      if (!isDemo)
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            //
+                            FormInput(
+                              hintText: 'Email',
+                              controller: emailController,
+                              keyboardType: TextInputType.emailAddress,
+                              validator: (value) => Validator.validateEmail(email: value!),
+                            ),
+                            //
+                            ph(6),
+                            //
+                            if (isNewAccount)
+                              FormInput(
+                                hintText: 'Username',
+                                controller: userNameController,
+                                keyboardType: TextInputType.name,
+                                validator: (value) => Validator.validateName(name: value!),
+                              ),
+                            //
+                            if (isNewAccount) ph(6),
+                            //
+                            if (isNewAccount || isSignIn)
+                              FormInput(
+                                hintText: 'Password',
+                                controller: passwordController,
+                                keyboardType: TextInputType.visiblePassword,
+                                textInputAction: isSignIn ? TextInputAction.done : null,
+                                validator: (value) => Validator.validatePassword(password: value!),
+                              ),
+                            //
+                            if (isNewAccount || isSignIn) ph(6),
+                            //
+                            if (isNewAccount)
+                              FormInput(
+                                hintText: 'Confirm Password',
+                                controller: confirmPasswordController,
+                                keyboardType: TextInputType.visiblePassword,
+                                textInputAction: TextInputAction.done,
+                                validator: (value) => Validator.validatePassword(password: value!),
+                              ),
+                            //
+                            if (isNewAccount) ph(6),
+                            //
+                            AppButton(
+                              onPressed: () async {
+                                //
+                                hideKeyboard();
+                                //
+                                if (!isNewAccount && !isSignIn && !isResetPassword && !isBusy) {
+                                  if (signInFormKey.currentState!.validate()) {
+                                    setState(() => isBusy = true);
+
+                                    String userId = await cloudService.doesUserExist(emailController.text.trim());
+                                    if (userId.isEmpty) {
+                                      printThis('User does not exist......');
+                                      setState(() => isNewAccount = true);
+                                    } else {
+                                      printThis('User exists......');
+                                      setState(() => isSignIn = true);
+                                    }
+                                    setState(() => isBusy = false);
+                                    return;
+                                  }
+                                }
+                                //
+                                //
+                                if (isNewAccount && !isBusy) {
                                   setState(() => isBusy = true);
 
-                                  String userId = await cloudService.doesUserExist(emailController.text.trim());
-                                  if (userId.isEmpty) {
-                                    printThis('User does not exist......');
-                                    setState(() => isNewAccount = true);
-                                  } else {
-                                    printThis('User exists......');
-                                    setState(() => isSignIn = true);
-                                  }
+                                  printThis('Creating new acc......');
+                                  await signUpUsingEmailPassword(
+                                    name: userNameController.text.trim(),
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                    confirmPassword: confirmPasswordController.text.trim(),
+                                  );
                                   setState(() => isBusy = false);
-                                  return;
                                 }
-                              }
-                              //
-                              //
-                              if (isNewAccount && !isBusy) {
-                                setState(() => isBusy = true);
+                                //
+                                //
+                                if (isSignIn && !isBusy) {
+                                  setState(() => isBusy = true);
 
-                                printThis('Creating new acc......');
-                                await signUpUsingEmailPassword(
-                                  name: userNameController.text.trim(),
-                                  email: emailController.text.trim(),
-                                  password: passwordController.text.trim(),
-                                  confirmPassword: confirmPasswordController.text.trim(),
-                                );
-                                setState(() => isBusy = false);
-                              }
-                              //
-                              //
-                              if (isSignIn && !isBusy) {
-                                setState(() => isBusy = true);
-
-                                printThis('Signing in......');
-                                await signInUsingEmailPassword(
-                                  email: emailController.text.trim(),
-                                  password: passwordController.text.trim(),
-                                );
-                                setState(() => isBusy = false);
-                              }
-                              //
-                              //
-                              if (isResetPassword && !isBusy) {
-                                setState(() => isBusy = true);
-                                printThis('Resetting ps......');
-                                await resetPassword(email: emailController.text.trim());
-                                setState(() => isBusy = false);
-                              }
-                              //
-                            },
-                            color: white,
-                            width: 220,
-                            height: kIsWeb ? 30 : 35,
-                            showBorder: !styler.isDark,
-                            dryWidth: true,
-                            child: Center(
-                              child: isBusy
-                                  ? AppLoader(color: styler.accentColor())
-                                  : AppText(
-                                      text: isNewAccount
-                                          ? 'Sign Up'
-                                          : isResetPassword
-                                              ? 'Send Reset Link'
-                                              : isSignIn
-                                                  ? 'Sign In'
-                                                  : 'Continue',
-                                      color: AppColors.lightText,
-                                    ),
+                                  printThis('Signing in......');
+                                  await signInUsingEmailPassword(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  );
+                                  setState(() => isBusy = false);
+                                }
+                                //
+                                //
+                                if (isResetPassword && !isBusy) {
+                                  setState(() => isBusy = true);
+                                  printThis('Resetting ps......');
+                                  await resetPassword(email: emailController.text.trim());
+                                  setState(() => isBusy = false);
+                                }
+                                //
+                              },
+                              color: white,
+                              width: 220,
+                              height: 35,
+                              showBorder: !styler.isDark,
+                              dryWidth: true,
+                              child: Center(
+                                child: isBusy
+                                    ? AppLoader(color: styler.accentColor())
+                                    : AppText(
+                                        text: isDemo
+                                            ? 'See the Demo'
+                                            : isNewAccount
+                                                ? 'Sign Up'
+                                                : isResetPassword
+                                                    ? 'Send Reset Link'
+                                                    : isSignIn
+                                                        ? 'Sign In'
+                                                        : 'Continue',
+                                        color: AppColors.lightText,
+                                      ),
+                              ),
                             ),
-                          ),
-                          //
-                          sph(),
-                          //
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              //
-                              if (isSignIn)
-                                AppButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isResetPassword = true;
-                                      isSignIn = false;
-                                    });
-                                  },
-                                  noStyling: true,
-                                  smallVerticalPadding: true,
-                                  label: 'Forgot Password?',
-                                ),
-                              //
-                              if (isSignIn) Padding(padding: const EdgeInsets.symmetric(horizontal: 2), child: AppIcon(Icons.lens, size: 5, faded: true)),
-                              //
-                              if (isNewAccount || isSignIn || isResetPassword)
-                                AppButton(
-                                  onPressed: () {
-                                    if (isNewAccount || isSignIn || isResetPassword) {
+                            //
+                            sph(),
+                            //
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                //
+                                if (isSignIn)
+                                  AppButton(
+                                    onPressed: () {
                                       setState(() {
-                                        isResetPassword = false;
+                                        isResetPassword = true;
                                         isSignIn = false;
-                                        isNewAccount = false;
                                       });
-                                    }
-                                  },
-                                  noStyling: true,
-                                  smallVerticalPadding: true,
-                                  label: 'Cancel',
-                                ),
-                              //
-                            ],
-                          ),
-                          //
-                        ],
-                      ),
+                                    },
+                                    noStyling: true,
+                                    smallVerticalPadding: true,
+                                    label: 'Forgot Password?',
+                                  ),
+                                //
+                                if (isSignIn)
+                                  Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                                      child: AppIcon(Icons.lens, size: 5, faded: true)),
+                                //
+                                if (isNewAccount || isSignIn || isResetPassword)
+                                  AppButton(
+                                    onPressed: () {
+                                      if (isNewAccount || isSignIn || isResetPassword) {
+                                        setState(() {
+                                          isResetPassword = false;
+                                          isSignIn = false;
+                                          isNewAccount = false;
+                                        });
+                                      }
+                                    },
+                                    noStyling: true,
+                                    smallVerticalPadding: true,
+                                    label: 'Cancel',
+                                  ),
+                                //
+                              ],
+                            ),
+                            //
+                          ],
+                        ),
                       //
                       elph(),
                       //
-                      AppButton(
-                        menuWidth: 300,
-                        menuItems: themeMenu(),
-                        noStyling: true,
-                        iconSize: normal,
-                        textSize: small,
-                        leading: Icons.wb_sunny_rounded,
-                        label: 'Change Theme',
-                      ),
+                      QuickThemeChanger(),
                       //
                       Spacer(),
                       //

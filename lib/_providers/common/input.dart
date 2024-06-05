@@ -15,6 +15,9 @@ class InputProvider with ChangeNotifier {
   Map previousData = {};
 
   bool hasSpecialItem() => data.keys.any((key) => ['ba', 'wa', 'qa', 'ha', 'sa'].contains(key));
+  bool isFinance() => data[feature.finances.lt] != null;
+  bool isTask() => data[feature.tasks.lt] != null;
+  bool isHabit() => data[feature.habits.lt] != null;
 
   void setInputData({
     bool isNw = true,

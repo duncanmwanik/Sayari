@@ -45,7 +45,7 @@ class _LabelItemState extends State<LabelItem> {
     bool showDelete = !widget.isDefault && !isCurrentLabel && !widget.isSelection && (isHovered || !kIsWeb);
 
     return Padding(
-      padding:   EdgeInsets.only(bottom: kIsWeb?2:0),
+      padding: EdgeInsets.only(bottom: kIsWeb ? 2 : 0),
       child: Material(
         color: transparent,
         child: InkWell(
@@ -63,8 +63,8 @@ class _LabelItemState extends State<LabelItem> {
             padding: EdgeInsets.only(
               left: widget.isSelection ? 10 : 15,
               right: showDelete ? 0 : (widget.isPopup ? 7 : 15),
-              top: 6,
-              bottom: 6,
+              top: kIsWeb ? 3 : 6,
+              bottom: kIsWeb ? 3 : 6,
             ),
             decoration: BoxDecoration(
               color: isCurrentLabel && !widget.isSelection ? styler.appColor(1) : null,
@@ -73,9 +73,12 @@ class _LabelItemState extends State<LabelItem> {
             child: Row(
               children: [
                 //
-                widget.isSelection ? AppCheckBox(smallPadding: true, isChecked: widget.isSelected, onTap: widget.onSelect) : AppIcon(widget.iconData, faded: true, size: 18),
+                widget.isSelection
+                    ? AppCheckBox(smallPadding: true, isChecked: widget.isSelected, onTap: widget.onSelect)
+                    : AppIcon(widget.iconData, faded: true, size: 18),
                 mpw(),
-                Expanded(child: AppText(text: widget.label, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis)),
+                Expanded(
+                    child: AppText(text: widget.label, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis)),
                 tpw(),
                 AppButton(
                   onPressed: showDelete

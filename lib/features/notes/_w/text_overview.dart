@@ -5,7 +5,7 @@ import 'package:flutter_quill/flutter_quill.dart';
 
 import '../../../_models/item.dart';
 import '../../../_providers/providers.dart';
-import '../quill_configs/editor.dart';
+import 'quill_configs/editor.dart';
 
 class NoteTextOverview extends StatelessWidget {
   const NoteTextOverview({super.key, required this.item});
@@ -22,7 +22,7 @@ class NoteTextOverview extends StatelessWidget {
             selection: TextSelection.collapsed(offset: 0),
           ),
           maxHeight: state.views.isColumn() ? 300 : 200,
-          customStyles: getQuillEditorStyle(isOverview: true, bgColor: item.bgColor()),
+          customStyles: getQuillEditorStyle(isOverview: true, bgColor: item.color()),
         ),
       ),
     );

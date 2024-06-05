@@ -29,6 +29,7 @@ class SessionOptions extends StatelessWidget {
           },
           tooltip: 'Edit Session',
           noStyling: true,
+          isSquare: true,
           child: AppIcon(Icons.edit_rounded, faded: true, size: 18),
         ),
         //
@@ -38,6 +39,7 @@ class SessionOptions extends StatelessWidget {
           },
           tooltip: 'Copy to Date',
           noStyling: true,
+          isSquare: true,
           child: AppIcon(Icons.copy_rounded, faded: true, size: 18),
         ),
         //
@@ -47,15 +49,21 @@ class SessionOptions extends StatelessWidget {
           },
           tooltip: 'Move To Date',
           noStyling: true,
+          isSquare: true,
           child: AppIcon(Icons.forward_rounded, faded: true, size: 18),
         ),
         //
         AppButton(
           onPressed: () {
-            deleteSession(sessionDate: sessionDate, sessionId: sessionId, sessionName: sessionData['t'], sessionData: sessionData);
+            deleteSession(
+                sessionDate: sessionDate,
+                sessionId: sessionId,
+                sessionName: sessionData['t'],
+                sessionData: sessionData);
           },
           tooltip: 'Delete Session',
           noStyling: true,
+          isSquare: true,
           child: AppIcon(Icons.delete_forever_rounded, faded: true, size: 18),
         ),
         //

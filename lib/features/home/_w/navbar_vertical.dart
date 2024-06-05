@@ -34,8 +34,6 @@ class VeticalNavigationBox extends StatelessWidget {
             mph(),
             navItem(notesUnselectedIcon, feature.notes.t, views.view == feature.notes.t),
             mph(),
-            navItem(listsUnselectedIcon, feature.lists.t, views.view == feature.lists.t),
-            mph(),
             navItem(chatUnselectedIcon, feature.chat.t, views.view == feature.chat.t),
             mph(),
             navItem(exploreUnSelectedIcon, feature.explore.t, views.view == feature.explore.t),
@@ -50,12 +48,12 @@ class VeticalNavigationBox extends StatelessWidget {
             //
             AppButton(
               onPressed: () async {
-                context.go('/session/1714757892338');
-                // context.go('/universe/1713385247976');
+                context.push('/session/1714757892338');
               },
               noStyling: true,
+              isSquare: true,
               tooltip: 'Speak',
-              child: AppIcon(Icons.question_mark, faded: true, size: 18),
+              child: AppIcon(Icons.blur_on, faded: true, size: 18),
             ),
             //
             mph(),

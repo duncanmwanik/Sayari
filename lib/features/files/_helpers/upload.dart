@@ -16,7 +16,7 @@ Future<Map> getFilesToUpload({bool allowMultiple = true, bool isDp = false, bool
 
   try {
     FilePickerResult? results = await FilePicker.platform.pickFiles(
-      allowMultiple: allowMultiple,
+      allowMultiple: allowMultiple && !isDp,
       type: (isDp || imagesOnly) ? FileType.custom : FileType.any,
       allowedExtensions: (isDp || imagesOnly) ? ['jpg', 'jpeg', 'png'] : null,
     );
@@ -40,21 +40,14 @@ Future<Map> getFilesToUpload({bool allowMultiple = true, bool isDp = false, bool
 
       if (isDp) {
         await fileBox.put('dp', fileMap.entries.first.value);
-      }
-      //
-      else if (!allowMultiple) {
-        String fileId = 'f${getUniqueId()}';
-        state.input.update(action: 'add', key: fileId, value: fileMap.entries.first.key);
-        await fileBox.put(fileId, fileMap.entries.first.value);
-        return {'fileId': fileId};
+        return fileMap;
       }
       //
       else {
-        fileMap.forEach((filename, fileData) async {
-          String fileId = 'f${getUniqueId()}';
-          state.input.update(action: 'add', key: fileId, value: filename);
-          await fileBox.put(fileId, fileData);
-        });
+        String fileId = 'f${getUniqueId()}';
+        state.input.update(action: 'add', key: fileId, value: fileMap.entries.first.key);
+        await fileBox.put(fileId, fileMap.entries.first.value);
+        return fileMap;
       }
     }
   } catch (e) {
@@ -66,21 +59,27 @@ Future<Map> getFilesToUpload({bool allowMultiple = true, bool isDp = false, bool
 }
 
 Future<void> chooseUserDp() async {
-  await getFilesToUpload(isDp: true, allowMultiple: false).then((fileMap) async {
-    if (fileMap.length == 1) {
-      if (isImageFile(fileMap.entries.first.key)) {
-        showToast(2, 'Uploading your profile picture...');
-        await cloudStorage.uploadFile(db: 'users', path: '${liveUser()}/dp.jpg', fileId: 'dp').then((success) {
-          if (success) {
-            cachedFileBox.delete('dp');
-            showToast(1, 'Your profile picture is ready.');
-          }
-        });
+  try {
+    await getFilesToUpload(isDp: true).then((fileMap) async {
+      print(fileMap);
+      if (fileMap.length == 1) {
+        if (isImageFile(fileMap.entries.first.key)) {
+          print('Uploading your profile picture...');
+          await cloudStorage.uploadFile(db: 'users', path: '${liveUser()}/dp.jpg', fileId: 'dp').then((success) {
+            if (success) {
+              cachedFileBox.delete('dp');
+            }
+          });
+        } else {
+          showToast(0, 'Only <b>jpg</b> files under 2 MB are allowed.');
+        }
       } else {
         showToast(0, 'Only <b>jpg</b> files under 2 MB are allowed.');
       }
-    }
-  });
+    });
+  } catch (e) {
+    print(e);
+  }
 }
 
 Future<void> handleFilesCloud(String tableId, Map source, {String? items}) async {

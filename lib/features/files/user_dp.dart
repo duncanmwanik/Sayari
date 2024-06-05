@@ -1,3 +1,5 @@
+// ignore_for_file: dead_code
+
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/file.dart';
 
@@ -26,8 +28,21 @@ class UserDp extends StatelessWidget {
   Widget build(BuildContext context) {
     double radius = size ?? (isTiny ? 14 : 60);
 
+    return AppButton(
+      tooltip: isTiny ? 'Account & Settings' : null,
+      // onPressed: onPressed ?? () => showSettingsBottomSheet(),
+      onPressed: () async => await chooseUserDp(),
+      isRound: true,
+      padding: EdgeInsets.all(isTiny ? 0 : 3),
+      child: CircleAvatar(
+        backgroundColor: transparent,
+        radius: radius,
+        child: AppLoader(color: styler.appColor(2), size: isTiny ? 18 : 40, stroke: isTiny ? 2 : 4),
+      ),
+    );
+
     return FutureBuilder(
-        future: getCachedFile(db: 'users', cloudFilePath: '${userId ?? liveUser()}/' 'dp.jpg', fileId: 'dp'),
+        future: getCachedFile(db: 'users', cloudFilePath: '${userId ?? liveUser()}/dp.jpg', fileId: 'dp'),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
@@ -46,7 +61,7 @@ class UserDp extends StatelessWidget {
                                         db: 'users',
                                         fileId: 'dp',
                                         fileName: 'dp.jpg',
-                                        cloudFilePath: '${liveUser()}/' 'dp.jpg',
+                                        cloudFilePath: '${liveUser()}/dp.jpg',
                                         downloadPath: 'dp.jpg',
                                       ),
                                     )
@@ -70,18 +85,6 @@ class UserDp extends StatelessWidget {
                                 ),
                                 label: 'View',
                                 iconData: Icons.image_outlined,
-                              ),
-                              //
-                              MenuItem(
-                                onTap: () async => await downloadFile(
-                                  db: 'users',
-                                  fileId: 'dp',
-                                  fileName: 'dp.jpg',
-                                  cloudFilePath: '${liveUser()}/' 'dp.jpg',
-                                  downloadPath: 'dp.jpg',
-                                ),
-                                label: 'Download',
-                                iconData: Icons.download_outlined,
                               ),
                               //
                             ],
@@ -119,6 +122,8 @@ class UserDp extends StatelessWidget {
           }
           return AppButton(
             tooltip: isTiny ? 'Account & Settings' : null,
+            // onPressed: onPressed ?? () => showSettingsBottomSheet(),
+            onPressed: () async => await chooseUserDp(),
             isRound: true,
             padding: EdgeInsets.all(isTiny ? 0 : 3),
             child: CircleAvatar(

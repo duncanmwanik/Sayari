@@ -46,6 +46,9 @@ class DailyView extends StatelessWidget {
                   return Material(
                     color: transparent,
                     child: InkWell(
+                      onTap: () {
+                        prepareSessionCreation(date: selectedDate, hour: indexHour);
+                      },
                       onDoubleTap: () {
                         prepareSessionCreation(date: selectedDate, hour: indexHour);
                       },
@@ -100,7 +103,8 @@ class DailyView extends StatelessWidget {
                                         String sessionId = hourMap.keys.toList()[indexSessionId];
                                         Map sessionData = hourMap[sessionId];
 
-                                        return DailyBox(sessionData: sessionData, sessionId: sessionId, sessionDate: selectedDate);
+                                        return DailyBox(
+                                            sessionData: sessionData, sessionId: sessionId, sessionDate: selectedDate);
                                       }),
                                 ),
                               ],

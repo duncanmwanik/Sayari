@@ -6,11 +6,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../__styling/spacing.dart';
 import '../../_models/item.dart';
 import '../../_providers/providers.dart';
-import '../../_variables/features.dart';
-import '../../features/_lists/list.dart';
 import '../../features/_tables/_helpers/common.dart';
 import '../../features/notes/note.dart';
-import '../others/others/other_widgets.dart';
 import '../others/others/snap_scroll_physics.dart';
 import 'orderables/background.dart';
 
@@ -30,7 +27,7 @@ class ColumnLayout extends StatelessWidget {
         child: ReorderableListView.builder(
           scrollDirection: Axis.horizontal,
           physics: kIsWeb ? null : SnapScrollPhysics(snapSize: 300),
-          padding: EdgeInsets.only(top: 5, bottom: 10, left: 10, right: 100.w - 320),
+          padding: EdgeInsets.only(top: 5, bottom: 10, left: 10, right: kIsWeb ? 100.w / 2 : 100.w - 320),
           shrinkWrap: true,
           buildDefaultDragHandles: false,
           proxyDecorator: (child, index, animation) => proxyDecorator(child, index, animation),
@@ -45,14 +42,10 @@ class ColumnLayout extends StatelessWidget {
               index: index,
               key: ValueKey(item.id),
               child: Padding(
-                padding: itemPadding(left: index != 0),
+                padding: itemPadding(left: !kIsWeb && index != 0),
                 child: SizedBox(
                   width: 300,
-                  child: type == feature.notes.t
-                      ? Note(item: item)
-                      : type == feature.lists.t
-                          ? AList(item: item)
-                          : NoWidget(),
+                  child: Note(item: item),
                 ),
               ),
             );

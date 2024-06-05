@@ -61,7 +61,8 @@ class Share extends StatelessWidget {
                     AppButton(
                       onPressed: () => input.update(action: 'add', key: 'cx', value: isExpanded ? '0' : '1'),
                       noStyling: true,
-                      child: AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, size: 18, faded: true),
+                      child: AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                          size: 18, faded: true),
                     ),
                     spw(),
                     AppButton(
@@ -99,7 +100,8 @@ class Share extends StatelessWidget {
                       children: [
                         Expanded(child: AppText(text: '$sayariSharePath/${input.itemId}', faded: true)),
                         spw(),
-                        Padding(padding: const EdgeInsets.only(top: 1), child: AppIcon(Icons.copy, size: 18, faded: true)),
+                        Padding(
+                            padding: const EdgeInsets.only(top: 1), child: AppIcon(Icons.copy, size: 18, faded: true)),
                       ],
                     ),
                   ),
@@ -116,7 +118,11 @@ class Share extends StatelessWidget {
                     borderRadius: borderRadiusSmall,
                     smallRightPadding: true,
                     child: Row(
-                      children: [AppText(text: 'Publish'), Spacer(), AppCheckBox(isChecked: isPublished, smallPadding: true)],
+                      children: [
+                        AppText(text: 'Publish'),
+                        Spacer(),
+                        AppCheckBox(isChecked: isPublished, smallPadding: true)
+                      ],
                     ),
                   ),
                 //

@@ -128,7 +128,8 @@ class _MyWidgetState extends State<MyWidget> {
             ),
           ),
           //
-          AppDivider(height: mediumHeight()),
+          AppDivider(height: smallHeight()),
+          sph(),
           //
           Align(
             alignment: Alignment.bottomRight,

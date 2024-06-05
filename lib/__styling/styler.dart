@@ -196,7 +196,7 @@ class AppStyles {
       return isShadeColor ? backgroundColors[bgColor]!.shadeColor : backgroundColors[bgColor]!.color;
     } else {
       return isImageTheme()
-          ? white.withOpacity(isHovered ? 0.12 : 0.1)
+          ? white.withOpacity(isHovered ? 0.175 : 0.15)
           : isBlackTheme()
               ? black
               : isDark

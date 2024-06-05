@@ -29,7 +29,8 @@ Future<void> registerReminder({
         if (remindersList.isNotEmpty) {
           for (String reminder in remindersList) {
             int reminderInMinutes = reminderTimeInMinutes(reminder);
-            DateTime date = DateTime.parse(reminderDateTime(reminderDate, itemData['s'])).subtract(Duration(minutes: reminderInMinutes));
+            DateTime date = DateTime.parse(reminderDateTime(reminderDate, itemData['s']))
+                .subtract(Duration(minutes: reminderInMinutes));
 
             if (date.isAfter(DateTime.now())) {
               int id = getNotificationId(itemId) + reminderInMinutes;
@@ -56,14 +57,15 @@ Future<void> registerReminder({
             data = {'type': type};
           }
           //
-          if (type == feature.lists.t) {
+          if (type == feature.notes.t) {
             title = itemData['t'] ?? 'List';
             body = 'You may have some items to work on.';
             data = {'type': type};
           }
           //
           if (title.isNotEmpty) {
-            await createReminderNotification(id: getNotificationId(itemId), title: title, body: body, data: data, date: date);
+            await createReminderNotification(
+                id: getNotificationId(itemId), title: title, body: body, data: data, date: date);
           }
           //
         }

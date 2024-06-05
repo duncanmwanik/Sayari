@@ -6,5 +6,3 @@ Hey, dev... do this!
 
 - Image Viewer from FilePath : if containes fileId
 - Note Items: Only Overview in Note Item
-- Finance in Note
-- Footers

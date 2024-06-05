@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 // const String sayariDefaultPath = 'https://getsayari.web.app';
 // const String sayariSharePath = '$sayariDefaultPath/universe';
 // const String sayariBookingPath = '$sayariDefaultPath/session';
-const String sayariDefaultPath = 'http://localhost:10939';
+// const String sayariDefaultPath = 'http://localhost:10939';
+const String sayariDefaultPath = 'http://sayari.me';
 const String sayariSharePath = '$sayariDefaultPath/universe';
 const String sayariBookingPath = '$sayariDefaultPath/session';
 
@@ -12,7 +13,11 @@ const String newNoteHintText = 'Write something here...';
 
 FocusNode noteTextFocusNode = FocusNode();
 
-Map specialLabelsIcons = {'Trash': Icons.auto_delete_rounded, 'Archive': Icons.archive_rounded, 'All': Icons.label_rounded};
+Map specialLabelsIcons = {
+  'Trash': Icons.auto_delete_rounded,
+  'Archive': Icons.archive_rounded,
+  'All': Icons.label_rounded
+};
 
 // Each layout type shows the icon whose layout will be next
 Map<String, IconData> layoutIcons = {

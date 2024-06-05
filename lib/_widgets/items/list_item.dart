@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_models/item.dart';
-import '../../_variables/features.dart';
-import '../../features/_lists/list_sheet.dart';
 import '../../features/notes/_helpers/helpers.dart';
 import '../abcs/buttons/buttons.dart';
 import '../others/icons.dart';
@@ -24,13 +22,7 @@ class ListItem extends StatelessWidget {
       children: [
         //
         AppButton(
-          onPressed: () {
-            if (feature.isNote(item.type)) {
-              prepareNoteForEdit(item);
-            } else if (feature.isList(item.type)) {
-              showListBottomSheet(item: item);
-            }
-          },
+          onPressed: () => prepareNoteForEdit(item),
           noStyling: true,
           borderRadius: borderRadiusSmall,
           padding: EdgeInsets.only(top: 7, bottom: 7, left: 10, right: 5),
@@ -46,7 +38,7 @@ class ListItem extends StatelessWidget {
                     AppIcon(
                       Icons.lens,
                       size: 10,
-                      color: item.hasColor() ? styler.getItemColor(item.bgColor(), false) : transparent,
+                      color: item.hasColor() ? styler.getItemColor(item.color(), false) : transparent,
                     ),
                   ],
                 ),

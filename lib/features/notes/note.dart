@@ -12,14 +12,15 @@ import '../../_providers/providers.dart';
 import '../../_widgets/items/hover_actions.dart';
 import '../../_widgets/items/items.dart';
 import '../../_widgets/items/selector.dart';
-import '../bookings/_w/overview.dart';
 import '../files/file_overview.dart';
-import '../finance/_w/period_overview.dart';
-import '../forms/_w/overview.dart';
-import '../habits/_w/overview.dart';
-import '../links/_w/misc.dart';
 import '_helpers/ontap.dart';
 import '_w/text_overview.dart';
+import 'feat/bookings/_w/overview.dart';
+import 'feat/finance/_w/overview.dart';
+import 'feat/forms/_w/overview.dart';
+import 'feat/habits/overview.dart';
+import 'feat/links/_w/overview.dart';
+import 'feat/tasks/task.dart';
 
 class Note extends StatelessWidget {
   const Note({super.key, required this.item});
@@ -40,7 +41,7 @@ class Note extends StatelessWidget {
             Card(
               elevation: 0,
               margin: kIsWeb ? itemPaddingMedium() : EdgeInsets.zero,
-              color: styler.getItemColor(item.bgColor(), false, isShadeColor: true),
+              color: styler.getItemColor(item.color(), false, isShadeColor: true),
               shape: RoundedRectangleBorder(
                 side: BorderSide(
                   color: isSelected
@@ -78,14 +79,15 @@ class Note extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   //
-                                  msph(), if (item.hasFinances()) FinanceOverview(item: item),
+                                  if (!item.hasTasks()) msph(),
+                                  if (item.hasFinances()) FinanceOverview(item: item),
                                   if (item.hasBookings()) BookingOverview(item: item),
                                   if (item.hasHabits()) HabitOverview(item: item),
                                   if (item.hasLinks()) LinksOverview(item: item),
                                   if (item.hasForms()) FormsOverview(item: item),
-                                  if (item.isPureNote()) NoteTextOverview(item: item),
-                                  //
-                                  ItemDetails(item: item),
+                                  if (item.isPureNote() || item.hasPortfolios()) NoteTextOverview(item: item),
+                                  if (item.hasDetails()) ItemDetails(item: item),
+                                  if (item.hasTasks()) NoteTask(item: item),
                                   //
                                 ],
                               ),

@@ -38,6 +38,7 @@ class FileOptions extends StatelessWidget {
         ),
         //
       ],
+      isSquare: true,
       leading: Icons.more_vert_rounded,
       noStyling: !isImageFile(fileName),
     );

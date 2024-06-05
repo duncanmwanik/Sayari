@@ -11,7 +11,7 @@ import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import 'select_table.dart';
 
-Future<void> createNewTable({bool isNewUser = false, bool isDefault = false, String email = ''}) async {
+Future<void> createNewTable({bool isNewUser = false, bool isDefault = false}) async {
   //
   // signUpUserId: passed after sign-up to create tehe user's first & default table
   // isDefault will be true at the same time
@@ -26,14 +26,13 @@ Future<void> createNewTable({bool isNewUser = false, bool isDefault = false, Str
       if (!isNewUser) popWhatsOnTop();
       String userId = liveUser();
       String tableId = 'table_${userId.substring(0, 6)}_${getUniqueId().substring(9)}';
-      // String tableId = isNewUser ? 'table_${emailAsKey(email)}' : 'table_${userId.substring(0, 6)}_${getUniqueId().substring(9)}';
       List groupList = state.input.selectedGroups;
       // set table owner
       state.input.data['o'] = userId;
       // remove empty keys
       state.input.data.removeWhere((key, value) => value.toString().isEmpty);
 
-      // LOCAL ---------
+      // LOCAL
       // add table to user data locally
       // default table cannot be deleted and contains shared data across all other tables
       await Hive.box('${liveUser()}_data').put(tableId, isDefault ? 1 : 0);
@@ -46,8 +45,7 @@ Future<void> createNewTable({bool isNewUser = false, bool isDefault = false, Str
       // add table name to table names tracking box
       await tableNamesBox.put(tableId, state.input.data['t']);
 
-      // CLOUD ---------
-      //
+      // CLOUD
       // add table to cloud user data
       await addTableToUserData(userId, tableId, groupList, isDefault: isDefault);
       // create table in the cloud

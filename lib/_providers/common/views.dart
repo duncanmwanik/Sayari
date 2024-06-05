@@ -12,12 +12,9 @@ class ViewsProvider with ChangeNotifier {
   bool isView(String type) => view == type;
   bool isSessions() => view == feature.sessions.t;
   bool isNotes() => view == feature.notes.t;
-  bool isLists() => view == feature.lists.t;
-  bool isFinance() => view == feature.finances.t;
   bool isChat() => view == feature.chat.t;
   bool isExplore() => view == feature.explore.t;
-  bool isItemView() => [feature.notes.t, feature.lists.t, feature.finances.t].contains(view);
-  String defaultLayout() => isLists() ? 'column' : 'grid';
+  bool isItemView() => [feature.notes.t].contains(view);
 
   String layout = globalBox.get(
     '${liveTable()}_layout_${globalBox.get('view', defaultValue: feature.notes.t)}',
@@ -44,7 +41,7 @@ class ViewsProvider with ChangeNotifier {
 
   //
 
-  String noteView = globalBox.get('noteView', defaultValue: feature.notes.t);
+  String noteView = globalBox.get('noteView', defaultValue: feature.notes.lt);
 
   void setNotesView(String type) {
     noteView = type;

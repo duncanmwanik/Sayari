@@ -5,10 +5,10 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/common/views.dart';
+import '../../../_variables/features.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
-import '../../_lists/_w_list/list_dialog.dart';
 import '../../_sessions/_helpers/helpers.dart';
 import '../../_tables/_helpers/checks_table.dart';
 import '../../notes/_helpers/helpers.dart';
@@ -22,7 +22,6 @@ class WebCreator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ViewsProvider>(builder: (context, views, child) {
       bool isSessionsView = views.isSessions();
-      bool isListView = views.isLists();
       bool isNotesView = views.isNotes();
 
       return AppButton(
@@ -34,7 +33,6 @@ class WebCreator extends StatelessWidget {
         onPressed: isATableSelected()
             ? () {
                 if (isSessionsView) prepareSessionCreation();
-                if (isListView) showCreateListDialog();
                 if (isNotesView) prepareNoteForCreation();
               }
             : () => openDrawer(),
@@ -62,8 +60,9 @@ class WebCreator extends StatelessWidget {
                     //
                     AppIcon(Icons.add_circle_rounded, size: 18),
                     if (!isCollapsed) spw(),
-                    if (!isCollapsed) AppText(text: 'Create'),
-                    // if (!isCollapsed) AppText(text: featureData[views.view]!.createMessage),
+                    // if (!isCollapsed) AppText(text: 'Create'),
+                    if (!isCollapsed && isNotesView) AppText(text: featureData[views.view]!.createMessage),
+                    if (!isCollapsed && !isNotesView) AppText(text: featureData[views.view]!.createMessage),
                     //
                   ],
                 )

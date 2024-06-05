@@ -3,15 +3,14 @@ import 'package:hive/hive.dart';
 import '../../_services/hive/load_boxes.dart';
 import '../../_services/hive/local_storage_service.dart';
 
-Future<void> setUserData(String userId, String name, String email) async {
+Future<void> setUserData(String userId, Map info) async {
   await globalBox.put('currentUserId', userId);
   // add user's email to email tracking box
-  await userEmailsBox.put(userId, email);
+  await userEmailsBox.put(userId, info['e']);
   // we reload the hive boxes to initialize the user's boxes
   await loadAllBoxes();
   // save user details locally
-  await Hive.box('${userId}_info').put('name', name);
-  await Hive.box('${userId}_info').put('email', email);
+  await Hive.box('${userId}_info').putAll(info);
 }
 
 String liveUser() {
@@ -19,9 +18,9 @@ String liveUser() {
 }
 
 String liveEmail() {
-  return Hive.box('${liveUser()}_info').get('email', defaultValue: '');
+  return Hive.box('${liveUser()}_info').get('e', defaultValue: '');
 }
 
 String liveUserName() {
-  return Hive.box('${liveUser()}_info').get('name', defaultValue: '');
+  return Hive.box('${liveUser()}_info').get('n', defaultValue: '');
 }

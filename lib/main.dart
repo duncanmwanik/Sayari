@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
         styler.initialize(isDarkTheme);
 
         return ResponsiveSizer(
-          builder: (ctx, ort, sctp) {
+          builder: (ctx, ort, stp) {
             return MaterialApp.router(
               routerConfig: router,
               scrollBehavior: AppScrollBehavior(),

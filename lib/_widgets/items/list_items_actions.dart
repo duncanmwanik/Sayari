@@ -83,7 +83,7 @@ class ListActions extends StatelessWidget {
               AppButton(
                 menuWidth: 200,
                 menuItems: colorMenu(
-                  selectedColor: item.bgColor(),
+                  selectedColor: item.color(),
                   onSelect: (newColor) async {
                     await editItemExtras(type: item.type, itemId: item.id, key: 'c', value: newColor);
                     popWhatsOnTop();
@@ -104,7 +104,8 @@ class ListActions extends StatelessWidget {
             if (!item.isDeleted())
               AppButton(
                 onPressed: () async {
-                  await editItemExtras(type: item.type, itemId: item.id, key: 'a', value: item.isArchived() ? '0' : '1');
+                  await editItemExtras(
+                      type: item.type, itemId: item.id, key: 'a', value: item.isArchived() ? '0' : '1');
                   popWhatsOnTop();
                 },
                 noStyling: true,
@@ -162,7 +163,8 @@ class ListActions extends StatelessWidget {
                   await showConfirmationDialog(
                     title: 'Delete selected item forever?',
                     yeslabel: 'Delete',
-                    onAccept: () async => await deleteItemForever(type: item.type, itemId: item.id, files: item.files()),
+                    onAccept: () async =>
+                        await deleteItemForever(type: item.type, itemId: item.id, files: item.files()),
                   );
                   popWhatsOnTop();
                 },

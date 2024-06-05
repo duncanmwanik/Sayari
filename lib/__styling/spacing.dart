@@ -7,9 +7,9 @@ import 'variables.dart';
 int gridCount(double width) {
   if (width >= 1590) {
     return 6;
-  } else if (width >= 1330) {
+  } else if (width >= 1220) {
     return 5;
-  } else if (width >= 1050) {
+  } else if (width >= 1000) {
     return 4;
   } else if (width >= 785) {
     return 3;

@@ -21,7 +21,7 @@ Future<void> editUserDetails(String userName, String password) async {
         AuthCredential credential = EmailAuthProvider.credential(email: liveEmail(), password: password);
         await user.reauthenticateWithCredential(credential);
         await user.updateDisplayName(userName);
-        await Hive.box(liveUser()).putAll({'name': userName});
+        await Hive.box(liveUser()).putAll({'n': userName});
         showToast(1, 'Success. Updated details.');
       }
     }

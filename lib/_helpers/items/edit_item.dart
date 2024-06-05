@@ -32,7 +32,7 @@ Future<void> editItem() async {
         String extras = '';
         String type_ = type;
 
-        printThis('editing $itemId --- $subId --- $editedKeys --- $validatedData');
+        // printThis('editing $itemId --- $subId --- $editedKeys --- $validatedData');
         // removeDuplicateReminders(type, validatedData);
 
         // for tables only ----------
@@ -53,9 +53,22 @@ Future<void> editItem() async {
           }
         }
 
-        registerReminder(type: type, itemId: subId.isNotEmpty ? subId : itemId, itemData: validatedData, reminder: type == feature.sessions.t ? itemId : null);
+        registerReminder(
+            type: type,
+            itemId: subId.isNotEmpty ? subId : itemId,
+            itemData: validatedData,
+            reminder: type == feature.sessions.t ? itemId : null);
         handleFilesCloud(liveTable(), validatedData, items: editedKeys);
-        await syncToCloud(db: 'tables', parentId: liveTable(), type: type_, action: 'e', itemId: itemId, subId: subId, keys: editedKeys, data: validatedData, extras: extras);
+        await syncToCloud(
+            db: 'tables',
+            parentId: liveTable(),
+            type: type_,
+            action: 'e',
+            itemId: itemId,
+            subId: subId,
+            keys: editedKeys,
+            data: validatedData,
+            extras: extras);
       }
     }
   }

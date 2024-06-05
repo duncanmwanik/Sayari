@@ -89,10 +89,10 @@ Future<void> getTableAllNotes(String tableId) async {
 
 Future<void> getTableAllLists(String tableId) async {
   try {
-    await cloudService.getData(db: 'tables', '$tableId/${feature.lists.t}').then((snapshot) async {
+    await cloudService.getData(db: 'tables', '$tableId/${feature.notes.t}').then((snapshot) async {
       Map tableLists = snapshot.value != null ? snapshot.value as Map : {};
       if (tableLists.isNotEmpty) {
-        await Hive.openBox('${tableId}_${feature.lists.t}').then((box) {
+        await Hive.openBox('${tableId}_${feature.notes.t}').then((box) {
           box.putAll(tableLists);
         });
       }

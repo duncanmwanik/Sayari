@@ -15,7 +15,7 @@ class LayoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ViewsProvider>(builder: (context, views, child) {
       bool showLayoutButton =
-          views.isView(feature.notes.t) || views.isView(feature.lists.t) || views.isView(feature.finances.t);
+          views.isView(feature.notes.t) || views.isView(feature.notes.t) || views.isView(feature.finances.t);
 
       List layoutList = ['grid', 'row', 'column', 'list'];
 

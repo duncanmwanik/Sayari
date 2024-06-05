@@ -18,7 +18,7 @@ class ViewChooser extends StatelessWidget {
     return Consumer<ViewsProvider>(builder: (context, viewsProvider, child) {
       return AppButton(
         tooltip: 'Change View',
-        borderRadius: borderRadiusSmall,
+        borderRadius: borderRadiusCrazy,
         menuWidth: 150,
         menuItems: [
           //

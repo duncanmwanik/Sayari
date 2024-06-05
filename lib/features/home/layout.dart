@@ -35,6 +35,7 @@ class Applayout extends StatelessWidget {
                   child: SafeArea(
                     child: Column(
                       children: [
+                        //
                         Expanded(
                           child: Consumer<ViewsProvider>(builder: (context, views, child) {
                             return CustomScrollView(
@@ -56,7 +57,9 @@ class Applayout extends StatelessWidget {
                             );
                           }),
                         ),
-                        if (!showVertNav()) HorizontalNavigationBox()
+                        //
+                        if (!showVertNav()) HorizontalNavigationBox(),
+                        //
                       ],
                     ),
                   ),

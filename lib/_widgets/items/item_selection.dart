@@ -49,7 +49,7 @@ class SelectedItemOptions extends StatelessWidget {
                 ),
                 spw(),
                 //no of selected items
-                AppText(text: '${selection.selected.length} selected', faded: true),
+                AppText(text: '${selection.selected.length}',size: normal, faded: true),
                 //
               ],
             ),

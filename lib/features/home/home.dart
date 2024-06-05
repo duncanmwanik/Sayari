@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    // doSomeFirstTimeWork();
     retryPendingActions();
     listenToKeyboardChanges();
   }

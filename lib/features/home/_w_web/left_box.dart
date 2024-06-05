@@ -22,7 +22,7 @@ class WebLeftBox extends StatelessWidget {
     return Consumer2<ViewsProvider, GlobalProvider>(builder: (context, views, global, child) {
       bool showBoxOptions = views.showWebBoxOptions && showWebBoxOptions();
       bool showCalendar = views.isSessions() || views.isChat();
-      bool showLabelManager = views.isNotes() || views.isLists() || views.isFinance();
+      bool showLabelManager = views.isNotes();
 
       return Container(
         width: showBoxOptions ? 251 : 51,

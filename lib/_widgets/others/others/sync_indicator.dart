@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../icons.dart';
@@ -13,8 +14,7 @@ class CloudSyncIndicator extends StatefulWidget {
   State<CloudSyncIndicator> createState() => _CloudSyncIndicatorState();
 }
 
-class _CloudSyncIndicatorState extends State<CloudSyncIndicator>
-    with TickerProviderStateMixin {
+class _CloudSyncIndicatorState extends State<CloudSyncIndicator> with TickerProviderStateMixin {
   late final AnimationController controller = AnimationController(
     duration: const Duration(seconds: 2),
     vsync: this,
@@ -45,9 +45,12 @@ class _CloudSyncIndicatorState extends State<CloudSyncIndicator>
           }
 
           return showLoader
-              ? RotationTransition(
-                  turns: animation,
-                  child: AppIcon(Icons.sync, color: styler.accentColor()),
+              ? Padding(
+                  padding: itemPadding(right: true),
+                  child: RotationTransition(
+                    turns: animation,
+                    child: AppIcon(Icons.sync, size: 18, color: styler.accentColor()),
+                  ),
                 )
               : NoWidget();
 

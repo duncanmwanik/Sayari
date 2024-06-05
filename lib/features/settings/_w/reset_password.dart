@@ -37,9 +37,9 @@ class PasswordResetWidget extends StatelessWidget {
             onPressed: () async {
               await resetPassword(email: liveEmail(), validate: false);
             },
-            color: Colors.red.shade600,
+            color: Colors.red.shade500,
             width: 100,
-            child: AppText(text: 'Reset', color: white, textAlign: TextAlign.center),
+            child: AppText(text: 'Reset', fontWeight: FontWeight.bold, color: white, textAlign: TextAlign.center),
           ),
           //
           mph(),

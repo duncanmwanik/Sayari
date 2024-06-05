@@ -10,7 +10,7 @@ class Item {
   final Map data;
 
   String title() => data['t'] ?? '';
-  String bgColor() => data['c'] ?? '';
+  String color() => data['c'] ?? '';
   String content() => data['n'] ?? '';
   String reminder() => data['r'] ?? '';
   String labels() => data['l'] ?? '';
@@ -21,7 +21,9 @@ class Item {
 
   bool exists() => data.isNotEmpty;
   bool hasColor() => hasBgColor(data['c']);
+  bool hasDetails() => reminder().isNotEmpty || labels().isNotEmpty || files().isNotEmpty;
   bool hasOverview() => data['w'] != null && data['w'] != '';
+  bool hasTasks() => data[feature.tasks.lt] != null;
   bool hasFinances() => data[feature.finances.lt] != null;
   bool hasHabits() => data[feature.habits.lt] != null;
   bool hasLinks() => data[feature.links.lt] != null;
@@ -35,6 +37,7 @@ class Item {
   bool isArchived() => data['a'] == '1';
   bool isDeleted() => data['x'] == '1';
   bool showChecks() => data['v'] == '1';
+  bool showEditor() => isPureNote() || hasFinances();
   bool showNewEntriesFirst() => data['at'] == '1';
 
   //

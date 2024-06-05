@@ -38,7 +38,7 @@ Future<void> loadSelectedTableBoxes(String tableId) async {
   await Hive.openBox('${tableId}_${feature.chat.t}');
   await Hive.openBox('${tableId}_${feature.sessions.t}');
   await Hive.openBox('${tableId}_${feature.notes.t}');
-  await Hive.openBox('${tableId}_${feature.lists.t}');
+  await Hive.openBox('${tableId}_${feature.notes.t}');
   await Hive.openBox('${tableId}_${feature.finances.t}');
   await Hive.openBox('${tableId}_${feature.flags.t}');
   await Hive.openBox('${tableId}_${feature.labels.t}');

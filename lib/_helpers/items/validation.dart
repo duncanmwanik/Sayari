@@ -26,7 +26,7 @@ bool validateInput({required String type, bool validate = true}) {
       }
     }
 
-    if (type == feature.lists.t) {
+    if (type == feature.notes.t) {
       if (title.isEmpty) {
         message = 'Enter list title';
       }

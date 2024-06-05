@@ -4,12 +4,12 @@ import 'package:provider/provider.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
-import '../../_helpers/user/edit_user_details.dart';
 import '../../_helpers/user/set_user_data.dart';
 import '../../_providers/common/theme.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../_widgets/others/forms/input.dart';
+import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '_w/reset_password.dart';
 
@@ -59,11 +59,18 @@ Future<void> showEditDetailsBottomSheet(BuildContext context) async {
                     onPressed: () async {
                       hideKeyboard();
                       if (formKey.currentState!.validate()) {
-                        await editUserDetails(userNameController.text.trim(), passwordController.text.trim());
+                        // await editUserDetails(userNameController.text.trim(), passwordController.text.trim());
                       }
                     },
                     width: 100,
-                    child: AppText(text: 'Update', textAlign: TextAlign.center),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        AppText(text: 'Update', textAlign: TextAlign.center),
+                        spw(),
+                        AppIcon(Icons.arrow_forward, tiny: true)
+                      ],
+                    ),
                   ),
                   //
                 ],

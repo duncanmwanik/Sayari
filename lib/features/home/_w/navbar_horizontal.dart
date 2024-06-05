@@ -6,8 +6,8 @@ import '../../../_providers/common/theme.dart';
 import '../../../_providers/common/views.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';
-import '../../_chat/input_bar.dart';
 import '../../_tables/_helpers/checks_table.dart';
+import '../../chat/input_bar.dart';
 import '../_w/nav_item.dart';
 
 class HorizontalNavigationBox extends StatelessWidget {
@@ -39,9 +39,6 @@ class HorizontalNavigationBox extends StatelessWidget {
                 //
                 navItem(views.view == feature.notes.t ? notesSelectedIcon : notesUnselectedIcon, feature.notes.t,
                     views.view == feature.notes.t),
-                //
-                navItem(views.view == feature.lists.t ? listsSelectedIcon : listsUnselectedIcon, feature.lists.t,
-                    views.view == feature.lists.t),
                 //
                 navItem(views.view == feature.chat.t ? chatSelectedIcon : chatUnselectedIcon, feature.chat.t,
                     views.view == feature.chat.t),

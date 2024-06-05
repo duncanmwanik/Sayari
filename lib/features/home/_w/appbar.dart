@@ -50,73 +50,77 @@ class CustomAppBar extends StatelessWidget {
               surfaceTintColor: isImageTheme() ? styler.appColor(5) : styler.navColor(),
               title: Container(
                 padding: EdgeInsets.only(left: 10, right: kIsWeb ? 15 : 5),
-                child: isItemSelection
-                    ? SelectedItemOptions()
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              //
-                              Flexible(
-                                child: Row(
-                                  children: [
-                                    //
-                                    AppButton(
-                                      onPressed: () => openDrawer(),
-                                      isRound: true,
-                                      noStyling: true,
-                                      tooltip: 'Manage Tables',
-                                      child: AppIcon(Icons.sort_rounded, faded: true),
-                                    ),
-                                    // selected table name
-                                    Flexible(
-                                      child: AppButton(
-                                        onPressed: () =>
-                                            isATableSelected ? showTableOverviewBottomSheet() : openDrawer(),
-                                        noStyling: true,
-                                        borderRadius: borderRadiusCrazy,
-                                        tooltip: 'About $name',
-                                        child: AppText(
-                                          size: extra,
-                                          text: name,
-                                          textAlign: TextAlign.start,
-                                          overflow: TextOverflow.ellipsis,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ),
-                                    //
-                                    CloudSyncIndicator()
-                                    //
-                                  ],
-                                ),
-                              ),
-                              //
-                              Row(
-                                mainAxisSize: MainAxisSize.min,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    //
+                    if (isItemSelection) SizedBox(height: 45, child: SelectedItemOptions()),
+                    //
+                    if (!isItemSelection)
+                      SizedBox(
+                        height: 45,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            //
+                            Flexible(
+                              child: Row(
                                 children: [
                                   //
-                                  Search(),
-                                  //
-                                  LayoutButton(),
-                                  //
-                                  QuickThemeChanger(),
-                                  //
-                                  UserDp(isTiny: true),
+                                  AppButton(
+                                    onPressed: () => openDrawer(),
+                                    isRound: true,
+                                    noStyling: true,
+                                    tooltip: 'Manage Tables',
+                                    child: AppIcon(Icons.apps_rounded, faded: true),
+                                  ),
+                                  // selected table name
+                                  Flexible(
+                                    child: AppButton(
+                                      onPressed: () => isATableSelected ? showTableOverviewBottomSheet() : openDrawer(),
+                                      noStyling: true,
+                                      borderRadius: borderRadiusCrazy,
+                                      tooltip: 'About $name',
+                                      child: AppText(
+                                        size: extra,
+                                        text: name,
+                                        textAlign: TextAlign.start,
+                                        overflow: TextOverflow.ellipsis,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
                                   //
                                 ],
                               ),
-                              //
-                            ],
-                          ),
-                          //
-                          NoteOptions(),
-                          //
-                        ],
+                            ),
+                            //
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                //
+                                CloudSyncIndicator(),
+                                //
+                                Search(),
+                                //
+                                LayoutButton(),
+                                //
+                                QuickThemeChanger(),
+                                //
+                                UserDp(isTiny: true),
+                                //
+                              ],
+                            ),
+                            //
+                          ],
+                        ),
                       ),
+                    //
+                    NoteOptions(),
+                    //
+                  ],
+                ),
               ),
             );
           });
