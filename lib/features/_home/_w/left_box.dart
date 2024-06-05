@@ -11,8 +11,8 @@ import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/sfcalendar.dart';
 import '../../../_widgets/others/text.dart';
 import '../../labels/label_manager.dart';
-import '../_w/navbar_vertical.dart';
 import 'creator.dart';
+import 'navbar_vertical.dart';
 
 class WebLeftBox extends StatelessWidget {
   const WebLeftBox({super.key});

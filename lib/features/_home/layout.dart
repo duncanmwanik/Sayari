@@ -10,8 +10,8 @@ import '../../_providers/common/views.dart';
 import '../_sessions/info_header.dart';
 import '_helpers/change_view.dart';
 import '_w/appbar.dart';
+import '_w/left_box.dart';
 import '_w/navbar_horizontal.dart';
-import '_w_web/left_box.dart';
 
 class Applayout extends StatelessWidget {
   const Applayout({super.key});

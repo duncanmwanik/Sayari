@@ -24,6 +24,8 @@ class NoteTask extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           //
+          tph(),
+          //
           Flexible(
             child: ScrollConfiguration(
               behavior: AppScrollBehavior().copyWith(scrollbars: false),

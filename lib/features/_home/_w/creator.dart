@@ -9,9 +9,9 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
+import '../../_notes/_helpers/helpers.dart';
 import '../../_sessions/_helpers/helpers.dart';
 import '../../_tables/_helpers/checks_table.dart';
-import '../../notes/_helpers/helpers.dart';
 
 class WebCreator extends StatelessWidget {
   const WebCreator({super.key, this.isCollapsed = false});

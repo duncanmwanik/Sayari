@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../../__styling/breakpoints.dart';
 import '../../../__styling/helpers.dart';
+import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/common/selection.dart';
@@ -13,15 +15,16 @@ import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/items/item_selection.dart';
 import '../../../_widgets/layout/layout_button.dart';
 import '../../../_widgets/others/icons.dart';
+import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/other_widgets.dart';
 import '../../../_widgets/others/others/sync_indicator.dart';
 import '../../../_widgets/others/search.dart';
 import '../../../_widgets/others/text.dart';
 import '../../../_widgets/others/theme.dart';
+import '../../_notes/_w/note_options.dart';
 import '../../_tables/_helpers/common.dart';
 import '../../_tables/table_overview/overview_sheet.dart';
 import '../../files/user_dp.dart';
-import '../../notes/_w/note_options.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -40,8 +43,8 @@ class CustomAppBar extends StatelessWidget {
             bool isItemSelection = selection.isSelection;
 
             return SliverAppBar(
-              expandedHeight: state.views.isNotes() ? 75 : 45,
-              toolbarHeight: state.views.isNotes() ? 75 : 45,
+              expandedHeight: state.views.isNotes() ? (isNotPhone() ? 80 : 75) : 45,
+              toolbarHeight: state.views.isNotes() ? (isNotPhone() ? 80 : 75) : 45,
               floating: true,
               leading: NoWidget(),
               leadingWidth: 0,
@@ -116,6 +119,9 @@ class CustomAppBar extends StatelessWidget {
                           ],
                         ),
                       ),
+                    //
+                    if (isNotPhone()) AppDivider(height: 0),
+                    if (isNotPhone()) ph(5),
                     //
                     NoteOptions(),
                     //

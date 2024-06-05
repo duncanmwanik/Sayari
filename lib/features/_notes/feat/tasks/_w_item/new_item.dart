@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../__styling/spacing.dart';
@@ -67,8 +66,6 @@ class _NewItemInputState extends State<NewItemInput> {
                   ),
                 ),
               ),
-            //
-            tph(),
             //
             // New Item
             //
@@ -163,7 +160,7 @@ class _NewItemInputState extends State<NewItemInput> {
                       ],
                     ),
                   //
-                  if (kIsWeb) sph(),
+                  if (showSaveButton) tph(),
                   //
                 ],
               ),

@@ -10,8 +10,8 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/divider.dart';
-import '../_w_web/toggle_left_box.dart';
 import 'nav_item.dart';
+import 'toggle_left_box.dart';
 
 class VeticalNavigationBox extends StatelessWidget {
   const VeticalNavigationBox({super.key, required this.isCollapsed});

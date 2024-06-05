@@ -6,6 +6,7 @@ import '../../../../../_models/item.dart';
 import '../../../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
+import '../../../../share/_w/preview.dart';
 
 class BookingOverview extends StatelessWidget {
   const BookingOverview({super.key, required this.item});
@@ -20,7 +21,7 @@ class BookingOverview extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
-        //
+        // no of bookings
         AppButton(
           borderRadius: borderRadiusTiny,
           smallLeftPadding: true,
@@ -41,13 +42,20 @@ class BookingOverview extends StatelessWidget {
         ),
         //
         sph(),
-        //
-        AppText(
-          text: 'Active: ${isActive ? 'Yes' : 'No'}',
-          size: small,
-          faded: true,
-          bgColor: item.color(),
+        // active status
+        AppButton(
+          noStyling: true,
+          child: AppText(
+            text: 'Active: ${isActive ? 'Yes' : 'No'}',
+            size: small,
+            faded: true,
+            bgColor: item.color(),
+          ),
         ),
+        //
+        mph(),
+        //
+        PreviewNote(path: '/session/${item.id}'),
         //
       ],
     );

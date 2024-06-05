@@ -56,6 +56,8 @@ class Note extends StatelessWidget {
                 onLongPress: isSelected ? null : () => onLongPressNote(item),
                 borderRadius: BorderRadius.circular(borderRadiusSmall),
                 hoverColor: styler.appColor(isImageTheme() ? 0.5 : (styler.isDark ? 0.1 : 0.3)),
+                focusColor: transparent,
+                // highlightColor: transparent,
                 child: Container(
                   padding: itemPaddingLarge(bottom: !kIsWeb || !isNotPhone()),
                   constraints: BoxConstraints(minHeight: 70),
@@ -94,7 +96,7 @@ class Note extends StatelessWidget {
                             ),
                           ),
                           //
-                          if (kIsWeb && isNotPhone()) mph(),
+                          if (kIsWeb && isNotPhone()) tph(),
                           if (kIsWeb && isNotPhone()) HoverActions(item: item),
                           //
                         ],

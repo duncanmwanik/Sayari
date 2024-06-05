@@ -6,8 +6,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../__styling/spacing.dart';
 import '../../_models/item.dart';
 import '../../_providers/providers.dart';
+import '../../features/_notes/note.dart';
 import '../../features/_tables/_helpers/common.dart';
-import '../../features/notes/note.dart';
 import '../others/others/snap_scroll_physics.dart';
 import 'orderables/background.dart';
 

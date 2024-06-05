@@ -6,8 +6,8 @@ import '../../__styling/spacing.dart';
 import '../../_models/item.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
+import '../../features/_notes/note.dart';
 import '../../features/_tables/_helpers/common.dart';
-import '../../features/notes/note.dart';
 import '../others/others/other_widgets.dart';
 import 'masonry/rendering/sliver_simple_grid_delegate.dart';
 import 'masonry/widgets/masonry_grid_view.dart';
@@ -22,15 +22,13 @@ class GridLayout extends StatelessWidget {
     bool isGrid = state.views.isGrid();
     Box box = Hive.box('${liveTable()}_$type');
 
-    return LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) {
+    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       double width = constraints.maxWidth;
 
       return SizedBox(
         width: double.maxFinite, // allows scroll outside grid
         child: Padding(
-          padding: EdgeInsets.only(
-              top: 5, left: 10, right: 10, bottom: largeHeightPlaceHolder()),
+          padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: largeHeightPlaceHolder()),
           child: SizedBox(
             width: !isGrid && isNotPhone() ? 500 : null,
             child: MasonryGridView.builder(
@@ -46,8 +44,7 @@ class GridLayout extends StatelessWidget {
               itemCount: state.data.chosen.length,
               itemBuilder: (ctx, index) {
                 String itemId = state.data.chosen[index];
-                Map itemData =
-                    box.get(state.data.chosen[index], defaultValue: {});
+                Map itemData = box.get(state.data.chosen[index], defaultValue: {});
                 Item item = Item(type: type, id: itemId, data: itemData);
 
                 if (type == feature.notes.t) {

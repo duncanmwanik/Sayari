@@ -172,7 +172,7 @@ class _BookingState extends State<BookingsList> {
                 );
               }),
             )
-          : Center(child: AppText(text: 'No bookings yet...', size: small, faded: true));
+          : AppText(text: 'No bookings yet...', size: small, faded: true);
     });
   }
 }

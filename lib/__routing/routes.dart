@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../_variables/navigation.dart';
+import '../features/_home/home.dart';
 import '../features/auth/_helpers/user_details_helper.dart';
 import '../features/auth/auth_screen.dart';
 import '../features/error/error_screen.dart';
-import '../features/home/home.dart';
 import '../features/share/shared_screen.dart';
 
 final GoRouter router = GoRouter(

@@ -7,8 +7,8 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/misc.dart';
 import '../../../_providers/providers.dart';
 import '../../../_widgets/others/text.dart';
+import '../../_notes/_w/quill_configs/editor.dart';
 import '../../files/user_dp.dart';
-import '../../notes/_w/quill_configs/editor.dart';
 import 'actions.dart';
 
 class SharedBody extends StatelessWidget {

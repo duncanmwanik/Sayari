@@ -10,7 +10,7 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/abcs/menu/menu_item.dart';
 import '../../../_widgets/others/text.dart';
-import '../../home/_helpers/change_view.dart';
+import '../../_home/_helpers/change_view.dart';
 
 class NoteOptions extends StatelessWidget {
   const NoteOptions({super.key});

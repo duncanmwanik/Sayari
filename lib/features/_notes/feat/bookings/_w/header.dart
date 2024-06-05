@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../__styling/spacing.dart';
-import '../../../../../__styling/variables.dart';
 import '../../../../../_providers/common/input.dart';
 import '../../../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../../../_widgets/others/checkbox.dart';
@@ -21,28 +20,26 @@ class _BookingState extends State<BookingHeader> {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       bool isActive = input.data['ba'] == '1';
-      bool isExpanded = input.data['bxs'] == '1';
+      bool isExpanded = input.data['bxs'] == '1' || input.data['bxs'] == null;
 
       return Row(
         children: [
-          //
+          // active button
           AppButton(
             onPressed: () => input.update(action: 'add', key: 'ba', value: isActive ? '0' : '1'),
-            noStyling: true,
-            borderRadius: borderRadiusSmall,
-            smallRightPadding: true,
+            // smallRightPadding: true,
             child: Row(
               children: [AppText(text: 'Active'), spw(), AppCheckBox(isChecked: isActive, smallPadding: true)],
             ),
           ),
           //
           spw(),
-          //
+          // hide/show dates and times
           AppButton(
             onPressed: () => input.update(action: 'add', key: 'bxs', value: isExpanded ? '0' : '1'),
             noStyling: true,
             isSquare: true,
-            child: AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.settings, size: 18, extraFaded: true),
+            child: AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.settings, size: 18, faded: true),
           ),
           //
         ],

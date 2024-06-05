@@ -3,8 +3,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../__styling/spacing.dart';
 import '../../_variables/features.dart';
+import '../../features/_notes/feat/finance/_w/new_type.dart';
 import '../../features/_tables/_helpers/common.dart';
-import '../../features/notes/feat/finance/_w/new_type.dart';
 import '../abcs/buttons/buttons.dart';
 import '../abcs/menu/menu_item.dart';
 import '../others/svg.dart';

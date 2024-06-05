@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../__styling/spacing.dart';
 import '../../../../_models/item.dart';
 import '../../../../_widgets/layout/orderables/background.dart';
 import '_helpers/helper.dart';
@@ -24,7 +22,7 @@ class ListOfSubItems extends StatelessWidget {
 
     return ReorderableListView.builder(
       shrinkWrap: true,
-      padding: itemPadding(top: kIsWeb),
+      padding: EdgeInsets.zero,
       physics: NeverScrollableScrollPhysics(),
       buildDefaultDragHandles: false,
       proxyDecorator: (child, index, animation) => proxyDecorator(child, index, animation),

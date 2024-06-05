@@ -31,6 +31,8 @@ Future<void> showNoteBottomSheet({String? id}) async {
         //
         AppCloseButton(),
         //
+        tpw(),
+        //
         Expanded(
           child: DataInput(
             inputKey: 't',
@@ -59,7 +61,6 @@ Future<void> showNoteBottomSheet({String? id}) async {
           children: [
             //
             Consumer<InputProvider>(builder: (context, input, child) => ImageOverview(isInput: true)),
-            //
             Share(),
             Finance(),
             Habit(),

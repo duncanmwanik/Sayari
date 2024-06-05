@@ -12,7 +12,7 @@ import '../../_providers/common/views.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
-import '../home/_w/slivers.dart';
+import '../_home/_w/slivers.dart';
 import '_helpers/swipe.dart';
 import '_w/view_chooser.dart';
 

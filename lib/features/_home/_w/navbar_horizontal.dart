@@ -8,7 +8,7 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../_tables/_helpers/checks_table.dart';
 import '../../chat/input_bar.dart';
-import '../_w/nav_item.dart';
+import 'nav_item.dart';
 
 class HorizontalNavigationBox extends StatelessWidget {
   const HorizontalNavigationBox({super.key});

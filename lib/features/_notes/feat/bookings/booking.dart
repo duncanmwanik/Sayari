@@ -46,7 +46,7 @@ class _BookingState extends State<Booking> {
               if (isActive) msph(),
               if (isActive) CopyLink(),
               //
-              msph(),
+              mph(),
               BookingsList(),
               //
             ],
