@@ -29,15 +29,14 @@ class UserDp extends StatelessWidget {
     double radius = size ?? (isTiny ? 14 : 60);
 
     return AppButton(
-      tooltip: isTiny ? 'Account & Settings' : null,
-      // onPressed: onPressed ?? () => showSettingsBottomSheet(),
-      onPressed: () async => await chooseUserDp(),
+      tooltip: viewOnly ? null : (isTiny ? 'Account & Settings' : null),
+      onPressed: viewOnly ? () {} : (isTiny ? () => showSettingsBottomSheet() : null),
       isRound: true,
       padding: EdgeInsets.all(isTiny ? 0 : 3),
       child: CircleAvatar(
         backgroundColor: transparent,
         radius: radius,
-        child: AppLoader(color: styler.appColor(2), size: isTiny ? 18 : 40, stroke: isTiny ? 2 : 4),
+        child: Image.asset('assets/images/love.png'),
       ),
     );
 

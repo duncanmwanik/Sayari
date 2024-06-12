@@ -2,13 +2,13 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/navigation.dart';
-import '../../../_helpers/items/validation.dart';
 import '../../../_helpers/user/set_user_data.dart';
 import '../../../_helpers/user/user_actions.dart';
 import '../../../_providers/providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
+import '../../_notes/_helpers/validation.dart';
 import 'select_table.dart';
 
 Future<void> createNewTable({bool isNewUser = false, bool isDefault = false}) async {

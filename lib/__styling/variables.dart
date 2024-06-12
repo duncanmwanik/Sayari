@@ -9,14 +9,15 @@ Map<String, String> themeImages = {
   'dark': 'dark',
   'black': 'dark',
   'mars': 'dark',
-  'jupiter': 'dark',
-  'dune': 'dark',
-  'night': 'dark',
+  // 'jupiter': 'dark',
+  // 'dune': 'dark',
+  // 'night': 'dark',
   'range': 'dark',
   'mountain': 'dark',
 };
 
 // sizes
+const double webMaxWidthPlus = 868.0;
 const double webMaxWidth = 768.0;
 const double webMinWidth = 250.0;
 const double webMaxTableManagerWidth = 300.0;
@@ -33,6 +34,7 @@ const double webMaxToastWidth = 500.0;
 const double pomodoroIcon = 50.0;
 const double pomodoro = 30.0;
 const double onBoarding = 24.0;
+const double blogTitle = 26.0;
 const double title = 22.0;
 const double large = 20.0;
 const double extra = 18.0;

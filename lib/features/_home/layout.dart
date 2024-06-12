@@ -58,7 +58,7 @@ class Applayout extends StatelessWidget {
                           }),
                         ),
                         //
-                        if (!showVertNav()) HorizontalNavigationBox(),
+                        HorizontalNavigationBox(),
                         //
                       ],
                     ),

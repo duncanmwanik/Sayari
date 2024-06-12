@@ -1,11 +1,15 @@
+// ignore_for_file: unused_local_variable
+
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/user/set_user_data.dart';
 import '../../_providers/common/theme.dart';
@@ -30,34 +34,38 @@ class ChatView extends StatelessWidget {
             if (box.keys.toList().isNotEmpty) {
               List chatIds = box.keys.toList();
 
-              return SizedBox(
-                width: webMaxWidth,
-                height: 100.h,
-                child: SingleChildScrollView(
-                  reverse: true,
-                  padding: EdgeInsets.only(
-                    bottom: 55,
-                    left: kIsWeb ? 15 : 0,
-                    right: kIsWeb ? 15 : 0,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(chatIds.length, (index) {
-                      String messageId = chatIds[index];
-                      Map messageData = box.get(messageId);
-                      String userName = messageData['u'] ?? 'User';
+              return SingleChildScrollView(
+                reverse: true,
+                padding: EdgeInsets.only(
+                  top: 30,
+                  bottom: 55,
+                  left: kIsWeb ? 15 : 0,
+                  right: kIsWeb ? 15 : 0,
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(chatIds.length, (index) {
+                    String messageId = chatIds[index];
+                    Map messageData = box.get(messageId);
+                    String userName = messageData['u'] ?? 'User';
+                    // bool isSent = userName == currentUserName;
+                    bool isSent = Random().nextInt(3) == 1;
 
-                      return (userName == currentUserName)
-                          ? SentMessageBubble(
-                              messageId: messageId,
-                              messageData: messageData,
-                            )
-                          : IncomingMessageBubble(
-                              messageId: messageId,
-                              messageData: messageData,
-                            );
-                    }),
-                  ),
+                    return Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        //
+                        Align(
+                          alignment: isSent ? Alignment.centerRight : Alignment.centerLeft,
+                          child: isSent
+                              ? SentMessageBubble(messageId: messageId, messageData: messageData)
+                              : IncomingMessageBubble(messageId: messageId, messageData: messageData),
+                        ),
+                        tph(),
+                        //
+                      ],
+                    );
+                  }),
                 ),
               );
             } else {

@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
-import '../../../../../_helpers/_common/misc.dart';
 import '../../../../../_helpers/date_time/date_info.dart';
 import '../../../../../_helpers/date_time/misc.dart';
 import '../../../../../_providers/common/input.dart';
@@ -111,15 +110,17 @@ class _BookingState extends State<BookingsList> {
                                   ),
                                 ],
                                 noStyling: true,
+                                isSquare: true,
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    AppIcon(
-                                      isDone ? Icons.check_circle : Icons.info_rounded,
-                                      size: 18,
-                                      color: isDone ? Colors.green : (isMissed ? null : transparent),
-                                    ),
-                                    tpw(),
+                                    if (isDone)
+                                      AppIcon(
+                                        isDone ? Icons.check_circle : Icons.info_rounded,
+                                        size: 18,
+                                        color: isDone ? Colors.green : (isMissed ? null : transparent),
+                                      ),
+                                    if (isDone) tpw(),
                                     AppIcon(moreIcon, size: 18, faded: true),
                                   ],
                                 ),
@@ -128,25 +129,19 @@ class _BookingState extends State<BookingsList> {
                             ],
                           ),
                           //
-                          AppButton(
-                            onPressed: () => copyToClipboard(email, desc: 'email'),
-                            noStyling: true,
-                            borderRadius: borderRadiusSmall,
-                            smallLeftPadding: true,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                AppIcon(Icons.email_rounded, size: 16, faded: true),
-                                spw(),
-                                Expanded(child: AppText(text: email)),
-                                spw(),
-                                Padding(
-                                    padding: EdgeInsets.only(top: 4),
-                                    child: AppIcon(Icons.copy_rounded, size: 18, faded: true)),
-                              ],
-                            ),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              AppIcon(Icons.email_rounded, size: 16, faded: true),
+                              spw(),
+                              Expanded(child: AppText(text: email)),
+                              spw(),
+                              Padding(
+                                  padding: EdgeInsets.only(top: 4),
+                                  child: AppIcon(Icons.copy_rounded, size: 18, faded: true)),
+                            ],
                           ),
-                          // tph(),
+                          tph(),
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [

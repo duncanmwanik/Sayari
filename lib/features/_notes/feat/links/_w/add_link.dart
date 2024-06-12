@@ -14,7 +14,7 @@ class AddLink extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton(
       onPressed: () => addLink(),
-      borderRadius: borderRadiusSmall,
+      borderRadius: borderRadiusCrazy,
       smallLeftPadding: true,
       child: Row(
         mainAxisSize: MainAxisSize.min,

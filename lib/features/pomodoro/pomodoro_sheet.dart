@@ -18,11 +18,11 @@ Future<void> showPomodoroBottomSheet() async {
             //
             PomodoroPeriod(type: 'focus'),
             //
-            msph(),
+            sph(),
             //
             PomodoroPeriod(type: 'shortBreak'),
             //
-            msph(),
+            sph(),
             //
             PomodoroPeriod(type: 'longBreak'),
             //

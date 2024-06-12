@@ -1,8 +1,8 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../_services/firebase/sync_to_cloud.dart';
-import '../../features/_tables/_helpers/common.dart';
-import '../_common/global.dart';
+import '../../../_helpers/_common/global.dart';
+import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../_tables/_helpers/common.dart';
 
 Future<void> editItemExtras({
   String? parentId,
@@ -43,7 +43,15 @@ Future<void> editItemExtras({
 
     box.put(itemId, itemData);
 
-    await syncToCloud(db: 'tables', parentId: tableId, type: type, action: 'e', itemId: itemId, subId: subId, keys: key, data: {key: value});
+    await syncToCloud(
+        db: 'tables',
+        parentId: tableId,
+        type: type,
+        action: 'e',
+        itemId: itemId,
+        subId: subId,
+        keys: key,
+        data: {key: value});
     //
   } catch (e) {
     errorPrint('quick-edit-$type-$key-$value', e);

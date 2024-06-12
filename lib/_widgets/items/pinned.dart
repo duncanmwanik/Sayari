@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/variables.dart';
-import '../../_helpers/items/quick_edit.dart';
 import '../../_models/item.dart';
 import '../../_providers/common/misc.dart';
+import '../../features/_notes/_helpers/quick_edit.dart';
 import '../abcs/buttons/buttons.dart';
 import '../others/icons.dart';
 

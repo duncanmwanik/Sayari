@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
+import '../../_widgets/others/text.dart';
 import '_w/device_panel.dart';
 import '_w/hub_views.dart';
 import '_w/tools.dart';
@@ -21,6 +22,15 @@ class HubView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            //
+            mph(),
+            //
+            AppText(
+              text: 'Sayari is a whole universe. We plan to make smart hardware as well. \nThis includes '
+                  'an RGB floor lamp and bubble wall. \nLook them up to get a glimpse.',
+            ),
+            //
+            mph(),
             //
             DevicePanel(),
             //

@@ -22,6 +22,7 @@ class TTSButton extends StatelessWidget {
           tts.isPlaying ? ttsService.stopTTS() : ttsService.startTTS();
         },
         noStyling: true,
+        isSquare: true,
         tooltip: 'Speak',
         child: AppIcon(tts.isPlaying ? Icons.stop_rounded : Icons.play_arrow_rounded, faded: true, size: 18),
       );

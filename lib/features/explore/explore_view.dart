@@ -39,8 +39,7 @@ class ExploreView extends StatelessWidget {
               icon: Icons.keyboard_voice_rounded,
               iconColor: Colors.blueAccent,
               onPressed: () async {
-                // showToast(1, 'Learn how to program.');
-                showToast(1, 'Your profile picture is ready.');
+                showToast(1, 'Soon to be live.');
               },
             ),
             //
@@ -57,7 +56,9 @@ class ExploreView extends StatelessWidget {
               subtitle: 'Time your tasks.',
               icon: Icons.timer_rounded,
               iconColor: Colors.green,
-              onPressed: () => showPomodoroBottomSheet(),
+              onPressed: () async {
+                showToast(1, 'To be done.');
+              },
             ),
             //
             ExploreBox(

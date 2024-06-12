@@ -13,6 +13,7 @@ Future<void> getAllTableData(String tableId, {bool? isFirstTime}) async {
   await getTableInfo(tableId);
   await getTableNameFromCloud(tableId);
   await getTableAdminData(tableId);
+  await getTableData(tableId, feature.chat.t);
   await getTableAllSessions(tableId);
   await getTableAllNotes(tableId);
   await getTableAllNotes(tableId);
@@ -138,6 +139,19 @@ Future<void> getTableAllFlags(String tableId) async {
     });
   } catch (e) {
     errorPrint('get-table-flags-from-firebase', e);
+  }
+}
+
+Future<void> getTableData(String tableId, String type) async {
+  try {
+    await cloudService.getData(db: 'tables', '$tableId/$type').then((snapshot) async {
+      Map data = snapshot.value != null ? snapshot.value as Map : {};
+      await Hive.openBox('${tableId}_$type').then((box) {
+        box.putAll(data);
+      });
+    });
+  } catch (e) {
+    errorPrint('get-table-$type-from-firebase', e);
   }
 }
 

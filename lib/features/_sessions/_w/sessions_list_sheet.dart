@@ -41,6 +41,7 @@ Future<void> showSessionListBottomSheet(String dateToday, Map todaySessionsMap) 
             },
             tooltip: 'Create Session Today',
             noStyling: true,
+            isSquare: true,
             iconSize: 22,
             leading: Icons.add_rounded,
           ),

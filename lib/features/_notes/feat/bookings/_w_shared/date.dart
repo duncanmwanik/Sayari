@@ -16,8 +16,7 @@ class BookingDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<DateTimeProvider>(
-      builder: (context, dateTime, child) => Column(
-        mainAxisSize: MainAxisSize.min,
+      builder: (context, dateTime, child) => Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //
@@ -34,12 +33,11 @@ class BookingDate extends StatelessWidget {
                 AppText(text: 'Date', fontWeight: FontWeight.bold, faded: true),
                 tpw(),
                 AppText(text: ':', fontWeight: FontWeight.w900, faded: true),
-                mpw(),
               ],
             ),
           ),
           //
-          sph(),
+          spw(),
           //
           if (availableDates.isNotEmpty)
             Flexible(
@@ -62,7 +60,6 @@ class BookingDate extends StatelessWidget {
               ),
             ),
           //
-          //
           if (availableDates.isEmpty)
             AppButton(
               onPressed: () {},
@@ -74,7 +71,7 @@ class BookingDate extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   AppText(
-                    text: dateTime.date.isNotEmpty ? getDateFull(dateTime.date) : 'Calendar',
+                    text: dateTime.date.isNotEmpty ? getDateFull(dateTime.date) : 'Choose a date from the calendar',
                     color: dateTime.date.isNotEmpty ? white : null,
                   ),
                   if (dateTime.date.isEmpty) spw(),

@@ -1,8 +1,8 @@
 import 'package:collection/collection.dart';
 
-import '../../_providers/providers.dart';
-import '../../_services/hive/local_storage_service.dart';
-import '../_common/global.dart';
+import '../../../_helpers/_common/global.dart';
+import '../../../_providers/providers.dart';
+import '../../../_services/hive/local_storage_service.dart';
 
 Map compareData({required String type}) {
   Map editedData = state.input.data;

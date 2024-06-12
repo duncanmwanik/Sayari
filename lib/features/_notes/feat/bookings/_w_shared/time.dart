@@ -17,9 +17,7 @@ class BookingTime extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<DateTimeProvider>(
-      builder: (context, dateTime, child) => Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      builder: (context, dateTime, child) => Row(
         children: [
           //
           AppButton(
@@ -35,12 +33,11 @@ class BookingTime extends StatelessWidget {
                 AppText(text: 'Time', fontWeight: FontWeight.bold, faded: true),
                 tpw(),
                 AppText(text: ':', fontWeight: FontWeight.w900, faded: true),
-                mpw(),
               ],
             ),
           ),
           //
-          sph(),
+          spw(),
           //
           Wrap(
             spacing: smallWidth(),

@@ -7,6 +7,7 @@ import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
 import 'dialog_add_entry.dart';
 import 'entry_filter.dart';
+import 'toggler.dart';
 
 class AddEntry extends StatelessWidget {
   const AddEntry({super.key});
@@ -64,6 +65,8 @@ class AddEntry extends StatelessWidget {
                   ],
                 ),
               ),
+              //
+              FinanceToggler(),
               //
             ],
           ),

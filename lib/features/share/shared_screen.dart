@@ -8,12 +8,10 @@ import '../../__styling/variables.dart';
 import '../../_providers/common/theme.dart';
 import '../../_services/firebase/firebase_database.dart';
 import '../../_variables/features.dart';
-import '../../_widgets/others/others/divider.dart';
 import '../_notes/feat/bookings/_w_shared/booking_body.dart';
 import '../_notes/feat/forms/_w_shared/quest_body.dart';
 import '../_notes/feat/links/_w_shared/links_body.dart';
-import '_w/body.dart';
-import '_w/header.dart';
+import '_w/blog_body.dart';
 import '_w/shared_info.dart';
 
 class ShareScreen extends StatefulWidget {
@@ -82,53 +80,35 @@ class _ShareScreenState extends State<ShareScreen> {
                             } else if (snapshot.hasData) {
                               Map data = snapshot.data!.value != null ? snapshot.data!.value as Map : {};
 
-                              print(data);
-
                               return data.isNotEmpty
                                   ? Align(
                                       alignment: Alignment.topCenter,
                                       child: Padding(
-                                        padding: itemPaddingSmall(left: true, right: true),
-                                        child: Column(
-                                          children: [
-                                            //
-                                            if (feature.isLink(widget.type)) ph(30),
-                                            //
-                                            if (feature.isLink(widget.type)) SharedHeader(userId: userId),
-                                            //
-                                            if (feature.isLink(widget.type)) sph(),
-                                            //
-                                            if (feature.isLink(widget.type)) AppDivider(height: 0, thickness: 0.05),
-                                            //
-                                            Expanded(
-                                              child: widget.type == 'share'
-                                                  ? SharedBody(userId: userId, userName: userName, data: data)
-                                                  : feature.isBooking(widget.type)
-                                                      ? BookingBody(
-                                                          tableId: tableId,
-                                                          itemId: widget.id,
-                                                          userId: userId,
-                                                          userName: userName,
-                                                          data: data)
-                                                      : feature.isLink(widget.type)
-                                                          ? LinksBody(
-                                                              tableId: tableId,
-                                                              itemId: widget.id,
-                                                              userId: userId,
-                                                              userName: userName,
-                                                              data: data)
-                                                          : feature.isForm(widget.type)
-                                                              ? FormBody(
-                                                                  tableId: tableId,
-                                                                  itemId: widget.id,
-                                                                  userId: userId,
-                                                                  userName: userName,
-                                                                  data: data)
-                                                              : SharedItemInfo(),
-                                            ),
-                                            //
-                                          ],
-                                        ),
+                                        padding: itemPaddingSmall(left: true, right: true, top: true),
+                                        child: feature.isShare(widget.type)
+                                            ? BlogBody(userId: userId, userName: userName, data: data)
+                                            : feature.isBooking(widget.type)
+                                                ? BookingBody(
+                                                    tableId: tableId,
+                                                    itemId: widget.id,
+                                                    userId: userId,
+                                                    userName: userName,
+                                                    data: data)
+                                                : feature.isLink(widget.type)
+                                                    ? LinksBody(
+                                                        tableId: tableId,
+                                                        itemId: widget.id,
+                                                        userId: userId,
+                                                        userName: userName,
+                                                        data: data)
+                                                    : feature.isForm(widget.type)
+                                                        ? FormBody(
+                                                            tableId: tableId,
+                                                            itemId: widget.id,
+                                                            userId: userId,
+                                                            userName: userName,
+                                                            data: data)
+                                                        : SharedItemInfo(),
                                       ),
                                     )
                                   : SharedItemInfo();

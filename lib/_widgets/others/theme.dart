@@ -12,13 +12,14 @@ import 'others/divider.dart';
 import 'text.dart';
 
 class QuickThemeChanger extends StatelessWidget {
-  const QuickThemeChanger({super.key, this.showText = false});
+  const QuickThemeChanger({super.key, this.showText = false, this.rightPadding = true});
   final bool showText;
+  final bool rightPadding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPadding(right: true),
+      padding: itemPadding(right: rightPadding),
       child: AppButton(
         menuWidth: 300,
         menuItems: themeMenu(),
@@ -54,8 +55,7 @@ List<Widget> themeMenu() {
         return AppButton(
           onPressed: () {
             popWhatsOnTop(); // close theme menu
-            state.theme
-                .setThemeImage(themeImage, themeType, state.theme.themeAccent);
+            state.theme.setThemeImage(themeImage, themeType, state.theme.themeAccent);
           },
           noStyling: true,
           padding: EdgeInsets.zero,
@@ -63,19 +63,13 @@ List<Widget> themeMenu() {
             padding: EdgeInsets.symmetric(horizontal: 15),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(borderRadiusSmall - 2),
-              image: DecorationImage(
-                  image: AssetImage(getThemeImage(themeImage)),
-                  fit: BoxFit.cover),
-              border: Border.all(
-                  color: themeImage == state.theme.themeImage
-                      ? styler.borderColor()
-                      : transparent),
+              image: DecorationImage(image: AssetImage(getThemeImage(themeImage)), fit: BoxFit.cover),
+              border: Border.all(color: themeImage == state.theme.themeImage ? styler.borderColor() : transparent),
             ),
             child: Center(
               child: AppText(
                 size: small,
-                text:
-                    '${themeImage.substring(0, 1).toUpperCase()}${themeImage.substring(1)}',
+                text: '${themeImage.substring(0, 1).toUpperCase()}${themeImage.substring(1)}',
                 color: color,
                 fontWeight: FontWeight.w700,
               ),
@@ -99,8 +93,7 @@ List<Widget> themeMenu() {
           colorKey: colorKey,
           selectedColor: state.theme.themeAccent,
           onSelect: (newColor) {
-            state.theme.setThemeImage(
-                state.theme.themeImage, state.theme.themeType, newColor);
+            state.theme.setThemeImage(state.theme.themeImage, state.theme.themeType, newColor);
           },
         );
       }),

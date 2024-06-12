@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
-import '../../../_helpers/items/create_item.dart';
-import '../../../_helpers/items/edit_item.dart';
 import '../../../_providers/providers.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../../_widgets/others/forms/input.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
+import '../../_notes/_helpers/create_item.dart';
+import '../../_notes/_helpers/edit_item.dart';
 import '_w/about.dart';
 import '_w/color.dart';
 import '_w/date.dart';
@@ -27,7 +27,6 @@ Future<void> showSessionBottomSheet() async {
   await showAppBottomSheet(
     //
     header: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //
         AppCloseButton(faded: true),

@@ -14,10 +14,14 @@ class InputProvider with ChangeNotifier {
   Map data = {};
   Map previousData = {};
 
-  bool hasSpecialItem() => data.keys.any((key) => ['ba', 'wa', 'qa', 'ha', 'sa'].contains(key));
   bool isFinance() => data[feature.finances.lt] != null;
   bool isTask() => data[feature.tasks.lt] != null;
   bool isHabit() => data[feature.habits.lt] != null;
+  bool isLink() => data[feature.links.lt] != null;
+  bool isBooking() => data[feature.bookings.lt] != null;
+  bool isForm() => data[feature.forms.lt] != null;
+  bool isPortfolio() => data[feature.portfolios.lt] != null;
+  bool isShared() => isLink() || isBooking() || isForm() || isPortfolio();
 
   void setInputData({
     bool isNw = true,

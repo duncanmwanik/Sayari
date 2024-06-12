@@ -41,11 +41,13 @@ class ItemHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 15, right: 5, top: 6),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //
           Expanded(
             child: Row(
               mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Flexible(
                     child: AppText(
@@ -58,11 +60,14 @@ class ItemHeader extends StatelessWidget {
                 if (item.isShared() && !item.isPublished())
                   AppIcon(Icons.share, size: 14, faded: true, bgColor: item.color()),
                 if (item.isPublished())
-                  AppButton(
-                    color: Colors.green,
-                    borderRadius: borderRadiusTiny,
-                    padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-                    child: AppText(text: 'Published', color: Colors.white, size: tiny),
+                  Padding(
+                    padding: itemPaddingSmall(top: true),
+                    child: AppButton(
+                      color: Colors.green,
+                      borderRadius: borderRadiusTiny,
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      child: AppText(text: 'Published', color: Colors.white, size: tiny),
+                    ),
                   ),
               ],
             ),

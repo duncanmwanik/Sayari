@@ -18,51 +18,46 @@ class IncomingMessageBubble extends StatelessWidget {
 
     return AppButton(
       menuItems: messageMenu(messageId, messageData),
-      noStyling: true,
-      borderRadius: 0,
       padding: EdgeInsets.zero,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Flexible(
-            child: Container(
-              constraints: BoxConstraints(maxWidth: maxChatWidth(), minWidth: 55),
-              margin: itemMargin(top: true, left: true),
-              padding: itemPadding(),
-              decoration: BoxDecoration(
-                color: styler.chatBubbleColor(),
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(borderRadiusSmall),
-                  bottomLeft: Radius.circular(borderRadiusSmall),
-                  bottomRight: Radius.circular(borderRadiusSmall),
-                ),
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // username
-                  AppText(size: small, text: userName, color: black, fontWeight: FontWeight.w700),
-                  //
-                  sph(),
-                  // message
-                  AppText(
-                    size: 15,
-                    text: message,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  //
-                  sph(),
-                  // message
-                  AppText(size: small, text: '6:10 PM', color: Colors.black, fontWeight: FontWeight.w500),
-                  //
-                ],
-              ),
+      child: Container(
+        padding: itemPaddingMedium(),
+        constraints: BoxConstraints(maxWidth: maxChatWidth(), minWidth: 100),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // username
+            AppText(size: small, text: userName, fontWeight: FontWeight.w700),
+            //
+            sph(),
+            // message
+            AppText(
+              size: 15,
+              text: message,
+              fontWeight: FontWeight.w500,
             ),
-          ),
-        ],
+            //
+            sph(),
+            // message
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                //
+                AppText(size: small, text: '6:10 PM', fontWeight: FontWeight.w500),
+                //
+                spw(),
+                AppButton(
+                  menuItems: messageMenu(messageId, messageData),
+                  noStyling: true,
+                  isRound: true,
+                  leading: moreIcon,
+                ),
+                //
+              ],
+            ),
+            //
+          ],
+        ),
       ),
     );
   }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/breakpoints.dart';
@@ -47,9 +46,7 @@ class VeticalNavigationBox extends StatelessWidget {
             Spacer(),
             //
             AppButton(
-              onPressed: () async {
-                context.push('/session/1714757892338');
-              },
+              onPressed: () {},
               noStyling: true,
               isSquare: true,
               tooltip: 'Speak',

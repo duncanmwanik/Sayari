@@ -20,24 +20,27 @@ class NoteOptions extends StatelessWidget {
     return Consumer<ViewsProvider>(builder: (context, views, child) {
       return Visibility(
         visible: views.isNotes(),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              //
-              Option(label: 'Notes', type: feature.notes.lt),
-              Option(label: 'Tasks', type: feature.tasks.lt),
-              Option(label: 'Finances', type: feature.finances.lt),
-              Option(label: 'Habits', type: feature.habits.lt),
-              Option(label: 'Links', type: feature.links.lt),
-              Option(label: 'Portfolio', type: feature.portfolios.lt),
-              Option(label: 'Forms', type: feature.forms.lt),
-              Option(label: 'Bookings', type: feature.bookings.lt),
-              OptionsToggler(),
-              lpw(),
-              //
-            ],
+        child: Padding(
+          padding: itemPadding(left: true, right: true),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                //
+                Option(label: 'Notes', type: feature.notes.lt),
+                Option(label: 'Tasks', type: feature.tasks.lt),
+                Option(label: 'Finances', type: feature.finances.lt),
+                Option(label: 'Habits', type: feature.habits.lt),
+                Option(label: 'Links', type: feature.links.lt),
+                Option(label: 'Portfolio', type: feature.portfolios.lt),
+                Option(label: 'Forms', type: feature.forms.lt),
+                Option(label: 'Bookings', type: feature.bookings.lt),
+                OptionsToggler(),
+                lpw(),
+                //
+              ],
+            ),
           ),
         ),
       );

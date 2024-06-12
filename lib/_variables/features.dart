@@ -13,6 +13,7 @@ class Features {
   final Feature portfolios = Feature(t: 'portfolio', lt: 'pa');
   final Feature forms = Feature(t: 'forms', lt: 'qa');
   final Feature bookings = Feature(t: 'bookings', lt: 'ba');
+  final Feature share = Feature(t: 'blog', lt: 'sh');
   final Feature chat = Feature(t: 'chat', lt: 'c');
   final Feature code = Feature(t: 'code', lt: 'd');
   final Feature labels = Feature(t: 'labels', lt: 'b');
@@ -30,6 +31,7 @@ class Features {
   bool isFinance(String type) => finances.t == type;
   bool isLink(String type) => links.t == type;
   bool isBooking(String type) => bookings.t == type;
+  bool isShare(String type) => share.t == type;
   bool isForm(String type) => forms.t == type;
   bool isTable(String type) => table.t == type;
   bool isHome(String type) => hub.t == type;

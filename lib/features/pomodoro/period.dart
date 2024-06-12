@@ -19,7 +19,11 @@ class PomodoroPeriod extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<PomodoroProvider>(builder: (context, pomo, child) {
-      Map typeRemainingTimes = {'focus': pomo.remainingTimeFocus, 'shortBreak': pomo.remainingTimeBreak, 'longBreak': pomo.remainingTimeLongBreak};
+      Map typeRemainingTimes = {
+        'focus': pomo.remainingTimeFocus,
+        'shortBreak': pomo.remainingTimeBreak,
+        'longBreak': pomo.remainingTimeLongBreak
+      };
 
       Duration timer = Duration(minutes: int.parse(pomo.pomodoroMap['${type}Time'] ?? '1'));
       bool isCurrentTimer = pomo.currentTimer == type;
@@ -35,7 +39,7 @@ class PomodoroPeriod extends StatelessWidget {
                       ? isCurrentTimer
                           ? 0.2
                           : 0.1
-                      : 0.8,
+                      : 0.6,
                 ),
             borderRadius: BorderRadius.circular(borderRadiusMediumSmall),
           ),
@@ -50,7 +54,9 @@ class PomodoroPeriod extends StatelessWidget {
 
                   return Container(
                     height: 150,
-                    width: isCurrentTimer ? width * ((passedTime == timer.inSeconds ? 1 : passedTime) / timer.inSeconds) : 0,
+                    width: isCurrentTimer
+                        ? width * ((passedTime == timer.inSeconds ? 1 : passedTime) / timer.inSeconds)
+                        : 0,
                     decoration: BoxDecoration(color: backgroundColors[pomo.pomodoroMap['${type}Color']]!.color),
                   );
                 }),
@@ -78,7 +84,9 @@ class PomodoroPeriod extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // title
-                                Flexible(child: AppText(size: extra, text: pomodoroTitles[type] ?? '-', fontWeight: FontWeight.w900)),
+                                Flexible(
+                                    child: AppText(
+                                        size: extra, text: pomodoroTitles[type] ?? '-', fontWeight: FontWeight.w900)),
                                 //
                                 sph(),
                                 //

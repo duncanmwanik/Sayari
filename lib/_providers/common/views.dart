@@ -31,7 +31,7 @@ class ViewsProvider with ChangeNotifier {
 
   //
 
-  int sessionsView = globalBox.get('sessionView', defaultValue: 0);
+  int sessionsView = globalBox.get('sessionView', defaultValue: 2);
 
   void setSessionsView(int index) {
     sessionsView = index;

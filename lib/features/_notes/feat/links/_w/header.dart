@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/misc.dart';
+import '../../../../../_providers/common/input.dart';
 import '../../../../../_providers/providers.dart';
 import '../../../../../_variables/strings.dart';
 import '../../../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../../../_widgets/others/checkbox.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../../files/_helpers/upload.dart';
@@ -102,6 +105,21 @@ class _HabitWeekState extends State<LinkUserName> {
               ],
             ),
           ),
+          //
+          tph(),
+          // active button
+          Consumer<InputProvider>(builder: (context, input, child) {
+            bool isActive = input.data['ac'] == '1';
+
+            return AppButton(
+              onPressed: () => input.update(action: 'add', key: 'ac', value: isActive ? '0' : '1'),
+              noStyling: true,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [AppText(text: 'Active'), spw(), AppCheckBox(isChecked: isActive, smallPadding: true)],
+              ),
+            );
+          }),
           //
           tph(),
           //

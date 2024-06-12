@@ -1,8 +1,6 @@
 import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_helpers/date_time/date_info.dart';
-import '../../../_helpers/items/create_item.dart';
-import '../../../_helpers/items/delete_item.dart';
 import '../../../_helpers/notifications/create_notification.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
@@ -10,6 +8,8 @@ import '../../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
 import '../../../_widgets/abcs/dialogs_sheets/dialog_select_date.dart';
 import '../../../_widgets/others/snackbar.dart';
 import '../../../_widgets/others/toast.dart';
+import '../../_notes/_helpers/create_item.dart';
+import '../../_notes/_helpers/delete_item.dart';
 import '../../files/_helpers/helper.dart';
 
 void copySessionToDates({

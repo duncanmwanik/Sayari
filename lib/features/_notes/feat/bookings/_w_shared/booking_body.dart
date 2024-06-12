@@ -27,7 +27,7 @@ class BookingBody extends StatelessWidget {
 
     return isActive
         ? SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: isPhone() ? 10 : 30),
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: isPhone() ? 10 : 10),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -50,6 +50,6 @@ class BookingBody extends StatelessWidget {
               ],
             ),
           )
-        : SharedItemInfo(label: 'The booking session is currently inactive.');
+        : SharedItemInfo(label: 'The booking session is not active.');
   }
 }

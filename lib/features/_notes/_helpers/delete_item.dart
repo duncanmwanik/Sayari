@@ -1,9 +1,9 @@
 import 'package:hive/hive.dart';
 
-import '../../_services/firebase/sync_to_cloud.dart';
-import '../../features/_tables/_helpers/common.dart';
-import '../../features/files/_helpers/upload.dart';
-import '../_common/global.dart';
+import '../../../_helpers/_common/global.dart';
+import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../_tables/_helpers/common.dart';
+import '../../files/_helpers/upload.dart';
 import 'share.dart';
 
 Future<void> deleteItemForever(

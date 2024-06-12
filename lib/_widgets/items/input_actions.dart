@@ -5,7 +5,6 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_providers/common/input.dart';
-import '../../features/_notes/feat/finance/_w/toggler.dart';
 import '../../features/_notes/feat/finance/graphs_sheet.dart';
 import '../../features/_notes/feat/habits/header.dart';
 import '../../features/labels/labels_menu.dart';
@@ -30,7 +29,6 @@ class CommonInputActions extends StatelessWidget {
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           //
-          if (input.isFinance()) FinanceToggler(),
           if (input.isHabit()) HabitHeader(),
           //
           spw(),

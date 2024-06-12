@@ -10,13 +10,17 @@ class FinanceToggler extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(
-      builder: (context, input, child) => AppButton(
-        isSquare: true,
-        noStyling: true,
-        tooltip: input.data['cx'] == '1' ? 'Show more' : 'Show less',
-        leading: input.data['cx'] == '1' ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_up,
-        onPressed: () => input.update(action: 'add', key: 'cx', value: input.data['cx'] == '1' ? '0' : '1'),
-      ),
+      builder: (context, input, child) {
+        bool isExpanded = input.data['cx'] == '1' || input.data['cx'] == null;
+
+        return AppButton(
+          isSquare: true,
+          noStyling: true,
+          tooltip: isExpanded ? 'Show more' : 'Show less',
+          leading: isExpanded ? Icons.more_horiz : Icons.keyboard_arrow_up,
+          onPressed: () => input.update(action: 'add', key: 'cx', value: isExpanded ? '0' : '1'),
+        );
+      },
     );
   }
 }

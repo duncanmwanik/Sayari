@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_models/item.dart';
+import '../../../../../_variables/features.dart';
 import '../../../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
@@ -15,10 +16,9 @@ class BookingOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int count = item.data.keys.where((key) => key.toString().startsWith('bb')).toList().length;
-    bool isActive = item.data['ba'] == '1';
+    bool isActive = item.data['ac'] == '1';
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
       mainAxisSize: MainAxisSize.min,
       children: [
         // no of bookings
@@ -55,7 +55,7 @@ class BookingOverview extends StatelessWidget {
         //
         mph(),
         //
-        PreviewNote(path: '/session/${item.id}'),
+        PreviewNote(path: '/${feature.bookings.t}/${item.id}'),
         //
       ],
     );

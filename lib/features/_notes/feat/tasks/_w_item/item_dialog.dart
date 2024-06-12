@@ -6,7 +6,6 @@ import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/global.dart';
 import '../../../../../_helpers/_common/navigation.dart';
-import '../../../../../_helpers/items/edit_item.dart';
 import '../../../../../_providers/common/input.dart';
 import '../../../../../_variables/features.dart';
 import '../../../../../_widgets/abcs/buttons/buttons.dart';
@@ -21,6 +20,7 @@ import '../../../../files/file_list.dart';
 import '../../../../flags/flags_menu.dart';
 import '../../../../reminders/reminder.dart';
 import '../../../../reminders/reminder_menu.dart';
+import '../../../_helpers/edit_item.dart';
 import 'delete_item_menu.dart';
 import 'flag_list.dart';
 
@@ -61,26 +61,29 @@ Future<void> showItemDialog(String itemId, Map itemData, String listId) async {
                     onSet: (newReminder) => input.update(action: 'add', key: 'r', value: newReminder),
                     onRemove: () => input.update(action: 'remove', key: 'r'),
                   ),
+                  isSquare: true,
                   child: AppIcon(Icons.notification_add, faded: true, size: 16),
                 ),
                 //
                 spw(),
                 //
                 AppButton(
-                  onPressed: () async => await getFilesToUpload(),
                   tooltip: 'Attach Files',
+                  onPressed: () async => await getFilesToUpload(),
+                  isSquare: true,
                   child: AppIcon(Icons.attach_file_rounded, faded: true, size: 16),
                 ),
                 //
                 spw(),
                 //
                 AppButton(
+                  tooltip: 'Add Flag',
                   menuWidth: 300,
                   menuItems: flagsMenu(
                     alreadySelected: alreadySelectedFlags,
                     onDone: (newFlags) => input.update(action: 'add', key: 'g', value: getJoinedList(newFlags)),
                   ),
-                  tooltip: 'Add Flag',
+                  isSquare: true,
                   child: AppIcon(Icons.flag_outlined, faded: true, size: 16),
                 ),
                 //

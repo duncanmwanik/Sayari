@@ -78,10 +78,12 @@ class _ShareScreenState extends State<Booker> {
                             AppText(text: 'Book a session...', size: medium, faded: true, fontWeight: FontWeight.w700)),
                     mph(),
                     tph(),
-                    SfCalendar(
-                      isBookingCalendar: true,
-                      initialDates: availableDates,
-                      onSelect: (newdate) => state.dateTime.updateDateTime('date', getDatePart(newdate)),
+                    Center(
+                      child: SfCalendar(
+                        isBookingCalendar: true,
+                        initialDates: availableDates,
+                        onSelect: (newdate) => state.dateTime.updateDateTime('date', getDatePart(newdate)),
+                      ),
                     ),
                     sph(),
                     AppDivider(height: largeHeight()),
@@ -107,7 +109,7 @@ class _ShareScreenState extends State<Booker> {
                     ),
                     sph(),
                     DataInput(
-                      hintText: 'Subject',
+                      hintText: 'About (optional)',
                       controller: subjectController,
                       textCapitalization: TextCapitalization.sentences,
                       minLines: 3,

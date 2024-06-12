@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 // const String sayariDefaultPath = 'http://localhost:10939';
 const String sayariDefaultPath = 'http://sayari.me';
 const String sayariSharePath = '$sayariDefaultPath/universe';
-const String sayariBookingPath = '$sayariDefaultPath/session';
 
 const String chooseColorText = 'Pick a Color';
 const String newNoteHintText = 'Write something here...';

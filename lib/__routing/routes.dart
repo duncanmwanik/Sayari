@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../_variables/features.dart';
 import '../_variables/navigation.dart';
 import '../features/_home/home.dart';
 import '../features/auth/_helpers/user_details_helper.dart';
@@ -20,17 +21,17 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(path: '/welcome', builder: (context, state) => AuthScreen()),
     GoRoute(
-        path: '/universe/:id',
-        builder: (context, state) => ShareScreen(type: 'share', id: state.pathParameters['id'] ?? 'fun')),
+        path: '/${feature.share.t}/:id',
+        builder: (context, state) => ShareScreen(type: feature.share.t, id: state.pathParameters['id'] ?? 'fun')),
     GoRoute(
-        path: '/session/:id',
-        builder: (context, state) => ShareScreen(type: 'booking', id: state.pathParameters['id'] ?? 'fun')),
+        path: '/${feature.bookings.t}/:id',
+        builder: (context, state) => ShareScreen(type: feature.bookings.t, id: state.pathParameters['id'] ?? 'fun')),
     GoRoute(
-        path: '/links/:id',
-        builder: (context, state) => ShareScreen(type: 'links', id: state.pathParameters['id'] ?? 'fun')),
+        path: '/${feature.links.t}/:id',
+        builder: (context, state) => ShareScreen(type: feature.links.t, id: state.pathParameters['id'] ?? 'fun')),
     GoRoute(
-        path: '/forms/:id',
-        builder: (context, state) => ShareScreen(type: 'forms', id: state.pathParameters['id'] ?? 'fun')),
+        path: '/${feature.forms.t}/:id',
+        builder: (context, state) => ShareScreen(type: feature.forms.t, id: state.pathParameters['id'] ?? 'fun')),
   ],
   errorPageBuilder: (context, state) {
     return MaterialPage(child: ErrorScreen());

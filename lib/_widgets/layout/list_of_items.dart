@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../_helpers/items/chosen.dart';
 import '../../_providers/common/views.dart';
 import '../../_providers/providers.dart';
+import '../../features/_notes/_helpers/chosen.dart';
 import '../../features/_tables/_helpers/common.dart';
 import '../others/empty_box.dart';
 import 'column_layout.dart';

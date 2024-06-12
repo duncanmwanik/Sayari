@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
@@ -51,82 +50,81 @@ class CustomAppBar extends StatelessWidget {
               titleSpacing: 0,
               backgroundColor: styler.navColor(),
               surfaceTintColor: isImageTheme() ? styler.appColor(5) : styler.navColor(),
-              title: Container(
-                padding: EdgeInsets.only(left: 10, right: kIsWeb ? 15 : 5),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    //
-                    if (isItemSelection) SizedBox(height: 45, child: SelectedItemOptions()),
-                    //
-                    if (!isItemSelection)
-                      SizedBox(
-                        height: 45,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            //
-                            Flexible(
-                              child: Row(
-                                children: [
-                                  //
-                                  AppButton(
-                                    onPressed: () => openDrawer(),
-                                    isRound: true,
-                                    noStyling: true,
-                                    tooltip: 'Manage Tables',
-                                    child: AppIcon(Icons.apps_rounded, faded: true),
-                                  ),
-                                  // selected table name
-                                  Flexible(
-                                    child: AppButton(
-                                      onPressed: () => isATableSelected ? showTableOverviewBottomSheet() : openDrawer(),
-                                      noStyling: true,
-                                      borderRadius: borderRadiusCrazy,
-                                      tooltip: 'About $name',
-                                      child: AppText(
-                                        size: extra,
-                                        text: name,
-                                        textAlign: TextAlign.start,
-                                        overflow: TextOverflow.ellipsis,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                  //
-                                ],
-                              ),
-                            ),
-                            //
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //
+                  if (isItemSelection) SizedBox(height: 45, child: SelectedItemOptions()),
+                  //
+                  if (!isItemSelection)
+                    Container(
+                      height: 45,
+                      padding:
+                          isNotPhone() ? itemPadding(left: true, right: true) : EdgeInsets.only(left: 10, right: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          //
+                          Flexible(
+                            child: Row(
                               children: [
                                 //
-                                CloudSyncIndicator(),
-                                //
-                                Search(),
-                                //
-                                LayoutButton(),
-                                //
-                                QuickThemeChanger(),
-                                //
-                                UserDp(isTiny: true),
+                                AppButton(
+                                  onPressed: () => openDrawer(),
+                                  isRound: true,
+                                  noStyling: true,
+                                  tooltip: 'Manage Tables',
+                                  child: AppIcon(Icons.sort_rounded),
+                                ),
+                                // selected table name
+                                Flexible(
+                                  child: AppButton(
+                                    onPressed: () => isATableSelected ? showTableOverviewBottomSheet() : openDrawer(),
+                                    noStyling: true,
+                                    borderRadius: borderRadiusCrazy,
+                                    tooltip: 'About $name',
+                                    child: AppText(
+                                      size: extra,
+                                      text: name,
+                                      textAlign: TextAlign.start,
+                                      overflow: TextOverflow.ellipsis,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                ),
                                 //
                               ],
                             ),
-                            //
-                          ],
-                        ),
+                          ),
+                          //
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              //
+                              CloudSyncIndicator(),
+                              //
+                              Search(),
+                              //
+                              LayoutButton(),
+                              //
+                              QuickThemeChanger(),
+                              //
+                              UserDp(isTiny: true),
+                              //
+                            ],
+                          ),
+                          //
+                        ],
                       ),
-                    //
-                    if (isNotPhone()) AppDivider(height: 0),
-                    if (isNotPhone()) ph(5),
-                    //
-                    NoteOptions(),
-                    //
-                  ],
-                ),
+                    ),
+                  //
+                  if (isNotPhone()) AppDivider(height: 0),
+                  if (isNotPhone()) ph(5),
+                  //
+                  NoteOptions(),
+                  //
+                ],
               ),
             );
           });

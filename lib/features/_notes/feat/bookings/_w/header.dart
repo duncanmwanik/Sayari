@@ -19,15 +19,15 @@ class _BookingState extends State<BookingHeader> {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool isActive = input.data['ba'] == '1';
+      bool isActive = input.data['ac'] == '1';
       bool isExpanded = input.data['bxs'] == '1' || input.data['bxs'] == null;
 
       return Row(
         children: [
           // active button
           AppButton(
-            onPressed: () => input.update(action: 'add', key: 'ba', value: isActive ? '0' : '1'),
-            // smallRightPadding: true,
+            onPressed: () => input.update(action: 'add', key: 'ac', value: isActive ? '0' : '1'),
+            noStyling: true,
             child: Row(
               children: [AppText(text: 'Active'), spw(), AppCheckBox(isChecked: isActive, smallPadding: true)],
             ),

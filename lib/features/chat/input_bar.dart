@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
@@ -29,17 +30,19 @@ class MessageInputBar extends StatelessWidget {
     return isAdmin()
         ? Container(
             width: webMaxWidth,
-            padding: EdgeInsets.all(kIsWeb ? 5 : 2),
+            padding: EdgeInsets.all(2),
+            margin: isNotPhone() ? itemPadding(bottom: true) : null,
             decoration: BoxDecoration(
-              color: styler.navColor(),
-              borderRadius: kIsWeb ? BorderRadius.circular(borderRadiusSmall) : BorderRadius.zero,
+              color: styler.appColor(2),
+              borderRadius: isNotPhone() ? BorderRadius.circular(borderRadiusLarge) : BorderRadius.zero,
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //
-                Consumer<InputProvider>(builder: (context, input, child) => FileList(fileData: getFiles(input.data), isOverview: false)),
+                Consumer<InputProvider>(
+                    builder: (context, input, child) => FileList(fileData: getFiles(input.data), isOverview: false)),
                 //
                 Row(
                   children: [
@@ -50,6 +53,7 @@ class MessageInputBar extends StatelessWidget {
                       height: 45,
                       width: 45,
                       noStyling: true,
+                      borderRadius: borderRadiusCrazy,
                       child: AppIcon(Icons.add_rounded),
                     ),
                     //
@@ -72,7 +76,8 @@ class MessageInputBar extends StatelessWidget {
                         style: TextStyle(fontSize: normal, fontWeight: FontWeight.w600, color: styler.textColor()),
                         decoration: InputDecoration(
                           hintText: 'Message...',
-                          hintStyle: TextStyle(fontSize: normal, fontWeight: FontWeight.w600, color: styler.textColor(faded: true)),
+                          hintStyle: TextStyle(
+                              fontSize: normal, fontWeight: FontWeight.w600, color: styler.textColor(faded: true)),
                           filled: false,
                           contentPadding: EdgeInsets.symmetric(horizontal: 10),
                           border: InputBorder.none,
@@ -92,6 +97,7 @@ class MessageInputBar extends StatelessWidget {
                       height: 45,
                       width: 45,
                       noStyling: true,
+                      borderRadius: borderRadiusCrazy,
                       child: AppIcon(Icons.arrow_forward_rounded),
                     ),
                     //

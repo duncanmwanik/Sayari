@@ -5,7 +5,6 @@ import '../../../../../__styling/helpers.dart';
 import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/global.dart';
-import '../../../../../_helpers/items/quick_edit.dart';
 import '../../../../../_models/item.dart';
 import '../../../../../_providers/providers.dart';
 import '../../../../../_variables/features.dart';
@@ -14,6 +13,7 @@ import '../../../../../_widgets/others/text.dart';
 import '../../../../files/_helpers/helper.dart';
 import '../../../../files/file_list.dart';
 import '../../../../reminders/reminder.dart';
+import '../../../_helpers/quick_edit.dart';
 import 'flag_list.dart';
 import 'item_dialog.dart';
 

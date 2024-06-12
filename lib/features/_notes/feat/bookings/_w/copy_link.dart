@@ -9,19 +9,16 @@ import '../../../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
 
-class CopyLink extends StatefulWidget {
-  const CopyLink({super.key});
+class CopyLink extends StatelessWidget {
+  const CopyLink({super.key, required this.path});
 
-  @override
-  State<CopyLink> createState() => _BookingState();
-}
+  final String path;
 
-class _BookingState extends State<CopyLink> {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       return AppButton(
-        onPressed: () async => await copyToClipboard('$sayariBookingPath/${input.itemId}', desc: 'link'),
+        onPressed: () async => await copyToClipboard('$sayariDefaultPath$path', desc: 'link'),
         smallLeftPadding: true,
         noStyling: true,
         child: Row(
@@ -30,7 +27,7 @@ class _BookingState extends State<CopyLink> {
           children: [
             AppIcon(Icons.copy, size: 18, faded: true),
             spw(),
-            Expanded(child: AppText(text: '$sayariBookingPath/${input.itemId}', faded: true)),
+            Expanded(child: AppText(text: '$sayariDefaultPath${input.itemId}', faded: true)),
           ],
         ),
       );

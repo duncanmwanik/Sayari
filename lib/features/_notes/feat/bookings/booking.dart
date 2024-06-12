@@ -44,7 +44,7 @@ class _BookingState extends State<Booking> {
               if (showBody) BookingDateTimes(),
               //
               if (isActive) msph(),
-              if (isActive) CopyLink(),
+              if (isActive) CopyLink(path: '/${feature.bookings.t}/${input.itemId}'),
               //
               mph(),
               BookingsList(),

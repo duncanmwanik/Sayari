@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/global.dart';
-import '../../_helpers/items/quick_edit.dart';
 import '../../_providers/common/selection.dart';
 import '../../_providers/providers.dart';
+import '../../features/_notes/_helpers/quick_edit.dart';
 import '../abcs/buttons/buttons.dart';
 import '../abcs/menu/menu_item.dart';
 import '../others/icons.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../__styling/breakpoints.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/common/theme.dart';
 import '../../../_providers/common/views.dart';
@@ -23,32 +24,30 @@ class HorizontalNavigationBox extends StatelessWidget {
           if (isATableSelected() && views.isChat()) MessageInputBar(),
           if (isATableSelected() && views.isChat()) AppDivider(height: 0),
           //
-          Container(
-            height: 60,
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            decoration: BoxDecoration(
-              color: styler.navColor(),
-              // boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.3), spreadRadius: styler.isDark ? 0 : 1, blurRadius: 1)],
+          if (!showVertNav())
+            Container(
+              height: 60,
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              decoration: BoxDecoration(color: styler.navColor()),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  //
+                  navItem(views.view == feature.sessions.t ? Icons.calendar_month : sessionsUnselectedIcon,
+                      feature.sessions.t, views.view == feature.sessions.t),
+                  //
+                  navItem(views.view == feature.notes.t ? notesSelectedIcon : notesUnselectedIcon, feature.notes.t,
+                      views.view == feature.notes.t),
+                  //
+                  navItem(views.view == feature.chat.t ? chatSelectedIcon : chatUnselectedIcon, feature.chat.t,
+                      views.view == feature.chat.t),
+                  //
+                  navItem(views.view == feature.explore.t ? moreIcon : moreIcon, feature.explore.t,
+                      views.view == feature.explore.t),
+                  //
+                ],
+              ),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //
-                navItem(views.view == feature.sessions.t ? Icons.calendar_month : sessionsUnselectedIcon,
-                    feature.sessions.t, views.view == feature.sessions.t),
-                //
-                navItem(views.view == feature.notes.t ? notesSelectedIcon : notesUnselectedIcon, feature.notes.t,
-                    views.view == feature.notes.t),
-                //
-                navItem(views.view == feature.chat.t ? chatSelectedIcon : chatUnselectedIcon, feature.chat.t,
-                    views.view == feature.chat.t),
-                //
-                navItem(views.view == feature.explore.t ? moreIcon : moreIcon, feature.explore.t,
-                    views.view == feature.explore.t),
-                //
-              ],
-            ),
-          ),
         ],
       );
     });

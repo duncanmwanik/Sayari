@@ -56,7 +56,6 @@ class WebLeftBox extends StatelessWidget {
                   ),
                   //
                   mph(),
-                  sph(),
                   //
                   Padding(
                     padding: EdgeInsets.only(left: showBoxOptions ? 14 : 0, right: showBoxOptions ? 5 : 0),

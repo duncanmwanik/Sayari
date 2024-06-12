@@ -16,6 +16,7 @@ class WebLeftBoxToggle extends StatelessWidget {
       return AppButton(
         onPressed: () => views.setShowWebBoxOptions(!showWebBoxOptions),
         noStyling: true,
+        isSquare: true,
         tooltip: showWebBoxOptions ? 'Collapse Side Panel' : 'Expand Side Panel',
         tooltipDirection: AxisDirection.right,
         child: AppIcon(showWebBoxOptions ? Icons.keyboard_arrow_left_rounded : Icons.keyboard_arrow_right_rounded),

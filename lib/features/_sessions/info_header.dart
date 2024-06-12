@@ -68,9 +68,9 @@ class InfoHeader extends StatelessWidget {
                           tooltip: 'Go to date',
                           child: FittedBox(
                               child: AppText(
-                            size: extra,
+                            size: normal,
                             text: infoList[views.sessionsView],
-                            fontWeight: styler.isDark ? null : FontWeight.bold,
+                            fontWeight: FontWeight.bold,
                           )),
                         ),
                       ),

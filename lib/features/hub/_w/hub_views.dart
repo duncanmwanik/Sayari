@@ -36,7 +36,7 @@ class _DelayBlockState extends State<HubViews> {
           if (hub.hubView == 0)
             GridView.count(
               shrinkWrap: true,
-              crossAxisCount: 7,
+              crossAxisCount: 15,
               crossAxisSpacing: smallWidth(),
               mainAxisSpacing: smallWidth(),
               physics: NeverScrollableScrollPhysics(),
@@ -50,7 +50,7 @@ class _DelayBlockState extends State<HubViews> {
                   },
                   height: 50,
                   width: 20.w,
-                  borderRadius: borderRadiusCrazy,
+                  borderRadius: borderRadiusMediumSmall,
                   showBorder: hubColors[index].title == 'White',
                   color: hubColors[index].color,
                   child: isSelected ? AppIcon(Icons.circle, size: small) : null,
@@ -63,7 +63,7 @@ class _DelayBlockState extends State<HubViews> {
           if (hub.hubView == 1)
             GridView.count(
               shrinkWrap: true,
-              crossAxisCount: 4,
+              crossAxisCount: 15,
               crossAxisSpacing: smallWidth(),
               mainAxisSpacing: smallWidth(),
               physics: NeverScrollableScrollPhysics(),
@@ -88,7 +88,7 @@ class _DelayBlockState extends State<HubViews> {
           if (hub.hubView == 2)
             GridView.count(
               shrinkWrap: true,
-              crossAxisCount: 4,
+              crossAxisCount: 15,
               crossAxisSpacing: smallWidth(),
               mainAxisSpacing: smallWidth(),
               physics: NeverScrollableScrollPhysics(),

@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../../../__styling/spacing.dart';
 import '../../../../../_helpers/_common/navigation.dart';
-import '../../../../../_helpers/items/delete_item.dart';
 import '../../../../../_variables/features.dart';
 import '../../../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../../../_widgets/abcs/dialogs_sheets/dialog_buttons.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../../files/_helpers/helper.dart';
+import '../../../_helpers/delete_item.dart';
 
 class DeleteItem extends StatelessWidget {
   const DeleteItem({
@@ -61,6 +61,7 @@ class DeleteItem extends StatelessWidget {
           ],
         ),
       ],
+      isSquare: true,
       child: AppIcon(Icons.delete_rounded, bgColor: bgColor, faded: true, size: 16),
     );
   }

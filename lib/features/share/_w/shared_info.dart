@@ -27,7 +27,7 @@ class SharedItemInfo extends StatelessWidget {
           Flexible(
               child: AppText(
             faded: true,
-            text: label ?? 'That seems to be missing....',
+            text: label ?? "We couldn't find what you're looking for...",
             textAlign: TextAlign.center,
           )),
           mph(),
@@ -40,7 +40,7 @@ class SharedItemInfo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
-                AppText(text: 'Sayari', color: white, fontWeight: FontWeight.bold),
+                AppText(text: 'Explore Sayari', color: white, fontWeight: FontWeight.bold),
                 spw(),
                 AppIcon(Icons.arrow_forward_rounded, size: 16, color: white),
               ],

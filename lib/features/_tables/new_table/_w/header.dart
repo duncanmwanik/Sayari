@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../_helpers/_common/navigation.dart';
-import '../../../../_helpers/items/edit_item.dart';
 import '../../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../../_widgets/others/text.dart';
+import '../../../_notes/_helpers/edit_item.dart';
 import '../../_helpers/create_table.dart';
 
 class Header extends StatelessWidget {

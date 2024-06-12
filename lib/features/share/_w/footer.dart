@@ -23,12 +23,13 @@ class SharedFooter extends StatelessWidget {
           AppButton(
             onPressed: () => context.go('/'),
             height: 40,
+            borderRadius: borderRadiusCrazy,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 AppImage(imagePath: 'assets/images/sayari.png', size: 20),
                 spw(),
-                AppText(text: 'Sayari Universe', faded: true, fontWeight: FontWeight.bold),
+                AppText(text: 'Explore Sayari', faded: true, fontWeight: FontWeight.bold),
                 spw(),
                 AppIcon(Icons.arrow_forward, size: 14, faded: true),
               ],

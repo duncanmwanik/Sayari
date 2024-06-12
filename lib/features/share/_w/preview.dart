@@ -16,7 +16,6 @@ class PreviewNote extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton(
       onPressed: () => context.push(path),
-      noStyling: true,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

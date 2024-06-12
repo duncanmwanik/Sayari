@@ -14,7 +14,7 @@ class AppTooltip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return message != null && 1 == 2
+    return message != null
         ? JustTheTooltip(
             backgroundColor: styler.isDark ? AppColors.lightTertiary : Colors.black.withOpacity(0.8),
             borderRadius: BorderRadius.circular(borderRadiusTiny),

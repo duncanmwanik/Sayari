@@ -3,16 +3,15 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/misc.dart';
-import '../../_helpers/items/share.dart';
 import '../../_providers/common/input.dart';
-import '../../_variables/strings.dart';
+import '../../_variables/features.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
 import '../../_widgets/abcs/menu/menu_item.dart';
 import '../../_widgets/others/checkbox.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
+import '../_notes/_helpers/share.dart';
 
 class Share extends StatelessWidget {
   const Share({super.key});
@@ -22,10 +21,10 @@ class Share extends StatelessWidget {
     return Consumer<InputProvider>(builder: (context, input, child) {
       Map data = input.data;
       bool isPublished = data['sp'] == '1';
-      bool isExpanded = data['cx'] == '1';
+      bool isExpanded = data['sx'] == '1';
 
       return Visibility(
-          visible: data['sa'] != null,
+          visible: data[feature.share.lt] != null,
           child: Container(
             margin: itemPadding(top: true, bottom: true),
             padding: itemPaddingMedium(),
@@ -43,9 +42,9 @@ class Share extends StatelessWidget {
                   children: [
                     //
                     AppButton(
-                      onPressed: () => input.update(action: 'add', key: 'cx', value: isExpanded ? '0' : '1'),
+                      onPressed: () => input.update(action: 'add', key: 'sx', value: isExpanded ? '0' : '1'),
                       noStyling: true,
-                      borderRadius: borderRadiusSmall,
+                      isSquare: true,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -59,8 +58,9 @@ class Share extends StatelessWidget {
                     Spacer(),
                     //
                     AppButton(
-                      onPressed: () => input.update(action: 'add', key: 'cx', value: isExpanded ? '0' : '1'),
+                      onPressed: () => input.update(action: 'add', key: 'sx', value: isExpanded ? '0' : '1'),
                       noStyling: true,
+                      isSquare: true,
                       child: AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
                           size: 18, faded: true),
                     ),
@@ -75,13 +75,14 @@ class Share extends StatelessWidget {
                             content: 'The note will also be unpublished, if published.',
                             yeslabel: 'Unshare',
                             onAccept: () {
-                              input.removeAll(start: 's');
-                              shareItem(delete: true, itemId: input.itemId);
+                              // input.removeAll(start: 's');
+                              // shareItem(delete: true, itemId: input.itemId);
                             },
                           ),
                         ),
                       ],
                       noStyling: true,
+                      isSquare: true,
                       child: AppIcon(moreIcon, size: 18, faded: true),
                     ),
                     //
@@ -91,22 +92,9 @@ class Share extends StatelessWidget {
                 if (isExpanded) sph(),
                 //
                 if (isExpanded)
-                  AppButton(
-                    onPressed: () async => await copyToClipboard('$sayariSharePath/${input.itemId}', desc: 'link'),
-                    borderRadius: borderRadiusSmall,
-                    smallRightPadding: true,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(child: AppText(text: '$sayariSharePath/${input.itemId}', faded: true)),
-                        spw(),
-                        Padding(
-                            padding: const EdgeInsets.only(top: 1), child: AppIcon(Icons.copy, size: 18, faded: true)),
-                      ],
-                    ),
-                  ),
-                //
-                if (isExpanded) sph(),
+
+                  //
+                  if (isExpanded) sph(),
                 //
                 if (isExpanded)
                   AppButton(
@@ -116,8 +104,8 @@ class Share extends StatelessWidget {
                     },
                     height: 35,
                     borderRadius: borderRadiusSmall,
-                    smallRightPadding: true,
                     child: Row(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         AppText(text: 'Publish'),
                         Spacer(),

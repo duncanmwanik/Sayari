@@ -1,15 +1,15 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../_providers/providers.dart';
-import '../../_services/firebase/sync_to_cloud.dart';
-import '../../_services/hive/local_storage_service.dart';
-import '../../_variables/features.dart';
-import '../../_widgets/others/toast.dart';
-import '../../features/_tables/_helpers/common.dart';
-import '../../features/files/_helpers/upload.dart';
-import '../../features/reminders/_helpers/register_reminder.dart';
-import '../_common/global.dart';
-import '../_common/navigation.dart';
+import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/_common/navigation.dart';
+import '../../../_providers/providers.dart';
+import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../../_services/hive/local_storage_service.dart';
+import '../../../_variables/features.dart';
+import '../../../_widgets/others/toast.dart';
+import '../../_tables/_helpers/common.dart';
+import '../../files/_helpers/upload.dart';
+import '../../reminders/_helpers/register_reminder.dart';
 import 'compare_data.dart';
 import 'validation.dart';
 

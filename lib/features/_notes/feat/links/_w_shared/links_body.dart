@@ -54,11 +54,11 @@ class LinksBody extends StatelessWidget {
                     children: List.generate(linkKeys.length, (index) {
                       Map linkData = jsonDecode(data[linkKeys[index]] ?? '{}');
                       String title = linkData['wt'] ?? '---';
-                      String link = linkData['wl'] ?? '';
+                      // String link = linkData['wl'] ?? '';
                       String linkImageId = linkData['wf'] ?? '';
 
                       return AppButton(
-                        onPressed: () => showToast(3, link),
+                        onPressed: () => showToast(3, 'A link to $title.'),
                         borderRadius: borderRadiusMediumSmall,
                         padding: itemPaddingMedium(),
                         child: Row(

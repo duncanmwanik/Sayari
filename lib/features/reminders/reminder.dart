@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/items/quick_edit.dart';
 import '../../_providers/common/input.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
+import '../_notes/_helpers/quick_edit.dart';
 import '_helpers/helper.dart';
 import '_helpers/reminders.dart';
 import 'reminder_menu.dart';
@@ -76,7 +76,12 @@ class Reminder extends StatelessWidget {
                 // text
                 Flexible(
                   child: FittedBox(
-                    child: AppText(size: small, text: formatReminder(reminder_), faded: hasPassed, bgColor: bgColor, isCrossed: hasPassed),
+                    child: AppText(
+                        size: small,
+                        text: formatReminder(reminder_),
+                        faded: hasPassed,
+                        bgColor: bgColor,
+                        isCrossed: hasPassed),
                   ),
                 ),
                 //

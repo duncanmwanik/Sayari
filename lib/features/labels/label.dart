@@ -42,7 +42,7 @@ class _LabelItemState extends State<LabelItem> {
   @override
   Widget build(BuildContext context) {
     bool isCurrentLabel = widget.label == state.labels.selectedLabel;
-    bool showDelete = !widget.isDefault && !isCurrentLabel && !widget.isSelection && (isHovered || !kIsWeb);
+    bool showDelete = !widget.isDefault && !isCurrentLabel && !widget.isSelection && isHovered;
 
     return Padding(
       padding: EdgeInsets.only(bottom: kIsWeb ? 2 : 0),
@@ -57,7 +57,7 @@ class _LabelItemState extends State<LabelItem> {
                     popWhatsOnTop();
                   }
                 },
-          onHover: (value) => setState(() => showDelete = value),
+          onHover: (value) => setState(() => isHovered = value),
           borderRadius: BorderRadius.circular(widget.isSelection ? borderRadiusSmall : borderRadiusLarge),
           child: Container(
             padding: EdgeInsets.only(

@@ -113,14 +113,6 @@ class AppStyles {
     return Colors.grey.withOpacity(0.2);
   }
 
-  Color chatBubbleColor({bool isSent = false}) {
-    if (isSent) {
-      return Color.alphaBlend(accentColor().withOpacity(isDark ? 0.07 : 0.2), tertiaryColor());
-    } else {
-      return Colors.green.shade100;
-    }
-  }
-
   Color listItemColor({String? bgColor}) {
     if (hasBgColor(bgColor)) {
       return Colors.white.withOpacity(0.9);

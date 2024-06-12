@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/items/share.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
@@ -37,23 +36,19 @@ Future<void> prepareNoteForCreation() async {
   //
   else if (noteView == feature.links.lt) {
     state.input.setInputData(typ: feature.notes.t, dta: {feature.links.lt: '1'});
-    shareItem(type: feature.links.t, itemId: id);
   }
   //
   else if (noteView == feature.portfolios.lt) {
     state.input.setInputData(typ: feature.notes.t, dta: {feature.portfolios.lt: '1'});
-    shareItem(type: feature.portfolios.t, itemId: id);
   }
   //
   else if (noteView == feature.forms.lt) {
     state.input.setInputData(typ: feature.notes.t, dta: {feature.forms.lt: '1'});
     addForm();
-    shareItem(type: feature.forms.t, itemId: id);
   }
   //
   else if (noteView == feature.bookings.lt) {
     state.input.setInputData(typ: feature.notes.t, dta: {feature.bookings.lt: '1'});
-    shareItem(type: feature.bookings.t, itemId: id);
   }
   //
   else {

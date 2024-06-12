@@ -9,10 +9,12 @@ import '../../__styling/variables.dart';
 import '../../_models/item.dart';
 import '../../_providers/common/selection.dart';
 import '../../_providers/providers.dart';
+import '../../_variables/features.dart';
 import '../../_widgets/items/hover_actions.dart';
 import '../../_widgets/items/items.dart';
 import '../../_widgets/items/selector.dart';
 import '../files/file_overview.dart';
+import '../share/_w/preview.dart';
 import '_helpers/ontap.dart';
 import '_w/text_overview.dart';
 import 'feat/bookings/_w/overview.dart';
@@ -57,7 +59,6 @@ class Note extends StatelessWidget {
                 borderRadius: BorderRadius.circular(borderRadiusSmall),
                 hoverColor: styler.appColor(isImageTheme() ? 0.5 : (styler.isDark ? 0.1 : 0.3)),
                 focusColor: transparent,
-                // highlightColor: transparent,
                 child: Container(
                   padding: itemPaddingLarge(bottom: !kIsWeb || !isNotPhone()),
                   constraints: BoxConstraints(minHeight: 70),
@@ -87,9 +88,12 @@ class Note extends StatelessWidget {
                                   if (item.hasHabits()) HabitOverview(item: item),
                                   if (item.hasLinks()) LinksOverview(item: item),
                                   if (item.hasForms()) FormsOverview(item: item),
-                                  if (item.isPureNote() || item.hasPortfolios()) NoteTextOverview(item: item),
+                                  if (item.showEditor()) NoteTextOverview(item: item),
                                   if (item.hasDetails()) ItemDetails(item: item),
                                   if (item.hasTasks()) NoteTask(item: item),
+                                  if (item.isPublished()) lph(),
+                                  if (item.isPublished()) PreviewNote(path: '/${feature.share.t}/${item.id}'),
+
                                   //
                                 ],
                               ),

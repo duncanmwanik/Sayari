@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/variables.dart';
-import '../../_helpers/items/quick_edit.dart';
+import '../../features/_notes/_helpers/quick_edit.dart';
 import '../abcs/buttons/buttons.dart';
 import '../abcs/menu/menu_item.dart';
 import '../others/icons.dart';

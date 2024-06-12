@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
-import '../../_helpers/items/share.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
+import '../../features/_notes/_helpers/share.dart';
 import '../../features/_notes/feat/habits/habit_options.dart';
 import '../../features/_notes/feat/tasks/task_options.dart';
 import '../../features/files/_helpers/upload.dart';
@@ -55,8 +55,8 @@ class MoreInputActions extends StatelessWidget {
               label: 'Share',
               iconData: Icons.share_rounded,
               onTap: () {
-                input.update(action: 'add', key: 'sa', value: '1');
-                shareItem(type: 'share', itemId: input.itemId);
+                input.update(action: 'add', key: feature.share.lt, value: '1');
+                shareItem(type: feature.share.t, itemId: input.itemId);
               },
             ),
           //

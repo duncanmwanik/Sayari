@@ -33,13 +33,13 @@ class ListItem extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Flexible(child: AppText(size: normal, text: item.title())),
-                    spw(),
                     AppIcon(
                       Icons.lens,
                       size: 10,
-                      color: item.hasColor() ? styler.getItemColor(item.color(), false) : transparent,
+                      color: item.hasColor() ? styler.getItemColor(item.color(), false) : styler.appColor(2),
                     ),
+                    spw(),
+                    Flexible(child: AppText(size: normal, text: item.title())),
                   ],
                 ),
               ),

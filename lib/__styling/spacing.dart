@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import 'breakpoints.dart';
 import 'variables.dart';
 
 int gridCount(double width) {
@@ -66,7 +67,7 @@ EdgeInsets checkSpecificSide(double p, bool? left, bool? right, bool? top, bool?
 
 // ---------- widths
 
-double maxChatWidth() => kIsWeb ? 300 : 75.w;
+double maxChatWidth() => isNotPhone() ? webMaxWidth : 75.w;
 double largeWidth() => 32;
 double mediumWidth() => 16;
 double mediumSmallWidth() => 12;

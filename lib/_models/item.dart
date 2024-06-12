@@ -31,13 +31,13 @@ class Item {
   bool hasForms() => data[feature.forms.lt] != null;
   bool hasBookings() => data[feature.bookings.lt] != null;
   bool isPureNote() => data[feature.notes.lt] != null;
-  bool isShared() => data['sa'] != null;
+  bool isShared() => data['sh'] != null;
   bool isPublished() => data['sp'] == '1';
   bool isPinned() => data['p'] == '1';
   bool isArchived() => data['a'] == '1';
   bool isDeleted() => data['x'] == '1';
   bool showChecks() => data['v'] == '1';
-  bool showEditor() => isPureNote() || hasFinances();
+  bool showEditor() => isPureNote() || hasPortfolios() || hasForms() || hasForms() || hasFinances();
   bool showNewEntriesFirst() => data['at'] == '1';
 
   //

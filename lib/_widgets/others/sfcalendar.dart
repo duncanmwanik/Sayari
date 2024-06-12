@@ -46,7 +46,7 @@ class SfCalendar extends StatelessWidget {
         decoration: isWebCalendar
             ? null
             : BoxDecoration(
-                color: isBookingCalendar ? styler.appColor(0.2) : null,
+                color: isBookingCalendar ? styler.tertiaryColor() : null,
                 // border: Border.all(width: styler.isDark ? 0.15 : 0.5, color: styler.borderColor()),
                 borderRadius: BorderRadius.circular(isBookingCalendar ? borderRadiusMedium : borderRadiusSmall),
               ),

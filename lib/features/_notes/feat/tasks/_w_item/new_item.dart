@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/global.dart';
-import '../../../../../_helpers/items/create_item.dart';
 import '../../../../../_models/item.dart';
 import '../../../../../_providers/providers.dart';
 import '../../../../../_variables/features.dart';
@@ -12,6 +11,7 @@ import '../../../../../_widgets/others/forms/input.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../../_tables/_helpers/checks_table.dart';
+import '../../../_helpers/create_item.dart';
 
 class NewItemInput extends StatefulWidget {
   const NewItemInput({super.key, required this.item});
@@ -78,7 +78,7 @@ class _NewItemInputState extends State<NewItemInput> {
                       color: styler.listItemColor(bgColor: widget.item.color()),
                       borderRadius: BorderRadius.circular(borderRadiusSmall),
                       border: Border.all(
-                        color: styler.isDark ? transparent : Colors.grey.withOpacity(0.3),
+                        color: Colors.grey.withOpacity(0.3),
                       ),
                     ),
                     child: DataInput(
@@ -87,7 +87,6 @@ class _NewItemInputState extends State<NewItemInput> {
                       isDense: true,
                       controller: controller,
                       focusNode: newItemFocusNode,
-                      minLines: 2,
                       maxLines: 6,
                       color: transparent,
                       bgColor: widget.item.color(),
@@ -97,7 +96,7 @@ class _NewItemInputState extends State<NewItemInput> {
                         if (controller.text.trim().isNotEmpty) {
                           await createItem(
                             newSubId: 'i${getUniqueId()}',
-                            data: {'t': controller.text},
+                            data_: {'t': controller.text},
                             validate: false,
                           );
                         }
@@ -115,52 +114,51 @@ class _NewItemInputState extends State<NewItemInput> {
                   //
                   sph(),
                   //
-                  if (showSaveButton)
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        //
-                        AppButton(
-                          onPressed: () async {
-                            controller.clear();
-                            newItemFocusNode.unfocus();
-                            setState(() => showSaveButton = false);
-                          },
-                          smallVerticalPadding: true,
-                          child: AppText(text: 'Cancel'),
-                        ),
-                        //
-                        spw(),
-                        //
-                        AppButton(
-                          onPressed: () async {
-                            if (controller.text.trim().isNotEmpty) {
-                              await createItem(
-                                newSubId: 'i${getUniqueId()}',
-                                data: {'t': controller.text},
-                                validate: false,
-                              );
-                            }
-                            //
-                            // Move to next item input
-                            // The delay prevents a new line from being added
-                            //
-                            controller.clear();
-                            newItemFocusNode.requestFocus();
-                            await Future.delayed(Duration(seconds: 0), () => controller.clear());
-                            state.input.setInputData(typ: feature.notes.t, id: widget.item.id);
-                          },
-                          color: styler.accentColor(),
-                          textColor: white,
-                          smallVerticalPadding: true,
-                          label: 'Add',
-                        ),
-                        //
-                      ],
-                    ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      //
+                      AppButton(
+                        onPressed: () async {
+                          controller.clear();
+                          newItemFocusNode.unfocus();
+                          setState(() => showSaveButton = false);
+                        },
+                        smallVerticalPadding: true,
+                        child: AppText(text: 'Cancel'),
+                      ),
+                      //
+                      spw(),
+                      //
+                      AppButton(
+                        onPressed: () async {
+                          if (controller.text.trim().isNotEmpty) {
+                            await createItem(
+                              newSubId: 'i${getUniqueId()}',
+                              data_: {'t': controller.text},
+                              validate: false,
+                            );
+                          }
+                          //
+                          // Move to next item input
+                          // The delay prevents a new line from being added
+                          //
+                          controller.clear();
+                          newItemFocusNode.requestFocus();
+                          await Future.delayed(Duration(seconds: 0), () => controller.clear());
+                          state.input.setInputData(typ: feature.notes.t, id: widget.item.id);
+                        },
+                        color: styler.accentColor(),
+                        textColor: white,
+                        smallVerticalPadding: true,
+                        label: 'Add',
+                      ),
+                      //
+                    ],
+                  ),
                   //
-                  if (showSaveButton) tph(),
+                  tph(),
                   //
                 ],
               ),

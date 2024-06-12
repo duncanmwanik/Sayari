@@ -7,7 +7,6 @@ import '../../../../_helpers/_common/global.dart';
 import '../../../../_helpers/date_time/date_info.dart';
 import '../../../../_helpers/date_time/get_week_no.dart';
 import '../../../../_helpers/date_time/misc.dart';
-import '../../../../_helpers/items/quick_edit.dart';
 import '../../../../_models/item.dart';
 import '../../../../_providers/common/datetime.dart';
 import '../../../../_providers/common/input.dart';
@@ -18,6 +17,7 @@ import '../../../../_widgets/others/others/divider.dart';
 import '../../../../_widgets/others/others/swipe_detector.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../_sessions/_helpers/swipe.dart';
+import '../../_helpers/quick_edit.dart';
 
 class HabitWeek extends StatefulWidget {
   const HabitWeek({super.key, this.item});

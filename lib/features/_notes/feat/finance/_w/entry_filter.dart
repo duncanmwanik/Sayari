@@ -41,8 +41,6 @@ class EntriesFilter extends StatelessWidget {
         ),
         //
       ],
-      smallVerticalPadding: true,
-      noStyling: true,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

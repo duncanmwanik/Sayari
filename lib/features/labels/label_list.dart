@@ -7,13 +7,13 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/global.dart';
 import '../../_helpers/_common/navigation.dart';
-import '../../_helpers/items/quick_edit.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/others/others/other_widgets.dart';
 import '../../_widgets/others/text.dart';
+import '../_notes/_helpers/quick_edit.dart';
 import '../_tables/_helpers/common.dart';
 import 'labels_menu.dart';
 
