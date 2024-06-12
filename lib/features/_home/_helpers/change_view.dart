@@ -7,7 +7,6 @@ import '../../_sessions/session_view.dart';
 import '../../chat/chat_view.dart';
 import '../../code/code_view.dart';
 import '../../explore/explore_view.dart';
-import '../../hub/hub_view.dart';
 
 Widget changeView(String type) {
   if (type == feature.sessions.t) {
@@ -24,8 +23,6 @@ Widget changeView(String type) {
     return ChatView();
   } else if (type == feature.code.t) {
     return CodeView();
-  } else if (type == feature.hub.t) {
-    return HubView();
   } else {
     return SessionsView();
   }

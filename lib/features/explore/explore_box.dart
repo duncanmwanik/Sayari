@@ -40,7 +40,7 @@ class ExploreBox extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(15),
           width: isTabAndBelow() ? 47.5.w : 30.w,
-          constraints: BoxConstraints(minHeight: 160, maxWidth: 300),
+          constraints: BoxConstraints(minHeight: 160, maxWidth: isTabAndBelow() ? 230 : 270),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,

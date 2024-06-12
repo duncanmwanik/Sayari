@@ -14,6 +14,7 @@ class ViewsProvider with ChangeNotifier {
   bool isNotes() => view == feature.notes.t;
   bool isChat() => view == feature.chat.t;
   bool isExplore() => view == feature.explore.t;
+  bool isCode() => view == feature.code.t;
   bool isItemView() => [feature.notes.t].contains(view);
 
   String layout = globalBox.get(

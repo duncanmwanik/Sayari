@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/navigation.dart';
-import '../../../_providers/common/views.dart';
-import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/others/icons.dart';
-import '../../../_widgets/others/text.dart';
-import '../../_notes/_helpers/helpers.dart';
-import '../../_sessions/_helpers/helpers.dart';
-import '../../_tables/_helpers/checks_table.dart';
+import '../../__styling/spacing.dart';
+import '../../__styling/variables.dart';
+import '../../_helpers/_common/navigation.dart';
+import '../../_providers/common/views.dart';
+import '../../_variables/features.dart';
+import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/others/icons.dart';
+import '../../_widgets/others/text.dart';
+import '../_notes/_helpers/helpers.dart';
+import '../_sessions/_helpers/helpers.dart';
+import '../_tables/_helpers/checks_table.dart';
+import '../code/_w/dialog_create_code.dart';
 
 class WebCreator extends StatelessWidget {
   const WebCreator({super.key, this.isCollapsed = false});
@@ -34,6 +35,7 @@ class WebCreator extends StatelessWidget {
             ? () {
                 if (isSessionsView) prepareSessionCreation();
                 if (isNotesView) prepareNoteForCreation();
+                if (views.isCode()) showCreateCodeFileDialog();
               }
             : () => openDrawer(),
         child: Container(

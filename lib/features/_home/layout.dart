@@ -9,9 +9,9 @@ import '../../_providers/common/theme.dart';
 import '../../_providers/common/views.dart';
 import '../_sessions/info_header.dart';
 import '_helpers/change_view.dart';
-import '_w/appbar.dart';
 import '_w/left_box.dart';
 import '_w/navbar_horizontal.dart';
+import 'appbar.dart';
 
 class Applayout extends StatelessWidget {
   const Applayout({super.key});

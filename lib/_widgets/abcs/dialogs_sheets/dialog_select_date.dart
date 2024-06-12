@@ -13,15 +13,22 @@ Future<List> showSelectDateDialog({
   List initialDates = const [],
   bool isMultiple = false,
   bool showTitle = false,
+  EdgeInsets? padding,
 }) async {
   List selectedDates = [];
 
   await showAppDialog(
     //
+    maxWidth: 320,
+    padding: padding,
     crossAxisAlignment: CrossAxisAlignment.center, smallTitlePadding: true,
     title: showTitle ? AppText(text: title) : null,
     //
-    content: SfCalendar(initialDate: initialDate ?? '', initialDates: initialDates, isMultiple: isMultiple, selectedDates: selectedDates),
+    content: SfCalendar(
+        initialDate: initialDate ?? '',
+        initialDates: initialDates,
+        isMultiple: isMultiple,
+        selectedDates: selectedDates),
     //
     actions: [
       ActionButton(

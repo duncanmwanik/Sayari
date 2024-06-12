@@ -1,3 +1,4 @@
+import '../../__styling/spacing.dart';
 import '../../_providers/providers.dart';
 import '../../_widgets/abcs/dialogs_sheets/dialog_select_date.dart';
 import 'misc.dart';
@@ -22,5 +23,8 @@ Future<void> jumpToDate(DateTime? date) async {
 }
 
 Future<void> jumpToDateDialog() async {
-  await showSelectDateDialog(actionLabel: 'Jump').then((date) => jumpToDate(date.first));
+  await showSelectDateDialog(
+    actionLabel: 'Jump',
+    padding: itemPaddingLarge(left: true, right: true, bottom: true),
+  ).then((date) => jumpToDate(DateTime.parse(date.first)));
 }

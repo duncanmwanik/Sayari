@@ -10,8 +10,9 @@ import '../../../_widgets/others/images.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/sfcalendar.dart';
 import '../../../_widgets/others/text.dart';
+import '../../code/_w/code_files_list.dart';
 import '../../labels/label_manager.dart';
-import 'creator.dart';
+import '../creator.dart';
 import 'navbar_vertical.dart';
 
 class WebLeftBox extends StatelessWidget {
@@ -88,6 +89,8 @@ class WebLeftBox extends StatelessWidget {
                             if (showCalendar) Center(child: SfCalendar(isWebCalendar: true)),
                             //
                             if (showLabelManager) LabelManager(),
+                            //
+                            if (views.isCode()) CodeFilesList(),
                             //
                           ],
                         ),

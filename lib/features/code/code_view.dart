@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/breakpoints.dart';
+import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_widgets/others/text.dart';
@@ -26,21 +27,33 @@ class CodeView extends StatelessWidget {
           // Blocks
           //
           if (isSmallPC())
-            SingleChildScrollView(
-              padding: EdgeInsets.only(top: 15, left: 15, right: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  DelayBlock(),
-                  mph(),
-                  LedColorBlock(),
-                  mph(),
-                  PinStateBlock(),
-                  mph(),
-                  IfBlock(),
-                  mph(),
-                  IfBlock(isWhile: true),
-                ],
+            Container(
+              padding: itemPadding(),
+              margin: itemPadding(left: true),
+              decoration: BoxDecoration(
+                color: styler.appColor(isDark() ? 0.5 : 1),
+                borderRadius: BorderRadius.circular(borderRadiusMedium),
+              ),
+              child: SingleChildScrollView(
+                padding: EdgeInsets.zero,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //
+                    AppText(text: 'Code Blocks', bold: true),
+                    mph(),
+                    DelayBlock(),
+                    mph(),
+                    LedColorBlock(),
+                    mph(),
+                    PinStateBlock(),
+                    mph(),
+                    IfBlock(),
+                    mph(),
+                    IfBlock(isWhile: true),
+                    sph(),
+                  ],
+                ),
               ),
             ),
           //
@@ -104,10 +117,15 @@ class CodeView extends StatelessWidget {
           // Info
           //
           if (isSmallPC())
-            SizedBox(
+            Container(
+              padding: itemPadding(),
+              margin: itemPadding(right: true),
+              decoration: BoxDecoration(
+                color: styler.appColor(isDark() ? 0.5 : 1),
+                borderRadius: BorderRadius.circular(borderRadiusMedium),
+              ),
               width: 300,
               child: SingleChildScrollView(
-                padding: EdgeInsets.only(top: 15, left: 15, right: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

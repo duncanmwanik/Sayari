@@ -39,6 +39,7 @@ void changeStatusAndNavigationBarColor(String theme, {bool isSecondary = false})
   );
 }
 
+bool isDark() => 'dark' == state.theme.themeType;
 bool isImageTheme() => !['dark', 'light', 'black'].contains(state.theme.themeImage);
 bool isBlackTheme() => 'black' == state.theme.themeImage;
 

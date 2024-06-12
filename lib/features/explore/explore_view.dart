@@ -69,14 +69,6 @@ class ExploreView extends StatelessWidget {
               onPressed: () => state.views.setHomeView(feature.code.t),
             ),
             //
-            ExploreBox(
-              title: 'Sayari Home',
-              subtitle: 'Control & configure your Sayari devices.',
-              icon: Icons.home,
-              iconColor: Colors.orange,
-              onPressed: () => state.views.setHomeView(feature.hub.t),
-            ),
-            //
           ],
         ),
       ),

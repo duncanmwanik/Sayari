@@ -6,7 +6,6 @@ import '../features/pomodoro/_state/pomodoro_provider.dart';
 import '../features/tts/_state/tts_provider.dart';
 import 'common/ble.dart';
 import 'common/data.dart';
-import 'common/data_stage.dart';
 import 'common/datetime.dart';
 import 'common/global_provider.dart';
 import 'common/hub.dart';
@@ -24,7 +23,6 @@ import 'common/views.dart';
 List<SingleChildWidget> allProviders = [
   ChangeNotifierProvider(create: (context) => DataProvider()),
   ChangeNotifierProvider(create: (context) => InputProvider()),
-  ChangeNotifierProvider(create: (context) => StageProvider()),
   //
   ChangeNotifierProvider(create: (context) => QuillProvider()),
   ChangeNotifierProvider(create: (context) => TTSProvider()),
@@ -52,7 +50,6 @@ class AppState {
   late GlobalProvider global;
   late DataProvider data;
   late InputProvider input;
-  late StageProvider stage;
   late QuillProvider quill;
   late DateTimeProvider dateTime;
   late ViewsProvider views;
@@ -71,7 +68,6 @@ class AppState {
     global = appContext.read<GlobalProvider>();
     data = appContext.read<DataProvider>();
     input = appContext.read<InputProvider>();
-    stage = appContext.read<StageProvider>();
     quill = appContext.read<QuillProvider>();
     dateTime = appContext.read<DateTimeProvider>();
     views = appContext.read<ViewsProvider>();

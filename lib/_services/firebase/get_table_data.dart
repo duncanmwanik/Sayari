@@ -14,8 +14,8 @@ Future<void> getAllTableData(String tableId, {bool? isFirstTime}) async {
   await getTableNameFromCloud(tableId);
   await getTableAdminData(tableId);
   await getTableData(tableId, feature.chat.t);
+  await getTableData(tableId, feature.code.t);
   await getTableAllSessions(tableId);
-  await getTableAllNotes(tableId);
   await getTableAllNotes(tableId);
   await getTableAllLists(tableId);
   await getTableAllPeriods(tableId);

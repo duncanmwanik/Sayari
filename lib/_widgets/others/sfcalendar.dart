@@ -32,7 +32,7 @@ class SfCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double size = isWebCalendar ? 220 : (isNotPhone() ? 300 : 80.w);
+    double size = isWebCalendar ? 220 : (isPhone() ? 80.w : 300);
 
     return Consumer<DateTimeProvider>(builder: (context, date, child) {
       String initial = initialDate.isNotEmpty ? initialDate : date.selectedDate;
@@ -41,7 +41,7 @@ class SfCalendar extends StatelessWidget {
       //
       return Container(
         height: size,
-        width: isBookingCalendar ? size * 1.3 : size,
+        width: isBookingCalendar ? (size * 1.3) : size,
         padding: isWebCalendar ? null : (isBookingCalendar ? itemPadding() : itemPaddingSmall()),
         decoration: isWebCalendar
             ? null

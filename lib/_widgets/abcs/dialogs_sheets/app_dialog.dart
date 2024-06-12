@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../../__styling/breakpoints.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
@@ -17,6 +17,7 @@ Future<dynamic> showAppDialog({
   Widget? content,
   List<Widget>? actions,
   bool smallTitlePadding = false,
+  EdgeInsets? padding,
   CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
   double? maxWidth,
   Function? prep,
@@ -52,8 +53,10 @@ Future<dynamic> showAppDialog({
                   filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
                   child: Container(
                     width: double.maxFinite,
-                    padding: itemPaddingLarge(),
-                    constraints: kIsWeb ? BoxConstraints(maxWidth: maxWidth ?? webMaxDialogWidth, maxHeight: 60.h) : BoxConstraints(),
+                    padding: padding ?? itemPaddingLarge(),
+                    constraints: isNotPhone()
+                        ? BoxConstraints(maxWidth: maxWidth ?? webMaxDialogWidth, maxHeight: 60.h)
+                        : BoxConstraints(),
                     color: isImageTheme() ? white.withOpacity(0.1) : styler.tertiaryColor(),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
@@ -63,7 +66,9 @@ Future<dynamic> showAppDialog({
                         if (title != null)
                           Align(
                             alignment: Alignment.topLeft,
-                            child: title.runtimeType == String ? HtmlText(size: normal, text: title, color: styler.textColor()) : title,
+                            child: title.runtimeType == String
+                                ? HtmlText(size: normal, text: title, color: styler.textColor())
+                                : title,
                           ),
                         //
                         if (title != null) smallTitlePadding ? tph() : mph(),

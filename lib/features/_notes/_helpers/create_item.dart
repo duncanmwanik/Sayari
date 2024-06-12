@@ -13,8 +13,8 @@ import '../../reminders/_helpers/register_reminder.dart';
 import 'share.dart';
 import 'validation.dart';
 
-Future<void> createItem({String? newId, String? newSubId, Map? data_, bool validate = true}) async {
-  String type = state.input.type;
+Future<void> createItem({String? type_, String? newId, String? newSubId, Map? data_, bool validate = true}) async {
+  String type = type_ ?? state.input.type;
   Map data = data_ ?? state.input.data;
 
   try {
