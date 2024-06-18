@@ -51,7 +51,7 @@ class ItemSelector extends StatelessWidget {
                           : isBlackTheme()
                               ? black
                               : styler.isDark
-                                  ? styler.tertiaryColor()
+                                  ? styler.secondaryColor()
                                   : styler.primaryColor()),
                   shape: BoxShape.circle,
                   border: Border.all(

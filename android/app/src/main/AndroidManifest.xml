@@ -25,7 +25,7 @@
     <!-- ___________________ Bluetooth LE ___________________  -->
 
     <application
-        android:label="sayari"
+        android:label="Sayari"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

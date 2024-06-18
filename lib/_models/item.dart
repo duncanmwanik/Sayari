@@ -37,7 +37,7 @@ class Item {
   bool isArchived() => data['a'] == '1';
   bool isDeleted() => data['x'] == '1';
   bool showChecks() => data['v'] == '1';
-  bool showEditor() => isPureNote() || hasPortfolios() || hasForms() || hasForms() || hasFinances();
+  bool showEditor() => isPureNote() || hasPortfolios() || hasForms();
   bool showNewEntriesFirst() => data['at'] == '1';
 
   //

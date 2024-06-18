@@ -39,7 +39,7 @@ class PomodoroPeriod extends StatelessWidget {
                       ? isCurrentTimer
                           ? 0.2
                           : 0.1
-                      : 0.6,
+                      : 0.3,
                 ),
             borderRadius: BorderRadius.circular(borderRadiusMediumSmall),
           ),

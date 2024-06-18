@@ -8,8 +8,8 @@ import '../../../../_widgets/others/others/other_widgets.dart';
 DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
   Color quillTextColor = styler.textColor(bgColor: bgColor);
   Color quillFadedTextColor = styler.textColor(faded: true, bgColor: bgColor);
-  FontWeight fontWeight = FontWeight.w500;
-  FontWeight boldFontWeight = FontWeight.w700;
+  FontWeight fontWeight = FontWeight.w600;
+  FontWeight boldFontWeight = FontWeight.w800;
   String fontFamily = 'Nunito';
 
   return DefaultStyles(
@@ -165,8 +165,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
     inlineCode: InlineCodeStyle(
       backgroundColor: styler.appColor(1),
       radius: Radius.circular(borderRadiusSmall),
-      style: TextStyle(
-          fontSize: 14, color: quillTextColor, fontFamily: fontFamily),
+      style: TextStyle(fontSize: 14, color: quillTextColor, fontFamily: fontFamily),
     ),
   );
 }
@@ -178,10 +177,7 @@ class CustomQuillCheckbox implements QuillCheckboxBuilder {
   final String? bgColor;
 
   @override
-  Widget build(
-      {required BuildContext context,
-      required bool isChecked,
-      required ValueChanged<bool> onChanged}) {
+  Widget build({required BuildContext context, required bool isChecked, required ValueChanged<bool> onChanged}) {
     return Material(
       color: transparent,
       child: InkWell(
@@ -195,18 +191,11 @@ class CustomQuillCheckbox implements QuillCheckboxBuilder {
             decoration: BoxDecoration(
               color: isChecked ? styler.accentColor() : null,
               borderRadius: BorderRadius.circular(isOverview ? 4 : 5),
-              border: isChecked
-                  ? null
-                  : Border.all(
-                      color: styler.textColor(faded: true, bgColor: bgColor),
-                      width: 1.5),
+              border: isChecked ? null : Border.all(color: styler.textColor(faded: true, bgColor: bgColor), width: 1.5),
             ),
             child: Center(
               child: isChecked
-                  ? AppIcon(Icons.done_rounded,
-                      size: isOverview ? 8 : 12,
-                      faded: true,
-                      color: isChecked ? white : null)
+                  ? AppIcon(Icons.done_rounded, size: isOverview ? 8 : 12, faded: true, color: isChecked ? white : null)
                   : NoWidget(),
             ),
           ),

@@ -32,9 +32,10 @@ Map states = {
 };
 
 class IfBlock extends StatefulWidget {
-  const IfBlock({super.key, this.isWhile = false});
+  const IfBlock({super.key, this.isWhile = false, this.data});
 
   final bool isWhile;
+  final String? data;
 
   @override
   State<IfBlock> createState() => _LedPinBlockState();
@@ -46,16 +47,16 @@ class _LedPinBlockState extends State<IfBlock> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        //
-        Flexible(
-          child: AppButton(
-            onPressed: () {},
-            color: backgroundColors[widget.isWhile ? '4' : '3']!.shadeColor,
-            borderRadius: borderRadiusMediumSmall,
-            child: Wrap(
+    return Flexible(
+      child: AppButton(
+        color: backgroundColors[widget.isWhile ? '4' : '3']!.shadeColor,
+        borderRadius: borderRadiusMediumSmall,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //
+            Wrap(
               runSpacing: smallWidth(),
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
@@ -90,14 +91,42 @@ class _LedPinBlockState extends State<IfBlock> {
                 //
               ],
             ),
-          ),
+            //
+            if (widget.data != null) sph(),
+            //
+            if (widget.data != null)
+              Container(
+                padding: itemPadding(),
+                constraints: BoxConstraints(minHeight: 30, minWidth: 200),
+                decoration: BoxDecoration(
+                  color: white,
+                  borderRadius: BorderRadius.circular(borderRadiusMediumSmall),
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //
+                    AppButton(
+                      onPressed: () {},
+                      borderRadius: borderRadiusLarge,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AppIcon(Icons.add, size: 16, color: black),
+                          tpw(),
+                          AppText(text: 'Add Block ', color: black),
+                        ],
+                      ),
+                    ),
+                    //
+                  ],
+                ),
+              )
+            //
+          ],
         ),
-        //
-        spw(),
-        //
-        AppIcon(Icons.drag_indicator, size: 16, faded: true),
-        //
-      ],
+      ),
     );
   }
 }

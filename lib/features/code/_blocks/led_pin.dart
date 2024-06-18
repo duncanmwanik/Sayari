@@ -5,7 +5,6 @@ import '../../../__styling/variables.dart';
 import '../../../_variables/colors.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/items/picker_type.dart';
-import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 
 Map ledPins = {
@@ -46,58 +45,46 @@ class _LedPinBlockState extends State<LedColorBlock> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        //
-        Flexible(
-          child: AppButton(
-            onPressed: () {},
-            color: backgroundColors['1']!.shadeColor,
-            borderRadius: borderRadiusMediumSmall,
-            child: Wrap(
-              runSpacing: smallWidth(),
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                //
-                AppText(size: normal, text: 'turn led', color: black),
-                //
-                spw(),
-                //
-                AppTypePicker(
-                  initial: ledPin,
-                  typeEntries: ledPins,
-                  onSelect: (chosenType, chosenValue) => setState(() => ledPin = chosenType),
-                  bgColor: white,
-                  textColor: black,
-                  borderRadius: borderRadiusSmall,
-                ),
-                //
-                spw(),
-                //
-                AppText(size: normal, text: 'to color', color: black),
-                //
-                spw(),
-                //
-                AppTypePicker(
-                  initial: ledColor,
-                  typeEntries: ledColors,
-                  onSelect: (chosenType, chosenValue) => setState(() => ledColor = chosenType),
-                  bgColor: white,
-                  textColor: black,
-                  borderRadius: borderRadiusSmall,
-                ),
-                //
-              ],
+    return Flexible(
+      child: AppButton(
+        color: backgroundColors['1']!.shadeColor,
+        borderRadius: borderRadiusMediumSmall,
+        child: Wrap(
+          runSpacing: smallWidth(),
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            //
+            AppText(size: normal, text: 'turn led', color: black),
+            //
+            spw(),
+            //
+            AppTypePicker(
+              initial: ledPin,
+              typeEntries: ledPins,
+              onSelect: (chosenType, chosenValue) => setState(() => ledPin = chosenType),
+              bgColor: white,
+              textColor: black,
+              borderRadius: borderRadiusSmall,
             ),
-          ),
+            //
+            spw(),
+            //
+            AppText(size: normal, text: 'to color', color: black),
+            //
+            spw(),
+            //
+            AppTypePicker(
+              initial: ledColor,
+              typeEntries: ledColors,
+              onSelect: (chosenType, chosenValue) => setState(() => ledColor = chosenType),
+              bgColor: white,
+              textColor: black,
+              borderRadius: borderRadiusSmall,
+            ),
+            //
+          ],
         ),
-        //
-        spw(),
-        //
-        AppIcon(Icons.drag_indicator, size: 16, faded: true),
-        //
-      ],
+      ),
     );
   }
 }

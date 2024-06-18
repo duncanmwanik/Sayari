@@ -5,7 +5,6 @@ import '../../../__styling/variables.dart';
 import '../../../_variables/colors.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/items/picker_type.dart';
-import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 
 Map pins = {
@@ -35,54 +34,42 @@ class _LedPinBlockState extends State<PinStateBlock> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        //
-        Flexible(
-          child: AppButton(
-            onPressed: () {},
-            color: backgroundColors['2']!.shadeColor,
-            borderRadius: borderRadiusMediumSmall,
-            child: Wrap(
-              runSpacing: smallWidth(),
-              crossAxisAlignment: WrapCrossAlignment.center,
-              children: [
-                //
-                AppText(size: normal, text: 'turn pin', color: black),
-                //
-                spw(),
-                //
-                AppTypePicker(
-                  initial: pin,
-                  typeEntries: pins,
-                  onSelect: (chosenType, chosenValue) => setState(() => pin = chosenType),
-                  bgColor: white,
-                  textColor: black,
-                  borderRadius: borderRadiusSmall,
-                ),
-                //
-                spw(),
-                //
-                AppTypePicker(
-                  initial: state,
-                  typeEntries: states,
-                  onSelect: (chosenType, chosenValue) => setState(() => state = chosenType),
-                  bgColor: white,
-                  textColor: black,
-                  borderRadius: borderRadiusSmall,
-                ),
-                //
-              ],
+    return Flexible(
+      child: AppButton(
+        color: backgroundColors['2']!.shadeColor,
+        borderRadius: borderRadiusMediumSmall,
+        child: Wrap(
+          runSpacing: smallWidth(),
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            //
+            AppText(size: normal, text: 'turn pin', color: black),
+            //
+            spw(),
+            //
+            AppTypePicker(
+              initial: pin,
+              typeEntries: pins,
+              onSelect: (chosenType, chosenValue) => setState(() => pin = chosenType),
+              bgColor: white,
+              textColor: black,
+              borderRadius: borderRadiusSmall,
             ),
-          ),
+            //
+            spw(),
+            //
+            AppTypePicker(
+              initial: state,
+              typeEntries: states,
+              onSelect: (chosenType, chosenValue) => setState(() => state = chosenType),
+              bgColor: white,
+              textColor: black,
+              borderRadius: borderRadiusSmall,
+            ),
+            //
+          ],
         ),
-        //
-        spw(),
-        //
-        AppIcon(Icons.drag_indicator, size: 16, faded: true),
-        //
-      ],
+      ),
     );
   }
 }

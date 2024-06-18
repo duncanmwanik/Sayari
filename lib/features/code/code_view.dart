@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../__styling/breakpoints.dart';
-import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
+import '../../_helpers/_common/global.dart';
+import '../../_providers/common/input.dart';
+import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
-import '_blocks/delay.dart';
-import '_blocks/if.dart';
-import '_blocks/led_pin.dart';
-import '_blocks/pin_state.dart';
-import '_vars/descriptions.dart';
 import '_w/widgets.dart';
+import 'block_chooser.dart';
+import 'block_description.dart';
+import 'code_blocks.dart';
+import 'repeat.dart';
 
 class CodeView extends StatelessWidget {
   const CodeView({super.key});
@@ -24,118 +27,65 @@ class CodeView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //
-          // Blocks
-          //
-          if (isSmallPC())
-            Container(
-              padding: itemPadding(),
-              margin: itemPadding(left: true),
-              decoration: BoxDecoration(
-                color: styler.appColor(isDark() ? 0.5 : 1),
-                borderRadius: BorderRadius.circular(borderRadiusMedium),
-              ),
-              child: SingleChildScrollView(
-                padding: EdgeInsets.zero,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //
-                    AppText(text: 'Code Blocks', bold: true),
-                    mph(),
-                    DelayBlock(),
-                    mph(),
-                    LedColorBlock(),
-                    mph(),
-                    PinStateBlock(),
-                    mph(),
-                    IfBlock(),
-                    mph(),
-                    IfBlock(isWhile: true),
-                    sph(),
-                  ],
-                ),
-              ),
-            ),
-          //
-          // Content
-          //
           Expanded(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.only(top: 15, left: 15, right: 15),
-              child: Column(
-                children: [
-                  //
-                  AppText(text: 'Start', fontWeight: FontWeight.w900),
-                  //
-                  BlockSpeparator(),
-                  //
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: List.generate(
-                        2,
-                        (index) => Column(
+            child: Consumer<InputProvider>(builder: (context, input, child) {
+              List blocks = getSplitList(input.data['b']);
+
+              return input.itemId.isNotEmpty
+                  ? SingleChildScrollView(
+                      padding: EdgeInsets.only(top: 15, left: 15, right: 15),
+                      child: Column(
+                        children: [
+                          //
+                          AppText(text: 'Start', fontWeight: FontWeight.w900),
+                          //
+                          BlockSpeparator(),
+                          //
+                          BlockChooser(blocks: blocks),
+                          //
+                          sph(),
+                          //
+                          AppButton(
+                            onPressed: () {},
+                            borderRadius: borderRadiusLarge,
+                            child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                //
-                                DelayBlock(),
-                                //
-                                BlockSpeparator(),
-                                //
-                                LedColorBlock(),
-                                //
-                                BlockSpeparator(),
-                                //
-                                PinStateBlock(),
-                                //
-                                BlockSpeparator(),
-                                //
-                                IfBlock(),
-                                //
-                                BlockSpeparator(),
-                                //
-                                IfBlock(isWhile: true),
-                                //
-                                BlockSpeparator(),
-                                //
+                                AppIcon(Icons.add, size: 16),
+                                tpw(),
+                                AppText(text: 'Add Block '),
                               ],
-                            )),
-                  ),
-                  //
-                  AppText(text: 'End', fontWeight: FontWeight.w900),
-                  //
-                  mph(),
-                  //
-                  AppText(size: small, text: 'Repeat is ON', faded: true),
-                  //
-                  lpph(),
-                  //
-                ],
-              ),
-            ),
+                            ),
+                          ),
+                          //
+                          sph(),
+                          //
+                          BlockSpeparator(),
+                          //
+                          AppText(text: 'End', fontWeight: FontWeight.w900),
+                          //
+                          mph(),
+                          //
+                          CodeRepeat(),
+                          //
+                          lpph(),
+                          //
+                        ],
+                      ),
+                    )
+                  : Center(
+                      child: Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: AppText(size: small, text: 'No code file selected...', faded: true),
+                    ));
+            }),
           ),
           //
-          // Info
+          if (isSmallPC()) CodeBlocks(),
           //
-          if (isSmallPC())
-            Container(
-              padding: itemPadding(),
-              margin: itemPadding(right: true),
-              decoration: BoxDecoration(
-                color: styler.appColor(isDark() ? 0.5 : 1),
-                borderRadius: BorderRadius.circular(borderRadiusMedium),
-              ),
-              width: 300,
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    //
-                    HtmlText(text: delayDescription),
-                    //
-                  ],
-                ),
-              ),
-            ),
+          if (isSmallPC()) spw(),
+          //
+          if (isSmallPC()) BlockDescription(),
           //
         ],
       ),

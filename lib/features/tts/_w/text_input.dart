@@ -14,7 +14,7 @@ class TTSInput extends StatelessWidget {
     return Consumer<TTSProvider>(builder: (context, ttsProvider, child) {
       return DataInput(
         onChanged: (value) => ttsProvider.updateTextToSpeak(value.trim()),
-        hintText: 'Type or paste text from clipboard...',
+        hintText: 'Type something...',
         initialValue: ttsProvider.textToSpeak,
         focusNode: noteTextFocusNode,
         fontSize: normal,

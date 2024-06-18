@@ -15,7 +15,7 @@ List<Widget> messageMenu(String messageId, Map messageData) {
     MenuItem(
       onTap: () {},
       label: 'Copy Text',
-      iconData: Icons.download_rounded,
+      iconData: Icons.copy_rounded,
     ),
     //
     MenuItem(
