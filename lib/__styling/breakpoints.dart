@@ -2,45 +2,11 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import 'variables.dart';
 
-// ---------- ---------- ----------
-
-bool isPhone() {
-  return 100.w <= 500;
-}
-
-bool isNotPhone() {
-  return 100.w > 500;
-}
-
-// ---------- ---------- ----------
-
-bool isTabAndBelow() {
-  return 100.w <= 768;
-}
-
-// ---------- ---------- ----------
-
-bool isSmallPC() {
-  return 100.w > 768;
-}
-
-// ---------- ---------- ----------
-
-bool isLargePC() {
-  return 100.w > 1200;
-}
-
-// ---------- ---------- ----------
-
-bool showVertNav() {
-  return 100.w >= 768;
-}
-
-bool showWebBoxOptions() {
-  return 100.w >= 840;
-}
-
-// ---------- ---------- ----------
-bool showSheetAsDialog() {
-  return 100.w > webMaxWidth;
-}
+bool isPhone() => 100.w <= 500;
+bool isNotPhone() => 100.w > 500;
+bool isTabAndBelow() => 100.w <= 768;
+bool isSmallPC() => 100.w > 768;
+bool isLargePC() => 100.w > 1200;
+bool showVertNav() => 100.w >= 768;
+bool showWebBoxOptions() => 100.w >= 840;
+bool showSheetAsDialog() => 100.w > webMaxWidth;

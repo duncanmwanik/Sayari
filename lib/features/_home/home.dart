@@ -10,6 +10,7 @@ import '../../_helpers/pending/retry_pending_actions.dart';
 import '../../_services/activity/listen_for_updates.dart';
 import '../../_variables/navigation.dart';
 import '_w/drawer.dart';
+import '_w/drawer_end.dart';
 import '_w/fab.dart';
 import 'layout.dart';
 
@@ -50,6 +51,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
       child: Scaffold(
         body: Applayout(),
         drawer: AppDrawer(),
+        endDrawer: AppEndDrawer(),
         floatingActionButton: showVertNav() ? null : HomeFab(),
         key: scaffoldState,
       ),

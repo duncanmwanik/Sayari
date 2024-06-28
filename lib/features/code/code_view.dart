@@ -5,6 +5,7 @@ import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/global.dart';
+import '../../_helpers/_common/navigation.dart';
 import '../../_providers/common/input.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
@@ -46,7 +47,7 @@ class CodeView extends StatelessWidget {
                           sph(),
                           //
                           AppButton(
-                            onPressed: () {},
+                            onPressed: () => openEndDrawer(),
                             borderRadius: borderRadiusLarge,
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -81,7 +82,7 @@ class CodeView extends StatelessWidget {
             }),
           ),
           //
-          if (isSmallPC()) CodeBlocks(),
+          if (isLargePC()) CodeBlocks(),
           //
           if (isSmallPC()) spw(),
           //
