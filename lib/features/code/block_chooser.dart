@@ -12,6 +12,7 @@ class BlockChooser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: List.generate(blocks.length, (index) {
         String block = blocks[index];
         String type = block[0];
@@ -19,6 +20,7 @@ class BlockChooser extends StatelessWidget {
 
         return Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //
             CodeBlock(type: type, data: data, index: index),

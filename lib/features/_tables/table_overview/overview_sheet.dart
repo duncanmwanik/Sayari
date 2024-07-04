@@ -43,6 +43,7 @@ Future<void> showTableOverviewBottomSheet() async {
           return tableId != 'none'
               ? SingleChildScrollView(
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //
                       if (description.isNotEmpty) TableDescription(tableDescription: description),
@@ -98,6 +99,19 @@ Future<void> showTableOverviewBottomSheet() async {
                         ),
                       //
                       kIsWeb ? sph() : tsph(),
+                      //
+                      AppListTile(
+                        leading: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            AppIcon(Icons.book_rounded, size: 14),
+                            SizedBox(width: smallWidth()),
+                            Flexible(child: AppText(text: 'Publish Book')),
+                          ],
+                        ),
+                        trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: 18),
+                        onTap: () {},
+                      ),
                       //
                     ],
                   ),

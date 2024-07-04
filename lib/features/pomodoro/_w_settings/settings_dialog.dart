@@ -29,7 +29,6 @@ Future<void> showPomodoroSettingsDialog() async {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //
-            //
             PomodoroSetting(type: 'focus'),
             //
             AppDivider(height: largeHeight()),

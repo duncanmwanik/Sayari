@@ -45,6 +45,7 @@ class CustomAppBar extends StatelessWidget {
               toolbarHeight: state.views.isNotes() ? (isNotPhone() ? 80 : 75) : 45,
               floating: true,
               leading: NoWidget(),
+              actions: [NoWidget()],
               leadingWidth: 0,
               titleSpacing: 0,
               backgroundColor: styler.navColor(),
@@ -117,9 +118,6 @@ class CustomAppBar extends StatelessWidget {
                         ],
                       ),
                     ),
-                  //
-                  // if (isNotPhone()) AppDivider(height: 0),
-                  // if (isNotPhone()) ph(5),
                   //
                   NoteOptions(),
                   //

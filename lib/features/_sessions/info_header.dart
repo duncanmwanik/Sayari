@@ -38,7 +38,7 @@ class InfoHeader extends StatelessWidget {
           maxHeight: 32.0,
           child: Container(
             color: styler.navColor(),
-            padding: EdgeInsets.only(left: 5, right: kIsWeb ? 15 : 5),
+            padding: EdgeInsets.only(left: 5, right: kIsWeb ? 8 : 5, top: 3),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

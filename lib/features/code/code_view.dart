@@ -12,7 +12,6 @@ import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '_w/widgets.dart';
 import 'block_chooser.dart';
-import 'block_description.dart';
 import 'code_blocks.dart';
 import 'repeat.dart';
 
@@ -36,6 +35,7 @@ class CodeView extends StatelessWidget {
                   ? SingleChildScrollView(
                       padding: EdgeInsets.only(top: 15, left: 15, right: 15),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           //
                           AppText(text: 'Start', fontWeight: FontWeight.w900),
@@ -84,9 +84,9 @@ class CodeView extends StatelessWidget {
           //
           if (isLargePC()) CodeBlocks(),
           //
-          if (isSmallPC()) spw(),
+          // if (isSmallPC()) spw(),
           //
-          if (isSmallPC()) BlockDescription(),
+          // if (isSmallPC()) BlockDescription(),
           //
         ],
       ),

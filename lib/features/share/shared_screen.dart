@@ -3,7 +3,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/theme.dart';
 import '../../_services/firebase/firebase_database.dart';
@@ -60,10 +59,7 @@ class _ShareScreenState extends State<ShareScreen> {
     return Consumer<ThemeProvider>(
       builder: (context, dateTime, child) => Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(getDefaultThemeImage()),
-            fit: BoxFit.cover,
-          ),
+          image: DecorationImage(image: AssetImage(getDefaultThemeImage()), fit: BoxFit.cover),
         ),
         child: SafeArea(
           child: Scaffold(
@@ -83,33 +79,30 @@ class _ShareScreenState extends State<ShareScreen> {
                               return data.isNotEmpty
                                   ? Align(
                                       alignment: Alignment.topCenter,
-                                      child: Padding(
-                                        padding: itemPaddingSmall(left: true, right: true, top: true),
-                                        child: feature.isShare(widget.type)
-                                            ? BlogBody(userId: userId, userName: userName, data: data)
-                                            : feature.isBooking(widget.type)
-                                                ? BookingBody(
-                                                    tableId: tableId,
-                                                    itemId: widget.id,
-                                                    userId: userId,
-                                                    userName: userName,
-                                                    data: data)
-                                                : feature.isLink(widget.type)
-                                                    ? LinksBody(
-                                                        tableId: tableId,
-                                                        itemId: widget.id,
-                                                        userId: userId,
-                                                        userName: userName,
-                                                        data: data)
-                                                    : feature.isForm(widget.type)
-                                                        ? FormBody(
-                                                            tableId: tableId,
-                                                            itemId: widget.id,
-                                                            userId: userId,
-                                                            userName: userName,
-                                                            data: data)
-                                                        : SharedItemInfo(),
-                                      ),
+                                      child: feature.isShare(widget.type)
+                                          ? BlogBody(userId: userId, userName: userName, data: data)
+                                          : feature.isBooking(widget.type)
+                                              ? BookingBody(
+                                                  tableId: tableId,
+                                                  itemId: widget.id,
+                                                  userId: userId,
+                                                  userName: userName,
+                                                  data: data)
+                                              : feature.isLink(widget.type)
+                                                  ? LinksBody(
+                                                      tableId: tableId,
+                                                      itemId: widget.id,
+                                                      userId: userId,
+                                                      userName: userName,
+                                                      data: data)
+                                                  : feature.isForm(widget.type)
+                                                      ? FormBody(
+                                                          tableId: tableId,
+                                                          itemId: widget.id,
+                                                          userId: userId,
+                                                          userName: userName,
+                                                          data: data)
+                                                      : SharedItemInfo(),
                                     )
                                   : SharedItemInfo();
                             }

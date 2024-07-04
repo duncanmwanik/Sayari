@@ -11,7 +11,7 @@ class TableDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPaddingMedium(bottom: true),
+      padding: itemPaddingMedium(bottom: true, top: true),
       child: AppText(
         text: tableDescription,
         faded: true,

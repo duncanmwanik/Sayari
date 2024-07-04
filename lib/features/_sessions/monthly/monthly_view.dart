@@ -60,15 +60,18 @@ class MonthlyView extends StatelessWidget {
                                   color: transparent,
                                   child: InkWell(
                                     onTap: () => showSessionListBottomSheet(dateToday, todaySessionsMap),
-                                    onDoubleTap: () => prepareSessionCreation(date: dateToday, hour: TimeOfDay.now().hour),
-                                    onLongPress: () => prepareSessionCreation(date: dateToday, hour: TimeOfDay.now().hour),
+                                    onDoubleTap: () =>
+                                        prepareSessionCreation(date: dateToday, hour: TimeOfDay.now().hour),
+                                    onLongPress: () =>
+                                        prepareSessionCreation(date: dateToday, hour: TimeOfDay.now().hour),
                                     child: Container(
                                       width: width / 7,
                                       height: height / 6,
                                       constraints: BoxConstraints(minHeight: 10.h, maxHeight: 15.h),
                                       decoration: BoxDecoration(
-                                        color: date.isToday() ? styler.accentColor(1) : null,
-                                        border: Border.all(color: styler.borderColor(), width: styler.isDark ? 0.1 : 0.2),
+                                        color: date.isToday() ? styler.accentColor(0.3) : null,
+                                        border:
+                                            Border.all(color: styler.borderColor(), width: styler.isDark ? 0.1 : 0.2),
                                       ),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,

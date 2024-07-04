@@ -7,6 +7,7 @@ import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../_providers/common/theme.dart';
 import '../../_providers/common/views.dart';
+import '../../_widgets/others/others/scroll.dart';
 import '../_sessions/info_header.dart';
 import '_helpers/change_view.dart';
 import '_w/left_box.dart';
@@ -38,22 +39,25 @@ class Applayout extends StatelessWidget {
                         //
                         Expanded(
                           child: Consumer<ViewsProvider>(builder: (context, views, child) {
-                            return CustomScrollView(
-                              slivers: [
-                                //
-                                CustomAppBar(),
-                                //
-                                if (views.isSessions()) InfoHeader(),
-                                //
-                                SliverList(
-                                  delegate: SliverChildListDelegate(
-                                    [
-                                      changeView(views.view),
-                                    ],
+                            return ScrollConfiguration(
+                              behavior: AppScrollBehavior().copyWith(scrollbars: false),
+                              child: CustomScrollView(
+                                slivers: [
+                                  //
+                                  CustomAppBar(),
+                                  //
+                                  if (views.isSessions()) InfoHeader(),
+                                  //
+                                  SliverList(
+                                    delegate: SliverChildListDelegate(
+                                      [
+                                        changeView(views.view),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                                //
-                              ],
+                                  //
+                                ],
+                              ),
                             );
                           }),
                         ),
