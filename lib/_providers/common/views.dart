@@ -7,8 +7,7 @@ import '../../features/_tables/_helpers/common.dart';
 
 class ViewsProvider with ChangeNotifier {
   //
-
-  String view = globalBox.get('view', defaultValue: feature.sessions.t);
+  String view = globalBox.get('view', defaultValue: feature.code.t);
   bool isView(String type) => view == type;
   bool isSessions() => view == feature.sessions.t;
   bool isNotes() => view == feature.notes.t;

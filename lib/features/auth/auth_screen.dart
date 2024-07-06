@@ -291,7 +291,7 @@ class _SignInScreenState extends State<AuthScreen> {
                       //
                       elph(),
                       //
-                      QuickThemeChanger(),
+                      QuickThemeChanger(rightPadding: false),
                       //
                       Spacer(),
                       //

@@ -77,7 +77,7 @@ class CodeView extends StatelessWidget {
                   : Center(
                       child: Padding(
                       padding: const EdgeInsets.only(top: 50),
-                      child: AppText(size: small, text: 'No code file selected...', faded: true),
+                      child: AppText(size: small, text: 'Select a code file...', faded: true),
                     ));
             }),
           ),
