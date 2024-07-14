@@ -24,7 +24,7 @@ class _DelayBlockState extends State<DelayBlock> {
         mainAxisSize: MainAxisSize.min,
         children: [
           //
-          AppText(size: normal, text: 'delay', color: black),
+          AppText(text: 'delay', color: black),
           //
           spw(),
           //
@@ -32,9 +32,8 @@ class _DelayBlockState extends State<DelayBlock> {
             onChanged: (value) {
               if (value.isNotEmpty) {}
             },
-            initialValue: '3',
-            maxLength: 3,
-            hintText: 'Sec',
+            initialValue: '1000',
+            hintText: 'ms',
             bgColor: white,
             textColor: black,
             borderRadius: borderRadiusSmall,
@@ -42,7 +41,7 @@ class _DelayBlockState extends State<DelayBlock> {
           //
           spw(),
           //
-          AppText(size: normal, text: 'seconds', color: black),
+          AppText(text: 'milliseconds', color: black),
           //
         ],
       ),

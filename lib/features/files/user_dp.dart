@@ -26,7 +26,7 @@ class UserDp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double radius = size ?? (isTiny ? 14 : 60);
+    double radius = size ?? (isTiny ? 12 : 60);
 
     return AppButton(
       tooltip: viewOnly ? null : (isTiny ? 'Account & Settings' : null),

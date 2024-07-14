@@ -25,7 +25,7 @@ class BlockChooser extends StatelessWidget {
             //
             CodeBlock(type: type, data: data, index: index),
             //
-            BlockSpeparator(),
+            BlockSeparator(showAdd: index != block.length - 1),
             //
           ],
         );

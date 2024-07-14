@@ -61,7 +61,7 @@ class _LedPinBlockState extends State<IfBlock> {
               crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 //
-                AppText(size: normal, text: widget.isWhile ? 'while' : 'if', color: black),
+                AppText(text: widget.isWhile ? 'while' : 'if', color: black),
                 //
                 spw(),
                 //
@@ -76,7 +76,7 @@ class _LedPinBlockState extends State<IfBlock> {
                 //
                 spw(),
                 //
-                AppText(size: normal, text: 'is', color: black),
+                AppText(text: 'is', color: black),
                 //
                 spw(),
                 //

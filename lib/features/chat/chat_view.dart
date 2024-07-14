@@ -37,8 +37,8 @@ class ChatView extends StatelessWidget {
               return SingleChildScrollView(
                 reverse: true,
                 padding: EdgeInsets.only(
-                  top: 30,
-                  bottom: 55,
+                  top: 15,
+                  bottom: 75,
                   left: kIsWeb ? 15 : 0,
                   right: kIsWeb ? 15 : 0,
                 ),

@@ -50,7 +50,8 @@ class NumericFormInput extends StatelessWidget {
             hintText: hintText ?? 'No',
             hintStyle: TextStyle(fontSize: medium, color: styler.textColor(faded: true), fontWeight: FontWeight.w400),
             contentPadding: EdgeInsets.symmetric(horizontal: 10),
-            border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(borderRadiusLarge)),
+            border:
+                OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(borderRadiusLarge)),
             counterStyle: TextStyle(height: double.minPositive),
             counterText: '',
           ),

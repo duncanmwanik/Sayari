@@ -6,9 +6,6 @@ import '../../../__styling/variables.dart';
 import '../../../_providers/common/theme.dart';
 import '../../../_providers/common/views.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/others/others/divider.dart';
-import '../../_tables/_helpers/checks_table.dart';
-import '../../chat/input_bar.dart';
 import 'nav_item.dart';
 
 class HorizontalNavigationBox extends StatelessWidget {
@@ -20,9 +17,6 @@ class HorizontalNavigationBox extends StatelessWidget {
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          //
-          if (isATableSelected() && views.isChat()) MessageInputBar(),
-          if (isATableSelected() && views.isChat()) AppDivider(height: 0),
           //
           if (!showVertNav())
             Container(

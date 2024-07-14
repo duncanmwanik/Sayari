@@ -43,7 +43,7 @@ class AppText extends StatelessWidget {
       overflow: overflow ?? TextOverflow.visible,
       maxLines: maxlines,
       style: TextStyle(
-        fontSize: size ?? medium,
+        fontSize: size ?? 13,
         fontWeight: fontWeight ?? (bold ? FontWeight.bold : FontWeight.w600),
         color: color ?? styler.textColor(faded: faded, extraFaded: extraFaded, bgColor: bgColor),
         decoration: textDecoration ?? (isCrossed ? TextDecoration.lineThrough : null),

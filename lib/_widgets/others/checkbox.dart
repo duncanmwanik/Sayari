@@ -29,34 +29,37 @@ class _AppCheckBoxState extends State<AppCheckBox> {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: transparent,
-      child: InkWell(
-        onTap: widget.onTap,
-        onHover: (value) => setState(() => isHovered = value),
-        customBorder: widget.isRound ? CircleBorder() : null,
-        borderRadius: widget.isRound ? null : BorderRadius.circular(7),
-        child: Container(
-          width: 15,
-          height: 15,
-          margin: widget.margin ?? EdgeInsets.all(widget.smallPadding ? 2 : 7),
-          decoration: BoxDecoration(
-            color: widget.isChecked ? styler.accentColor() : null,
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-              color: widget.isChecked ? transparent : Colors.grey,
-              width: 1.5,
+    return IgnorePointer(
+      ignoring: widget.onTap == null,
+      child: Material(
+        color: transparent,
+        child: InkWell(
+          onTap: widget.onTap,
+          onHover: (value) => setState(() => isHovered = value),
+          customBorder: widget.isRound ? CircleBorder() : null,
+          borderRadius: widget.isRound ? null : BorderRadius.circular(7),
+          child: Container(
+            width: 15,
+            height: 15,
+            margin: widget.margin ?? EdgeInsets.all(widget.smallPadding ? 2 : 7),
+            decoration: BoxDecoration(
+              color: widget.isChecked ? styler.accentColor() : null,
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(
+                color: widget.isChecked ? transparent : Colors.grey,
+                width: 1.5,
+              ),
             ),
-          ),
-          child: Center(
-            child: widget.isChecked || isHovered
-                ? AppIcon(
-                    Icons.done_rounded,
-                    size: 12,
-                    faded: true,
-                    color: widget.isChecked ? white : null,
-                  )
-                : NoWidget(),
+            child: Center(
+              child: widget.isChecked || isHovered
+                  ? AppIcon(
+                      Icons.done_rounded,
+                      size: 12,
+                      faded: true,
+                      color: widget.isChecked ? white : null,
+                    )
+                  : NoWidget(),
+            ),
           ),
         ),
       ),

@@ -54,7 +54,7 @@ class _LedPinBlockState extends State<LedColorBlock> {
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             //
-            AppText(size: normal, text: 'turn led', color: black),
+            AppText(text: 'turn led', color: black),
             //
             spw(),
             //
@@ -69,7 +69,7 @@ class _LedPinBlockState extends State<LedColorBlock> {
             //
             spw(),
             //
-            AppText(size: normal, text: 'to color', color: black),
+            AppText(text: 'to color', color: black),
             //
             spw(),
             //

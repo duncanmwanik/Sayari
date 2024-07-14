@@ -10,7 +10,7 @@ import '../../../_helpers/date_time/date_info.dart';
 import '../../../_helpers/date_time/misc.dart';
 import '../../../_providers/common/datetime.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/others/others/scroll.dart';
+import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../_tables/_helpers/common.dart';
 import '../_helpers/helpers.dart';
@@ -45,7 +45,7 @@ class MonthlyView extends StatelessWidget {
                     double width = kIsWeb ? constraints.maxWidth - 1 : constraints.maxWidth;
 
                     return ScrollConfiguration(
-                      behavior: AppScrollBehavior().copyWith(scrollbars: false),
+                      behavior: scrollNoBars,
                       child: Wrap(
                         children: List.generate(42, (indexDate) {
                           String dateToday = getDatePart(dateProvider.monthDatesMap[indexDate]);
@@ -76,6 +76,7 @@ class MonthlyView extends StatelessWidget {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
                                         children: [
                                           MonthDayNumberLabel(date: date),
                                           MonthDaySessionList(todaySessionsMap: todaySessionsMap),

@@ -7,8 +7,8 @@ import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../_w_settings/settings_dialog.dart';
 
-class PomodoroAppBar extends StatelessWidget {
-  const PomodoroAppBar({super.key});
+class PomodoroHeader extends StatelessWidget {
+  const PomodoroHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +26,12 @@ class PomodoroAppBar extends StatelessWidget {
           ),
         ),
         //
+        spw(),
         // setting button
         AppButton(
           onPressed: () => showPomodoroSettingsDialog(),
           noStyling: true,
+          isSquare: true,
           child: AppIcon(Icons.settings_rounded, faded: true),
         ),
         //

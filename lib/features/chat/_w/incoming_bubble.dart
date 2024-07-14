@@ -4,6 +4,8 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/text.dart';
+import '../../files/_helpers/helper.dart';
+import '../../files/file_list.dart';
 import 'options.dart';
 
 class IncomingMessageBubble extends StatelessWidget {
@@ -18,6 +20,7 @@ class IncomingMessageBubble extends StatelessWidget {
 
     return AppButton(
       menuItems: messageMenu(messageId, messageData),
+      hoverColor: transparent,
       padding: EdgeInsets.zero,
       child: Container(
         padding: itemPaddingMedium(),
@@ -27,12 +30,14 @@ class IncomingMessageBubble extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // username
-            AppText(size: small, text: userName, fontWeight: FontWeight.w700),
+            AppText(text: userName, fontWeight: FontWeight.w900),
             //
             sph(),
+            //
+            FileList(fileData: getFiles(messageData)),
             // message
             AppText(
-              size: 15,
+              size: 14,
               text: message,
               fontWeight: FontWeight.w500,
             ),

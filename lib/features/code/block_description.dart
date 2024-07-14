@@ -1,32 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
-import '../../_providers/common/input.dart';
+import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '_vars/descriptions.dart';
 
 class BlockDescription extends StatelessWidget {
-  const BlockDescription({super.key});
+  const BlockDescription(this.type, {super.key});
+
+  final String type;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<InputProvider>(builder: (context, input, child) {
-      return Container(
-        padding: itemPadding(),
-        margin: itemPadding(right: true),
-        width: 300,
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              //
-              HtmlText(text: delayDescription),
-              //
-            ],
-          ),
+    return AppButton(
+      menuItems: [
+        //
+        SingleChildScrollView(
+          padding: itemPadding(),
+          child: HtmlText(text: blockDescriptions[type] ?? 'No info.'),
         ),
-      );
-    });
+        //
+      ],
+      tooltip: 'About Block',
+      noStyling: true,
+      isRound: true,
+      child: AppIcon(Icons.info_outline, size: 16, faded: true),
+    );
   }
 }

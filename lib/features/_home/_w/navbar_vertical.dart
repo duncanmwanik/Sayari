@@ -8,7 +8,6 @@ import '../../../_providers/common/views.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../../_widgets/others/others/divider.dart';
 import 'nav_item.dart';
 import 'toggle_left_box.dart';
 
@@ -39,11 +38,12 @@ class VeticalNavigationBox extends StatelessWidget {
             mph(),
             navItem(codeUnSelectedIcon, feature.code.t, views.view == feature.code.t),
             //
-            AppDivider(height: largeHeight()),
-            //
-            if (showWebBoxOptions()) WebLeftBoxToggle(),
+            // AppDivider(height: largeHeight()),
             //
             Spacer(),
+            //
+            if (showWebBoxOptions()) WebLeftBoxToggle(),
+            if (showWebBoxOptions()) sph(),
             //
             AppButton(
               onPressed: () {},

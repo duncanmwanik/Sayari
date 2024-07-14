@@ -66,10 +66,15 @@ class ImageOverview extends StatelessWidget {
                                                         borderRadius: BorderRadius.only(
                                                           topLeft: Radius.circular(borderRadiusSmall - 3),
                                                           topRight: Radius.circular(borderRadiusSmall - 3),
-                                                          bottomLeft: isInput ? Radius.circular(borderRadiusSmall) : Radius.zero,
-                                                          bottomRight: isInput ? Radius.circular(borderRadiusSmall) : Radius.zero,
+                                                          bottomLeft: isInput
+                                                              ? Radius.circular(borderRadiusSmall)
+                                                              : Radius.zero,
+                                                          bottomRight: isInput
+                                                              ? Radius.circular(borderRadiusSmall)
+                                                              : Radius.zero,
                                                         ),
-                                                        image: DecorationImage(image: MemoryImage(bytes!), fit: BoxFit.fill)),
+                                                        image: DecorationImage(
+                                                            image: MemoryImage(bytes!), fit: BoxFit.fill)),
                                                   );
                                                 }
                                               }
@@ -111,7 +116,7 @@ class ImageOverview extends StatelessWidget {
                             )),
                           ),
                         ),
-                  //
+                  // remove note pinned file
                   if (isInput)
                     Align(
                       alignment: Alignment.bottomRight,
@@ -119,6 +124,7 @@ class ImageOverview extends StatelessWidget {
                         padding: const EdgeInsets.all(5.0),
                         child: AppButton(
                           onPressed: () => state.input.update(action: 'remove', key: 'w'),
+                          isSquare: true,
                           child: AppIcon(Icons.delete, faded: true, size: 14),
                         ),
                       ),

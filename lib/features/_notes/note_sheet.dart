@@ -6,12 +6,12 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
+import '../../_variables/navigation.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../_widgets/items/input_actions.dart';
 import '../../_widgets/items/items.dart';
 import '../../_widgets/others/forms/input.dart';
-import '../../_widgets/others/others/scroll.dart';
 import '../files/file_overview.dart';
 import '../share/shared_item.dart';
 import '_helpers/ontap.dart';
@@ -53,7 +53,7 @@ Future<void> showNoteBottomSheet({String? id}) async {
     ),
     //
     content: ScrollConfiguration(
-      behavior: AppScrollBehavior().copyWith(scrollbars: false),
+      behavior: scrollNoBars,
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,

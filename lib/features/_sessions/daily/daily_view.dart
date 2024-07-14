@@ -86,7 +86,7 @@ class DailyView extends StatelessWidget {
                                     child: AppText(
                                       size: 10,
                                       text: '${hours24to12LabelShort[indexHour]} ${hours24to12Periods[indexHour]}',
-                                      fontWeight: isCurrentHour ? FontWeight.w900 : FontWeight.w700,
+                                      fontWeight: isCurrentHour ? FontWeight.w800 : FontWeight.w400,
                                       faded: true,
                                       color: isCurrentHour ? styler.accentColor() : null,
                                       textAlign: TextAlign.end,

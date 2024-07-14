@@ -6,8 +6,8 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/common/global_provider.dart';
 import '../../../_providers/common/views.dart';
+import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/images.dart';
-import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/sfcalendar.dart';
 import '../../../_widgets/others/text.dart';
 import '../../code/_w/code_files_list.dart';
@@ -79,7 +79,7 @@ class WebLeftBox extends StatelessWidget {
                     SizedBox(
                       width: 200,
                       child: ScrollConfiguration(
-                        behavior: AppScrollBehavior().copyWith(scrollbars: false),
+                        behavior: scrollNoBars,
                         child: ListView(
                           shrinkWrap: true,
                           padding: EdgeInsets.zero,

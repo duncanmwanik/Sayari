@@ -5,10 +5,13 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
+import '../../__styling/variables.dart';
+import '../../_helpers/_common/helpers.dart';
 import '../../_providers/common/theme.dart';
 import '../../_providers/common/views.dart';
-import '../../_widgets/others/others/scroll.dart';
+import '../../_variables/navigation.dart';
 import '../_sessions/info_header.dart';
+import '../chat/input_bar.dart';
 import '_helpers/change_view.dart';
 import '_w/left_box.dart';
 import '_w/navbar_horizontal.dart';
@@ -39,24 +42,36 @@ class Applayout extends StatelessWidget {
                         //
                         Expanded(
                           child: Consumer<ViewsProvider>(builder: (context, views, child) {
-                            return ScrollConfiguration(
-                              behavior: AppScrollBehavior().copyWith(scrollbars: false),
-                              child: CustomScrollView(
-                                slivers: [
-                                  //
-                                  CustomAppBar(),
-                                  //
-                                  if (views.isSessions()) InfoHeader(),
-                                  //
-                                  SliverList(
-                                    delegate: SliverChildListDelegate(
-                                      [
-                                        changeView(views.view),
+                            return Title(
+                              title: 'Sayari ${capitalFirst(views.view)}',
+                              color: styler.accentColor(),
+                              child: ScrollConfiguration(
+                                behavior: scrollNoBars,
+                                child: Stack(
+                                  children: [
+                                    // main view
+                                    CustomScrollView(
+                                      slivers: [
+                                        //
+                                        CustomAppBar(),
+                                        //
+                                        if (views.isSessions()) InfoHeader(),
+                                        //
+                                        SliverList(
+                                          delegate: SliverChildListDelegate(
+                                            [
+                                              changeView(views.view),
+                                            ],
+                                          ),
+                                        ),
+                                        //
                                       ],
                                     ),
-                                  ),
-                                  //
-                                ],
+                                    //
+                                    if (views.isChat()) MessageInputBar(),
+                                    //
+                                  ],
+                                ),
                               ),
                             );
                           }),

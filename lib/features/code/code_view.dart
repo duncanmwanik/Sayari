@@ -40,7 +40,7 @@ class CodeView extends StatelessWidget {
                           //
                           AppText(text: 'Start', fontWeight: FontWeight.w900),
                           //
-                          BlockSpeparator(),
+                          BlockSeparator(),
                           //
                           BlockChooser(blocks: blocks),
                           //
@@ -61,7 +61,7 @@ class CodeView extends StatelessWidget {
                           //
                           sph(),
                           //
-                          BlockSpeparator(),
+                          BlockSeparator(showAdd: false),
                           //
                           AppText(text: 'End', fontWeight: FontWeight.w900),
                           //

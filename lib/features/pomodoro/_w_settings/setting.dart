@@ -4,7 +4,6 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/strings.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/abcs/buttons/color_button.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/forms/numeric.dart';
@@ -32,32 +31,29 @@ class PomodoroSetting extends StatelessWidget {
         //
         Row(
           children: [
-            //
+            // minutes input
             Flexible(
-              child: AppButton(
-                onPressed: () => focusNode.requestFocus(),
-                smallLeftPadding: true,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    NumericFormInput(
-                      onChanged: (value) {
-                        if (value.isNotEmpty) {
-                          state.pomodoro.updatePomodoroMap('${type}Time', value.trim().toString());
-                        }
-                      },
-                      initialValue: state.pomodoro.pomodoroMap['${type}Time'],
-                      maxLength: 5,
-                      hintText: '0',
-                      focusNode: focusNode,
-                    ),
-                    //
-                    spw(),
-                    //
-                    AppText(text: 'Minutes'),
-                    //
-                  ],
-                ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //
+                  NumericFormInput(
+                    onChanged: (value) {
+                      if (value.isNotEmpty) {
+                        state.pomodoro.updatePomodoroMap('${type}Time', value.trim().toString());
+                      }
+                    },
+                    initialValue: state.pomodoro.pomodoroMap['${type}Time'],
+                    maxLength: 5,
+                    hintText: '0',
+                    focusNode: focusNode,
+                  ),
+                  //
+                  spw(),
+                  //
+                  AppText(text: 'Minutes'),
+                  //
+                ],
               ),
             ),
             //

@@ -9,8 +9,8 @@ import '../../../_helpers/date_time/misc.dart';
 import '../../../_providers/common/datetime.dart';
 import '../../../_variables/date_time.dart';
 import '../../../_variables/features.dart';
+import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/others/divider.dart';
-import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_tables/_helpers/common.dart';
@@ -37,7 +37,7 @@ class WeeklyView extends StatelessWidget {
             //
             Flexible(
               child: ScrollConfiguration(
-                behavior: AppScrollBehavior().copyWith(scrollbars: false),
+                behavior: scrollNoBars,
                 child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: 24,
@@ -64,7 +64,7 @@ class WeeklyView extends StatelessWidget {
                                   child: AppText(
                                     size: tiny,
                                     text: '${hours24to12LabelShort[indexHour]} ${hours24to12Periods[indexHour]}',
-                                    fontWeight: isCurrentHour ? FontWeight.w900 : FontWeight.w700,
+                                    fontWeight: isCurrentHour ? FontWeight.w800 : FontWeight.w400,
                                     faded: true,
                                     color: isCurrentHour ? styler.accentColor() : null,
                                     textAlign: TextAlign.end,

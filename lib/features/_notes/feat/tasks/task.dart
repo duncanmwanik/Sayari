@@ -5,6 +5,7 @@ import '../../../../__styling/spacing.dart';
 import '../../../../_models/item.dart';
 import '../../../../_providers/common/selection.dart';
 import '../../../../_providers/providers.dart';
+import '../../../../_variables/navigation.dart';
 import '../../../../_widgets/others/others/scroll.dart';
 import '_w_item/new_item.dart';
 import 'subitems.dart';
@@ -28,7 +29,7 @@ class NoteTask extends StatelessWidget {
           //
           Flexible(
             child: ScrollConfiguration(
-              behavior: AppScrollBehavior().copyWith(scrollbars: false),
+              behavior: scrollNoBars,
               child: ListView(
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,

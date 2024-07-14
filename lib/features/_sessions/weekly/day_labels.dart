@@ -45,7 +45,8 @@ class WeekDayLabels extends StatelessWidget {
                       color: transparent,
                       child: InkWell(
                         onTap: () async {
-                          Map weekDaySessionsMap = sortSessionsByTime(Hive.box(liveTable()).get(date, defaultValue: {}));
+                          Map weekDaySessionsMap =
+                              sortSessionsByTime(Hive.box(liveTable()).get(date, defaultValue: {}));
                           showSessionListBottomSheet(date, weekDaySessionsMap);
                         },
                         borderRadius: BorderRadius.circular(borderRadiusSmall),

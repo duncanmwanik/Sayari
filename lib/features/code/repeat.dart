@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/input.dart';
 import '../../_variables/features.dart';
@@ -30,15 +29,8 @@ class CodeRepeat extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
+            AppCheckBox(isChecked: repeatOn),
             AppText(size: small, text: 'Repeat', faded: true),
-            spw(),
-            AppCheckBox(
-              isChecked: repeatOn,
-              onTap: () {
-                input.update(action: 'add', key: 'r', value: repeatOn ? '0' : '1');
-                editItemExtras(type: feature.code.t, itemId: input.itemId, key: 'r', value: repeatOn ? '0' : '1');
-              },
-            )
           ],
         ),
       );

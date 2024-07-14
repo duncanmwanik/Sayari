@@ -43,7 +43,7 @@ class _LedPinBlockState extends State<PinStateBlock> {
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             //
-            AppText(size: normal, text: 'turn pin', color: black),
+            AppText(text: 'turn pin', color: black),
             //
             spw(),
             //

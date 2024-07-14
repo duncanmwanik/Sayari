@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_variables/features.dart';
@@ -31,8 +32,9 @@ class SentMessageBubble extends StatelessWidget {
           return AppButton(
             menuItems: messageMenu(messageId, messageData),
             padding: EdgeInsets.zero,
-            noStyling: true,
-            showBorder: true,
+            hoverColor: transparent,
+            color: styler.accentColor(0.5),
+            showBorder: isImageTheme(),
             child: Container(
               padding: itemPaddingMedium(),
               constraints: BoxConstraints(maxWidth: maxChatWidth(), minWidth: 100),

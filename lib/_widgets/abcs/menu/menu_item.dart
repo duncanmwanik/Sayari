@@ -44,36 +44,27 @@ class _MenuItemState extends State<MenuItem> {
       child: AppButton(
         onPressed: () {
           if (widget.pop) popWhatsOnTop(); //pops popupmenu
-          Future.delayed(Duration(seconds: 0),
-              widget.onTap); // Future.delayed prevents onTap not working
+          Future.delayed(Duration(seconds: 0), widget.onTap); // Future.delayed prevents onTap not working
         },
         padding: EdgeInsets.only(
-            left: 8,
-            top: kIsWeb ? 5 : 7,
-            bottom: kIsWeb ? 5 : 7,
-            right: widget.trailing != null ? 8 : 12),
+            left: 8, top: kIsWeb ? 5 : 7, bottom: kIsWeb ? 5 : 7, right: widget.trailing != null ? 8 : 12),
         borderRadius: borderRadiusTinySmall,
         noStyling: true,
         child: Row(
           children: [
-            if (widget.iconData != null)
-              AppIcon(widget.iconData,
-                  size: widget.leadingSize ?? 16, faded: !isHovered),
+            if (widget.iconData != null) AppIcon(widget.iconData, size: widget.leadingSize ?? 16, faded: !isHovered),
             if (widget.iconData != null) spw(),
             Expanded(
               child: AppText(
                 text: widget.label,
                 faded: !isHovered,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w700,
                 // fontWeight: isHovered ? FontWeight.lerp(FontWeight.w600, FontWeight.w700, 0.5) : null,
               ),
             ),
             if (widget.trailing != null) spw(),
             if (widget.trailing != null)
-              AppIcon(widget.trailing,
-                  size: widget.trailingSize ?? 16,
-                  color: widget.trailingColor,
-                  faded: !isHovered),
+              AppIcon(widget.trailing, size: widget.trailingSize ?? 16, color: widget.trailingColor, faded: !isHovered),
           ],
         ),
       ),

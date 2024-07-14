@@ -34,11 +34,11 @@ class InfoHeader extends StatelessWidget {
       return SliverPersistentHeader(
         pinned: true,
         delegate: SliverAppBarDelegate(
-          minHeight: 32.0,
-          maxHeight: 32.0,
+          minHeight: 35.0,
+          maxHeight: 35.0,
           child: Container(
             color: styler.navColor(),
-            padding: EdgeInsets.only(left: 5, right: kIsWeb ? 8 : 5, top: 3),
+            padding: EdgeInsets.only(left: 5, right: 5, bottom: 3, top: 3),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

@@ -18,7 +18,7 @@ class MonthDayNumberLabel extends StatelessWidget {
     return Container(
       height: 20,
       width: 20,
-      margin: EdgeInsets.only(top: 2, bottom: 2),
+      margin: EdgeInsets.only(top: 2, bottom: 2, right: 2),
       decoration: BoxDecoration(
         color: isToday ? styler.accentColor() : transparent,
         shape: BoxShape.circle,

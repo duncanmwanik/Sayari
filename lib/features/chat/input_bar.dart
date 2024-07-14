@@ -27,96 +27,106 @@ class MessageInputBar extends StatelessWidget {
     messageController.text = state.input.data['n'] ?? '';
     messageController.selection = TextSelection.collapsed(offset: messageController.text.length);
 
-    return isAdmin()
-        ? Container(
-            width: webMaxWidth,
-            padding: EdgeInsets.all(2),
-            margin: isNotPhone() ? itemPadding(bottom: true) : null,
-            decoration: BoxDecoration(
-              color: styler.appColor(2),
-              borderRadius: isNotPhone() ? BorderRadius.circular(borderRadiusLarge) : BorderRadius.zero,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //
-                Consumer<InputProvider>(
-                    builder: (context, input, child) => FileList(fileData: getFiles(input.data), isOverview: false)),
-                //
-                Row(
-                  children: [
-                    //
-                    AppButton(
-                      onPressed: () async => getFilesToUpload(),
-                      tooltip: 'Attach Files',
-                      height: 45,
-                      width: 45,
-                      noStyling: true,
-                      borderRadius: borderRadiusCrazy,
-                      child: AppIcon(Icons.add_rounded),
-                    ),
-                    //
-                    spw(),
-                    //
-                    Expanded(
-                      child: TextFormField(
-                        onFieldSubmitted: (_) async {
+    return Align(
+      alignment: Alignment.bottomCenter,
+      child: Container(
+        width: webMaxWidth,
+        padding: EdgeInsets.symmetric(horizontal: 2, vertical: 1),
+        margin: isNotPhone() ? itemPadding(bottom: true) : null,
+        decoration: BoxDecoration(
+          color: Color.alphaBlend(styler.accentColor(2), styler.primaryColor()),
+          borderRadius: isNotPhone() ? BorderRadius.circular(borderRadiusLarge) : BorderRadius.zero,
+        ),
+        child: isAdmin()
+            ? Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  //
+                  Consumer<InputProvider>(
+                      builder: (context, input, child) => FileList(fileData: getFiles(input.data), isOverview: false)),
+                  //
+                  Row(
+                    children: [
+                      //
+                      AppButton(
+                        onPressed: () async => getFilesToUpload(),
+                        tooltip: 'Attach Files',
+                        height: 45,
+                        width: 45,
+                        noStyling: true,
+                        borderRadius: borderRadiusCrazy,
+                        child: AppIcon(Icons.add_rounded),
+                      ),
+                      //
+                      AppButton(
+                        onPressed: () {},
+                        tooltip: 'AI Prompt',
+                        height: 45,
+                        width: 45,
+                        noStyling: true,
+                        borderRadius: borderRadiusCrazy,
+                        child: AppIcon(Icons.blur_on),
+                      ),
+                      // Message Input
+                      Expanded(
+                        child: TextFormField(
+                          onFieldSubmitted: (_) async {
+                            messageController.clear();
+                            sendMessageToFirebase();
+                            hideKeyboard();
+                          },
+                          onChanged: (value) => state.input.update(action: 'add', key: 'n', value: value.trim()),
+                          controller: messageController,
+                          keyboardType: TextInputType.multiline,
+                          textCapitalization: TextCapitalization.sentences,
+                          textInputAction: kIsWeb ? TextInputAction.next : null,
+                          minLines: 1,
+                          maxLines: 8,
+                          style: TextStyle(fontSize: normal, fontWeight: FontWeight.w600, color: styler.textColor()),
+                          decoration: InputDecoration(
+                            hintText: 'Message...',
+                            hintStyle: TextStyle(
+                                fontSize: normal, fontWeight: FontWeight.w600, color: styler.textColor(faded: true)),
+                            filled: false,
+                            contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                            border: InputBorder.none,
+                          ),
+                        ),
+                      ),
+                      //
+                      spw(),
+                      //
+                      AppButton(
+                        onPressed: () async {
                           messageController.clear();
                           sendMessageToFirebase();
                           hideKeyboard();
                         },
-                        onChanged: (value) => state.input.update(action: 'add', key: 'n', value: value.trim()),
-                        controller: messageController,
-                        keyboardType: TextInputType.multiline,
-                        textCapitalization: TextCapitalization.sentences,
-                        textInputAction: kIsWeb ? TextInputAction.next : null,
-                        minLines: 1,
-                        maxLines: 8,
-                        style: TextStyle(fontSize: normal, fontWeight: FontWeight.w600, color: styler.textColor()),
-                        decoration: InputDecoration(
-                          hintText: 'Message...',
-                          hintStyle: TextStyle(
-                              fontSize: normal, fontWeight: FontWeight.w600, color: styler.textColor(faded: true)),
-                          filled: false,
-                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
-                          border: InputBorder.none,
-                        ),
+                        tooltip: 'Send',
+                        height: 45,
+                        width: 45,
+                        borderRadius: borderRadiusCrazy,
+                        child: AppIcon(Icons.arrow_forward_rounded),
                       ),
-                    ),
-                    //
-                    spw(),
-                    //
-                    AppButton(
-                      onPressed: () async {
-                        messageController.clear();
-                        sendMessageToFirebase();
-                        hideKeyboard();
-                      },
-                      tooltip: 'Send',
-                      height: 45,
-                      width: 45,
-                      noStyling: true,
-                      borderRadius: borderRadiusCrazy,
-                      child: AppIcon(Icons.arrow_forward_rounded),
-                    ),
-                    //
+                      //
+                    ],
+                  ),
+                  //
+                ],
+              )
+            : Padding(
+                padding: EdgeInsets.symmetric(vertical: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    AppIcon(Icons.lock_rounded, size: 12, faded: true),
+                    tpw(),
+                    AppText(size: small, text: 'Only admins can send messages', faded: true),
                   ],
                 ),
-                //
-              ],
-            ),
-          )
-        : Padding(
-            padding: EdgeInsets.symmetric(vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon(Icons.lock_rounded, size: 12, faded: true),
-                tpw(),
-                AppText(size: small, text: 'Only admins can send messages', faded: true),
-              ],
-            ),
-          );
+              ),
+      ),
+    );
   }
 }

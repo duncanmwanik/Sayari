@@ -8,6 +8,7 @@ import 'package:flutter_cache_manager/file.dart' as cfile;
 
 import '../../../../__styling/variables.dart';
 import '../../__styling/spacing.dart';
+import '../../_providers/providers.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
@@ -59,7 +60,9 @@ class ImageFile extends StatelessWidget {
                     noStyling: true,
                     tooltip: isOverview ? fileName : null,
                     child: FutureBuilder(
-                        future: kIsWeb ? Future.delayed(Duration.zero, () => fileBox.get(fileId)) : io.File(fileBox.get(fileId)).readAsBytes(),
+                        future: kIsWeb
+                            ? Future.delayed(Duration.zero, () => fileBox.get(fileId))
+                            : io.File(fileBox.get(fileId)).readAsBytes(),
                         builder: (context, snapshot) {
                           if (snapshot.connectionState == ConnectionState.done) {
                             if (snapshot.hasError) {
@@ -130,8 +133,7 @@ class ImageFile extends StatelessWidget {
                       );
                     }),
           //
-          //
-          //
+          // if image is invalid
           if (fileId.isEmpty)
             AppButton(
               borderRadius: radius ?? borderRadiusSmall,
@@ -143,10 +145,9 @@ class ImageFile extends StatelessWidget {
               ),
             ),
           //
-          //
-          //
-          if (!isOverview && !isLinks) Align(alignment: Alignment.bottomRight, child: FileOptions(fileId, fileName)),
-          //
+          // image options
+          if (!isOverview && !isLinks && !state.views.isChat())
+            Align(alignment: Alignment.bottomRight, child: FileOptions(fileId, fileName)),
           //
           //
         ],

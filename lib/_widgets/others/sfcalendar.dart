@@ -42,6 +42,7 @@ class SfCalendar extends StatelessWidget {
       return Container(
         height: size,
         width: isBookingCalendar ? (size * 1.3) : size,
+        margin: isWebCalendar ? itemPaddingSmall() : null,
         padding: isWebCalendar ? null : (isBookingCalendar ? itemPadding() : itemPaddingSmall()),
         decoration: isWebCalendar
             ? null
