@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
 import '../../../_providers/providers.dart';
-import '../../../_variables/strings.dart';
+import '../../../_variables/constants.dart';
 import 'quill_configs/editor.dart';
 
 class SuperEditor extends StatefulWidget {

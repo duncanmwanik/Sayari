@@ -33,7 +33,7 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size}) {
           : AppIcon(
               icon,
               size: size ?? (showVertNav() ? 16 : 18),
-              color: isSelected&& !kIsWeb  ? styler.accentColor() : null,
+              color: isSelected && !kIsWeb ? styler.accentColor() : null,
               faded: !isSelected,
             ),
     ),

@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
+import '../../../_variables/constants.dart';
 import '../../../_variables/features.dart';
-import '../../../_variables/strings.dart';
 import '../../_tables/_helpers/common.dart';
 
 class PomodoroProvider with ChangeNotifier {

@@ -20,10 +20,10 @@ Map specialLabelsIcons = {
 
 // Each layout type shows the icon whose layout will be next
 Map<String, IconData> layoutIcons = {
-  'grid': Icons.view_agenda_outlined,
-  'row': Icons.view_column,
-  'column': Icons.format_list_bulleted_rounded,
-  'list': Icons.grid_view_outlined,
+  'grid': Icons.grid_view_outlined,
+  'row': Icons.view_agenda_outlined,
+  'column': Icons.view_column,
+  'list': Icons.format_list_bulleted_rounded,
 };
 
 List<String> sessionViews = ['Day', 'Week', 'Month', 'Year', 'Timeline'];

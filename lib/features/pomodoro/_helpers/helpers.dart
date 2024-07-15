@@ -2,7 +2,7 @@ import 'dart:async';
 
 import '../../../_helpers/_common/global.dart';
 import '../../../_providers/providers.dart';
-import '../../../_variables/strings.dart';
+import '../../../_variables/constants.dart';
 import '../../../_widgets/others/toast.dart';
 
 int getRemainingTime() => state.pomodoro.end.difference(DateTime.now()).inSeconds;

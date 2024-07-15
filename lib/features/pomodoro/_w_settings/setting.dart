@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/providers.dart';
-import '../../../_variables/strings.dart';
+import '../../../_variables/constants.dart';
 import '../../../_widgets/abcs/buttons/color_button.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/forms/numeric.dart';

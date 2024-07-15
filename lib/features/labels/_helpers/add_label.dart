@@ -2,8 +2,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_helpers/_common/global.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../../_variables/constants.dart';
 import '../../../_variables/features.dart';
-import '../../../_variables/strings.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../_tables/_helpers/common.dart';
 
@@ -22,7 +22,8 @@ Future<void> addLabel(String label) async {
     else {
       Hive.box('${liveTable()}_${feature.labels.t}').put(label, '0');
 
-      await syncToCloud(db: 'tables', parentId: liveTable(), type: feature.labels.t, action: 'c', itemId: label, data: '0');
+      await syncToCloud(
+          db: 'tables', parentId: liveTable(), type: feature.labels.t, action: 'c', itemId: label, data: '0');
     }
     //
     //

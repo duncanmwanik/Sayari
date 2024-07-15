@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/variables.dart';
-import '../../../_variables/strings.dart';
+import '../../../_variables/constants.dart';
 import '../../../_widgets/others/forms/input.dart';
 import '../_state/tts_provider.dart';
 

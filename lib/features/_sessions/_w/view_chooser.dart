@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/common/views.dart';
-import '../../../_variables/strings.dart';
+import '../../../_variables/constants.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/abcs/menu/menu_item.dart';
 import '../../../_widgets/others/svg.dart';
