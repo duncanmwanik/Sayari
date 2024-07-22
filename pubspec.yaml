@@ -1,10 +1,10 @@
 name: sayari
 description: "A whole new world."
-publish_to: 'none'
+publish_to: "none"
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.1 <4.0.0'
+  sdk: ">=3.4.1 <4.0.0"
 
 dependencies:
   flutter:
@@ -31,6 +31,7 @@ dependencies:
   go_router: ^13.2.4
   # style & assets
   flutter_svg: ^2.0.9
+  font_awesome_flutter: ^10.7.0
   responsive_sizer: ^3.1.1
   syncfusion_flutter_datepicker: ^25.1.39
   reorderable_grid: ^1.0.10

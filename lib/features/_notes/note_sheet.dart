@@ -27,25 +27,10 @@ Future<void> showNoteBottomSheet({String? id}) async {
   await showAppBottomSheet(
     //
     header: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         //
         AppCloseButton(),
-        //
-        tpw(),
-        //
-        Expanded(
-          child: DataInput(
-            inputKey: 't',
-            hintText: 'Title',
-            onFieldSubmitted: (_) => state.quill.quillcontroller.moveCursorToEnd(),
-            fontSize: large,
-            fontWeight: FontWeight.w700,
-            textCapitalization: TextCapitalization.sentences,
-            filled: false,
-            autofocus: state.input.itemId.isEmpty,
-            contentPadding: itemPadding(bottom: true),
-          ),
-        ),
         //
         CommonInputActions(),
         //
@@ -61,6 +46,19 @@ Future<void> showNoteBottomSheet({String? id}) async {
           children: [
             //
             Consumer<InputProvider>(builder: (context, input, child) => ImageOverview(isInput: true)),
+            sph(),
+            DataInput(
+              inputKey: 't',
+              hintText: 'Title',
+              onFieldSubmitted: (_) => state.quill.quillcontroller.moveCursorToEnd(),
+              fontSize: large,
+              fontWeight: FontWeight.w700,
+              textCapitalization: TextCapitalization.sentences,
+              filled: false,
+              autofocus: state.input.itemId.isEmpty,
+              contentPadding: EdgeInsets.zero,
+            ),
+            sph(),
             Share(),
             Finance(),
             Habit(),

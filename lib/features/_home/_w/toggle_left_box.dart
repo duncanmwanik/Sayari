@@ -20,7 +20,7 @@ class WebLeftBoxToggle extends StatelessWidget {
         tooltip: showWebBoxOptions ? 'Collapse Side Panel' : 'Expand Side Panel',
         tooltipDirection: AxisDirection.right,
         child: AppIcon(
-          showWebBoxOptions ? Icons.keyboard_arrow_left_rounded : Icons.keyboard_arrow_right_rounded,
+          showWebBoxOptions ? Icons.keyboard_double_arrow_left_rounded : Icons.keyboard_double_arrow_right_rounded,
           faded: true,
         ),
       );

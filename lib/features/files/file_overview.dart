@@ -125,7 +125,7 @@ class ImageOverview extends StatelessWidget {
                         child: AppButton(
                           onPressed: () => state.input.update(action: 'remove', key: 'w'),
                           isSquare: true,
-                          child: AppIcon(Icons.delete, faded: true, size: 14),
+                          child: AppIcon(Icons.close, faded: true, size: 14),
                         ),
                       ),
                     ),

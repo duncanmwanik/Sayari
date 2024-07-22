@@ -9,6 +9,7 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import 'nav_item.dart';
+import 'nav_settings.dart';
 import 'toggle_left_box.dart';
 
 class VeticalNavigationBox extends StatelessWidget {
@@ -28,20 +29,17 @@ class VeticalNavigationBox extends StatelessWidget {
           children: [
             //
             sph(),
-            navItem(views.view == feature.sessions.t ? Icons.calendar_month : sessionsUnselectedIcon,
-                feature.sessions.t, views.view == feature.sessions.t),
-            mph(),
-            navItem(views.view == feature.notes.t ? notesSelectedIcon : notesUnselectedIcon, feature.notes.t,
-                views.view == feature.notes.t),
-            mph(),
-            navItem(views.view == feature.chat.t ? chatSelectedIcon : chatUnselectedIcon, feature.chat.t,
-                views.view == feature.chat.t),
-            mph(),
-            navItem(views.view == feature.explore.t ? exploreSelectedIcon : exploreUnSelectedIcon, feature.explore.t,
-                views.view == feature.explore.t),
-            mph(),
-            navItem(codeUnSelectedIcon, feature.code.t, views.view == feature.code.t),
-            //
+            navItem(sessionsSelectedIcon, feature.sessions.t, views.view == feature.sessions.t),
+            msph(),
+            navItem(notesSelectedIcon, feature.notes.t, views.view == feature.notes.t),
+            msph(),
+            navItem(chatSelectedIcon, feature.chat.t, views.view == feature.chat.t),
+            msph(),
+            navItem(exploreSelectedIcon, feature.explore.t, views.view == feature.explore.t),
+            msph(),
+            navItem(codeSelectedIcon, feature.code.t, views.view == feature.code.t),
+            msph(),
+            NavSettings(),
             //
             Spacer(),
             //

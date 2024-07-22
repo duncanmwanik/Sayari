@@ -16,8 +16,7 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size}) {
     tooltip: getNavigationItemTitle(featureData[type]!.title),
     tooltipDirection: AxisDirection.right,
     noStyling: !isSelected,
-    color: showVertNav() ? null : styler.accentColor(1),
-    showBorder: kIsWeb && isSelected,
+    color: styler.appColor(2),
     borderRadius: borderRadiusSmall,
     padding: EdgeInsets.all(showVertNav() ? 8 : 12),
     child: SizedBox(

@@ -81,7 +81,7 @@ class Option extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AppText(text: label),
+                      AppText(text: label, fontWeight: isSelectedView ? FontWeight.w800 : null),
                       Container(
                         width: 15,
                         height: 3,

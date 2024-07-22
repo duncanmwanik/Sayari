@@ -46,8 +46,8 @@ class YearlyView extends StatelessWidget {
                     return Align(
                       alignment: Alignment.topCenter,
                       child: Wrap(
-                        spacing: 3.w,
-                        runSpacing: 80,
+                        spacing: 2.w,
+                        runSpacing: 2.w,
                         children: List.generate(12, (indexMonth) {
                           int month = indexMonth + 1;
                           Map<int, String> monthMap = allMonthsDateMap[indexMonth] ?? {};
@@ -55,9 +55,13 @@ class YearlyView extends StatelessWidget {
                           return Container(
                             height: 45.w,
                             width: 45.w,
-                            constraints: BoxConstraints(maxWidth: 200, maxHeight: 200),
+                            padding: itemPaddingMedium(),
+                            constraints: BoxConstraints(maxWidth: 200, maxHeight: 215),
+                            decoration: BoxDecoration(
+                              color: styler.appColor(1),
+                              borderRadius: BorderRadius.circular(borderRadiusSmall),
+                            ),
                             child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-                              double height = constraints.maxHeight;
                               double width = constraints.maxWidth;
 
                               return Column(
@@ -74,15 +78,24 @@ class YearlyView extends StatelessWidget {
                                         return Material(
                                           color: transparent,
                                           child: InkWell(
-                                              onTap: isSelectedMonth ? () => showSessionListBottomSheet(date.d(), {}) : null,
-                                              onDoubleTap: isSelectedMonth ? () => prepareSessionCreation(date: date.d(), hour: TimeOfDay.now().hour) : null,
-                                              onLongPress: isSelectedMonth ? () => prepareSessionCreation(date: date.d(), hour: TimeOfDay.now().hour) : null,
+                                              onTap: isSelectedMonth
+                                                  ? () => showSessionListBottomSheet(date.d(), {})
+                                                  : null,
+                                              onDoubleTap: isSelectedMonth
+                                                  ? () =>
+                                                      prepareSessionCreation(date: date.d(), hour: TimeOfDay.now().hour)
+                                                  : null,
+                                              onLongPress: isSelectedMonth
+                                                  ? () =>
+                                                      prepareSessionCreation(date: date.d(), hour: TimeOfDay.now().hour)
+                                                  : null,
                                               borderRadius: BorderRadius.circular(borderRadiusSmall),
                                               child: Container(
                                                 width: width / 7.5,
-                                                height: height / 6,
+                                                height: width / 7.5,
                                                 decoration: BoxDecoration(
-                                                  color: date.isToday() && isSelectedMonth ? styler.accentColor(5) : null,
+                                                  color:
+                                                      date.isToday() && isSelectedMonth ? styler.accentColor(5) : null,
                                                   borderRadius: BorderRadius.circular(borderRadiusSmall),
                                                 ),
                                                 child: Center(

@@ -28,18 +28,10 @@ class HorizontalNavigationBox extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   //
-                  navItem(views.view == feature.sessions.t ? Icons.calendar_month : sessionsUnselectedIcon,
-                      feature.sessions.t, views.view == feature.sessions.t),
-                  //
-                  navItem(views.view == feature.notes.t ? notesSelectedIcon : notesUnselectedIcon, feature.notes.t,
-                      views.view == feature.notes.t),
-                  //
-                  navItem(views.view == feature.chat.t ? chatSelectedIcon : chatUnselectedIcon, feature.chat.t,
-                      views.view == feature.chat.t),
-                  //
-                  navItem(views.view == feature.explore.t ? exploreSelectedIcon : exploreUnSelectedIcon,
-                      feature.explore.t, views.view == feature.explore.t),
-                  //
+                  navItem(sessionsSelectedIcon, feature.sessions.t, views.view == feature.sessions.t),
+                  navItem(notesSelectedIcon, feature.notes.t, views.view == feature.notes.t),
+                  navItem(chatSelectedIcon, feature.chat.t, views.view == feature.chat.t),
+                  navItem(exploreSelectedIcon, feature.explore.t, views.view == feature.explore.t),
                   NavSettings(),
                   //
                 ],

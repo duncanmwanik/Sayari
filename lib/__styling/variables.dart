@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'styler.dart';
 
@@ -73,7 +74,7 @@ const List<IconData> toastIcons = [
 const List<Color> toastColors = [Colors.red, Colors.green, Colors.blue, Colors.pink];
 
 // icons
-const String sessionsSelectedIcon = 'assets/icons/calendar-solid.svg';
+const IconData sessionsSelectedIcon = FontAwesomeIcons.solidCalendar;
 const String sessionsUnselectedIcon = 'assets/icons/calendar-regular.svg';
 const String notesSelectedIcon = 'assets/icons/note-sticky-solid.svg';
 const String notesUnselectedIcon = 'assets/icons/note-sticky-regular.svg';
@@ -85,7 +86,7 @@ const String chatSelectedIcon = 'assets/icons/comment-solid.svg';
 const String chatUnselectedIcon = 'assets/icons/comment-regular.svg';
 const String exploreSelectedIcon = 'assets/icons/compass-solid.svg';
 const String exploreUnSelectedIcon = 'assets/icons/compass-regular.svg';
-const String codeSelectedIcon = 'assets/icons/code-solid.svg';
+const IconData codeSelectedIcon = Icons.terminal;
 const String codeUnSelectedIcon = 'assets/icons/code-regular.svg';
 
 const String datePlusSvg = 'assets/icons/calendar-plus-regular.svg';

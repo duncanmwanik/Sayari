@@ -52,7 +52,7 @@ class InfoHeader extends StatelessWidget {
                       if (kIsWeb)
                         AppButton(
                           noStyling: true,
-                          tooltip: 'Previous',
+                          tooltip: 'Previous Date',
                           isSquare: true,
                           child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
                           onPressed: () => swipeToNew(direction: 'left'),
@@ -79,7 +79,7 @@ class InfoHeader extends StatelessWidget {
                       if (kIsWeb)
                         AppButton(
                           noStyling: true,
-                          tooltip: 'Next',
+                          tooltip: 'Next Date',
                           isSquare: true,
                           child: AppIcon(Icons.keyboard_arrow_right, size: 18, faded: true),
                           onPressed: () => swipeToNew(direction: 'right'),

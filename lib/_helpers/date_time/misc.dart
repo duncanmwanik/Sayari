@@ -29,10 +29,12 @@ String get12HourTimeFrom24HourTime(String? time, {bool? islonger, bool showSecon
 }
 
 String getWeekDay(DateTimeProvider dateProvider) {
-  int dayNo =
-      dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].weekday == 7 ? 0 : dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].weekday;
+  int dayNo = dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].weekday == 7
+      ? 0
+      : dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].weekday;
   String day = weekDaysList[dayNo].name;
-  String month = monthNamesList[dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].month - 1];
+  String month =
+      monthNamesList[dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].month - 1];
   int date = dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].day;
   return '$day, $month $date';
 }
@@ -71,7 +73,8 @@ String getDateNo(String date) => DateFormat('d').format(DateTime.parse(date));
 String getDateTitle(String date) => DateFormat('E').format(DateTime.parse(date));
 String getDateFull(String date) => DateFormat('E MMM d, yyy').format(DateTime.parse(date));
 String getDateFullNoYear(String date) => DateFormat('E MMM d').format(DateTime.parse(date));
-String getEditDateTime(String timestamp) => DateFormat('MMM d, yyy h:mm a').format(DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp)));
+String getEditDateTime(String timestamp) =>
+    DateFormat('MMM d, yyy h:mm a').format(DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp)));
 bool isCurrentMonth(String date) => DateTime.parse(date).month == state.dateTime.selectedMonth;
 bool isCurrentYear(String date) => DateTime.parse(date).year == DateTime.now().year;
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../__styling/breakpoints.dart';
 import '../../../__styling/variables.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/abcs/menu/menu_item.dart';
@@ -22,11 +23,16 @@ class NavSettings extends StatelessWidget {
         )
         //
       ],
-      noStyling: true,
-      isSquare: true,
       tooltip: 'More Options',
-      tooltipDirection: AxisDirection.left,
-      child: AppIcon(moreIcon, faded: true),
+      noStyling: true,
+      color: styler.appColor(2),
+      borderRadius: borderRadiusSmall,
+      padding: EdgeInsets.all(showVertNav() ? 8 : 12),
+      child: SizedBox(
+        width: (showVertNav() ? 16 : 18),
+        height: (showVertNav() ? 16 : 18),
+        child: AppIcon(moreIcon, size: (showVertNav() ? 16 : 18), faded: true),
+      ),
     );
   }
 }

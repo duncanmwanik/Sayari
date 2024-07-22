@@ -27,15 +27,19 @@ Future<void> showSessionBottomSheet() async {
   await showAppBottomSheet(
     //
     header: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //
         AppCloseButton(faded: true),
+        spw(),
         //
         Expanded(
           child: DataInput(
             inputKey: 't',
             hintText: 'Title',
             fontSize: large,
+            contentPadding: EdgeInsets.only(bottom: 10),
+            maxLines: 3,
             fontWeight: FontWeight.w700,
             keyboardType: TextInputType.name,
             filled: false,
@@ -43,6 +47,7 @@ Future<void> showSessionBottomSheet() async {
           ),
         ),
         //
+        spw(),
         AppButton(
           onPressed: () {
             hideKeyboard();
@@ -57,6 +62,8 @@ Future<void> showSessionBottomSheet() async {
     content: SingleChildScrollView(
       child: Column(
         children: [
+          //
+          sph(),
           //
           Lead(),
           //

@@ -26,7 +26,6 @@ class WebCreator extends StatelessWidget {
       bool isNotesView = views.isNotes();
 
       return AppButton(
-        /////////////////////////////////////////////////
         isRound: isCollapsed,
         borderRadius: borderRadiusLarge,
         padding: EdgeInsets.zero,

@@ -43,7 +43,7 @@ class Applayout extends StatelessWidget {
                         Expanded(
                           child: Consumer<ViewsProvider>(builder: (context, views, child) {
                             return Title(
-                              title: 'Sayari ${capitalFirst(views.view)}',
+                              title: 'Sayari: ${capitalFirst(views.view)}',
                               color: styler.accentColor(),
                               child: ScrollConfiguration(
                                 behavior: scrollNoBars,

@@ -7,9 +7,10 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
-import '../../_widgets/others/icons.dart';
+import '../../_widgets/others/images.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/helper.dart';
+import '_vars/variables.dart';
 import 'options.dart';
 
 // TODOs: Verify path exists
@@ -40,8 +41,11 @@ class FileItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 //
-                AppIcon(Icons.square_rounded, size: isOverview ? 18 : 25),
-                // AppImage(imagePath: fileTypeImages[getfileExtension(fileName)] ?? 'assets/files/doc.png', size: isOverview ? 18 : 25),
+                AppImage(
+                    imagePath: fileTypeImages[getfileExtension(fileName)] ?? 'assets/files/doc.png',
+                    size: isOverview ? 18 : 25),
+                Flexible(
+                    child: AppText(text: '${fileName.substring(0, 10)}...${getfileExtension(fileName)}', size: small)),
                 //
                 if (!isOverview) spw(),
                 //
@@ -49,7 +53,8 @@ class FileItem extends StatelessWidget {
                 //
                 if (!isOverview) spw(),
                 //
-                if (!isOverview && isDownloading) SizedBox(height: 18, width: 18, child: CircularProgressIndicator(strokeWidth: 3)),
+                if (!isOverview && isDownloading)
+                  SizedBox(height: 18, width: 18, child: CircularProgressIndicator(strokeWidth: 3)),
                 //
                 if (!isOverview) FileOptions(fileId, fileName),
                 //
