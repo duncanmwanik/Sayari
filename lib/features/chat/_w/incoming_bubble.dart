@@ -18,52 +18,51 @@ class IncomingMessageBubble extends StatelessWidget {
     String userName = messageData['u'] ?? 'User';
     String message = messageData['n'];
 
-    return AppButton(
-      menuItems: messageMenu(messageId, messageData),
-      hoverColor: transparent,
-      padding: EdgeInsets.zero,
-      child: Container(
-        padding: itemPaddingMedium(),
-        constraints: BoxConstraints(maxWidth: maxChatWidth(), minWidth: 100),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // username
-            AppText(text: userName, fontWeight: FontWeight.w900),
-            //
-            sph(),
-            //
-            FileList(fileData: getFiles(messageData)),
-            // message
-            AppText(
-              size: 14,
-              text: message,
-              fontWeight: FontWeight.w500,
-            ),
-            //
-            sph(),
-            // message
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                //
-                AppText(size: small, text: '6:10 PM', fontWeight: FontWeight.w500),
-                //
-                spw(),
-                AppButton(
-                  menuItems: messageMenu(messageId, messageData),
-                  noStyling: true,
-                  isRound: true,
-                  leading: moreIcon,
-                ),
-                //
-              ],
-            ),
-            //
-          ],
+    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+      return AppButton(
+        menuItems: messageMenu(messageId, messageData),
+        hoverColor: transparent,
+        padding: EdgeInsets.zero,
+        color: Color.alphaBlend(styler.accentColor(0.3), styler.appColor(1)),
+        child: Container(
+          padding: itemPaddingMedium(left: true, right: true, top: true),
+          constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.6, minWidth: 100),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // username
+              AppText(text: userName, fontWeight: FontWeight.w900),
+              tph(),
+              //
+              // files
+              FileList(fileData: getFiles(messageData)),
+              //
+              // message
+              AppText(size: 13, text: message, fontWeight: FontWeight.w500),
+              //
+              // time
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //
+                  AppText(size: tiny, text: '6:10 PM', fontWeight: FontWeight.w500),
+                  //
+                  spw(),
+                  AppButton(
+                    menuItems: messageMenu(messageId, messageData),
+                    noStyling: true,
+                    isRound: true,
+                    leading: moreIcon,
+                  ),
+                  //
+                ],
+              ),
+              //
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

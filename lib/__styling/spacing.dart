@@ -33,6 +33,11 @@ EdgeInsets itemMarginSmall({bool? left, bool? right, bool? top, bool? bottom}) {
   return checkSpecificSide(p, left, right, top, bottom);
 }
 
+EdgeInsets partitionPadding({bool? left, bool? right, bool? top, bool? bottom}) {
+  double p = 8;
+  return checkSpecificSide(p, left, right, top, bottom);
+}
+
 EdgeInsets itemPaddingLarge({bool? left, bool? right, bool? top, bool? bottom}) {
   return checkSpecificSide(15, left, right, top, bottom);
 }

@@ -27,55 +27,56 @@ class SentMessageBubble extends StatelessWidget {
         builder: (context, box, widget) {
           // bool isSent = box.get(messageId, defaultValue: {})['s'] == '1';
           // bool isPending = isPendingItem(messageId);
-
-          return AppButton(
-            menuItems: messageMenu(messageId, messageData),
-            padding: EdgeInsets.zero,
-            hoverColor: transparent,
-            noStyling: true,
-            showBorder: true,
-            borderWidth: 0.5,
-            child: Container(
-              padding: itemPaddingMedium(),
-              constraints: BoxConstraints(maxWidth: maxChatWidth(), minWidth: 100),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: isShortMessage ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-                children: [
-                  //
-                  FileList(fileData: getFiles(messageData)),
-                  // message
-                  AppText(size: 15, text: message, fontWeight: FontWeight.w500),
-                  if (isShortMessage) sph(),
-                  // sent status Icon
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      //
-                      AppButton(
-                        menuItems: messageMenu(messageId, messageData),
-                        noStyling: true,
-                        isRound: true,
-                        leading: moreIcon,
-                      ),
-                      spw(),
-                      // time
-                      AppText(size: small, text: '5:07 PM', fontWeight: FontWeight.w500),
-                      spw(),
-                      // status
-                      AppIcon(Icons.done_rounded, size: 15),
-                      // AppIcon(isSent ? moreIcon : (isPending ? Icons.refresh_rounded : Icons.done_rounded), size: 15),
-                      //
-                    ],
-                  ),
-                  //
-                  tph(),
-                  //
-                ],
+          return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+            return AppButton(
+              menuItems: messageMenu(messageId, messageData),
+              padding: EdgeInsets.zero,
+              hoverColor: transparent,
+              noStyling: true,
+              showBorder: true,
+              borderWidth: 0.5,
+              child: Container(
+                padding: itemPaddingMedium(),
+                constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.6, minWidth: 100),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: isShortMessage ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                  children: [
+                    //
+                    FileList(fileData: getFiles(messageData)),
+                    // message
+                    AppText(size: 13, text: message, fontWeight: FontWeight.w500),
+                    if (isShortMessage) sph(),
+                    // sent status Icon
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        //
+                        AppButton(
+                          menuItems: messageMenu(messageId, messageData),
+                          noStyling: true,
+                          isRound: true,
+                          leading: moreIcon,
+                        ),
+                        spw(),
+                        // time
+                        AppText(size: small, text: '5:07 PM', fontWeight: FontWeight.w500),
+                        spw(),
+                        // status
+                        AppIcon(Icons.done_rounded, size: 15),
+                        // AppIcon(isSent ? moreIcon : (isPending ? Icons.refresh_rounded : Icons.done_rounded), size: 15),
+                        //
+                      ],
+                    ),
+                    //
+                    tph(),
+                    //
+                  ],
+                ),
               ),
-            ),
-          );
+            );
+          });
         });
   }
 }

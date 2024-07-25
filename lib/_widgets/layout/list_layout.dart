@@ -17,32 +17,29 @@ class ListLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     Box box = Hive.box('${liveTable()}_$type');
 
-    return Padding(
-      padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: largeHeightPlaceHolder()),
-      child: ReorderableListView.builder(
-        shrinkWrap: true,
-        buildDefaultDragHandles: false,
-        padding: EdgeInsets.zero,
-        physics: NeverScrollableScrollPhysics(),
-        onReorder: (oldIndex, newIndex) => doNothing(),
-        // onReorder: (oldIndex, newIndex) => orderItems(
-        //   type: type,
-        //   itemId: state.data.chosen[oldIndex],
-        //   itemsLength: state.data.chosen.length,
-        //   oldIndex: oldIndex,
-        //   newIndex: newIndex,
-        // ),
-        itemCount: state.data.chosen.length,
-        itemBuilder: (context, index) {
-          Item item = Item(type: type, id: state.data.chosen[index], data: box.get(state.data.chosen[index], defaultValue: {}));
+    return ReorderableListView.builder(
+      shrinkWrap: true,
+      buildDefaultDragHandles: false,
+      padding: EdgeInsets.only(bottom: largeHeightPlaceHolder()),
+      onReorder: (oldIndex, newIndex) => doNothing(),
+      // onReorder: (oldIndex, newIndex) => orderItems(
+      //   type: type,
+      //   itemId: state.data.chosen[oldIndex],
+      //   itemsLength: state.data.chosen.length,
+      //   oldIndex: oldIndex,
+      //   newIndex: newIndex,
+      // ),
+      itemCount: state.data.chosen.length,
+      itemBuilder: (context, index) {
+        Item item =
+            Item(type: type, id: state.data.chosen[index], data: box.get(state.data.chosen[index], defaultValue: {}));
 
-          return ReorderableDelayedDragStartListener(
-            index: index,
-            key: ValueKey(item.id),
-            child: ListItem(item: item),
-          );
-        },
-      ),
+        return ReorderableDelayedDragStartListener(
+          index: index,
+          key: ValueKey(item.id),
+          child: ListItem(item: item),
+        );
+      },
     );
   }
 }

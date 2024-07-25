@@ -38,7 +38,6 @@ class DailyView extends StatelessWidget {
                 shrinkWrap: true,
                 itemCount: 24,
                 padding: EdgeInsets.only(bottom: largeHeightPlaceHolder()),
-                physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (BuildContext context, int indexHour) {
                   bool isCurrentHour = TimeOfDay.now().hour == indexHour;
                   Map hourMap = getHourMap(getNewMapFrom(todaySessionsMap), indexHour);

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../_models/item.dart';
 import '../../_providers/providers.dart';
@@ -27,35 +26,31 @@ class GridLayout extends StatelessWidget {
 
       return SizedBox(
         width: double.maxFinite, // allows scroll outside grid
-        child: Padding(
-          padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: largeHeightPlaceHolder()),
-          child: SizedBox(
-            width: !isGrid && isNotPhone() ? 500 : null,
-            child: MasonryGridView.builder(
-              key: UniqueKey(),
-              shrinkWrap: true,
-              padding: EdgeInsets.zero,
-              physics: NeverScrollableScrollPhysics(),
-              gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: isGrid ? gridCount(width) : 1,
-              ),
-              crossAxisSpacing: isPhone() ? smallWidth() : 0,
-              mainAxisSpacing: isPhone() ? smallWidth() : 0,
-              itemCount: state.data.chosen.length,
-              itemBuilder: (ctx, index) {
-                String itemId = state.data.chosen[index];
-                Map itemData = box.get(state.data.chosen[index], defaultValue: {});
-                Item item = Item(type: type, id: itemId, data: itemData);
-
-                if (type == feature.notes.t) {
-                  return Note(key: Key(item.id), item: item);
-                }
-                //
-                else {
-                  return NoWidget();
-                }
-              },
+        child: SizedBox(
+          width: !isGrid ? 500 : null,
+          child: MasonryGridView.builder(
+            key: UniqueKey(),
+            shrinkWrap: true,
+            padding: EdgeInsets.only(bottom: largeHeightPlaceHolder()),
+            gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: isGrid ? gridCount(width) : 1,
             ),
+            // crossAxisSpacing: isPhone() ? smallWidth() : 0,
+            // mainAxisSpacing: isPhone() ? smallWidth() : 0,
+            itemCount: state.data.chosen.length,
+            itemBuilder: (ctx, index) {
+              String itemId = state.data.chosen[index];
+              Map itemData = box.get(state.data.chosen[index], defaultValue: {});
+              Item item = Item(type: type, id: itemId, data: itemData);
+
+              if (type == feature.notes.t) {
+                return Note(key: Key(item.id), item: item);
+              }
+              //
+              else {
+                return NoWidget();
+              }
+            },
           ),
         ),
       );

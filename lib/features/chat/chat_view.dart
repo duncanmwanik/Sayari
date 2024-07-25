@@ -38,7 +38,7 @@ class ChatView extends StatelessWidget {
                 reverse: true,
                 padding: EdgeInsets.only(
                   top: 15,
-                  bottom: 75,
+                  bottom: 15,
                   left: kIsWeb ? 15 : 0,
                   right: kIsWeb ? 15 : 0,
                 ),

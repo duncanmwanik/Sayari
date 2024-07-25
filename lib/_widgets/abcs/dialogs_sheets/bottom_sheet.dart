@@ -33,10 +33,11 @@ Future<void> showAppBottomSheet({
       context: navigatorState.currentContext!,
       isScrollControlled: true,
       useSafeArea: true,
-      constraints: isFull ? BoxConstraints.expand() : (isMinimized ? BoxConstraints(maxHeight: 70.h) : webMaxConstraints()),
+      constraints:
+          isFull ? BoxConstraints.expand() : (isMinimized ? BoxConstraints(maxHeight: 70.h) : webMaxConstraints()),
       elevation: 0,
       backgroundColor: transparent,
-      barrierColor: null,
+      // barrierColor: null,
       //
       //
       //
@@ -49,68 +50,78 @@ Future<void> showAppBottomSheet({
               //
               // dismiss bottom sheet : IGNORE!
               // works only with (color) defined
-              if (showSheetAsDialog() && !isFull) GestureDetector(onTap: () => popWhatsOnTop(), child: Container(height: 50, color: transparent)),
+              if (showSheetAsDialog() && !isFull)
+                GestureDetector(onTap: () => popWhatsOnTop(), child: Container(height: 50, color: transparent)),
               //
               //
               // ---------- Bottom Sheet starts here !
               //
-              Expanded(
-                child: ClipRRect(
-                  borderRadius: isFull
-                      ? BorderRadius.zero
-                      : isMinimized
-                          ? BorderRadius.only(topLeft: Radius.circular(borderRadiusMedium), topRight: Radius.circular(borderRadiusMedium))
-                          : showSheetAsDialog()
-                              ? BorderRadius.circular(borderRadiusMediumSmall)
-                              : BorderRadius.zero,
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
-                    child: Card(
-                      elevation: 0,
-                      color: (isImageTheme() || isBlackTheme() ? white.withOpacity(0.1) : styler.secondaryColor()),
-                      margin: EdgeInsets.zero,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: isFull
-                            ? BorderRadius.zero
-                            : isMinimized
-                                ? BorderRadius.only(topLeft: Radius.circular(borderRadiusMedium), topRight: Radius.circular(borderRadiusMedium))
-                                : showSheetAsDialog()
-                                    ? BorderRadius.circular(borderRadiusMediumSmall)
-                                    : BorderRadius.zero,
-                      ),
-                      //
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          //
-                          // Header ----------
-                          //
-                          if (header != null)
-                            Padding(
-                              padding: EdgeInsets.only(top: 6, left: 6, right: 6),
-                              child: header,
-                            ),
-                          //
-                          // Content ----------
-                          //
-                          Expanded(
-                              child: Padding(
-                            padding: noContentHorizontalPadding ? EdgeInsets.zero : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
-                            child: content,
-                          )),
-                          //
-                          // Footer ----------
-                          //
-                          if (footer != null) AppDivider(height: 0),
-                          if (footer != null)
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-                              child: footer,
-                            )
-                          //
-                          // ----------
-                          //
-                        ],
+              Flexible(
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: ClipRRect(
+                    borderRadius: isFull
+                        ? BorderRadius.zero
+                        : isMinimized
+                            ? BorderRadius.only(
+                                topLeft: Radius.circular(borderRadiusMedium),
+                                topRight: Radius.circular(borderRadiusMedium))
+                            : showSheetAsDialog()
+                                ? BorderRadius.circular(borderRadiusMediumSmall)
+                                : BorderRadius.zero,
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
+                      child: Card(
+                        elevation: 0,
+                        color: (isImageTheme() || isBlackTheme() ? white.withOpacity(0.1) : styler.secondaryColor()),
+                        margin: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: isFull
+                              ? BorderRadius.zero
+                              : isMinimized
+                                  ? BorderRadius.only(
+                                      topLeft: Radius.circular(borderRadiusMedium),
+                                      topRight: Radius.circular(borderRadiusMedium))
+                                  : showSheetAsDialog()
+                                      ? BorderRadius.circular(borderRadiusMediumSmall)
+                                      : BorderRadius.zero,
+                        ),
+                        //
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            //
+                            // Header ----------
+                            //
+                            if (header != null)
+                              Padding(
+                                padding: EdgeInsets.only(top: 6, left: 6, right: 6),
+                                child: header,
+                              ),
+                            //
+                            // Content ----------
+                            //
+                            Flexible(
+                                child: Padding(
+                              padding: noContentHorizontalPadding
+                                  ? EdgeInsets.zero
+                                  : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
+                              child: content,
+                            )),
+                            //
+                            // Footer ----------
+                            //
+                            if (footer != null) AppDivider(height: 0),
+                            if (footer != null)
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+                                child: footer,
+                              )
+                            //
+                            // ----------
+                            //
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -122,7 +133,8 @@ Future<void> showAppBottomSheet({
               //
               // dismiss bottom sheet : IGNORE!
               // works only with (color) defined
-              if (showSheetAsDialog() && !isFull) GestureDetector(onTap: () => popWhatsOnTop(), child: Container(height: 50, color: transparent)),
+              if (showSheetAsDialog() && !isFull)
+                GestureDetector(onTap: () => popWhatsOnTop(), child: Container(height: 50, color: transparent)),
               //
               //
             ],

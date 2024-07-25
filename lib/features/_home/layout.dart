@@ -1,10 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
+import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/theme.dart';
 import '../../_providers/common/views.dart';
@@ -32,7 +32,7 @@ class Applayout extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //
-                if (kIsWeb && showVertNav()) WebLeftBox(),
+                if (showVertNav()) WebLeftBox(),
                 //
                 Expanded(
                   child: SafeArea(
@@ -46,32 +46,23 @@ class Applayout extends StatelessWidget {
                               color: styler.accentColor(),
                               child: ScrollConfiguration(
                                 behavior: scrollNoBars,
-                                child: Stack(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    // main view
-                                    CustomScrollView(
-                                      slivers: [
-                                        //
-                                        CustomAppBar(),
-                                        //
-                                        if (views.isSessions()) InfoHeader(),
-                                        //
-                                        SliverList(
-                                          delegate: SliverChildListDelegate(
-                                            [
-                                              Container(
-                                                margin: EdgeInsets.all(5),
-                                                decoration: BoxDecoration(
-                                                  color: styler.appColor(0.5),
-                                                  borderRadius: BorderRadius.circular(borderRadiusSmall),
-                                                ),
-                                                child: changeView(views.view),
-                                              ),
-                                            ],
-                                          ),
+                                    //
+                                    CustomAppBar(),
+                                    //
+                                    if (views.isSessions()) InfoHeader(),
+                                    //
+                                    Expanded(
+                                      child: Container(
+                                        constraints: views.isChat() ? BoxConstraints(maxWidth: webMaxWidth) : null,
+                                        margin: partitionPadding(right: showVertNav(), bottom: showVertNav()),
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(borderRadiusSmall),
                                         ),
-                                        //
-                                      ],
+                                        child: changeView(views.view),
+                                      ),
                                     ),
                                     //
                                     if (views.isChat()) MessageInputBar(),

@@ -26,25 +26,25 @@ class YearlyView extends StatelessWidget {
       return SwipeDetector(
         onSwipeRight: () => swipeToNew(isSwipeRight: true),
         onSwipeLeft: () => swipeToNew(isSwipeRight: false),
-        child: Padding(
-          padding: EdgeInsets.only(
-            top: isPhone() ? mediumSmallHeight() : largeHeight(),
-            bottom: largeHeightPlaceHolder(),
-          ),
-          child: FutureBuilder(
-              future: getAllMonthsDateMap(dateProvider.selectedYear),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasError) {
-                    return Padding(
-                      padding: EdgeInsets.only(top: 20.h),
-                      child: Center(child: AppText(text: 'Just a minute...', faded: true)),
-                    );
-                  } else if (snapshot.hasData) {
-                    Map<int, Map<int, String>> allMonthsDateMap = snapshot.data as Map<int, Map<int, String>>;
+        child: FutureBuilder(
+            future: getAllMonthsDateMap(dateProvider.selectedYear),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasError) {
+                  return Padding(
+                    padding: EdgeInsets.only(top: 20.h),
+                    child: Center(child: AppText(text: 'Just a minute...', faded: true)),
+                  );
+                } else if (snapshot.hasData) {
+                  Map<int, Map<int, String>> allMonthsDateMap = snapshot.data as Map<int, Map<int, String>>;
 
-                    return Align(
-                      alignment: Alignment.topCenter,
+                  return Align(
+                    alignment: Alignment.topCenter,
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.only(
+                        top: isPhone() ? mediumSmallHeight() : largeHeight(),
+                        bottom: largeHeightPlaceHolder(),
+                      ),
                       child: Wrap(
                         spacing: 2.w,
                         runSpacing: 2.w,
@@ -116,15 +116,15 @@ class YearlyView extends StatelessWidget {
                           );
                         }),
                       ),
-                    );
-                  }
+                    ),
+                  );
                 }
-                return Padding(
-                  padding: EdgeInsets.only(top: 20.h),
-                  child: Center(child: AppText(text: 'Just a minute...', faded: true)),
-                );
-              }),
-        ),
+              }
+              return Padding(
+                padding: EdgeInsets.only(top: 20.h),
+                child: Center(child: AppText(text: 'Just a minute...', faded: true)),
+              );
+            }),
       );
     });
   }

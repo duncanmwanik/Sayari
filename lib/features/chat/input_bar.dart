@@ -32,7 +32,7 @@ class MessageInputBar extends StatelessWidget {
       child: Container(
         width: webMaxWidth,
         padding: EdgeInsets.symmetric(horizontal: 2, vertical: 1),
-        margin: isNotPhone() ? itemPadding(bottom: true) : null,
+        margin: isNotPhone() ? partitionPadding(bottom: true) : null,
         decoration: BoxDecoration(
           color: Color.alphaBlend(styler.accentColor(2), styler.primaryColor()),
           borderRadius: isNotPhone() ? BorderRadius.circular(borderRadiusLarge) : BorderRadius.zero,

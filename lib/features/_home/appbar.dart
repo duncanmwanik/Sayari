@@ -3,18 +3,15 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/breakpoints.dart';
-import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_providers/common/selection.dart';
-import '../../_providers/providers.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/items/item_selection.dart';
 import '../../_widgets/layout/layout_button.dart';
 import '../../_widgets/others/icons.dart';
-import '../../_widgets/others/others/other_widgets.dart';
 import '../../_widgets/others/others/sync_indicator.dart';
 import '../../_widgets/others/search.dart';
 import '../../_widgets/others/text.dart';
@@ -40,17 +37,13 @@ class CustomAppBar extends StatelessWidget {
           return Consumer<SelectionProvider>(builder: (context, selection, child) {
             bool isItemSelection = selection.isSelection;
 
-            return SliverAppBar(
-              expandedHeight: state.views.isNotes() ? (isNotPhone() ? 80 : 75) : 45,
-              toolbarHeight: state.views.isNotes() ? (isNotPhone() ? 80 : 75) : 45,
-              floating: true,
-              leading: NoWidget(),
-              actions: [NoWidget()],
-              leadingWidth: 0,
-              titleSpacing: 0,
-              backgroundColor: styler.navColor(),
-              surfaceTintColor: isImageTheme() ? styler.appColor(5) : styler.navColor(),
-              title: Column(
+            return Container(
+              margin: partitionPadding(top: true, bottom: true, right: true, left: !showVertNav()),
+              decoration: BoxDecoration(
+                color: styler.appColor(0.5),
+                borderRadius: BorderRadius.circular(borderRadiusSmall),
+              ),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [

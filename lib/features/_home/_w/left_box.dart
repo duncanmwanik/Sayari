@@ -28,7 +28,7 @@ class WebLeftBox extends StatelessWidget {
       return Container(
         width: showBoxOptions ? 251 : 51,
         height: double.maxFinite,
-        margin: EdgeInsets.all(10),
+        margin: partitionPadding(),
         decoration: BoxDecoration(
           color: styler.appColor(0.5),
           borderRadius: BorderRadius.circular(borderRadiusSmall),

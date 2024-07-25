@@ -12,7 +12,6 @@ import '../../_providers/common/views.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
-import '../_home/_w/slivers.dart';
 import '_helpers/swipe.dart';
 import '_w/view_chooser.dart';
 
@@ -31,92 +30,85 @@ class InfoHeader extends StatelessWidget {
         dates.selectedYear.toString(),
       ];
 
-      return SliverPersistentHeader(
-        pinned: true,
-        delegate: SliverAppBarDelegate(
-          minHeight: 35.0,
-          maxHeight: 35.0,
-          child: Container(
-            color: styler.navColor(),
-            padding: EdgeInsets.only(left: 5, right: 5, bottom: 3, top: 3),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                // Left Actions -------------------------------------- start
-                Expanded(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      //
-                      // Go to Previous date
-                      if (kIsWeb)
-                        AppButton(
-                          noStyling: true,
-                          tooltip: 'Previous Date',
-                          isSquare: true,
-                          child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
-                          onPressed: () => swipeToNew(direction: 'left'),
-                        ),
-                      //
-                      // Date Info
-                      Flexible(
-                        child: AppButton(
-                          onPressed: () => jumpToDateDialog(),
-                          noStyling: true,
-                          smallVerticalPadding: true,
-                          borderRadius: borderRadiusCrazy,
-                          tooltip: 'Go to date',
-                          child: FittedBox(
-                              child: AppText(
-                            size: normal,
-                            text: infoList[views.sessionsView],
-                            fontWeight: FontWeight.bold,
-                          )),
-                        ),
-                      ),
-                      //
-                      // Go to Next date
-                      if (kIsWeb)
-                        AppButton(
-                          noStyling: true,
-                          tooltip: 'Next Date',
-                          isSquare: true,
-                          child: AppIcon(Icons.keyboard_arrow_right, size: 18, faded: true),
-                          onPressed: () => swipeToNew(direction: 'right'),
-                        ),
-                      //
-                    ],
+      return Container(
+        color: styler.navColor(),
+        padding: partitionPadding(right: true, bottom: true),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Left Actions -------------------------------------- start
+            Expanded(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //
+                  // Go to Previous date
+                  if (kIsWeb)
+                    AppButton(
+                      noStyling: true,
+                      tooltip: 'Previous Date',
+                      isSquare: true,
+                      child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
+                      onPressed: () => swipeToNew(direction: 'left'),
+                    ),
+                  //
+                  // Date Info
+                  Flexible(
+                    child: AppButton(
+                      onPressed: () => jumpToDateDialog(),
+                      noStyling: true,
+                      smallVerticalPadding: true,
+                      borderRadius: borderRadiusCrazy,
+                      tooltip: 'Go to date',
+                      child: FittedBox(
+                          child: AppText(
+                        size: normal,
+                        text: infoList[views.sessionsView],
+                        fontWeight: FontWeight.bold,
+                      )),
+                    ),
                   ),
-                ),
-                //
-                // Left Actions -------------------------------------- end
-                //
-                //
-                // Right Actions -------------------------------------- start
-                Flexible(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      //
-                      AppButton(
-                        onPressed: () async => goToToday(views.sessionsView, isToday),
-                        tooltip: getDateInfo(getDatePart(date.now)),
-                        borderRadius: borderRadiusCrazy,
-                        child: AppText(text: 'Today'),
-                      ),
-                      //
-                      spw(),
-                      //
-                      ViewChooser(),
-                      //
-                    ],
-                  ),
-                ),
-                // Right Actions -------------------------------------- end
-                //
-              ],
+                  //
+                  // Go to Next date
+                  if (kIsWeb)
+                    AppButton(
+                      noStyling: true,
+                      tooltip: 'Next Date',
+                      isSquare: true,
+                      child: AppIcon(Icons.keyboard_arrow_right, size: 18, faded: true),
+                      onPressed: () => swipeToNew(direction: 'right'),
+                    ),
+                  //
+                ],
+              ),
             ),
-          ),
+            //
+            // Left Actions -------------------------------------- end
+            //
+            //
+            // Right Actions -------------------------------------- start
+            Flexible(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  //
+                  AppButton(
+                    onPressed: () async => goToToday(views.sessionsView, isToday),
+                    tooltip: getDateInfo(getDatePart(date.now)),
+                    borderRadius: borderRadiusCrazy,
+                    child: AppText(text: 'Today'),
+                  ),
+                  //
+                  spw(),
+                  //
+                  ViewChooser(),
+                  //
+                ],
+              ),
+            ),
+            // Right Actions -------------------------------------- end
+            //
+          ],
         ),
       );
     });

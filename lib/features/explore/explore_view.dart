@@ -44,7 +44,7 @@ class ExploreView extends StatelessWidget {
             ),
             //
             ExploreBox(
-              title: 'Pomodoro Timer',
+              title: 'Pomodoro',
               subtitle: 'Mindful productivity.',
               icon: Icons.timer_rounded,
               iconColor: Colors.red,
@@ -55,7 +55,7 @@ class ExploreView extends StatelessWidget {
               title: 'Timer',
               subtitle: 'Time your tasks.',
               icon: Icons.timer_rounded,
-              iconColor: Colors.green,
+              iconColor: Colors.yellow,
               onPressed: () async {
                 showToast(1, 'To be done.');
               },
