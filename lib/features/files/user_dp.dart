@@ -69,7 +69,7 @@ class UserDp extends StatelessWidget {
                           ? []
                           : [
                               //
-                              MenuItem(onTap: () async => await chooseUserDp(), label: 'Edit', iconData: Icons.edit),
+                              MenuItem(onTap: () async => await chooseUserDp(), label: 'Edit', leading: Icons.edit),
                               //
                               MenuItem(
                                 onTap: () async => await showImageViewer(
@@ -83,7 +83,7 @@ class UserDp extends StatelessWidget {
                                   ),
                                 ),
                                 label: 'View',
-                                iconData: Icons.image_outlined,
+                                leading: Icons.image_outlined,
                               ),
                               //
                             ],

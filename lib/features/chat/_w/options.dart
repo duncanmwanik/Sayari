@@ -9,25 +9,25 @@ List<Widget> messageMenu(String messageId, Map messageData) {
     MenuItem(
       onTap: () {},
       label: 'Edit',
-      iconData: Icons.edit_rounded,
+      leading: Icons.edit_rounded,
     ),
     //
     MenuItem(
       onTap: () {},
       label: 'Copy Text',
-      iconData: Icons.copy_rounded,
+      leading: Icons.copy_rounded,
     ),
     //
     MenuItem(
       onTap: () {},
       label: 'Pin',
-      iconData: Icons.push_pin_outlined,
+      leading: Icons.push_pin_outlined,
     ),
     //
     MenuItem(
       onTap: () => deleteMessageForUser(messageId),
       label: 'Delete',
-      iconData: Icons.delete_rounded,
+      leading: Icons.delete_rounded,
     ),
     //
   ];

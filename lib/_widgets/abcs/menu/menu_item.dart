@@ -13,20 +13,22 @@ class MenuItem extends StatefulWidget {
       {super.key,
       required this.label,
       required this.onTap,
-      this.iconData,
+      this.leading,
       this.trailing,
       this.trailingColor,
       this.leadingSize,
       this.trailingSize,
+      this.isSelected = false,
       this.pop = true});
 
   final String label;
-  final IconData? iconData;
+  final IconData? leading;
   final Function()? onTap;
   final IconData? trailing;
   final Color? trailingColor;
   final double? leadingSize;
   final double? trailingSize;
+  final bool isSelected;
   final bool pop;
 
   @override
@@ -52,19 +54,30 @@ class _MenuItemState extends State<MenuItem> {
         noStyling: true,
         child: Row(
           children: [
-            if (widget.iconData != null) AppIcon(widget.iconData, size: widget.leadingSize ?? 16, faded: !isHovered),
-            if (widget.iconData != null) spw(),
+            if (widget.leading != null)
+              AppIcon(
+                widget.leading,
+                size: widget.leadingSize ?? 16,
+                faded: !isHovered,
+                color: widget.isSelected ? styler.accentColor() : null,
+              ),
+            if (widget.leading != null) spw(),
             Expanded(
               child: AppText(
                 text: widget.label,
                 faded: !isHovered,
-                fontWeight: FontWeight.w700,
-                // fontWeight: isHovered ? FontWeight.lerp(FontWeight.w600, FontWeight.w700, 0.5) : null,
+                fontWeight: widget.isSelected ? FontWeight.w800 : FontWeight.w700,
+                color: widget.isSelected ? styler.accentColor() : null,
               ),
             ),
             if (widget.trailing != null) spw(),
             if (widget.trailing != null)
-              AppIcon(widget.trailing, size: widget.trailingSize ?? 16, color: widget.trailingColor, faded: !isHovered),
+              AppIcon(
+                widget.trailing,
+                size: widget.trailingSize ?? 16,
+                faded: !isHovered,
+                color: widget.isSelected ? styler.accentColor() : widget.trailingColor,
+              ),
           ],
         ),
       ),

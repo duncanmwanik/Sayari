@@ -24,8 +24,8 @@ class SharedHeader extends StatelessWidget {
       leading: NoWidget(),
       leadingWidth: 0,
       titleSpacing: 0,
-      backgroundColor: transparent,
-      surfaceTintColor: styler.accentColor(),
+      backgroundColor: styler.primaryColor(),
+      surfaceTintColor: styler.secondaryColor(),
       title: Container(
         padding: itemPaddingMedium(left: true, top: true, bottom: true),
         decoration: BoxDecoration(
@@ -52,7 +52,7 @@ class SharedHeader extends StatelessWidget {
             //
             Spacer(),
             QuickThemeChanger(rightPadding: false),
-            tpw(),
+            spw(),
             //
           ],
         ),

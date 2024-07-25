@@ -74,7 +74,9 @@ class ImageOverview extends StatelessWidget {
                                                               : Radius.zero,
                                                         ),
                                                         image: DecorationImage(
-                                                            image: MemoryImage(bytes!), fit: BoxFit.fill)),
+                                                          image: MemoryImage(bytes!),
+                                                          fit: isInput ? BoxFit.fitHeight : BoxFit.fill,
+                                                        )),
                                                   );
                                                 }
                                               }
@@ -112,7 +114,11 @@ class ImageOverview extends StatelessWidget {
                             child: Center(
                                 child: Padding(
                               padding: itemPaddingLarge(),
-                              child: AppText(text: fileName, textAlign: TextAlign.center),
+                              child: AppText(
+                                text: fileName,
+                                textAlign: TextAlign.center,
+                                fontWeight: FontWeight.w800,
+                              ),
                             )),
                           ),
                         ),

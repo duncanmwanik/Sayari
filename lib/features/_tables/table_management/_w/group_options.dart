@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../__styling/variables.dart';
 import '../../../../_helpers/user/user_actions.dart';
 import '../../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../../_widgets/abcs/menu/menu_item.dart';
@@ -18,13 +19,14 @@ class GroupOptions extends StatelessWidget {
         //
         MenuItem(
           label: 'Delete Group',
-          iconData: Icons.folder_delete_rounded,
+          leading: Icons.folder_delete_rounded,
           onTap: () => deleteGroup(groupName),
         ),
         //
       ],
-      noStyling: true,isSquare: true,
-      child: AppIcon(Icons.more_vert, faded: true, size: 18),
+      noStyling: true,
+      isSquare: true,
+      child: AppIcon(moreIcon, faded: true, size: 18),
     );
   }
 }

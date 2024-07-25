@@ -4,11 +4,11 @@ import '../../../__styling/helpers.dart';
 import '../../../__styling/variables.dart';
 
 class AppDivider extends StatelessWidget {
-  const AppDivider({super.key, this.thickness, this.height, this.color});
+  const AppDivider({super.key, this.thickness, this.color, this.height});
 
   final double? thickness;
-  final double? height;
   final Color? color;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {

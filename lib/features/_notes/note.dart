@@ -13,7 +13,8 @@ import '../../_variables/features.dart';
 import '../../_widgets/items/hover_actions.dart';
 import '../../_widgets/items/items.dart';
 import '../../_widgets/items/selector.dart';
-import '../files/file_overview.dart';
+import '../../_widgets/others/others/divider.dart';
+import '../files/overview.dart';
 import '../share/_w/preview.dart';
 import '_helpers/ontap.dart';
 import '_w/text_overview.dart';
@@ -39,7 +40,7 @@ class Note extends StatelessWidget {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            //
+            // the note itself
             Card(
               elevation: 0,
               margin: kIsWeb ? itemPaddingMedium() : EdgeInsets.zero,
@@ -72,6 +73,8 @@ class Note extends StatelessWidget {
                           ImageOverview(item: item),
                           //
                           ItemHeader(item: item),
+                          tph(),
+                          AppDivider(height: 0),
                           //
                           Align(
                             alignment: Alignment.topLeft,
@@ -93,13 +96,12 @@ class Note extends StatelessWidget {
                                   if (item.hasTasks()) NoteTask(item: item),
                                   if (item.isPublished()) lph(),
                                   if (item.isPublished()) PreviewNote(path: '/${feature.share.t}/${item.id}'),
-
                                   //
                                 ],
                               ),
                             ),
                           ),
-                          //
+                          // on-hover actions
                           if (kIsWeb && isNotPhone()) tph(),
                           if (kIsWeb && isNotPhone()) HoverActions(item: item),
                           //
@@ -110,7 +112,7 @@ class Note extends StatelessWidget {
                 ),
               ),
             ),
-            //
+            // note selection checkbox
             ItemSelector(item: item),
             //
           ],

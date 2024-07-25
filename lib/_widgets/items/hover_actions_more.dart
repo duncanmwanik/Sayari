@@ -20,7 +20,7 @@ class HoverActionsMore extends StatelessWidget {
       menuItems: [
         MenuItem(
           label: 'Move To Trash',
-          iconData: deleteIcon,
+          leading: deleteIcon,
           onTap: () async => await editItemExtras(type: type, itemId: itemId, key: 'x', value: '1'),
         ),
       ],

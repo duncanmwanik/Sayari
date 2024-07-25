@@ -47,10 +47,10 @@ class Tile extends StatelessWidget {
         title: Row(
           children: [
             AppIcon(iconData, faded: true, size: 18),
+            mpw(),
+            Expanded(child: AppText(text: title)),
             tpw(),
             AppText(size: small, text: '$count', faded: true),
-            mpw(),
-            Flexible(child: AppText(text: title)),
           ],
         ),
         children: [child],

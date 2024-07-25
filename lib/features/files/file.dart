@@ -7,10 +7,9 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_widgets/abcs/buttons/buttons.dart';
-import '../../_widgets/others/images.dart';
+import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/helper.dart';
-import '_vars/variables.dart';
 import 'options.dart';
 
 // TODOs: Verify path exists
@@ -33,19 +32,19 @@ class FileItem extends StatelessWidget {
           return AppButton(
             onPressed: () async => openFile(fileId),
             tooltip: isOverview ? fileName : null,
-            noStyling: true,
-            borderRadius: borderRadiusSmall,
-            padding: isOverview ? EdgeInsets.zero : EdgeInsets.all(5),
+            borderRadius: isOverview ? borderRadiusTinySmall : borderRadiusSmall,
+            padding: isOverview ? EdgeInsets.symmetric(horizontal: 3, vertical: 3) : EdgeInsets.all(5),
             smallLeftPadding: true,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 //
-                AppImage(
-                    imagePath: fileTypeImages[getfileExtension(fileName)] ?? 'assets/files/doc.png',
-                    size: isOverview ? 18 : 25),
-                Flexible(
-                    child: AppText(text: '${fileName.substring(0, 10)}...${getfileExtension(fileName)}', size: small)),
+                // AppImage(
+                //     imagePath: fileTypeImages[getfileExtension(fileName)] ?? 'assets/files/doc.png',
+                //     size: isOverview ? 18 : 25),
+                AppIcon(Icons.attach_file, size: 14),
+                Flexible(child: AppText(text: getfileNameOnly(fileName), size: small, overflow: TextOverflow.ellipsis)),
+                AppText(text: getfileExtension(fileName), size: small),
                 //
                 if (!isOverview) spw(),
                 //

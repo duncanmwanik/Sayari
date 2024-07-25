@@ -23,7 +23,7 @@ class HabitOptions extends StatelessWidget {
           //
           MenuItem(
             label: '${isCustom ? 'Edit' : 'Choose'} Custom Dates',
-            iconData: Icons.calendar_month_rounded,
+            leading: Icons.calendar_month_rounded,
             onTap: () async {
               await showSelectDateDialog(
                 showTitle: true,
@@ -42,7 +42,7 @@ class HabitOptions extends StatelessWidget {
           if (isCustom)
             MenuItem(
               label: 'Remove Custom Dates',
-              iconData: Icons.close,
+              leading: Icons.close,
               onTap: () => showConfirmationDialog(
                 title: 'Remove custom dates?',
                 content: 'You will now be able to check habits each day. Already checked dates will be kept.',

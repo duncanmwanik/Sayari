@@ -69,14 +69,15 @@ class Share extends StatelessWidget {
                       menuItems: [
                         MenuItem(
                           label: 'Unshare Note',
-                          iconData: Icons.delete_rounded,
+                          leading: Icons.delete_rounded,
                           onTap: () => showConfirmationDialog(
                             title: 'Unshare note <b>${input.data['t'] ?? ''}</b>?',
                             content: 'The note will also be unpublished, if published.',
                             yeslabel: 'Unshare',
                             onAccept: () {
-                              // input.removeAll(start: 's');
-                              // shareItem(delete: true, itemId: input.itemId);
+                              input.update(action: 'rem', key: feature.share.lt);
+                              input.update(action: 'rem', key: 'sp');
+                              shareItem(delete: true, itemId: input.itemId);
                             },
                           ),
                         ),

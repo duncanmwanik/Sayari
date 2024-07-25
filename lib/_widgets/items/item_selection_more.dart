@@ -24,7 +24,7 @@ class ItemSelectionMore extends StatelessWidget {
           //
           MenuItem(
             label: isArchive ? 'Unarchive' : 'Archive',
-            iconData: isArchive ? unarchiveIcon : archiveIcon,
+            leading: isArchive ? unarchiveIcon : archiveIcon,
             onTap: () async {
               if (isArchive) {
                 selection.selected.forEach((id, data) async {
@@ -41,7 +41,7 @@ class ItemSelectionMore extends StatelessWidget {
           //
           MenuItem(
             label: 'Move To Trash',
-            iconData: deleteIcon,
+            leading: deleteIcon,
             onTap: () async {
               selection.selected.forEach((id, data) async {
                 await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');

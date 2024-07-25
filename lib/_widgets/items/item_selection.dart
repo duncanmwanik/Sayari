@@ -46,12 +46,12 @@ class SelectedItemOptions extends StatelessWidget {
                     noStyling: true,
                     isSquare: true,
                     isRound: true,
-                    tooltip: 'Cancel',
-                    child: AppIcon(closeIcon, faded: true),
+                    tooltip: 'Cancel Selection',
+                    child: AppIcon(closeIcon),
                   ),
                   spw(),
                   //no of selected items
-                  AppText(text: '${selection.selected.length}', size: normal, faded: true),
+                  AppText(text: '${selection.selected.length} selected', size: normal, faded: true),
                   //
                 ],
               ),
@@ -225,7 +225,7 @@ class SelectedItemOptions extends StatelessWidget {
                       //
                       MenuItem(
                         label: isArchive ? 'Unarchive' : 'Archive',
-                        iconData: isArchive ? unarchiveIcon : archiveIcon,
+                        leading: isArchive ? unarchiveIcon : archiveIcon,
                         onTap: () async {
                           if (isArchive) {
                             selection.selected.forEach((id, data) async {
@@ -242,7 +242,7 @@ class SelectedItemOptions extends StatelessWidget {
                       //
                       MenuItem(
                         label: 'Delete',
-                        iconData: deleteIcon,
+                        leading: deleteIcon,
                         onTap: () async {
                           selection.selected.forEach((id, data) async {
                             await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');

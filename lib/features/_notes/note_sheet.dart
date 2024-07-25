@@ -12,7 +12,7 @@ import '../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../_widgets/items/input_actions.dart';
 import '../../_widgets/items/items.dart';
 import '../../_widgets/others/forms/input.dart';
-import '../files/file_overview.dart';
+import '../files/overview.dart';
 import '../share/shared_item.dart';
 import '_helpers/ontap.dart';
 import '_w/editor.dart';

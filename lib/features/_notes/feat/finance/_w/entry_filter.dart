@@ -18,25 +18,25 @@ class EntriesFilter extends StatelessWidget {
         //
         MenuItem(
           label: 'All',
-          iconData: Icons.all_inclusive,
+          leading: Icons.all_inclusive,
           onTap: () => state.input.setEntryFilters('All'),
         ),
         //
         MenuItem(
           label: 'Income',
-          iconData: Icons.add,
+          leading: Icons.add,
           onTap: () => state.input.setEntryFilters('Income'),
         ),
         //
         MenuItem(
           label: 'Expenses',
-          iconData: Icons.remove,
+          leading: Icons.remove,
           onTap: () => state.input.setEntryFilters('Expenses'),
         ),
         //
         MenuItem(
           label: 'Savings',
-          iconData: Icons.savings,
+          leading: Icons.savings,
           onTap: () => state.input.setEntryFilters('Savings'),
         ),
         //

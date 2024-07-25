@@ -138,8 +138,8 @@ class _FlagItemState extends State<Flag> {
                 AppButton(
                   menuWidth: 200,
                   menuItems: [
-                    MenuItem(label: 'Edit', iconData: Icons.edit, onTap: () => setState(() => isEdit = true)),
-                    MenuItem(label: 'Delete', iconData: Icons.delete, onTap: () => deleteFlag(widget.flag)),
+                    MenuItem(label: 'Edit', leading: Icons.edit, onTap: () => setState(() => isEdit = true)),
+                    MenuItem(label: 'Delete', leading: Icons.delete, onTap: () => deleteFlag(widget.flag)),
                   ],
                   noStyling: true,
                   child: AppIcon(Icons.more_vert_rounded, size: 14, faded: true),

@@ -49,16 +49,19 @@ class ItemHeader extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // note title
                 Flexible(
                     child: AppText(
                         size: normal,
                         text: item.title(),
                         bgColor: item.color(),
                         maxlines: 2,
-                        fontWeight: FontWeight.w700)),
+                        fontWeight: FontWeight.w800)),
+                // if note is shared
                 if (item.isShared()) spw(),
                 if (item.isShared() && !item.isPublished())
                   AppIcon(Icons.share, size: 14, faded: true, bgColor: item.color()),
+                // if note is published
                 if (item.isPublished())
                   Padding(
                     padding: itemPaddingSmall(top: true),
@@ -66,13 +69,14 @@ class ItemHeader extends StatelessWidget {
                       color: Colors.green,
                       borderRadius: borderRadiusTiny,
                       padding: EdgeInsets.symmetric(horizontal: 5),
-                      child: AppText(text: 'Published', color: Colors.white, size: tiny),
+                      child: AppText(text: 'Pub', color: Colors.white, size: tiny),
                     ),
                   ),
+                //
               ],
             ),
           ),
-          //
+          // if note is pinned
           if (!item.hasOverview()) PinnedIcon(item: item),
           //
         ],

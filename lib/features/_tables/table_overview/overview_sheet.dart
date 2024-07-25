@@ -15,6 +15,7 @@ import '../../../_widgets/others/text.dart';
 import '../_helpers/checks_table.dart';
 import '../_helpers/common.dart';
 import '../_helpers/helpers.dart';
+import '../table_overview copy/overview_sheet.dart';
 import '_w/table_about.dart';
 import '_w/table_admin_tile.dart';
 import '_w/table_name.dart';
@@ -110,7 +111,7 @@ Future<void> showTableOverviewBottomSheet() async {
                           ],
                         ),
                         trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: 18),
-                        onTap: () {},
+                        onTap: () => showPublishBookBottomSheet(),
                       ),
                       //
                     ],

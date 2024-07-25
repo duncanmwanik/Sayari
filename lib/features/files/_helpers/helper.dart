@@ -28,7 +28,7 @@ String getfileExtension(String fileName) {
   try {
     return fileName.split('.').last;
   } catch (e) {
-    return 'FILE';
+    return '?';
   }
 }
 

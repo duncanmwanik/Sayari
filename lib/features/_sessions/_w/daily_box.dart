@@ -9,7 +9,7 @@ import '../../../_widgets/others/text.dart';
 import '../../files/_helpers/helper.dart';
 import '../../files/file_list.dart';
 import '../_helpers/helpers.dart';
-import '../session_overview/dialog_session_overview.dart';
+import '../overview/dialog_session_overview.dart';
 
 class DailyBox extends StatelessWidget {
   const DailyBox({super.key, required this.sessionData, required this.sessionId, required this.sessionDate});
@@ -73,7 +73,9 @@ class DailyBox extends StatelessWidget {
                     ), // stop
                     AppText(
                       size: small,
-                      text: (sessionData['e'] != null && sessionData['e'] != '') ? '  -  ${get12HourTimeFrom24HourTime(sessionData['e'], islonger: true)}' : '',
+                      text: (sessionData['e'] != null && sessionData['e'] != '')
+                          ? '  -  ${get12HourTimeFrom24HourTime(sessionData['e'], islonger: true)}'
+                          : '',
                       color: textColor,
                       fontWeight: FontWeight.w600,
                     ),

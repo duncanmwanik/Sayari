@@ -26,7 +26,7 @@ class HabitHeader extends StatelessWidget {
         menuItems: [
           MenuItem(
             label: 'Week',
-            iconData: Icons.view_week_sharp,
+            leading: Icons.view_week_sharp,
             trailing: view == '0' ? Icons.done : null,
             onTap: () {
               input.update(action: 'add', key: 'hv', value: '0');
@@ -34,7 +34,7 @@ class HabitHeader extends StatelessWidget {
           ),
           MenuItem(
             label: 'Month',
-            iconData: Icons.calendar_month_rounded,
+            leading: Icons.calendar_month_rounded,
             trailing: view == '1' ? Icons.done : null,
             onTap: () {
               input.update(action: 'add', key: 'hv', value: '1');
@@ -42,7 +42,7 @@ class HabitHeader extends StatelessWidget {
           ),
           MenuItem(
             label: 'Year',
-            iconData: Icons.view_module_rounded,
+            leading: Icons.view_module_rounded,
             trailing: view == '2' ? Icons.done : null,
             onTap: () {
               input.update(action: 'add', key: 'hv', value: '2');

@@ -22,19 +22,19 @@ class FileOptions extends StatelessWidget {
           MenuItem(
             onTap: () => state.input.update(action: 'add', key: 'w', value: fileId),
             label: 'Make Overview',
-            iconData: Icons.image_rounded,
+            leading: Icons.image_rounded,
           ),
         //
         MenuItem(
           onTap: () async => await downloadFile(fileId: fileId, fileName: fileName),
           label: 'Download ${isImageFile(fileName) ? 'Image' : 'File'}',
-          iconData: Icons.download_rounded,
+          leading: Icons.download_rounded,
         ),
         //
         MenuItem(
           onTap: () => state.input.update(action: 'remove', key: fileId),
           label: 'Remove ${isImageFile(fileName) ? 'Image' : 'File'}',
-          iconData: Icons.delete_rounded,
+          leading: Icons.delete_rounded,
         ),
         //
       ],

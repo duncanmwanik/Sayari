@@ -16,27 +16,27 @@ class CreateOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        AppCloseButton(faded: true),
         AppButton(
-          tooltip: 'Create a Table or Group',
           menuItems: [
             //
             MenuItem(
               label: 'Create Table',
-              iconData: Icons.add_rounded,
+              leading: Icons.add_rounded,
               onTap: () => prepareTableForCreation(),
             ),
             //
             MenuItem(
               label: 'Create Group',
-              iconData: Icons.create_new_folder_rounded,
+              leading: Icons.create_new_folder_rounded,
               onTap: () => showCreateGroupDialog(),
             ),
             //
             MenuItem(
               label: 'Add Table',
-              iconData: Icons.add_circle_outline_rounded,
+              leading: Icons.add_circle_outline_rounded,
               onTap: () => showAddTableDialog(),
             ),
             //

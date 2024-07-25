@@ -34,7 +34,7 @@ class MoreInputActions extends StatelessWidget {
           //
           MenuItem(
             label: 'Attach file',
-            iconData: Icons.file_present_outlined,
+            leading: Icons.file_present_outlined,
             onTap: () async => await getFilesToUpload(),
           ),
           //
@@ -42,7 +42,7 @@ class MoreInputActions extends StatelessWidget {
             Consumer<TTSProvider>(
               builder: (context, tts, child) => MenuItem(
                 label: tts.isPlaying ? 'Stop Narration' : 'Narrate',
-                iconData: tts.isPlaying ? Icons.stop_rounded : Icons.play_arrow_rounded,
+                leading: tts.isPlaying ? Icons.stop_rounded : Icons.play_arrow_rounded,
                 onTap: () {
                   tts.updateTextToSpeak(state.quill.quillcontroller.document.toPlainText());
                   tts.isPlaying ? ttsService.stopTTS() : ttsService.startTTS();
@@ -53,7 +53,7 @@ class MoreInputActions extends StatelessWidget {
           if (!input.item.isShared())
             MenuItem(
               label: 'Share',
-              iconData: Icons.share_rounded,
+              leading: Icons.share_rounded,
               onTap: () {
                 input.update(action: 'add', key: feature.share.lt, value: '1');
                 shareItem(type: feature.share.t, itemId: input.itemId);
@@ -63,7 +63,7 @@ class MoreInputActions extends StatelessWidget {
           if (input.item.exists())
             MenuItem(
               label: isArchived ? 'Unarchive' : 'Archive',
-              iconData: isArchived ? unarchiveIcon : archiveIcon,
+              leading: isArchived ? unarchiveIcon : archiveIcon,
               onTap: () {
                 input.update(action: 'add', key: 'a', value: isArchived ? '0' : '1');
                 if (!isArchived) closeBottomSheetIfOpen();
@@ -73,7 +73,7 @@ class MoreInputActions extends StatelessWidget {
           if (input.item.exists())
             MenuItem(
               label: 'Move To Trash',
-              iconData: Icons.delete_outlined,
+              leading: Icons.delete_outlined,
               onTap: () async {
                 input.update(action: 'add', key: 'x', value: '1');
                 closeBottomSheetIfOpen();

@@ -76,6 +76,7 @@ class _TableTileState extends State<TableTile> {
                           spw(),
                           // indicator, if table is selected
                           if (isSelected) AppIcon(Icons.done_rounded, size: 18, faded: true),
+                          if (isSelected) tpw(),
                           //
                         ],
                       ),

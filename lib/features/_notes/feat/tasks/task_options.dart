@@ -19,13 +19,13 @@ class TaskOptions extends StatelessWidget {
           //
           MenuItem(
             label: showCheckBoxes ? 'Hide Checkboxes' : 'Show Checkboxes',
-            iconData: Icons.check_box_outlined,
+            leading: Icons.check_box_outlined,
             onTap: () => input.update(action: 'add', key: 'v', value: showCheckBoxes ? '0' : '1'),
           ),
           //
           MenuItem(
             label: 'Show new items at the ${addToTop ? 'bottom' : 'top'}',
-            iconData: Icons.sort,
+            leading: Icons.sort,
             onTap: () => input.update(action: 'add', key: 'at', value: addToTop ? '0' : '1'),
           ),
           //

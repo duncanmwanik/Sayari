@@ -28,25 +28,30 @@ class LayoutButton extends StatelessWidget {
               MenuItem(
                 label: 'Grid',
                 trailing: Icons.grid_view_outlined,
+                isSelected: views.layout == 'grid',
                 onTap: () => views.setLayout(views.view, 'grid'),
               ),
               MenuItem(
                 label: 'Row',
                 trailing: Icons.view_agenda_outlined,
+                isSelected: views.layout == 'row',
                 onTap: () => views.setLayout(views.view, 'row'),
               ),
               MenuItem(
                 label: 'Column',
                 trailing: Icons.view_column,
+                isSelected: views.layout == 'column',
                 onTap: () => views.setLayout(views.view, 'column'),
               ),
               MenuItem(
                 label: 'List',
                 trailing: Icons.format_list_bulleted_rounded,
+                isSelected: views.layout == 'list',
                 onTap: () => views.setLayout(views.view, 'list'),
               ),
               //
             ],
+            menuWidth: 120,
             tooltip: 'Layout',
             isRound: true,
             noStyling: true,

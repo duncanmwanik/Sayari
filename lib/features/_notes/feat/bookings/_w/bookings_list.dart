@@ -76,7 +76,7 @@ class _BookingState extends State<BookingsList> {
                                 menuItems: [
                                   MenuItem(
                                     label: isDone ? 'Mark As Pending' : 'Mark As Done',
-                                    iconData: isDone ? Icons.timelapse_rounded : Icons.done_rounded,
+                                    leading: isDone ? Icons.timelapse_rounded : Icons.done_rounded,
                                     onTap: () {
                                       booking['bbc'] = isDone ? '0' : '1';
                                       input.update(action: 'add', key: bookingKey, value: jsonEncode(booking));
@@ -84,7 +84,7 @@ class _BookingState extends State<BookingsList> {
                                   ),
                                   MenuItem(
                                     label: 'Change Date & Time',
-                                    iconData: Icons.edit_calendar_rounded,
+                                    leading: Icons.edit_calendar_rounded,
                                     onTap: () {
                                       showChangeBookingDateDialog(
                                         name: name,
@@ -100,8 +100,8 @@ class _BookingState extends State<BookingsList> {
                                     },
                                   ),
                                   MenuItem(
-                                    label: 'Remove BookingsList',
-                                    iconData: Icons.close_rounded,
+                                    label: 'Remove Booking',
+                                    leading: Icons.close_rounded,
                                     onTap: () => showConfirmationDialog(
                                       title: 'Remove booking session with <b>$name</b>?',
                                       yeslabel: 'Remove',
@@ -132,20 +132,6 @@ class _BookingState extends State<BookingsList> {
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              AppIcon(Icons.email_rounded, size: 16, faded: true),
-                              spw(),
-                              Expanded(child: AppText(text: email)),
-                              spw(),
-                              Padding(
-                                  padding: EdgeInsets.only(top: 4),
-                                  child: AppIcon(Icons.copy_rounded, size: 18, faded: true)),
-                            ],
-                          ),
-                          tph(),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              tpw(),
                               AppIcon(Icons.person, size: 18, faded: true),
                               spw(),
                               Flexible(child: AppText(text: name)),
@@ -155,7 +141,15 @@ class _BookingState extends State<BookingsList> {
                           Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              tpw(),
+                              AppIcon(Icons.email_rounded, size: 16, faded: true),
+                              spw(),
+                              Flexible(child: AppText(text: email)),
+                            ],
+                          ),
+                          tph(),
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
                               AppIcon(Icons.subject_rounded, size: 18, faded: true),
                               spw(),
                               Flexible(child: AppText(text: subject)),

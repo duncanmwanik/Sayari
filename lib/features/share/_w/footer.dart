@@ -29,7 +29,7 @@ class SharedFooter extends StatelessWidget {
               children: [
                 AppImage(imagePath: 'assets/images/sayari.png', size: 20),
                 spw(),
-                AppText(text: 'Explore Sayari', faded: true, fontWeight: FontWeight.bold),
+                AppText(text: 'Join Sayari', faded: true, fontWeight: FontWeight.bold),
                 spw(),
                 AppIcon(Icons.arrow_forward, size: 14, faded: true),
               ],

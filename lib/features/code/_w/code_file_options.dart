@@ -22,19 +22,19 @@ class CodeFileOptions extends StatelessWidget {
         //
         MenuItem(
           label: 'Edit Title',
-          iconData: Icons.edit,
+          leading: Icons.edit,
           onTap: () => showCreateCodeFileDialog(codeId: codeId, title: codeMap['t']),
         ),
         //
         MenuItem(
           label: 'Create Copy',
-          iconData: Icons.copy,
+          leading: Icons.copy,
           onTap: () => createCodeFile(codeMap: codeMap),
         ),
         //
         MenuItem(
           label: 'Delete Code File',
-          iconData: Icons.delete_rounded,
+          leading: Icons.delete_rounded,
           onTap: () => deleteCodeFile(codeId),
         ),
         //

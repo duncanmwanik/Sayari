@@ -64,7 +64,11 @@ class AppStyles {
   }
 
   Color primaryColor() {
-    return isDark ? AppColors.darkPrimary : AppColors.lightPrimary;
+    return isDark
+        ? isBlackTheme()
+            ? Colors.black
+            : AppColors.darkPrimary
+        : AppColors.lightPrimary;
   }
 
   Color secondaryColor() {

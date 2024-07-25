@@ -65,7 +65,7 @@ class _HabitWeekState extends State<LinkItem> {
                 menuItems: [
                   MenuItem(
                     label: 'Edit Image',
-                    iconData: Icons.edit,
+                    leading: Icons.edit,
                     onTap: () async {
                       if (!isEdit) setState(() => isEdit = true);
                       await getFilesToUpload(allowMultiple: false, imagesOnly: true).then((fileMap) {
@@ -79,13 +79,13 @@ class _HabitWeekState extends State<LinkItem> {
                   if (linkImageId.isNotEmpty)
                     MenuItem(
                       label: 'View Image',
-                      iconData: Icons.image,
+                      leading: Icons.image,
                       onTap: () => showImageViewer(images: {linkImageId: state.input.data[linkImageId] ?? ''}),
                     ),
                   if (linkImageId.isNotEmpty)
                     MenuItem(
                       label: 'Remove Image',
-                      iconData: Icons.close,
+                      leading: Icons.close,
                       onTap: () async {
                         if (!isEdit) setState(() => isEdit = true);
                         state.input.update(action: 'remove', key: linkImageId);

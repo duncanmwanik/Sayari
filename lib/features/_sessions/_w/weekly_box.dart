@@ -9,7 +9,7 @@ import '../../../_providers/common/input.dart';
 import '../../../_variables/colors.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/helpers.dart';
-import '../session_overview/dialog_session_overview.dart';
+import '../overview/dialog_session_overview.dart';
 
 class SessionWidgetWeekly extends StatelessWidget {
   const SessionWidgetWeekly({super.key, required this.sessionData, required this.sessionId, required this.sessionDate});
@@ -56,11 +56,14 @@ class SessionWidgetWeekly extends StatelessWidget {
                     children: [
                       Padding(
                         padding: EdgeInsets.only(right: sessionData['e'] != null ? 7 : 0),
-                        child: AppText(size: small, text: get12HourTimeFrom24HourTime(sessionData['s']), color: textColor),
+                        child:
+                            AppText(size: small, text: get12HourTimeFrom24HourTime(sessionData['s']), color: textColor),
                       ),
                       AppText(
                         size: small,
-                        text: (sessionData['e'] != null && sessionData['e'] != '') ? '-  ${get12HourTimeFrom24HourTime(sessionData['e'])}' : '',
+                        text: (sessionData['e'] != null && sessionData['e'] != '')
+                            ? '-  ${get12HourTimeFrom24HourTime(sessionData['e'])}'
+                            : '',
                         color: textColor,
                       ),
                     ],

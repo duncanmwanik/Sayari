@@ -19,32 +19,32 @@ class ViewChooser extends StatelessWidget {
       return AppButton(
         tooltip: 'Change View',
         borderRadius: borderRadiusCrazy,
-        menuWidth: 150,
+        menuWidth: 120,
         menuItems: [
           //
           MenuItem(
             label: 'Day',
-            iconData: Icons.view_carousel_outlined,
-            trailing: viewsProvider.sessionsView == 0 ? Icons.done_rounded : null,
+            trailing: Icons.view_carousel_outlined,
+            isSelected: viewsProvider.sessionsView == 0,
             onTap: () async => viewsProvider.sessionsView != 0 ? viewsProvider.setSessionsView(0) : () {},
           ),
           MenuItem(
             label: 'Week',
             leadingSize: 14,
-            iconData: Icons.view_week,
-            trailing: viewsProvider.sessionsView == 1 ? Icons.done_rounded : null,
+            trailing: Icons.view_week,
+            isSelected: viewsProvider.sessionsView == 1,
             onTap: () async => viewsProvider.sessionsView != 1 ? viewsProvider.setSessionsView(1) : () {},
           ),
           MenuItem(
             label: 'Month',
-            iconData: Icons.calendar_month_rounded,
-            trailing: viewsProvider.sessionsView == 2 ? Icons.done_rounded : null,
+            trailing: Icons.calendar_month_rounded,
+            isSelected: viewsProvider.sessionsView == 2,
             onTap: () async => viewsProvider.sessionsView != 2 ? viewsProvider.setSessionsView(2) : () {},
           ),
           MenuItem(
             label: 'Year',
-            iconData: Icons.view_compact_sharp,
-            trailing: viewsProvider.sessionsView == 3 ? Icons.done_rounded : null,
+            trailing: Icons.view_compact_sharp,
+            isSelected: viewsProvider.sessionsView == 3,
             onTap: () async => viewsProvider.sessionsView != 3 ? viewsProvider.setSessionsView(3) : () {},
           ),
           //

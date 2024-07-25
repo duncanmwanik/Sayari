@@ -21,19 +21,20 @@ class TableOptions extends StatelessWidget {
     bool isNotDefaultTable = !isDefaultTable(tableId);
 
     return AppButton(
-      tooltip: 'Options',isSquare: true,
+      tooltip: 'Options',
+      isSquare: true,
       menuItems: [
         //
         MenuItem(
           label: 'Add To Group',
-          iconData: Icons.drive_folder_upload_rounded,
+          leading: Icons.drive_folder_upload_rounded,
           onTap: () => addTableToGroup(tableId),
         ),
         //
         if (tableGroupName.isNotEmpty)
           MenuItem(
             label: 'Remove From Group',
-            iconData: Icons.folder_off_rounded,
+            leading: Icons.folder_off_rounded,
             onTap: () => removeTableFromGroup(tableId, tableGroupName),
           ),
         //
@@ -51,7 +52,7 @@ class TableOptions extends StatelessWidget {
                         ? NoWidget()
                         : MenuItem(
                             label: 'Remove Table',
-                            iconData: Icons.remove_circle_outlined,
+                            leading: Icons.remove_circle_outlined,
                             onTap: () => removeTable(tableId: tableId, tableName: tableName),
                           );
                   }
@@ -73,7 +74,7 @@ class TableOptions extends StatelessWidget {
                     return isOwner
                         ? MenuItem(
                             label: 'Delete Table',
-                            iconData: Icons.delete_forever_rounded,
+                            leading: Icons.delete_forever_rounded,
                             onTap: () => deleteTable(tableId: tableId, tableName: tableName),
                           )
                         : NoWidget();
@@ -84,7 +85,7 @@ class TableOptions extends StatelessWidget {
         //
       ],
       noStyling: true,
-      child: AppIcon(Icons.more_vert, faded: true, size: 18),
+      child: AppIcon(moreIcon, faded: true, size: 18),
     );
   }
 }

@@ -30,7 +30,7 @@ class SessionType extends StatelessWidget {
           ),
         ),
         //
-        AppCloseButton(faded: true),
+        AppCloseButton(faded: true, isX: true),
         //
       ],
     );
