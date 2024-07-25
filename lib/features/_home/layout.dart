@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/helpers.dart';
 import '../../_providers/common/theme.dart';
 import '../../_providers/common/views.dart';
 import '../../_variables/navigation.dart';
@@ -43,7 +42,7 @@ class Applayout extends StatelessWidget {
                         Expanded(
                           child: Consumer<ViewsProvider>(builder: (context, views, child) {
                             return Title(
-                              title: 'Sayari: ${capitalFirst(views.view)}',
+                              title: 'Sayari',
                               color: styler.accentColor(),
                               child: ScrollConfiguration(
                                 behavior: scrollNoBars,
@@ -60,7 +59,14 @@ class Applayout extends StatelessWidget {
                                         SliverList(
                                           delegate: SliverChildListDelegate(
                                             [
-                                              changeView(views.view),
+                                              Container(
+                                                margin: EdgeInsets.all(5),
+                                                decoration: BoxDecoration(
+                                                  color: styler.appColor(0.5),
+                                                  borderRadius: BorderRadius.circular(borderRadiusSmall),
+                                                ),
+                                                child: changeView(views.view),
+                                              ),
                                             ],
                                           ),
                                         ),

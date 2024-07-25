@@ -11,6 +11,7 @@ import '../../features/reminders/reminder.dart';
 import '../abcs/buttons/buttons.dart';
 import '../others/icons.dart';
 import '../others/text.dart';
+import 'emoji.dart';
 import 'item_selection.dart';
 import 'pinned.dart';
 
@@ -49,7 +50,12 @@ class ItemHeader extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // note title
+                //
+                // emoji
+                if (item.hasTasks()) TaskEmoji(),
+                if (item.hasTasks()) tpw(),
+                //
+                // title
                 Flexible(
                     child: AppText(
                         size: normal,
@@ -57,10 +63,12 @@ class ItemHeader extends StatelessWidget {
                         bgColor: item.color(),
                         maxlines: 2,
                         fontWeight: FontWeight.w800)),
+                //
                 // if note is shared
                 if (item.isShared()) spw(),
                 if (item.isShared() && !item.isPublished())
                   AppIcon(Icons.share, size: 14, faded: true, bgColor: item.color()),
+                //
                 // if note is published
                 if (item.isPublished())
                   Padding(

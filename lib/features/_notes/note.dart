@@ -73,8 +73,8 @@ class Note extends StatelessWidget {
                           ImageOverview(item: item),
                           //
                           ItemHeader(item: item),
-                          tph(),
-                          AppDivider(height: 0),
+                          if (!item.hasTasks()) tph(),
+                          if (!item.hasTasks()) AppDivider(height: 0),
                           //
                           Align(
                             alignment: Alignment.topLeft,
@@ -85,7 +85,7 @@ class Note extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   //
-                                  if (!item.hasTasks()) msph(),
+                                  item.hasTasks() ? ph(2) : msph(),
                                   if (item.hasFinances()) FinanceOverview(item: item),
                                   if (item.hasBookings()) BookingOverview(item: item),
                                   if (item.hasHabits()) HabitOverview(item: item),

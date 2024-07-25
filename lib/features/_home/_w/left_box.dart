@@ -28,8 +28,10 @@ class WebLeftBox extends StatelessWidget {
       return Container(
         width: showBoxOptions ? 251 : 51,
         height: double.maxFinite,
+        margin: EdgeInsets.all(10),
         decoration: BoxDecoration(
-          border: Border(right: BorderSide(color: styler.borderColor(), width: 0.5)),
+          color: styler.appColor(0.5),
+          borderRadius: BorderRadius.circular(borderRadiusSmall),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
