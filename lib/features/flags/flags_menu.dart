@@ -4,7 +4,6 @@ import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/abcs/dialogs_sheets/dialog_buttons.dart';
@@ -72,7 +71,7 @@ class _FlagsManagerState extends State<FlagsManager> {
                         }),
                       );
                     } else {
-                      return EmptyBox(label: 'No flags yet', icon: listsUnselectedIcon, isSpaced: false, size: 50);
+                      return EmptyBox(label: 'No flags yet', isSpaced: false, size: 50);
                     }
                   },
                 ),

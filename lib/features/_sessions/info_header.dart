@@ -47,7 +47,7 @@ class InfoHeader extends StatelessWidget {
                     AppButton(
                       noStyling: true,
                       tooltip: 'Previous Date',
-                      isSquare: true,
+                      isRound: true,
                       child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
                       onPressed: () => swipeToNew(direction: 'left'),
                     ),
@@ -56,7 +56,6 @@ class InfoHeader extends StatelessWidget {
                   Flexible(
                     child: AppButton(
                       onPressed: () => jumpToDateDialog(),
-                      noStyling: true,
                       smallVerticalPadding: true,
                       borderRadius: borderRadiusCrazy,
                       tooltip: 'Go to date',
@@ -74,7 +73,7 @@ class InfoHeader extends StatelessWidget {
                     AppButton(
                       noStyling: true,
                       tooltip: 'Next Date',
-                      isSquare: true,
+                      isRound: true,
                       child: AppIcon(Icons.keyboard_arrow_right, size: 18, faded: true),
                       onPressed: () => swipeToNew(direction: 'right'),
                     ),

@@ -69,7 +69,7 @@ class MonthlyView extends StatelessWidget {
                                       height: height / 6,
                                       constraints: BoxConstraints(minHeight: 10.h, maxHeight: 15.h),
                                       decoration: BoxDecoration(
-                                        color: date.isToday() ? styler.accentColor(0.3) : null,
+                                        color: date.isToday() ? styler.accentColor(0.5) : null,
                                         border:
                                             Border.all(color: styler.borderColor(), width: styler.isDark ? 0.1 : 0.2),
                                       ),

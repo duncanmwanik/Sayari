@@ -30,6 +30,7 @@ class PinnedIcon extends StatelessWidget {
           color: item.isPinned() || isHovered ? null : transparent,
           bgColor: item.color(),
           size: 16,
+          faded: !item.isPinned(),
         ),
       );
     });

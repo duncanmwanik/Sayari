@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_widgets/others/icons.dart';
@@ -36,8 +35,8 @@ class ExploreBox extends StatelessWidget {
         hoverColor: iconColor.withOpacity(0.3),
         child: Container(
           padding: EdgeInsets.all(15),
-          width: isTabAndBelow() ? 47.5.w : 30.w,
-          constraints: BoxConstraints(minHeight: 160, maxWidth: isTabAndBelow() ? 230 : 270),
+          width: 47.5.w,
+          constraints: BoxConstraints(minHeight: 140, maxWidth: 270),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +49,6 @@ class ExploreBox extends StatelessWidget {
               // title
               Flexible(child: AppText(size: normal, text: title, fontWeight: FontWeight.bold)),
               //
-              sph(),
               // description
               Flexible(child: AppText(size: small, text: subtitle, faded: true)),
               //

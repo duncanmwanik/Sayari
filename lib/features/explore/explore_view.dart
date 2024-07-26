@@ -16,10 +16,10 @@ class ExploreView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: itemPadding(left: kIsWeb, right: kIsWeb, top: true),
-      child: Align(
-        alignment: isPhone() ? Alignment.topCenter : Alignment.topLeft,
+    return Align(
+      alignment: isPhone() ? Alignment.topCenter : Alignment.topLeft,
+      child: SingleChildScrollView(
+        padding: EdgeInsets.only(bottom: largeHeightPlaceHolder()),
         child: Wrap(
           spacing: kIsWeb ? smallWidth() : 1.5.w,
           runSpacing: kIsWeb ? smallWidth() : 1.5.w,

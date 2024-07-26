@@ -21,7 +21,7 @@ class LayoutButton extends StatelessWidget {
       return Visibility(
         visible: showLayoutButton,
         child: Padding(
-          padding: itemPadding(right: true),
+          padding: itemPaddingMedium(right: true),
           child: AppButton(
             menuItems: [
               //

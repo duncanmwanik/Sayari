@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/breakpoints.dart';
+import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
@@ -40,7 +41,7 @@ class CustomAppBar extends StatelessWidget {
             return Container(
               margin: partitionPadding(top: true, bottom: true, right: true, left: !showVertNav()),
               decoration: BoxDecoration(
-                color: styler.appColor(0.5),
+                color: styler.appColor(isDark() ? 0.5 : 1),
                 borderRadius: BorderRadius.circular(borderRadiusSmall),
               ),
               child: Column(
@@ -48,13 +49,14 @@ class CustomAppBar extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   //
-                  if (isItemSelection) SizedBox(height: 45, child: SelectedItemOptions()),
+                  if (isItemSelection) SizedBox(height: 35, child: SelectedItemOptions()),
                   //
                   if (!isItemSelection)
                     Container(
-                      height: 45,
-                      padding:
-                          isNotPhone() ? itemPadding(left: true, right: true) : EdgeInsets.only(left: 10, right: 5),
+                      height: 35,
+                      padding: isNotPhone()
+                          ? itemPaddingSmall(left: true, right: true)
+                          : EdgeInsets.only(left: 10, right: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -65,18 +67,19 @@ class CustomAppBar extends StatelessWidget {
                                 //
                                 AppButton(
                                   onPressed: () => openDrawer(),
+                                  tooltip: 'Manage Tables',
                                   isRound: true,
                                   noStyling: true,
-                                  tooltip: 'Manage Tables',
                                   child: AppIcon(Icons.sort_rounded),
                                 ),
                                 // selected table name
                                 Flexible(
                                   child: AppButton(
                                     onPressed: () => isATableSelected ? showTableOverviewBottomSheet() : openDrawer(),
+                                    tooltip: 'About $name',
                                     noStyling: true,
                                     borderRadius: borderRadiusCrazy,
-                                    tooltip: 'About $name',
+                                    smallVerticalPadding: true,
                                     child: AppText(
                                       size: extra,
                                       text: name,

@@ -196,7 +196,7 @@ class AppStyles {
           : isBlackTheme()
               ? black
               : isDark
-                  ? Color(0xff272829)
+                  ? styler.appColor(1)
                   : transparent;
     }
   }

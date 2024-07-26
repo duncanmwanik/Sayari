@@ -24,18 +24,15 @@ BoxConstraints webMaxConstraints() => kIsWeb ? BoxConstraints(maxWidth: webMaxWi
 // ---------- Paddings & Margins EdgeInsets
 
 EdgeInsets itemMargin({bool? left, bool? right, bool? top, bool? bottom}) {
-  double p = 5;
-  return checkSpecificSide(p, left, right, top, bottom);
+  return checkSpecificSide(5, left, right, top, bottom);
 }
 
 EdgeInsets itemMarginSmall({bool? left, bool? right, bool? top, bool? bottom}) {
-  double p = 2.5;
-  return checkSpecificSide(p, left, right, top, bottom);
+  return checkSpecificSide(2.5, left, right, top, bottom);
 }
 
 EdgeInsets partitionPadding({bool? left, bool? right, bool? top, bool? bottom}) {
-  double p = 8;
-  return checkSpecificSide(p, left, right, top, bottom);
+  return checkSpecificSide(8, left, right, top, bottom);
 }
 
 EdgeInsets itemPaddingLarge({bool? left, bool? right, bool? top, bool? bottom}) {
@@ -43,18 +40,15 @@ EdgeInsets itemPaddingLarge({bool? left, bool? right, bool? top, bool? bottom}) 
 }
 
 EdgeInsets itemPadding({bool? left, bool? right, bool? top, bool? bottom}) {
-  double p = 13;
-  return checkSpecificSide(p, left, right, top, bottom);
+  return checkSpecificSide(13, left, right, top, bottom);
 }
 
 EdgeInsets itemPaddingMedium({bool? left, bool? right, bool? top, bool? bottom}) {
-  double p = 7;
-  return checkSpecificSide(p, left, right, top, bottom);
+  return checkSpecificSide(7, left, right, top, bottom);
 }
 
 EdgeInsets itemPaddingSmall({bool? left, bool? right, bool? top, bool? bottom}) {
-  double p = 4;
-  return checkSpecificSide(p, left, right, top, bottom);
+  return checkSpecificSide(4, left, right, top, bottom);
 }
 
 EdgeInsets checkSpecificSide(double p, bool? left, bool? right, bool? top, bool? bottom) {

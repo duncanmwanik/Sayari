@@ -12,30 +12,32 @@ class TaskEmoji extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppButton(
-      menuItems: [
-        //
-        Wrap(
-          spacing: smallWidth(),
-          runSpacing: smallWidth(),
-          crossAxisAlignment: WrapCrossAlignment.center,
-          alignment: WrapAlignment.spaceAround,
-          children: List.generate(25, (index) {
-            return AppButton(
-              onPressed: () {},
-              noStyling: true,
-              isSquare: true,
-              child: AppIcon(Icons.lightbulb),
-            );
-          }),
-        )
-        //
-      ],
-      menuWidth: 20,
-      noStyling: true,
-      isRound: true,
-      padding: itemPaddingSmall(),
-      child: AppIcon(Icons.shopping_bag, faded: true, size: normal),
+    return Padding(
+      padding: const EdgeInsets.only(top: 2),
+      child: AppButton(
+        menuItems: [
+          //
+          Wrap(
+            spacing: smallWidth(),
+            runSpacing: smallWidth(),
+            crossAxisAlignment: WrapCrossAlignment.center,
+            alignment: WrapAlignment.spaceAround,
+            children: List.generate(25, (index) {
+              return AppButton(
+                onPressed: () {},
+                noStyling: true,
+                isSquare: true,
+                child: AppIcon(Icons.lightbulb),
+              );
+            }),
+          )
+          //
+        ],
+        noStyling: true,
+        isSquare: true,
+        padding: EdgeInsets.all(1),
+        child: AppIcon(Icons.lightbulb, color: styler.accent, size: normal),
+      ),
     );
   }
 }

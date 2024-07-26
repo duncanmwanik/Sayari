@@ -32,7 +32,7 @@ class YearlyView extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasError) {
                   return Padding(
-                    padding: EdgeInsets.only(top: 20.h),
+                    padding: EdgeInsets.only(top: 5.h),
                     child: Center(child: AppText(text: 'Just a minute...', faded: true)),
                   );
                 } else if (snapshot.hasData) {

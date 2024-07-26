@@ -7,7 +7,6 @@ import '../../../../_providers/common/selection.dart';
 import '../../../../_providers/providers.dart';
 import '../../../../_variables/navigation.dart';
 import '../../../../_widgets/others/others/scroll.dart';
-import '_w_item/new_item.dart';
 import 'subitems.dart';
 
 // TODOs: code min
@@ -42,10 +41,6 @@ class NoteTask extends StatelessWidget {
               ),
             ),
           ),
-          //
-          sph(),
-          //
-          NewItemInput(item: item),
           //
         ],
       );

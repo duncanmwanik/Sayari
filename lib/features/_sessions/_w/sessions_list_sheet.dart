@@ -68,7 +68,7 @@ Future<void> showSessionListBottomSheet(String dateToday, Map todaySessionsMap) 
                 ),
               );
             })
-        : EmptyBox(label: 'No sessions today'),
+        : EmptyBox(label: 'No sessions today', isSpaced: false),
     //
   );
 }

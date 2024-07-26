@@ -26,13 +26,14 @@ class UserDp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double radius = size ?? (isTiny ? 12 : 60);
+    double radius = size ?? (isTiny ? 10 : 60);
 
     return AppButton(
       tooltip: viewOnly ? null : (isTiny ? 'Account & Settings' : null),
       onPressed: viewOnly ? () {} : (isTiny ? () => showSettingsBottomSheet() : null),
+      noStyling: isTiny,
       isRound: true,
-      padding: EdgeInsets.all(isTiny ? 0 : 3),
+      padding: EdgeInsets.all(isTiny ? 5 : 3),
       child: CircleAvatar(
         backgroundColor: transparent,
         radius: radius,

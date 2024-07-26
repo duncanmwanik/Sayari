@@ -46,7 +46,7 @@ class _CloudSyncIndicatorState extends State<CloudSyncIndicator> with TickerProv
 
           return showLoader
               ? Padding(
-                  padding: itemPadding(right: true),
+                  padding: itemPaddingMedium(right: true),
                   child: RotationTransition(
                     turns: animation,
                     child: AppIcon(Icons.sync, size: 18, color: styler.accentColor()),

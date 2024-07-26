@@ -29,7 +29,7 @@ Future<void> showImageViewer({required Map images, Function()? onDownload}) asyn
       constraints: BoxConstraints(minWidth: 100.w),
       builder: (context) {
         return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+          filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
           child: Viewer(images: images, onDownload: onDownload),
         );
       });
@@ -92,7 +92,9 @@ class _ViewerState extends State<Viewer> {
         //
         isLocal
             ? FutureBuilder(
-                future: kIsWeb ? Future.delayed(Duration.zero, () => fileBox.get(fileId)) : io.File(fileBox.get(fileId)).readAsBytes(),
+                future: kIsWeb
+                    ? Future.delayed(Duration.zero, () => fileBox.get(fileId))
+                    : io.File(fileBox.get(fileId)).readAsBytes(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.done) {
                     if (snapshot.hasError) {

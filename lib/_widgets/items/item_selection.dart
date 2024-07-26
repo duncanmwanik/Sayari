@@ -31,7 +31,7 @@ class SelectedItemOptions extends StatelessWidget {
       bool isTrash = state.labels.selectedLabel == 'Trash';
 
       return Padding(
-        padding: itemPadding(left: true, right: true),
+        padding: itemPaddingMedium(left: true, right: true),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

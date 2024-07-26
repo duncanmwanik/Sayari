@@ -10,7 +10,7 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPadding(right: true),
+      padding: itemPaddingMedium(right: true),
       child: AppButton(
         onPressed: () {},
         tooltip: 'Search',

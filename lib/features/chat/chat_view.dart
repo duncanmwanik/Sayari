@@ -10,7 +10,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/user/set_user_data.dart';
 import '../../_providers/common/theme.dart';
 import '../../_variables/features.dart';
@@ -69,7 +68,7 @@ class ChatView extends StatelessWidget {
                 ),
               );
             } else {
-              return EmptyBox(label: 'No new messages', icon: chatUnselectedIcon);
+              return EmptyBox(label: 'No new messages');
             }
           });
     });

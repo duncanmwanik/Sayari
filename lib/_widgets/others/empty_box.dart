@@ -3,21 +3,18 @@ import 'package:flutter/material.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../abcs/buttons/buttons.dart';
-import 'icons.dart';
-import 'svg.dart';
+import 'images.dart';
 import 'text.dart';
 
 class EmptyBox extends StatelessWidget {
   const EmptyBox({
     super.key,
-    this.icon = Icons.list_rounded,
     this.label = 'Nothing here...',
     this.isSpaced = true,
     this.onPressed,
     this.size = imageSizeMedium,
   });
 
-  final dynamic icon;
   final String label;
   final bool isSpaced;
   final double size;
@@ -33,9 +30,7 @@ class EmptyBox extends StatelessWidget {
           if (isSpaced) spph(),
           if (isSpaced) spph(),
           //
-          icon.runtimeType == String
-              ? AppSvg(svgPath: icon, size: size, faded: true)
-              : AppIcon(icon, size: size, faded: true),
+          AppImage(imagePath: 'assets/images/sayari-bw.png', size: imageSizeSmall),
           //
           sph(),
           //
@@ -45,11 +40,7 @@ class EmptyBox extends StatelessWidget {
               AppButton(
                 onPressed: onPressed,
                 noStyling: onPressed == null,
-                child: AppText(
-                  text: label,
-                  // '${state.views.isItemView() ? '${state.labels.selectedLabel}: ': ''}$label ',
-                  faded: true,
-                ),
+                child: AppText(text: label, faded: true),
               ),
             ],
           ),

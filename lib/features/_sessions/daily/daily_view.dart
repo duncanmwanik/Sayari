@@ -57,6 +57,7 @@ class DailyView extends StatelessWidget {
                       hoverColor: hourMap.isNotEmpty ? transparent : styler.appColor(1),
                       highlightColor: hourMap.isNotEmpty ? transparent : styler.appColor(1),
                       child: Container(
+                        color: isCurrentHour ? styler.accentColor(0.5) : null,
                         padding: EdgeInsets.only(left: 3, right: 3, bottom: 5),
                         constraints: BoxConstraints(minHeight: 40),
                         child: Column(

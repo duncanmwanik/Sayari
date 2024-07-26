@@ -106,6 +106,7 @@ class WeeklyView extends StatelessWidget {
                                                     width: double.maxFinite,
                                                     constraints: BoxConstraints(minHeight: 36.7),
                                                     decoration: BoxDecoration(
+                                                      color: isCurrentHour && isToday ? styler.accentColor(0.5) : null,
                                                       border: Border(
                                                           left: BorderSide(color: styler.borderColor(), width: 0.5)),
                                                     ),

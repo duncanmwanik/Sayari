@@ -19,7 +19,7 @@ class QuickThemeChanger extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPadding(right: rightPadding),
+      padding: itemPaddingMedium(right: rightPadding),
       child: AppButton(
         menuWidth: 300,
         menuItems: themeMenu(),

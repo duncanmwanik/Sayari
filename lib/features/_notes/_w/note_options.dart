@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/common/views.dart';
@@ -11,6 +12,7 @@ import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/abcs/menu/menu_item.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_home/_helpers/change_view.dart';
+import '../../labels/label_selector.dart';
 
 class NoteOptions extends StatelessWidget {
   const NoteOptions({super.key});
@@ -21,12 +23,20 @@ class NoteOptions extends StatelessWidget {
       return Visibility(
         visible: views.isNotes(),
         child: Padding(
-          padding: itemPadding(left: true, right: true),
+          padding: itemPadding(right: true),
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
+                //
+                tpw(),
+                //
+                if (!showWebBoxOptions()) LabelSelector(),
+                if (!showWebBoxOptions()) tpw(),
+                if (!showWebBoxOptions())
+                  Padding(padding: const EdgeInsets.only(bottom: 3), child: AppText(text: '|', extraFaded: true)),
+                if (!showWebBoxOptions()) tpw(),
                 //
                 Option(label: 'Notes', type: feature.notes.lt),
                 Option(label: 'Tasks', type: feature.tasks.lt),
@@ -66,7 +76,7 @@ class Option extends StatelessWidget {
               bool isSelectedView = views.noteView == type;
 
               return Padding(
-                padding: itemPadding(right: true),
+                padding: itemPaddingSmall(right: true),
                 child: AppButton(
                   onPressed: isSelectedView
                       ? null
@@ -78,6 +88,7 @@ class Option extends StatelessWidget {
                         },
                   noStyling: true,
                   borderRadius: borderRadiusCrazy,
+                  smallVerticalPadding: true,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
