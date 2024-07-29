@@ -13,7 +13,7 @@ import '../../../_widgets/others/icons.dart';
 import '../_helpers/nav.dart';
 import 'nav_item.dart';
 import 'nav_settings.dart';
-import 'toggle_left_box.dart';
+import 'toggle_panel.dart';
 
 class VeticalNavigationBox extends StatelessWidget {
   const VeticalNavigationBox({super.key, required this.isCollapsed});
@@ -53,7 +53,7 @@ class VeticalNavigationBox extends StatelessWidget {
                   //
                   Spacer(),
                   //
-                  if (showWebBoxOptions()) WebLeftBoxToggle(),
+                  if (showWebBoxOptions()) PanelToggle(),
                   if (showWebBoxOptions()) sph(),
                   //
                   AppButton(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/breakpoints.dart';
+import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
@@ -34,7 +35,7 @@ class MessageInputBar extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 2, vertical: 1),
         margin: partitionPadding(bottom: isNotPhone(), left: true, right: true),
         decoration: BoxDecoration(
-          color: Color.alphaBlend(styler.accentColor(2), styler.primaryColor()),
+          color: Color.alphaBlend(styler.appColor(isDark() ? 1 : 2), styler.primaryColor()),
           borderRadius: BorderRadius.circular(borderRadiusLarge),
         ),
         child: isAdmin()
@@ -51,7 +52,7 @@ class MessageInputBar extends StatelessWidget {
                       //
                       AppButton(
                         onPressed: () async => getFilesToUpload(),
-                        tooltip: 'Attach Files',
+                        tooltip: 'Attach',
                         height: 45,
                         width: 45,
                         noStyling: true,
@@ -61,7 +62,7 @@ class MessageInputBar extends StatelessWidget {
                       //
                       AppButton(
                         onPressed: () {},
-                        tooltip: 'AI Prompt',
+                        tooltip: 'AI',
                         height: 45,
                         width: 45,
                         noStyling: true,
@@ -103,6 +104,7 @@ class MessageInputBar extends StatelessWidget {
                           sendMessageToFirebase();
                           hideKeyboard();
                         },
+                        // noStyling: true,
                         tooltip: 'Send',
                         height: 45,
                         width: 45,

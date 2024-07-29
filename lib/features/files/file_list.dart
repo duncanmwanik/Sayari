@@ -36,12 +36,12 @@ class FileList extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Expanded(
+                  Flexible(
                     child: Wrap(
                       spacing: isOverview ? tinyWidth() : smallWidth(),
                       runSpacing: isOverview ? tinyWidth() : smallWidth(),
                       crossAxisAlignment: WrapCrossAlignment.center,
-                      children: List.generate(imageIds.length > 6 && isOverview ? 6 : imageIds.length, (index) {
+                      children: List.generate(imageIds.length > 5 && isOverview ? 5 : imageIds.length, (index) {
                         String fileId = imageIds[index];
                         String fileName = fileData_[fileId];
 
@@ -49,19 +49,19 @@ class FileList extends StatelessWidget {
                       }),
                     ),
                   ),
-                  if (imageIds.length > 6 && isOverview) AppText(text: '+ ${imageIds.length - 6}', faded: true),
+                  if (imageIds.length > 5 && isOverview) AppText(text: '+ ${imageIds.length - 5}', faded: true),
                 ],
               ),
               sph(),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Expanded(
+                  Flexible(
                     child: Wrap(
                       spacing: isOverview ? tinyWidth() : smallWidth(),
                       runSpacing: isOverview ? tinyWidth() : smallWidth(),
                       crossAxisAlignment: WrapCrossAlignment.center,
-                      children: List.generate(filesIds.length > 6 && isOverview ? 6 : filesIds.length, (index) {
+                      children: List.generate(filesIds.length > 5 && isOverview ? 5 : filesIds.length, (index) {
                         String fileId = filesIds[index];
                         String fileName = fileData_[fileId];
 
@@ -69,7 +69,7 @@ class FileList extends StatelessWidget {
                       }),
                     ),
                   ),
-                  if (filesIds.length > 6 && isOverview) AppText(text: '+ ${filesIds.length - 6}', faded: true),
+                  if (filesIds.length > 5 && isOverview) AppText(text: '+ ${filesIds.length - 5}', faded: true),
                 ],
               ),
             ],

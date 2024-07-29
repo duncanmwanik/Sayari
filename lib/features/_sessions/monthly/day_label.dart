@@ -21,14 +21,14 @@ class MonthDayNumberLabel extends StatelessWidget {
       margin: EdgeInsets.only(top: 2, bottom: 2, right: 2),
       decoration: BoxDecoration(
         color: isToday ? styler.accentColor() : transparent,
-        shape: BoxShape.circle,
+        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(borderRadiusTiny)),
       ),
       child: Center(
         child: AppText(
           size: small,
           text: date.dayString(),
           fontWeight: isSelectedMonth ? FontWeight.w400 : FontWeight.w100,
-          faded: !isSelectedMonth,
+          extraFaded: !isSelectedMonth,
           color: isToday ? white : null,
         ),
       ),

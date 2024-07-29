@@ -38,6 +38,7 @@ class Item {
   bool isDeleted() => data['x'] == '1';
   bool showChecks() => data['v'] == '1';
   bool showEditor() => isPureNote() || hasPortfolios() || hasForms();
+  bool showFooter() => isPureNote() || hasFinances();
   bool showNewEntriesFirst() => data['at'] == '1';
 
   //

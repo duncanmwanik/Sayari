@@ -11,7 +11,7 @@ Future<dynamic> showAddTableDialog() {
   final TextEditingController nameController = TextEditingController();
 
   return showAppDialog(
-    title: 'Add Table',
+    title: 'Add Space',
     content: ListView(
       shrinkWrap: true,
       padding: EdgeInsets.zero,

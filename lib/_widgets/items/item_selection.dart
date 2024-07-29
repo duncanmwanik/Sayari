@@ -30,203 +30,111 @@ class SelectedItemOptions extends StatelessWidget {
       bool isArchive = state.labels.selectedLabel == 'Archive';
       bool isTrash = state.labels.selectedLabel == 'Trash';
 
-      return Padding(
-        padding: itemPaddingMedium(left: true, right: true),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            //
-            if (selection.selected.isNotEmpty)
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  //
-                  AppButton(
-                    onPressed: () => clearItemSelection(),
-                    noStyling: true,
-                    isSquare: true,
-                    isRound: true,
-                    tooltip: 'Cancel Selection',
-                    child: AppIcon(closeIcon),
-                  ),
-                  spw(),
-                  //no of selected items
-                  AppText(text: '${selection.selected.length} selected', size: normal, faded: true),
-                  //
-                ],
-              ),
-            //
-            Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          //
+          if (selection.selected.isNotEmpty)
+            Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                if (!isTrash)
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      //
+                //
+                AppButton(
+                  onPressed: () => clearItemSelection(),
+                  noStyling: true,
+                  isSquare: true,
+                  isRound: true,
+                  tooltip: 'Cancel Selection',
+                  child: AppIcon(closeIcon),
+                ),
+                spw(),
+                //no of selected items
+                AppText(text: '${selection.selected.length} selected', size: normal, faded: true),
+                //
+              ],
+            ),
+          //
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              if (!isTrash)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    //
+                    AppButton(
+                      onPressed: () {
+                        selection.selected.forEach((id, data) async {
+                          await editItemExtras(type: data['type'], itemId: id, key: 'p', value: '1');
+                        });
+                        clearItemSelection();
+                      },
+                      noStyling: true,
+                      isSquare: true,
+                      tooltip: 'Pin',
+                      child: AppIcon(unpinIcon, faded: true),
+                    ),
+                    //
+                    spw(),
+                    //
+                    AppButton(
+                      menuItems: labelsMenu(
+                        isSelection: true,
+                        onDone: (newLabels) async {
+                          selection.selected.forEach((id, data) async {
+                            await editItemExtras(
+                                type: data['type'], itemId: id, key: 'l', value: getJoinedList(newLabels));
+                          });
+                          clearItemSelection();
+                        },
+                      ),
+                      noStyling: true,
+                      isSquare: true,
+                      tooltip: 'Label',
+                      child: AppIcon(labelIcon, faded: true),
+                    ),
+                    //
+                    spw(),
+                    //
+                    AppButton(
+                      menuWidth: 200,
+                      menuItems: reminderMenu(
+                        onSet: (newReminder) {
+                          selection.selected.forEach((id, data) async {
+                            await editItemExtras(type: data['type'], itemId: id, key: 'r', value: newReminder);
+                          });
+                          clearItemSelection();
+                        },
+                      ),
+                      noStyling: true,
+                      isSquare: true,
+                      tooltip: 'Reminder',
+                      child: AppIcon(reminderIcon, faded: true),
+                    ),
+                    //
+                    spw(),
+                    //
+                    AppButton(
+                      menuWidth: 300,
+                      menuItems: colorMenu(
+                        onSelect: (newColor) async {
+                          selection.selected.forEach((id, data) async {
+                            await editItemExtras(type: data['type'], itemId: id, key: 'c', value: newColor);
+                          });
+                          clearItemSelection();
+                        },
+                      ),
+                      noStyling: true,
+                      isSquare: true,
+                      tooltip: 'Color',
+                      child: AppIcon(colorIcon, faded: true),
+                    ),
+                    //
+                    if (!isPhone()) spw(),
+                    //
+                    if (!isPhone())
                       AppButton(
                         onPressed: () {
-                          selection.selected.forEach((id, data) async {
-                            await editItemExtras(type: data['type'], itemId: id, key: 'p', value: '1');
-                          });
-                          clearItemSelection();
-                        },
-                        noStyling: true,
-                        isSquare: true,
-                        tooltip: 'Pin',
-                        child: AppIcon(unpinIcon, faded: true),
-                      ),
-                      //
-                      spw(),
-                      //
-                      AppButton(
-                        menuItems: labelsMenu(
-                          isSelection: true,
-                          onDone: (newLabels) async {
-                            selection.selected.forEach((id, data) async {
-                              await editItemExtras(
-                                  type: data['type'], itemId: id, key: 'l', value: getJoinedList(newLabels));
-                            });
-                            clearItemSelection();
-                          },
-                        ),
-                        noStyling: true,
-                        isSquare: true,
-                        tooltip: 'Label',
-                        child: AppIcon(labelIcon, faded: true),
-                      ),
-                      //
-                      spw(),
-                      //
-                      AppButton(
-                        menuWidth: 200,
-                        menuItems: reminderMenu(
-                          onSet: (newReminder) {
-                            selection.selected.forEach((id, data) async {
-                              await editItemExtras(type: data['type'], itemId: id, key: 'r', value: newReminder);
-                            });
-                            clearItemSelection();
-                          },
-                        ),
-                        noStyling: true,
-                        isSquare: true,
-                        tooltip: 'Reminder',
-                        child: AppIcon(reminderIcon, faded: true),
-                      ),
-                      //
-                      spw(),
-                      //
-                      AppButton(
-                        menuWidth: 300,
-                        menuItems: colorMenu(
-                          onSelect: (newColor) async {
-                            selection.selected.forEach((id, data) async {
-                              await editItemExtras(type: data['type'], itemId: id, key: 'c', value: newColor);
-                            });
-                            clearItemSelection();
-                          },
-                        ),
-                        noStyling: true,
-                        isSquare: true,
-                        tooltip: 'Color',
-                        child: AppIcon(colorIcon, faded: true),
-                      ),
-                      //
-                      if (!isPhone()) spw(),
-                      //
-                      if (!isPhone())
-                        AppButton(
-                          onPressed: () {
-                            if (isArchive) {
-                              selection.selected.forEach((id, data) async {
-                                await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '0');
-                              });
-                            } else {
-                              selection.selected.forEach((id, data) async {
-                                await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '1');
-                              });
-                            }
-                            clearItemSelection();
-                          },
-                          noStyling: true,
-                          isSquare: true,
-                          tooltip: isArchive ? 'Unarchive' : 'Archive',
-                          child: AppIcon(isArchive ? unarchiveIcon : archiveIcon, faded: true),
-                        ),
-                      //
-                      if (!isPhone()) spw(),
-                      //
-                      if (!isPhone())
-                        AppButton(
-                          onPressed: () {
-                            selection.selected.forEach((id, data) async {
-                              await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');
-                            });
-                            clearItemSelection();
-                          },
-                          noStyling: true,
-                          isSquare: true,
-                          tooltip: 'Delete',
-                          child: AppIcon(deleteIcon, faded: true),
-                        ),
-                    ],
-                  ),
-                //
-                // trash actions --------------------------------- start
-                //
-                if (isTrash)
-                  AppButton(
-                    onPressed: () {
-                      selection.selected.forEach((id, data) async {
-                        await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '0');
-                      });
-                      clearItemSelection();
-                    },
-                    noStyling: true,
-                    isSquare: true,
-                    tooltip: 'Restore From Trash',
-                    child: AppIcon(restoreIcon, faded: true),
-                  ),
-                //
-                if (isTrash) spw(),
-                //
-                if (isTrash)
-                  AppButton(
-                    onPressed: () async {
-                      await showConfirmationDialog(
-                        title: 'Delete selected items forever?',
-                        yeslabel: 'Delete',
-                        onAccept: () async {
-                          selection.selected.forEach((id, data) async {
-                            Map files = getFiles(Hive.box('${liveTable()}_${data['type']}').get(id, defaultValue: {}));
-                            await deleteItemForever(type: data['type'], itemId: id, files: files);
-                          });
-                          clearItemSelection();
-                        },
-                      );
-                    },
-                    noStyling: true,
-                    isSquare: true,
-                    tooltip: 'Delete Forever',
-                    child: AppIcon(deleteForeverIcon, faded: true),
-                  ),
-                //
-                // trash actions --------------------------------- end
-                //
-                // more actions --------------------------------- start
-                // if screen is phone size
-                //
-                if (isPhone() && !isTrash) spw(),
-                //
-                if (isPhone() && !isTrash)
-                  AppButton(
-                    tooltip: 'More',
-                    menuItems: [
-                      //
-                      MenuItem(
-                        label: isArchive ? 'Unarchive' : 'Archive',
-                        leading: isArchive ? unarchiveIcon : archiveIcon,
-                        onTap: () async {
                           if (isArchive) {
                             selection.selected.forEach((id, data) async {
                               await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '0');
@@ -238,37 +146,126 @@ class SelectedItemOptions extends StatelessWidget {
                           }
                           clearItemSelection();
                         },
+                        noStyling: true,
+                        isSquare: true,
+                        tooltip: isArchive ? 'Unarchive' : 'Archive',
+                        child: AppIcon(isArchive ? unarchiveIcon : archiveIcon, faded: true),
                       ),
-                      //
-                      MenuItem(
-                        label: 'Delete',
-                        leading: deleteIcon,
-                        onTap: () async {
+                    //
+                    if (!isPhone()) spw(),
+                    //
+                    if (!isPhone())
+                      AppButton(
+                        onPressed: () {
                           selection.selected.forEach((id, data) async {
                             await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');
                           });
                           clearItemSelection();
                         },
+                        noStyling: true,
+                        isSquare: true,
+                        tooltip: 'Delete',
+                        child: AppIcon(deleteIcon, faded: true),
                       ),
-                      //
-                    ],
-                    isRound: true,
-                    noStyling: true,
-                    isSquare: true,
-                    child: AppIcon(moreIcon, faded: true),
-                  ),
-                //
-                // more actions --------------------------------- end
-                //
-                tpw(),
-                //
-              ],
-            ),
-            //
-            //
-            //
-          ],
-        ),
+                  ],
+                ),
+              //
+              // trash actions --------------------------------- start
+              //
+              if (isTrash)
+                AppButton(
+                  onPressed: () {
+                    selection.selected.forEach((id, data) async {
+                      await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '0');
+                    });
+                    clearItemSelection();
+                  },
+                  noStyling: true,
+                  isSquare: true,
+                  tooltip: 'Restore From Trash',
+                  child: AppIcon(restoreIcon, faded: true),
+                ),
+              //
+              if (isTrash) spw(),
+              //
+              if (isTrash)
+                AppButton(
+                  onPressed: () async {
+                    await showConfirmationDialog(
+                      title: 'Delete selected items forever?',
+                      yeslabel: 'Delete',
+                      onAccept: () async {
+                        selection.selected.forEach((id, data) async {
+                          Map files = getFiles(Hive.box('${liveTable()}_${data['type']}').get(id, defaultValue: {}));
+                          await deleteItemForever(type: data['type'], itemId: id, files: files);
+                        });
+                        clearItemSelection();
+                      },
+                    );
+                  },
+                  noStyling: true,
+                  isSquare: true,
+                  tooltip: 'Delete Forever',
+                  child: AppIcon(deleteForeverIcon, faded: true),
+                ),
+              //
+              // trash actions --------------------------------- end
+              //
+              // more actions --------------------------------- start
+              // if screen is phone size
+              //
+              if (isPhone() && !isTrash) spw(),
+              //
+              if (isPhone() && !isTrash)
+                AppButton(
+                  tooltip: 'More',
+                  menuItems: [
+                    //
+                    MenuItem(
+                      label: isArchive ? 'Unarchive' : 'Archive',
+                      leading: isArchive ? unarchiveIcon : archiveIcon,
+                      onTap: () async {
+                        if (isArchive) {
+                          selection.selected.forEach((id, data) async {
+                            await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '0');
+                          });
+                        } else {
+                          selection.selected.forEach((id, data) async {
+                            await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '1');
+                          });
+                        }
+                        clearItemSelection();
+                      },
+                    ),
+                    //
+                    MenuItem(
+                      label: 'Delete',
+                      leading: deleteIcon,
+                      onTap: () async {
+                        selection.selected.forEach((id, data) async {
+                          await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');
+                        });
+                        clearItemSelection();
+                      },
+                    ),
+                    //
+                  ],
+                  isRound: true,
+                  noStyling: true,
+                  isSquare: true,
+                  child: AppIcon(moreIcon, faded: true),
+                ),
+              //
+              // more actions --------------------------------- end
+              //
+              tpw(),
+              //
+            ],
+          ),
+          //
+          //
+          //
+        ],
       );
     });
   }

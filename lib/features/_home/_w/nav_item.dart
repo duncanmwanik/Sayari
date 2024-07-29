@@ -14,24 +14,24 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size}) {
   return AppButton(
     onPressed: () => goToView(type),
     tooltip: getNavigationItemTitle(featureData[type]!.title),
-    tooltipDirection: AxisDirection.right,
+    tooltipDirection: isSmallPC() ? AxisDirection.right : AxisDirection.up,
     noStyling: !isSelected,
     color: styler.appColor(2),
     borderRadius: borderRadiusSmall,
-    padding: EdgeInsets.all(showVertNav() ? 8 : 12),
+    padding: EdgeInsets.all(isSmallPC() ? 8 : 12),
     child: SizedBox(
-      width: size ?? (showVertNav() ? 16 : 18),
-      height: size ?? (showVertNav() ? 16 : 18),
+      width: size ?? (isSmallPC() ? 16 : 18),
+      height: size ?? (isSmallPC() ? 16 : 18),
       child: icon.runtimeType == String
           ? AppSvg(
               svgPath: icon,
-              size: size ?? (showVertNav() ? 16 : 18),
+              size: size ?? (isSmallPC() ? 16 : 18),
               color: isSelected && !kIsWeb ? styler.accentColor() : null,
               faded: !isSelected,
             )
           : AppIcon(
               icon,
-              size: size ?? (showVertNav() ? 16 : 18),
+              size: size ?? (isSmallPC() ? 16 : 18),
               color: isSelected && !kIsWeb ? styler.accentColor() : null,
               faded: !isSelected,
             ),

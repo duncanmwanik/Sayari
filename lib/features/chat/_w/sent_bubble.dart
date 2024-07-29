@@ -3,6 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_helpers/date_time/misc.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
@@ -47,21 +48,23 @@ class SentMessageBubble extends StatelessWidget {
                     // message
                     AppText(size: 13, text: message, fontWeight: FontWeight.w500),
                     if (isShortMessage) sph(),
+                    //
+                    tph(),
                     // sent status Icon
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         //
-                        AppButton(
-                          menuItems: messageMenu(messageId, messageData),
-                          noStyling: true,
-                          isRound: true,
-                          leading: moreIcon,
-                        ),
-                        spw(),
+                        // AppButton(
+                        //   menuItems: messageMenu(messageId, messageData),
+                        //   noStyling: true,
+                        //   isRound: true,
+                        //   leading: moreIcon,
+                        // ),
+                        // spw(),
                         // time
-                        AppText(size: small, text: '5:07 PM', fontWeight: FontWeight.w500),
+                        AppText(size: tiny, text: getTimeFromTimestamp(messageId), fontWeight: FontWeight.w500),
                         spw(),
                         // status
                         AppIcon(Icons.done_rounded, size: 15),

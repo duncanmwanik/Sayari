@@ -10,7 +10,7 @@ import '../note_sheet.dart';
 Future<void> prepareNoteForEdit(Item item, {bool isFull = false}) async {
   state.input.setInputData(isNw: false, typ: feature.notes.t, itm: item, id: item.id, dta: item.data);
   await state.quill.setQuillController(quills: item.data['n']);
-  await showNoteBottomSheet();
+  await showNoteBottomSheet(isMinimized: item.hasTasks());
 }
 
 Future<void> prepareNoteForCreation() async {
@@ -55,7 +55,7 @@ Future<void> prepareNoteForCreation() async {
     state.input.setInputData(typ: feature.notes.t, dta: {feature.notes.lt: '1'});
   }
 
-  await showNoteBottomSheet(id: id);
+  await showNoteBottomSheet(id: id, isMinimized: noteView == feature.tasks.lt);
 }
 
 String getQuills() {

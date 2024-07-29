@@ -6,6 +6,7 @@ import '../../../__styling/variables.dart';
 import '../../../_services/firebase/get_table_data.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/abcs/buttons/close_button.dart';
 import '../../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/scroll.dart';

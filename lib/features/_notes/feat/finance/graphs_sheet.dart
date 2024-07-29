@@ -4,6 +4,7 @@ import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_providers/providers.dart';
 import '../../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../../_widgets/abcs/buttons/close_button.dart';
 import '../../../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../../../_widgets/others/others/divider.dart';
 import '../../../../_widgets/others/text.dart';

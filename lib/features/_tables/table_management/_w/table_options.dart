@@ -51,7 +51,7 @@ class TableOptions extends StatelessWidget {
                     return isOwner
                         ? NoWidget()
                         : MenuItem(
-                            label: 'Remove Table',
+                            label: 'Remove Space',
                             leading: Icons.remove_circle_outlined,
                             onTap: () => removeTable(tableId: tableId, tableName: tableName),
                           );
@@ -73,7 +73,7 @@ class TableOptions extends StatelessWidget {
 
                     return isOwner
                         ? MenuItem(
-                            label: 'Delete Table',
+                            label: 'Delete Space',
                             leading: Icons.delete_forever_rounded,
                             onTap: () => deleteTable(tableId: tableId, tableName: tableName),
                           )

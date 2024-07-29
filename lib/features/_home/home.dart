@@ -52,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         body: Applayout(),
         drawer: AppDrawer(),
         endDrawer: AppEndDrawer(),
-        floatingActionButton: showVertNav() ? null : HomeFab(),
+        floatingActionButton: isSmallPC() ? null : HomeFab(),
         key: scaffoldState,
       ),
     );

@@ -6,7 +6,7 @@ import '../../../__styling/spacing.dart';
 import '../../../_helpers/_common/misc.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_helpers/date_time/date_info.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/abcs/buttons/close_button.dart';
 import '../../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/icons.dart';
@@ -92,7 +92,7 @@ Future<void> showTableOverviewBottomSheet() async {
                             children: [
                               AppIcon(Icons.edit_rounded, size: 14),
                               SizedBox(width: smallWidth()),
-                              Flexible(child: AppText(text: 'Edit Table')),
+                              Flexible(child: AppText(text: 'Edit Space')),
                             ],
                           ),
                           trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: 18),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../abcs/buttons/buttons.dart';
 import 'images.dart';
 import 'text.dart';
@@ -12,40 +12,45 @@ class EmptyBox extends StatelessWidget {
     this.label = 'Nothing here...',
     this.isSpaced = true,
     this.onPressed,
-    this.size = imageSizeMedium,
+    this.size,
   });
 
   final String label;
   final bool isSpaced;
-  final double size;
+  final double? size;
   final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          //
-          if (isSpaced) spph(),
-          if (isSpaced) spph(),
-          //
-          AppImage(imagePath: 'assets/images/sayari-bw.png', size: imageSizeSmall),
-          //
-          sph(),
-          //
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AppButton(
-                onPressed: onPressed,
-                noStyling: onPressed == null,
-                child: AppText(text: label, faded: true),
-              ),
-            ],
-          ),
-          //
-        ],
+    return Center(
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            //
+            // if (isSpaced) spph(),
+            // if (isSpaced) spph(),
+            //
+            AppImage(imagePath: 'assets/images/sayari-bw.png', size: size ?? 20.h),
+            //
+            sph(),
+            //
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                AppButton(
+                  onPressed: onPressed,
+                  noStyling: onPressed == null,
+                  child: AppText(text: label, faded: true),
+                ),
+              ],
+            ),
+            //
+            // if (isSpaced) spph(),
+            // if (isSpaced) spph(),
+            //
+          ],
+        ),
       ),
     );
   }

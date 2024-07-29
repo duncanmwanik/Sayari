@@ -1,22 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_helpers/date_time/date_info.dart';
+import '../../../_variables/features.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/abcs/buttons/close_button.dart';
 import '../../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_tables/_helpers/checks_table.dart';
+import '../../_tables/_helpers/common.dart';
 import '../_helpers/helpers.dart';
+import '../_helpers/sort.dart';
 import 'daily_box.dart';
 
-Future<void> showSessionListBottomSheet(String dateToday, Map todaySessionsMap) async {
+Future<void> showSessionListBottomSheet(String dateToday, [Map? sessionsMap]) async {
+  Map todaySessionsMap = sessionsMap ??
+      sortSessionsByTime(Hive.box('${liveTable()}_${feature.sessions.t}').get(dateToday, defaultValue: {}));
+
   await showAppBottomSheet(
-    //
-    isMinimized: !showSheetAsDialog(),
+    isShort: !showFloatingSheet(),
     //
     header: Row(
       children: [
@@ -68,7 +75,7 @@ Future<void> showSessionListBottomSheet(String dateToday, Map todaySessionsMap) 
                 ),
               );
             })
-        : EmptyBox(label: 'No sessions today', isSpaced: false),
+        : EmptyBox(label: 'No sessions today'),
     //
   );
 }

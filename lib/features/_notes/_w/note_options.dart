@@ -22,6 +22,7 @@ class NoteOptions extends StatelessWidget {
     return Consumer<ViewsProvider>(builder: (context, views, child) {
       return Visibility(
         visible: views.isNotes(),
+        replacement: ph(4),
         child: Padding(
           padding: itemPadding(right: true),
           child: SingleChildScrollView(
@@ -127,6 +128,7 @@ class OptionsToggler extends StatelessWidget {
         // OptionToggle(label: 'Forms', type: feature.forms.lt),
         OptionToggle(label: 'Bookings', type: feature.bookings.lt),
       ],
+      tooltip: 'Options',
       isRound: true,
       noStyling: true,
       leading: moreIcon,

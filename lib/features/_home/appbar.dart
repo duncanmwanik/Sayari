@@ -3,7 +3,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/breakpoints.dart';
-import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
@@ -39,9 +38,9 @@ class CustomAppBar extends StatelessWidget {
             bool isItemSelection = selection.isSelection;
 
             return Container(
-              margin: partitionPadding(top: true, bottom: true, right: true, left: !showVertNav()),
+              margin: partitionPadding(top: true, bottom: true, right: true, left: !isSmallPC()),
               decoration: BoxDecoration(
-                color: styler.appColor(isDark() ? 0.5 : 1),
+                color: styler.appColor(0.5),
                 borderRadius: BorderRadius.circular(borderRadiusSmall),
               ),
               child: Column(
@@ -49,71 +48,69 @@ class CustomAppBar extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   //
-                  if (isItemSelection) SizedBox(height: 35, child: SelectedItemOptions()),
-                  //
-                  if (!isItemSelection)
-                    Container(
-                      height: 35,
-                      padding: isNotPhone()
-                          ? itemPaddingSmall(left: true, right: true)
-                          : EdgeInsets.only(left: 10, right: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          //
-                          Flexible(
-                            child: Row(
-                              children: [
-                                //
-                                AppButton(
-                                  onPressed: () => openDrawer(),
-                                  tooltip: 'Manage Tables',
-                                  isRound: true,
-                                  noStyling: true,
-                                  child: AppIcon(Icons.sort_rounded),
-                                ),
-                                // selected table name
-                                Flexible(
-                                  child: AppButton(
-                                    onPressed: () => isATableSelected ? showTableOverviewBottomSheet() : openDrawer(),
-                                    tooltip: 'About $name',
-                                    noStyling: true,
-                                    borderRadius: borderRadiusCrazy,
-                                    smallVerticalPadding: true,
-                                    child: AppText(
-                                      size: extra,
-                                      text: name,
-                                      textAlign: TextAlign.start,
-                                      overflow: TextOverflow.ellipsis,
-                                      fontWeight: FontWeight.w800,
-                                    ),
-                                  ),
-                                ),
-                                //
-                              ],
-                            ),
-                          ),
-                          //
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
+                  Container(
+                    height: 35,
+                    padding: itemPaddingSmall(left: true, right: true, top: true),
+                    child: isItemSelection
+                        ? SelectedItemOptions()
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               //
-                              CloudSyncIndicator(),
+                              Flexible(
+                                child: Row(
+                                  children: [
+                                    //
+                                    AppButton(
+                                      onPressed: () => openDrawer(),
+                                      tooltip: 'Manage Your Spaces',
+                                      isSquare: true,
+                                      noStyling: true,
+                                      child: AppIcon(Icons.sort_rounded),
+                                    ),
+                                    // selected table name
+                                    Flexible(
+                                      child: AppButton(
+                                        onPressed: () =>
+                                            isATableSelected ? showTableOverviewBottomSheet() : openDrawer(),
+                                        tooltip: name,
+                                        noStyling: true,
+                                        borderRadius: borderRadiusCrazy,
+                                        smallVerticalPadding: true,
+                                        child: AppText(
+                                          size: extra,
+                                          text: name,
+                                          textAlign: TextAlign.start,
+                                          overflow: TextOverflow.ellipsis,
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                      ),
+                                    ),
+                                    //
+                                  ],
+                                ),
+                              ),
                               //
-                              Search(),
-                              //
-                              LayoutButton(),
-                              //
-                              QuickThemeChanger(),
-                              //
-                              UserDp(isTiny: true),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  //
+                                  CloudSyncIndicator(),
+                                  //
+                                  Search(),
+                                  //
+                                  LayoutButton(),
+                                  //
+                                  QuickThemeChanger(),
+                                  //
+                                  UserDp(isTiny: true),
+                                  //
+                                ],
+                              ),
                               //
                             ],
                           ),
-                          //
-                        ],
-                      ),
-                    ),
+                  ),
                   //
                   NoteOptions(),
                   //

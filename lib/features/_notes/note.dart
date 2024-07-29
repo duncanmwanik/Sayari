@@ -115,7 +115,7 @@ class Note extends StatelessWidget {
                         ),
                         //
                         // new task entry
-                        if (item.hasTasks()) sph(),
+                        if (item.hasTasks()) ph(2),
                         if (item.hasTasks()) NewItemInput(item: item),
                         //
                         // on-hover actions

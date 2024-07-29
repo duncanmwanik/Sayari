@@ -15,18 +15,18 @@ import '../../labels/label_manager.dart';
 import '../creator.dart';
 import 'navbar_vertical.dart';
 
-class WebLeftBox extends StatelessWidget {
-  const WebLeftBox({super.key});
+class Panel extends StatelessWidget {
+  const Panel({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Consumer2<ViewsProvider, GlobalProvider>(builder: (context, views, global, child) {
-      bool showBoxOptions = views.showWebBoxOptions && showWebBoxOptions();
+      bool showPanel = views.showWebBoxOptions && showWebBoxOptions();
       bool showCalendar = views.isSessions() || views.isChat();
       bool showLabelManager = views.isNotes();
 
       return Container(
-        width: showBoxOptions ? 251 : 51,
+        width: showPanel ? 251 : 51,
         height: double.maxFinite,
         margin: partitionPadding(),
         decoration: BoxDecoration(
@@ -40,7 +40,7 @@ class WebLeftBox extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 8),
               child: Column(
-                crossAxisAlignment: showBoxOptions ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+                crossAxisAlignment: showPanel ? CrossAxisAlignment.start : CrossAxisAlignment.center,
                 children: [
                   // branding
                   Container(
@@ -51,8 +51,8 @@ class WebLeftBox extends StatelessWidget {
                       children: [
                         //
                         AppImage(imagePath: 'assets/images/sayari.png', size: 22),
-                        if (showBoxOptions) spw(),
-                        if (showBoxOptions) AppText(size: large, text: 'Sayari', fontWeight: FontWeight.w700),
+                        if (showPanel) spw(),
+                        if (showPanel) AppText(size: large, text: 'Sayari', fontWeight: FontWeight.w800),
                         //
                       ],
                     ),
@@ -61,8 +61,8 @@ class WebLeftBox extends StatelessWidget {
                   mph(),
                   //
                   Padding(
-                    padding: EdgeInsets.only(left: showBoxOptions ? 14 : 0, right: showBoxOptions ? 5 : 0),
-                    child: WebCreator(isCollapsed: !showBoxOptions),
+                    padding: EdgeInsets.only(left: showPanel ? 5 : 0, right: showPanel ? 5 : 0),
+                    child: WebCreator(isCollapsed: !showPanel),
                   ),
                   //
                   sph(),
@@ -75,9 +75,9 @@ class WebLeftBox extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //
-                  VeticalNavigationBox(isCollapsed: !showBoxOptions),
+                  VeticalNavigationBox(isCollapsed: !showPanel),
                   //
-                  if (showBoxOptions)
+                  if (showPanel)
                     SizedBox(
                       width: 200,
                       child: ScrollConfiguration(

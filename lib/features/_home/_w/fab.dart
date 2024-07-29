@@ -18,7 +18,7 @@ class HomeFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer2<ViewsProvider, ThemeProvider>(builder: (context, views, theme, child) {
-      bool showFab = !showVertNav() && isATableSelected() && isAdmin() && (views.isSessions() || views.isNotes());
+      bool showFab = !isSmallPC() && isATableSelected() && isAdmin() && (views.isSessions() || views.isNotes());
 
       return Visibility(
         visible: showFab,

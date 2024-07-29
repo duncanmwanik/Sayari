@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_helpers/date_time/misc.dart';
 import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../files/_helpers/helper.dart';
 import '../../files/file_list.dart';
@@ -23,41 +25,45 @@ class IncomingMessageBubble extends StatelessWidget {
         menuItems: messageMenu(messageId, messageData),
         hoverColor: transparent,
         padding: EdgeInsets.zero,
-        color: Color.alphaBlend(styler.accentColor(0.3), styler.appColor(1)),
+        color: Color.alphaBlend(styler.appColor(0.5), styler.appColor(1)),
         child: Container(
-          padding: itemPaddingMedium(left: true, right: true, top: true),
+          padding: itemPaddingMedium(),
           constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.6, minWidth: 100),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // username
-              AppText(text: userName, fontWeight: FontWeight.w900),
+              // dp + username
+              AppButton(
+                onPressed: () {},
+                noStyling: true,
+                smallVerticalPadding: true,
+                smallLeftPadding: true,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AppIcon(Icons.person, size: small),
+                    tpw(),
+                    Flexible(
+                        child: AppText(
+                      size: small,
+                      text: userName,
+                      fontWeight: FontWeight.w700,
+                      overflow: TextOverflow.ellipsis,
+                    )),
+                  ],
+                ),
+              ),
+              //
               tph(),
-              //
               // files
-              FileList(fileData: getFiles(messageData)),
-              //
+              Center(child: FileList(fileData: getFiles(messageData))),
               // message
               AppText(size: 13, text: message, fontWeight: FontWeight.w500),
               //
+              tsph(),
               // time
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  //
-                  AppText(size: tiny, text: '6:10 PM', fontWeight: FontWeight.w500),
-                  //
-                  spw(),
-                  AppButton(
-                    menuItems: messageMenu(messageId, messageData),
-                    noStyling: true,
-                    isRound: true,
-                    leading: moreIcon,
-                  ),
-                  //
-                ],
-              ),
+              AppText(size: tiny, text: getTimeFromTimestamp(messageId), fontWeight: FontWeight.w500),
               //
             ],
           ),

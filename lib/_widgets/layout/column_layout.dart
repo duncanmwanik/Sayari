@@ -31,10 +31,7 @@ class ColumnLayout extends StatelessWidget {
           child: ReorderableListView.builder(
             scrollDirection: Axis.horizontal,
             physics: kIsWeb ? null : SnapScrollPhysics(snapSize: 300),
-            padding: EdgeInsets.only(
-              left: 8,
-              right: isSmallPC() ? 100.w / 3 : 100.w - 320,
-            ),
+            padding: EdgeInsets.only(right: isSmallPC() ? 100.w / 3 : 100.w - 320),
             itemExtent: 265,
             shrinkWrap: true,
             buildDefaultDragHandles: false,

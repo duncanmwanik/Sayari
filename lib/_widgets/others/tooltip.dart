@@ -17,7 +17,7 @@ class AppTooltip extends StatelessWidget {
     return message != null
         ? JustTheTooltip(
             backgroundColor: styler.isDark ? AppColors.lightTertiary : Colors.black.withOpacity(0.8),
-            borderRadius: BorderRadius.circular(borderRadiusTiny),
+            borderRadius: BorderRadius.circular(borderRadiusLarge),
             waitDuration: Duration(milliseconds: 500),
             offset: 10,
             content: Padding(

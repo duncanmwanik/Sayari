@@ -26,24 +26,6 @@ class ExploreView extends StatelessWidget {
           children: [
             //
             ExploreBox(
-              title: 'Text-To-Speech',
-              subtitle: 'Read aloud any text.',
-              icon: Icons.volume_down_rounded,
-              iconColor: Colors.green,
-              onPressed: () => showTTSBottomSheet(),
-            ),
-            //
-            ExploreBox(
-              title: 'Speech-To-Text',
-              subtitle: 'Dictate to text form.',
-              icon: Icons.keyboard_voice_rounded,
-              iconColor: Colors.blueAccent,
-              onPressed: () async {
-                showToast(1, 'Soon to be live.');
-              },
-            ),
-            //
-            ExploreBox(
               title: 'Pomodoro',
               subtitle: 'Mindful productivity.',
               icon: Icons.timer_rounded,
@@ -67,6 +49,24 @@ class ExploreView extends StatelessWidget {
               icon: Icons.code_rounded,
               iconColor: Colors.purple,
               onPressed: () => state.views.setHomeView(feature.code.t),
+            ),
+            //
+            ExploreBox(
+              title: 'Text-To-Speech',
+              subtitle: 'Read aloud any text.',
+              icon: Icons.volume_down_rounded,
+              iconColor: Colors.green,
+              onPressed: () => showTTSBottomSheet(),
+            ),
+            //
+            ExploreBox(
+              title: 'Speech-To-Text',
+              subtitle: 'Dictate to text form.',
+              icon: Icons.keyboard_voice_rounded,
+              iconColor: Colors.blueAccent,
+              onPressed: () async {
+                showToast(1, 'Soon to be live.');
+              },
             ),
             //
           ],

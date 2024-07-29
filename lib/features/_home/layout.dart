@@ -6,14 +6,14 @@ import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
+import '../../_helpers/_common/helpers.dart';
 import '../../_providers/common/theme.dart';
 import '../../_providers/common/views.dart';
 import '../../_variables/navigation.dart';
 import '../_sessions/info_header.dart';
-import '../chat/input_bar.dart';
 import '_helpers/change_view.dart';
-import '_w/left_box.dart';
 import '_w/navbar_horizontal.dart';
+import '_w/panel.dart';
 import 'appbar.dart';
 
 class Applayout extends StatelessWidget {
@@ -32,7 +32,7 @@ class Applayout extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //
-                if (showVertNav()) WebLeftBox(),
+                if (isSmallPC()) Panel(),
                 //
                 Expanded(
                   child: SafeArea(
@@ -42,7 +42,7 @@ class Applayout extends StatelessWidget {
                         Expanded(
                           child: Consumer<ViewsProvider>(builder: (context, views, child) {
                             return Title(
-                              title: 'Sayari',
+                              title: 'Sayari | ${capitalFirst(views.view)}',
                               color: styler.accentColor(),
                               child: ScrollConfiguration(
                                 behavior: scrollNoBars,
@@ -56,16 +56,21 @@ class Applayout extends StatelessWidget {
                                     //
                                     Expanded(
                                       child: Container(
-                                        constraints: views.isChat() ? BoxConstraints(maxWidth: webMaxWidth) : null,
-                                        margin: partitionPadding(right: showVertNav(), bottom: showVertNav()),
+                                        width: double.infinity,
+                                        margin: partitionPadding(right: isSmallPC(), bottom: isSmallPC()),
+                                        padding: partitionPadding(
+                                          left: !views.isSessions(),
+                                          right: !views.isSessions(),
+                                          top: true,
+                                          bottom: isSmallPC(),
+                                        ),
                                         decoration: BoxDecoration(
+                                          // color: isSmallPC() ? styler.appColor(0.5) : null,
                                           borderRadius: BorderRadius.circular(borderRadiusSmall),
                                         ),
                                         child: changeView(views.view),
                                       ),
                                     ),
-                                    //
-                                    if (views.isChat()) MessageInputBar(),
                                     //
                                   ],
                                 ),

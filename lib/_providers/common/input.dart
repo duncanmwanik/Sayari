@@ -14,6 +14,7 @@ class InputProvider with ChangeNotifier {
   Map data = {};
   Map previousData = {};
 
+  bool isNote() => data[feature.notes.lt] != null;
   bool isFinance() => data[feature.finances.lt] != null;
   bool isTask() => data[feature.tasks.lt] != null;
   bool isHabit() => data[feature.habits.lt] != null;

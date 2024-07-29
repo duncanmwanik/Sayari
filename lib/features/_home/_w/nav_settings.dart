@@ -22,15 +22,16 @@ class NavSettings extends StatelessWidget {
         if (isSmallPC()) NavOptionToggle(type: feature.code.t),
         //
       ],
-      tooltip: 'Navbar Options',
+      tooltip: 'Options',
+      tooltipDirection: isSmallPC() ? AxisDirection.right : AxisDirection.up,
       noStyling: true,
       color: styler.appColor(2),
       borderRadius: borderRadiusSmall,
-      padding: EdgeInsets.all(showVertNav() ? 8 : 12),
+      padding: EdgeInsets.all(isSmallPC() ? 8 : 12),
       child: SizedBox(
-        width: (showVertNav() ? 16 : 18),
-        height: (showVertNav() ? 16 : 18),
-        child: AppIcon(moreIcon, size: (showVertNav() ? 16 : 18), faded: true),
+        width: (isSmallPC() ? 16 : 18),
+        height: (isSmallPC() ? 16 : 18),
+        child: AppIcon(moreIcon, size: (isSmallPC() ? 16 : 18), faded: true),
       ),
     );
   }

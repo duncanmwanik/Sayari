@@ -29,7 +29,7 @@ class QuickThemeChanger extends StatelessWidget {
         iconSize: showText ? normal : 18,
         textSize: small,
         iconFaded: !showText,
-        leading: Icons.wb_sunny_rounded,
+        leading: Icons.dark_mode,
         label: showText ? 'Change Theme' : null,
       ),
     );

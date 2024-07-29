@@ -4,7 +4,7 @@ Features feature = Features();
 
 class Features {
   final Feature table = Feature(t: 'tables', lt: 't');
-  final Feature sessions = Feature(t: 'sessions', lt: 's');
+  final Feature sessions = Feature(t: 'calendar', lt: 's');
   final Feature tasks = Feature(t: 'tasks', lt: 'ta');
   final Feature notes = Feature(t: 'notes', lt: 'na');
   final Feature finances = Feature(t: 'finances', lt: 'ca');
@@ -38,11 +38,24 @@ class Features {
 }
 
 Map<String, FeatureData> featureData = {
-  feature.table.t: FeatureData(title: 'Tables', createMessage: 'Create Table'),
-  feature.sessions.t: FeatureData(title: 'Sessions', createMessage: 'Create Session'),
+  feature.table.t: FeatureData(title: 'Tables', createMessage: 'Create Space'),
+  feature.sessions.t: FeatureData(title: 'Calendar', createMessage: 'Create Session'),
   feature.notes.t: FeatureData(title: 'Notes', createMessage: 'Create Note'),
-  feature.tasks.t: FeatureData(title: 'Tasks', createMessage: 'Create Tasks'),
+  feature.notes.lt: FeatureData(title: 'Notes', createMessage: 'Create Note'),
+  feature.tasks.t: FeatureData(title: 'Tasks', createMessage: 'Create Task'),
+  feature.tasks.lt: FeatureData(title: 'Tasks', createMessage: 'Create Task'),
   feature.finances.t: FeatureData(title: 'Finance', createMessage: 'Create Finance Period'),
+  feature.finances.lt: FeatureData(title: 'Finance', createMessage: 'Create Finance Period'),
+  feature.habits.t: FeatureData(title: 'Habits', createMessage: 'Create Habit'),
+  feature.habits.lt: FeatureData(title: 'Habits', createMessage: 'Create Habit'),
+  feature.links.t: FeatureData(title: 'Links', createMessage: 'Create Link'),
+  feature.links.lt: FeatureData(title: 'Links', createMessage: 'Create Link'),
+  feature.portfolios.t: FeatureData(title: 'Portfolios', createMessage: 'Create Portfolio'),
+  feature.portfolios.lt: FeatureData(title: 'Portfolios', createMessage: 'Create Portfolio'),
+  feature.bookings.t: FeatureData(title: 'Bookings', createMessage: 'Create Booking'),
+  feature.bookings.lt: FeatureData(title: 'Bookings', createMessage: 'Create Booking'),
+  feature.forms.t: FeatureData(title: 'Forms', createMessage: 'Create Form'),
+  feature.forms.lt: FeatureData(title: 'Forms', createMessage: 'Create Form'),
   feature.explore.t: FeatureData(title: 'Explore', createMessage: 'Have Some fun'),
   feature.chat.t: FeatureData(title: 'Chat', createMessage: 'Send Message'),
   feature.pomodoro.t: FeatureData(title: 'Pomodoro', createMessage: 'Pomodoro'),

@@ -4,8 +4,8 @@ import 'package:styled_text/styled_text.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_services/activity/activity_helper.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_helpers/date_time/misc.dart';
+import '../../../_widgets/abcs/buttons/close_button.dart';
 import '../../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/others/divider.dart';
@@ -39,7 +39,7 @@ Future<void> showActivityBottomSheet() async {
                   itemBuilder: (BuildContext context, int index) {
                     String timestamp = activities[index];
                     String activityText = box.get(timestamp) ?? 'Recent changes were made';
-                    String date = getActivityDateTime(timestamp);
+                    String date = getTimeFromTimestamp(timestamp);
 
                     return ListTile(
                       dense: true,
@@ -49,7 +49,9 @@ Future<void> showActivityBottomSheet() async {
                         text: activityText,
                         style: TextStyle(color: styler.textColor(), fontWeight: FontWeight.normal, fontSize: medium),
                         tags: {
-                          'b': StyledTextTag(style: TextStyle(fontWeight: FontWeight.bold, color: styler.textColor(), fontSize: medium)),
+                          'b': StyledTextTag(
+                              style:
+                                  TextStyle(fontWeight: FontWeight.bold, color: styler.textColor(), fontSize: medium)),
                         },
                       ),
                       subtitle: AppText(size: small, text: date, fontWeight: FontWeight.w400, faded: true),

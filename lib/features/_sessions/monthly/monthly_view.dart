@@ -2,9 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/date_info.dart';
 import '../../../_helpers/date_time/misc.dart';
@@ -38,7 +36,7 @@ class MonthlyView extends StatelessWidget {
             //
             Flexible(
               child: Padding(
-                padding: EdgeInsets.only(bottom: largeHeightPlaceHolder()),
+                padding: EdgeInsets.only(),
                 child: LayoutBuilder(
                   builder: (BuildContext context, BoxConstraints constraints) {
                     double height = constraints.maxHeight;
@@ -46,47 +44,49 @@ class MonthlyView extends StatelessWidget {
 
                     return ScrollConfiguration(
                       behavior: scrollNoBars,
-                      child: Wrap(
-                        children: List.generate(42, (indexDate) {
-                          String dateToday = getDatePart(dateProvider.monthDatesMap[indexDate]);
-                          DateInfo date = DateInfo(dateToday);
+                      child: SingleChildScrollView(
+                        child: Wrap(
+                          children: List.generate(42, (indexDate) {
+                            String dateToday = getDatePart(dateProvider.monthDatesMap[indexDate]);
+                            DateInfo date = DateInfo(dateToday);
 
-                          return ValueListenableBuilder(
-                              valueListenable: Hive.box('${liveTable()}_${feature.sessions.t}').listenable(),
-                              builder: (context, box, widget) {
-                                Map todaySessionsMap = sortSessionsByTime(box.get(dateToday, defaultValue: {}));
+                            return ValueListenableBuilder(
+                                valueListenable: Hive.box('${liveTable()}_${feature.sessions.t}').listenable(),
+                                builder: (context, box, widget) {
+                                  Map todaySessionsMap = sortSessionsByTime(box.get(dateToday, defaultValue: {}));
 
-                                return Material(
-                                  color: transparent,
-                                  child: InkWell(
-                                    onTap: () => showSessionListBottomSheet(dateToday, todaySessionsMap),
-                                    onDoubleTap: () =>
-                                        prepareSessionCreation(date: dateToday, hour: TimeOfDay.now().hour),
-                                    onLongPress: () =>
-                                        prepareSessionCreation(date: dateToday, hour: TimeOfDay.now().hour),
-                                    child: Container(
-                                      width: width / 7,
-                                      height: height / 6,
-                                      constraints: BoxConstraints(minHeight: 10.h, maxHeight: 15.h),
-                                      decoration: BoxDecoration(
-                                        color: date.isToday() ? styler.accentColor(0.5) : null,
-                                        border:
-                                            Border.all(color: styler.borderColor(), width: styler.isDark ? 0.1 : 0.2),
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                        children: [
-                                          MonthDayNumberLabel(date: date),
-                                          MonthDaySessionList(todaySessionsMap: todaySessionsMap),
-                                        ],
+                                  return Material(
+                                    color: transparent,
+                                    child: InkWell(
+                                      onTap: () => showSessionListBottomSheet(dateToday, todaySessionsMap),
+                                      onDoubleTap: () =>
+                                          prepareSessionCreation(date: dateToday, hour: TimeOfDay.now().hour),
+                                      onLongPress: () =>
+                                          prepareSessionCreation(date: dateToday, hour: TimeOfDay.now().hour),
+                                      child: Container(
+                                        width: width / 7,
+                                        height: height / 6,
+                                        // constraints: BoxConstraints(minHeight: 10.h, maxHeight: 10.h),
+                                        decoration: BoxDecoration(
+                                          color: date.isToday() ? styler.accentColor(0.5) : null,
+                                          border:
+                                              Border.all(color: styler.borderColor(), width: styler.isDark ? 0.1 : 0.2),
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: [
+                                            MonthDayNumberLabel(date: date),
+                                            MonthDaySessionList(todaySessionsMap: todaySessionsMap),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              });
-                        }),
+                                  );
+                                });
+                          }),
+                        ),
                       ),
                     );
                   },

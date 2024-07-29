@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../../_widgets/abcs/buttons/close_button.dart';
 import '../../../../_widgets/abcs/menu/menu_item.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
@@ -18,12 +19,14 @@ class CreateOptions extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        //
         AppCloseButton(faded: true),
+        //
         AppButton(
           menuItems: [
             //
             MenuItem(
-              label: 'Create Table',
+              label: 'Create Space',
               leading: Icons.add_rounded,
               onTap: () => prepareTableForCreation(),
             ),
@@ -35,7 +38,7 @@ class CreateOptions extends StatelessWidget {
             ),
             //
             MenuItem(
-              label: 'Add Table',
+              label: 'Add Space',
               leading: Icons.add_circle_outline_rounded,
               onTap: () => showAddTableDialog(),
             ),
@@ -70,6 +73,7 @@ class CreateOptions extends StatelessWidget {
             ),
           ),
         ),
+        //
       ],
     );
   }

@@ -19,7 +19,7 @@ Future<void> createNewTable({bool isNewUser = false, bool isDefault = false}) as
   try {
     //
     // if from sign-up, we set table input data manually
-    if (isNewUser) state.input.setInputData(typ: feature.table.t, dta: {'t': 'My Table'});
+    if (isNewUser) state.input.setInputData(typ: feature.table.t, dta: {'t': 'My Space'});
     //
     if (validateInput(type: feature.table.t)) {
       // close the create table bottom sheet if not from sign-up

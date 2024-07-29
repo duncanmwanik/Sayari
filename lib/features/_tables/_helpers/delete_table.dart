@@ -14,7 +14,7 @@ import 'select_table.dart';
 Future<void> deleteTable({required String tableId, required String tableName}) async {
   try {
     //
-    // Never delete the default table eg. 'MyTable': has a value of 1
+    // Never delete the default table eg. 'My Space': has a value of 1
     //
     if (isDefaultTable(tableId)) {
       showToast(2, 'Your default table cannot be deleted.');
@@ -24,7 +24,8 @@ Future<void> deleteTable({required String tableId, required String tableName}) a
     await showConfirmationDialog(
       title: 'Delete table <b>$tableName</b>?',
       yeslabel: 'Delete',
-      content: 'All data will be deleted. The table will be removed from other user devices when they open it next time.',
+      content:
+          'All data will be deleted. The table will be removed from other user devices when they open it next time.',
       onAccept: () async {
         String userId = liveUser();
         // Check if user is the table's owner
@@ -50,7 +51,8 @@ Future<void> deleteTable({required String tableId, required String tableName}) a
   } catch (e) {
     errorPrint('delete-table', e);
     showToast(0, 'Could not delete table');
-    await addToPendingActions(db: 'tables', parentId: tableId, type: 'user', action: 'd', data: {'tableName': tableName});
+    await addToPendingActions(
+        db: 'tables', parentId: tableId, type: 'user', action: 'd', data: {'tableName': tableName});
   }
 }
 

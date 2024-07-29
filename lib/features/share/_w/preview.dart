@@ -14,15 +14,18 @@ class PreviewNote extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppButton(
-      onPressed: () => context.push(path),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          AppText(text: 'View Demo', size: small),
-          spw(),
-          AppIcon(Icons.open_in_new_rounded, size: small, faded: true),
-        ],
+    return Align(
+      alignment: Alignment.topCenter,
+      child: AppButton(
+        onPressed: () => context.push(path),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AppText(text: 'View Demo', size: small),
+            spw(),
+            AppIcon(Icons.open_in_new_rounded, size: small, faded: true),
+          ],
+        ),
       ),
     );
   }

@@ -25,7 +25,7 @@ class ColorButton extends StatelessWidget {
       noStyling: true,
       height: isSmall ? null : 23,
       child: isSmall
-          ? AppIcon(Icons.edit_rounded, size: 12, color: Colors.black)
+          ? AppIcon(Icons.color_lens_rounded, size: 16, faded: true)
           : Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.end,
@@ -33,7 +33,9 @@ class ColorButton extends StatelessWidget {
                 AppIcon(
                   Icons.lens,
                   size: 20,
-                  color: hasColor ? styler.getItemColor(bgColor, false) : (styler.isDark ? Colors.white24 : Colors.black54),
+                  color: hasColor
+                      ? styler.getItemColor(bgColor, false)
+                      : (styler.isDark ? Colors.white24 : Colors.black54),
                 ),
                 pw(3),
                 AppSvg(svgPath: 'assets/icons/dropdown.svg', size: 14),

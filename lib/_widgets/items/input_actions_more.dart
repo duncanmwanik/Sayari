@@ -8,7 +8,6 @@ import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
 import '../../features/_notes/_helpers/share.dart';
 import '../../features/_notes/feat/habits/habit_options.dart';
-import '../../features/_notes/feat/tasks/task_options.dart';
 import '../../features/files/_helpers/upload.dart';
 import '../../features/tts/_helpers/tts_service.dart';
 import '../../features/tts/_state/tts_provider.dart';
@@ -28,17 +27,16 @@ class MoreInputActions extends StatelessWidget {
         tooltip: 'More',
         menuItems: [
           //
-          if (input.isTask()) TaskOptions(),
-          //
           if (input.isHabit()) HabitOptions(),
           //
-          MenuItem(
-            label: 'Attach file',
-            leading: Icons.file_present_outlined,
-            onTap: () async => await getFilesToUpload(),
-          ),
+          if (!input.isTask())
+            MenuItem(
+              label: 'Attach file',
+              leading: Icons.file_present_outlined,
+              onTap: () async => await getFilesToUpload(),
+            ),
           //
-          if (feature.isNote(input.item.type))
+          if (input.isNote())
             Consumer<TTSProvider>(
               builder: (context, tts, child) => MenuItem(
                 label: tts.isPlaying ? 'Stop Narration' : 'Narrate',
@@ -50,7 +48,7 @@ class MoreInputActions extends StatelessWidget {
               ),
             ),
           //
-          if (!input.item.isShared())
+          if (input.isNote() && !input.item.isShared())
             MenuItem(
               label: 'Share',
               leading: Icons.share_rounded,

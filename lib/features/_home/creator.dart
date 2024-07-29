@@ -59,10 +59,9 @@ class WebCreator extends StatelessWidget {
                   mainAxisSize: isCollapsed ? MainAxisSize.min : MainAxisSize.max,
                   children: [
                     //
-                    AppIcon(Icons.add_circle_rounded, size: 18),
+                    AppIcon(Icons.add, size: 18),
                     if (!isCollapsed) spw(),
-                    // if (!isCollapsed) AppText(text: 'Create'),
-                    if (!isCollapsed && isNotesView) AppText(text: featureData[views.view]!.createMessage),
+                    if (!isCollapsed && isNotesView) AppText(text: featureData[views.noteView]!.createMessage),
                     if (!isCollapsed && !isNotesView) AppText(text: featureData[views.view]!.createMessage),
                     //
                   ],

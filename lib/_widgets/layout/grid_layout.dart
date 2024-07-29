@@ -25,11 +25,7 @@ class GridLayout extends StatelessWidget {
       return MasonryGridView.builder(
         key: UniqueKey(),
         shrinkWrap: true,
-        padding: EdgeInsets.only(
-          left: 8,
-          right: 8,
-          bottom: largeHeightPlaceHolder(),
-        ),
+        padding: EdgeInsets.only(bottom: largeHeightPlaceHolder()),
         gridDelegate: SliverSimpleGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: isGrid ? gridCount(width) : 1,
         ),

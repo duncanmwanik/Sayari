@@ -123,3 +123,12 @@ List<String> getDaysInBetweenRange(DateTime startDate, DateTime endDate, List we
 
   return dates;
 }
+
+String getTimeFromTimestamp(String timestamp) {
+  try {
+    DateTime date = DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp));
+    return DateFormat('MMM d, yyy h:mm a').format(date);
+  } catch (e) {
+    return 'Recently';
+  }
+}

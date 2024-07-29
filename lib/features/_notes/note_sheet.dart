@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/navigation.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/abcs/buttons/close_button.dart';
 import '../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../_widgets/items/details.dart';
 import '../../_widgets/items/input_actions.dart';
@@ -22,18 +23,18 @@ import 'feat/finance/period.dart';
 import 'feat/forms/_w/form.dart';
 import 'feat/habits/habit.dart';
 import 'feat/links/_w/links.dart';
+import 'feat/tasks/task_options.dart';
 
-Future<void> showNoteBottomSheet({String? id}) async {
+Future<void> showNoteBottomSheet({String? id, bool isMinimized = false}) async {
   await showAppBottomSheet(
+    isMinimized: isMinimized && isSmallPC(),
+    isShort: isMinimized && !isSmallPC(),
     //
     header: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        //
         AppCloseButton(),
-        //
         CommonInputActions(),
-        //
       ],
     ),
     //
@@ -66,15 +67,16 @@ Future<void> showNoteBottomSheet({String? id}) async {
             Forms(),
             Booking(),
             ItemDetails(),
+            TaskOptions(),
             if (state.input.item.showEditor()) SuperEditor(),
-            spph(),
+            if (!state.input.isTask()) spph(),
             //
           ],
         ),
       ),
     ),
     //
-    footer: state.input.item.showEditor() ? NoteFooter() : null,
+    footer: state.input.item.showFooter() ? NoteFooter() : null,
     //
     whenComplete: () => whenCompleteNote(id),
     //

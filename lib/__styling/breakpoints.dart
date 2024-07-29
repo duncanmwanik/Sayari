@@ -7,6 +7,5 @@ bool isNotPhone() => 100.w > 500;
 bool isTabAndBelow() => 100.w <= 768;
 bool isSmallPC() => 100.w > 768;
 bool isLargePC() => 100.w > 1200;
-bool showVertNav() => 100.w >= 768;
 bool showWebBoxOptions() => 100.w >= 840;
-bool showSheetAsDialog() => 100.w > webMaxWidth;
+bool showFloatingSheet() => 100.w > webMaxWidth;

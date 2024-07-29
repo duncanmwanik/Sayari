@@ -6,7 +6,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/helpers.dart';
-import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/providers.dart';
@@ -17,6 +16,7 @@ Future<void> showAppBottomSheet({
   Widget? header,
   required Widget content,
   Widget? footer,
+  bool isShort = false,
   bool isMinimized = false,
   bool isFull = false,
   bool noContentHorizontalPadding = false,
@@ -27,19 +27,18 @@ Future<void> showAppBottomSheet({
   state.global.updateIsBottomSheetOpen(true);
   changeStatusAndNavigationBarColor(getThemeType(), isSecondary: true);
 
-  // showSheetAsDialog() : if screen is large, we show the sheet as a dialog look-alike
-
   await showModalBottomSheet(
       context: navigatorState.currentContext!,
       isScrollControlled: true,
       useSafeArea: true,
-      constraints:
-          isFull ? BoxConstraints.expand() : (isMinimized ? BoxConstraints(maxHeight: 70.h) : webMaxConstraints()),
+      constraints: isFull
+          ? BoxConstraints.expand()
+          : BoxConstraints(
+              maxHeight: isShort ? 70.h : double.infinity,
+              maxWidth: webMaxWidth / (isMinimized ? 1.5 : 1),
+            ),
       elevation: 0,
       backgroundColor: transparent,
-      // barrierColor: null,
-      //
-      //
       //
       builder: (context) {
         return Padding(
@@ -48,13 +47,8 @@ Future<void> showAppBottomSheet({
             mainAxisSize: MainAxisSize.min,
             children: [
               //
-              // dismiss bottom sheet : IGNORE!
-              // works only with (color) defined
-              if (showSheetAsDialog() && !isFull)
+              if (!isFull && showFloatingSheet())
                 GestureDetector(onTap: () => popWhatsOnTop(), child: Container(height: 50, color: transparent)),
-              //
-              //
-              // ---------- Bottom Sheet starts here !
               //
               Flexible(
                 child: Align(
@@ -62,11 +56,11 @@ Future<void> showAppBottomSheet({
                   child: ClipRRect(
                     borderRadius: isFull
                         ? BorderRadius.zero
-                        : isMinimized
+                        : isShort
                             ? BorderRadius.only(
                                 topLeft: Radius.circular(borderRadiusMedium),
                                 topRight: Radius.circular(borderRadiusMedium))
-                            : showSheetAsDialog()
+                            : showFloatingSheet()
                                 ? BorderRadius.circular(borderRadiusMediumSmall)
                                 : BorderRadius.zero,
                     child: BackdropFilter(
@@ -78,11 +72,11 @@ Future<void> showAppBottomSheet({
                         shape: RoundedRectangleBorder(
                           borderRadius: isFull
                               ? BorderRadius.zero
-                              : isMinimized
+                              : isShort
                                   ? BorderRadius.only(
                                       topLeft: Radius.circular(borderRadiusMedium),
                                       topRight: Radius.circular(borderRadiusMedium))
-                                  : showSheetAsDialog()
+                                  : showFloatingSheet()
                                       ? BorderRadius.circular(borderRadiusMediumSmall)
                                       : BorderRadius.zero,
                         ),
@@ -101,24 +95,37 @@ Future<void> showAppBottomSheet({
                             //
                             // Content ----------
                             //
-                            Flexible(
-                                child: Padding(
-                              padding: noContentHorizontalPadding
-                                  ? EdgeInsets.zero
-                                  : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
-                              child: content,
-                            )),
+                            isMinimized
+                                ? Flexible(
+                                    child: Padding(
+                                    padding: noContentHorizontalPadding
+                                        ? EdgeInsets.zero
+                                        : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
+                                    child: content,
+                                  ))
+                                : Expanded(
+                                    child: Padding(
+                                    padding: noContentHorizontalPadding
+                                        ? EdgeInsets.zero
+                                        : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
+                                    child: content,
+                                  )),
                             //
                             // Footer ----------
                             //
-                            if (footer != null) AppDivider(height: 0),
                             if (footer != null)
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-                                child: footer,
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  AppDivider(height: 0),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+                                    child: footer,
+                                  ),
+                                ],
                               )
                             //
-                            // ----------
+                            //
                             //
                           ],
                         ),
@@ -128,14 +135,8 @@ Future<void> showAppBottomSheet({
                 ),
               ),
               //
-              //
-              // ---------- Bottom Sheet ends here !
-              //
-              // dismiss bottom sheet : IGNORE!
-              // works only with (color) defined
-              if (showSheetAsDialog() && !isFull)
+              if (!isFull && showFloatingSheet())
                 GestureDetector(onTap: () => popWhatsOnTop(), child: Container(height: 50, color: transparent)),
-              //
               //
             ],
           ),

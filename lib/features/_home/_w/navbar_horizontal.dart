@@ -25,7 +25,7 @@ class HorizontalNavigationBox extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 //
-                if (!showVertNav())
+                if (!isSmallPC())
                   Container(
                     height: 60,
                     padding: EdgeInsets.symmetric(horizontal: 10),

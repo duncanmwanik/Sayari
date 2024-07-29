@@ -46,6 +46,7 @@ class _NewItemInputState extends State<NewItemInput> {
                   child: AppButton(
                     noStyling: true,
                     borderRadius: borderRadiusCrazy,
+                    smallLeftPadding: true,
                     onPressed: () {
                       newItemFocusNode.requestFocus();
                       state.input.setInputData(typ: feature.notes.t, id: widget.item.id);
