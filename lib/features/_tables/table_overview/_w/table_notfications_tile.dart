@@ -20,7 +20,7 @@ class TableNotificationsTile extends StatelessWidget {
         children: [
           AppIcon(Icons.notifications_active_rounded, size: 18),
           spw(),
-          Flexible(child: AppText(text: 'Table Notifications')),
+          Flexible(child: AppText(text: 'Notifications')),
         ],
       ),
       trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: 18),

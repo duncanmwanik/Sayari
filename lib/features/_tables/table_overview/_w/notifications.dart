@@ -39,26 +39,7 @@ Future showTableNotificationsDialog() {
               AppDivider(height: 0),
               //
               NotificationItem(
-                  label: feature.notes.t, value: box.get(feature.notes.t, defaultValue: false), type: feature.notes.t),
-              //
-              AppDivider(height: 0),
-              //
-              NotificationItem(
-                  label: feature.finances.t,
-                  value: box.get(feature.finances.t, defaultValue: false),
-                  type: feature.finances.t),
-              //
-              AppDivider(height: 0),
-              //
-              NotificationItem(
                   label: feature.chat.t, value: box.get(feature.chat.t, defaultValue: false), type: feature.chat.t),
-              //
-              AppDivider(height: 0),
-              //
-              NotificationItem(
-                  label: feature.pomodoro.t,
-                  value: box.get(feature.pomodoro.t, defaultValue: false),
-                  type: feature.pomodoro.t),
               //
               msph(),
               //

@@ -27,12 +27,14 @@ class ImageFile extends StatelessWidget {
     this.radius,
     this.size,
     this.isLinks = false,
+    this.showOptions = true,
   });
 
   final String fileId;
   final String fileName;
   final bool isOverview;
   final bool isLinks;
+  final bool showOptions;
   final double? size;
   final double? radius;
   final Map images;
@@ -40,7 +42,7 @@ class ImageFile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isLocal = fileBox.containsKey(fileId);
-    double imageSize = size ?? (isLinks ? 50 : (isOverview ? 40 : 80));
+    double imageSize = size ?? (isOverview ? 40 : 80);
 
     return SizedBox(
       height: imageSize,
@@ -52,7 +54,7 @@ class ImageFile extends StatelessWidget {
           //
           //
           if (fileId.isNotEmpty)
-            isLocal
+            isLocal // Images not uploaded yet
                 ? AppButton(
                     onPressed: isLinks ? null : () => showImageViewer(images: images),
                     borderRadius: 8,
@@ -83,6 +85,7 @@ class ImageFile extends StatelessWidget {
                           return Center(child: AppLoader());
                         }),
                   )
+                // Cached imagev from database
                 : FutureBuilder(
                     future: getCachedFile(fileId: fileId, fileName: fileName),
                     builder: (context, snapshot) {
@@ -121,7 +124,7 @@ class ImageFile extends StatelessWidget {
                         }
                       }
                       //
-                      //
+                      // Loading
                       return AppButton(
                         borderRadius: radius ?? borderRadiusSmall,
                         padding: EdgeInsets.zero,
@@ -133,7 +136,7 @@ class ImageFile extends StatelessWidget {
                       );
                     }),
           //
-          // if image is invalid
+          // No image
           if (fileId.isEmpty)
             AppButton(
               borderRadius: radius ?? borderRadiusSmall,
@@ -145,8 +148,8 @@ class ImageFile extends StatelessWidget {
               ),
             ),
           //
-          // image options
-          if (!isOverview && !isLinks && !state.views.isChat())
+          // Image options
+          if (!isOverview && !isLinks && !state.views.isChat() && showOptions)
             Align(alignment: Alignment.bottomRight, child: FileOptions(fileId, fileName)),
           //
           //

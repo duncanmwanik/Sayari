@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../__styling/spacing.dart';
+import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/misc.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_helpers/date_time/date_info.dart';
@@ -10,12 +11,13 @@ import '../../../_widgets/abcs/buttons/close_button.dart';
 import '../../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/icons.dart';
+import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/list_tile.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/checks_table.dart';
 import '../_helpers/common.dart';
 import '../_helpers/helpers.dart';
-import '../table_overview copy/overview_sheet.dart';
+import '../new_table/_w/publish_btn.dart';
 import '_w/table_about.dart';
 import '_w/table_admin_tile.dart';
 import '_w/table_name.dart';
@@ -38,8 +40,8 @@ Future<void> showTableOverviewBottomSheet() async {
     content: ValueListenableBuilder(
         valueListenable: Hive.box('${liveTable()}_info').listenable(),
         builder: (context, box, widget) {
-          Map tableInfo = box.toMap();
-          String description = tableInfo['a'] ?? '';
+          Map spaceData = box.toMap();
+          String description = spaceData['a'] ?? '';
 
           return tableId != 'none'
               ? SingleChildScrollView(
@@ -53,14 +55,14 @@ Future<void> showTableOverviewBottomSheet() async {
                       //
                       AppListTile(
                         leading: 'Starts',
-                        trailing: getDayInfoFullNames(tableInfo['j'] ?? '...'),
+                        trailing: getDayInfoFullNames(spaceData['j'] ?? '...'),
                       ),
                       //
                       kIsWeb ? sph() : tsph(),
                       //
                       AppListTile(
                         leading: 'Ends',
-                        trailing: getDayInfoFullNames(tableInfo['k'] ?? '...'),
+                        trailing: getDayInfoFullNames(spaceData['k'] ?? '...'),
                       ),
                       //
                       kIsWeb ? sph() : tsph(),
@@ -73,11 +75,11 @@ Future<void> showTableOverviewBottomSheet() async {
                       //
                       kIsWeb ? sph() : tsph(),
                       //
-                      TableOwnerTile(ownerId: tableInfo['o'] ?? '-'),
+                      TableOwnerTile(ownerId: spaceData['o'] ?? '-'),
                       //
                       kIsWeb ? sph() : tsph(),
                       //
-                      TableNotificationsTile(tableName: tableInfo['t'] ?? '-'),
+                      TableNotificationsTile(tableName: spaceData['t'] ?? '-'),
                       //
                       kIsWeb ? sph() : tsph(),
                       //
@@ -90,29 +92,22 @@ Future<void> showTableOverviewBottomSheet() async {
                           leading: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              AppIcon(Icons.edit_rounded, size: 14),
-                              SizedBox(width: smallWidth()),
-                              Flexible(child: AppText(text: 'Edit Space')),
+                              AppIcon(Icons.settings, size: 14),
+                              spw(),
+                              Flexible(child: AppText(text: 'Manage Workspace')),
                             ],
                           ),
                           trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: 18),
-                          onTap: () => prepareTableForEdit(tableInfo),
+                          onTap: () => prepareTableForEdit(spaceData),
                         ),
                       //
-                      kIsWeb ? sph() : tsph(),
+                      mph(),
                       //
-                      AppListTile(
-                        leading: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            AppIcon(Icons.book_rounded, size: 14),
-                            SizedBox(width: smallWidth()),
-                            Flexible(child: AppText(text: 'Publish Book')),
-                          ],
-                        ),
-                        trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: 18),
-                        onTap: () => showPublishBookBottomSheet(),
-                      ),
+                      AppText(text: 'Other Actions', size: small, faded: true),
+                      //
+                      AppDivider(height: mediumHeight()),
+                      //
+                      PublishButton(spaceData: spaceData),
                       //
                     ],
                   ),
@@ -122,7 +117,7 @@ Future<void> showTableOverviewBottomSheet() async {
                     popWhatsOnTop();
                     openDrawer();
                   },
-                  label: 'Tap to select a table',
+                  label: 'Tap to select a space',
                 );
         }),
   );

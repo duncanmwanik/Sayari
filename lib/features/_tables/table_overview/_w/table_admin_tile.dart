@@ -18,10 +18,10 @@ class TableAdminTile extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           AppIcon(Icons.admin_panel_settings_rounded, size: 18),
-          SizedBox(width: smallWidth()),
+          spw(),
           Flexible(
               child: AppText(
-            text: isAdmin() ? 'Manage Admins' : 'Table Admins',
+            text: isAdmin() ? 'Admins' : 'Admins',
           )),
         ],
       ),

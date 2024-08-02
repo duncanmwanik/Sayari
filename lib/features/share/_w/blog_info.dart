@@ -23,7 +23,7 @@ class BlogInfo extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         //
-        UserDp(userId: userId, viewOnly: true, isTiny: true, size: 20),
+        UserDp(userId: userId, viewOnly: true, isTiny: true, size: normal),
         //
         mpw(),
         //
@@ -33,12 +33,7 @@ class BlogInfo extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             //
-            AppText(
-                text: userName,
-                size: normal,
-                faded: true,
-                fontWeight: FontWeight.bold,
-                overflow: TextOverflow.ellipsis),
+            AppText(text: userName, size: normal, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
             //
             AppText(text: editTime, faded: true, overflow: TextOverflow.ellipsis),
             //

@@ -54,6 +54,11 @@ class InputProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void addAll(Map all) {
+    data.addAll(all);
+    notifyListeners();
+  }
+
   void removeAll({required String start}) {
     data.removeWhere((key, value) => key.toString().startsWith(start));
     notifyListeners();

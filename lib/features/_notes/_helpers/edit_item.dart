@@ -37,9 +37,11 @@ Future<void> editItem() async {
 
         // for tables only ----------
         if (type == feature.table.t) {
+          // print(validatedData);
           await Hive.box('${liveTable()}_info').putAll(validatedData);
           await tableNamesBox.put(liveTable(), validatedData['t']);
           type_ = 'info';
+          print(Hive.box('${liveTable()}_info').toMap());
         }
         // all others ----------
         else {

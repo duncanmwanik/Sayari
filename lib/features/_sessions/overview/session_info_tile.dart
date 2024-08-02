@@ -18,7 +18,7 @@ class SessionInfoTile extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppText(text: leadingText, faded: true),
-            SizedBox(width: smallWidth()),
+            spw(),
             AppText(text: trailingText, faded: true),
           ],
         ),

@@ -30,7 +30,8 @@ Future<void> addAdminToTable(String email) async {
                     userEmailsBox.put(userId, email);
                     Hive.box('${tableId}_admins').put(userId, '0');
 
-                    await syncToCloud(db: 'tables', parentId: tableId, type: 'admins', action: 'c', itemId: userId, data: '0');
+                    await syncToCloud(
+                        db: 'tables', parentId: tableId, type: 'admins', action: 'c', itemId: userId, data: '0');
 
                     closeDialog();
                     showToast(1, 'Added new admin <b>$email</b>');
@@ -70,7 +71,7 @@ Future<void> removeAdminFromTable(BuildContext context, String userId, String us
 
             showToast(1, 'Removed admin <b>$userEmail</b>');
           } else {
-            showToast(0, 'Table owner cannot be removed');
+            showToast(0, 'Space owner cannot be removed as admin.');
           }
         });
       },

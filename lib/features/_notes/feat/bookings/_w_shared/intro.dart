@@ -39,19 +39,16 @@ class BookingIntro extends StatelessWidget {
             //
             AppText(text: userName, size: onBoarding, fontWeight: FontWeight.w900),
             //
-            AppDivider(height: mediumHeight()),
+            if (!state.quill.quillcontroller.document.isEmpty()) AppDivider(height: mediumHeight()),
             //
             QuillEditor.basic(
               configurations: QuillEditorConfigurations(
                 controller: state.quill.quillcontroller,
                 scrollable: false,
-                // readOnly: true,
                 showCursor: false,
                 customStyles: getQuillEditorStyle(),
               ),
             ),
-            //
-            mph(),
             //
           ],
         ),

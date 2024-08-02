@@ -18,6 +18,7 @@ class AdminChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton(
         onPressed: null,
+        smallRightPadding: isAdmin(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
@@ -31,6 +32,7 @@ class AdminChip extends StatelessWidget {
                   }
                 },
                 noStyling: true,
+                isSquare: true,
                 child: AppIcon(closeIcon, faded: true, size: 18),
               )
           ],

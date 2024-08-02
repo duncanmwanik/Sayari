@@ -9,7 +9,7 @@ import '../../../_helpers/_common/global.dart';
 import '../../../_providers/common/datetime.dart';
 import '../../../_variables/date_time.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/_variables/navigation.dart';
+import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';

@@ -15,7 +15,7 @@ class NavSettings extends StatelessWidget {
     return AppButton(
       menuItems: [
         //
-        NavOptionToggle(type: feature.notes.t, isDefault: true),
+        NavOptionToggle(type: feature.sessions.t, isDefault: true),
         NavOptionToggle(type: feature.notes.t, isDefault: true),
         NavOptionToggle(type: feature.explore.t, isDefault: true),
         NavOptionToggle(type: feature.chat.t),

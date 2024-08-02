@@ -26,7 +26,7 @@ class CreateOptions extends StatelessWidget {
           menuItems: [
             //
             MenuItem(
-              label: 'Create Space',
+              label: 'Create Workspace',
               leading: Icons.add_rounded,
               onTap: () => prepareTableForCreation(),
             ),
@@ -38,7 +38,7 @@ class CreateOptions extends StatelessWidget {
             ),
             //
             MenuItem(
-              label: 'Add Space',
+              label: 'Add Workspace',
               leading: Icons.add_circle_outline_rounded,
               onTap: () => showAddTableDialog(),
             ),

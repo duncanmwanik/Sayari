@@ -14,7 +14,7 @@ import 'select_table.dart';
 Future<void> deleteTable({required String tableId, required String tableName}) async {
   try {
     //
-    // Never delete the default table eg. 'My Space': has a value of 1
+    // Never delete the default table eg. 'My Workspace': has a value of 1
     //
     if (isDefaultTable(tableId)) {
       showToast(2, 'Your default table cannot be deleted.');

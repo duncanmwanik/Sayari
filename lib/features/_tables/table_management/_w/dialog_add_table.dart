@@ -11,14 +11,14 @@ Future<dynamic> showAddTableDialog() {
   final TextEditingController nameController = TextEditingController();
 
   return showAppDialog(
-    title: 'Add Space',
+    title: 'Add Workspace',
     content: ListView(
       shrinkWrap: true,
       padding: EdgeInsets.zero,
       children: [
         //
         DataInput(
-          hintText: 'Table ID',
+          hintText: 'Workspace ID',
           controller: nameController,
           keyboardType: TextInputType.name,
           autofocus: true,
@@ -27,7 +27,7 @@ Future<dynamic> showAddTableDialog() {
         //
         sph(),
         //
-        AppText(text: 'You can get the Table ID from the table owner or admins.', faded: true),
+        AppText(text: 'You can get the Workspace ID from the table owner or admins.', faded: true),
         //
       ],
     ),

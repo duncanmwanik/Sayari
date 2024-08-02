@@ -29,7 +29,11 @@ class _BookingState extends State<BookingHeader> {
             onPressed: () => input.update(action: 'add', key: 'ac', value: isActive ? '0' : '1'),
             noStyling: true,
             child: Row(
-              children: [AppText(text: 'Active'), spw(), AppCheckBox(isChecked: isActive, smallPadding: true)],
+              children: [
+                AppText(text: 'Active'),
+                spw(),
+                AppCheckBox(isChecked: isActive, smallPadding: true),
+              ],
             ),
           ),
           //

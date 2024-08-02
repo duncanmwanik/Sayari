@@ -19,7 +19,7 @@ Widget tableActionButton({required String label, required IconData iconData, Fun
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               AppIcon(iconData),
-              SizedBox(width: smallWidth()),
+              spw(),
               Text(
                 label,
                 style: TextStyle(fontSize: medium),

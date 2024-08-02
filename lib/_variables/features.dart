@@ -38,7 +38,7 @@ class Features {
 }
 
 Map<String, FeatureData> featureData = {
-  feature.table.t: FeatureData(title: 'Tables', createMessage: 'Create Space'),
+  feature.table.t: FeatureData(title: 'Tables', createMessage: 'Create Workspace'),
   feature.sessions.t: FeatureData(title: 'Calendar', createMessage: 'Create Session'),
   feature.notes.t: FeatureData(title: 'Notes', createMessage: 'Create Note'),
   feature.notes.lt: FeatureData(title: 'Notes', createMessage: 'Create Note'),
