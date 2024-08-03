@@ -61,8 +61,10 @@ class WebCreator extends StatelessWidget {
                     //
                     AppIcon(Icons.add, size: 18),
                     if (!isCollapsed) spw(),
-                    if (!isCollapsed && isNotesView) AppText(text: featureData[views.noteView]!.createMessage),
-                    if (!isCollapsed && !isNotesView) AppText(text: featureData[views.view]!.createMessage),
+                    if (!isCollapsed && isNotesView)
+                      AppText(text: featureData[views.noteView]!.createMessage, fontWeight: FontWeight.w700),
+                    if (!isCollapsed && !isNotesView)
+                      AppText(text: featureData[views.view]!.createMessage, fontWeight: FontWeight.w700),
                     //
                   ],
                 )

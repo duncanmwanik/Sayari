@@ -13,7 +13,6 @@ import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/sync_indicator.dart';
 import '../../_widgets/others/search.dart';
 import '../../_widgets/others/theme.dart';
-import '../_notes/_w/note_options.dart';
 import '../files/user_dp.dart';
 import 'tablename.dart';
 
@@ -27,67 +26,54 @@ class CustomAppBar extends StatelessWidget {
 
       return Container(
         margin: partitionPadding(top: true, bottom: true, right: true, left: !isSmallPC()),
+        padding: itemPaddingSmall(),
         decoration: BoxDecoration(
           color: styler.appColor(0.5),
           borderRadius: BorderRadius.circular(borderRadiusSmall),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            //
-            Container(
-              height: 35,
-              padding: itemPaddingSmall(left: true, right: true, top: true),
-              child: isItemSelection
-                  ? SelectedItemOptions()
-                  : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: isItemSelection
+            ? SelectedItemOptions()
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  //
+                  Flexible(
+                    child: Row(
                       children: [
-                        //
-                        Flexible(
-                          child: Row(
-                            children: [
-                              // drawer button
-                              AppButton(
-                                onPressed: () => openDrawer(),
-                                tooltip: 'All Workspaces',
-                                isSquare: true,
-                                noStyling: true,
-                                child: AppIcon(Icons.sort_rounded),
-                              ),
-                              // selected table name
-                              Flexible(child: TableName()),
-                              //
-                            ],
-                          ),
+                        // drawer button
+                        AppButton(
+                          onPressed: () => openDrawer(),
+                          tooltip: 'All Workspaces',
+                          isSquare: true,
+                          noStyling: true,
+                          child: AppIcon(Icons.sort_rounded),
                         ),
-                        //
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            //
-                            CloudSyncIndicator(),
-                            //
-                            Search(),
-                            //
-                            LayoutButton(),
-                            //
-                            QuickThemeChanger(),
-                            //
-                            UserDp(isTiny: true),
-                            //
-                          ],
-                        ),
+                        // selected table name
+                        Flexible(child: TableName()),
                         //
                       ],
                     ),
-            ),
-            //
-            NoteOptions(),
-            //
-          ],
-        ),
+                  ),
+                  //
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      //
+                      CloudSyncIndicator(),
+                      //
+                      Search(),
+                      //
+                      LayoutButton(),
+                      //
+                      QuickThemeChanger(),
+                      //
+                      UserDp(isTiny: true),
+                      //
+                    ],
+                  ),
+                  //
+                ],
+              ),
       );
     });
   }

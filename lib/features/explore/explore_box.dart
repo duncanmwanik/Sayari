@@ -26,7 +26,7 @@ class ExploreBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
-      color: Color.alphaBlend(iconColor.withOpacity(0.15), styler.getItemColor('', false, isShadeColor: true)!),
+      color: Color.alphaBlend(iconColor.withOpacity(0.2), styler.getItemColor('', false, isShadeColor: true)!),
       margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusSmall)),
       child: InkWell(

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -117,10 +116,10 @@ class Note extends StatelessWidget {
                         // new task entry
                         if (item.hasTasks()) ph(2),
                         if (item.hasTasks()) NewItemInput(item: item),
-                        //
+                        //m
                         // on-hover actions
-                        if (kIsWeb && isNotPhone()) tph(),
-                        if (kIsWeb && isNotPhone()) HoverActions(item: item),
+                        if (isNotPhone()) tph(),
+                        if (isNotPhone()) HoverActions(item: item),
                         //
                       ],
                     ),

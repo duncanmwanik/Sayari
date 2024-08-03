@@ -10,6 +10,7 @@ import '../../_helpers/_common/helpers.dart';
 import '../../_providers/common/theme.dart';
 import '../../_providers/common/views.dart';
 import '../../_variables/navigation.dart';
+import '../_notes/_w/note_options.dart';
 import '../_sessions/info_header.dart';
 import '_helpers/change_view.dart';
 import '_w/navbar_horizontal.dart';
@@ -53,6 +54,7 @@ class Applayout extends StatelessWidget {
                                     CustomAppBar(),
                                     //
                                     if (views.isSessions()) InfoHeader(),
+                                    if (views.isNotes()) NoteOptions(),
                                     //
                                     Expanded(
                                       child: Container(

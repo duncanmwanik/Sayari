@@ -22,35 +22,37 @@ class NoteOptions extends StatelessWidget {
     return Consumer<ViewsProvider>(builder: (context, views, child) {
       return Visibility(
         visible: views.isNotes(),
-        replacement: ph(4),
-        child: Padding(
-          padding: itemPadding(right: true),
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                //
-                tpw(),
-                //
-                if (!showWebBoxOptions()) LabelSelector(),
-                if (!showWebBoxOptions()) tpw(),
-                if (!showWebBoxOptions())
-                  Padding(padding: const EdgeInsets.only(bottom: 3), child: AppText(text: '|', extraFaded: true)),
-                if (!showWebBoxOptions()) tpw(),
-                //
-                Option(label: 'Notes', type: feature.notes.lt),
-                Option(label: 'Tasks', type: feature.tasks.lt),
-                Option(label: 'Finances', type: feature.finances.lt),
-                Option(label: 'Habits', type: feature.habits.lt),
-                Option(label: 'Links', type: feature.links.lt),
-                Option(label: 'Portfolio', type: feature.portfolios.lt),
-                // Option(label: 'Forms', type: feature.forms.lt),
-                Option(label: 'Bookings', type: feature.bookings.lt),
-                OptionsToggler(),
-                lpw(),
-                //
-              ],
+        child: Align(
+          alignment: Alignment.topLeft,
+          child: Padding(
+            padding: partitionPadding(left: true, right: true),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  //
+                  tpw(),
+                  //
+                  if (!showWebBoxOptions()) LabelSelector(),
+                  if (!showWebBoxOptions()) tpw(),
+                  if (!showWebBoxOptions())
+                    Padding(padding: const EdgeInsets.only(bottom: 3), child: AppText(text: '|', extraFaded: true)),
+                  if (!showWebBoxOptions()) tpw(),
+                  //
+                  Option(label: 'Notes', type: feature.notes.lt),
+                  Option(label: 'Tasks', type: feature.tasks.lt),
+                  Option(label: 'Finances', type: feature.finances.lt),
+                  Option(label: 'Habits', type: feature.habits.lt),
+                  Option(label: 'Links', type: feature.links.lt),
+                  Option(label: 'Portfolio', type: feature.portfolios.lt),
+                  // Option(label: 'Forms', type: feature.forms.lt),
+                  Option(label: 'Bookings', type: feature.bookings.lt),
+                  OptionsToggler(),
+                  lpw(),
+                  //
+                ],
+              ),
             ),
           ),
         ),

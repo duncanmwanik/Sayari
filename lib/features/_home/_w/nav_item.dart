@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../__styling/breakpoints.dart';
@@ -15,8 +14,7 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size}) {
     onPressed: () => goToView(type),
     tooltip: getNavigationItemTitle(featureData[type]!.title),
     tooltipDirection: isSmallPC() ? AxisDirection.right : AxisDirection.up,
-    noStyling: !isSelected,
-    color: styler.appColor(2),
+    noStyling: true,
     borderRadius: borderRadiusSmall,
     padding: EdgeInsets.all(isSmallPC() ? 8 : 12),
     child: SizedBox(
@@ -26,13 +24,13 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size}) {
           ? AppSvg(
               svgPath: icon,
               size: size ?? (isSmallPC() ? 16 : 18),
-              color: isSelected && !kIsWeb ? styler.accentColor() : null,
+              color: isSelected ? styler.accentColor() : null,
               faded: !isSelected,
             )
           : AppIcon(
               icon,
               size: size ?? (isSmallPC() ? 16 : 18),
-              color: isSelected && !kIsWeb ? styler.accentColor() : null,
+              color: isSelected ? styler.accentColor() : null,
               faded: !isSelected,
             ),
     ),
