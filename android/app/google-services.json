@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "347700769995",
+    "firebase_url": "https://getsayari-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "getsayari",
+    "storage_bucket": "getsayari.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347700769995:android:eef7bc4ee075249db6d74e",
+        "android_client_info": {
+          "package_name": "com.sayari.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "347700769995-a23ul6gu4tmdki4gk1kd01but5953hjp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7bkTYVF0ND6V3DoPf6i45EawWqaNgLD8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "347700769995-a23ul6gu4tmdki4gk1kd01but5953hjp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "347700769995-c3ivld254rdt6sr5dt0ji1agsst6boga.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.sayari.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

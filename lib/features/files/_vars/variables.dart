@@ -1,0 +1,25 @@
+import 'package:flutter/material.dart';
+
+Map<String, Color> fileTypeColors = {
+  'pdf': Colors.red,
+  'epub': Colors.green,
+  'doc': Colors.blue,
+  'docx': Colors.blue,
+  'ppt': Colors.red,
+  'xls': Colors.green,
+  'csv': Colors.green,
+  'zip': Colors.orange,
+  'tar': Colors.orange,
+  'rar': Colors.orange,
+  'mp3': Colors.blue,
+  'dart': Colors.blue,
+  'js': Colors.purple,
+  'html': Colors.purple,
+  'css': Colors.purple,
+  'py': Colors.purple,
+  'c': Colors.purple,
+  'cpp': Colors.purple,
+  'ino': Colors.purple,
+  'apk': Colors.brown,
+  'txt': Colors.grey,
+};
