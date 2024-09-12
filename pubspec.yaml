@@ -59,7 +59,6 @@ dependencies:
   pdf: ^3.10.8
   file: any
 
-  flutter_web_plugins: any
 dependency_overrides:
   # intl: 0.17.0
 
