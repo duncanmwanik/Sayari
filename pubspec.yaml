@@ -34,6 +34,7 @@ dependencies:
   responsive_sizer: ^3.1.1
   syncfusion_flutter_datepicker: ^25.1.39
   reorderable_grid: ^1.0.10
+  reorderables: ^0.6.0
   styled_text: ^8.1.0
   just_the_tooltip: ^0.0.12
   scrollable_positioned_list: ^0.3.8
@@ -76,7 +77,7 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
-    - assets/files/
+    - assets/emojis/
   fonts:
     - family: Nunito
       fonts:

@@ -1,111 +1,36 @@
 import 'package:hive/hive.dart';
 
 import '../../../_helpers/_common/global.dart';
-import '../../../_services/firebase/sync_to_cloud.dart';
-import '../../_spaces/_helpers/common.dart';
+import '../../../_services/hive/get_data.dart';
+import 'quick_edit.dart';
 
 Future<void> orderItems({
   required String type,
-  required String itemId,
+  required String oldItemId,
+  required String newItemId,
   required int itemsLength,
   required int oldIndex,
   required int newIndex,
-  bool applyIndexFix = true,
+  bool applyIndexFix = false,
 }) async {
   try {
-    String spaceId = liveSpace();
-    Box box = Hive.box('${spaceId}_$type');
-
     if (applyIndexFix) {
       if (newIndex > itemsLength) newIndex = itemsLength;
       if (oldIndex < newIndex) newIndex--;
     }
 
-    print('$oldIndex >> $newIndex');
+    Box box = storage(type);
 
-    Map itemData = box.get(itemId, defaultValue: {});
-    // List ol = box.get('ol', defaultValue: box.keys.toList().reversed.toList());
+    // because the original ids list is reverse, we reverse the sign of the change(1) as well
+    String newOrder = (int.parse(box.get(newItemId)['o']) + (oldIndex < newIndex ? -1 : 1)).toString();
 
-    if (itemData.isNotEmpty) {
-      itemData['o'] = newIndex.toString();
-      box.put(itemId, itemData);
-      await syncToCloud(
-          db: 'spaces',
-          parentId: spaceId,
-          type: type,
-          action: 'e',
-          itemId: itemId,
-          keys: 'o',
-          data: {'o': newIndex.toString()});
-    }
+    printThis('--------------------------------------------------------------------------');
+    printThis('$oldIndex >> $newIndex ------> ${box.get(oldItemId)['t']} ${box.get(oldItemId)['o']}');
+    printThis('$oldIndex >> $newIndex ------> ${box.get(newItemId)['t']} ${box.get(newItemId)['o']}');
+    printThis(newOrder);
 
-    Map all = box.toMap();
-    List allKeys = box.keys
-        .where((key) => key != itemId && all[key]['o'] != null && int.parse(all[key]['o']) >= newIndex)
-        .toList();
-    print(allKeys);
-    allKeys.sort((k1, k2) => int.parse(all[k1]['o']).compareTo(int.parse(all[k2]['o'])));
-
-    for (var key in allKeys) {
-      if (int.parse(all[key]['o']) < (all.length - 1)) {
-        String newIndex = (int.parse(all[key]['o']) + 1).toString();
-        all[key]['o'] = newIndex;
-        await syncToCloud(
-            db: 'spaces', parentId: spaceId, type: type, action: 'e', itemId: key, keys: 'o', data: {'o': newIndex});
-      }
-    }
-
-    box.putAll(all);
-    //
-    //
+    await editItemExtras(type: type, itemId: oldItemId, key: 'o', value: newOrder);
   } catch (e) {
-    errorPrint('order-items-$type-$itemId', e);
+    errorPrint('order-items-$type-$oldItemId', e);
   }
 }
-
- // Future<void> orderItems({
-//   required String type,
-//   required String itemId,
-//   required int itemsLength,
-//   required int oldIndex,
-//   required int newIndex,
-//   bool applyIndexFix = true,
-// }) async {
-//   try {
-//     String spaceId = liveSpace();
-//     Box box = Hive.box('${spaceId}_$type');
-
-//     if (applyIndexFix) {
-//       if (newIndex > itemsLength) newIndex = itemsLength;
-//       if (oldIndex < newIndex) newIndex--;
-//     }
-
-//     print('$oldIndex >> $newIndex');
-
-//     Map itemData = box.get(itemId, defaultValue: {});
-//     if (itemData.isNotEmpty) {
-//       itemData['o'] = newIndex.toString();
-//       box.put(itemId, itemData);
-//       await syncToCloud(db: 'spaces', parentId: spaceId, type: type, action: 'e', itemId: itemId, keys: 'o', data: {'o': newIndex.toString()});
-//     }
-
-//     Map all = box.toMap();
-//     List allKeys = box.keys.where((key) => key != itemId && all[key]['o'] != null && int.parse(all[key]['o']) >= newIndex).toList();
-//     print(allKeys);
-//     allKeys.sort((k1, k2) => int.parse(all[k1]['o']).compareTo(int.parse(all[k2]['o'])));
-
-//     for (var key in allKeys) {
-//       if (int.parse(all[key]['o']) < (all.length - 1)) {
-//         String newIndex = (int.parse(all[key]['o']) + 1).toString();
-//         all[key]['o'] = newIndex;
-//         await syncToCloud(db: 'spaces', parentId: spaceId, type: type, action: 'e', itemId: key, keys: 'o', data: {'o': newIndex});
-//       }
-//     }
-
-//     box.putAll(all);
-//     //
-//     //
-//   } catch (e) {
-//     errorPrint('order-items-$type-$itemId', e);
-//   }
-// }

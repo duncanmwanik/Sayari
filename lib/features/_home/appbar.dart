@@ -6,16 +6,17 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_providers/common/selection.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/layout/layout_button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/sync_indicator.dart';
 import '../../_widgets/others/theme.dart';
 import '../_notes/items/item_selection.dart';
-import '../files/user_dp.dart';
+import '../ai/ai_btn.dart';
 import '../pomodoro/_w/pomo_indicator.dart';
 import '../search/search_btn.dart';
-import 'appbar/dp_options.dart';
+import '../user/dp_options.dart';
+import '../user/user_dp.dart';
 import 'appbar/space_name.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -27,8 +28,8 @@ class CustomAppBar extends StatelessWidget {
       bool isItemSelection = selection.isSelection;
 
       return Container(
-        margin: partitionPadding(top: true, bottom: true, right: true, left: !isSmallPC()),
-        padding: itemPaddingSmall(),
+        margin: paddingM(isSmallPC() ? 'trb' : 'ltrb'),
+        padding: paddingS(),
         decoration: BoxDecoration(
           color: styler.appColor(0.5),
           borderRadius: BorderRadius.circular(borderRadiusSmall),
@@ -65,9 +66,10 @@ class CustomAppBar extends StatelessWidget {
                       CloudSyncIndicator(),
                       PomodoroIndicator(),
                       Search(),
+                      AIButton(),
                       LayoutButton(),
                       QuickThemeChanger(),
-                      pw(6),
+                      pw(5),
                       UserDp(isTiny: true, menuItems: dpMenu(), tooltip: 'Account Options'),
                       //
                     ],

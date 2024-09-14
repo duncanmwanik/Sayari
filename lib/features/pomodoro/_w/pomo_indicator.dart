@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_providers/common/pomodoro.dart';
+import '../../../_variables/colors.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
-import '../_state/pomodoro_provider.dart';
 import '../sheet.dart';
 
 class PomodoroIndicator extends StatefulWidget {
@@ -22,14 +22,14 @@ class _PomodoroIndicatorState extends State<PomodoroIndicator> {
       return Visibility(
         visible: pomo.isTiming,
         child: Padding(
-          padding: itemPaddingMedium(right: true),
+          padding: paddingM('r'),
           child: AppButton(
             onPressed: () => showPomodoroSheet(),
             tooltip: 'Open Pomodoro',
             isRound: true,
             showBorder: true,
-            color: styler.accentColor(3),
-            child: AppIcon(Icons.timer, faded: true),
+            color: backgroundColors[pomo.data['${pomo.currentTimer}c']]!.color,
+            child: AppIcon(Icons.timer),
           ),
         ),
       );

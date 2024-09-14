@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
-import '../features/pomodoro/_state/pomodoro_provider.dart';
 import '../features/tts/_state/tts_provider.dart';
 import 'common/ble.dart';
 import 'common/data.dart';
@@ -10,6 +9,7 @@ import 'common/datetime.dart';
 import 'common/global.dart';
 import 'common/input.dart';
 import 'common/misc.dart';
+import 'common/pomodoro.dart';
 import 'common/quill.dart';
 import 'common/selection.dart';
 import 'common/theme.dart';

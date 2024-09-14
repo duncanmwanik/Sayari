@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/others/icons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/helpers.dart';
@@ -26,7 +25,7 @@ class ListItem extends StatelessWidget {
           noStyling: true,
           hoverColor: styler.appColor(1),
           borderRadius: borderRadiusSmall,
-          padding: EdgeInsets.only(top: 7, bottom: 7, left: 10, right: 5),
+          padding: padding(t: 5, b: 5, l: 10, r: 5),
           child: Row(
             children: [
               //
@@ -34,13 +33,16 @@ class ListItem extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    AppIcon(
-                      Icons.lens,
-                      size: 8,
+                    AppButton(
+                      width: 15,
+                      height: 15,
+                      padding: zeroPadding,
+                      borderRadius: borderRadiusTiny,
                       color: item.hasColor() ? styler.getItemColor(item.color(), false) : styler.appColor(2),
                     ),
                     spw(),
-                    Flexible(child: AppText(size: normal, text: item.title())),
+                    // title
+                    Flexible(child: AppText(size: medium, text: item.title())),
                   ],
                 ),
               ),
@@ -54,7 +56,7 @@ class ListItem extends StatelessWidget {
         ),
         //
         Padding(
-          padding: itemPadding(left: true, right: true),
+          padding: padding(s: 'lr'),
           child: AppDivider(thickness: styler.isDark ? 0.04 : 0.08, height: 2),
         ),
         //

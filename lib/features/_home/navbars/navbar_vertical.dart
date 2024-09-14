@@ -9,7 +9,6 @@ import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/checks_space.dart';
 import '../_helpers/nav.dart';
-import '../panel/toggle.dart';
 import 'nav_item.dart';
 import 'user_options.dart';
 
@@ -46,7 +45,6 @@ class VeticalNavigationBox extends StatelessWidget {
                   //
                   Spacer(),
                   //
-                  PanelToggle(),
                   UserOptions(),
                   //
                 ],

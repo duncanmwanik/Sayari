@@ -7,7 +7,7 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/common/input.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/common.dart';
@@ -21,7 +21,7 @@ class CodeFilesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPaddingMedium(left: !isSheet, right: !isSheet, top: isSheet),
+      padding: isSheet ? paddingM('t') : paddingM('lr'),
       child: ValueListenableBuilder(
           valueListenable: Hive.box('${liveSpace()}_${feature.code.t}').listenable(),
           builder: (context, box, widget) {
@@ -37,7 +37,7 @@ class CodeFilesList extends StatelessWidget {
 
                       return Consumer<InputProvider>(builder: (context, input, child) {
                         return Padding(
-                          padding: itemPaddingSmall(bottom: true),
+                          padding: paddingS('b'),
                           child: AppButton(
                             onPressed: () {
                               input.setInputData(typ: feature.code.t, id: codeId, dta: codeMap);
@@ -45,6 +45,7 @@ class CodeFilesList extends StatelessWidget {
                             },
                             smallRightPadding: true,
                             noStyling: input.itemId != codeId,
+                            padding: padding(l: 10, t: 5, r: 5, b: 5),
                             child: Row(
                               children: [
                                 AppIcon(Icons.code, size: medium),
@@ -60,7 +61,7 @@ class CodeFilesList extends StatelessWidget {
                     }),
                   )
                 : Padding(
-                    padding: itemPadding(top: true),
+                    padding: padding(s: 't'),
                     child: AppText(text: 'No code files...', textAlign: TextAlign.center, faded: true),
                   );
           }),

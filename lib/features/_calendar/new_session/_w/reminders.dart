@@ -6,7 +6,7 @@ import '../../../../__styling/variables.dart';
 import '../../../../_helpers/_common/global.dart';
 import '../../../../_helpers/_common/navigation.dart';
 import '../../../../_providers/common/input.dart';
-import '../../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../../_widgets/buttons/buttons.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import 'reminder_item.dart';
@@ -26,7 +26,7 @@ class Reminders extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Icon
-              Padding(padding: itemPaddingSmall(top: true), child: AppIcon(Icons.notification_add, faded: true, size: normal)),
+              Padding(padding: paddingS('t'), child: AppIcon(Icons.notification_add, faded: true, size: normal)),
               mpw(),
               //
               Expanded(
@@ -60,7 +60,7 @@ class Reminders extends StatelessWidget {
                             return ReminderItem(reminder: reminder);
                           }))
                         : Padding(
-                            padding: itemPaddingMedium(left: true, top: true),
+                            padding: paddingM('lt'),
                             child: AppText(size: small, text: 'No reminders set', faded: true),
                           ),
                   ],

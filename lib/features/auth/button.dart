@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/images.dart';
 import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/text.dart';
@@ -40,7 +40,7 @@ class SignInButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 //
-                if (imagePath != null) AppImage(imagePath: imagePath ?? '', size: normal),
+                if (imagePath != null) AppImage(imagePath ?? '', size: normal),
                 if (imagePath != null) spw(),
                 Flexible(child: AppText(text: label, fontWeight: FontWeight.w600)),
                 //

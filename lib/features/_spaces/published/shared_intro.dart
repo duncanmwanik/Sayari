@@ -4,8 +4,8 @@ import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../__styling/breakpoints.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../files/user_dp.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../user/user_dp.dart';
 import 'cover.dart';
 
 class PublishedBookIntro extends StatelessWidget {
@@ -31,9 +31,9 @@ class PublishedBookIntro extends StatelessWidget {
             //
             mph(),
             AppText(
-              text: sharedData['t'],
-              // text: 'Being Mortal: Medicine and What Matters in the End',
-              size: title,
+              // text: sharedData['t'],
+              text: 'Being Mortal: Medicine and What Matters in the End',
+              size: extra,
               fontWeight: FontWeight.w800,
               textAlign: TextAlign.center,
             ),
@@ -58,7 +58,7 @@ class PublishedBookIntro extends StatelessWidget {
                 children: [
                   UserDp(onPressed: () {}, userId: sharedData['u'], tooltip: userName, noViewer: true, isTiny: true, size: tiny),
                   spw(),
-                  Flexible(child: AppText(text: userName, size: medium)),
+                  Flexible(child: AppText(text: userName, size: small)),
                 ],
               ),
             ),

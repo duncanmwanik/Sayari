@@ -4,7 +4,7 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_widgets/layout/note_list.dart';
+import '../../../_widgets/layout/list_of_items.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../share/_w/header.dart';
@@ -28,7 +28,7 @@ class PublishBookBody extends StatelessWidget {
           Expanded(
             child: isTabAndBelow()
                 ? Padding(
-                    padding: itemPadding(),
+                    padding: padding(),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -45,13 +45,13 @@ class PublishBookBody extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: itemPadding(top: true, left: true),
+                        padding: padding(s: 'lt'),
                         child: PublishedBookIntro(sharedData: sharedData, data: data, userName: userName),
                       ),
                       Expanded(
                           child: Container(
-                        margin: itemPadding(left: true),
-                        padding: itemPadding(left: true, right: true, top: true),
+                        margin: padding(s: 'l'),
+                        padding: padding(s: 'ltr'),
                         decoration: BoxDecoration(
                           border: Border(left: BorderSide(color: styler.borderColor(), width: isDark() ? 0.5 : 1)),
                         ),

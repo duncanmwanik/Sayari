@@ -9,13 +9,14 @@ import '../../../_helpers/date_time/misc.dart';
 import '../../../_helpers/date_time/months.dart';
 import '../../../_providers/common/datetime.dart';
 import '../../../_variables/date_time.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/helpers.dart';
 import '../_helpers/swipe.dart';
-import '../_w/sessions_list_sheet.dart';
+import '../_w/sessions_list_menu.dart';
 import '../monthly/weekday_labels.dart';
 
 class YearlyView extends StatelessWidget {
@@ -54,7 +55,7 @@ class YearlyView extends StatelessWidget {
                             return Container(
                               height: 45.w,
                               width: 45.w,
-                              padding: itemPaddingMedium(),
+                              padding: paddingM(),
                               constraints: BoxConstraints(maxWidth: 200, maxHeight: 215),
                               decoration: BoxDecoration(
                                 color: styler.appColor(1),
@@ -74,33 +75,29 @@ class YearlyView extends StatelessWidget {
                                           DateInfo date = DateInfo(monthMap[indexDate] ?? getDatePart(DateTime.now()));
                                           bool isSelectedMonth = date.month() == month;
 
-                                          return Material(
-                                            color: transparent,
-                                            child: InkWell(
-                                                onTap: isSelectedMonth ? () => showSessionListBottomSheet(date.d()) : null,
-                                                onDoubleTap: isSelectedMonth
-                                                    ? () => prepareSessionCreation(date: date.d(), hour: TimeOfDay.now().hour)
-                                                    : null,
-                                                onLongPress: isSelectedMonth
-                                                    ? () => prepareSessionCreation(date: date.d(), hour: TimeOfDay.now().hour)
-                                                    : null,
-                                                borderRadius: BorderRadius.circular(borderRadiusSmall),
-                                                child: Container(
-                                                  width: width / 7.5,
-                                                  height: width / 7.5,
-                                                  decoration: BoxDecoration(
-                                                    color: date.isToday() && isSelectedMonth ? styler.accentColor(5) : null,
-                                                    borderRadius: BorderRadius.circular(borderRadiusSmall),
+                                          return AppButton(
+                                              menuItems: sessionListMenu(date.date),
+                                              onLongPress: isSelectedMonth
+                                                  ? () => prepareSessionCreation(date: date.date, hour: TimeOfDay.now().hour)
+                                                  : null,
+                                              noStyling: true,
+                                              isRound: true,
+                                              padding: zeroPadding,
+                                              child: Container(
+                                                width: width / 7.5,
+                                                height: width / 7.5,
+                                                decoration: BoxDecoration(
+                                                  color: date.isToday() && isSelectedMonth ? styler.accentColor(5) : null,
+                                                  borderRadius: BorderRadius.circular(borderRadiusSmall),
+                                                ),
+                                                child: Center(
+                                                  child: AppText(
+                                                    size: small,
+                                                    text: date.dayString(),
+                                                    color: isSelectedMonth ? null : styler.appColor(2),
                                                   ),
-                                                  child: Center(
-                                                    child: AppText(
-                                                      size: small,
-                                                      text: date.dayString(),
-                                                      color: isSelectedMonth ? null : styler.appColor(2),
-                                                    ),
-                                                  ),
-                                                )),
-                                          );
+                                                ),
+                                              ));
                                         }),
                                       ),
                                     ),

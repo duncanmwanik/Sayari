@@ -8,7 +8,7 @@ import '../../../_helpers/date_time/misc.dart';
 import '../../../_providers/providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/common.dart';
@@ -51,8 +51,8 @@ class SentMessageBubble extends StatelessWidget {
                       hoverColor: transparent,
                       color: Color.alphaBlend(styler.accentColor(3), black.withOpacity(0.01)),
                       child: Container(
-                        padding: itemPaddingMedium(),
-                        constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.6, minWidth: 100),
+                        padding: paddingM(),
+                        constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.7, minWidth: 100),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: isShortMessage ? CrossAxisAlignment.end : CrossAxisAlignment.end,

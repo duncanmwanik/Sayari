@@ -6,7 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../__styling/spacing.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_variables/features.dart';
-import '../../_widgets/abcs/dialogs_sheets/dialog_buttons.dart';
+import '../../_widgets/dialogs/dialog_buttons.dart';
 import '../../_widgets/others/empty_box.dart';
 import '../_spaces/_helpers/common.dart';
 import '_w/../flag.dart';

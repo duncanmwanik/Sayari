@@ -6,14 +6,14 @@ import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/common/input.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/menu/menu_item.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../files/_helpers/upload.dart';
 import '../../share/_helpers/share.dart';
 import '../../tts/_helpers/tts_service.dart';
 import '../../tts/_state/tts_provider.dart';
-import '../types/habits/habit_options.dart';
+import '../type/habits/habit_options.dart';
 
 class MoreInputActions extends StatelessWidget {
   const MoreInputActions({super.key});

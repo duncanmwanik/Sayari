@@ -7,8 +7,9 @@ import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/theme.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
+import '../../_widgets/others/images.dart';
 import '../../_widgets/others/text.dart';
 import '../user/_helpers/set_user_data.dart';
 
@@ -27,7 +28,7 @@ class ErrorScreen extends StatelessWidget {
             children: [
               // appbar
               Padding(
-                padding: itemPaddingMedium(),
+                padding: paddingM(),
                 child: AppButton(
                   onPressed: () async => context.go('/'),
                   leading: Icons.arrow_back_rounded,
@@ -50,7 +51,7 @@ class ErrorScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset('assets/images/oops.png', height: 25.h),
+                        AppImage('oops.png', height: 25.h),
                         sph(),
                         AppText(
                           size: normal,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/styler.dart';
@@ -11,7 +12,7 @@ import '../../_helpers/forms/form_validation_helper.dart';
 import '../../_providers/common/theme.dart';
 import '../../_services/firebase/database.dart';
 import '../../_variables/navigation.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/forms/auth_input.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
@@ -80,7 +81,7 @@ class _SignInScreenState extends State<AuthScreen> {
             alignment: Alignment.topCenter,
             child: SingleChildScrollView(
               child: Container(
-                constraints: webMaxConstraints(),
+                constraints: isNotPhone() ? const BoxConstraints(maxWidth: webMaxWidth) : const BoxConstraints(),
                 child: Form(
                   key: signInFormKey,
                   child: Column(
@@ -98,7 +99,7 @@ class _SignInScreenState extends State<AuthScreen> {
                             //
                             SignInButton(
                               onPressed: () => showToast(2, "Let's try the demo...", smallTopMargin: true),
-                              imagePath: 'assets/images/google.png',
+                              imagePath: 'google.png',
                               label: 'Continue with Google',
                             ),
                             //

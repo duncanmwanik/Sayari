@@ -2,14 +2,15 @@ import '../../../_helpers/_common/global.dart';
 import '../../../_providers/providers.dart';
 
 List getChosenItems(Map data, String currentLabel, [String? itemType]) {
-  Map allData = data;
-  List allKeys = allData.keys.where((key) => key != 'ol').toList().reversed.toList();
+  List allKeys = data.keys.toList();
+  allKeys.sort((a, b) => int.parse(data[a]['o']).compareTo(int.parse(data[b]['o'])));
+  List finalKeys = allKeys.reversed.toList();
 
   List chosen = [];
   List pinned = [];
 
-  for (var itemId in allKeys) {
-    Map noteData = allData[itemId];
+  for (var itemId in finalKeys) {
+    Map noteData = data[itemId];
     List labelList = getSplitList(noteData['l']);
     bool isPinned = noteData['p'] == '1';
     bool isDeleted = noteData['x'] == '1';

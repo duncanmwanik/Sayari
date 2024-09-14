@@ -9,7 +9,7 @@ import '../note_sheet.dart';
 Future<void> prepareNoteForEdit(Item item, {bool isFull = false}) async {
   state.input.setInputData(isNw: false, typ: feature.items.t, itm: item, id: item.id, dta: item.data);
   await state.quill.reset(quills: item.data['n']);
-  await showNoteBottomSheet(isMinimized: item.hasTasks());
+  await showNoteBottomSheet(isMinimized: item.isTask());
 }
 
 Future<void> prepareNoteForCreation() async {
@@ -49,12 +49,13 @@ Future<void> prepareNoteForCreation() async {
     return;
   }
 
+  // for ordering
+  state.input.update(action: 'add', key: 'o', value: getUniqueId());
+
   await showNoteBottomSheet(id: id, isMinimized: state.input.isTask());
 }
 
-String getQuills() {
-  return jsonEncode(state.quill.controller.document.toDelta().toJson());
-}
+String getQuills() => jsonEncode(state.quill.controller.document.toDelta().toJson());
 
 String quillDescription() {
   return state.input.isBooking() || state.input.isLink()

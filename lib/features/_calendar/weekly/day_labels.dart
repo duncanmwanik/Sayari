@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_helpers/date_time/date_info.dart';
 import '../../../_helpers/date_time/get_week_no.dart';
 import '../../../_helpers/date_time/misc.dart';
 import '../../../_providers/common/datetime.dart';
 import '../../../_variables/date_time.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/text.dart';
-import '../../_spaces/_helpers/common.dart';
-import '../_helpers/sort.dart';
-import '../_w/sessions_list_sheet.dart';
+import '../_w/sessions_list_menu.dart';
 
 class WeekDayLabels extends StatelessWidget {
   const WeekDayLabels({super.key});
@@ -19,13 +18,13 @@ class WeekDayLabels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<DateTimeProvider>(
-      builder: (context, dateProvider, child) => Row(
+      builder: (context, dates, child) => Row(
         children: [
           // Week No
           SizedBox(
             width: 45,
             child: AppText(
-              text: getWeekNumber(dateProvider.currentWeekDates[3]).toString(),
+              text: getWeekNumber(dates.currentWeekDates[3]).toString(),
               faded: true,
               fontWeight: FontWeight.w600,
               textAlign: TextAlign.center,
@@ -37,47 +36,40 @@ class WeekDayLabels extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: List.generate(weekDaysList.length, (index) {
-                  String date = getDatePart(dateProvider.currentWeekDates[index]);
-                  bool isToday = date == getDatePart(DateTime.now());
+                  DateInfo date = DateInfo(getDatePart(dates.currentWeekDates[index]));
 
                   return Expanded(
-                    child: Material(
-                      color: transparent,
-                      child: InkWell(
-                        onTap: () async {
-                          Map weekDaySessionsMap = sortSessionsByTime(Hive.box(liveSpace()).get(date, defaultValue: {}));
-                          showSessionListBottomSheet(date, weekDaySessionsMap);
-                        },
-                        borderRadius: BorderRadius.circular(borderRadiusSmall),
-                        child: Padding(
-                          padding: EdgeInsets.only(top: 5),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              // Day Name
-                              Flexible(child: AppText(size: small, text: weekDaysList[index].shortName, faded: true)),
-                              // Date No
-                              Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: isToday ? styler.accentColor() : Colors.transparent,
-                                ),
-                                child: Center(
-                                  child: AppText(
-                                    size: isToday ? medium : normal,
-                                    text: dateProvider.currentWeekDates[index].day.toString(),
-                                    color: isToday ? white : null,
-                                    fontWeight: FontWeight.w400,
-                                  ),
+                    child: AppButton(
+                      menuItems: sessionListMenu(date.date),
+                      noStyling: true,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 5),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            // Day Name
+                            Flexible(child: AppText(size: small, text: weekDaysList[index].shortName, faded: true)),
+                            // Date No
+                            Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: date.isToday() ? styler.accentColor() : Colors.transparent,
+                              ),
+                              child: Center(
+                                child: AppText(
+                                  size: date.isToday() ? medium : normal,
+                                  text: dates.currentWeekDates[index].day.toString(),
+                                  color: date.isToday() ? white : null,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              //
-                              tph(),
-                              //
-                            ],
-                          ),
+                            ),
+                            //
+                            tph(),
+                            //
+                          ],
                         ),
                       ),
                     ),

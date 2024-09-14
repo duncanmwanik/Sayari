@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../__styling/spacing.dart';
-import '../../../../_widgets/abcs/dialogs_sheets/app_dialog.dart';
-import '../../../../_widgets/abcs/dialogs_sheets/dialog_buttons.dart';
+import '../../../../_widgets/dialogs/app_dialog.dart';
+import '../../../../_widgets/dialogs/dialog_buttons.dart';
 import '../../../../_widgets/others/forms/input.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../_helpers/add_space.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../abcs/buttons/buttons.dart';
+import '../../buttons/buttons.dart';
 import '../icons.dart';
 import '../images.dart';
 import '../text.dart';
@@ -18,7 +18,7 @@ class AboutApp extends StatelessWidget {
         //
         elph(),
         //
-        const AppImage(imagePath: 'assets/images/sayari.png', size: 50),
+        const AppImage('sayari.png', size: 50),
         //
         spw(),
         //

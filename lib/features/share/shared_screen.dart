@@ -9,8 +9,8 @@ import '../../_providers/common/theme.dart';
 import '../../_providers/providers.dart';
 import '../../_services/firebase/database.dart';
 import '../../_variables/features.dart';
-import '../_notes/types/bookings/_w_shared/body.dart';
-import '../_notes/types/links/_w_shared/links_body.dart';
+import '../_notes/type/bookings/_w_shared/body.dart';
+import '../_notes/type/links/_w_shared/links_body.dart';
 import '../_spaces/published/shared.dart';
 import '_helpers/helpers.dart';
 import '_w/blog_body.dart';
@@ -85,7 +85,7 @@ class _ShareScreenState extends State<ShareScreen> {
                           builder: (context, snapshot) {
                             if (snapshot.connectionState == ConnectionState.done) {
                               if (snapshot.hasError) {
-                                return SharedItemInfo();
+                                return SharedAction();
                               } else if (snapshot.hasData) {
                                 Map data = snapshot.data!.value != null ? snapshot.data!.value as Map : {};
                                 // printThis(data);
@@ -107,14 +107,14 @@ class _ShareScreenState extends State<ShareScreen> {
                                                             userName: userName,
                                                             data: data,
                                                           )
-                                                        : SharedItemInfo(),
+                                                        : SharedAction(),
                                       )
-                                    : SharedItemInfo();
+                                    : SharedAction();
                               }
                             }
                             return Center(child: SpinKitFadingCube(color: styler.accentColor(), size: 50.0));
                           })
-                      : SharedItemInfo(),
+                      : SharedAction(),
             ),
           ),
         ),

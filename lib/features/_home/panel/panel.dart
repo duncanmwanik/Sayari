@@ -6,7 +6,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/common/global.dart';
 import '../../../_providers/common/views.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/images.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/sfcalendar.dart';
@@ -29,7 +29,7 @@ class Panel extends StatelessWidget {
       return Container(
         width: showPanel ? 251 : 51,
         height: double.maxFinite,
-        margin: partitionPadding(),
+        margin: paddingM(),
         decoration: BoxDecoration(
           color: styler.appColor(0.5),
           borderRadius: BorderRadius.circular(borderRadiusSmall),
@@ -50,15 +50,14 @@ class Panel extends StatelessWidget {
                       onPressed: () => views.setShowWebBoxOptions(!views.showPanelOptions),
                       height: 30,
                       noStyling: true,
-                      dryWidth: true,
                       hoverColor: transparent,
                       padding: EdgeInsets.zero,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          AppImage(imagePath: 'assets/images/sayari.png', size: 22),
+                          AppImage('sayari.png', size: 22),
                           if (showPanel) spw(),
-                          if (showPanel) AppText(size: large, text: 'Sayari', fontWeight: FontWeight.w800),
+                          if (showPanel) Expanded(child: AppText(size: large, text: 'Sayari', fontWeight: FontWeight.w800)),
                         ],
                       ),
                     ),
@@ -90,7 +89,7 @@ class Panel extends StatelessWidget {
                           physics: BouncingScrollPhysics(),
                           children: [
                             //
-                            if (showCalendar) Center(child: SfCalendar(isWebCalendar: true)),
+                            if (showCalendar) Center(child: SfCalendar(isOverview: true)),
                             if (showLabelManager) LabelManager(),
                             if (views.isCode()) CodeFilesList(),
                             //

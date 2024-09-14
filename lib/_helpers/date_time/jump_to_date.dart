@@ -1,6 +1,10 @@
+import 'package:flutter/material.dart';
+
 import '../../__styling/spacing.dart';
 import '../../_providers/providers.dart';
-import '../../_widgets/abcs/dialogs_sheets/dialog_select_date.dart';
+import '../../_widgets/dialogs/dialog_select_date.dart';
+import '../../_widgets/others/sfcalendar.dart';
+import '../_common/navigation.dart';
 import 'misc.dart';
 
 Future<void> jumpToDate(DateTime? date) async {
@@ -25,7 +29,21 @@ Future<void> jumpToDate(DateTime? date) async {
 
 Future<void> jumpToDateDialog() async {
   await showSelectDateDialog(
-    actionLabel: 'Jump',
-    padding: itemPaddingLarge(left: true, right: true, bottom: true),
-  ).then((date) => jumpToDate(DateTime.parse(date.first)));
+      padding: paddingL('lrb'),
+      onSelect: (date) {
+        closeDialog();
+        jumpToDate(date);
+      });
+}
+
+List<Widget> jumpToDateMenu({String initialDate = ''}) {
+  return [
+    SfCalendar(
+      initialDate: initialDate,
+      onSelect: (date) {
+        popWhatsOnTop();
+        jumpToDate(date);
+      },
+    ),
+  ];
 }

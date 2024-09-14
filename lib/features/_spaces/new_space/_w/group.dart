@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_providers/common/input.dart';
-import '../../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../../_widgets/abcs/dialogs_sheets/dialog_select_groups.dart';
+import '../../../../_widgets/buttons/buttons.dart';
+import '../../../../_widgets/dialogs/dialog_select_groups.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 

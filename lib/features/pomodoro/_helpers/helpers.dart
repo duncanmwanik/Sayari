@@ -27,7 +27,7 @@ String getTimerString(Duration timer) {
 }
 
 void startTimer(String type, {int? remainingTime}) {
-  Duration timer = Duration(seconds: int.parse(state.pomodoro.data['${type}t'] ?? '1'));
+  Duration timer = Duration(minutes: int.parse(state.pomodoro.data['${type}t'] ?? '1'));
 
   state.pomodoro.reset();
   state.pomodoro.updateCurrentTimer(type);

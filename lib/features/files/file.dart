@@ -6,7 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_services/hive/local_storage_service.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/helper.dart';
 import '_vars/variables.dart';

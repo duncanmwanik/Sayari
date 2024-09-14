@@ -10,7 +10,7 @@ import '../../_helpers/_common/navigation.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/others/other_widgets.dart';
 import '../../_widgets/others/text.dart';
 import '../_notes/_helpers/quick_edit.dart';
@@ -34,7 +34,7 @@ class LabelList extends StatelessWidget {
       return Visibility(
         visible: labelList.isNotEmpty,
         child: Padding(
-          padding: itemPaddingMedium(bottom: true),
+          padding: paddingM('b'),
           child: Wrap(
               spacing: tinyWidth(),
               runSpacing: tinyWidth(),

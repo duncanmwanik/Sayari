@@ -6,8 +6,8 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/date_info.dart';
 import '../../../_helpers/date_time/misc.dart';
 import '../../../_providers/common/input.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/dialogs_sheets/dialog_select_date.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 
@@ -25,7 +25,7 @@ class Dates extends StatelessWidget {
       return Visibility(
         visible: input.data['cx'] != '1',
         child: Padding(
-          padding: itemPaddingSmall(bottom: true),
+          padding: paddingS('b'),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

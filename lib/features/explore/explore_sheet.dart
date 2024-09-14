@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_widgets/abcs/buttons/close_button.dart';
-import '../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
+import '../../_widgets/buttons/close_button.dart';
 import '../../_widgets/others/others/scroll.dart';
 import '../../_widgets/others/text.dart';
+import '../../_widgets/sheets/bottom_sheet.dart';
 import 'explore_box.dart';
 
 Future<void> showExploreSheet() async {
@@ -22,7 +22,7 @@ Future<void> showExploreSheet() async {
     //
     content: NoScrollBars(
       child: SingleChildScrollView(
-        padding: itemPadding(top: true),
+        padding: padding(s: 't'),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

@@ -26,7 +26,7 @@ class _ShareScreenState extends State<TestScreen> {
           child: Scaffold(
             backgroundColor: transparent,
             body: Center(
-              child: SharedItemInfo(label: 'This is a test screen for: ${widget.id}.'),
+              child: SharedAction(label: 'This is a test screen for: ${widget.id}.'),
             ),
           ),
         ),

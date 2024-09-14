@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_providers/common/input.dart';
-import '../../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../../_widgets/abcs/dialogs_sheets/dialog_select_date.dart';
+import '../../../../_widgets/buttons/buttons.dart';
+import '../../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../_helpers/helpers.dart';
@@ -26,7 +26,7 @@ class DatePicker extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //
-                    Padding(padding: itemPaddingSmall(top: true), child: AppIcon(Icons.calendar_today, faded: true, size: normal)),
+                    Padding(padding: paddingS('t'), child: AppIcon(Icons.calendar_today, faded: true, size: normal)),
                     mpw(),
                     //
                     Expanded(
@@ -90,7 +90,7 @@ class DatePicker extends StatelessWidget {
                                   })
                                 : [
                                     Padding(
-                                      padding: itemPaddingMedium(left: true, top: true),
+                                      padding: paddingM('lt'),
                                       child: AppText(size: small, text: 'No dates selected', faded: true),
                                     )
                                   ],

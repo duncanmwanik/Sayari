@@ -11,7 +11,7 @@ class SpaceDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPadding(),
+      padding: padding(),
       child: AppText(
         text: spaceDescription,
         faded: true,

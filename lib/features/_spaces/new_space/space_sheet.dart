@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
-import '../../../_widgets/abcs/dialogs_sheets/bottom_sheet.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
+import '../../../_widgets/sheets/bottom_sheet.dart';
 import '../../_notes/_helpers/edit_item.dart';
 import '../../_notes/items/date.dart';
 import '../published/details.dart';

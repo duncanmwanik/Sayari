@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../__styling/variables.dart';
 import '../../../_providers/common/views.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/others/icons.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/others/svg.dart';
 
 class PanelToggle extends StatelessWidget {
   const PanelToggle({super.key});
@@ -14,13 +15,10 @@ class PanelToggle extends StatelessWidget {
       return AppButton(
         onPressed: () => views.setShowWebBoxOptions(!views.showPanelOptions),
         noStyling: true,
-        isSquare: true,
+        hoverColor: transparent,
         tooltip: views.showPanelOptions ? 'Collapse Panel' : 'Expand Panel',
         tooltipDirection: AxisDirection.right,
-        child: AppIcon(
-          views.showPanelOptions ? Icons.keyboard_double_arrow_left_rounded : Icons.keyboard_double_arrow_right_rounded,
-          faded: true,
-        ),
+        child: AppSvg('panel', size: 22, faded: true),
       );
     });
   }

@@ -8,7 +8,7 @@ import '../../../__styling/variables.dart';
 import '../../../_providers/common/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../labels/selector.dart';
 import 'options_toggler.dart';
@@ -26,7 +26,7 @@ class NoteOptions extends StatelessWidget {
         child: Align(
           alignment: Alignment.topLeft,
           child: Padding(
-            padding: itemPaddingSmall(top: isSmallPC(), bottom: true),
+            padding: isSmallPC() ? paddingS('tb') : paddingS('b'),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -42,8 +42,7 @@ class NoteOptions extends StatelessWidget {
                   Option(label: 'Finances', type: feature.finances.lt),
                   Option(label: 'Habits', type: feature.habits.lt),
                   Option(label: 'Links', type: feature.links.lt),
-                  // Option(label: 'Portfolio', type: feature.portfolios.lt),
-                  // Option(label: 'Forms', type: feature.forms.lt),
+                  Option(label: 'Portfolio', type: feature.portfolios.lt),
                   Option(label: 'Bookings', type: feature.bookings.lt),
                   OptionsToggler(),
                   lpw(),
@@ -76,7 +75,7 @@ class Option extends StatelessWidget {
               bool isSelectedView = views.itemsView == type;
 
               return Padding(
-                padding: itemPaddingSmall(right: true),
+                padding: paddingS('r'),
                 child: AppButton(
                   onPressed: isSelectedView ? null : () => views.setNotesView(type),
                   color: isSelectedView ? styler.accentColor(1.8) : transparent,

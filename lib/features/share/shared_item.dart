@@ -7,14 +7,14 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/helpers.dart';
 import '../../_providers/common/input.dart';
 import '../../_variables/features.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
-import '../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
-import '../../_widgets/abcs/menu/menu_item.dart';
+import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/dialogs/confirmation_dialog.dart';
+import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/checkbox.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/divider.dart';
 import '../../_widgets/others/text.dart';
-import '../_notes/types/bookings/_w/copy_link.dart';
+import '../_notes/type/bookings/_w/copy_link.dart';
 import '_helpers/share.dart';
 
 class Share extends StatelessWidget {
@@ -30,9 +30,9 @@ class Share extends StatelessWidget {
       return Visibility(
           visible: data[feature.share.lt] != null && input.isNote() && !isShare(),
           child: Padding(
-            padding: itemPaddingSmall(top: true),
+            padding: paddingS('t'),
             child: AppButton(
-              padding: itemPaddingMedium(),
+              padding: paddingM(),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,7 +99,7 @@ class Share extends StatelessWidget {
                   if (isExpanded) tph(),
                   if (isExpanded)
                     Padding(
-                      padding: itemPaddingMedium(left: true),
+                      padding: paddingM('l'),
                       child: AppText(
                         text: 'A published note will appear in the Sayari Blog.',
                         faded: true,
@@ -112,6 +112,7 @@ class Share extends StatelessWidget {
                     Wrap(
                       spacing: smallWidth(),
                       runSpacing: smallWidth(),
+                      crossAxisAlignment: WrapCrossAlignment.center,
                       children: [
                         AppButton(
                           onPressed: () {
@@ -122,16 +123,17 @@ class Share extends StatelessWidget {
                               updateData: {'sp': isPublished ? '0' : '1'},
                             );
                           },
-                          smallLeftPadding: true,
+                          smallRightPadding: true,
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              AppCheckBox(isChecked: isPublished, smallPadding: true),
-                              spw(),
                               AppText(text: 'Publish'),
+                              spw(),
+                              AppCheckBox(isChecked: isPublished, smallPadding: true),
                             ],
                           ),
                         ),
+                        AppText(text: ' • ', faded: true),
                         CopyLink(path: '/${features[feature.notes.lt]!.path}/${input.itemId}'),
                       ],
                     ),

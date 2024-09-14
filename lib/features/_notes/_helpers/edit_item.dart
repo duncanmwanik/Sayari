@@ -26,7 +26,8 @@ Future<void> editItem() async {
       String editedKeys = comparedData['editedKeys'];
       Map validatedData = comparedData['validatedData'];
 
-      if ([feature.space.t, feature.calendar.t].contains(type)) closeBottomSheetIfOpen();
+      if (feature.isSpace(type)) closeBottomSheetIfOpen();
+      if (feature.isSession(type)) closeDialog();
 
       if (editedKeys.isNotEmpty) {
         String itemId = state.input.itemId;

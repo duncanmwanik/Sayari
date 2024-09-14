@@ -4,12 +4,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/menu/menu_item.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/svg.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/common.dart';
-import '../types/finance/_w/new_type.dart';
+import '../type/finance/_w/new_type.dart';
 
 class AppTypePicker extends StatelessWidget {
   const AppTypePicker({
@@ -79,7 +79,7 @@ class AppTypePicker extends StatelessWidget {
           //
           Flexible(child: AppText(text: initial, color: textColor)),
           mpw(),
-          AppSvg(svgPath: dropDownSvg, color: textColor),
+          AppSvg(dropDownSvg, color: textColor),
           //
         ],
       ),

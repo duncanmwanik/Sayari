@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
-import '../../_helpers/_common/misc.dart';
 import '../../_helpers/_common/ui.dart';
 import '../../_models/item.dart';
 import '../../_providers/providers.dart';
 import '../../_services/hive/get_data.dart';
 import '../../_variables/features.dart';
+import '../../features/_notes/_helpers/order_items.dart';
 import '../../features/_notes/items/list_item.dart';
 
 class ListLayout extends StatelessWidget {
@@ -18,15 +18,15 @@ class ListLayout extends StatelessWidget {
       shrinkWrap: true,
       physics: shareScrollPhysics(),
       buildDefaultDragHandles: false,
-      padding: EdgeInsets.only(bottom: largeHeightPlaceHolder()),
-      onReorder: (oldIndex, newIndex) => doNothing(),
-      // onReorder: (oldIndex, newIndex) => orderItems(
-      //   type: type,
-      //   itemId: state.data.ids[oldIndex],
-      //   itemsLength: state.data.ids.length,
-      //   oldIndex: oldIndex,
-      //   newIndex: newIndex,
-      // ),
+      padding: EdgeInsets.only(bottom: smallHeightPlaceHolder()),
+      onReorder: (oldIndex, newIndex) => orderItems(
+          type: feature.items.t,
+          oldItemId: state.data.ids[oldIndex],
+          newItemId: state.data.ids[newIndex],
+          itemsLength: state.data.ids.length,
+          oldIndex: oldIndex,
+          newIndex: newIndex,
+          applyIndexFix: true),
       itemCount: state.data.ids.length,
       itemBuilder: (context, index) {
         Item item = Item(

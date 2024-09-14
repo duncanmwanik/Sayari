@@ -18,7 +18,7 @@ class ItemDetails extends StatelessWidget {
     return Visibility(
       visible: !isShare(),
       child: Padding(
-        padding: itemPadding(top: true),
+        padding: padding(s: 't'),
         child: item != null
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,6 +1,6 @@
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
+import '../../_widgets/dialogs/confirmation_dialog.dart';
 
 Future<void> sendUserFeedbackViaEmail() async {
   await showConfirmationDialog(

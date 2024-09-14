@@ -13,7 +13,7 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_variables/navigation.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '_helpers/download.dart';
@@ -29,7 +29,7 @@ Future<void> showImageViewer({required Map images, Function()? onDownload}) asyn
       constraints: BoxConstraints(minWidth: 100.w),
       builder: (context) {
         return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
           child: Viewer(images: images, onDownload: onDownload),
         );
       });
@@ -142,7 +142,7 @@ class _ViewerState extends State<Viewer> {
                     borderRadius: 8,
                     padding: EdgeInsets.zero,
                     child: Container(
-                      padding: itemPaddingSmall(),
+                      padding: paddingS(),
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(borderRadiusSmall)),
                       child: Center(child: CircularProgressIndicator(color: styler.appColor(2), strokeWidth: 2)),
                     ),
@@ -156,7 +156,7 @@ class _ViewerState extends State<Viewer> {
         Align(
           alignment: Alignment.topCenter,
           child: Padding(
-            padding: itemPaddingMedium(),
+            padding: paddingM(),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -244,7 +244,7 @@ class _ViewerState extends State<Viewer> {
           Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: itemPadding(),
+              padding: padding(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

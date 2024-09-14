@@ -4,9 +4,9 @@ import 'package:flutter/widgets.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/misc.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/text.dart';
-import '../../files/user_dp.dart';
+import '../../user/user_dp.dart';
 import 'actions.dart';
 
 class BlogInfo extends StatelessWidget {

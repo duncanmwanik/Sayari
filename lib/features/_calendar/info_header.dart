@@ -5,18 +5,15 @@ import 'package:provider/provider.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
 import '../../_helpers/date_time/date_info.dart';
 import '../../_helpers/date_time/jump_to_date.dart';
-import '../../_helpers/date_time/misc.dart';
 import '../../_providers/common/datetime.dart';
 import '../../_providers/common/views.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
-import '../../_widgets/others/sfcalendar.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/swipe.dart';
-import '_w/view_chooser.dart';
+import '_w/calendar_options.dart';
 
 class InfoHeader extends StatelessWidget {
   const InfoHeader({super.key});
@@ -26,6 +23,7 @@ class InfoHeader extends StatelessWidget {
     return Consumer2<DateTimeProvider, ViewsProvider>(builder: (context, dates, views, child) {
       DateInfo date = DateInfo(dates.selectedDate);
       bool isToday = [date.isToday(), false, date.isCurrentMonth(), date.isCurrentYear()][views.calendarView];
+      date.isToday_ = isToday;
       List infoList = [
         getDayInfo(dates.selectedDate),
         getWeekInfo(dates.currentWeekDates[0], dates.currentWeekDates[6]),
@@ -34,7 +32,7 @@ class InfoHeader extends StatelessWidget {
       ];
 
       return Container(
-        padding: partitionPadding(left: true, right: !isSmallPC()),
+        padding: paddingM(isSmallPC() ? 'l' : 'lr'),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -44,7 +42,7 @@ class InfoHeader extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   //
-                  // Go to Previous date
+                  // previous date
                   if (kIsWeb)
                     AppButton(
                       noStyling: true,
@@ -53,30 +51,29 @@ class InfoHeader extends StatelessWidget {
                       child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
                       onPressed: () => swipeToNew(direction: 'left'),
                     ),
-                  pw(1),
+                  pw(3),
                   //
-                  // Date Info
+                  // date info
                   Flexible(
                     child: AppButton(
-                      // onPressed: () => jumpToDateDialog(),
-                      menuItems: [
-                        SfCalendar(
-                            initialDate: date.dateTime,
-                            onSelect: (date) {
-                              popWhatsOnTop();
-                              jumpToDate(date);
-                            })
-                      ],
+                      onPressed: () => jumpToDateDialog(),
+                      menuItems: isPhone() ? null : jumpToDateMenu(initialDate: date.date),
                       tooltip: 'Go to date',
                       noStyling: true,
-                      smallVerticalPadding: true,
-                      borderRadius: borderRadiusCrazy,
-                      child: FittedBox(child: AppText(size: normal, text: infoList[views.calendarView], fontWeight: FontWeight.bold)),
+                      padding: zeroPadding,
+                      hoverColor: transparent,
+                      child: FittedBox(
+                          child: AppText(
+                        size: extra,
+                        text: infoList[views.calendarView],
+                        fontWeight: FontWeight.w800,
+                        faded: true,
+                      )),
                     ),
                   ),
                   //
-                  // Go to Next date
-                  pw(1),
+                  // next date
+                  pw(3),
                   if (kIsWeb)
                     AppButton(
                       noStyling: true,
@@ -90,24 +87,7 @@ class InfoHeader extends StatelessWidget {
               ),
             ),
             //
-            Flexible(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  // Go to today
-                  AppButton(
-                    onPressed: () async => goToToday(views.calendarView, isToday),
-                    tooltip: getDateInfo(getDatePart(date.now)),
-                    borderRadius: borderRadiusCrazy,
-                    child: AppText(text: 'Today'),
-                  ),
-                  // Choose view
-                  spw(),
-                  ViewChooser(),
-                  //
-                ],
-              ),
-            ),
+            Flexible(child: CalendarOptions(date: date)),
             //
           ],
         ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 
 class BlockSeparator extends StatelessWidget {
@@ -15,7 +15,7 @@ class BlockSeparator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPaddingSmall(),
+      padding: paddingS(),
       child: Row(
         children: [
           //

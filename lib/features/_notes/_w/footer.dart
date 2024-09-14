@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../../../_providers/common/input.dart';
 import '../../../_providers/common/quill.dart';
 import '../quill/toolbar.dart';
-import '../types/finance/_w/footer.dart';
+import '../type/finance/_w/footer.dart';
 
 class NoteFooter extends StatelessWidget {
   const NoteFooter({super.key});

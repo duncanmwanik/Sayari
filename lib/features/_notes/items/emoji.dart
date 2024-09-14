@@ -2,13 +2,18 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_helpers/_common/navigation.dart';
+import '../../../_models/item.dart';
+import '../../../_variables/emojis.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
+import '../../../_widgets/others/images.dart';
+import '../_helpers/quick_edit.dart';
 
 class TaskEmoji extends StatelessWidget {
-  const TaskEmoji({super.key, this.emoji});
+  const TaskEmoji({super.key, required this.item});
 
-  final String? emoji;
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
@@ -16,25 +21,46 @@ class TaskEmoji extends StatelessWidget {
       menuItems: [
         //
         Wrap(
-          spacing: smallWidth(),
-          runSpacing: smallWidth(),
-          crossAxisAlignment: WrapCrossAlignment.center,
-          alignment: WrapAlignment.spaceAround,
-          children: List.generate(25, (index) {
-            return AppButton(
-              onPressed: () {},
-              noStyling: true,
-              isSquare: true,
-              child: AppIcon(Icons.lightbulb),
-            );
-          }),
+          spacing: tinyWidth(),
+          runSpacing: tinyWidth(),
+          crossAxisAlignment: WrapCrossAlignment.start,
+          children: [
+            //
+            AppButton(
+              onPressed: () {
+                popWhatsOnTop(); // close menu
+                editItemExtras(type: item.type, itemId: item.id, key: 'd/j');
+              },
+              width: 30,
+              height: 30,
+              color: styler.appColor(1),
+              isRound: true,
+              child: AppIcon(Icons.clear, size: 15, faded: true),
+            ),
+            //
+            for (String emoji in emojis)
+              AppButton(
+                onPressed: () {
+                  popWhatsOnTop(); // close menu
+                  editItemExtras(type: item.type, itemId: item.id, key: 'j', value: emoji);
+                },
+                width: 30,
+                height: 30,
+                noStyling: true,
+                isRound: true,
+                child: AppImage('assets/emojis/$emoji.png', size: 20),
+              )
+            //
+          ],
         )
         //
       ],
-      noStyling: true,
       isSquare: true,
+      noStyling: true,
       padding: EdgeInsets.all(4),
-      child: AppIcon(Icons.lightbulb, color: styler.accent, size: normal),
+      child: item.hasEmoji()
+          ? AppImage('assets/emojis/${item.emoji()}.png', size: normal)
+          : AppIcon(Icons.lightbulb, color: styler.textColor(bgColor: item.color(), faded: !item.hasTitle()), size: 15),
     );
   }
 }

@@ -1,33 +1,30 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
-import '../../_widgets/abcs/buttons/close_button.dart';
+import '../../_variables/ui.dart';
+import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/close_button.dart';
 import '../../_widgets/others/forms/input.dart';
 import '../../_widgets/others/icons.dart';
 import '_helpers/prompt.dart';
 
 class AIBar extends StatelessWidget {
-  const AIBar({super.key, required this.controller});
-
-  final TextEditingController controller;
+  const AIBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppCloseButton(isX: true),
+        AppCloseButton(),
         spw(),
         Expanded(
           child: Padding(
             padding: EdgeInsets.only(top: 6),
             child: DataInput(
-              hintText: 'Prompt...',
-              controller: controller,
+              hintText: 'Type a prompt...',
+              controller: aiController,
               onFieldSubmitted: (text) => aiPrompt(text),
-              color: styler.textColor(faded: true),
               maxLines: 3,
               filled: false,
               autofocus: true,
@@ -37,7 +34,7 @@ class AIBar extends StatelessWidget {
         ),
         spw(),
         AppButton(
-          onPressed: () => controller.clear(),
+          onPressed: () => aiController.clear(),
           tooltip: 'Clear',
           noStyling: true,
           isSquare: true,
@@ -45,7 +42,7 @@ class AIBar extends StatelessWidget {
         ),
         spw(),
         AppButton(
-          onPressed: () => aiPrompt(controller.text),
+          onPressed: () => aiPrompt(aiController.text),
           tooltip: 'Prompt',
           noStyling: true,
           isSquare: true,

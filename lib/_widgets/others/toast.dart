@@ -5,7 +5,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../abcs/buttons/buttons.dart';
+import '../buttons/buttons.dart';
 import 'icons.dart';
 import 'text.dart';
 
@@ -40,7 +40,7 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
             AppButton(
               noStyling: true,
               isRound: true,
-              padding: itemPaddingSmall(),
+              padding: paddingS(),
               child: AppIcon(toastIcons[type], color: color ?? toastColors[type]),
             ),
             //
@@ -58,7 +58,7 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
               onPressed: () => closeToast(),
               noStyling: true,
               isSquare: true,
-              padding: itemPaddingSmall(),
+              padding: paddingS(),
               child: const AppIcon(Icons.close, color: Colors.black54, size: 18),
             ),
             //

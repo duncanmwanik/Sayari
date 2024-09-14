@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import '../../__styling/spacing.dart';
 import '../../_providers/common/views.dart';
 import '../../_widgets/others/others/scroll.dart';
-import 'daily/daily_view.dart';
+import 'daily/daily.dart';
 import 'info_header.dart';
-import 'monthly/monthly_view.dart';
-import 'weekly/weekly_view.dart';
+import 'monthly/monthly.dart';
+import 'weekly/weekly.dart';
 import 'yearly/yearly_view.dart';
 
 class SessionsView extends StatelessWidget {

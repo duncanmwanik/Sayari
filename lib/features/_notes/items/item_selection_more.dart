@@ -5,8 +5,8 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_providers/common/selection.dart';
 import '../../../_providers/providers.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/menu/menu_item.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
 import '../_helpers/quick_edit.dart';
 

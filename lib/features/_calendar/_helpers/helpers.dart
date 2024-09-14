@@ -1,8 +1,9 @@
 import '../../../_helpers/_common/global.dart';
+import '../../../_models/item.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
-import '../new_session/session_sheet.dart';
+import '../../../_widgets/dialogs/confirmation_dialog.dart';
+import '../new_session/session_dialog.dart';
 
 Future<void> prepareSessionCreation({String? date, int? hour}) async {
   state.input.resetSessionData();
@@ -15,9 +16,9 @@ Future<void> prepareSessionCreation({String? date, int? hour}) async {
   showSessionBottomSheet();
 }
 
-Future<void> prepareSessionEditing(String sessionDate, String sessionId, Map sessionData) async {
+Future<void> prepareSessionEditing(Item item) async {
   state.input.resetSessionData();
-  state.input.setInputData(isNw: false, typ: feature.calendar.t, id: sessionDate, sId: sessionId, dta: sessionData);
+  state.input.setInputData(isNw: false, typ: feature.calendar.t, id: item.extra, sId: item.id, dta: item.data);
   showSessionBottomSheet();
 }
 

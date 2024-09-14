@@ -10,8 +10,8 @@ class CodeBlocks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: itemPadding(),
-      margin: itemPadding(left: true),
+      padding: padding(),
+      margin: padding(s: 'l'),
       child: SingleChildScrollView(
         padding: EdgeInsets.zero,
         child: Column(

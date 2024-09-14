@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/forms/input.dart';
 import '../../_widgets/others/icons.dart';
 import '_helpers/add_label.dart';

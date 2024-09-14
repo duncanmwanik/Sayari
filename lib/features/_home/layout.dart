@@ -7,6 +7,8 @@ import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/helpers.dart';
+import '../../_helpers/date_time/date_info.dart';
+import '../../_providers/common/datetime.dart';
 import '../../_providers/common/theme.dart';
 import '../../_providers/common/views.dart';
 import '../../_widgets/others/others/scroll.dart';
@@ -20,7 +22,7 @@ class Applayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<ThemeProvider, ViewsProvider>(builder: (context, theme, views, child) {
+    return Consumer3<ThemeProvider, ViewsProvider, DateTimeProvider>(builder: (context, theme, views, dates, child) {
       return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
         return Align(
           alignment: Alignment.topCenter,
@@ -40,7 +42,8 @@ class Applayout extends StatelessWidget {
                         //
                         Expanded(
                           child: Title(
-                            title: 'Sayari | ${capitalFirst(views.isItems() ? 'space' : views.view)}',
+                            title:
+                                'Sayari • ${capitalFirst(views.isItems() ? 'space' : views.isCalendar() ? getDayInfo(dates.selectedDate) : views.view)}',
                             color: styler.accentColor(),
                             child: NoScrollBars(
                               child: Column(
@@ -52,12 +55,12 @@ class Applayout extends StatelessWidget {
                                   Expanded(
                                     child: Container(
                                       width: double.infinity,
-                                      margin: partitionPadding(right: isSmallPC(), bottom: isSmallPC()),
-                                      padding: partitionPadding(
-                                        left: !views.isCalendar(),
-                                        right: !views.isCalendar(),
-                                        top: !views.isCalendar() && !views.isItems(),
-                                        bottom: isSmallPC(),
+                                      margin: isSmallPC() ? paddingM('rb') : zeroPadding,
+                                      padding: padding(
+                                        l: views.isCalendar() ? 0 : 7,
+                                        r: views.isCalendar() ? 0 : 7,
+                                        t: views.isCalendar() && views.isItems() ? 0 : 7,
+                                        b: isSmallPC() ? 7 : 0,
                                       ),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(borderRadiusSmall),

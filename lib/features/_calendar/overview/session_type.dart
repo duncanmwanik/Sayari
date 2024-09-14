@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../../__styling/variables.dart';
+import '../../../_models/item.dart';
 import '../../../_variables/colors.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/buttons/close_button.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/close_button.dart';
 import '../../../_widgets/others/text.dart';
 
 class SessionType extends StatelessWidget {
-  const SessionType({super.key, required this.sessionsType, required this.sessionColor});
+  const SessionType({super.key, required this.item});
 
-  final String sessionsType;
-  final String sessionColor;
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
@@ -19,17 +19,17 @@ class SessionType extends StatelessWidget {
       children: [
         // session type
         AppButton(
-          color: backgroundColors[sessionColor]!.color,
+          color: backgroundColors[item.color()]!.color,
           borderRadius: borderRadiusSmall,
           smallVerticalPadding: true,
           child: AppText(
-            text: sessionsType,
+            text: item.sessionType(),
             fontWeight: FontWeight.w700,
-            color: backgroundColors[sessionColor]!.textColor,
+            color: backgroundColors[item.color()]!.textColor,
           ),
         ),
         //
-        AppCloseButton(faded: true, isX: true),
+        AppCloseButton(faded: true),
         //
       ],
     );

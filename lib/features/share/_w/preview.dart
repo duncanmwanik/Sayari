@@ -6,7 +6,7 @@ import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 
@@ -22,7 +22,7 @@ class PreviewNote extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: Padding(
-        padding: itemPadding(top: true),
+        padding: padding(s: 't'),
         child: AppButton(
           onPressed: () => context.go(path ?? '/${features[state.views.itemsView]!.path}/${item.id}'),
           showBorder: true,

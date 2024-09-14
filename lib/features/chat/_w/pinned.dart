@@ -8,8 +8,8 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/common/misc.dart';
 import '../../../_providers/providers.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/menu/menu_item.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../user/_helpers/set_user_data.dart';
@@ -25,7 +25,7 @@ class PinnedMessages extends StatelessWidget {
       return Align(
         alignment: Alignment.topCenter,
         child: Padding(
-          padding: itemPaddingMedium(top: true),
+          padding: paddingM('t'),
           child: AppButton(
             menuItems: [
               MenuItem(label: 'All Messages', trailing: Icons.all_inclusive, onTap: () => state.chat.setType('All')),

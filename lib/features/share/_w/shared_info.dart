@@ -3,14 +3,14 @@ import 'package:go_router/go_router.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/images.dart';
 import '../../../_widgets/others/text.dart';
 import '../../user/_helpers/set_user_data.dart';
 
-class SharedItemInfo extends StatelessWidget {
-  const SharedItemInfo({super.key, this.label, this.hasInfo = true});
+class SharedAction extends StatelessWidget {
+  const SharedAction({super.key, this.label, this.hasInfo = true});
 
   final String? label;
   final bool hasInfo;
@@ -24,7 +24,7 @@ class SharedItemInfo extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           if (hasInfo) mph(),
-          if (hasInfo) AppImage(imagePath: 'assets/images/sayari.png', size: imageSizeSmall),
+          if (hasInfo) AppImage('sayari.png', size: imageSizeSmall),
           if (hasInfo) lph(),
           if (hasInfo)
             Flexible(

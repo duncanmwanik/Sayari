@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/common/misc.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../_helpers/quick_edit.dart';
 
@@ -19,9 +19,7 @@ class PinnedIcon extends StatelessWidget {
       bool isHovered = hover.id == item.id;
 
       return AppButton(
-        onPressed: () async {
-          await editItemExtras(type: item.type, itemId: item.id, key: 'p', value: item.isPinned() ? '0' : '1');
-        },
+        onPressed: () => editItemExtras(type: item.type, itemId: item.id, key: 'p', value: item.isPinned() ? '0' : '1'),
         tooltip: item.isPinned() ? 'Unpin' : 'Pin',
         noStyling: true,
         isSquare: true,

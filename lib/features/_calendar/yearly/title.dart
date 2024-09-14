@@ -13,7 +13,7 @@ class YearViewTitleInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isToday = date.isToday();
-    bool isSelectedMonth = isCurrentMonth(date.dateTime);
+    bool isSelectedMonth = isCurrentMonth(date.date);
 
     return Container(
       height: 20,

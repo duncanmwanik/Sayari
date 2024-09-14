@@ -4,10 +4,11 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/menu/menu_item.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../explore/explore_sheet.dart';
+import '../../pomodoro/sheet.dart';
 import '../../saved/saved_sheet.dart';
 import '../_helpers/change_view.dart';
 import '../_helpers/nav.dart';
@@ -18,46 +19,33 @@ class NavMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool showWorkspace = !showNavOption(feature.chat.t) || !showNavOption(feature.code.t);
+    bool showUser =
+        !showNavOption(feature.explore.t) || !showNavOption(feature.saved.t) || (!showNavOption(feature.pomodoro.t) || !showPanelOptions());
+
     return AppButton(
       menuItems: [
+        // workspace
+        if (showWorkspace) MenuItem(label: 'Workspace', faded: true),
+        if (!showNavOption(feature.chat.t)) MenuItem(label: 'Chat', leading: Icons.message_rounded, onTap: () => goToView(feature.chat.t)),
         //
-        if (!showNavOption(feature.chat.t))
-          MenuItem(
-            label: 'Chat',
-            leading: Icons.message_rounded,
-            onTap: () => goToView(feature.chat.t),
-          ),
+        if (!showNavOption(feature.code.t)) MenuItem(label: 'Code', leading: Icons.code, onTap: () => goToView(feature.code.t)),
         //
-        if (!showNavOption(feature.code.t))
-          MenuItem(
-            label: 'Code',
-            leading: Icons.code,
-            onTap: () => goToView(feature.code.t),
-          ),
+        if (showWorkspace) PopupMenuDivider(height: smallHeight()),
+        // user
+        if (showUser) MenuItem(label: 'User', faded: true),
         //
-        if (!showNavOption(feature.chat.t) || !showNavOption(feature.chat.t)) PopupMenuDivider(height: smallHeight()),
+        if (!showNavOption(feature.explore.t)) MenuItem(label: 'Explore', leading: Icons.explore, onTap: () => showExploreSheet()),
         //
-        if (!showPanelOptions() && !showNavOption(feature.explore.t))
-          MenuItem(
-            label: 'Explore',
-            leading: Icons.explore,
-            onTap: () => showExploreSheet(),
-          ),
+        if (!showNavOption(feature.saved.t) || !showPanelOptions())
+          MenuItem(label: 'Saved', leading: Icons.bookmark, onTap: () => showSavedSheet()),
         //
-        if (!showPanelOptions())
-          MenuItem(
-            label: 'Saved',
-            leading: Icons.bookmark,
-            onTap: () => showSavedSheet(),
-          ),
+        if (!showNavOption(feature.pomodoro.t) || !showPanelOptions())
+          MenuItem(label: 'Pomodoro', leading: Icons.timer, onTap: () => showPomodoroSheet()),
         //
-        if (!showPanelOptions()) PopupMenuDivider(height: smallHeight()),
+        if (showWorkspace || showUser) PopupMenuDivider(height: smallHeight()),
         //
-        MenuItem(
-          label: 'Customize',
-          leading: Icons.edit,
-          menuItems: pinnedNavOptions(),
-        ),
+        MenuItem(label: 'Customize', leading: Icons.tune, menuItems: pinnedNavOptions()),
         //
       ],
       tooltip: 'Options',
@@ -69,7 +57,7 @@ class NavMenu extends StatelessWidget {
       child: SizedBox(
         width: (isSmallPC() ? 16 : 18),
         height: (isSmallPC() ? 16 : 18),
-        child: AppIcon(moreIcon, size: (isSmallPC() ? 16 : 18), faded: true),
+        child: AppIcon(Icons.menu, size: (isSmallPC() ? 16 : 18), faded: true),
       ),
     );
   }

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../_helpers/_common/navigation.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_models/item.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/menu/confirmation.dart';
 import '../../../_widgets/others/icons.dart';
 import '../_helpers/actions.dart';
 import '../_helpers/helpers.dart';
 
 class SessionOptions extends StatelessWidget {
-  const SessionOptions({super.key, required this.sessionDate, required this.sessionId, required this.sessionData});
+  const SessionOptions({super.key, required this.item});
 
-  final String sessionDate;
-  final String sessionId;
-  final Map sessionData;
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class SessionOptions extends StatelessWidget {
         AppButton(
           onPressed: () {
             popWhatsOnTop(); // close overview dialog
-            prepareSessionEditing(sessionDate, sessionId, sessionData);
+            prepareSessionEditing(item);
           },
           tooltip: 'Edit Session',
           noStyling: true,
@@ -35,7 +35,7 @@ class SessionOptions extends StatelessWidget {
         //
         AppButton(
           onPressed: () {
-            copySessionToDates(previousDate: sessionDate, sessionId: sessionId, sessionData: sessionData, move: false);
+            copySessionToDates(item: item, move: false);
           },
           tooltip: 'Copy to Date',
           noStyling: true,
@@ -45,7 +45,7 @@ class SessionOptions extends StatelessWidget {
         //
         AppButton(
           onPressed: () {
-            copySessionToDates(previousDate: sessionDate, sessionId: sessionId, sessionData: sessionData, move: true);
+            copySessionToDates(item: item, move: true);
           },
           tooltip: 'Move To Date',
           noStyling: true,
@@ -54,9 +54,14 @@ class SessionOptions extends StatelessWidget {
         ),
         //
         AppButton(
-          onPressed: () {
-            deleteSession(sessionDate: sessionDate, sessionId: sessionId, sessionName: sessionData['t'], sessionData: sessionData);
-          },
+          menuItems: confirmationMenu(
+            title: 'Delete session?',
+            onConfirm: () {
+              deleteSession(item: item);
+              popWhatsOnTop(); // close popup menu
+              popWhatsOnTop(); // close dialog
+            },
+          ),
           tooltip: 'Delete Session',
           noStyling: true,
           isSquare: true,

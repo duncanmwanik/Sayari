@@ -8,9 +8,9 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_providers/common/selection.dart';
 import '../../../_providers/providers.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
-import '../../../_widgets/abcs/menu/menu_item.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/dialogs/confirmation_dialog.dart';
+import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
@@ -38,7 +38,7 @@ class SelectedItemOptions extends StatelessWidget {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                //
+                // cancel
                 AppButton(
                   onPressed: () => clearItemSelection(),
                   noStyling: true,
@@ -48,7 +48,7 @@ class SelectedItemOptions extends StatelessWidget {
                 ),
                 spw(),
                 //no of selected items
-                AppText(text: '${selection.selected.length} selected', size: normal, faded: true),
+                AppText(text: '${selection.selected.length} selected'),
                 //
               ],
             ),

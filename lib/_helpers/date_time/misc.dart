@@ -10,7 +10,7 @@ String get12HourTimeFrom24HourTime(String? time, {bool? islonger, bool showSecon
     // 'time' is in formart > '17:30' in 24 hour system
     int hour24 = getHour(time);
     String hour12 = ((hour24 > 12 || hour24 == 0) ? hours24to12ConversionMap[hour24] : hour24).toString();
-    String period = hour24 >= 12 ? 'PM' : 'AM';
+    String period = hour24 >= 12 ? 'pm' : 'am';
     String minute = getMinute(time).toString();
     String seconds = getSeconds(time).toString();
 
@@ -70,8 +70,8 @@ String getMonth(String date) => DateFormat('MMM').format(DateTime.parse(date));
 String getMonthFull(String date) => DateFormat('MMMM').format(DateTime.parse(date));
 String getDateNo(String date) => DateFormat('d').format(DateTime.parse(date));
 String getDateTitle(String date) => DateFormat('E').format(DateTime.parse(date));
-String getDateFull(String date) => DateFormat('E, MMM d, yyy').format(DateTime.parse(date));
-String getDateFullNoYear(String date) => DateFormat('E, MMM d').format(DateTime.parse(date));
+String getDateFull(String date) => DateFormat('E • MMM d, yyy').format(DateTime.parse(date));
+String getDateFullNoYear(String date) => DateFormat('E • MMM d').format(DateTime.parse(date));
 String getEditDateTime(String timestamp) =>
     DateFormat('MMM d, yyy h:mm a').format(DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp)));
 bool isCurrentMonth(String date) => DateTime.parse(date).month == state.dateTime.selectedMonth;

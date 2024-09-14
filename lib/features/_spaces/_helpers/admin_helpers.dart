@@ -9,7 +9,7 @@ import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_services/firebase/database.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/local_storage_service.dart';
-import '../../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
+import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/others/toast.dart';
 import 'common.dart';
 

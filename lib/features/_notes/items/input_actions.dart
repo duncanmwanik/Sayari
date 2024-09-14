@@ -5,14 +5,14 @@ import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_helpers/_common/global.dart';
 import '../../../../_providers/common/input.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/buttons/color_button.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/color_button.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../labels/menu.dart';
 import '../../reminders/reminder_menu.dart';
-import '../types/finance/graphs_sheet.dart';
-import '../types/habits/header.dart';
+import '../type/finance/graphs_sheet.dart';
+import '../type/habits/header.dart';
 import 'input_actions_more.dart';
 
 class CommonInputActions extends StatelessWidget {

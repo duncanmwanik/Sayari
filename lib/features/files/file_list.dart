@@ -29,7 +29,7 @@ class FileList extends StatelessWidget {
       return Visibility(
         visible: fileData_.isNotEmpty,
         child: Padding(
-          padding: itemPaddingMedium(bottom: true),
+          padding: paddingM('b'),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,15 +37,15 @@ class FileList extends StatelessWidget {
               // Images
               Row(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Flexible(
                     child: GridView.extent(
                       shrinkWrap: true,
-                      maxCrossAxisExtent: isOverview ? 50 : 100,
+                      maxCrossAxisExtent: isOverview ? 40 : 80,
                       mainAxisSpacing: tinyWidth(),
                       crossAxisSpacing: tinyWidth(),
-                      children: List.generate(imageIds.length > 5 && isOverview ? 5 : imageIds.length, (index) {
+                      children: List.generate(imageIds.length > 3 && isOverview ? 3 : imageIds.length, (index) {
                         String fileId = imageIds[index];
                         String fileName = fileData_[fileId];
 
@@ -61,10 +61,10 @@ class FileList extends StatelessWidget {
                     ),
                   ),
                   //
-                  if (imageIds.length > 5 && isOverview)
+                  if (imageIds.length > 3 && isOverview)
                     Padding(
-                      padding: itemPaddingMedium(),
-                      child: AppText(text: '+ ${imageIds.length - 5}', faded: true),
+                      padding: paddingM(),
+                      child: AppText(text: '+ ${imageIds.length - 3}', faded: true),
                     ),
                   //
                 ],

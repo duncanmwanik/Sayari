@@ -9,10 +9,10 @@ import '../../../../_helpers/date_time/misc.dart';
 import '../../../../_providers/common/input.dart';
 import '../../../../_providers/providers.dart';
 import '../../../../_variables/date_time.dart';
-import '../../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../../_widgets/abcs/dialogs_sheets/app_dialog.dart';
-import '../../../../_widgets/abcs/dialogs_sheets/dialog_buttons.dart';
-import '../../../../_widgets/abcs/dialogs_sheets/dialog_select_date.dart';
+import '../../../../_widgets/buttons/buttons.dart';
+import '../../../../_widgets/dialogs/app_dialog.dart';
+import '../../../../_widgets/dialogs/dialog_buttons.dart';
+import '../../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/divider.dart';
 import '../../../../_widgets/others/others/scroll.dart';
@@ -24,7 +24,7 @@ Future<void> showDateRangeDialog() async {
       //
       content: Consumer<InputProvider>(builder: (context, input, child) {
         return Padding(
-          padding: itemPaddingMedium(left: true, right: true),
+          padding: paddingM('lr'),
           child: NoOverScroll(
             child: ListView(
               shrinkWrap: true,

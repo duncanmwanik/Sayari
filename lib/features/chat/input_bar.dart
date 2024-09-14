@@ -9,11 +9,10 @@ import '../../__styling/variables.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/ui.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '../_spaces/_helpers/checks_space.dart';
-import '../ai/ai_sheet.dart';
 import '../files/_helpers/helper.dart';
 import '../files/_helpers/upload.dart';
 import '../files/file_list.dart';
@@ -33,7 +32,7 @@ class MessageInputBar extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(borderRadiusSmall),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
+          filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 2, vertical: 1),
             decoration: BoxDecoration(
@@ -60,16 +59,6 @@ class MessageInputBar extends StatelessWidget {
                             noStyling: true,
                             isSquare: true,
                             child: AppIcon(Icons.add_rounded),
-                          ),
-                          //
-                          AppButton(
-                            onPressed: () => showAISheet(),
-                            tooltip: 'AI Prompt',
-                            height: 45,
-                            width: 45,
-                            noStyling: true,
-                            isSquare: true,
-                            child: AppIcon(Icons.blur_on),
                           ),
                           // Message Input
                           Expanded(
@@ -103,7 +92,7 @@ class MessageInputBar extends StatelessWidget {
                     ],
                   )
                 : Padding(
-                    padding: itemPaddingMedium(),
+                    padding: paddingM(),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

@@ -1,29 +1,37 @@
 import '../__styling/helpers.dart';
 import '../_variables/features.dart';
+import '../features/_notes/type/tasks/_helpers/helper.dart';
 import '../features/files/_helpers/helper.dart';
 
 class Item {
-  const Item({this.type = '', this.id = '', this.data = const {}});
+  const Item({this.type = '', this.id = '', this.data = const {}, this.extra = ''});
 
   final String type;
   final String id;
   final Map data;
+  final String extra;
 
   String title() => data['t'] != null && data['t'] != '' ? data['t'] : 'Untitled';
   String color() => data['c'] ?? '';
+  String emoji() => data['j'] ?? '';
   String content() => data['n'] ?? '';
   String reminder() => data['r'] ?? '';
+  String sessionType() => data['y'] ?? 'Session';
   String labels() => data['l'] ?? '';
   String coverId() => data['w'] ?? '';
   String coverName() => data[coverId()] ?? '';
   Map files() => getFiles(data);
+  Map subItems() => getSubItems(data);
+  int checkedCount() => data.keys.where((key) => key.startsWith('i') && data[key]['v'] == '1').length;
+  int taskCount() => data.keys.where((key) => key.startsWith('i')).length;
 
   bool exists() => data.isNotEmpty;
   bool hasTitle() => data['t'] != null && data['t'] != '';
   bool hasColor() => hasItemColor(data['c']);
+  bool hasEmoji() => data['j'] != null;
   bool hasDetails() => reminder().isNotEmpty || labels().isNotEmpty || files().isNotEmpty;
   bool hasOverview() => data['w'] != null && data['w'] != '';
-  bool hasTasks() => data[feature.tasks.lt] != null;
+  bool isTask() => data[feature.tasks.lt] != null;
   bool hasFinances() => data[feature.finances.lt] != null;
   bool hasHabits() => data[feature.habits.lt] != null;
   bool hasLinks() => data[feature.links.lt] != null;

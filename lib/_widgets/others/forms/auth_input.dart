@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/helpers.dart';
 import '../../../__styling/variables.dart';
-import '../../abcs/buttons/buttons.dart';
+import '../../buttons/buttons.dart';
 import '../icons.dart';
 import '../loader.dart';
 import '../others/dry_intrinsic_size.dart';

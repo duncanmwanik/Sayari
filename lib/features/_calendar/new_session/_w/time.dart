@@ -6,7 +6,7 @@ import '../../../../__styling/variables.dart';
 import '../../../../_helpers/_common/navigation.dart';
 import '../../../../_helpers/date_time/misc.dart';
 import '../../../../_providers/common/input.dart';
-import '../../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../../_widgets/buttons/buttons.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 
@@ -18,6 +18,8 @@ class TimePicker extends StatelessWidget {
     return Consumer<InputProvider>(builder: (context, input, child) {
       String startTime = get12HourTimeFrom24HourTime(input.data['s'], islonger: true);
       String stopTime = get12HourTimeFrom24HourTime(input.data['e'], islonger: true);
+      bool hasStart = input.data['s'] != null && input.data['s'] != '';
+      bool hasEnd = input.data['e'] != null && input.data['e'] != '';
 
       return Row(
         children: [
@@ -33,9 +35,7 @@ class TimePicker extends StatelessWidget {
                 AppButton(
                     onPressed: () async {
                       hideKeyboard();
-                      String time = input.data['s'] != null && input.data['s'] != ''
-                          ? input.data['s']
-                          : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
+                      String time = hasStart ? input.data['s'] : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
                       TimeOfDay? startDayTime = await showTimePicker(
                           context: context,
                           cancelText: 'Cancel',
@@ -48,7 +48,7 @@ class TimePicker extends StatelessWidget {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        AppText(text: 'Starts at '),
+                        if (!hasStart) AppText(text: 'Starts at'),
                         AppText(text: startTime, fontWeight: FontWeight.w700),
                       ],
                     )),
@@ -60,9 +60,7 @@ class TimePicker extends StatelessWidget {
                     AppButton(
                         onPressed: () async {
                           hideKeyboard();
-                          String time = input.data['e'] != null && input.data['e'] != ''
-                              ? input.data['e']
-                              : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
+                          String time = hasEnd ? input.data['e'] : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
                           TimeOfDay? stopDayTime = await showTimePicker(
                               context: context,
                               cancelText: 'Cancel',
@@ -75,12 +73,12 @@ class TimePicker extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            AppText(text: 'Ends at '),
+                            if (!hasEnd) AppText(text: 'Ends at '),
                             AppText(text: stopTime, fontWeight: FontWeight.w700),
                           ],
                         )),
                     //
-                    if (stopTime.isNotEmpty)
+                    if (hasEnd)
                       AppButton(
                         onPressed: () => input.update(action: 'remove', key: 'e'),
                         noStyling: true,

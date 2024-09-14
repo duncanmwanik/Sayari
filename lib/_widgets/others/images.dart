@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class AppImage extends StatelessWidget {
-  const AppImage({
+  const AppImage(
+    this.path, {
     super.key,
-    required this.imagePath,
     this.size,
     this.height,
     this.width,
@@ -11,7 +11,7 @@ class AppImage extends StatelessWidget {
     this.fit = BoxFit.cover,
   });
 
-  final String imagePath;
+  final String path;
   final double? size;
   final double? height;
   final double? width;
@@ -25,7 +25,10 @@ class AppImage extends StatelessWidget {
       width: width ?? size,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
-        image: DecorationImage(image: AssetImage(imagePath), fit: fit),
+        image: DecorationImage(
+          image: AssetImage(path.startsWith('assets/') ? path : 'assets/images/$path'),
+          fit: fit,
+        ),
       ),
     );
   }

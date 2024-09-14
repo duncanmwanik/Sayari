@@ -37,7 +37,7 @@ class BlogBody extends StatelessWidget {
                 children: [
                   //
                   Padding(
-                    padding: itemPadding(left: true, right: true),
+                    padding: padding(s: 'lr'),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,

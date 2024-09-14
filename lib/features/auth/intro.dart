@@ -6,7 +6,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_variables/intro_features.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/images.dart';
 import '../../_widgets/others/text.dart';
@@ -37,7 +37,7 @@ class _WelcomeIntroState extends State<AuthIntro> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPadding(),
+      padding: padding(),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -45,7 +45,7 @@ class _WelcomeIntroState extends State<AuthIntro> {
           lph(),
           //
           AppImage(
-            imagePath: 'assets/images/${introFeatures[index].title.toLowerCase()}.png',
+            '${introFeatures[index].title.toLowerCase()}.png',
             height: 30.h,
             borderRadius: borderRadiusTinySmall,
             fit: BoxFit.fitHeight,

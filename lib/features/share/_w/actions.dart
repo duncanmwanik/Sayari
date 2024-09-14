@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_providers/providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../tts/_helpers/tts_service.dart';
 import '../../tts/_state/tts_provider.dart';

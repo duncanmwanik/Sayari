@@ -6,9 +6,10 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_models/item.dart';
+import '../../../_providers/common/misc.dart';
 import '../../../_providers/common/selection.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
@@ -18,21 +19,24 @@ import '../_helpers/delete_item.dart';
 import '../_helpers/quick_edit.dart';
 
 class ListActions extends StatelessWidget {
-  const ListActions({super.key, required this.item});
+  const ListActions({super.key, required this.item, this.isList = false});
 
   final Item item;
+  final bool isList;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SelectionProvider>(builder: (context, selection, child) {
+    return Consumer2<SelectionProvider, HoverProvider>(builder: (context, selection, hover, child) {
       bool isNotSelection = selection.selected.isEmpty;
+      bool isHovered = hover.id == item.id;
 
       return Visibility(
-        visible: isNotSelection,
+        visible: isNotSelection && isHovered,
         child: AppButton(
-          noStyling: true,
+          noStyling: isList,
           isSquare: true,
           leading: moreIcon,
+          padding: isList ? null : padding(p: 3),
           menuItems: [
             //
             if (!item.isDeleted())

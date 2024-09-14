@@ -5,7 +5,7 @@ import '../../../__styling/helpers.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/svg.dart';
 import '../_helpers/change_view.dart';
@@ -23,18 +23,8 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Functi
       width: size ?? (isSmallPC() ? 16 : 18),
       height: size ?? (isSmallPC() ? 16 : 18),
       child: icon.runtimeType == String
-          ? AppSvg(
-              svgPath: icon,
-              size: size ?? (isSmallPC() ? 16 : 18),
-              // color: isSelected ? styler.accentColor() : null,
-              faded: true,
-            )
-          : AppIcon(
-              icon,
-              size: size ?? (isSmallPC() ? 16 : 18),
-              // color: isSelected ? styler.accentColor() : null,
-              faded: true,
-            ),
+          ? AppSvg(icon, size: size ?? (isSmallPC() ? 16 : 18), faded: true)
+          : AppIcon(icon, size: size ?? (isSmallPC() ? 16 : 18), faded: true),
     ),
   );
 }

@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/views.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/svg.dart';
 import '../../_widgets/others/text.dart';
 import 'menu.dart';
@@ -29,7 +29,7 @@ class LabelSelector extends StatelessWidget {
           children: [
             Flexible(child: AppText(text: labels.selectedLabel)),
             spw(),
-            AppSvg(svgPath: dropDownSvg),
+            AppSvg(dropDownSvg),
           ],
         ),
       );

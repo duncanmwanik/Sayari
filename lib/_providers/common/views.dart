@@ -15,6 +15,8 @@ class ViewsProvider with ChangeNotifier {
   bool isExplore() => view == feature.explore.t;
   bool isCode() => view == feature.code.t;
 
+  bool isItemView(String type) => itemsView == type;
+
   String layout = globalBox.get(
     '${liveSpace()}_layout_${globalBox.get('view', defaultValue: feature.items.t)}',
     defaultValue: 'grid',

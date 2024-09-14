@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import '../../__styling/spacing.dart';
 import '../../_providers/common/views.dart';
 import '../../_variables/constants.dart';
-import '../abcs/buttons/buttons.dart';
-import '../abcs/menu/menu_item.dart';
+import '../buttons/buttons.dart';
+import '../menu/menu_item.dart';
 import '../others/icons.dart';
 
 class LayoutButton extends StatelessWidget {
@@ -19,7 +19,7 @@ class LayoutButton extends StatelessWidget {
       return Visibility(
         visible: showLayoutButton,
         child: Padding(
-          padding: itemPadding(right: true),
+          padding: paddingM('r'),
           child: AppButton(
             menuItems: [
               //

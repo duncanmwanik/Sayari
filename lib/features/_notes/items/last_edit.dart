@@ -13,7 +13,7 @@ class LastEdit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPaddingSmall(left: true),
+      padding: paddingS('l'),
       child: AppText(
         size: small,
         text: timestamp != null ? getEditDateTime(timestamp!) : '',

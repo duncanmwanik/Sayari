@@ -5,9 +5,9 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_helpers/date_time/date_info.dart';
 import '../../_helpers/date_time/misc.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
-import '../../_widgets/abcs/dialogs_sheets/dialog_buttons.dart';
-import '../../_widgets/abcs/dialogs_sheets/dialog_select_date.dart';
+import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/dialogs/dialog_buttons.dart';
+import '../../_widgets/dialogs/dialog_select_date.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/divider.dart';
 import '../../_widgets/others/svg.dart';
@@ -77,10 +77,10 @@ class _MyWidgetState extends State<MyWidget> {
                   borderRadius: borderRadiusSmall,
                   noStyling: true,
                   child: Padding(
-                    padding: itemMarginSmall(),
+                    padding: padding(p: 2.5),
                     child: Row(
                       children: [
-                        AppSvg(svgPath: datePlusSvg, size: normal),
+                        AppSvg(datePlusSvg, size: normal),
                         mpw(),
                         Flexible(
                           child: AppText(
@@ -110,7 +110,7 @@ class _MyWidgetState extends State<MyWidget> {
                   borderRadius: borderRadiusSmall,
                   noStyling: true,
                   child: Padding(
-                    padding: itemMarginSmall(),
+                    padding: padding(p: 2.5),
                     child: Row(
                       children: [
                         AppIcon(Icons.access_time, size: normal),

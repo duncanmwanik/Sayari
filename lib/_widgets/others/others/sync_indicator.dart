@@ -46,19 +46,13 @@ class _CloudSyncIndicatorState extends State<CloudSyncIndicator> with TickerProv
 
           return showLoader
               ? Padding(
-                  padding: itemPaddingMedium(right: true),
+                  padding: paddingM('r'),
                   child: RotationTransition(
                     turns: animation,
                     child: AppIcon(Icons.sync, size: 18, color: styler.accentColor()),
                   ),
                 )
               : const NoWidget();
-
-          // return showLoader ? AppIcon(Icons.cloud_done_rounded, color: styler.accentColor(), size: 16) : NoWidget();
         });
   }
 }
-// RotationTransition(
-//                     turns: animation,
-//                     child: AppIcon(Icons.cloud_upload_rounded, color: styler.accentColor(), size: 12),
-//                   )

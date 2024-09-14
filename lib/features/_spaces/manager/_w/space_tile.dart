@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../__styling/helpers.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../../_widgets/buttons/buttons.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/images.dart';
 import '../../../../_widgets/others/loader.dart';
@@ -60,7 +60,7 @@ class _SpaceTileState extends State<SpaceTile> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           //
-                          AppImage(imagePath: 'assets/images/sayari.png', size: 16),
+                          AppImage('sayari.png', size: 16),
                           //
                           spw(),
                           // space name

@@ -13,24 +13,22 @@ class MonthDayNumberLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isToday = date.isToday();
-    bool isSelectedMonth = isCurrentMonth(date.dateTime);
+    bool isSelectedMonth = isCurrentMonth(date.date);
 
     return Container(
       height: 20,
-      width: 20,
-      margin: EdgeInsets.only(top: 2, bottom: 2, right: 2),
+      margin: EdgeInsets.only(bottom: 2),
+      padding: EdgeInsets.only(top: 2, bottom: 2, right: 4),
       decoration: BoxDecoration(
         color: isToday ? styler.accentColor() : transparent,
         borderRadius: BorderRadius.only(bottomLeft: Radius.circular(borderRadiusTiny)),
       ),
-      child: Center(
-        child: AppText(
-          size: small,
-          text: date.dayString(),
-          fontWeight: isSelectedMonth ? FontWeight.w400 : FontWeight.w100,
-          extraFaded: !isSelectedMonth,
-          color: isToday ? white : null,
-        ),
+      child: AppText(
+        size: small,
+        text: '${date.day() == 1 ? date.monthString() : ''} ${date.dayString()}',
+        fontWeight: isSelectedMonth ? FontWeight.w600 : FontWeight.w100,
+        extraFaded: !isSelectedMonth,
+        color: isToday ? white : null,
       ),
     );
   }

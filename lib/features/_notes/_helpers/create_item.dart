@@ -4,6 +4,7 @@ import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../_calendar/_helpers/helpers.dart';
@@ -24,13 +25,12 @@ Future<void> createItem({String? type_, String? newId, String? newSubId, Map? da
       String subId = newSubId ?? (state.input.itemId.isNotEmpty ? getUniqueId() : '');
       String extras = '';
 
-      printThis('create $type --- $itemId --- $subId --- $data');
+      if (feature.isSession(type)) closeDialog();
 
-      Box box = Hive.box('${liveSpace()}_$type');
+      Box box = storage(type);
 
       // for sessions only ----------
       if (feature.isSession(type)) {
-        closeBottomSheetIfOpen();
         removeDuplicateReminders(type, data);
         data.removeWhere((key, value) => value.toString().isEmpty); // remove keys with empty values
         List selectedDates = state.input.selectedDates;
@@ -58,14 +58,7 @@ Future<void> createItem({String? type_, String? newId, String? newSubId, Map? da
 
       await handleFilesCloud(liveSpace(), data);
       await syncToCloud(
-          db: 'spaces',
-          parentId: liveSpace(),
-          type: type,
-          action: 'c',
-          itemId: itemId,
-          subId: subId,
-          extras: extras,
-          data: data);
+          db: 'spaces', parentId: liveSpace(), type: type, action: 'c', itemId: itemId, subId: subId, extras: extras, data: data);
       // for shared items
       if (state.input.isShared()) {
         shareItem(itemId: itemId, type: state.views.itemsView, title: data['t'] ?? 'Shared Item');

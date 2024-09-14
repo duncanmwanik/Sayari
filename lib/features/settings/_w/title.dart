@@ -16,7 +16,7 @@ class SettingTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return DryIntrinsicWidth(
       child: Padding(
-        padding: itemPadding(left: true, right: true),
+        padding: padding(s: 'lr'),
         child: AppText(text: title, faded: true),
       ),
     );

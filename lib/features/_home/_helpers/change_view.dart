@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../_variables/features.dart';
 import '../../../_providers/providers.dart';
-import '../../../_widgets/layout/note_list.dart';
+import '../../../_widgets/layout/list_of_items.dart';
 import '../../_calendar/session_view.dart';
 import '../../chat/chat_view.dart';
 import '../../code/code_view.dart';

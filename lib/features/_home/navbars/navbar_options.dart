@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/helpers.dart';
 import '../../../_services/hive/local_storage_service.dart';
-import '../../../_widgets/abcs/menu/menu_item.dart';
+import '../../../_widgets/menu/menu_item.dart';
 
 class NavOptionToggle extends StatelessWidget {
   const NavOptionToggle({

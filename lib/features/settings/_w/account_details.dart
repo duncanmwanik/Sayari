@@ -6,8 +6,8 @@ import '../../../__styling/variables.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/list_tile.dart';
 import '../../../_widgets/others/text.dart';
-import '../../files/user_dp.dart';
 import '../../user/_helpers/set_user_data.dart';
+import '../../user/user_dp.dart';
 import '../edit_details.dart';
 import 'title.dart';
 

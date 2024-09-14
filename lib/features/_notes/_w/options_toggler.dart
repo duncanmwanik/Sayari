@@ -4,8 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../__styling/variables.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
-import '../../../_widgets/abcs/menu/menu_item.dart';
+import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/menu/menu_item.dart';
 
 class OptionsToggler extends StatelessWidget {
   const OptionsToggler({super.key});

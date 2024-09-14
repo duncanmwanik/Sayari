@@ -11,7 +11,7 @@ import '../../__styling/spacing.dart';
 import '../../_providers/providers.dart';
 import '../../_services/firebase/storage.dart';
 import '../../_services/hive/local_storage_service.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '../_spaces/_helpers/common.dart';
@@ -112,7 +112,7 @@ class ImageFile extends StatelessWidget {
               borderRadius: radius ?? borderRadiusSmall,
               padding: EdgeInsets.zero,
               child: Container(
-                padding: itemPaddingSmall(),
+                padding: paddingS(),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(radius ?? borderRadiusSmall)),
                 child: AppIcon(Icons.image, extraFaded: true),
               ),

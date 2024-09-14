@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../_variables/navigation.dart';
-import '../../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
+import '../../../_widgets/dialogs/confirmation_dialog.dart';
 
 Future<void> signOutUser() async {
   await showConfirmationDialog(

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/misc.dart';
+import '../../../_models/item.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/dialogs_sheets/app_dialog.dart';
+import '../../../_widgets/dialogs/app_dialog.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
@@ -17,68 +18,67 @@ import 'session_reminders.dart';
 import 'session_time.dart';
 import 'session_type.dart';
 
-Future showSessionOverviewDialog(String sessionDate, String sessionId, Map sessionData) {
-  updateSelectedDate(sessionDate);
-  state.input.setInputData(isNw: false, typ: feature.calendar.t, id: sessionId, dta: sessionData);
-  Map fileMap = getFiles(sessionData);
+Future showSessionOverviewDialog(Item item) {
+  updateSelectedDate(item.extra);
+  state.input.setInputData(isNw: false, typ: feature.calendar.t, id: item.id, dta: item.data);
+  Map fileMap = getFiles(item.data);
 
   return showAppDialog(
-    //
     smallTitlePadding: true,
     //
-    title: SessionType(sessionsType: sessionData['y'], sessionColor: sessionData['c']),
+    title: SessionType(item: item),
     //
     content: NoOverScroll(
       child: ListView(
         shrinkWrap: true,
-        padding: EdgeInsets.zero,
+        padding: paddingS(),
         children: [
           // title
-          AppText(size: title, text: sessionData['t'], fontWeight: FontWeight.w700),
+          AppText(size: title, text: item.data['t'], fontWeight: FontWeight.w700),
           tph(),
           // time
-          SessionTime(startTime: sessionData['s'], endTime: sessionData['e'] ?? ''),
+          SessionTime(startTime: item.data['s'], endTime: item.data['e'] ?? ''),
           // lead
-          if (sessionData['l'] != null) AppDivider(),
-          if (sessionData['l'] != null)
+          if (item.data['l'] != null) AppDivider(),
+          if (item.data['l'] != null)
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 AppIcon(Icons.person_rounded, size: normal, faded: true),
                 spw(),
-                Flexible(child: AppText(text: sessionData['l'] ?? '', faded: true)),
+                Flexible(child: AppText(text: item.data['l'] ?? '', faded: true)),
               ],
             ),
           // venue
-          if (sessionData['v'] != null) AppDivider(),
-          if (sessionData['v'] != null)
+          if (item.data['v'] != null) AppDivider(),
+          if (item.data['v'] != null)
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 AppIcon(Icons.location_on, size: normal, faded: true),
                 spw(),
-                Flexible(child: AppText(text: sessionData['v'] ?? '', faded: true)),
+                Flexible(child: AppText(text: item.data['v'] ?? '', faded: true)),
               ],
             ),
           // reminders
-          if (sessionData['r'] != null) AppDivider(),
-          if (sessionData['r'] != null) SessionReminders(reminderString: sessionData['r'] ?? ''),
+          if (item.data['r'] != null) AppDivider(),
+          if (item.data['r'] != null) SessionReminders(reminderString: item.data['r'] ?? ''),
           // description
-          if (sessionData['a'] != null) AppDivider(),
-          if (sessionData['a'] != null)
+          if (item.data['a'] != null) AppDivider(),
+          if (item.data['a'] != null)
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 AppIcon(Icons.subject_rounded, size: normal, faded: true),
                 spw(),
-                Flexible(child: AppText(text: sessionData['a'] ?? '', faded: true)),
+                Flexible(child: AppText(text: item.data['a'] ?? '', faded: true)),
               ],
             ),
           // files
           Visibility(
             visible: fileMap.isNotEmpty,
             child: Padding(
-              padding: itemPadding(top: true),
+              padding: padding(s: 't'),
               child: FileList(fileData: fileMap),
             ),
           ),
@@ -88,7 +88,7 @@ Future showSessionOverviewDialog(String sessionDate, String sessionId, Map sessi
     ),
     //
     actions: [
-      SessionOptions(sessionDate: sessionDate, sessionId: sessionId, sessionData: sessionData),
+      SessionOptions(item: item),
     ],
     //
   );

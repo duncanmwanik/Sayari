@@ -5,7 +5,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/layout/layout_button.dart';
 import '../../../_widgets/others/images.dart';
 import '../../../_widgets/others/text.dart';
@@ -21,7 +21,7 @@ class SharedHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: itemPaddingMedium(left: true, top: true, bottom: true),
+      padding: paddingM('ltb'),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: styler.borderColor())),
       ),
@@ -37,7 +37,7 @@ class SharedHeader extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                AppImage(imagePath: 'assets/images/sayari.png', size: 20),
+                AppImage('sayari.png', size: 20),
                 spw(),
                 AppText(faded: true, text: 'Sayari', size: normal, fontWeight: FontWeight.w800),
               ],
@@ -48,7 +48,7 @@ class SharedHeader extends StatelessWidget {
           if (feature.isSpaceT(state.share.type)) LayoutButton(),
           QuickThemeChanger(),
           tpw(),
-          SharedItemInfo(hasInfo: false),
+          SharedAction(hasInfo: false),
           spw(),
           //
         ],

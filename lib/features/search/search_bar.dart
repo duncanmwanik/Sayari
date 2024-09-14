@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
-import '../../_widgets/abcs/buttons/close_button.dart';
+import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/close_button.dart';
 import '../../_widgets/others/forms/input.dart';
 import '../../_widgets/others/icons.dart';
 import '_helpers/search.dart';
@@ -18,7 +18,7 @@ class SearchHeader extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        AppCloseButton(isX: true),
+        AppCloseButton(),
         spw(),
         Expanded(
           child: Padding(

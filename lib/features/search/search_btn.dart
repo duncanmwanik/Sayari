@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import 'search_sheet.dart';
 
@@ -11,7 +11,7 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPadding(right: true),
+      padding: paddingM('r'),
       child: AppButton(
         onPressed: () => showSearchSheet(),
         tooltip: 'Search',

@@ -6,7 +6,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/common/input.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/svg.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/common.dart';
@@ -20,7 +20,7 @@ class CodeSelector extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Padding(
-        padding: itemPaddingMedium(bottom: true),
+        padding: paddingM('b'),
         child: ValueListenableBuilder(
             valueListenable: Hive.box('${liveSpace()}_${feature.code.t}').listenable(),
             builder: (context, box, widget) {
@@ -34,7 +34,7 @@ class CodeSelector extends StatelessWidget {
                     children: [
                       Flexible(child: AppText(text: box.get(input.itemId, defaultValue: {'t': 'Select a file'})['t'])),
                       spw(),
-                      AppSvg(svgPath: dropDownSvg),
+                      AppSvg(dropDownSvg),
                     ],
                   ),
                 );

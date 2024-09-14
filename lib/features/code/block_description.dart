@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '_vars/descriptions.dart';
@@ -17,7 +17,7 @@ class BlockDescription extends StatelessWidget {
       menuItems: [
         //
         SingleChildScrollView(
-          padding: itemPadding(),
+          padding: padding(),
           child: HtmlText(text: blockDescriptions[type] ?? 'No info.'),
         ),
         //

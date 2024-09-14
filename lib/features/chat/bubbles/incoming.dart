@@ -5,7 +5,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/misc.dart';
 import '../../../_providers/providers.dart';
-import '../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/images.dart';
 import '../../../_widgets/others/text.dart';
 import '../../files/_helpers/helper.dart';
@@ -35,7 +35,7 @@ class IncomingMessageBubble extends StatelessWidget {
               onPressed: () {},
               noStyling: true,
               isRound: true,
-              child: AppImage(imagePath: 'assets/images/sayari.png', size: title),
+              child: AppImage('sayari.png', size: title),
             ),
             // message
             tpw(),
@@ -46,8 +46,8 @@ class IncomingMessageBubble extends StatelessWidget {
                 borderRadius: borderRadiusTinySmall,
                 color: Color.alphaBlend(styler.appColor(isImageTheme() ? 1 : (isDark() ? 0.1 : 0.5)), styler.appColor(1)),
                 child: Container(
-                  padding: itemPaddingMedium(),
-                  constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.6, minWidth: 100),
+                  padding: paddingM(),
+                  constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.7, minWidth: 100),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,

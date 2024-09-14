@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/helpers.dart';
 import '../../../_providers/providers.dart';
-import '../../abcs/buttons/buttons.dart';
+import '../../buttons/buttons.dart';
 import '../icons.dart';
 
 class DataInput extends StatefulWidget {
@@ -116,6 +116,7 @@ class _DataInputState extends State<DataInput> {
         isDense: widget.isDense,
         filled: widget.filled,
         fillColor: widget.color ?? styler.appColor(1),
+        focusColor: widget.color ?? styler.appColor(1),
         hoverColor: widget.hoverColor ?? styler.appColor(0.5),
         border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(widget.borderRadius)),
         prefixIcon: widget.prefix,

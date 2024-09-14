@@ -15,7 +15,7 @@ class SfCalendar extends StatelessWidget {
       this.initialDate = '',
       this.initialDates = const [],
       this.isMultiple = false,
-      this.isWebCalendar = false,
+      this.isOverview = false,
       this.isBookingCalendar = false,
       this.selectedDates = const [],
       this.onSelect,
@@ -24,7 +24,7 @@ class SfCalendar extends StatelessWidget {
   final String initialDate;
   final List initialDates;
   final bool isMultiple;
-  final bool isWebCalendar;
+  final bool isOverview;
   final bool isBookingCalendar;
   final List selectedDates;
   final Function(DateTime date)? onSelect;
@@ -37,12 +37,12 @@ class SfCalendar extends StatelessWidget {
       String initial = initialDate.isNotEmpty ? initialDate : date.selectedDate;
 
       return Container(
-        height: isWebCalendar ? 220 : 80.w,
-        width: isWebCalendar ? 220 : 80.w,
+        height: isOverview ? 220 : 80.w,
+        width: isOverview ? 220 : 80.w,
         constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
-        margin: isWebCalendar ? itemPaddingSmall() : null,
-        padding: isWebCalendar ? null : (isBookingCalendar ? itemPadding() : itemPaddingSmall()),
-        decoration: isWebCalendar
+        margin: isOverview ? paddingS() : null,
+        padding: isOverview ? null : (isBookingCalendar ? padding() : paddingS()),
+        decoration: isOverview
             ? null
             : BoxDecoration(
                 color: color ?? (isBookingCalendar ? styler.tertiaryColor() : null),
@@ -51,15 +51,16 @@ class SfCalendar extends StatelessWidget {
               ),
         child: SfDateRangePicker(
           backgroundColor: transparent,
-          showNavigationArrow: true, view: DateRangePickerView.month,
+          showNavigationArrow: true,
+          view: DateRangePickerView.month,
           // ---------- header
           headerStyle: DateRangePickerHeaderStyle(
             backgroundColor: transparent,
             textAlign: TextAlign.center,
             textStyle: TextStyle(
               fontWeight: FontWeight.w700,
-              fontSize: medium,
-              color: styler.textColor(faded: isWebCalendar),
+              fontSize: isOverview ? mediumSmall : medium,
+              color: styler.textColor(faded: isOverview),
             ),
           ),
           // ---------- month view: weekday title
@@ -76,12 +77,12 @@ class SfCalendar extends StatelessWidget {
           // ---------- month cells
           monthCellStyle: DateRangePickerMonthCellStyle(
             textStyle: TextStyle(
-              fontSize: isWebCalendar ? tiny : null,
-              fontWeight: isWebCalendar ? FontWeight.w100 : FontWeight.w400,
+              fontSize: isOverview ? tiny : null,
+              fontWeight: isOverview ? FontWeight.w100 : FontWeight.w400,
               color: styler.textColor(),
             ),
             todayTextStyle: TextStyle(
-              fontSize: isWebCalendar ? tiny : null,
+              fontSize: isOverview ? tiny : null,
               fontWeight: FontWeight.w700,
               color: styler.textColor(),
             ),
@@ -89,17 +90,27 @@ class SfCalendar extends StatelessWidget {
               border: Border.all(color: styler.accentColor()),
               borderRadius: BorderRadius.circular(borderRadiusSmall),
             ),
-            weekendDatesDecoration: isWebCalendar
+            weekendDatesDecoration: isOverview
                 ? null
                 : BoxDecoration(
                     color: styler.appColor(styler.isDark ? 0.3 : 1),
                     borderRadius: BorderRadius.circular(borderRadiusSmall),
                   ),
+            trailingDatesTextStyle: TextStyle(
+              fontSize: isOverview ? tiny : null,
+              fontWeight: isOverview ? FontWeight.w100 : FontWeight.w400,
+              color: styler.textColor(extraFaded: true),
+            ),
+            leadingDatesTextStyle: TextStyle(
+              fontSize: isOverview ? tiny : null,
+              fontWeight: isOverview ? FontWeight.w100 : FontWeight.w400,
+              color: styler.textColor(extraFaded: true),
+            ),
           ),
           // ---------- selected cells
           selectionTextStyle: TextStyle(
-            fontSize: isWebCalendar ? tiny : null,
-            fontWeight: isWebCalendar ? FontWeight.w500 : FontWeight.w700,
+            fontSize: isOverview ? tiny : null,
+            fontWeight: isOverview ? FontWeight.w500 : FontWeight.w700,
             color: white,
           ),
           selectionShape: DateRangePickerSelectionShape.rectangle,
@@ -108,6 +119,7 @@ class SfCalendar extends StatelessWidget {
           selectionColor: styler.accentColor(),
           // ---------- initial selected dates
           initialSelectedDate: (initial.isNotEmpty) ? DateTime.parse(initial) : null,
+          initialDisplayDate: (initial.isNotEmpty) ? DateTime.parse(initial) : null,
           initialSelectedDates: initialDates.isNotEmpty
               ? List.generate(
                   initialDates.length,
@@ -121,7 +133,7 @@ class SfCalendar extends StatelessWidget {
               onSelect!(dates.value);
             }
             // For web calendar, we jump to date
-            else if (isWebCalendar) {
+            else if (isOverview) {
               jumpToDate(dates.value);
             }
             // Else, we select dates

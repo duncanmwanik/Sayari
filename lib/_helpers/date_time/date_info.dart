@@ -4,7 +4,7 @@ import 'misc.dart';
 
 String getDayInfo(String date) {
   try {
-    return isCurrentYear(date) ? getDateFullNoYear(date) : getDateFull(date);
+    return getDateFull(date);
   } catch (e) {
     return date;
   }
@@ -71,26 +71,29 @@ String getDateInfoForReminder(String date) {
 }
 
 class DateInfo {
-  DateInfo(this.dateTime);
+  final String date;
 
-  final String dateTime;
+  DateInfo(this.date) {
+    dateTime = DateTime.parse(date);
+  }
 
-  String d() => dateTime;
-  DateTime date() => DateTime.parse(dateTime);
+  late DateTime dateTime;
   DateTime now = DateTime.now();
+  bool isToday_ = false;
 
-  int day() => date().day;
-  int month() => date().month;
-  int year() => date().year;
+  int day() => dateTime.day;
+  int month() => dateTime.month;
+  int year() => dateTime.year;
 
-  bool isToday() => date().day == now.day && date().month == now.month && date().year == now.year;
+  bool isToday() => dateTime.day == now.day && dateTime.month == now.month && dateTime.year == now.year;
   bool isCurrentMonth() => state.dateTime.selectedMonth == now.month && state.dateTime.selectedYear == now.year;
   bool isCurrentYear() => state.dateTime.selectedYear == now.year;
-  bool isSelectedMonth(String refDate) => date().month == DateTime.parse(refDate).month;
+  bool isSelectedMonth(String refDate) => dateTime.month == DateTime.parse(refDate).month;
 
-  bool isFuture() => date().isAfter(now.add(const Duration(days: 1)));
-  bool isPast() => date().isBefore(now.subtract(const Duration(days: 1)));
+  bool isFuture() => dateTime.isAfter(now.add(const Duration(days: 1)));
+  bool isPast() => dateTime.isBefore(now.subtract(const Duration(days: 1)));
 
-  String dayString() => date().day.toString();
-  String weekday() => weekDaysList[date().weekday == 7 ? 0 : date().weekday].shortName;
+  String dayString() => dateTime.day.toString();
+  String monthString() => monthNamesListShort[dateTime.month - 1];
+  String weekday() => weekDaysList[dateTime.weekday == 7 ? 0 : dateTime.weekday].shortName;
 }

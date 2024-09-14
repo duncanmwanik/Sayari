@@ -3,7 +3,7 @@ import '../../../_helpers/pending/pending_actions.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/local_storage_service.dart';
-import '../../../_widgets/abcs/dialogs_sheets/confirmation_dialog.dart';
+import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../_spaces/_helpers/checks_space.dart';
 import '../../_spaces/_helpers/select_space.dart';

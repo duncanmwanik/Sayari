@@ -4,9 +4,9 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_variables/colors.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
-import '../../_widgets/abcs/buttons/color_button.dart';
-import '../../_widgets/abcs/menu/menu_item.dart';
+import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/color_button.dart';
+import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/checkbox.dart';
 import '../../_widgets/others/color_menu.dart';
 import '../../_widgets/others/forms/input.dart';
@@ -78,7 +78,7 @@ class _FlagItemState extends State<Flag> {
     Color? textColor = widget.isNewFlag ? null : backgroundColors[flagColor]!.textColor;
 
     return Padding(
-      padding: itemPaddingSmall(left: true, right: true, bottom: true),
+      padding: paddingS('lrb'),
       child: Column(
         children: [
           //
@@ -88,7 +88,7 @@ class _FlagItemState extends State<Flag> {
               widget.isNewFlag || isEdit
                   ? Container(
                       width: 25,
-                      padding: itemPaddingSmall(bottom: true),
+                      padding: paddingS('b'),
                       child: isEdit
                           ? ColorButton(
                               isSmall: true,
@@ -128,7 +128,7 @@ class _FlagItemState extends State<Flag> {
                     textColor: textColor,
                     borderRadius: borderRadiusTinySmall,
                     color: widget.isNewFlag ? (isEdit ? null : transparent) : backgroundColors[flagColor]!.color,
-                    contentPadding: isEdit || widget.isNewFlag ? itemPadding() : itemPaddingMedium(),
+                    contentPadding: isEdit || widget.isNewFlag ? padding() : paddingM(),
                   ),
                 ),
               ),

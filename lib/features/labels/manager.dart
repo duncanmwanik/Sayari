@@ -5,7 +5,7 @@ import '../../__styling/spacing.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
-import '../../_widgets/abcs/dialogs_sheets/dialog_buttons.dart';
+import '../../_widgets/dialogs/dialog_buttons.dart';
 import '../_spaces/_helpers/checks_space.dart';
 import '../_spaces/_helpers/common.dart';
 import 'label.dart';

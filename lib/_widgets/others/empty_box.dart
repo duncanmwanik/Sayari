@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/spacing.dart';
-import '../abcs/buttons/buttons.dart';
+import '../buttons/buttons.dart';
 import 'images.dart';
 import 'text.dart';
 
@@ -31,7 +31,7 @@ class EmptyBox extends StatelessWidget {
             // if (isSpaced) spph(),
             // if (isSpaced) spph(),
             //
-            AppImage(imagePath: 'assets/images/sayari.png', size: size ?? 15.h),
+            AppImage('sayari.png', size: size ?? 15.h),
             //
             sph(),
             //

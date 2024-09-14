@@ -6,7 +6,7 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/colors.dart';
-import '../abcs/buttons/buttons.dart';
+import '../buttons/buttons.dart';
 import 'color_menu.dart';
 import 'others/divider.dart';
 import 'text.dart';
@@ -19,7 +19,7 @@ class QuickThemeChanger extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: itemPadding(right: rightPadding),
+      padding: rightPadding ? paddingM('r') : zeroPadding,
       child: AppButton(
         menuWidth: 300,
         menuItems: themeMenu(),

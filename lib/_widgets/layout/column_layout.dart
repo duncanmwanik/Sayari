@@ -8,6 +8,7 @@ import '../../_models/item.dart';
 import '../../_providers/providers.dart';
 import '../../_services/hive/get_data.dart';
 import '../../_variables/features.dart';
+import '../../features/_notes/_helpers/order_items.dart';
 import '../../features/_notes/note.dart';
 import '../others/others/snap_scroll_physics.dart';
 import 'orderables/background.dart';
@@ -32,7 +33,14 @@ class ColumnLayout extends StatelessWidget {
             shrinkWrap: true,
             buildDefaultDragHandles: false,
             proxyDecorator: (child, index, animation) => proxyDecorator(child, index, animation),
-            onReorder: (oldIndex, newIndex) {},
+            onReorder: (oldIndex, newIndex) => orderItems(
+              type: feature.items.t,
+              oldItemId: state.data.ids[oldIndex],
+              newItemId: state.data.ids[newIndex],
+              itemsLength: state.data.ids.length,
+              oldIndex: oldIndex,
+              newIndex: newIndex,
+            ),
             itemCount: state.data.ids.length,
             itemBuilder: (ctx, index) {
               String itemId = state.data.ids[index];

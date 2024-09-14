@@ -4,7 +4,7 @@ import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_helpers/date_time/date_info.dart';
 import '../../../../_providers/providers.dart';
-import '../../../../_widgets/abcs/buttons/buttons.dart';
+import '../../../../_widgets/buttons/buttons.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 

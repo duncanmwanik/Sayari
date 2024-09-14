@@ -10,7 +10,7 @@ import '../../../../__styling/variables.dart';
 import '../../__styling/spacing.dart';
 import '../../_providers/providers.dart';
 import '../../_services/hive/local_storage_service.dart';
-import '../../_widgets/abcs/buttons/buttons.dart';
+import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '_helpers/download.dart';
@@ -142,7 +142,7 @@ class ImageFile extends StatelessWidget {
                         borderRadius: radius ?? borderRadiusSmall,
                         padding: EdgeInsets.zero,
                         child: Container(
-                          padding: itemPaddingSmall(),
+                          padding: paddingS(),
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(radius ?? borderRadiusSmall)),
                           child: Center(child: CircularProgressIndicator(color: styler.appColor(2), strokeWidth: 2)),
                         ),
@@ -156,7 +156,7 @@ class ImageFile extends StatelessWidget {
               borderRadius: radius ?? borderRadiusSmall,
               padding: EdgeInsets.zero,
               child: Container(
-                padding: itemPaddingSmall(),
+                padding: paddingS(),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(radius ?? borderRadiusSmall)),
                 child: showLoading
                     ? Center(child: CircularProgressIndicator(color: styler.appColor(2), strokeWidth: 2))
