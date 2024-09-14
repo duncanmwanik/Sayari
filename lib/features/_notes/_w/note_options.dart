@@ -26,7 +26,7 @@ class NoteOptions extends StatelessWidget {
         child: Align(
           alignment: Alignment.topLeft,
           child: Padding(
-            padding: isSmallPC() ? paddingS('tb') : paddingS('b'),
+            padding: paddingM('b'),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(

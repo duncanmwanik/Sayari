@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/spacing.dart';
 import '../../_providers/common/views.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
@@ -38,7 +37,6 @@ class ListOfItems extends StatelessWidget {
               children: [
                 //
                 if (!isPublish) NoteOptions(),
-                if (!isPublish) tph(),
                 //
                 Expanded(
                   child: (state.data.isEmpty())
