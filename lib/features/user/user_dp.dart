@@ -16,7 +16,15 @@ import '_helpers/set_user_data.dart';
 
 class UserDp extends StatelessWidget {
   const UserDp(
-      {super.key, this.isTiny = false, this.noViewer = false, this.userId, this.tooltip, this.size, this.onPressed, this.menuItems});
+      {super.key,
+      this.isTiny = false,
+      this.noViewer = false,
+      this.userId,
+      this.tooltip,
+      this.size,
+      this.onPressed,
+      this.menuItems,
+      this.hoverColor});
 
   final bool isTiny;
   final bool noViewer;
@@ -25,6 +33,7 @@ class UserDp extends StatelessWidget {
   final double? size;
   final Function()? onPressed;
   final List<Widget>? menuItems;
+  final Color? hoverColor;
 
   @override
   Widget build(BuildContext context) {
@@ -40,21 +49,21 @@ class UserDp extends StatelessWidget {
               return file != null
                   ? AppButton(
                       tooltip: tooltip,
-                      onPressed: menuItems != null
-                          ? null
-                          : onPressed ??
-                              () => noViewer
-                                  ? showImageViewer(
-                                      images: {'dp': 'dp.jpg'},
-                                      onDownload: () async => await downloadFile(
-                                        db: 'users',
-                                        fileId: 'dp',
-                                        fileName: 'dp.jpg',
-                                        cloudFilePath: '${liveUser()}/dp.jpg',
-                                        downloadPath: 'dp.jpg',
-                                      ),
-                                    )
-                                  : null,
+                      onPressed: onPressed ??
+                          (noViewer
+                              ? null
+                              : () => showImageViewer(
+                                    images: {'dp': 'dp.jpg'},
+                                    onDownload: () async => await downloadFile(
+                                      db: 'users',
+                                      fileId: 'dp',
+                                      fileName: 'dp.jpg',
+                                      cloudFilePath: '${liveUser()}/dp.jpg',
+                                      downloadPath: 'dp.jpg',
+                                    ),
+                                  )),
+                      color: hoverColor,
+                      hoverColor: hoverColor,
                       menuItems: menuItems ??
                           (isTiny || noViewer
                               ? []

@@ -4,9 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/_common/global.dart';
-import '../../_helpers/_common/navigation.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
@@ -31,10 +29,21 @@ class LabelList extends StatelessWidget {
       String type_ = type ?? input.type;
       List labelList = getSplitList(labels ?? state.input.data['l']);
 
+      Future<void> removeLabel(String label) async {
+        await Future.delayed(Duration.zero);
+        labelList.remove(label);
+
+        if (itemId != null) {
+          await editItemExtras(type: type_, itemId: itemId!, key: 'l', value: getJoinedList(labelList));
+        } else {
+          state.input.update(action: 'add', key: 'l', value: getJoinedList(labelList));
+        }
+      }
+
       return Visibility(
         visible: labelList.isNotEmpty,
         child: Padding(
-          padding: paddingM('b'),
+          padding: paddingM('t'),
           child: Wrap(
               spacing: tinyWidth(),
               runSpacing: tinyWidth(),
@@ -44,7 +53,6 @@ class LabelList extends StatelessWidget {
                 if (Hive.box('${liveSpace()}_${feature.labels.t}').containsKey(label)) {
                   // label
                   return AppButton(
-                    menuWidth: 200,
                     menuItems: labelsMenu(
                       isSelection: true,
                       alreadySelected: labelList,
@@ -54,24 +62,14 @@ class LabelList extends StatelessWidget {
                             : state.input.update(action: 'add', key: 'l', value: getJoinedList(newLabels));
                       },
                     ),
-                    borderRadius: borderRadiusLarge,
-                    color: hasItemColor(bgColor) ? Colors.white24 : null,
+                    color: hasColour(bgColor) ? Colors.white24 : null,
                     smallVerticalPadding: true,
                     child: AppText(size: 11, text: label, bgColor: bgColor, fontWeight: FontWeight.bold),
                   );
                 }
                 // if label is missing
                 else {
-                  onBuildOperation(() async {
-                    labelList.remove(label);
-
-                    if (itemId != null) {
-                      await editItemExtras(type: type_, itemId: itemId!, key: 'l', value: getJoinedList(labelList));
-                    } else {
-                      state.input.update(action: 'add', key: 'l', value: getJoinedList(labelList));
-                    }
-                  });
-
+                  removeLabel(label);
                   return NoWidget();
                 }
               })),

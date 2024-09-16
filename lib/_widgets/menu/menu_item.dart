@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
@@ -9,20 +8,23 @@ import '../others/icons.dart';
 import '../others/text.dart';
 
 class MenuItem extends StatefulWidget {
-  const MenuItem(
-      {super.key,
-      required this.label,
-      this.onTap,
-      this.menuItems,
-      this.leading,
-      this.trailing,
-      this.trailingColor,
-      this.hoverColor,
-      this.leadingSize,
-      this.trailingSize,
-      this.faded = false,
-      this.isSelected = false,
-      this.pop = true});
+  const MenuItem({
+    super.key,
+    required this.label,
+    this.onTap,
+    this.menuItems,
+    this.leading,
+    this.trailing,
+    this.trailingColor,
+    this.hoverColor,
+    this.leadingSize,
+    this.trailingSize,
+    this.smallHeight = false,
+    this.faded = false,
+    this.isSelected = false,
+    this.center = false,
+    this.pop = true,
+  });
 
   final String label;
   final IconData? leading;
@@ -33,8 +35,10 @@ class MenuItem extends StatefulWidget {
   final Color? hoverColor;
   final double? leadingSize;
   final double? trailingSize;
+  final bool smallHeight;
   final bool faded;
   final bool isSelected;
+  final bool center;
   final bool pop;
 
   @override
@@ -58,7 +62,12 @@ class _MenuItemState extends State<MenuItem> {
             : null,
         menuItems: widget.menuItems,
         popMenu: widget.menuItems != null,
-        padding: EdgeInsets.only(left: 8, top: kIsWeb ? 5 : 7, bottom: kIsWeb ? 5 : 7, right: widget.trailing != null ? 8 : 12),
+        padding: padding(
+          l: 8,
+          t: widget.smallHeight ? 1 : 6,
+          b: widget.smallHeight ? 1 : 6,
+          r: widget.trailing != null ? 8 : 12,
+        ),
         borderRadius: borderRadiusTinySmall,
         hoverColor: widget.hoverColor,
         noStyling: true,
@@ -79,6 +88,7 @@ class _MenuItemState extends State<MenuItem> {
                 fontWeight: widget.isSelected ? FontWeight.w800 : FontWeight.w700,
                 color: widget.isSelected ? styler.accentColor() : null,
                 extraFaded: widget.faded,
+                textAlign: widget.center ? TextAlign.center : null,
               ),
             ),
             if (widget.trailing != null) spw(),

@@ -16,7 +16,7 @@ class ColorButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool hasColor = hasItemColor(bgColor);
+    bool hasColor = hasColour(bgColor);
 
     return AppButton(
       tooltip: 'Color',

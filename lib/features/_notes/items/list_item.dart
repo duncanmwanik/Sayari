@@ -7,7 +7,7 @@ import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/helpers.dart';
-import 'list_items_actions.dart';
+import 'item_actions.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({super.key, required this.item});
@@ -24,8 +24,7 @@ class ListItem extends StatelessWidget {
           onPressed: () => prepareNoteForEdit(item),
           noStyling: true,
           hoverColor: styler.appColor(1),
-          borderRadius: borderRadiusSmall,
-          padding: padding(t: 5, b: 5, l: 10, r: 5),
+          padding: padding(t: 8, b: 8, l: 8, r: 8),
           child: Row(
             children: [
               //
@@ -49,7 +48,7 @@ class ListItem extends StatelessWidget {
               //
               spw(),
               //
-              ListActions(item: item),
+              ItemActions(item: item, isPersistent: true),
               //
             ],
           ),

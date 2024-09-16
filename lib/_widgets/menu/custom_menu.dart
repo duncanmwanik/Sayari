@@ -187,17 +187,16 @@ class _PopupMenu<T> extends StatelessWidget {
           return FadeTransition(
             opacity: opacity.animate(route.animation!),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(borderRadiusSmall + 1),
+              borderRadius: BorderRadius.circular(borderRadiusTinySmall + 1),
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
                 child: Material(
                   elevation: 0,
                   clipBehavior: Clip.antiAlias,
                   type: MaterialType.card,
-                  color: transparent,
-                  // color: isImageTheme() ? white.withOpacity(0.1) : styler.secondaryColor(),
+                  color: styler.secondaryColor().withOpacity(0.5),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(borderRadiusSmall + 1),
+                    borderRadius: BorderRadius.circular(borderRadiusTinySmall + 1),
                     side: BorderSide(color: Colors.grey.withOpacity(styler.isDark ? 0.1 : 0.2), width: styler.isDark ? 1 : 1.5),
                   ),
                   shadowColor: route.shadowColor ?? popupMenuTheme.shadowColor ?? defaults.shadowColor,

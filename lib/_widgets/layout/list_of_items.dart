@@ -11,7 +11,6 @@ import '../others/empty_box.dart';
 import 'column_layout.dart';
 import 'grid_layout.dart';
 import 'list_layout.dart';
-import 'row_layout.dart';
 
 class ListOfItems extends StatelessWidget {
   const ListOfItems({super.key, this.data});
@@ -33,7 +32,7 @@ class ListOfItems extends StatelessWidget {
 
             return Column(
               mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 //
                 if (!isPublish) NoteOptions(),
@@ -45,9 +44,7 @@ class ListOfItems extends StatelessWidget {
                           ? ColumnLayout()
                           : views.isList()
                               ? ListLayout()
-                              : views.isRow()
-                                  ? RowLayout()
-                                  : GridLayout(),
+                              : GridLayout(),
                 ),
                 //
               ],

@@ -13,8 +13,8 @@ class AppDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: color ?? Colors.grey,
-      thickness: thickness ?? (styler.isDark && !isImageTheme() ? 0.08 : 0.1),
+      color: color ?? (isDark() ? white.withOpacity(0.7) : black.withOpacity(0.6)),
+      thickness: thickness ?? 0.1,
       height: height,
     );
   }

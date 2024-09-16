@@ -65,7 +65,7 @@ class AppStyles {
 
   Color primaryColor() {
     return isDark
-        ? isBlackTheme()
+        ? isBlack()
             ? Colors.black
             : AppColors.darkPrimary
         : AppColors.lightPrimary;
@@ -80,9 +80,9 @@ class AppStyles {
   }
 
   Color navColor() {
-    return isImageTheme()
+    return isImage()
         ? transparent
-        : isBlackTheme()
+        : isBlack()
             ? black
             : isDark
                 ? AppColors.darkPrimary
@@ -100,7 +100,7 @@ class AppStyles {
   // -------------------------- Text Colors
 
   Color textColor({bool faded = false, bool extraFaded = false, String? bgColor}) {
-    if (hasItemColor(bgColor)) {
+    if (hasColour(bgColor)) {
       return AppColors.lightText;
     } else {
       if (extraFaded) return isDark ? AppColors.darkTextExtraFaded : AppColors.lightTextExtraFaded;
@@ -118,7 +118,7 @@ class AppStyles {
   }
 
   Color listItemColor({String? bgColor}) {
-    if (hasItemColor(bgColor)) {
+    if (hasColour(bgColor)) {
       return Colors.white.withOpacity(0.9);
     } else {
       return transparent;
@@ -136,7 +136,7 @@ class AppStyles {
   }
 
   Color reminderOverviewColor([String? bgColor]) {
-    if (hasItemColor(bgColor)) {
+    if (hasColour(bgColor)) {
       return Colors.black12;
     } else {
       return isDark ? Colors.white10 : Colors.black12;
@@ -153,7 +153,7 @@ class AppStyles {
       )
     ];
 
-    return isDark || isImageTheme() ? null : shadow;
+    return isDark || isImage() ? null : shadow;
   }
 
   List<BoxShadow>? itemShadow([bool isHovered = true]) {
@@ -172,7 +172,7 @@ class AppStyles {
   // -------------------------- Borders
   BoxBorder? itemBorder(bool isSelected, bool isHovered) {
     double w = (isDark ? 0.3 : 0.7);
-    Color color = isImageTheme()
+    Color color = isImage()
         ? transparent
         : isDark
             ? Colors.grey.withOpacity(isHovered ? 0.5 : 0.2)
@@ -182,8 +182,8 @@ class AppStyles {
 
   BorderSide lightSpaceBorder() {
     return BorderSide(
-      color: Colors.grey.withOpacity(isDark ? 0.15 : (isImageTheme() ? 1 : 0.3)),
-      width: isImageTheme() ? 1.5 : (isDark ? 0.7 : 1),
+      color: Colors.grey.withOpacity(isDark ? 0.15 : (isImage() ? 1 : 0.3)),
+      width: isImage() ? 1.5 : (isDark ? 0.7 : 1),
     );
   }
 
@@ -191,9 +191,9 @@ class AppStyles {
     if (bgColor != null && bgColor.isNotEmpty && bgColor != 'x') {
       return isShadeColor ? backgroundColors[bgColor]!.shadeColor : backgroundColors[bgColor]!.color;
     } else {
-      return isImageTheme()
+      return isImage()
           ? white.withOpacity(isHovered ? 0.125 : 0.1)
-          : isBlackTheme()
+          : isBlack()
               ? transparent
               : isDark
                   ? styler.appColor(0.5)

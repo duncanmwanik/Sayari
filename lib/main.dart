@@ -26,6 +26,8 @@ Future<void> main() async {
     await initializeNotifications();
     usePathUrlStrategy();
 
+    // printThis(settingBox.toMap());
+
     runApp(const MyApp());
   }, (error, stackTrace) => handleUnhandledExceptions(error, stackTrace));
 }

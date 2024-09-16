@@ -8,17 +8,27 @@ import '../../_helpers/date_time/misc.dart';
 import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/dialogs/dialog_buttons.dart';
 import '../../_widgets/dialogs/dialog_select_date.dart';
+import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/divider.dart';
 import '../../_widgets/others/svg.dart';
 import '../../_widgets/others/text.dart';
 import '../../_widgets/others/toast.dart';
 
-List<Widget> reminderMenu({String? reminder, Function(String newReminder)? onSet, Function()? onRemove}) {
-  // onBuildOperation(() => state.reminders.updateBothDateAndTime(reminder));
-  // state.reminders.updateBothDateAndTime(reminder);
-
-  return [MyWidget(reminder: reminder, onSet: onSet, onRemove: onRemove)];
+List<Widget> reminderMenu({
+  String? reminder,
+  String title = '',
+  Function(String newReminder)? onSet,
+  Function()? onRemove,
+}) {
+  return [
+    //
+    if (title.isNotEmpty) MenuItem(label: title),
+    if (title.isNotEmpty) PopupMenuDivider(height: smallHeight()),
+    //
+    MyWidget(reminder: reminder, onSet: onSet, onRemove: onRemove),
+    //
+  ];
 }
 
 class MyWidget extends StatefulWidget {

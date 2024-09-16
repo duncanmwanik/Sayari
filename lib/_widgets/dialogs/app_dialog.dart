@@ -48,7 +48,7 @@ Future<dynamic> showAppDialog({
             contentPadding: EdgeInsets.zero,
             //
             content: ClipRRect(
-              borderRadius: BorderRadius.circular(borderRadiusMediumSmall),
+              borderRadius: BorderRadius.circular(borderRadiusTinySmall),
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
                 child: Container(

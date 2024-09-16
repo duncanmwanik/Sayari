@@ -4,10 +4,15 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_variables/colors.dart';
+import '../menu/menu_item.dart';
 import 'icons.dart';
 
-List<Widget> colorMenu({String? selectedColor, Function(String newColor)? onSelect}) {
+List<Widget> colorMenu({String? selectedColor, String title = '', Function(String newColor)? onSelect}) {
   return [
+    //
+    if (title.isNotEmpty) MenuItem(label: title),
+    if (title.isNotEmpty) PopupMenuDivider(height: smallHeight()),
+    //
     Wrap(
       spacing: tinyWidth(),
       runSpacing: tinyWidth(),

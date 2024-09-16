@@ -44,7 +44,7 @@ class IncomingMessageBubble extends StatelessWidget {
                 hoverColor: transparent,
                 padding: EdgeInsets.zero,
                 borderRadius: borderRadiusTinySmall,
-                color: Color.alphaBlend(styler.appColor(isImageTheme() ? 1 : (isDark() ? 0.1 : 0.5)), styler.appColor(1)),
+                color: Color.alphaBlend(styler.appColor(isImage() ? 1 : (isDark() ? 0.1 : 0.5)), styler.appColor(1)),
                 child: Container(
                   padding: paddingM(),
                   constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.7, minWidth: 100),

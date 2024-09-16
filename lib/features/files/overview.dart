@@ -9,21 +9,21 @@ import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/text.dart';
-import '../_notes/items/pinned.dart';
+import '../_notes/items/item_actions.dart';
 import '_helpers/download.dart';
 import '_helpers/helper.dart';
 import 'viewer.dart';
 
 class ImageOverview extends StatelessWidget {
-  const ImageOverview({super.key, this.item, this.isInput = false});
+  const ImageOverview({super.key, this.item = const Item(), this.isInput = false});
 
-  final Item? item;
+  final Item item;
   final bool isInput;
 
   @override
   Widget build(BuildContext context) {
-    String fileId = item != null ? item!.coverId() : state.input.data['w'] ?? '';
-    String fileName = item != null ? item!.coverName() : state.input.data[fileId] ?? '';
+    String fileId = item.exists() ? item.coverId() : state.input.data['w'] ?? '';
+    String fileName = item.exists() ? item.coverName() : state.input.data[fileId] ?? '';
 
     return Visibility(
       visible: fileId.isNotEmpty,
@@ -129,13 +129,10 @@ class ImageOverview extends StatelessWidget {
                 ),
               ),
             // pinned icon
-            if (item != null && !isInput)
+            if (!isInput)
               Align(
                 alignment: Alignment.topRight,
-                child: Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: PinnedIcon(item: item!),
-                ),
+                child: ItemActions(item: item),
               ),
             // /
           ],

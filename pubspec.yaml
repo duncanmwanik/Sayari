@@ -33,7 +33,6 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   responsive_sizer: ^3.1.1
   syncfusion_flutter_datepicker: ^25.1.39
-  reorderable_grid: ^1.0.10
   reorderables: ^0.6.0
   styled_text: ^8.1.0
   just_the_tooltip: ^0.0.12

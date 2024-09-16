@@ -16,9 +16,9 @@ void changeStatusAndNavigationBarColor(String theme, {bool isSecondary = false})
       statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
       statusBarColor: isSecondary
           ? styler.secondaryColor()
-          : isImageTheme()
+          : isImage()
               ? styler.appColor(0)
-              : isBlackTheme()
+              : isBlack()
                   ? black
                   : isDark
                       ? AppColors.darkPrimary
@@ -27,9 +27,9 @@ void changeStatusAndNavigationBarColor(String theme, {bool isSecondary = false})
       systemNavigationBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
       systemNavigationBarColor: isSecondary
           ? styler.secondaryColor()
-          : isImageTheme()
+          : isImage()
               ? styler.appColor(7)
-              : isBlackTheme()
+              : isBlack()
                   ? black
                   : isDark
                       ? AppColors.darkPrimary
@@ -40,8 +40,8 @@ void changeStatusAndNavigationBarColor(String theme, {bool isSecondary = false})
 }
 
 bool isDark() => 'dark' == state.theme.themeType;
-bool isImageTheme() => !['dark', 'light', 'black'].contains(state.theme.themeImage);
-bool isBlackTheme() => 'black' == state.theme.themeImage;
+bool isImage() => !['dark', 'light', 'black'].contains(state.theme.themeImage);
+bool isBlack() => 'black' == state.theme.themeImage;
 
 String getThemeImage(String themeImage, {bool isSmall = false}) {
   return 'assets/images/$themeImage${isSmall ? '_small' : ''}.jpg';
@@ -67,7 +67,7 @@ bool getThemeAsBoolean(String theme) {
   return isDark;
 }
 
-bool hasItemColor(String? bgColor) {
+bool hasColour(String? bgColor) {
   if (bgColor == null || bgColor == 'x' || bgColor.isEmpty || !backgroundColors.containsKey(bgColor)) {
     return false;
   } else {

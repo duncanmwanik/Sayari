@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:reorderables/reorderables.dart';
 
+import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
-import '../../_helpers/_common/ui.dart';
 import '../../_models/item.dart';
 import '../../_providers/providers.dart';
 import '../../_services/hive/get_data.dart';
@@ -14,33 +15,33 @@ class ListLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ReorderableListView.builder(
-      shrinkWrap: true,
-      physics: shareScrollPhysics(),
-      buildDefaultDragHandles: false,
-      padding: EdgeInsets.only(bottom: smallHeightPlaceHolder()),
+    return ReorderableWrap(
+      key: UniqueKey(),
+      maxMainAxisCount: 1,
+      alignment: WrapAlignment.center,
+      padding: padding(
+        t: isSmallPC() ? mediumHeight() : null,
+        b: largeHeightPlaceHolder(),
+      ),
       onReorder: (oldIndex, newIndex) => orderItems(
-          type: feature.items.t,
-          oldItemId: state.data.ids[oldIndex],
-          newItemId: state.data.ids[newIndex],
-          itemsLength: state.data.ids.length,
-          oldIndex: oldIndex,
-          newIndex: newIndex,
-          applyIndexFix: true),
-      itemCount: state.data.ids.length,
-      itemBuilder: (context, index) {
-        Item item = Item(
-          type: feature.items.t,
-          id: state.data.ids[index],
-          data: storage(feature.items.t).get(state.data.ids[index], defaultValue: {}),
-        );
+        type: feature.items.t,
+        oldItemId: state.data.ids[oldIndex],
+        newItemId: state.data.ids[newIndex],
+        itemsLength: state.data.ids.length,
+        oldIndex: oldIndex,
+        newIndex: newIndex,
+      ),
+      children: List.generate(state.data.ids.length, (index) {
+        String itemId = state.data.ids[index];
+        Map itemData = storage(feature.items.t).get(itemId, defaultValue: {});
+        Item item = Item(type: feature.items.t, id: itemId, data: itemData);
 
         return ReorderableDelayedDragStartListener(
           index: index,
           key: ValueKey(item.id),
           child: ListItem(item: item),
         );
-      },
+      }),
     );
   }
 }

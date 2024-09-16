@@ -38,9 +38,7 @@ class ItemFlag extends StatelessWidget {
           onDone: (newFlags) => state.input.update(action: 'add', key: 'g', value: getJoinedList(newFlags)),
         ),
         color: backgroundColors[getFlagColor(flag)]!.color,
-        padding: EdgeInsets.only(left: 12, right: 6, top: 1, bottom: 1),
-        smallVerticalPadding: true,
-        borderRadius: borderRadiusCrazy,
+        padding: padding(l: 8, t: 2, b: 2, r: 0),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,7 +52,7 @@ class ItemFlag extends StatelessWidget {
               AppButton(
                 onPressed: onPressedDelete ?? () {},
                 noStyling: true,
-                isRound: true,
+                isSquare: true,
                 child: AppIcon(Icons.close, color: backgroundColors[getFlagColor(flag)]!.textColor, size: normal),
               ),
             //

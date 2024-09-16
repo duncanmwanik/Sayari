@@ -28,6 +28,7 @@ class ImageEmbedBuilder extends EmbedBuilder {
     String fileName = getSplitList(ImageBlockEmbed(node.value.data).data ?? '')[1];
 
     return ImageFile(
+      key: Key(fileId),
       fileId,
       fileName,
       height: isInput || isShare() ? null : 100,

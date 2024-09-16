@@ -24,7 +24,7 @@ class MoreInputActions extends StatelessWidget {
       bool isArchived = input.data['a'] == '1';
 
       return AppButton(
-        tooltip: 'More',
+        tooltip: 'More Actions',
         menuItems: [
           //
           if (input.isHabit()) HabitOptions(),

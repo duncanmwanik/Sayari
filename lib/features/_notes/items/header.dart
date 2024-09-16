@@ -8,7 +8,7 @@ import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import 'emoji.dart';
-import 'list_items_actions.dart';
+import 'item_actions.dart';
 import 'published.dart';
 
 class ItemHeader extends StatelessWidget {
@@ -74,7 +74,7 @@ class ItemHeader extends StatelessWidget {
           ),
         ),
         //
-        Positioned(right: 5, top: 5, child: ListActions(item: item)),
+        Positioned(right: 5, top: 5, child: ItemActions(item: item)),
         //
       ],
     );

@@ -85,7 +85,7 @@ class _SpaceTileState extends State<SpaceTile> {
                     isLoading
                         ? Padding(
                             padding: EdgeInsets.only(right: 5),
-                            child: AppLoader(color: isImageTheme() ? white : styler.accentColor()),
+                            child: AppLoader(color: isImage() ? white : styler.accentColor()),
                           )
                         : SpaceOptions(
                             spaceId: widget.spaceId,

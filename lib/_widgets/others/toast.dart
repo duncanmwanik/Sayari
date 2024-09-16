@@ -29,7 +29,7 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
         padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
         decoration: BoxDecoration(
           color: styler.isDark ? Colors.white : Colors.white,
-          borderRadius: BorderRadius.circular(borderRadiusSmall),
+          borderRadius: BorderRadius.circular(borderRadiusTinySmall),
           boxShadow: styler.itemShadow(),
         ),
         child: Row(

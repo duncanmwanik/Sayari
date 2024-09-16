@@ -18,7 +18,7 @@ import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '_helpers/download.dart';
 
-Future<void> showImageViewer({required Map images, Function()? onDownload}) async {
+Future<void> showImageViewer({required Map images, Function()? onDownload, int selectedIndex = 0}) async {
   await showModalBottomSheet(
       context: navigatorState.currentContext!,
       isScrollControlled: true,
@@ -30,16 +30,17 @@ Future<void> showImageViewer({required Map images, Function()? onDownload}) asyn
       builder: (context) {
         return BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
-          child: Viewer(images: images, onDownload: onDownload),
+          child: Viewer(images: images, onDownload: onDownload, selectedIndex: selectedIndex),
         );
       });
 }
 
 class Viewer extends StatefulWidget {
-  const Viewer({super.key, required this.images, this.onDownload});
+  const Viewer({super.key, required this.images, this.onDownload, this.selectedIndex = 0});
 
   final Map images;
   final Function()? onDownload;
+  final int selectedIndex;
 
   @override
   State<Viewer> createState() => _ViewerState();
@@ -50,6 +51,14 @@ class _ViewerState extends State<Viewer> {
   double scale = 1;
   var quarterTurns = 0;
   PhotoViewController photoViewController = PhotoViewController(initialScale: 1);
+
+  @override
+  void initState() {
+    setState(() {
+      selected = widget.selectedIndex;
+    });
+    super.initState();
+  }
 
   void rotate90Degrees(String direction) {
     if (direction == 'right') {

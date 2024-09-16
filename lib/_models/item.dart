@@ -27,10 +27,11 @@ class Item {
 
   bool exists() => data.isNotEmpty;
   bool hasTitle() => data['t'] != null && data['t'] != '';
-  bool hasColor() => hasItemColor(data['c']);
+  bool hasColor() => hasColour(data['c']);
   bool hasEmoji() => data['j'] != null;
   bool hasDetails() => reminder().isNotEmpty || labels().isNotEmpty || files().isNotEmpty;
   bool hasOverview() => data['w'] != null && data['w'] != '';
+  bool hasFiles() => files().isNotEmpty;
   bool isTask() => data[feature.tasks.lt] != null;
   bool hasFinances() => data[feature.finances.lt] != null;
   bool hasHabits() => data[feature.habits.lt] != null;

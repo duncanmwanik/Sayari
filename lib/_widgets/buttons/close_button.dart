@@ -25,7 +25,7 @@ class AppCloseButton extends StatelessWidget {
     return AppButton(
       onPressed: onPressed ?? () => popWhatsOnTop(),
       noStyling: !isText,
-      isSquare: true,
+      isRound: true,
       child: isText
           ? const AppText(text: 'Close', size: medium, faded: true)
           : AppIcon(isX ? closeIcon : Icons.arrow_back_rounded, faded: faded),

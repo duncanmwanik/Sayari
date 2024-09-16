@@ -20,13 +20,12 @@ const double webMaxWidth = 768.0;
 const double webMinWidth = 250.0;
 const double webMaxSpaceManagerWidth = 300.0;
 const double webMaxDialogWidth = 400.0;
-const double webMaxDialogHeight = 500;
 const double webMinDialogWidth = 150;
 const double webMinDialogHeight = 300;
 const double webMaxButtonWidth = 300.0;
 const double webMaxButtonHeight = 50.0;
 const double webMaxListWidth = 200.0;
-const double webMaxToastWidth = 500.0;
+const double phoneWidth = 500;
 
 // text sizes
 const double pomodoroIcon = 50.0;

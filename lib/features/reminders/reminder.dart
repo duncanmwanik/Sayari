@@ -44,7 +44,7 @@ class Reminder extends StatelessWidget {
       return Visibility(
         visible: hasReminder(reminder_),
         child: Padding(
-          padding: paddingS('b'),
+          padding: paddingM('t'),
           child: AppButton(
             tooltip: 'Reminder',
             menuWidth: 200,
@@ -66,7 +66,7 @@ class Reminder extends StatelessWidget {
               },
             ),
             smallVerticalPadding: true,
-            color: hasItemColor(bgColor) ? Colors.white24 : null,
+            color: hasColour(bgColor) ? Colors.white24 : null,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

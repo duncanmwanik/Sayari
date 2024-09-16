@@ -57,10 +57,10 @@ class _ItemState extends State<SubItem> {
             border: Border.all(
               width: 0.75,
               color: (isHovered)
-                  ? isImageTheme()
+                  ? isImage()
                       ? white
                       : styler.accentColor()
-                  : isImageTheme()
+                  : isImage()
                       ? white.withOpacity(0.3)
                       : styler.isDark
                           ? styler.appColor(2)

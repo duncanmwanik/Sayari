@@ -34,7 +34,7 @@ class PinnedMessages extends StatelessWidget {
             ],
             showBorder: true,
             borderRadius: borderRadiusLarge,
-            color: Color.alphaBlend(styler.appColor(1), isImageTheme() ? white.withOpacity(0.3) : styler.primaryColor()),
+            color: Color.alphaBlend(styler.appColor(1), isImage() ? white.withOpacity(0.3) : styler.primaryColor()),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [

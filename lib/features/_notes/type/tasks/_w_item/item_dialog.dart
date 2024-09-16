@@ -50,47 +50,54 @@ Future<void> showItemDialog(String itemId, Map itemData, String listId) async {
           sph(),
           //
           if (isAdmin())
-            Wrap(
+            Row(
               children: [
                 //
-                AppButton(
-                  tooltip: 'Set Reminder',
-                  menuWidth: 200,
-                  menuItems: reminderMenu(
-                    reminder: reminder,
-                    onSet: (newReminder) => input.update(action: 'add', key: 'r', value: newReminder),
-                    onRemove: () => input.update(action: 'remove', key: 'r'),
+                Expanded(
+                  child: Wrap(
+                    spacing: smallWidth(),
+                    runSpacing: smallWidth(),
+                    children: [
+                      //
+                      AppButton(
+                        tooltip: 'Set Reminder',
+                        menuWidth: 200,
+                        menuItems: reminderMenu(
+                          reminder: reminder,
+                          onSet: (newReminder) => input.update(action: 'add', key: 'r', value: newReminder),
+                          onRemove: () => input.update(action: 'remove', key: 'r'),
+                        ),
+                        isSquare: true,
+                        child: AppIcon(Icons.notification_add, faded: true, size: 16),
+                      ),
+                      //
+                      AppButton(
+                        tooltip: 'Attach Files',
+                        onPressed: () async => await getFilesToUpload(),
+                        isSquare: true,
+                        child: AppIcon(Icons.attach_file_rounded, faded: true, size: 16),
+                      ),
+                      //
+                      AppButton(
+                        tooltip: 'Add Flag',
+                        menuWidth: 300,
+                        menuItems: flagsMenu(
+                          alreadySelected: alreadySelectedFlags,
+                          onDone: (newFlags) => input.update(action: 'add', key: 'g', value: getJoinedList(newFlags)),
+                        ),
+                        isSquare: true,
+                        child: AppIcon(Icons.flag_outlined, faded: true, size: 16),
+                      ),
+                      //
+                      AppButton(
+                        tooltip: 'Add People',
+                        onPressed: () {},
+                        isSquare: true,
+                        child: AppIcon(Icons.person, faded: true, size: 16),
+                      ),
+                      //
+                    ],
                   ),
-                  isSquare: true,
-                  child: AppIcon(Icons.notification_add, faded: true, size: 16),
-                ),
-                //
-                spw(),
-                AppButton(
-                  tooltip: 'Attach Files',
-                  onPressed: () async => await getFilesToUpload(),
-                  isSquare: true,
-                  child: AppIcon(Icons.attach_file_rounded, faded: true, size: 16),
-                ),
-                //
-                spw(),
-                AppButton(
-                  tooltip: 'Add Flag',
-                  menuWidth: 300,
-                  menuItems: flagsMenu(
-                    alreadySelected: alreadySelectedFlags,
-                    onDone: (newFlags) => input.update(action: 'add', key: 'g', value: getJoinedList(newFlags)),
-                  ),
-                  isSquare: true,
-                  child: AppIcon(Icons.flag_outlined, faded: true, size: 16),
-                ),
-                //
-                spw(),
-                AppButton(
-                  tooltip: 'Add People',
-                  onPressed: () {},
-                  isSquare: true,
-                  child: AppIcon(Icons.person, faded: true, size: 16),
                 ),
                 //
                 spw(),
@@ -122,12 +129,7 @@ Future<void> showItemDialog(String itemId, Map itemData, String listId) async {
           mainAxisSize: MainAxisSize.min,
           children: [
             //
-            AppButton(
-              onPressed: () => popWhatsOnTop(),
-              borderRadius: borderRadiusSmall,
-              label: edited ? 'Cancel' : 'Close',
-            ),
-            //
+            ActionButton(label: edited ? 'Cancel' : 'Close', isCancel: true),
             if (edited) ActionButton(label: 'Save', onPressed: () => editItem()),
             //
           ],

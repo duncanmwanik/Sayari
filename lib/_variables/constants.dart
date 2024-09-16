@@ -9,11 +9,7 @@ const String newNoteHintText = 'Start typing here...';
 
 FocusNode noteTextFocusNode = FocusNode();
 
-Map specialLabelsIcons = {
-  'Trash': Icons.auto_delete_rounded,
-  'Archive': Icons.archive_rounded,
-  'All': Icons.label_rounded
-};
+Map specialLabelsIcons = {'Trash': Icons.auto_delete_rounded, 'Archive': Icons.archive_rounded, 'All': Icons.label_rounded};
 
 // Each layout type shows the icon whose layout will be next
 Map<String, IconData> layoutIcons = {
@@ -25,7 +21,5 @@ Map<String, IconData> layoutIcons = {
 
 List<String> sessionViews = ['Day', 'Week', 'Month', 'Year', 'Timeline'];
 
-String defaultPomodoroData =
-    '{"ft":"25","st":"5","lt":"20","fc":"12","sc":"14","lc":"18","lbi":"4","ap":"1","ao":"1","as":"0"}';
-
+String defaultPomodoroData = '{"ft":"25","st":"5","lt":"20","fc":"0","sc":"1","lc":"2","lbi":"4","ap":"1","ao":"1","as":"0"}';
 Map<String, String> pomodoroTitles = {'f': 'Focus', 's': 'Short Break', 'l': 'Long Break'};

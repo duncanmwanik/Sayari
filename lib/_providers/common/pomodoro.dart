@@ -9,6 +9,7 @@ import '../../_variables/constants.dart';
 class PomodoroProvider with ChangeNotifier {
   //
   Map data = jsonDecode(settingBox.get('pm', defaultValue: defaultPomodoroData));
+  // Map data = jsonDecode(defaultPomodoroData);
 
   void updatedata(String key, String value) {
     data[key] = value;

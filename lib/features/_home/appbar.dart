@@ -12,7 +12,6 @@ import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/sync_indicator.dart';
 import '../../_widgets/others/theme.dart';
 import '../_notes/items/item_selection.dart';
-import '../ai/ai_btn.dart';
 import '../pomodoro/_w/pomo_indicator.dart';
 import '../search/search_btn.dart';
 import '../user/dp_options.dart';
@@ -66,7 +65,6 @@ class CustomAppBar extends StatelessWidget {
                       CloudSyncIndicator(),
                       PomodoroIndicator(),
                       Search(),
-                      AIButton(),
                       LayoutButton(),
                       QuickThemeChanger(),
                       pw(5),

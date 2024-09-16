@@ -35,6 +35,7 @@ class DeleteItem extends StatelessWidget {
         },
       ),
       isSquare: true,
+      dryWidth: true,
       child: AppIcon(Icons.delete_rounded, bgColor: bgColor, faded: true, size: 16),
     );
   }

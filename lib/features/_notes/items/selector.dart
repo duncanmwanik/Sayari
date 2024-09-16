@@ -46,9 +46,9 @@ class ItemSelector extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: isChecked
                       ? styler.accentColor()
-                      : (isImageTheme()
+                      : (isImage()
                           ? Colors.white70
-                          : isBlackTheme()
+                          : isBlack()
                               ? black
                               : styler.isDark
                                   ? styler.secondaryColor()
@@ -66,7 +66,7 @@ class ItemSelector extends StatelessWidget {
                           size: 14,
                           faded: true,
                           bgColor: item.color(),
-                          color: isChecked ? white : (isImageTheme() ? black : Colors.grey.withOpacity(0.7)),
+                          color: isChecked ? white : (isImage() ? black : Colors.grey.withOpacity(0.7)),
                         )
                       : NoWidget(),
                 ),

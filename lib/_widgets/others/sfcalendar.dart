@@ -12,7 +12,7 @@ import '../../_providers/common/datetime.dart';
 class SfCalendar extends StatelessWidget {
   const SfCalendar(
       {super.key,
-      this.initialDate = '',
+      this.initialDate,
       this.initialDates = const [],
       this.isMultiple = false,
       this.isOverview = false,
@@ -21,7 +21,7 @@ class SfCalendar extends StatelessWidget {
       this.onSelect,
       this.color});
 
-  final String initialDate;
+  final String? initialDate;
   final List initialDates;
   final bool isMultiple;
   final bool isOverview;
@@ -33,8 +33,7 @@ class SfCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<DateTimeProvider>(builder: (context, date, child) {
-      // update selected days
-      String initial = initialDate.isNotEmpty ? initialDate : date.selectedDate;
+      print(date.selectedDate);
 
       return Container(
         height: isOverview ? 220 : 80.w,
@@ -118,8 +117,8 @@ class SfCalendar extends StatelessWidget {
           selectionMode: isMultiple ? DateRangePickerSelectionMode.multiple : DateRangePickerSelectionMode.single,
           selectionColor: styler.accentColor(),
           // ---------- initial selected dates
-          initialSelectedDate: (initial.isNotEmpty) ? DateTime.parse(initial) : null,
-          initialDisplayDate: (initial.isNotEmpty) ? DateTime.parse(initial) : null,
+          initialSelectedDate: DateTime.tryParse(initialDate ?? date.selectedDate) ?? DateTime.now(),
+          initialDisplayDate: DateTime.tryParse(initialDate ?? date.selectedDate) ?? DateTime.now(),
           initialSelectedDates: initialDates.isNotEmpty
               ? List.generate(
                   initialDates.length,

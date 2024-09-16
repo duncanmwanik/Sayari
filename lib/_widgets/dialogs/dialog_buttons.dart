@@ -18,6 +18,7 @@ class ActionButton extends StatelessWidget {
       padding: const EdgeInsets.only(left: 7),
       child: AppButton(
         onPressed: onPressed ?? () => popWhatsOnTop(),
+        smallVerticalPadding: true,
         color: isCancel ? styler.appColor(0.5) : styler.accentColor(8),
         borderRadius: borderRadiusTinySmall,
         child: AppText(text: label ?? (isCancel ? 'Cancel' : 'Done'), color: isCancel ? null : white),

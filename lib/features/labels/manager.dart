@@ -51,28 +51,6 @@ class _LabelManagerState extends State<LabelManager> {
             mainAxisSize: MainAxisSize.min,
             children: [
               //
-              if (widget.isSelection)
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Wrap(
-                    runSpacing: tinyHeight(),
-                    children: [
-                      //
-                      ActionButton(isCancel: true),
-                      ActionButton(
-                        label: 'Save',
-                        onPressed: () {
-                          popWhatsOnTop();
-                          widget.onDone!(selectedLabels);
-                        },
-                      ),
-                      //
-                    ],
-                  ),
-                ),
-              //
-              sph(),
-              //
               Flexible(
                 child: Padding(
                   padding: EdgeInsets.only(left: widget.isPopup ? 0 : 5, right: widget.isPopup ? 0 : 5),
@@ -123,6 +101,27 @@ class _LabelManagerState extends State<LabelManager> {
                   ),
                 ),
               ),
+              //
+              if (widget.isSelection) sph(),
+              if (widget.isSelection)
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Wrap(
+                    runSpacing: tinyHeight(),
+                    children: [
+                      //
+                      ActionButton(isCancel: true),
+                      ActionButton(
+                        label: 'Save',
+                        onPressed: () {
+                          popWhatsOnTop();
+                          widget.onDone!(selectedLabels);
+                        },
+                      ),
+                      //
+                    ],
+                  ),
+                ),
               //
             ],
           );

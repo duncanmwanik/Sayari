@@ -88,9 +88,7 @@ class _FlagsManagerState extends State<FlagsManager> {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            ActionButton(
-              isCancel: true,
-            ),
+            ActionButton(isCancel: true),
             ActionButton(
               onPressed: () {
                 popWhatsOnTop(); // pop menu

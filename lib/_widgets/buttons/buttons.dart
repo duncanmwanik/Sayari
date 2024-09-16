@@ -99,7 +99,7 @@ class AppButton extends StatelessWidget {
       shape: customBorder != null
           ? CircleBorder()
           : RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusSmall)),
+              borderRadius: BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusTinySmall)),
               side: showBorder
                   ? BorderSide(color: borderColor ?? Colors.grey.withOpacity(0.3), width: borderWidth ?? (isDark() ? 0.4 : 0.8))
                   : BorderSide.none,
@@ -132,8 +132,8 @@ class AppButton extends StatelessWidget {
               (isRound
                   ? const EdgeInsets.all(6)
                   : EdgeInsets.only(
-                      left: smallLeftPadding || isSquare ? 6 : 12,
-                      right: smallRightPadding || isSquare ? 6 : (isDropDown ? 9 : 12),
+                      left: smallLeftPadding || isSquare ? 8 : 12,
+                      right: smallRightPadding || isSquare ? 8 : (isDropDown ? 9 : 12),
                       top: smallVerticalPadding ? 3 : 6,
                       bottom: smallVerticalPadding ? 3 : 6,
                     )),

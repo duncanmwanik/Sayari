@@ -12,6 +12,7 @@ import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/svg.dart';
 import '../../../_widgets/others/text.dart';
+import '../../_home/panel/creator.dart';
 import '../_helpers/go_to_today.dart';
 
 class CalendarOptions extends StatelessWidget {
@@ -25,13 +26,18 @@ class CalendarOptions extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          // Go to today
+          // add session
+          Creator(),
+          //
+          // go to today
+          spw(),
           AppButton(
             onPressed: () => date.isToday_ ? doNothing() : goToToday(views.calendarView),
             tooltip: getDateInfo(getDatePart(date.now)),
             child: AppText(text: 'Today'),
           ),
-          // Choose view
+          //
+          // choose view
           spw(),
           AppButton(
             tooltip: 'Change View',

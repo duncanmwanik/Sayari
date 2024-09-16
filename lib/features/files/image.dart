@@ -34,6 +34,7 @@ class ImageFile extends StatelessWidget {
     this.showLoading = false,
     this.ignore = false,
     this.onPressed,
+    this.selectedIndex = 0,
   });
 
   final String fileId;
@@ -50,6 +51,7 @@ class ImageFile extends StatelessWidget {
   final Color? hoverColor;
   final Function()? onPressed;
   final Map images;
+  final int selectedIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +71,7 @@ class ImageFile extends StatelessWidget {
             // for images still available in local filebox
             isLocal
                 ? AppButton(
-                    onPressed: onPressed ?? (ignore ? null : () => showImageViewer(images: images)),
+                    onPressed: onPressed ?? (ignore ? null : () => showImageViewer(images: images, selectedIndex: selectedIndex)),
                     hoverColor: hoverColor,
                     borderRadius: 8,
                     padding: EdgeInsets.zero,
@@ -107,7 +109,8 @@ class ImageFile extends StatelessWidget {
 
                           return file != null
                               ? AppButton(
-                                  onPressed: onPressed ?? (ignore ? null : () => showImageViewer(images: images)),
+                                  onPressed:
+                                      onPressed ?? (ignore ? null : () => showImageViewer(images: images, selectedIndex: selectedIndex)),
                                   hoverColor: hoverColor,
                                   borderRadius: 8,
                                   padding: EdgeInsets.zero,

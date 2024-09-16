@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reorderables/reorderables.dart';
 
+import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../_models/item.dart';
 import '../../_providers/providers.dart';
@@ -15,14 +16,18 @@ class GridLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
-      // double width = constraints.maxWidth; // remove this
+      bool isGrid = state.views.isGrid();
 
       return ReorderableWrap(
         key: UniqueKey(),
         spacing: smallWidth(),
-        runSpacing: smallWidth(),
-        needsLongPressDraggable: true,
-        padding: EdgeInsets.only(bottom: largeHeightPlaceHolder()),
+        runSpacing: isGrid ? smallWidth() : mediumWidth(),
+        maxMainAxisCount: isGrid ? null : 1,
+        alignment: WrapAlignment.center,
+        padding: padding(
+          t: isSmallPC() ? mediumHeight() : null,
+          b: largeHeightPlaceHolder(),
+        ),
         onReorder: (oldIndex, newIndex) => orderItems(
           type: feature.items.t,
           oldItemId: state.data.ids[oldIndex],

@@ -18,13 +18,19 @@ Future<void> swipeToNew({bool? isSwipeRight, String direction = 'none', int? vie
       isNext
           ? state.dateTime.updateCurrentWeekDates(state.dateTime.currentWeekDates[6].add(Duration(days: 1)))
           : state.dateTime.updateCurrentWeekDates(state.dateTime.currentWeekDates[0].subtract(Duration(days: 1)));
+      state.dateTime.updateSelectedDate(getDatePart(state.dateTime.currentWeekDates[0]));
+
       break;
     case 2:
       state.dateTime.updateSelectedMonth(isNext ? 'inc' : 'dec');
       await state.dateTime.updateMonthDatesMap();
+      state.dateTime.updateSelectedDate(state.dateTime.monthDatesMap[0] ?? getDatePart(DateTime.now()));
+
       break;
     case 3:
       state.dateTime.updateSelectedYear(isNext ? state.dateTime.selectedYear + 1 : state.dateTime.selectedYear - 1);
+      state.dateTime.updateSelectedDate('${state.dateTime.selectedYear}-01-01');
+
       break;
   }
 }

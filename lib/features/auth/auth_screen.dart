@@ -1,7 +1,9 @@
+import 'dart:async';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/styler.dart';
@@ -11,13 +13,13 @@ import '../../_helpers/_common/navigation.dart';
 import '../../_helpers/forms/form_validation_helper.dart';
 import '../../_providers/common/theme.dart';
 import '../../_services/firebase/database.dart';
+import '../../_variables/intro_features.dart';
 import '../../_variables/navigation.dart';
 import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/forms/auth_input.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/text.dart';
-import '../../_widgets/others/theme.dart';
 import '../../_widgets/others/toast.dart';
 import '_helpers/email_signin.dart';
 import '_helpers/email_signup.dart';
@@ -43,6 +45,21 @@ class _SignInScreenState extends State<AuthScreen> {
   bool isResetPassword = false;
   bool isBusy = false;
   bool isBusyDemo = false;
+
+  Timer? timer;
+  int index = 0;
+
+  @override
+  void initState() {
+    // timer = Timer.periodic(Duration(seconds: 5), (_) => setState(() => index = index < introFeatures.length - 1 ? index + 1 : 0));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+    super.dispose();
+  }
 
   Future<void> checkEmail([String? email]) async {
     hideKeyboard();
@@ -71,226 +88,245 @@ class _SignInScreenState extends State<AuthScreen> {
       return Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(getDefaultThemeImage()),
+            image: AssetImage('assets/images/${introFeatures[index].title.toLowerCase()}.png'),
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.black.withOpacity(0.7),
+              BlendMode.darken,
+            ),
           ),
         ),
         child: Scaffold(
           backgroundColor: transparent,
           body: Align(
-            alignment: Alignment.topCenter,
+            alignment: Alignment.center,
             child: SingleChildScrollView(
               child: Container(
-                constraints: isNotPhone() ? const BoxConstraints(maxWidth: webMaxWidth) : const BoxConstraints(),
-                child: Form(
-                  key: signInFormKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      //
-                      AuthIntro(),
-                      //
-                      lph(),
-                      //
-                      if (!isNewAccount && !isSignIn && !isResetPassword)
-                        Column(
+                margin: paddingL(),
+                constraints: BoxConstraints(maxWidth: phoneWidth),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(borderRadiusSmall),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 100, sigmaY: 100),
+                    child: AppButton(
+                      borderRadius: borderRadiusSmall,
+                      color: styler.appColor(1),
+                      padding: paddingL(),
+                      child: Form(
+                        key: signInFormKey,
+                        child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             //
-                            SignInButton(
-                              onPressed: () => showToast(2, "Let's try the demo...", smallTopMargin: true),
-                              imagePath: 'google.png',
-                              label: 'Continue with Google',
+                            AuthIntro(
+                              index: index,
+                              next: () => setState(() => index = index < introFeatures.length - 1 ? index + 1 : 0),
+                              previous: () => setState(() => index = index > 0 ? index - 1 : introFeatures.length - 1),
+                            ),
+                            //
+                            lph(),
+                            //
+                            if (!isNewAccount && !isSignIn && !isResetPassword)
+                              Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  //
+                                  SignInButton(
+                                    onPressed: () => showToast(2, "Let's try the demo...", smallTopMargin: true),
+                                    imagePath: 'google.png',
+                                    label: 'Continue with Google',
+                                  ),
+                                  //
+                                ],
+                              ),
+                            //
+                            ph(6),
+                            //
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                //
+                                FormInput(
+                                  hintText: 'Email',
+                                  controller: emailController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  validator: (value) => Validator.validateEmail(email: value!),
+                                  isBusy: isBusy,
+                                  onFieldSubmitted: doCheckEmail ? (email) async => await checkEmail(email.trim()) : null,
+                                  onPressed: doCheckEmail ? () async => await checkEmail() : null,
+                                ),
+                                //
+                                if (isNewAccount) ph(6),
+                                if (isNewAccount)
+                                  FormInput(
+                                    hintText: 'Username',
+                                    controller: userNameController,
+                                    keyboardType: TextInputType.name,
+                                    validator: (value) => Validator.validateName(name: value!),
+                                  ),
+                                //
+                                if (isNewAccount || isSignIn) ph(6),
+                                if (isNewAccount || isSignIn)
+                                  FormInput(
+                                    hintText: 'Password',
+                                    controller: passwordController,
+                                    keyboardType: TextInputType.visiblePassword,
+                                    textInputAction: isSignIn ? TextInputAction.done : null,
+                                    validator: (value) => Validator.validatePassword(password: value!),
+                                  ),
+                                //
+                                if (isNewAccount) ph(6),
+                                if (isNewAccount)
+                                  FormInput(
+                                    hintText: 'Confirm Password',
+                                    controller: confirmPasswordController,
+                                    keyboardType: TextInputType.visiblePassword,
+                                    textInputAction: TextInputAction.done,
+                                    validator: (value) => Validator.validatePassword(password: value!),
+                                  ),
+                                //
+                                if (isNewAccount || isSignIn || isResetPassword) ph(6),
+                                if (isNewAccount || isSignIn || isResetPassword)
+                                  AppButton(
+                                    onPressed: () async {
+                                      //
+                                      hideKeyboard();
+                                      //
+                                      if (isNewAccount && !isBusy) {
+                                        setState(() => isBusy = true);
+
+                                        printThis('Creating new account......');
+                                        await signUpUsingEmailPassword(
+                                          name: userNameController.text.trim(),
+                                          email: emailController.text.trim(),
+                                          password: passwordController.text.trim(),
+                                          confirmPassword: confirmPasswordController.text.trim(),
+                                        );
+                                        setState(() => isBusy = false);
+                                      }
+                                      //
+                                      //
+                                      if (isSignIn && !isBusy) {
+                                        setState(() => isBusy = true);
+
+                                        printThis('Signing in......');
+                                        await signInUsingEmailPassword(
+                                          email: emailController.text.trim(),
+                                          password: passwordController.text.trim(),
+                                        );
+                                        setState(() => isBusy = false);
+                                      }
+                                      //
+                                      //
+                                      if (isResetPassword && !isBusy) {
+                                        setState(() => isBusy = true);
+                                        printThis('Resetting pass......');
+                                        await resetPassword(email: emailController.text.trim());
+                                        setState(() => isBusy = false);
+                                      }
+                                      //
+                                      //
+                                    },
+                                    color: Color.alphaBlend(styler.accentColor(3), white),
+                                    width: 210,
+                                    height: 30,
+                                    showBorder: !styler.isDark,
+                                    dryWidth: true,
+                                    hoverColor: isBusy ? transparent : null,
+                                    child: Center(
+                                      child: isBusy
+                                          ? AppLoader(color: styler.accentColor())
+                                          : Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Flexible(
+                                                  child: AppText(
+                                                    text: isNewAccount
+                                                        ? 'Sign Up'
+                                                        : isResetPassword
+                                                            ? 'Send Reset Link'
+                                                            : isSignIn
+                                                                ? 'Sign In'
+                                                                : 'Continue',
+                                                    color: AppColors.lightText,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                spw(),
+                                                AppIcon(Icons.arrow_forward, size: normal, color: AppColors.lightText),
+                                              ],
+                                            ),
+                                    ),
+                                  ),
+                                //
+                                if (isNewAccount || isSignIn || isResetPassword) sph(),
+                                if (isNewAccount || isSignIn || isResetPassword)
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      //
+                                      if (isSignIn)
+                                        AppButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              isResetPassword = true;
+                                              isSignIn = false;
+                                              isNewAccount = false;
+                                            });
+                                          },
+                                          noStyling: true,
+                                          smallVerticalPadding: true,
+                                          borderRadius: borderRadiusLarge,
+                                          child: AppText(text: 'Forgot Password?', fontWeight: isDark() ? FontWeight.w400 : null),
+                                        ),
+                                      //
+                                      if (isSignIn)
+                                        Padding(
+                                            padding: EdgeInsets.symmetric(horizontal: 2), child: AppIcon(Icons.lens, size: 5, faded: true)),
+                                      //
+                                      AppButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            isResetPassword = false;
+                                            isSignIn = false;
+                                            isNewAccount = false;
+                                          });
+                                        },
+                                        noStyling: true,
+                                        smallVerticalPadding: true,
+                                        borderRadius: borderRadiusLarge,
+                                        child: AppText(text: 'Cancel', fontWeight: isDark() ? FontWeight.w400 : null),
+                                      ),
+                                      //
+                                    ],
+                                  ),
+                                //
+                                if (doCheckEmail) ph(12),
+                                if (doCheckEmail)
+                                  AppButton(
+                                    onPressed: () async {
+                                      setState(() => isBusyDemo = true);
+                                      printThis('Signing in to demo......');
+                                      await signInUsingEmailPassword(email: 'mo@gmail.com', password: '1234567', validate: false);
+                                      setState(() => isBusyDemo = false);
+                                    },
+                                    noStyling: true,
+                                    dryWidth: true,
+                                    borderRadius: borderRadiusTiny,
+                                    hoverColor: isBusyDemo ? transparent : null,
+                                    child: isBusyDemo
+                                        ? AppLoader(color: styler.accentColor())
+                                        : AppText(text: 'Try the Demo', fontWeight: isDark() ? FontWeight.w400 : null),
+                                  ),
+                                //
+                              ],
                             ),
                             //
                           ],
                         ),
-                      //
-                      ph(6),
-                      //
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          //
-                          FormInput(
-                            hintText: 'Email',
-                            controller: emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (value) => Validator.validateEmail(email: value!),
-                            isBusy: isBusy,
-                            onFieldSubmitted: doCheckEmail ? (email) async => await checkEmail(email.trim()) : null,
-                            onPressed: doCheckEmail ? () async => await checkEmail() : null,
-                          ),
-                          //
-                          if (isNewAccount) ph(6),
-                          if (isNewAccount)
-                            FormInput(
-                              hintText: 'Username',
-                              controller: userNameController,
-                              keyboardType: TextInputType.name,
-                              validator: (value) => Validator.validateName(name: value!),
-                            ),
-                          //
-                          if (isNewAccount || isSignIn) ph(6),
-                          if (isNewAccount || isSignIn)
-                            FormInput(
-                              hintText: 'Password',
-                              controller: passwordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              textInputAction: isSignIn ? TextInputAction.done : null,
-                              validator: (value) => Validator.validatePassword(password: value!),
-                            ),
-                          //
-                          if (isNewAccount) ph(6),
-                          if (isNewAccount)
-                            FormInput(
-                              hintText: 'Confirm Password',
-                              controller: confirmPasswordController,
-                              keyboardType: TextInputType.visiblePassword,
-                              textInputAction: TextInputAction.done,
-                              validator: (value) => Validator.validatePassword(password: value!),
-                            ),
-                          //
-                          if (isNewAccount || isSignIn || isResetPassword) ph(6),
-                          if (isNewAccount || isSignIn || isResetPassword)
-                            AppButton(
-                              onPressed: () async {
-                                //
-                                hideKeyboard();
-                                //
-                                if (isNewAccount && !isBusy) {
-                                  setState(() => isBusy = true);
-
-                                  printThis('Creating new account......');
-                                  await signUpUsingEmailPassword(
-                                    name: userNameController.text.trim(),
-                                    email: emailController.text.trim(),
-                                    password: passwordController.text.trim(),
-                                    confirmPassword: confirmPasswordController.text.trim(),
-                                  );
-                                  setState(() => isBusy = false);
-                                }
-                                //
-                                //
-                                if (isSignIn && !isBusy) {
-                                  setState(() => isBusy = true);
-
-                                  printThis('Signing in......');
-                                  await signInUsingEmailPassword(
-                                    email: emailController.text.trim(),
-                                    password: passwordController.text.trim(),
-                                  );
-                                  setState(() => isBusy = false);
-                                }
-                                //
-                                //
-                                if (isResetPassword && !isBusy) {
-                                  setState(() => isBusy = true);
-                                  printThis('Resetting pass......');
-                                  await resetPassword(email: emailController.text.trim());
-                                  setState(() => isBusy = false);
-                                }
-                                //
-                                //
-                              },
-                              color: Color.alphaBlend(styler.accentColor(3), white),
-                              width: 210,
-                              height: 30,
-                              showBorder: !styler.isDark,
-                              dryWidth: true,
-                              child: Center(
-                                child: isBusy
-                                    ? AppLoader(color: styler.accentColor())
-                                    : Row(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Flexible(
-                                            child: AppText(
-                                              text: isNewAccount
-                                                  ? 'Sign Up'
-                                                  : isResetPassword
-                                                      ? 'Send Reset Link'
-                                                      : isSignIn
-                                                          ? 'Sign In'
-                                                          : 'Continue',
-                                              color: AppColors.lightText,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          spw(),
-                                          AppIcon(Icons.arrow_forward, size: normal, color: AppColors.lightText),
-                                        ],
-                                      ),
-                              ),
-                            ),
-                          //
-                          if (isNewAccount || isSignIn || isResetPassword) sph(),
-                          if (isNewAccount || isSignIn || isResetPassword)
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                //
-                                if (isSignIn)
-                                  AppButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        isResetPassword = true;
-                                        isSignIn = false;
-                                        isNewAccount = false;
-                                      });
-                                    },
-                                    noStyling: true,
-                                    smallVerticalPadding: true,
-                                    borderRadius: borderRadiusLarge,
-                                    child: AppText(text: 'Forgot Password?', fontWeight: isDark() ? FontWeight.w400 : null),
-                                  ),
-                                //
-                                if (isSignIn)
-                                  Padding(padding: EdgeInsets.symmetric(horizontal: 2), child: AppIcon(Icons.lens, size: 5, faded: true)),
-                                //
-                                AppButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isResetPassword = false;
-                                      isSignIn = false;
-                                      isNewAccount = false;
-                                    });
-                                  },
-                                  noStyling: true,
-                                  smallVerticalPadding: true,
-                                  borderRadius: borderRadiusLarge,
-                                  child: AppText(text: 'Cancel', fontWeight: isDark() ? FontWeight.w400 : null),
-                                ),
-                                //
-                              ],
-                            ),
-                          //
-                          if (doCheckEmail) ph(12),
-                          if (doCheckEmail)
-                            AppButton(
-                              onPressed: () async {
-                                setState(() => isBusyDemo = true);
-                                printThis('Signing in to demo......');
-                                await signInUsingEmailPassword(email: 'mo@gmail.com', password: '1234567', validate: false);
-                                setState(() => isBusyDemo = false);
-                              },
-                              noStyling: true,
-                              dryWidth: true,
-                              borderRadius: borderRadiusTiny,
-                              child: isBusyDemo
-                                  ? AppLoader(color: styler.accentColor())
-                                  : AppText(text: 'Try the Demo', fontWeight: isDark() ? FontWeight.w400 : null),
-                            ),
-                          //
-                        ],
                       ),
-                      //
-                      mph(),
-                      //
-                      QuickThemeChanger(rightPadding: false),
-                      //
-                    ],
+                    ),
                   ),
                 ),
               ),

@@ -6,12 +6,12 @@ import '../../_helpers/_common/navigation.dart';
 import '../../_variables/colors.dart';
 import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/buttons/color_button.dart';
+import '../../_widgets/dialogs/dialog_buttons.dart';
 import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/checkbox.dart';
 import '../../_widgets/others/color_menu.dart';
 import '../../_widgets/others/forms/input.dart';
 import '../../_widgets/others/icons.dart';
-import '../../_widgets/others/text.dart';
 import '_helpers/manage_flag.dart';
 
 class Flag extends StatefulWidget {
@@ -86,25 +86,21 @@ class _FlagItemState extends State<Flag> {
             children: [
               //
               widget.isNewFlag || isEdit
-                  ? Container(
-                      width: 25,
-                      padding: paddingS('b'),
-                      child: isEdit
-                          ? ColorButton(
-                              isSmall: true,
-                              menuItems: colorMenu(
-                                selectedColor: flagColor,
-                                onSelect: (newColor) => setState(() => flagColor = newColor),
-                              ),
-                              bgColor: flagColor,
-                            )
-                          : AppButton(
-                              onPressed: () => setState(() => isEdit = true),
-                              noStyling: true,
-                              padding: EdgeInsets.all(4),
-                              child: AppIcon(Icons.add_rounded, faded: true, size: 18),
-                            ),
-                    )
+                  ? isEdit
+                      ? ColorButton(
+                          isSmall: true,
+                          menuItems: colorMenu(
+                            selectedColor: flagColor,
+                            onSelect: (newColor) => setState(() => flagColor = newColor),
+                          ),
+                          bgColor: flagColor,
+                        )
+                      : AppButton(
+                          onPressed: () => setState(() => isEdit = true),
+                          noStyling: true,
+                          isSquare: true,
+                          child: AppIcon(Icons.add_rounded, faded: true, size: 18),
+                        )
                   : AppCheckBox(isChecked: widget.isSelected, onTap: widget.onPressed),
               //
               tpw(),
@@ -113,7 +109,6 @@ class _FlagItemState extends State<Flag> {
                 child: AppButton(
                   onPressed: isEdit || widget.isNewFlag ? null : widget.onPressed,
                   noStyling: true,
-                  borderRadius: borderRadiusSmall,
                   padding: EdgeInsets.zero,
                   child: DataInput(
                     hintText: widget.isNewFlag ? 'Add Flag' : 'Flag',
@@ -142,13 +137,14 @@ class _FlagItemState extends State<Flag> {
                     MenuItem(label: 'Delete', leading: Icons.delete, onTap: () => deleteFlag(widget.flag)),
                   ],
                   noStyling: true,
+                  isSquare: true,
                   child: AppIcon(Icons.more_vert_rounded, size: 14, faded: true),
                 ),
               //
             ],
           ),
           //
-          if (isEdit) sph(),
+          if (isEdit) tph(),
           //
           if (isEdit)
             Row(
@@ -156,23 +152,20 @@ class _FlagItemState extends State<Flag> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 //
-                AppButton(
+                ActionButton(
                   onPressed: () => setState(() {
                     controller.text = widget.flag;
                     isEdit = false;
                     flagColor = widget.color;
                   }),
-                  smallVerticalPadding: true,
-                  child: AppText(text: 'Cancel'),
+                  isCancel: true,
                 ),
                 //
                 spw(),
                 //
-                AppButton(
+                ActionButton(
                   onPressed: () => update(),
-                  color: styler.accentColor(),
-                  smallVerticalPadding: true,
-                  child: AppText(text: widget.flag.isNotEmpty ? 'Save' : 'Add', color: white),
+                  label: widget.flag.isNotEmpty ? 'Save' : 'Add',
                 ),
                 //
               ],

@@ -29,7 +29,7 @@ class FileList extends StatelessWidget {
       return Visibility(
         visible: fileData_.isNotEmpty,
         child: Padding(
-          padding: paddingM('b'),
+          padding: paddingM('t'),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +45,7 @@ class FileList extends StatelessWidget {
                       maxCrossAxisExtent: isOverview ? 40 : 80,
                       mainAxisSpacing: tinyWidth(),
                       crossAxisSpacing: tinyWidth(),
-                      children: List.generate(imageIds.length > 3 && isOverview ? 3 : imageIds.length, (index) {
+                      children: List.generate(imageIds.length > 4 && isOverview ? 4 : imageIds.length, (index) {
                         String fileId = imageIds[index];
                         String fileName = fileData_[fileId];
 
@@ -54,23 +54,25 @@ class FileList extends StatelessWidget {
                           fileName,
                           images: images,
                           isOverview: isOverview,
-                          height: isOverview ? 40 : 80,
-                          width: isOverview ? 40 : 80,
+                          height: isOverview ? 30 : 80,
+                          width: isOverview ? 30 : 80,
+                          radius: isOverview ? borderRadiusTiny : null,
+                          selectedIndex: index,
                         );
                       }),
                     ),
                   ),
                   //
-                  if (imageIds.length > 3 && isOverview)
+                  if (imageIds.length > 4 && isOverview)
                     Padding(
                       padding: paddingM(),
-                      child: AppText(text: '+ ${imageIds.length - 3}', faded: true),
+                      child: AppText(text: '+ ${imageIds.length - 4}', faded: true),
                     ),
                   //
                 ],
               ),
               // Other files
-              if (filesIds.isNotEmpty) msph(),
+              if (filesIds.isNotEmpty) sph(),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

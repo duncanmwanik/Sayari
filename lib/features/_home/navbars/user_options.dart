@@ -24,9 +24,6 @@ class UserOptions extends StatelessWidget {
         mph(),
         PanelToggle(),
         //
-        mph(),
-        NavMenu(),
-        //
         if (showNavOption(feature.explore.t)) mph(),
         if (showNavOption(feature.explore.t))
           AppButton(
@@ -61,6 +58,9 @@ class UserOptions extends StatelessWidget {
           ),
         //
         mph(),
+        NavMenu(),
+        //
+        mph(),
         AppButton(
           // onPressed: () => showToast(1, 'This is a nice app '),
           onPressed: () => context.go('/test/Guide'),
@@ -68,7 +68,7 @@ class UserOptions extends StatelessWidget {
           tooltipDirection: AxisDirection.right,
           isSquare: true,
           noStyling: true,
-          child: AppIcon(Icons.help, faded: true),
+          child: AppIcon(Icons.help, extraFaded: true),
         ),
         //
         mph(),
