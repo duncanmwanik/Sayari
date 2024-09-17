@@ -34,7 +34,7 @@ class ItemActions extends StatelessWidget {
           noStyling: isPersistent,
           isSquare: true,
           leading: moreIcon,
-          color: item.hasColor() ? styler.secondaryColor() : null,
+          color: item.hasColor() || item.hasOverview() ? styler.secondaryColor() : styler.tertiaryColor(),
           padding: isPersistent ? null : padding(p: 3),
           menuItems: [
             //

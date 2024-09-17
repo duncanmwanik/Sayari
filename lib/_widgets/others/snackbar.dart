@@ -20,21 +20,17 @@ void showSnackBar(String message) {
           padding: const EdgeInsets.only(left: 15, top: 5, bottom: 5),
           content: Row(
             children: [
-              //
-              // Message
-              //
+              // message
               Expanded(
                 child: StyledText(
                   text: message,
                   style: const TextStyle(fontWeight: FontWeight.w500, fontSize: medium),
                   tags: {
-                    'b': StyledTextTag(style: const TextStyle(fontWeight: FontWeight.w700, fontSize: medium)),
+                    'b': StyledTextTag(style: const TextStyle(fontWeight: FontWeight.bold, fontSize: medium)),
                   },
                 ),
               ),
-              //
-              // Close snackbar
-              //
+              // close
               AppButton(
                 onPressed: () => closeAllSnackBars(),
                 noStyling: true,
@@ -46,7 +42,6 @@ void showSnackBar(String message) {
         ),
       );
     } else {
-      // if on large screen, we show a toast instead
       showToast(2, message);
     }
   } catch (_) {}

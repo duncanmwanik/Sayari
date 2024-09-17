@@ -32,9 +32,9 @@ class BookingDate extends StatelessWidget {
               children: [
                 AppIcon(Icons.calendar_month_rounded, size: normal, faded: true),
                 spw(),
-                AppText(text: 'Date', fontWeight: FontWeight.bold, faded: true),
+                AppText(text: 'Date', weight: FontWeight.bold, faded: true),
                 tpw(),
-                AppText(text: ':', fontWeight: FontWeight.w900, faded: true),
+                AppText(text: ':', weight: FontWeight.w900, faded: true),
               ],
             ),
           ),

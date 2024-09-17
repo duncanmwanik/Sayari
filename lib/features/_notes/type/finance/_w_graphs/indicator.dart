@@ -23,7 +23,7 @@ class Indicator extends StatelessWidget {
       children: [
         AppIcon(Icons.circle, size: size, color: color),
         spw(),
-        AppText(text: text, fontWeight: FontWeight.bold),
+        AppText(text: text, weight: FontWeight.bold),
       ],
     );
   }

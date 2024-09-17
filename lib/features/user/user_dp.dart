@@ -8,7 +8,7 @@ import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
-import '../../_widgets/others/others/other_widgets.dart';
+import '../../_widgets/others/others/other.dart';
 import '../files/_helpers/download.dart';
 import '../files/_helpers/dp.dart';
 import '../files/viewer.dart';

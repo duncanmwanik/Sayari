@@ -25,16 +25,17 @@ Future showSessionOverviewDialog(Item item) {
 
   return showAppDialog(
     smallTitlePadding: true,
+    showDivider: false,
     //
     title: SessionType(item: item),
     //
     content: NoOverScroll(
       child: ListView(
         shrinkWrap: true,
-        padding: paddingS(),
+        padding: paddingS('lr'),
         children: [
           // title
-          AppText(size: title, text: item.data['t'], fontWeight: FontWeight.w700),
+          AppText(size: title, text: item.data['t'], weight: FontWeight.bold),
           tph(),
           // time
           SessionTime(startTime: item.data['s'], endTime: item.data['e'] ?? ''),

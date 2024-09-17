@@ -30,7 +30,7 @@ class TaskOptions extends StatelessWidget {
             sph(),
             //
             AppButton(
-              onPressed: () => input.update(action: 'add', key: 'v', value: showCheckBoxes ? '0' : '1'),
+              onPressed: () => input.update('v', showCheckBoxes ? '0' : '1'),
               noStyling: true,
               smallLeftPadding: true,
               child: Row(
@@ -44,7 +44,7 @@ class TaskOptions extends StatelessWidget {
             ),
             //
             AppButton(
-              onPressed: () => input.update(action: 'add', key: 'at', value: addToTop ? '0' : '1'),
+              onPressed: () => input.update('at', addToTop ? '0' : '1'),
               noStyling: true,
               smallLeftPadding: true,
               child: Row(

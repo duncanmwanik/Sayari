@@ -39,7 +39,7 @@ class PasswordResetWidget extends StatelessWidget {
             },
             color: Colors.red.shade500,
             width: 100,
-            child: AppText(text: 'Reset', fontWeight: FontWeight.bold, color: white, textAlign: TextAlign.center),
+            child: AppText(text: 'Reset', weight: FontWeight.bold, color: white, textAlign: TextAlign.center),
           ),
           //
           mph(),

@@ -65,7 +65,7 @@ class HabitOverview extends StatelessWidget {
                 mpw(),
                 AppText(
                     text: isCustom ? '$checkedNo / $customDatesNo' : '$checkedNo',
-                    fontWeight: FontWeight.bold,
+                    weight: FontWeight.bold,
                     faded: true,
                     bgColor: item.color()),
               ],

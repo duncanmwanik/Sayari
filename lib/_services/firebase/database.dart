@@ -52,6 +52,7 @@ class CloudData {
 
   Future<String> doesUserExist(String email) async {
     DataSnapshot snapshot = await ref('default').child('users/${emailAsKey(email)}').get();
+
     return snapshot.value != null ? snapshot.value as String : '';
   }
 

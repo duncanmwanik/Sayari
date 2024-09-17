@@ -44,7 +44,7 @@ class BlogBody extends StatelessWidget {
                       children: [
                         //
                         sph(),
-                        AppText(text: data['t'], size: blogTitle, fontWeight: FontWeight.w800),
+                        AppText(text: data['t'], size: blogTitle, weight: FontWeight.bold),
                         msph(),
                         BlogInfo(itemId: itemId, userId: userId, userName: userName, data: data),
                         AppDivider(height: mediumHeight()),

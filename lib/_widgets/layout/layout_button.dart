@@ -51,7 +51,7 @@ class LayoutButton extends StatelessWidget {
             ],
             menuWidth: 120,
             tooltip: 'Layout',
-            isRound: true,
+            isSquare: true,
             noStyling: true,
             child: AppIcon(layoutIcons[views.layout] ?? Icons.lens, faded: true),
           ),

@@ -65,7 +65,7 @@ class HabitMonth extends StatelessWidget {
                           ),
                           //
                           Flexible(
-                            child: AppText(size: normal, text: getMonthFull(dateTime.monthDatesMap[14] ?? ''), fontWeight: FontWeight.bold),
+                            child: AppText(size: normal, text: getMonthFull(dateTime.monthDatesMap[14] ?? ''), weight: FontWeight.bold),
                           ),
                           //
                           AppButton(
@@ -103,8 +103,7 @@ class HabitMonth extends StatelessWidget {
                           onPressed: ((isCustom && isCustomDate) || !isCustom || isChecked) && isSelectedMonth
                               ? () {
                                   if (isInput) {
-                                    input.update(
-                                        action: isChecked ? 'remove' : 'add', key: checkedKey, value: isChecked ? '0' : getUniqueId());
+                                    isChecked ? input.remove(checkedKey) : input.update(checkedKey, getUniqueId());
                                   } else {
                                     editItemExtras(
                                       type: item!.type,
@@ -132,7 +131,7 @@ class HabitMonth extends StatelessWidget {
                               AppText(
                                 size: medium,
                                 text: date.dayString(),
-                                fontWeight: FontWeight.w400,
+                                weight: FontWeight.w400,
                                 color: isSelectedMonth ? (isChecked ? white : null) : null,
                                 extraFaded: !isSelectedMonth,
                                 bgColor: isInput || !isSelectedMonth ? null : bgColor,

@@ -84,8 +84,6 @@ class _MenuItemState extends State<MenuItem> {
             Expanded(
               child: AppText(
                 text: widget.label,
-                // faded: !isHovered,
-                fontWeight: widget.isSelected ? FontWeight.w800 : FontWeight.w700,
                 color: widget.isSelected ? styler.accentColor() : null,
                 extraFaded: widget.faded,
                 textAlign: widget.center ? TextAlign.center : null,

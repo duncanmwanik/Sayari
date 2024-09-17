@@ -52,7 +52,7 @@ Future<void> showActivityBottomSheet() async {
                           'b': StyledTextTag(style: TextStyle(fontWeight: FontWeight.bold, color: styler.textColor(), fontSize: medium)),
                         },
                       ),
-                      subtitle: AppText(size: small, text: date, fontWeight: FontWeight.w400, faded: true),
+                      subtitle: AppText(size: small, text: date, weight: FontWeight.w400, faded: true),
                     );
                   })
               //

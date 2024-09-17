@@ -20,7 +20,7 @@ class CodeRepeat extends StatelessWidget {
 
       return AppButton(
         onPressed: () {
-          input.update(action: 'add', key: 'r', value: repeatOn ? '0' : '1');
+          input.update('r', repeatOn ? '0' : '1');
           editItemExtras(type: feature.code.t, itemId: input.itemId, key: 'r', value: repeatOn ? '0' : '1');
         },
         noStyling: true,

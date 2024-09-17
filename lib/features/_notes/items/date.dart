@@ -43,7 +43,7 @@ class Dates extends StatelessWidget {
                       onPressed: () async {
                         await showSelectDateDialog(initialDate: input.data['j']).then((date) async {
                           if (date.isNotEmpty) {
-                            input.update(action: 'add', key: 'j', value: getDatePart(date.first));
+                            input.update('j', getDatePart(date.first));
                           }
                         });
                       },
@@ -55,14 +55,14 @@ class Dates extends StatelessWidget {
                           Flexible(
                             child: AppText(
                               text: startDate != '' ? startDate : '...',
-                              fontWeight: FontWeight.w700,
+                              weight: FontWeight.bold,
                             ),
                           ),
                           //
                           if (startDate.isNotEmpty && showIcon) mpw(),
                           if (startDate.isNotEmpty && showIcon)
                             AppButton(
-                              onPressed: () => input.update(action: 'remove', key: 'j'),
+                              onPressed: () => input.remove('j'),
                               padding: EdgeInsets.all(2),
                               noStyling: true,
                               child: AppIcon(closeIcon, faded: true, size: 18),
@@ -76,7 +76,7 @@ class Dates extends StatelessWidget {
                       onPressed: () async {
                         await showSelectDateDialog(initialDate: input.data['k']).then((date) async {
                           if (date.isNotEmpty) {
-                            input.update(action: 'add', key: 'k', value: getDatePart(date.first));
+                            input.update('k', getDatePart(date.first));
                           }
                         });
                       },
@@ -88,14 +88,14 @@ class Dates extends StatelessWidget {
                           Flexible(
                             child: AppText(
                               text: endDate != '' ? endDate : '...',
-                              fontWeight: FontWeight.w700,
+                              weight: FontWeight.bold,
                             ),
                           ),
                           //
                           if (endDate.isNotEmpty && showIcon) mpw(),
                           if (endDate.isNotEmpty && showIcon)
                             AppButton(
-                              onPressed: () => input.update(action: 'remove', key: 'k'),
+                              onPressed: () => input.remove('k'),
                               padding: EdgeInsets.all(2),
                               noStyling: true,
                               child: AppIcon(closeIcon, faded: true, size: 18),

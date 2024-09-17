@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:reorderables/reorderables.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_models/item.dart';
-import '../../../../_widgets/layout/orderables/background.dart';
+import '../../../../_variables/features.dart';
 import '../../../../_widgets/others/text.dart';
+import '../../_helpers/order_items.dart';
 import '_w_item/subitem.dart';
 
 // TODOs: code min
@@ -23,24 +25,25 @@ class ListOfSubItems extends StatelessWidget {
     }
 
     return subItemsKeys.isNotEmpty
-        ? ReorderableListView.builder(
-            shrinkWrap: true,
+        ? ReorderableWrap(
+            key: UniqueKey(),
+            runSpacing: tinyHeight(),
+            maxMainAxisCount: 1,
             padding: EdgeInsets.zero,
-            physics: NeverScrollableScrollPhysics(),
-            buildDefaultDragHandles: false,
-            proxyDecorator: (child, index, animation) => proxyDecorator(child, index, animation),
-            onReorder: (oldIndex, newIndex) {},
-            itemCount: subItemsData.length,
-            itemBuilder: (ctx, index) {
+            onReorder: (oldIndex, newIndex) => orderItems(
+              type: feature.items.t,
+              oldItemId: subItemsKeys[oldIndex],
+              newItemId: subItemsKeys[newIndex],
+              itemsLength: subItemsKeys.length,
+              oldIndex: oldIndex,
+              newIndex: newIndex,
+            ),
+            children: List.generate(subItemsKeys.length, (index) {
               String subItemId = subItemsKeys[index];
               Map subItemData = subItemsData[subItemId];
 
-              return ReorderableDelayedDragStartListener(
-                index: index,
-                key: ValueKey(subItemId),
-                child: SubItem(subItemId: subItemId, subItemData: subItemData, item: item),
-              );
-            },
+              return SubItem(subItemId: subItemId, subItemData: subItemData, item: item);
+            }),
           )
         : Padding(
             padding: paddingM(),

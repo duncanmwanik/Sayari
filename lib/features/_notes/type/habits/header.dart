@@ -37,7 +37,7 @@ class HabitHeader extends StatelessWidget {
             leading: Icons.calendar_month_rounded,
             trailing: view == '1' ? Icons.done : null,
             onTap: () {
-              input.update(action: 'add', key: 'hv', value: '1');
+              input.update('hv', '1');
             },
           ),
           MenuItem(
@@ -45,7 +45,7 @@ class HabitHeader extends StatelessWidget {
             leading: Icons.view_module_rounded,
             trailing: view == '2' ? Icons.done : null,
             onTap: () {
-              input.update(action: 'add', key: 'hv', value: '2');
+              input.update('hv', '2');
             },
           ),
         ],

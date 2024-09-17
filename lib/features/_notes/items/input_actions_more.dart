@@ -53,7 +53,7 @@ class MoreInputActions extends StatelessWidget {
               label: 'Share',
               leading: Icons.share_rounded,
               onTap: () {
-                input.update(action: 'add', key: feature.share.lt, value: '1');
+                input.update(feature.share.lt, '1');
                 shareItem(itemId: input.itemId, type: state.views.itemsView, title: input.data['t'] ?? 'Shared Item');
               },
             ),
@@ -63,7 +63,7 @@ class MoreInputActions extends StatelessWidget {
               label: isArchived ? 'Unarchive' : 'Archive',
               leading: isArchived ? unarchiveIcon : archiveIcon,
               onTap: () {
-                input.update(action: 'add', key: 'a', value: isArchived ? '0' : '1');
+                input.update('a', isArchived ? '0' : '1');
                 if (!isArchived) closeBottomSheetIfOpen();
               },
             ),
@@ -73,8 +73,7 @@ class MoreInputActions extends StatelessWidget {
               label: 'Move To Trash',
               leading: Icons.delete_outlined,
               onTap: () async {
-                input.update(action: 'add', key: 'x', value: '1');
-                closeBottomSheetIfOpen();
+                input.update('x', '1');
               },
             ),
           //

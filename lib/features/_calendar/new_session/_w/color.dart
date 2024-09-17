@@ -14,7 +14,7 @@ class SessionColor extends StatelessWidget {
       return ColorButton(
         menuItems: colorMenu(
           selectedColor: input.data['c'],
-          onSelect: (newColor) => input.update(action: 'add', key: 'c', value: newColor),
+          onSelect: (newColor) => input.update('c', newColor),
         ),
         bgColor: input.data['c'],
       );

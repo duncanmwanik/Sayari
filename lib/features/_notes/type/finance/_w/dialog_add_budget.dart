@@ -5,8 +5,8 @@ import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/navigation.dart';
 import '../../../../../_providers/providers.dart';
+import '../../../../../_widgets/buttons/action_button.dart';
 import '../../../../../_widgets/dialogs/app_dialog.dart';
-import '../../../../../_widgets/dialogs/dialog_buttons.dart';
 import '../../../../../_widgets/others/forms/input.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../../../_widgets/others/toast.dart';
@@ -43,7 +43,7 @@ Future showPeriodBudgetDialog({required String type, required String key}) {
         label: 'Set',
         onPressed: () async {
           if (amountController.text.trim().isNotEmpty) {
-            state.input.update(action: 'add', key: key, value: amountController.text);
+            state.input.update(key, amountController.text);
             popWhatsOnTop();
           } else {
             showToast(0, 'Enter amount');

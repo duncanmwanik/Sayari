@@ -28,7 +28,7 @@ class CheckedDates extends StatelessWidget {
           Padding(
             padding: padding(s: 'tb'),
             child: AppButton(
-              onPressed: () => input.update(action: 'add', key: 'ep', value: isExpanded ? '0' : '1'),
+              onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
               noStyling: true,
               isSquare: true,
               hoverColor: transparent,

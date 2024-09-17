@@ -34,7 +34,7 @@ class PublishedBookIntro extends StatelessWidget {
               // text: sharedData['t'],
               text: 'Being Mortal: Medicine and What Matters in the End',
               size: extra,
-              fontWeight: FontWeight.w800,
+              weight: FontWeight.bold,
               textAlign: TextAlign.center,
             ),
             sph(),

@@ -39,7 +39,7 @@ class Reminders extends StatelessWidget {
                         onPressed: () async {
                           hideKeyboard();
                           remindersList.add('30.m');
-                          input.update(action: 'add', key: 'r', value: getJoinedList(remindersList));
+                          input.update('r', getJoinedList(remindersList));
                         },
                         noStyling: true,
                         showBorder: true,

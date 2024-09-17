@@ -19,7 +19,7 @@ class PomodoroChooser extends StatelessWidget {
         children: [
           //
           sph(),
-          AppText(text: 'pomodoro', size: 30, fontWeight: FontWeight.w800, faded: true),
+          AppText(text: 'pomodoro', size: 30, weight: FontWeight.bold, faded: true),
           elph(),
           //
           AppButton(

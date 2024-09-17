@@ -3,13 +3,13 @@ import 'package:flutter_quill/flutter_quill.dart';
 
 import '../../../__styling/variables.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../../_widgets/others/others/other_widgets.dart';
+import '../../../_widgets/others/others/other.dart';
 
 DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
   Color quillTextColor = styler.textColor(bgColor: bgColor);
   Color quillFadedTextColor = styler.textColor(faded: true, bgColor: bgColor);
   FontWeight fontWeight = FontWeight.w600;
-  FontWeight boldFontWeight = FontWeight.w800;
+  FontWeight boldFontWeight = FontWeight.bold;
   String fontFamily = 'Nunito';
   double fontSize = 15;
 

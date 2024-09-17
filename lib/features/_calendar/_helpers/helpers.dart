@@ -11,7 +11,7 @@ Future<void> prepareSessionCreation({String? date, int? hour}) async {
     state.input.updateSelectedDates('add', date: date);
   }
   if (hour != null) {
-    state.input.update(action: 'add', key: 's', value: '$hour:0');
+    state.input.update('s', '$hour:0');
   }
   showSessionBottomSheet();
 }

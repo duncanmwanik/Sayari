@@ -35,7 +35,7 @@ class CheckedDates extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: AppButton(
-                  onPressed: () => input.update(action: 'add', key: 'he', value: isExpanded ? '0' : '1'),
+                  onPressed: () => input.update('he', isExpanded ? '0' : '1'),
                   noStyling: true,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,

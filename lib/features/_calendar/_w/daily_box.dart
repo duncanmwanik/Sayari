@@ -10,7 +10,7 @@ import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../files/_helpers/helper.dart';
 import '../_helpers/helpers.dart';
-import '../overview/dialog_session_overview.dart';
+import '../overview/overview.dart';
 
 class DayBox extends StatelessWidget {
   const DayBox({super.key, required this.item});
@@ -35,7 +35,7 @@ class DayBox extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // title
-            AppText(text: item.data['t'], fontWeight: FontWeight.w700, color: textColor),
+            AppText(text: item.data['t'], weight: FontWeight.bold, color: textColor),
             //
             Wrap(
               spacing: smallWidth(),
@@ -50,7 +50,7 @@ class DayBox extends StatelessWidget {
                       size: small,
                       text: get12HourTimeFrom24HourTime(item.data['s'], islonger: true),
                       color: textColor,
-                      fontWeight: FontWeight.w400,
+                      weight: FontWeight.w400,
                     ), // stop
                     AppText(
                       size: small,
@@ -58,7 +58,7 @@ class DayBox extends StatelessWidget {
                           ? '  -  ${get12HourTimeFrom24HourTime(item.data['e'], islonger: true)}'
                           : '',
                       color: textColor,
-                      fontWeight: FontWeight.w400,
+                      weight: FontWeight.w400,
                     ),
                   ],
                 ),
@@ -69,7 +69,7 @@ class DayBox extends StatelessWidget {
                     children: [
                       AppIcon(Icons.person_rounded, size: 13, color: textColor),
                       tpw(),
-                      Flexible(child: AppText(size: small, text: '${item.data['l']}', color: textColor, fontWeight: FontWeight.w400)),
+                      Flexible(child: AppText(size: small, text: '${item.data['l']}', color: textColor, weight: FontWeight.w400)),
                     ],
                   ),
                 // venue
@@ -79,7 +79,7 @@ class DayBox extends StatelessWidget {
                     children: [
                       AppIcon(Icons.location_on_rounded, size: small, color: textColor),
                       tpw(),
-                      Flexible(child: AppText(size: small, text: '${item.data['v']}', color: textColor, fontWeight: FontWeight.w400)),
+                      Flexible(child: AppText(size: small, text: '${item.data['v']}', color: textColor, weight: FontWeight.w400)),
                     ],
                   ),
                 // files
@@ -93,7 +93,7 @@ class DayBox extends StatelessWidget {
                         text: '$fileCount file${fileCount > 1 ? 's' : ''} attached',
                         color: textColor,
                         size: small,
-                        fontWeight: FontWeight.w400,
+                        weight: FontWeight.w400,
                       )
                     ],
                   ),

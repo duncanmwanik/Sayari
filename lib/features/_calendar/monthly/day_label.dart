@@ -26,7 +26,7 @@ class MonthDayNumberLabel extends StatelessWidget {
       child: AppText(
         size: small,
         text: '${date.day() == 1 ? date.monthString() : ''} ${date.dayString()}',
-        fontWeight: isSelectedMonth ? FontWeight.w600 : FontWeight.w100,
+        weight: isSelectedMonth ? FontWeight.w600 : FontWeight.w100,
         extraFaded: !isSelectedMonth,
         color: isToday ? white : null,
       ),

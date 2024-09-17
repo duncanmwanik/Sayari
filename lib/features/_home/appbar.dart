@@ -31,7 +31,7 @@ class CustomAppBar extends StatelessWidget {
         padding: paddingS(),
         decoration: BoxDecoration(
           color: styler.appColor(0.5),
-          borderRadius: BorderRadius.circular(borderRadiusSmall),
+          borderRadius: BorderRadius.circular(borderRadiusTiny),
         ),
         child: isItemSelection
             ? SelectedItemOptions()
@@ -48,7 +48,6 @@ class CustomAppBar extends StatelessWidget {
                           tooltip: 'All Workspaces',
                           isSquare: true,
                           noStyling: true,
-                          borderRadius: borderRadiusTinySmall,
                           child: AppIcon(Icons.sort_rounded),
                         ),
                         // selected space name
@@ -66,7 +65,7 @@ class CustomAppBar extends StatelessWidget {
                       PomodoroIndicator(),
                       Search(),
                       LayoutButton(),
-                      QuickThemeChanger(),
+                      ThemeButton(),
                       pw(5),
                       UserDp(isTiny: true, menuItems: dpMenu(), tooltip: 'Account Options'),
                       //

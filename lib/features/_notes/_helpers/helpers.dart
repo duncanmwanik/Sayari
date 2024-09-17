@@ -50,7 +50,7 @@ Future<void> prepareNoteForCreation() async {
   }
 
   // for ordering
-  state.input.update(action: 'add', key: 'o', value: getUniqueId());
+  state.input.update('o', getUniqueId());
 
   await showNoteBottomSheet(id: id, isMinimized: state.input.isTask());
 }

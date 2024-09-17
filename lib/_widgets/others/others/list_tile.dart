@@ -25,12 +25,8 @@ class AppListTile extends StatelessWidget {
       tileColor: noColor ? transparent : styler.appColor(1),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusSmall)),
       contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-      //
       leading: leading.runtimeType == String ? AppText(text: leading) : leading,
-      //
       trailing: trailing.runtimeType == String ? AppText(text: trailing, textAlign: TextAlign.end) : trailing,
-      //
-      //
     );
   }
 }

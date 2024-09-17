@@ -4,9 +4,9 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/providers.dart';
+import '../../../_widgets/buttons/action_button.dart';
 import '../../../_widgets/buttons/close_button.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
-import '../../../_widgets/dialogs/dialog_buttons.dart';
 import '../../../_widgets/others/forms/input.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/scroll.dart';
@@ -60,7 +60,7 @@ Future<void> showSessionBottomSheet() async {
                 fontSize: large,
                 contentPadding: EdgeInsets.only(bottom: 15),
                 maxLines: 3,
-                fontWeight: FontWeight.w700,
+                weight: FontWeight.bold,
                 keyboardType: TextInputType.name,
                 filled: false,
                 autofocus: isNew,

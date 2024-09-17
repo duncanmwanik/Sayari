@@ -132,8 +132,7 @@ class _HabitWeekState extends State<HabitWeek> {
                           onPressed: (isCustom && isCustomDate) || !isCustom || isChecked
                               ? () {
                                   if (isInput) {
-                                    input.update(
-                                        action: isChecked ? 'remove' : 'add', key: checkedKey, value: isChecked ? '0' : getUniqueId());
+                                    isChecked ? input.remove(checkedKey) : input.update(checkedKey, getUniqueId());
                                   } else {
                                     editItemExtras(
                                       type: widget.item!.type,

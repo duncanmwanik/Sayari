@@ -15,9 +15,9 @@ class SpaceName extends StatelessWidget {
         valueListenable: spaceNamesBox.listenable(),
         builder: (context, box, widget) {
           return AppText(
-            size: extra,
+            size: normal,
             text: liveSpace() != 'none' ? box.get(liveSpace(), defaultValue: 'No name') : '',
-            fontWeight: FontWeight.w700,
+            weight: FontWeight.bold,
           );
         });
   }

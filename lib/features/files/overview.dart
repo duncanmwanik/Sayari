@@ -108,7 +108,7 @@ class ImageOverview extends StatelessWidget {
                         child: AppText(
                           text: fileName,
                           textAlign: TextAlign.center,
-                          fontWeight: FontWeight.w600,
+                          weight: FontWeight.w600,
                           faded: true,
                         ),
                       )),
@@ -121,7 +121,7 @@ class ImageOverview extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(5.0),
                   child: AppButton(
-                    onPressed: () => state.input.update(action: 'remove', key: 'w'),
+                    onPressed: () => state.input.remove('w'),
                     noStyling: true,
                     isSquare: true,
                     child: AppIcon(Icons.cancel, tiny: true, extraFaded: true),

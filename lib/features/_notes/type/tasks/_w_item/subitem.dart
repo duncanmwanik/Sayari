@@ -110,7 +110,7 @@ class _ItemState extends State<SubItem> {
                               padding: EdgeInsets.only(top: 1),
                               child: AppText(
                                 text: widget.subItemData['t'] ?? '---',
-                                fontWeight: widget.item.hasColor() || !isDark() ? FontWeight.w600 : FontWeight.w400,
+                                weight: widget.item.hasColor() || !isDark() ? FontWeight.w600 : FontWeight.w400,
                                 bgColor: widget.item.color(),
                               ),
                             ),

@@ -36,7 +36,7 @@ class CodeBlock extends StatelessWidget {
               if (type == 'p') blocks.add('$type,h,1');
               if (type == 'i') blocks.add('$type,h,1');
               if (type == 'w') blocks.add('$type,h,1');
-              state.input.update(action: 'add', key: 'b', value: getJoinedList(blocks));
+              state.input.update('b', getJoinedList(blocks));
               editItemExtras(type: feature.code.t, itemId: state.input.itemId, key: 'b', value: getJoinedList(blocks));
               // print(blocks);
             },
@@ -55,7 +55,7 @@ class CodeBlock extends StatelessWidget {
               if (type == 'p') blocks.add('$type,h,1');
               if (type == 'i') blocks.add('$type,h,1');
               if (type == 'w') blocks.add('$type,h,1');
-              state.input.update(action: 'add', key: 'b', value: getJoinedList(blocks));
+              state.input.update('b', getJoinedList(blocks));
               editItemExtras(type: feature.code.t, itemId: state.input.itemId, key: 'b', value: getJoinedList(blocks));
               // print(blocks);
             },
@@ -88,7 +88,7 @@ class CodeBlock extends StatelessWidget {
             onPressed: () {
               List blocks = getSplitList(state.input.data['b']);
               blocks.removeAt(index);
-              state.input.update(action: 'add', key: 'b', value: getJoinedList(blocks));
+              state.input.update('b', getJoinedList(blocks));
               editItemExtras(type: feature.code.t, itemId: state.input.itemId, key: 'b', value: getJoinedList(blocks));
             },
             tooltip: 'Delete Block',

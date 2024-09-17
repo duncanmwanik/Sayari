@@ -32,7 +32,7 @@ class BookingOverview extends StatelessWidget {
               spw(),
               AppText(
                 text: count.toString(),
-                fontWeight: FontWeight.bold,
+                weight: FontWeight.bold,
                 faded: true,
                 bgColor: item.color(),
               ),

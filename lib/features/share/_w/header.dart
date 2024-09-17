@@ -39,14 +39,14 @@ class SharedHeader extends StatelessWidget {
               children: [
                 AppImage('sayari.png', size: 20),
                 spw(),
-                AppText(faded: true, text: 'Sayari', size: normal, fontWeight: FontWeight.w800),
+                AppText(faded: true, text: 'Sayari', size: normal, weight: FontWeight.bold),
               ],
             ),
           ),
           //
           Spacer(),
           if (feature.isSpaceT(state.share.type)) LayoutButton(),
-          QuickThemeChanger(),
+          ThemeButton(),
           tpw(),
           SharedAction(hasInfo: false),
           spw(),

@@ -61,7 +61,7 @@ Future<void> showNoteBottomSheet({String? id, bool isMinimized = false}) async {
                     hintText: 'Title',
                     onFieldSubmitted: (_) => state.quill.controller.moveCursorToEnd(),
                     fontSize: title,
-                    fontWeight: FontWeight.w800,
+                    weight: FontWeight.bold,
                     textCapitalization: TextCapitalization.sentences,
                     filled: false,
                     autofocus: state.input.itemId.isEmpty,

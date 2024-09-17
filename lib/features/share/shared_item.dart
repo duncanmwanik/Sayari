@@ -32,14 +32,14 @@ class Share extends StatelessWidget {
           child: Padding(
             padding: paddingS('t'),
             child: AppButton(
-              padding: paddingM(),
+              smallRightPadding: true,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //
                   AppButton(
-                    onPressed: () => input.update(action: 'add', key: 'ep', value: isExpanded ? '0' : '1'),
+                    onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
                     padding: EdgeInsets.zero,
                     noStyling: true,
                     hoverColor: transparent,
@@ -59,7 +59,7 @@ class Share extends StatelessWidget {
                         Spacer(),
                         //
                         AppButton(
-                          onPressed: () => input.update(action: 'add', key: 'ep', value: isExpanded ? '0' : '1'),
+                          onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
                           noStyling: true,
                           isSquare: true,
                           hoverColor: transparent,
@@ -76,8 +76,8 @@ class Share extends StatelessWidget {
                                 content: 'The note will also be unpublished, if published.',
                                 yeslabel: 'Unshare',
                                 onAccept: () {
-                                  input.update(action: 'rem', key: feature.share.lt);
-                                  input.update(action: 'rem', key: 'sp');
+                                  input.remove(feature.share.lt);
+                                  input.remove('sp');
                                   shareItem(delete: true, itemId: input.itemId);
                                 },
                               ),
@@ -103,7 +103,7 @@ class Share extends StatelessWidget {
                       child: AppText(
                         text: 'A published note will appear in the Sayari Blog.',
                         faded: true,
-                        fontWeight: isDark() ? FontWeight.w400 : null,
+                        weight: isDark() ? FontWeight.w400 : null,
                       ),
                     ),
                   if (isExpanded) sph(),
@@ -116,7 +116,7 @@ class Share extends StatelessWidget {
                       children: [
                         AppButton(
                           onPressed: () {
-                            input.update(action: 'add', key: 'sp', value: isPublished ? '0' : '1');
+                            input.update('sp', isPublished ? '0' : '1');
                             shareItem(
                               update: true,
                               itemId: input.itemId,

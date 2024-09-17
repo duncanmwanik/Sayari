@@ -49,7 +49,7 @@ class Entry extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // amount
-                  AppText(size: normal, text: amount, fontWeight: FontWeight.w700),
+                  AppText(size: normal, text: amount, weight: FontWeight.bold),
                   // description
                   if (entryData['d'].toString().isNotEmpty) tph(),
                   if (entryData['d'].toString().isNotEmpty)
@@ -90,7 +90,7 @@ class Entry extends StatelessWidget {
               onPressed: () => showConfirmationDialog(
                 title: 'Remove entry <b>$amount</b> on <b>$date</b>',
                 yeslabel: 'Remove',
-                onAccept: () => state.input.update(action: 'remove', key: entryId),
+                onAccept: () => state.input.remove(entryId),
               ),
               noStyling: true,
               isSquare: true,

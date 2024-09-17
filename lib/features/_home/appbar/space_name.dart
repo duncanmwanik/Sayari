@@ -25,14 +25,12 @@ class SpaceName extends StatelessWidget {
             onPressed: () => isASpaceSelected ? showSpaceOverviewBottomSheet() : openDrawer(),
             tooltip: name,
             noStyling: true,
-            borderRadius: borderRadiusCrazy,
-            smallVerticalPadding: true,
             child: AppText(
-              size: extra,
+              size: normal,
               text: name,
               textAlign: TextAlign.start,
               overflow: TextOverflow.ellipsis,
-              fontWeight: FontWeight.w800,
+              weight: FontWeight.bold,
             ),
           );
         });

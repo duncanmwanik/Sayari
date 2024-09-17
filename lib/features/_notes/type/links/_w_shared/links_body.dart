@@ -91,7 +91,7 @@ class LinksBody extends StatelessWidget {
                                           child: AppText(
                                         text: title,
                                         size: isTitle ? extra : normal,
-                                        fontWeight: isTitle ? FontWeight.w800 : null,
+                                        weight: isTitle ? FontWeight.bold : null,
                                         textAlign: isTitle ? TextAlign.center : null,
                                       )),
                                       //
@@ -106,7 +106,7 @@ class LinksBody extends StatelessWidget {
                             ),
                             //
                             lph(),
-                            QuickThemeChanger(rightPadding: false),
+                            ThemeButton(rightPadding: false),
                             sph(),
                             SharedAction(hasInfo: false),
                             //

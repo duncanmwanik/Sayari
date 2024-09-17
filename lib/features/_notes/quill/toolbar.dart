@@ -21,7 +21,7 @@ Widget getQuillToolbar() {
       style: IconButton.styleFrom(
         foregroundColor: white,
         backgroundColor: styler.accentColor(),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusSmall)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusTiny)),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         padding: EdgeInsets.all(5),
         iconSize: 12,
@@ -32,7 +32,7 @@ Widget getQuillToolbar() {
       padding: EdgeInsets.zero,
       style: IconButton.styleFrom(
         foregroundColor: styler.textColor(),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusSmall)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusTiny)),
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         padding: EdgeInsets.all(5),
         iconSize: 12,
@@ -44,7 +44,7 @@ Widget getQuillToolbar() {
   QuillToolbarCustomButton sizeButton(String label, Attribute attribute) => QuillToolbarCustomButton(
         controller: controller,
         options: QuillToolbarCustomButtonOptions(
-          icon: AppText(text: label, fontWeight: FontWeight.bold),
+          icon: AppText(text: label, weight: FontWeight.bold),
           iconTheme: iconTheme,
           onPressed: () => controller.formatSelection(attribute),
         ),
@@ -65,7 +65,7 @@ Widget getQuillToolbar() {
         // QuillToolbarCustomButton(
         //   controller: controller,
         //   options: QuillToolbarCustomButtonOptions(
-        //     icon: AppText(text: 'Co', fontWeight: FontWeight.bold),
+        //     icon: AppText(text: 'Co', weight: FontWeight.bold),
         //     iconTheme: iconTheme,
         //     onPressed: () => print(controller.document.toDelta()),
         //   ),

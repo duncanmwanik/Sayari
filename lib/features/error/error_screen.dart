@@ -56,7 +56,7 @@ class ErrorScreen extends StatelessWidget {
                         AppText(
                           size: normal,
                           text: 'Lost in space.\n...',
-                          fontWeight: FontWeight.bold,
+                          weight: FontWeight.bold,
                           textAlign: TextAlign.center,
                         ),
                         mph(),
@@ -69,7 +69,7 @@ class ErrorScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              AppText(text: isSignedIn() ? 'Go Home' : 'Join Sayari', color: white, fontWeight: FontWeight.bold),
+                              AppText(text: isSignedIn() ? 'Go Home' : 'Join Sayari', color: white, weight: FontWeight.bold),
                               spw(),
                               AppIcon(Icons.arrow_forward_rounded, size: 16, color: white),
                             ],

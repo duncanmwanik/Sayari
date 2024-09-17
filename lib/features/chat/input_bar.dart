@@ -13,6 +13,7 @@ import '../../_widgets/buttons/buttons.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '../_spaces/_helpers/checks_space.dart';
+import '../ai/ai_sheet.dart';
 import '../files/_helpers/helper.dart';
 import '../files/_helpers/upload.dart';
 import '../files/file_list.dart';
@@ -30,14 +31,14 @@ class MessageInputBar extends StatelessWidget {
     return Align(
       alignment: Alignment.bottomCenter,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(borderRadiusSmall),
+        borderRadius: BorderRadius.circular(borderRadiusTiny),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 2, vertical: 1),
             decoration: BoxDecoration(
               color: styler.appColor(1),
-              borderRadius: BorderRadius.circular(borderRadiusSmall),
+              borderRadius: BorderRadius.circular(borderRadiusTiny),
             ),
             child: isAdmin()
                 ? Column(
@@ -52,7 +53,7 @@ class MessageInputBar extends StatelessWidget {
                         children: [
                           //
                           AppButton(
-                            onPressed: () async => getFilesToUpload(),
+                            onPressed: () => getFilesToUpload(),
                             tooltip: 'Attach',
                             height: 45,
                             width: 45,
@@ -60,21 +61,31 @@ class MessageInputBar extends StatelessWidget {
                             isSquare: true,
                             child: AppIcon(Icons.add_rounded),
                           ),
+                          //
+                          AppButton(
+                            onPressed: () => showAISheet(),
+                            tooltip: 'Ask AI',
+                            height: 45,
+                            width: 45,
+                            noStyling: true,
+                            isSquare: true,
+                            child: AppIcon(Icons.bubble_chart_sharp),
+                          ),
                           // Message Input
                           Expanded(
                             child: TextFormField(
                               onFieldSubmitted: (_) => sendMessage(),
-                              onChanged: (value) => state.input.update(action: 'add', key: 'n', value: value.trim()),
+                              onChanged: (value) => state.input.update('n', value.trim()),
                               controller: messageController,
                               keyboardType: TextInputType.multiline,
                               textCapitalization: TextCapitalization.sentences,
                               textInputAction: kIsWeb ? TextInputAction.next : null,
                               minLines: 1,
                               maxLines: 8,
-                              style: TextStyle(fontSize: medium, fontWeight: FontWeight.w600, color: styler.textColor()),
+                              style: TextStyle(fontSize: medium, color: styler.textColor()),
                               decoration: InputDecoration(
                                 hintText: 'Type a message...',
-                                hintStyle: TextStyle(fontSize: medium, fontWeight: FontWeight.w600, color: styler.textColor(faded: true)),
+                                hintStyle: TextStyle(fontSize: medium, color: styler.textColor(faded: true)),
                                 filled: false,
                                 contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                                 border: InputBorder.none,

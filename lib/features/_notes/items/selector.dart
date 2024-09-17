@@ -9,7 +9,7 @@ import '../../../_providers/common/misc.dart';
 import '../../../_providers/common/selection.dart';
 import '../../../_providers/providers.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../../_widgets/others/others/other_widgets.dart';
+import '../../../_widgets/others/others/other.dart';
 
 class ItemSelector extends StatelessWidget {
   const ItemSelector({super.key, required this.item});

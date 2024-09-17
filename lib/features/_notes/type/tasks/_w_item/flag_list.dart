@@ -5,7 +5,7 @@ import '../../../../../__styling/spacing.dart';
 import '../../../../../_helpers/_common/global.dart';
 import '../../../../../_providers/providers.dart';
 import '../../../../../_variables/features.dart';
-import '../../../../../_widgets/others/others/other_widgets.dart';
+import '../../../../../_widgets/others/others/other.dart';
 import '../../../../_spaces/_helpers/common.dart';
 import 'item_flag.dart';
 
@@ -36,7 +36,7 @@ class ItemFlagList extends StatelessWidget {
                   isTinyFlag: isTinyFlag,
                   onPressedDelete: () {
                     flagList.remove(flag);
-                    state.input.update(action: 'add', key: 'g', value: getJoinedList(flagList));
+                    state.input.update('g', getJoinedList(flagList));
                   },
                 ),
               );
@@ -53,6 +53,6 @@ class ItemFlagList extends StatelessWidget {
   Future<void> removeFlag(String flag) async {
     await Future.delayed(Duration.zero);
     flagList.remove(flag);
-    state.input.update(action: 'add', key: 'g', value: getJoinedList(flagList));
+    state.input.update('g', getJoinedList(flagList));
   }
 }

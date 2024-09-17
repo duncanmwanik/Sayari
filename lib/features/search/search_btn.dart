@@ -15,7 +15,7 @@ class Search extends StatelessWidget {
       child: AppButton(
         onPressed: () => showSearchSheet(),
         tooltip: 'Search',
-        isRound: true,
+        isSquare: true,
         noStyling: true,
         child: AppIcon(Icons.search_rounded, faded: true),
       ),

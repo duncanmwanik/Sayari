@@ -16,14 +16,9 @@ import '../../../../../_widgets/others/others/divider.dart';
 import '../../../../../_widgets/others/text.dart';
 import 'dialog_change_date.dart';
 
-class BookingsList extends StatefulWidget {
+class BookingsList extends StatelessWidget {
   const BookingsList({super.key});
 
-  @override
-  State<BookingsList> createState() => _BookingState();
-}
-
-class _BookingState extends State<BookingsList> {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
@@ -40,7 +35,7 @@ class _BookingState extends State<BookingsList> {
           Padding(
             padding: padding(s: 't'),
             child: AppButton(
-              onPressed: () => input.update(action: 'add', key: 'ep0', value: isBookingsExpanded ? '0' : '1'),
+              onPressed: () => input.update('ep0', isBookingsExpanded ? '0' : '1'),
               noStyling: true,
               isSquare: true,
               hoverColor: transparent,
@@ -116,8 +111,8 @@ class _BookingState extends State<BookingsList> {
                                         alignment: WrapAlignment.start,
                                         crossAxisAlignment: WrapCrossAlignment.center,
                                         children: [
-                                          AppText(text: getDateFull(date), fontWeight: FontWeight.bold),
-                                          AppText(text: get12HourTimeFrom24HourTime(time), fontWeight: FontWeight.bold),
+                                          AppText(text: getDateFull(date), weight: FontWeight.bold),
+                                          AppText(text: get12HourTimeFrom24HourTime(time), weight: FontWeight.bold),
                                         ],
                                       ),
                                     ),
@@ -129,7 +124,7 @@ class _BookingState extends State<BookingsList> {
                                           leading: isDone ? Icons.timelapse_rounded : Icons.done_rounded,
                                           onTap: () {
                                             booking['bbc'] = isDone ? '0' : '1';
-                                            input.update(action: 'add', key: bookingKey, value: jsonEncode(booking));
+                                            input.update(bookingKey, jsonEncode(booking));
                                           },
                                         ),
                                         MenuItem(
@@ -144,7 +139,7 @@ class _BookingState extends State<BookingsList> {
                                                 booking['bbd'] = newDate;
                                                 booking['bbt'] = newTime;
                                                 booking['bbc'] = '0';
-                                                input.update(action: 'add', key: bookingKey, value: jsonEncode(booking));
+                                                input.update(bookingKey, jsonEncode(booking));
                                               },
                                             );
                                           },
@@ -155,7 +150,7 @@ class _BookingState extends State<BookingsList> {
                                           onTap: () => showConfirmationDialog(
                                             title: 'Remove booking session with <b>$name</b>?',
                                             yeslabel: 'Remove',
-                                            onAccept: () => input.update(action: 'remove', key: bookingKey),
+                                            onAccept: () => input.remove(bookingKey),
                                           ),
                                         ),
                                       ],

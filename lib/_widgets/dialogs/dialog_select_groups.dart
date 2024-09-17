@@ -7,12 +7,12 @@ import '../../_providers/common/input.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../features/_spaces/_helpers/space_names.dart';
 import '../../features/_spaces/manager/_w/dialog_create_group.dart';
+import '../buttons/action_button.dart';
 import '../buttons/buttons.dart';
 import '../others/checkbox.dart';
 import '../others/icons.dart';
 import '../others/text.dart';
 import 'app_dialog.dart';
-import 'dialog_buttons.dart';
 
 Future showSelectGroupsDialog() {
   List groupNames = [];

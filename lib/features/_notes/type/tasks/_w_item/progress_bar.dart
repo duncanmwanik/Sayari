@@ -52,7 +52,7 @@ class ProgressBar extends StatelessWidget {
                       text: '${item.checkedCount()} / ${item.taskCount()}',
                       color: isComplete ? styler.accent : null,
                       size: tiny,
-                      fontWeight: FontWeight.bold,
+                      weight: FontWeight.bold,
                       bgColor: item.color(),
                       extraFaded: true,
                     ),

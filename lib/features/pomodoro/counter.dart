@@ -62,7 +62,7 @@ class PomodoroCounter extends StatelessWidget {
                   AppText(
                     size: 40,
                     text: isTiming ? getRemainingTimeString() : getTimerString(timer),
-                    fontWeight: FontWeight.w900,
+                    weight: FontWeight.w900,
                     faded: !isTiming && pomo.isTiming,
                   ),
                   // stopping time

@@ -31,7 +31,7 @@ class LinksOverview extends StatelessWidget {
               spw(),
               AppText(
                 text: item.data.keys.where((key) => key.toString().startsWith('lk')).length.toString(),
-                fontWeight: FontWeight.bold,
+                weight: FontWeight.bold,
                 faded: true,
                 bgColor: item.color(),
               ),

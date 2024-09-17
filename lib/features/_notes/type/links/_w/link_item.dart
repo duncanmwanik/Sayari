@@ -7,8 +7,8 @@ import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/global.dart';
 import '../../../../../_helpers/_common/navigation.dart';
 import '../../../../../_providers/providers.dart';
+import '../../../../../_widgets/buttons/action_button.dart';
 import '../../../../../_widgets/buttons/buttons.dart';
-import '../../../../../_widgets/dialogs/dialog_buttons.dart';
 import '../../../../../_widgets/menu/confirmation.dart';
 import '../../../../../_widgets/menu/menu_item.dart';
 import '../../../../../_widgets/others/forms/input.dart';
@@ -89,7 +89,7 @@ class _HabitWeekState extends State<LinkItem> {
                               imagesOnly: true,
                               embed: true,
                               onDone: (stash) {
-                                state.input.update(action: 'remove', key: linkImageId);
+                                state.input.remove(linkImageId);
                                 setState(() => linkImageId = stash.fileId());
                               });
                         },
@@ -105,7 +105,7 @@ class _HabitWeekState extends State<LinkItem> {
                                   imagesOnly: true,
                                   embed: true,
                                   onDone: (stash) {
-                                    state.input.update(action: 'remove', key: linkImageId);
+                                    state.input.remove(linkImageId);
                                     setState(() => linkImageId = stash.fileId());
                                   });
                             },
@@ -122,7 +122,7 @@ class _HabitWeekState extends State<LinkItem> {
                               leading: Icons.close,
                               onTap: () async {
                                 if (!isEdit) setState(() => isEdit = true);
-                                state.input.update(action: 'remove', key: linkImageId);
+                                state.input.remove(linkImageId);
                                 setState(() => linkImageId = '');
                               },
                             ),
@@ -221,11 +221,11 @@ class _HabitWeekState extends State<LinkItem> {
                     onConfirm: () {
                       List linkOrderList = getSplitList(state.input.data['lo']);
                       linkOrderList.remove(widget.linkId);
-                      state.input.update(action: 'add', key: 'lo', value: getJoinedList(linkOrderList));
-                      state.input.update(action: 'remove', key: widget.linkId);
-                      state.input.update(action: 'remove', key: linkImageId);
+                      state.input.update('lo', getJoinedList(linkOrderList));
+                      state.input.remove(widget.linkId);
+                      state.input.remove(linkImageId);
                       // in case we have edited the link image
-                      state.input.update(action: 'remove', key: widget.linkData['f'] ?? '');
+                      state.input.remove(widget.linkData['f'] ?? '');
                     },
                   ),
                   noStyling: true,
@@ -253,7 +253,7 @@ class _HabitWeekState extends State<LinkItem> {
                         'l': linkController.text.trim(),
                         'f': linkImageId,
                       };
-                      state.input.update(action: 'add', key: widget.linkId, value: jsonEncode(linkData));
+                      state.input.update(widget.linkId, jsonEncode(linkData));
                       setState(() => isEdit = false);
                       hideKeyboard();
                     } else {

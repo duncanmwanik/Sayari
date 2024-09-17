@@ -62,13 +62,7 @@ class InfoHeader extends StatelessWidget {
                       noStyling: true,
                       padding: zeroPadding,
                       hoverColor: transparent,
-                      child: FittedBox(
-                          child: AppText(
-                        size: extra,
-                        text: infoList[views.calendarView],
-                        fontWeight: FontWeight.w800,
-                        faded: true,
-                      )),
+                      child: FittedBox(child: AppText(size: normal, text: infoList[views.calendarView], weight: FontWeight.bold)),
                     ),
                   ),
                   //

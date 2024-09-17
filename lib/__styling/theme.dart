@@ -4,22 +4,22 @@ import 'styler.dart';
 import 'variables.dart';
 
 class AppTheme {
-  static ThemeData themeData(bool isDarkTheme) {
+  static ThemeData themeData(bool isDark) {
     return ThemeData(
-      primaryColor: isDarkTheme ? AppColors.darkPrimary : AppColors.lightPrimary,
-      scaffoldBackgroundColor: isDarkTheme ? AppColors.darkPrimary : AppColors.lightPrimary,
-      cardColor: isDarkTheme ? AppColors.darkPrimary : AppColors.lightPrimary,
-      canvasColor: isDarkTheme ? AppColors.darkPrimary : AppColors.lightPrimary,
-      shadowColor: isDarkTheme ? AppColors.darkTextFaded : AppColors.lightTextFaded,
-      hintColor: isDarkTheme ? AppColors.darkTextFaded : AppColors.lightTextFaded,
-      highlightColor: isDarkTheme ? AppColors.darkHover : AppColors.lightHover,
-      hoverColor: isDarkTheme ? AppColors.darkHover : AppColors.lightHover,
-      focusColor: isDarkTheme ? AppColors.darkHover : AppColors.lightHover,
-      disabledColor: isDarkTheme ? AppColors.darkTextFaded : AppColors.lightTextFaded,
+      primaryColor: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+      scaffoldBackgroundColor: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+      cardColor: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+      canvasColor: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
+      shadowColor: isDark ? AppColors.darkTextFaded : AppColors.lightTextFaded,
+      hintColor: isDark ? AppColors.darkTextFaded : AppColors.lightTextFaded,
+      highlightColor: isDark ? AppColors.darkHover : AppColors.lightHover,
+      hoverColor: isDark ? AppColors.darkHover : AppColors.lightHover,
+      focusColor: isDark ? AppColors.darkHover : AppColors.lightHover,
+      disabledColor: isDark ? AppColors.darkTextFaded : AppColors.lightTextFaded,
       dialogTheme: const DialogTheme(elevation: 0),
       timePickerTheme: TimePickerThemeData(
         elevation: 0,
-        backgroundColor: isDarkTheme ? AppColors.darkSecondary : AppColors.lightSecondary,
+        backgroundColor: isDark ? AppColors.darkSecondary : AppColors.lightSecondary,
         helpTextStyle: const TextStyle(fontSize: small, fontWeight: FontWeight.w500),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusMedium)),
       ),
@@ -28,7 +28,7 @@ class AppTheme {
         titleTextStyle: TextStyle(
           fontWeight: FontWeight.w500,
           fontSize: extra,
-          color: isDarkTheme ? AppColors.darkText : AppColors.lightText,
+          color: isDark ? AppColors.darkText : AppColors.lightText,
         ),
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -37,14 +37,14 @@ class AppTheme {
         unselectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: isDarkTheme ? AppColors.darkBottomNavBarColor : AppColors.lightBottomNavBarColor,
-        elevation: isDarkTheme ? 1 : 6,
-        foregroundColor: isDarkTheme ? AppColors.lightPrimary : AppColors.darkPrimary,
+        backgroundColor: isDark ? AppColors.darkBottomNavBarColor : AppColors.lightBottomNavBarColor,
+        elevation: isDark ? 1 : 6,
+        foregroundColor: isDark ? AppColors.lightPrimary : AppColors.darkPrimary,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           elevation: 0,
-          backgroundColor: isDarkTheme ? AppColors.darkPrimary : AppColors.lightPrimary,
+          backgroundColor: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
           foregroundColor: AppColors.accentHoverButton,
           textStyle: const TextStyle(fontSize: normal, fontWeight: FontWeight.bold),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusTiny)),
@@ -52,16 +52,16 @@ class AppTheme {
         ),
       ),
       dividerTheme: DividerThemeData(
-        color: isDarkTheme ? AppColors.darkDividerColor : AppColors.lightDividerColor,
+        color: isDark ? AppColors.darkDividerColor : AppColors.lightDividerColor,
       ),
-      fontFamily: 'Nunito',
+      fontFamily: 'Inter',
       textSelectionTheme: TextSelectionThemeData(
         selectionColor: AppColors.textSelectionColor,
         selectionHandleColor: AppColors.accent,
         cursorColor: AppColors.accent,
       ),
       iconTheme: IconThemeData(
-        color: isDarkTheme ? AppColors.darkText : AppColors.lightText,
+        color: isDark ? AppColors.darkText : AppColors.lightText,
       ),
       tooltipTheme: TooltipThemeData(
         verticalOffset: 30,
@@ -72,8 +72,8 @@ class AppTheme {
           boxShadow: [BoxShadow(color: Colors.grey.withOpacity(0.3), spreadRadius: 1, blurRadius: 1.5)],
         ),
       ),
-      primaryIconTheme: IconThemeData(color: isDarkTheme ? AppColors.lightTextFaded : AppColors.darkTextFaded),
-      brightness: isDarkTheme ? Brightness.dark : Brightness.light,
+      primaryIconTheme: IconThemeData(color: isDark ? AppColors.lightTextFaded : AppColors.darkTextFaded),
+      brightness: isDark ? Brightness.dark : Brightness.light,
     );
   }
 }

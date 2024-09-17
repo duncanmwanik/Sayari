@@ -30,7 +30,7 @@ const double phoneWidth = 500;
 // text sizes
 const double pomodoroIcon = 50.0;
 const double pomodoro = 30.0;
-const double blogTitle = 28.0;
+const double blogTitle = 24.0;
 const double title = 22.0;
 const double large = 20.0;
 const double extra = 18.0;

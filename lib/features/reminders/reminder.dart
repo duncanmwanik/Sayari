@@ -52,20 +52,21 @@ class Reminder extends StatelessWidget {
               reminder: reminder_,
               onSet: (newReminder) async {
                 if (isInput) {
-                  input.update(action: 'add', key: 'r', value: newReminder);
+                  input.update('r', newReminder);
                 } else {
                   await editItemExtras(type: type_, itemId: itemId, key: 'r', value: newReminder, subId: subId);
                 }
               },
               onRemove: () async {
                 if (isInput) {
-                  input.update(action: 'remove', key: 'r');
+                  input.remove('r');
                 } else {
                   await editItemExtras(type: type_, itemId: itemId, subId: subId, key: 'd/r', value: '');
                 }
               },
             ),
             smallVerticalPadding: true,
+            smallLeftPadding: true,
             color: hasColour(bgColor) ? Colors.white24 : null,
             child: Row(
               mainAxisSize: MainAxisSize.min,

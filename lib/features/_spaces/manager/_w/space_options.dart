@@ -4,7 +4,7 @@ import '../../../../__styling/variables.dart';
 import '../../../../_widgets/buttons/buttons.dart';
 import '../../../../_widgets/menu/menu_item.dart';
 import '../../../../_widgets/others/icons.dart';
-import '../../../../_widgets/others/others/other_widgets.dart';
+import '../../../../_widgets/others/others/other.dart';
 import '../../../user/_helpers/user_actions.dart';
 import '../../_helpers/checks_space.dart';
 import '../../_helpers/delete_space.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_providers/common/views.dart';
 import '../../../_variables/features.dart';
@@ -26,14 +27,14 @@ class Creator extends StatelessWidget {
           if (isItemsView) prepareNoteForCreation();
           if (views.isCode()) showCreateCodeFileDialog();
         },
-        smallLeftPadding: true,
+        smallLeftPadding: isNotPhone(),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             AppIcon(Icons.add),
-            spw(),
-            if (isItemsView) AppText(text: features[views.itemsView]!.message, fontWeight: FontWeight.w700),
-            if (isCalendarView) AppText(text: features[views.view]!.message, fontWeight: FontWeight.w700),
+            if (isNotPhone()) spw(),
+            if (isItemsView && isNotPhone()) AppText(text: features[views.itemsView]!.message),
+            if (isCalendarView && isNotPhone()) AppText(text: features[views.view]!.message),
           ],
         ),
       );

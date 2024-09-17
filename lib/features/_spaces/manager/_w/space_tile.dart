@@ -7,7 +7,7 @@ import '../../../../_widgets/buttons/buttons.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/images.dart';
 import '../../../../_widgets/others/loader.dart';
-import '../../../../_widgets/others/others/other_widgets.dart';
+import '../../../../_widgets/others/others/other.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../_helpers/checks_space.dart';
 import '../../_helpers/common.dart';
@@ -68,7 +68,7 @@ class _SpaceTileState extends State<SpaceTile> {
                             child: AppText(
                               text: spaceName,
                               textAlign: TextAlign.start,
-                              fontWeight: FontWeight.w700,
+                              weight: FontWeight.bold,
                               faded: true,
                             ),
                           ),

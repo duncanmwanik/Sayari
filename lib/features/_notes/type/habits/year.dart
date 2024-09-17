@@ -47,7 +47,7 @@ class HabitYear extends StatelessWidget {
                       child: AppIcon(Icons.keyboard_arrow_left),
                     ),
                     //
-                    AppText(size: normal, text: dateTime.selectedYear.toString(), fontWeight: FontWeight.bold),
+                    AppText(size: normal, text: dateTime.selectedYear.toString(), weight: FontWeight.bold),
                     //
                     AppButton(
                       onPressed: () => swipeToNew(isSwipeRight: false, view: 3),
@@ -112,10 +112,7 @@ class HabitYear extends StatelessWidget {
                                         return AppButton(
                                           onPressed: ((isCustom && isCustomDate) || !isCustom || isChecked) && isSelectedMonth
                                               ? () {
-                                                  input.update(
-                                                      action: isChecked ? 'remove' : 'add',
-                                                      key: checkedKey,
-                                                      value: isChecked ? '0' : getUniqueId());
+                                                  isChecked ? input.remove(checkedKey) : input.update(checkedKey, getUniqueId());
                                                 }
                                               : null,
                                           width: width / 8,
@@ -134,7 +131,7 @@ class HabitYear extends StatelessWidget {
                                               AppText(
                                                 size: medium,
                                                 text: date.dayString(),
-                                                fontWeight: FontWeight.w400,
+                                                weight: FontWeight.w400,
                                                 color: isSelectedMonth ? (isChecked ? white : null) : null,
                                                 extraFaded: !isSelectedMonth,
                                                 bgColor: bgColor,

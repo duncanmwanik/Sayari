@@ -10,7 +10,7 @@ import '../../../_providers/common/input.dart';
 import '../../../_variables/colors.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/helpers.dart';
-import '../overview/dialog_session_overview.dart';
+import '../overview/overview.dart';
 
 class WeekBox extends StatelessWidget {
   const WeekBox({super.key, required this.item});

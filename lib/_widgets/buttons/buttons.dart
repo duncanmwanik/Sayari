@@ -99,7 +99,7 @@ class AppButton extends StatelessWidget {
       shape: customBorder != null
           ? CircleBorder()
           : RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusTinySmall)),
+              borderRadius: BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusTiny)),
               side: showBorder
                   ? BorderSide(color: borderColor ?? Colors.grey.withOpacity(0.3), width: borderWidth ?? (isDark() ? 0.4 : 0.8))
                   : BorderSide.none,
@@ -115,8 +115,7 @@ class AppButton extends StatelessWidget {
               }
             : null,
         customBorder: customBorder,
-        borderRadius:
-            customBorder != null ? null : BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusSmall)),
+        borderRadius: customBorder != null ? null : BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusTiny)),
         hoverColor: hoverColor,
         highlightColor: hoverColor,
         splashColor: hoverColor,

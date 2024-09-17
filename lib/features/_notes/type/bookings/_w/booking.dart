@@ -14,14 +14,9 @@ import 'copy_link.dart';
 import 'date_times.dart';
 import 'header.dart';
 
-class Booking extends StatefulWidget {
+class Booking extends StatelessWidget {
   const Booking({super.key});
 
-  @override
-  State<Booking> createState() => _BookingState();
-}
-
-class _BookingState extends State<Booking> {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
@@ -42,7 +37,7 @@ class _BookingState extends State<Booking> {
             children: [
               //
               AppButton(
-                onPressed: () => input.update(action: 'add', key: 'ep', value: isExpanded ? '0' : '1'),
+                onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
                 padding: paddingM(),
                 color: styler.appColor(0.5),
                 hoverColor: transparent,
@@ -67,7 +62,7 @@ class _BookingState extends State<Booking> {
                         Spacer(),
                         // hide/show settings
                         AppButton(
-                          onPressed: () => input.update(action: 'add', key: 'ep', value: isExpanded ? '0' : '1'),
+                          onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
                           noStyling: true,
                           isSquare: true,
                           child: AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, size: 18, faded: true),

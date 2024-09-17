@@ -26,21 +26,8 @@ class PeriodFooter extends StatelessWidget {
             noStyling: true,
             smallLeftPadding: true,
             borderRadius: borderRadiusSmall,
-            child: AppText(
-                size: extra, text: 'Ksh. ${formatThousands(getTotalAmount('in'))}', color: Colors.green, fontWeight: FontWeight.w900),
-          ),
-          //
-          spw(),
-          AppText(size: extra, text: '|', faded: true),
-          spw(),
-          //
-          AppButton(
-            onPressed: () => showFinanceGraphsBottomSheet(),
-            noStyling: true,
-            smallLeftPadding: true,
-            borderRadius: borderRadiusSmall,
             child:
-                AppText(size: extra, text: 'Ksh. ${formatThousands(getTotalAmount('ex'))}', color: Colors.red, fontWeight: FontWeight.w900),
+                AppText(size: extra, text: 'Ksh. ${formatThousands(getTotalAmount('in'))}', color: Colors.green, weight: FontWeight.w900),
           ),
           //
           spw(),
@@ -52,8 +39,19 @@ class PeriodFooter extends StatelessWidget {
             noStyling: true,
             smallLeftPadding: true,
             borderRadius: borderRadiusSmall,
-            child: AppText(
-                size: extra, text: 'Ksh. ${formatThousands(getTotalAmount('sa'))}', color: Colors.blue, fontWeight: FontWeight.w900),
+            child: AppText(size: extra, text: 'Ksh. ${formatThousands(getTotalAmount('ex'))}', color: Colors.red, weight: FontWeight.w900),
+          ),
+          //
+          spw(),
+          AppText(size: extra, text: '|', faded: true),
+          spw(),
+          //
+          AppButton(
+            onPressed: () => showFinanceGraphsBottomSheet(),
+            noStyling: true,
+            smallLeftPadding: true,
+            borderRadius: borderRadiusSmall,
+            child: AppText(size: extra, text: 'Ksh. ${formatThousands(getTotalAmount('sa'))}', color: Colors.blue, weight: FontWeight.w900),
           ),
           //
           Spacer(),

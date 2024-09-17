@@ -30,7 +30,7 @@ List<Widget> fileOptions(String fileId, String fileName) {
     //
     if (!state.views.isChat())
       MenuItem(
-        onTap: () => state.input.update(action: 'add', key: 'w', value: fileId),
+        onTap: () => state.input.update('w', fileId),
         label: 'Make Cover',
         leading: Icons.push_pin_outlined,
       ),
@@ -42,7 +42,7 @@ List<Widget> fileOptions(String fileId, String fileName) {
     ),
     //
     MenuItem(
-      onTap: () => state.input.update(action: 'remove', key: fileId),
+      onTap: () => state.input.remove(fileId),
       label: 'Remove ${isImageFile(fileName) ? 'Image' : 'File'}',
       leading: Icons.delete_rounded,
     ),

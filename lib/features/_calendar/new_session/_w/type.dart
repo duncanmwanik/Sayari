@@ -18,7 +18,7 @@ class TypePicker extends StatelessWidget {
         subType: 'y',
         initial: input.data['y'],
         typeEntries: sessionsTypes,
-        onSelect: (chosenType, chosenValue) => input.update(action: 'add', key: 'y', value: chosenType),
+        onSelect: (chosenType, chosenValue) => input.update('y', chosenType),
         bgColor: transparent,
       );
     });

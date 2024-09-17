@@ -32,8 +32,8 @@ class HabitOptions extends StatelessWidget {
               ).then((chosenDates) {
                 if (chosenDates.isNotEmpty && !DeepCollectionEquality().equals(chosenDates, customDates)) {
                   chosenDates.sort();
-                  input.update(action: 'add', key: 'hd', value: getJoinedList(chosenDates));
-                  input.update(action: 'add', key: 'hf', value: 'custom');
+                  input.update('hd', getJoinedList(chosenDates));
+                  input.update('hf', 'custom');
                 }
               });
             },
@@ -47,7 +47,7 @@ class HabitOptions extends StatelessWidget {
                 title: 'Remove custom dates?',
                 content: 'You will now be able to check habits each day. Already checked dates will be kept.',
                 yeslabel: 'Remove',
-                onAccept: () => input.update(action: 'add', key: 'hf', value: 'everyday'),
+                onAccept: () => input.update('hf', 'everyday'),
               ),
             ),
           //

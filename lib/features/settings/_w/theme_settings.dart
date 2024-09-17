@@ -7,7 +7,7 @@ import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/list_tile.dart';
 import '../../../_widgets/others/text.dart';
-import '../../../_widgets/others/theme.dart';
+import '../../../_widgets/others/theme_menu.dart';
 import 'title.dart';
 
 class ThemeSettings extends StatelessWidget {

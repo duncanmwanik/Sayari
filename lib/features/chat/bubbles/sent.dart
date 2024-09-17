@@ -31,6 +31,7 @@ class SentMessageBubble extends StatelessWidget {
         valueListenable: Hive.box('${liveSpace()}_${feature.chat.t}').listenable(keys: [id]),
         builder: (context, box, wdgt) {
           bool isPending = pendingBox.containsKey(id);
+          Map files = getFiles(data);
 
           return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
             return MouseRegion(
@@ -58,9 +59,10 @@ class SentMessageBubble extends StatelessWidget {
                           crossAxisAlignment: isShortMessage ? CrossAxisAlignment.end : CrossAxisAlignment.end,
                           children: [
                             //
-                            FileList(fileData: getFiles(data)),
+                            FileList(fileData: files),
+                            if (files.isNotEmpty) mph(),
                             // message
-                            AppText(size: 12, text: message, fontWeight: isDark() ? FontWeight.w400 : FontWeight.w600),
+                            AppText(size: 12, text: message, weight: isDark() ? FontWeight.w400 : FontWeight.w600),
                             if (isShortMessage) sph(),
                             // sent status Icon
                             ph(1),
@@ -69,7 +71,7 @@ class SentMessageBubble extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 // time
-                                AppText(size: 8, text: getMessageTime(id), faded: true, fontWeight: FontWeight.w500),
+                                AppText(size: 8, text: getMessageTime(id), faded: true, weight: FontWeight.w500),
                                 // status
                                 tpw(),
                                 AppIcon(

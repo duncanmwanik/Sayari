@@ -34,7 +34,7 @@ class SessionReminders extends StatelessWidget {
                       children: [
                         if (index != 0) AppIcon(Icons.lens, size: 5, faded: true),
                         if (index != 0) spw(),
-                        Flexible(child: AppText(text: reminderList[index], fontWeight: FontWeight.w400, faded: true)),
+                        Flexible(child: AppText(text: reminderList[index], weight: FontWeight.w400, faded: true)),
                       ],
                     )),
           ),

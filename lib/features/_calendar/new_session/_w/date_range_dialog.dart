@@ -9,9 +9,9 @@ import '../../../../_helpers/date_time/misc.dart';
 import '../../../../_providers/common/input.dart';
 import '../../../../_providers/providers.dart';
 import '../../../../_variables/date_time.dart';
+import '../../../../_widgets/buttons/action_button.dart';
 import '../../../../_widgets/buttons/buttons.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';
-import '../../../../_widgets/dialogs/dialog_buttons.dart';
 import '../../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/divider.dart';
@@ -94,7 +94,7 @@ Future<void> showDateRangeDialog() async {
                         onPressed: () {
                           input.updateSelectedWeekDays(input.selectedWeekDays.contains(weekdayNo) ? 'remove' : 'add', weekdayNo);
                         },
-                        color: input.selectedWeekDays.contains(weekdayNo) ? styler.accentColor() : styler.tertiaryColor(),
+                        color: input.selectedWeekDays.contains(weekdayNo) ? styler.accentColor() : styler.secondaryColor(),
                         child: AppText(
                           text: weekDaysList[weekdayNo].superShortName,
                           color: input.selectedWeekDays.contains(weekdayNo) ? white : null,

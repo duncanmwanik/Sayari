@@ -44,25 +44,24 @@ class SfCalendar extends StatelessWidget {
         decoration: isOverview
             ? null
             : BoxDecoration(
-                color: color ?? (isBookingCalendar ? styler.tertiaryColor() : null),
-                // border: Border.all(width: styler.isDark ? 0.15 : 0.5, color: styler.borderColor()),
-                borderRadius: BorderRadius.circular(isBookingCalendar ? borderRadiusMedium : borderRadiusSmall),
+                color: color,
+                borderRadius: BorderRadius.circular(isBookingCalendar ? borderRadiusMedium : borderRadiusTiny),
               ),
         child: SfDateRangePicker(
           backgroundColor: transparent,
           showNavigationArrow: true,
           view: DateRangePickerView.month,
-          // ---------- header
+          //header
           headerStyle: DateRangePickerHeaderStyle(
             backgroundColor: transparent,
             textAlign: TextAlign.center,
             textStyle: TextStyle(
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.bold,
               fontSize: isOverview ? mediumSmall : medium,
               color: styler.textColor(faded: isOverview),
             ),
           ),
-          // ---------- month view: weekday title
+          //month view: weekday title
           monthViewSettings: DateRangePickerMonthViewSettings(
             showTrailingAndLeadingDates: true,
             viewHeaderStyle: DateRangePickerViewHeaderStyle(
@@ -73,50 +72,47 @@ class SfCalendar extends StatelessWidget {
               ),
             ),
           ),
-          // ---------- month cells
+          //month cells
           monthCellStyle: DateRangePickerMonthCellStyle(
             textStyle: TextStyle(
               fontSize: isOverview ? tiny : null,
-              fontWeight: isOverview ? FontWeight.w100 : FontWeight.w400,
               color: styler.textColor(),
             ),
             todayTextStyle: TextStyle(
               fontSize: isOverview ? tiny : null,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.bold,
               color: styler.textColor(),
             ),
             todayCellDecoration: BoxDecoration(
               border: Border.all(color: styler.accentColor()),
-              borderRadius: BorderRadius.circular(borderRadiusSmall),
+              borderRadius: BorderRadius.circular(borderRadiusTiny),
             ),
             weekendDatesDecoration: isOverview
                 ? null
                 : BoxDecoration(
                     color: styler.appColor(styler.isDark ? 0.3 : 1),
-                    borderRadius: BorderRadius.circular(borderRadiusSmall),
+                    borderRadius: BorderRadius.circular(borderRadiusTiny),
                   ),
             trailingDatesTextStyle: TextStyle(
               fontSize: isOverview ? tiny : null,
-              fontWeight: isOverview ? FontWeight.w100 : FontWeight.w400,
               color: styler.textColor(extraFaded: true),
             ),
             leadingDatesTextStyle: TextStyle(
               fontSize: isOverview ? tiny : null,
-              fontWeight: isOverview ? FontWeight.w100 : FontWeight.w400,
               color: styler.textColor(extraFaded: true),
             ),
           ),
-          // ---------- selected cells
+          //selected cells
           selectionTextStyle: TextStyle(
             fontSize: isOverview ? tiny : null,
-            fontWeight: isOverview ? FontWeight.w500 : FontWeight.w700,
+            fontWeight: isOverview ? FontWeight.w500 : FontWeight.bold,
             color: white,
           ),
           selectionShape: DateRangePickerSelectionShape.rectangle,
-          selectionRadius: borderRadiusSmall,
+          selectionRadius: borderRadiusTiny,
           selectionMode: isMultiple ? DateRangePickerSelectionMode.multiple : DateRangePickerSelectionMode.single,
           selectionColor: styler.accentColor(),
-          // ---------- initial selected dates
+          //initial selected dates
           initialSelectedDate: DateTime.tryParse(initialDate ?? date.selectedDate) ?? DateTime.now(),
           initialDisplayDate: DateTime.tryParse(initialDate ?? date.selectedDate) ?? DateTime.now(),
           initialSelectedDates: initialDates.isNotEmpty
@@ -125,7 +121,7 @@ class SfCalendar extends StatelessWidget {
                   (index) => DateTime.parse(initialDates[index]),
                 )
               : null,
-          // ---------- on selecting cells
+          //on selecting cells
           onSelectionChanged: (DateRangePickerSelectionChangedArgs dates) {
             //
             if (onSelect != null) {

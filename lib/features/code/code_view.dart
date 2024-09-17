@@ -53,7 +53,7 @@ class CodeView extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 //
-                                AppText(text: 'Start', fontWeight: FontWeight.w900),
+                                AppText(text: 'Start', weight: FontWeight.w900),
                                 //
                                 BlockSeparator(showAdd: false, isLonger: true),
                                 BlockSeparator(),
@@ -62,7 +62,7 @@ class CodeView extends StatelessWidget {
                                 //
                                 BlockSeparator(showAdd: false, isLonger: true),
                                 //
-                                AppText(text: 'End', fontWeight: FontWeight.w900),
+                                AppText(text: 'End', weight: FontWeight.w900),
                                 //
                                 mph(),
                                 //

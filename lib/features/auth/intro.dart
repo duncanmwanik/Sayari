@@ -26,28 +26,25 @@ class AuthIntro extends StatelessWidget {
             AppButton(
               onPressed: previous,
               noStyling: true,
-              isRound: true,
+              isSquare: true,
               child: AppIcon(Icons.keyboard_arrow_left, extraFaded: true),
             ),
             mpw(),
-            Flexible(
-              child: SizedBox(
-                width: 200,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AppText(text: introFeatures[index].title, size: 20, fontWeight: FontWeight.w900),
-                    sph(),
-                    AppText(text: introFeatures[index].description, faded: true),
-                  ],
-                ),
+            Expanded(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AppText(text: introFeatures[index].title, size: 20, weight: FontWeight.w900),
+                  sph(),
+                  AppText(text: introFeatures[index].description, faded: true),
+                ],
               ),
             ),
             mpw(),
             AppButton(
               onPressed: next,
               noStyling: true,
-              isRound: true,
+              isSquare: true,
               child: AppIcon(Icons.keyboard_arrow_right, extraFaded: true),
             ),
           ],

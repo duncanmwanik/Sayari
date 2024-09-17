@@ -22,6 +22,7 @@ class IncomingMessageBubble extends StatelessWidget {
   Widget build(BuildContext context) {
     String userName = data['u'] ?? 'User';
     String message = data['n'];
+    Map files = getFiles(data);
 
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       return MouseRegion(
@@ -61,20 +62,21 @@ class IncomingMessageBubble extends StatelessWidget {
                         child: AppText(
                           size: tiny,
                           text: userName,
-                          fontWeight: FontWeight.w700,
+                          weight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       // files
                       tph(),
-                      Center(child: FileList(fileData: getFiles(data))),
+                      FileList(fileData: files),
+                      if (files.isNotEmpty) mph(),
                       // message
-                      AppText(size: 12, text: message, fontWeight: isDark() ? FontWeight.w400 : FontWeight.w600),
+                      AppText(size: 12, text: message, weight: isDark() ? FontWeight.w400 : FontWeight.w600),
                       // time
                       ph(1),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: AppText(text: getMessageTime(id), size: 8, faded: true, fontWeight: FontWeight.w500),
+                        child: AppText(text: getMessageTime(id), size: 8, faded: true, weight: FontWeight.w500),
                       ),
                       //
                     ],

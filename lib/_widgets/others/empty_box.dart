@@ -28,14 +28,11 @@ class EmptyBox extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             //
-            // if (isSpaced) spph(),
-            // if (isSpaced) spph(),
-            //
             AppImage('sayari.png', size: size ?? 15.h),
-            //
             sph(),
             //
             Row(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 AppButton(
@@ -45,9 +42,6 @@ class EmptyBox extends StatelessWidget {
                 ),
               ],
             ),
-            //
-            // if (isSpaced) spph(),
-            // if (isSpaced) spph(),
             //
           ],
         ),

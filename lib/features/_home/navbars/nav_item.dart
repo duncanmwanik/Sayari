@@ -17,7 +17,6 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Functi
     tooltipDirection: isSmallPC() ? AxisDirection.right : AxisDirection.up,
     noStyling: !isSelected,
     color: styler.appColor(isDark() ? 1 : 2),
-    borderRadius: borderRadiusSmall,
     padding: EdgeInsets.all(isSmallPC() ? 8 : 12),
     child: SizedBox(
       width: size ?? (isSmallPC() ? 16 : 18),

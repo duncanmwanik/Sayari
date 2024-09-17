@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../__styling/variables.dart';
 import 'icons.dart';
-import 'others/other_widgets.dart';
+import 'others/other.dart';
 
 class AppCheckBox extends StatefulWidget {
   const AppCheckBox({

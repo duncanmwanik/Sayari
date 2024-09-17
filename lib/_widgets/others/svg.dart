@@ -5,7 +5,7 @@ import '../../__styling/variables.dart';
 
 class AppSvg extends StatelessWidget {
   const AppSvg(
-    this.svgPath, {
+    this.path, {
     super.key,
     this.color,
     this.size,
@@ -14,7 +14,7 @@ class AppSvg extends StatelessWidget {
     this.bgColor,
   });
 
-  final String svgPath;
+  final String path;
   final Color? color;
   final double? size;
   final bool faded;
@@ -24,7 +24,7 @@ class AppSvg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SvgPicture.asset(
-      'assets/icons/$svgPath.svg',
+      'assets/icons/$path.svg',
       height: size ?? 12,
       width: size ?? 12,
       colorFilter: ColorFilter.mode(

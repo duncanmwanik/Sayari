@@ -9,8 +9,8 @@ void addLink({bool isTitle = false}) {
   String linkId = '${isTitle ? 'lkt' : 'lk'}${getUniqueId()}';
   List linkOrderList = getSplitList(state.input.data['lo']);
   linkOrderList.add(linkId);
-  state.input.update(action: 'add', key: 'lo', value: getJoinedList(linkOrderList));
-  state.input.update(action: 'add', key: linkId, value: jsonEncode({}));
+  state.input.update('lo', getJoinedList(linkOrderList));
+  state.input.update(linkId, jsonEncode({}));
 }
 
 Future<void> openLink(String link) async {

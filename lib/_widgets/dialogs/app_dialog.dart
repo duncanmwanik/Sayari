@@ -10,7 +10,7 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_variables/navigation.dart';
 import '../others/others/divider.dart';
-import '../others/others/other_widgets.dart';
+import '../others/others/other.dart';
 import '../others/text.dart';
 
 Future<dynamic> showAppDialog({

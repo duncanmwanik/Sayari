@@ -8,11 +8,11 @@ class AppText extends StatelessWidget {
     super.key,
     this.size,
     required this.text,
-    this.fontWeight,
+    this.weight,
     this.overflow,
     this.color,
     this.textAlign,
-    this.textDecoration,
+    this.decoration,
     this.maxlines,
     this.faded = false,
     this.bold = false,
@@ -23,11 +23,11 @@ class AppText extends StatelessWidget {
 
   final double? size;
   final String text;
-  final FontWeight? fontWeight;
+  final FontWeight? weight;
   final TextOverflow? overflow;
   final TextAlign? textAlign;
   final Color? color;
-  final TextDecoration? textDecoration;
+  final TextDecoration? decoration;
   final int? maxlines;
   final bool bold;
   final bool faded;
@@ -44,9 +44,9 @@ class AppText extends StatelessWidget {
       maxLines: maxlines,
       style: TextStyle(
         fontSize: size ?? 13,
-        fontWeight: fontWeight ?? (bold ? FontWeight.bold : FontWeight.w600),
+        fontWeight: weight ?? (bold ? FontWeight.bold : FontWeight.w500),
         color: color ?? styler.textColor(faded: faded, extraFaded: extraFaded, bgColor: bgColor),
-        decoration: textDecoration ?? (isCrossed ? TextDecoration.lineThrough : null),
+        decoration: decoration ?? (isCrossed ? TextDecoration.lineThrough : null),
         decorationColor: styler.textColor(faded: faded, extraFaded: extraFaded, bgColor: bgColor),
       ),
     );
@@ -68,10 +68,9 @@ class HtmlText extends StatelessWidget {
       text: text,
       overflow: overflow,
       textAlign: textAlign,
-      style: TextStyle(fontSize: size, fontWeight: FontWeight.w600, color: color ?? styler.textColor()),
+      style: TextStyle(fontSize: size, fontWeight: FontWeight.w500, color: color ?? styler.textColor()),
       tags: {
-        'b': StyledTextTag(
-            style: TextStyle(fontWeight: FontWeight.w700, color: color ?? styler.textColor(), fontSize: size)),
+        'b': StyledTextTag(style: TextStyle(fontWeight: FontWeight.bold, color: color ?? styler.textColor(), fontSize: size)),
       },
     );
   }

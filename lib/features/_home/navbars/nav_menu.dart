@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/menu/menu_item.dart';
@@ -49,10 +48,8 @@ class NavMenu extends StatelessWidget {
         //
       ],
       tooltip: 'Options',
-      tooltipDirection: isSmallPC() ? AxisDirection.right : AxisDirection.up,
       noStyling: true,
-      color: styler.appColor(2),
-      borderRadius: borderRadiusSmall,
+      tooltipDirection: isSmallPC() ? AxisDirection.right : AxisDirection.up,
       padding: EdgeInsets.all(isSmallPC() ? 8 : 12),
       child: SizedBox(
         width: (isSmallPC() ? 16 : 18),

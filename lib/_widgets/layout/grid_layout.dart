@@ -24,6 +24,7 @@ class GridLayout extends StatelessWidget {
         runSpacing: isGrid ? smallWidth() : mediumWidth(),
         maxMainAxisCount: isGrid ? null : 1,
         alignment: WrapAlignment.center,
+        needsLongPressDraggable: false,
         padding: padding(
           t: isSmallPC() ? mediumHeight() : null,
           b: largeHeightPlaceHolder(),

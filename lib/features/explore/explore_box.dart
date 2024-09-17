@@ -47,7 +47,7 @@ class ExploreBox extends StatelessWidget {
               //
               sph(),
               // title
-              Flexible(child: AppText(size: normal, text: title, fontWeight: FontWeight.bold)),
+              Flexible(child: AppText(size: normal, text: title, weight: FontWeight.bold)),
               // description
               Flexible(child: AppText(size: small, text: subtitle, faded: true)),
               //

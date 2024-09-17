@@ -21,7 +21,7 @@ class PomodoroSetting extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // title
-        AppText(size: normal, text: pomodoroTitles[type] ?? '---', fontWeight: FontWeight.w900),
+        AppText(size: normal, text: pomodoroTitles[type] ?? '---', weight: FontWeight.w900),
         sph(),
         //
         Row(

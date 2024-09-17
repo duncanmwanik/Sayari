@@ -44,7 +44,7 @@ class NoteOptions extends StatelessWidget {
                         Option(label: 'Finances', type: feature.finances.lt),
                         Option(label: 'Habits', type: feature.habits.lt),
                         Option(label: 'Links', type: feature.links.lt),
-                        Option(label: 'Portfolio', type: feature.portfolios.lt),
+                        // Option(label: 'Portfolio', type: feature.portfolios.lt),
                         Option(label: 'Bookings', type: feature.bookings.lt),
                         OptionsToggler(),
                         lpw(),
@@ -54,6 +54,7 @@ class NoteOptions extends StatelessWidget {
                   ),
                 ),
                 //
+                spw(),
                 NewOptions(),
                 //
               ],

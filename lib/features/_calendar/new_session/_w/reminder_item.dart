@@ -11,20 +11,15 @@ import '../../../../_widgets/others/icons.dart';
 import '../../../_notes/items/picker_type.dart';
 import '../../../reminders/_helpers/reminders.dart';
 
-class ReminderItem extends StatefulWidget {
+class ReminderItem extends StatelessWidget {
   const ReminderItem({super.key, required this.reminder});
 
   final String reminder;
 
   @override
-  State<ReminderItem> createState() => _ReminderItemState();
-}
-
-class _ReminderItemState extends State<ReminderItem> {
-  @override
   Widget build(BuildContext context) {
-    String reminderNo = widget.reminder.split('.')[0];
-    String reminderPeriod = widget.reminder.split('.')[1];
+    String reminderNo = reminder.split('.')[0];
+    String reminderPeriod = reminder.split('.')[1];
 
     return Consumer<InputProvider>(builder: (context, input, child) {
       return Padding(
@@ -41,9 +36,9 @@ class _ReminderItemState extends State<ReminderItem> {
                     if (value.isNotEmpty) {
                       String newReminder = '${value.trim()}.$reminderPeriod';
                       List remindersList = getSplitList((input.data['r'] ?? ''));
-                      remindersList.remove(widget.reminder);
+                      remindersList.remove(reminder);
                       remindersList.add(newReminder);
-                      input.update(action: 'add', key: 'r', value: getJoinedList(remindersList));
+                      input.update('r', getJoinedList(remindersList));
                     }
                   },
                   hintText: 'No.',
@@ -62,9 +57,9 @@ class _ReminderItemState extends State<ReminderItem> {
                 onSelect: (chosenKey, chosenValue) {
                   String newReminder = '$reminderNo.$chosenValue';
                   List remindersList = getSplitList((input.data['r'] ?? ''));
-                  remindersList.remove(widget.reminder);
+                  remindersList.remove(reminder);
                   remindersList.add(newReminder);
-                  input.update(action: 'add', key: 'r', value: getJoinedList(remindersList));
+                  input.update('r', getJoinedList(remindersList));
                 },
                 initial: reminderPeriodsMap[reminderPeriod],
                 typeEntries: {'minutes': 'm', 'hours': 'h', 'days': 'd', 'weeks': 'w'},
@@ -77,11 +72,11 @@ class _ReminderItemState extends State<ReminderItem> {
             AppButton(
               onPressed: () {
                 List remindersList = getSplitList((input.data['r'] ?? ''));
-                remindersList.remove(widget.reminder);
+                remindersList.remove(reminder);
                 if (remindersList.isEmpty) {
-                  input.update(action: 'remove', key: 'r');
+                  input.remove('r');
                 } else {
-                  input.update(action: 'add', key: 'r', value: getJoinedList(remindersList));
+                  input.update('r', getJoinedList(remindersList));
                 }
               },
               noStyling: true,

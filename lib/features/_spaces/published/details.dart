@@ -53,7 +53,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                 children: [
                   //
                   AppButton(
-                    onPressed: () => input.update(action: 'add', key: feature.share.lt, value: isPublished ? '0' : '1'),
+                    onPressed: () => input.update(feature.share.lt, isPublished ? '0' : '1'),
                     smallRightPadding: true,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -70,7 +70,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                       title: 'Unpublish as book?',
                       yeslabel: 'Unpublish',
                       onAccept: () {
-                        input.update(action: 'rem', key: feature.share.lt);
+                        input.remove(feature.share.lt);
                         shareItem(delete: true, itemId: liveSpace());
                       },
                     ),
@@ -111,7 +111,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                         multiple: false,
                         imagesOnly: true,
                         onDone: (stash) {
-                          input.update(action: 'rem', key: fileId);
+                          input.remove(fileId);
                           input.addAll({'w': stash.fileId()});
                         },
                       );
@@ -130,7 +130,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                   //
                   AppButton(
                     onPressed: () {
-                      input.removeAll(start: 'f');
+                      input.removeAll('f');
                       input.addAll({'w': ''});
                     },
                     noStyling: true,

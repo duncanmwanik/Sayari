@@ -28,7 +28,6 @@ class CalendarOptions extends StatelessWidget {
         children: [
           // add session
           Creator(),
-          //
           // go to today
           spw(),
           AppButton(
@@ -36,11 +35,9 @@ class CalendarOptions extends StatelessWidget {
             tooltip: getDateInfo(getDatePart(date.now)),
             child: AppText(text: 'Today'),
           ),
-          //
           // choose view
           spw(),
           AppButton(
-            tooltip: 'Change View',
             isDropDown: true,
             menuWidth: 150,
             menuItems: [

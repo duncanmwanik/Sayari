@@ -5,7 +5,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../icons.dart';
-import 'other_widgets.dart';
+import 'other.dart';
 
 class CloudSyncIndicator extends StatefulWidget {
   const CloudSyncIndicator({super.key});

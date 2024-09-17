@@ -22,7 +22,7 @@ class AboutApp extends StatelessWidget {
         //
         spw(),
         //
-        const Flexible(child: AppText(size: large, text: 'Sayari', faded: true, fontWeight: FontWeight.w800)),
+        const Flexible(child: AppText(size: large, text: 'Sayari', faded: true, weight: FontWeight.bold)),
         //
         sph(),
         //

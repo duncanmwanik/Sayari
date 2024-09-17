@@ -66,7 +66,7 @@ class _NewItemInputState extends State<NewItemInput> {
                       inputKey: 't',
                       hintText: 'Task',
                       fontSize: medium,
-                      fontWeight: FontWeight.w400,
+                      weight: FontWeight.w400,
                       isDense: true,
                       controller: controller,
                       focusNode: newItemFocusNode,

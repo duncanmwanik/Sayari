@@ -9,7 +9,7 @@ import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/buttons.dart';
-import '../../_widgets/others/others/other_widgets.dart';
+import '../../_widgets/others/others/other.dart';
 import '../../_widgets/others/text.dart';
 import '../_notes/_helpers/quick_edit.dart';
 import '../_spaces/_helpers/common.dart';
@@ -36,7 +36,7 @@ class LabelList extends StatelessWidget {
         if (itemId != null) {
           await editItemExtras(type: type_, itemId: itemId!, key: 'l', value: getJoinedList(labelList));
         } else {
-          state.input.update(action: 'add', key: 'l', value: getJoinedList(labelList));
+          state.input.update('l', getJoinedList(labelList));
         }
       }
 
@@ -59,12 +59,12 @@ class LabelList extends StatelessWidget {
                       onDone: (newLabels) async {
                         labels != null
                             ? await editItemExtras(type: type_, itemId: itemId!, key: 'l', value: getJoinedList(newLabels))
-                            : state.input.update(action: 'add', key: 'l', value: getJoinedList(newLabels));
+                            : state.input.update('l', getJoinedList(newLabels));
                       },
                     ),
                     color: hasColour(bgColor) ? Colors.white24 : null,
                     smallVerticalPadding: true,
-                    child: AppText(size: 11, text: label, bgColor: bgColor, fontWeight: FontWeight.bold),
+                    child: AppText(size: 11, text: label, bgColor: bgColor),
                   );
                 }
                 // if label is missing

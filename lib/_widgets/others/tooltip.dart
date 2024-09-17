@@ -17,11 +17,11 @@ class AppTooltip extends StatelessWidget {
     return message != null
         ? JustTheTooltip(
             backgroundColor: styler.isDark ? AppColors.lightTertiary : Colors.black.withOpacity(0.8),
-            borderRadius: BorderRadius.circular(borderRadiusLarge),
+            borderRadius: BorderRadius.circular(borderRadiusTiny),
             waitDuration: const Duration(milliseconds: 500),
             offset: 10,
             content: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 2),
               child: AppText(size: small, text: message ?? '', color: styler.isDark ? black : white),
             ),
             preferredDirection: axisDirection ?? AxisDirection.down,

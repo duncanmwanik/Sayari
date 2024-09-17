@@ -29,7 +29,7 @@ class FinanceOverview extends StatelessWidget {
                 child: AppText(
                   text: 'Ksh. ${formatThousands(item.totalIncome())}',
                   bgColor: item.color(),
-                  fontWeight: FontWeight.w600,
+                  weight: FontWeight.w600,
                 ),
               ),
             ],
@@ -48,7 +48,7 @@ class FinanceOverview extends StatelessWidget {
                 child: AppText(
                   text: 'Ksh. ${formatThousands(item.totalExpense())}',
                   bgColor: item.color(),
-                  fontWeight: FontWeight.w600,
+                  weight: FontWeight.w600,
                 ),
               ),
             ],
@@ -67,7 +67,7 @@ class FinanceOverview extends StatelessWidget {
                 child: AppText(
                   text: 'Ksh. ${formatThousands(item.totalSavings())}',
                   bgColor: item.color(),
-                  fontWeight: FontWeight.w600,
+                  weight: FontWeight.w600,
                 ),
               ),
             ],

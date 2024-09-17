@@ -11,14 +11,9 @@ import '../../../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
 
-class BookingDateTimes extends StatefulWidget {
+class BookingDateTimes extends StatelessWidget {
   const BookingDateTimes({super.key});
 
-  @override
-  State<BookingDateTimes> createState() => _BookingState();
-}
-
-class _BookingState extends State<BookingDateTimes> {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
@@ -40,7 +35,7 @@ class _BookingState extends State<BookingDateTimes> {
                 onPressed: () async {
                   await showSelectDateDialog(showTitle: true, isMultiple: true, initialDates: availableDates).then((chosenDates) {
                     if (chosenDates.isNotEmpty) {
-                      input.update(action: 'add', key: 'bd', value: getJoinedList(chosenDates));
+                      input.update('bd', getJoinedList(chosenDates));
                     }
                   });
                 },
@@ -64,12 +59,12 @@ class _BookingState extends State<BookingDateTimes> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AppText(text: getDateFull(date), size: small, fontWeight: FontWeight.bold),
+                      AppText(text: getDateFull(date), size: small, weight: FontWeight.bold),
                       spw(),
                       AppButton(
                         onPressed: () {
                           availableDates.remove(date);
-                          input.update(action: 'add', key: 'bd', value: getJoinedList(availableDates));
+                          input.update('bd', getJoinedList(availableDates));
                         },
                         noStyling: true,
                         isRound: true,
@@ -98,7 +93,7 @@ class _BookingState extends State<BookingDateTimes> {
                       await showTimePicker(context: context, cancelText: 'Cancel', confirmText: 'Add', initialTime: TimeOfDay.now());
                   if (time != null) {
                     availableTimes.add('${time.hour}:${time.minute}');
-                    input.update(action: 'add', key: 'bt', value: getJoinedList(availableTimes));
+                    input.update('bt', getJoinedList(availableTimes));
                   }
                 },
                 color: styler.accentColor(1),
@@ -121,12 +116,12 @@ class _BookingState extends State<BookingDateTimes> {
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AppText(text: get12HourTimeFrom24HourTime(time), size: small, fontWeight: FontWeight.bold),
+                      AppText(text: get12HourTimeFrom24HourTime(time), size: small, weight: FontWeight.bold),
                       spw(),
                       AppButton(
                         onPressed: () {
                           availableTimes.remove(time);
-                          input.update(action: 'add', key: 'bt', value: getJoinedList(availableTimes));
+                          input.update('bt', getJoinedList(availableTimes));
                         },
                         noStyling: true,
                         isRound: true,

@@ -8,9 +8,9 @@ import '../../../../../_helpers/_common/navigation.dart';
 import '../../../../../_providers/common/input.dart';
 import '../../../../../_providers/providers.dart';
 import '../../../../../_variables/features.dart';
+import '../../../../../_widgets/buttons/action_button.dart';
 import '../../../../../_widgets/buttons/buttons.dart';
 import '../../../../../_widgets/dialogs/app_dialog.dart';
-import '../../../../../_widgets/dialogs/dialog_buttons.dart';
 import '../../../../../_widgets/others/forms/input.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
@@ -109,11 +109,11 @@ Future showPeriodEntryDialog({required String financeType, String? entryId, Map 
               entryData['a'] = amountController.text;
               entryData['d'] = descriptionController.text;
               entryData['y'] = state.input.entryType;
-              state.input.update(action: 'add', key: entryId, value: entryData);
+              state.input.update(entryId, entryData);
             } else {
               String id = '${financeType.substring(0, 2).toLowerCase()}${getUniqueId()}';
               entryData = {'a': amountController.text, 'd': descriptionController.text, 'y': state.input.entryType};
-              state.input.update(action: 'add', key: id, value: entryData);
+              state.input.update(id, entryData);
             }
 
             popWhatsOnTop();

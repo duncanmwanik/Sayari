@@ -49,7 +49,7 @@ Future<void> getFilesToUpload({
     else {
       String fileId = embed ? 'fe${getUniqueId()}' : 'f${getUniqueId()}';
       stash.addFileId(fileId);
-      if (addToInput) state.input.update(action: 'add', key: fileId, value: stash.fileName());
+      if (addToInput) state.input.update(fileId, stash.fileName());
       await fileBox.put(fileId, stash.fileValue());
     }
 

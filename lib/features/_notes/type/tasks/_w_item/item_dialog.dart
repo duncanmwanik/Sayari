@@ -8,9 +8,9 @@ import '../../../../../_helpers/_common/global.dart';
 import '../../../../../_helpers/_common/navigation.dart';
 import '../../../../../_providers/common/input.dart';
 import '../../../../../_variables/features.dart';
+import '../../../../../_widgets/buttons/action_button.dart';
 import '../../../../../_widgets/buttons/buttons.dart';
 import '../../../../../_widgets/dialogs/app_dialog.dart';
-import '../../../../../_widgets/dialogs/dialog_buttons.dart';
 import '../../../../../_widgets/others/forms/input.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/others/divider.dart';
@@ -64,8 +64,8 @@ Future<void> showItemDialog(String itemId, Map itemData, String listId) async {
                         menuWidth: 200,
                         menuItems: reminderMenu(
                           reminder: reminder,
-                          onSet: (newReminder) => input.update(action: 'add', key: 'r', value: newReminder),
-                          onRemove: () => input.update(action: 'remove', key: 'r'),
+                          onSet: (newReminder) => input.update('r', newReminder),
+                          onRemove: () => input.remove('r'),
                         ),
                         isSquare: true,
                         child: AppIcon(Icons.notification_add, faded: true, size: 16),
@@ -83,7 +83,7 @@ Future<void> showItemDialog(String itemId, Map itemData, String listId) async {
                         menuWidth: 300,
                         menuItems: flagsMenu(
                           alreadySelected: alreadySelectedFlags,
-                          onDone: (newFlags) => input.update(action: 'add', key: 'g', value: getJoinedList(newFlags)),
+                          onDone: (newFlags) => input.update('g', getJoinedList(newFlags)),
                         ),
                         isSquare: true,
                         child: AppIcon(Icons.flag_outlined, faded: true, size: 16),

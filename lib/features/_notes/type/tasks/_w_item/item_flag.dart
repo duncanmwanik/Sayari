@@ -35,7 +35,7 @@ class ItemFlag extends StatelessWidget {
         menuWidth: 300,
         menuItems: flagsMenu(
           alreadySelected: getSplitList(state.input.data['g']),
-          onDone: (newFlags) => state.input.update(action: 'add', key: 'g', value: getJoinedList(newFlags)),
+          onDone: (newFlags) => state.input.update('g', getJoinedList(newFlags)),
         ),
         color: backgroundColors[getFlagColor(flag)]!.color,
         padding: padding(l: 8, t: 2, b: 2, r: 0),

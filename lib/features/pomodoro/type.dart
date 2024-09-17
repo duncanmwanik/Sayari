@@ -30,7 +30,7 @@ class PomodoroType extends StatelessWidget {
           text: pomodoroTitles[type] ?? 'focus',
           size: normal,
           color: !isDark() && isCurrent ? white : null,
-          fontWeight: FontWeight.w700,
+          weight: FontWeight.bold,
           textAlign: TextAlign.center,
         ),
       );

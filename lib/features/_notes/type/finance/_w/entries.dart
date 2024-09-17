@@ -8,14 +8,9 @@ import '../../../../../_providers/common/input.dart';
 import '../_helpers/helpers.dart';
 import 'entry.dart';
 
-class Entries extends StatefulWidget {
+class Entries extends StatelessWidget {
   const Entries({super.key});
 
-  @override
-  State<Entries> createState() => _EntriesState();
-}
-
-class _EntriesState extends State<Entries> {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {

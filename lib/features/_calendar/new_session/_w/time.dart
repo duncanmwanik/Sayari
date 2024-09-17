@@ -42,14 +42,14 @@ class TimePicker extends StatelessWidget {
                           confirmText: 'Done',
                           initialTime: TimeOfDay(hour: getHour(time), minute: getMinute(time)));
                       if (startDayTime != null) {
-                        input.update(action: 'add', key: 's', value: '${startDayTime.hour}:${startDayTime.minute}');
+                        input.update('s', '${startDayTime.hour}:${startDayTime.minute}');
                       }
                     },
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (!hasStart) AppText(text: 'Starts at'),
-                        AppText(text: startTime, fontWeight: FontWeight.w700),
+                        AppText(text: startTime, weight: FontWeight.bold),
                       ],
                     )),
                 //
@@ -67,20 +67,20 @@ class TimePicker extends StatelessWidget {
                               confirmText: 'Done',
                               initialTime: TimeOfDay(hour: getHour(time), minute: getMinute(time)));
                           if (stopDayTime != null) {
-                            input.update(action: 'add', key: 'e', value: '${stopDayTime.hour}:${stopDayTime.minute}');
+                            input.update('e', '${stopDayTime.hour}:${stopDayTime.minute}');
                           }
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             if (!hasEnd) AppText(text: 'Ends at '),
-                            AppText(text: stopTime, fontWeight: FontWeight.w700),
+                            AppText(text: stopTime, weight: FontWeight.bold),
                           ],
                         )),
                     //
                     if (hasEnd)
                       AppButton(
-                        onPressed: () => input.update(action: 'remove', key: 'e'),
+                        onPressed: () => input.remove('e'),
                         noStyling: true,
                         child: AppIcon(closeIcon, size: 14),
                       ),

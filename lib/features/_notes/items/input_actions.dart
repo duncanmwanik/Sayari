@@ -43,7 +43,7 @@ class CommonInputActions extends StatelessWidget {
           if (input.isFinance()) spw(),
           //
           AppButton(
-            onPressed: () => input.update(action: 'add', key: 'p', value: isPinned ? '0' : '1'),
+            onPressed: () => input.update('p', isPinned ? '0' : '1'),
             tooltip: isPinned ? 'UnPin' : 'Unpin',
             noStyling: true,
             isSquare: true,
@@ -57,8 +57,8 @@ class CommonInputActions extends StatelessWidget {
             menuWidth: 200,
             menuItems: reminderMenu(
               reminder: reminder,
-              onSet: (newReminder) => input.update(action: 'add', key: 'r', value: newReminder),
-              onRemove: () => input.update(action: 'remove', key: 'r'),
+              onSet: (newReminder) => input.update('r', newReminder),
+              onRemove: () => input.remove('r'),
             ),
             noStyling: true,
             isSquare: true,
@@ -71,7 +71,7 @@ class CommonInputActions extends StatelessWidget {
             menuItems: labelsMenu(
               isSelection: true,
               alreadySelected: getSplitList(input.data['l']),
-              onDone: (newLabels) => input.update(action: 'add', key: 'l', value: newLabels.join('|')),
+              onDone: (newLabels) => input.update('l', newLabels.join('|')),
             ),
             tooltip: 'Label',
             noStyling: true,
@@ -84,7 +84,7 @@ class CommonInputActions extends StatelessWidget {
           ColorButton(
             menuItems: colorMenu(
               selectedColor: bgColor,
-              onSelect: (newColor) => input.update(action: 'add', key: 'c', value: newColor),
+              onSelect: (newColor) => input.update('c', newColor),
             ),
             bgColor: bgColor,
           ),

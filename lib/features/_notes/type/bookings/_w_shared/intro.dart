@@ -42,9 +42,9 @@ class BookingIntro extends StatelessWidget {
             //
             UserDp(onPressed: () {}, userId: userId, noViewer: true, size: 40),
             sph(),
-            AppText(text: userName, size: 22, fontWeight: FontWeight.w800),
+            AppText(text: userName, size: 22, weight: FontWeight.bold),
             mph(),
-            AppText(text: title, fontWeight: FontWeight.w800),
+            AppText(text: title, weight: FontWeight.bold),
             //
             if (!state.quill.controller.document.isEmpty()) AppDivider(height: mediumHeight()),
             //

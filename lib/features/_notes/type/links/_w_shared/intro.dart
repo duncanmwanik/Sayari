@@ -53,7 +53,7 @@ class LinksIntro extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(child: AppText(text: userName, size: title, fontWeight: FontWeight.w900)),
+            Flexible(child: AppText(text: userName, size: title, weight: FontWeight.w900)),
             mpw(),
             ShareOptions(title: 'Duncan Mwanik', link: 'https://sayari.me/duncanmwanik', isProfile: true)
           ],

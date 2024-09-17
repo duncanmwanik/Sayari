@@ -83,7 +83,7 @@ class _ShareScreenState extends State<Booker> {
                         //
                         Align(
                             alignment: Alignment.topLeft,
-                            child: AppText(text: 'Book a session...', size: medium, faded: true, fontWeight: FontWeight.w700)),
+                            child: AppText(text: 'Book a session...', size: medium, faded: true, weight: FontWeight.bold)),
                         AppDivider(height: mediumHeight()),
                         tph(),
                         BookingDate(availableDates: availableDates),
@@ -159,7 +159,7 @@ class _ShareScreenState extends State<Booker> {
                                 : Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      AppText(text: 'Book', color: white, fontWeight: FontWeight.bold),
+                                      AppText(text: 'Book', color: white, weight: FontWeight.bold),
                                       spw(),
                                       AppIcon(Icons.arrow_forward_rounded, size: 16, color: white),
                                     ],

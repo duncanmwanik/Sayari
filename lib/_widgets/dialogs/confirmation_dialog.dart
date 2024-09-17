@@ -1,8 +1,8 @@
 import '../../_helpers/_common/navigation.dart';
-import '../others/others/other_widgets.dart';
+import '../buttons/action_button.dart';
+import '../others/others/other.dart';
 import '../others/text.dart';
 import 'app_dialog.dart';
-import 'dialog_buttons.dart';
 
 Future<void> showConfirmationDialog({
   required String title,

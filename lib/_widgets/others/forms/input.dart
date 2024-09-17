@@ -35,7 +35,7 @@ class DataInput extends StatefulWidget {
     this.textColor,
     this.hoverColor,
     this.bgColor,
-    this.fontWeight = FontWeight.w600,
+    this.weight = FontWeight.w600,
     this.contentPadding,
     this.fontSize = medium,
     this.borderRadius = borderRadiusSmall,
@@ -67,7 +67,7 @@ class DataInput extends StatefulWidget {
   final Color? textColor;
   final Color? hoverColor;
   final String? bgColor;
-  final FontWeight fontWeight;
+  final FontWeight weight;
   final EdgeInsetsGeometry? contentPadding;
   final double fontSize;
   final double borderRadius;
@@ -87,8 +87,7 @@ class _DataInputState extends State<DataInput> {
       mouseCursor: widget.enabled ? null : SystemMouseCursors.click,
       controller: widget.controller,
       validator: widget.validator,
-      onChanged: widget.onChanged ??
-          (widget.controller == null ? (value) => state.input.update(action: 'add', key: widget.inputKey, value: value.trim()) : null),
+      onChanged: widget.onChanged ?? (widget.controller == null ? (value) => state.input.update(widget.inputKey, value.trim()) : null),
       onFieldSubmitted: widget.onFieldSubmitted,
       onTapOutside: widget.onTapOutside,
       onTap: widget.onTap,
@@ -103,7 +102,7 @@ class _DataInputState extends State<DataInput> {
       textCapitalization: widget.textCapitalization,
       inputFormatters: widget.isNumerals ? [FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}'))] : null,
       style: TextStyle(
-          fontSize: widget.fontSize, color: widget.textColor ?? styler.textColor(bgColor: widget.bgColor), fontWeight: widget.fontWeight),
+          fontSize: widget.fontSize, color: widget.textColor ?? styler.textColor(bgColor: widget.bgColor), fontWeight: widget.weight),
       textAlignVertical: TextAlignVertical.center,
       cursorColor: styler.accentColor(),
       decoration: InputDecoration(
@@ -112,7 +111,7 @@ class _DataInputState extends State<DataInput> {
         hintStyle: TextStyle(
             fontSize: widget.fontSize,
             color: widget.textColor ?? styler.textColor(faded: true, bgColor: widget.bgColor),
-            fontWeight: widget.fontWeight),
+            fontWeight: widget.weight),
         isDense: widget.isDense,
         filled: widget.filled,
         fillColor: widget.color ?? styler.appColor(1),

@@ -18,7 +18,7 @@ class FinanceToggler extends StatelessWidget {
           noStyling: true,
           tooltip: isExpanded ? 'Show more' : 'Show less',
           leading: isExpanded ? Icons.more_horiz : Icons.keyboard_arrow_up,
-          onPressed: () => input.update(action: 'add', key: 'cx', value: isExpanded ? '0' : '1'),
+          onPressed: () => input.update('cx', isExpanded ? '0' : '1'),
         );
       },
     );

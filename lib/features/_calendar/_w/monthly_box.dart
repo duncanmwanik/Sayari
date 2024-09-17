@@ -7,7 +7,7 @@ import '../../../_variables/colors.dart';
 import '../../../_widgets/buttons/buttons.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/helpers.dart';
-import '../overview/dialog_session_overview.dart';
+import '../overview/overview.dart';
 
 class MonthBox extends StatelessWidget {
   const MonthBox({super.key, required this.item});

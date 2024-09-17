@@ -21,7 +21,7 @@ Future<void> showFinanceGraphsBottomSheet() async {
       children: [
         AppCloseButton(faded: true),
         spw(),
-        AppText(text: '${state.input.data['t'] ?? '-'}', fontWeight: FontWeight.w700),
+        AppText(text: '${state.input.data['t'] ?? '-'}', weight: FontWeight.bold),
         Spacer(),
         AppButton(
           menuItems: graphMenu(),

@@ -27,7 +27,7 @@ class YearViewTitleInput extends StatelessWidget {
         child: AppText(
           size: small,
           text: date.dayString(),
-          fontWeight: isSelectedMonth ? FontWeight.w600 : null,
+          weight: isSelectedMonth ? FontWeight.w600 : null,
           faded: !isSelectedMonth,
           color: isToday ? white : null,
         ),

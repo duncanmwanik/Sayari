@@ -86,20 +86,23 @@ flutter:
         - asset: assets/fonts/Nunito/Nunito-SemiBold.ttf
         - asset: assets/fonts/Nunito/Nunito-Medium.ttf
         - asset: assets/fonts/Nunito/Nunito-Regular.ttf
-    - family: Outfit
+    - family: Inter
       fonts:
-        - asset: assets/fonts/Outfit/Outfit-Black.ttf
-        - asset: assets/fonts/Outfit/Outfit-ExtraBold.ttf
-        - asset: assets/fonts/Outfit/Outfit-Bold.ttf
-        - asset: assets/fonts/Outfit/Outfit-SemiBold.ttf
-        - asset: assets/fonts/Outfit/Outfit-Medium.ttf
-        - asset: assets/fonts/Outfit/Outfit-Regular.ttf
+        - asset: assets/fonts/Inter/Inter_24pt-Black.ttf
+        - asset: assets/fonts/Inter/Inter_24pt-ExtraBold.ttf
+        - asset: assets/fonts/Inter/Inter_24pt-Bold.ttf
+        - asset: assets/fonts/Inter/Inter_24pt-SemiBold.ttf
+        - asset: assets/fonts/Inter/Inter_24pt-Medium.ttf
+        - asset: assets/fonts/Inter/Inter_24pt-Regular.ttf
+        - asset: assets/fonts/Inter/Inter_24pt-Light.ttf
+        - asset: assets/fonts/Inter/Inter_24pt-ExtraLight.ttf
+        - asset: assets/fonts/Inter/Inter_24pt-Thin.ttf
 
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/images/sayari.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
+  min_sdk_android: 21
   web:
     generate: true
     image_path: "assets/images/sayari.png"

@@ -26,7 +26,7 @@ class WeekDayLabels extends StatelessWidget {
             child: AppText(
               text: getWeekNumber(dates.currentWeekDates[3]).toString(),
               faded: true,
-              fontWeight: FontWeight.w600,
+              weight: FontWeight.w600,
               textAlign: TextAlign.center,
             ),
           ),
@@ -62,7 +62,7 @@ class WeekDayLabels extends StatelessWidget {
                                   size: date.isToday() ? medium : normal,
                                   text: dates.currentWeekDates[index].day.toString(),
                                   color: date.isToday() ? white : null,
-                                  fontWeight: FontWeight.w400,
+                                  weight: FontWeight.w400,
                                 ),
                               ),
                             ),

@@ -77,7 +77,7 @@ class _LabelItemState extends State<LabelItem> {
                     ? AppCheckBox(smallPadding: true, isChecked: widget.isSelected, onTap: widget.onSelect)
                     : AppIcon(widget.iconData, faded: true, size: 18),
                 mpw(),
-                Expanded(child: AppText(text: widget.label, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis)),
+                Expanded(child: AppText(text: widget.label, weight: FontWeight.w500, overflow: TextOverflow.ellipsis)),
                 tpw(),
                 AppButton(
                   onPressed: showDelete

@@ -48,13 +48,24 @@ class InputProvider with ChangeNotifier {
     if (notify) notifyListeners();
   }
 
-  void update({required String action, required String key, var value, String subKey = ''}) {
+  void update(String key, var value, {String subKey = ''}) {
     if (subKey.isNotEmpty) {
       Map subData = data[key] ?? {};
-      action == 'add' ? subData[subKey] = value : subData.remove(subKey);
+      subData[subKey] = value;
       data[key] = subData;
     } else {
-      action == 'add' ? data[key] = value : data.remove(key);
+      data[key] = value;
+    }
+    notifyListeners();
+  }
+
+  void remove(String key, {String subKey = ''}) {
+    if (subKey.isNotEmpty) {
+      Map subData = data[key] ?? {};
+      subData.remove(subKey);
+      data[key] = subData;
+    } else {
+      data.remove(key);
     }
     notifyListeners();
   }
@@ -64,14 +75,14 @@ class InputProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeAll({required String start}) {
+  void removeAll(String start) {
     data.removeWhere((key, value) => key.toString().startsWith(start));
     notifyListeners();
   }
 
   void clearData() {
     isNew = false;
-    item = const Item();
+    item = Item();
     data = {};
     previousData = {};
     type = '';

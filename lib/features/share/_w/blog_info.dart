@@ -26,7 +26,6 @@ class BlogInfo extends StatelessWidget {
       children: [
         //
         UserDp(onPressed: () {}, userId: userId, noViewer: true, isTiny: true, size: normal),
-        //
         mpw(),
         //
         Expanded(
@@ -40,16 +39,15 @@ class BlogInfo extends StatelessWidget {
               noStyling: true,
               padding: EdgeInsets.zero,
               hoverColor: transparent,
-              child: AppText(text: userName, size: normal, fontWeight: FontWeight.bold, overflow: TextOverflow.ellipsis),
+              child: AppText(text: userName, size: medium, overflow: TextOverflow.ellipsis),
             ),
             //
-            AppText(text: editTime, faded: true, overflow: TextOverflow.ellipsis),
+            AppText(text: editTime, size: small, faded: true, overflow: TextOverflow.ellipsis),
             //
           ],
         )),
         //
         mph(),
-        //
         SharedActions(itemId: itemId, userId: userId, data: data),
         //
       ],

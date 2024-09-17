@@ -1,7 +1,5 @@
 import 'dart:math' as math;
 
-// import 'dart:math' show min;
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 

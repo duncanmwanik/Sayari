@@ -47,7 +47,7 @@ class ItemHeader extends StatelessWidget {
                         faded: !item.hasTitle(),
                         bgColor: item.color(),
                         maxlines: 2,
-                        fontWeight: FontWeight.w800,
+                        weight: FontWeight.bold,
                         overflow: TextOverflow.ellipsis,
                       ),
                     )),

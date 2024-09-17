@@ -42,7 +42,7 @@ class LinkHeader extends StatelessWidget {
                       imagesOnly: true,
                       embed: true,
                       onDone: (stash) {
-                        state.input.update(action: 'remove', key: fileId);
+                        state.input.remove(fileId);
                         state.input.addAll({'cv': stash.fileId()});
                       },
                     );
@@ -58,7 +58,7 @@ class LinkHeader extends StatelessWidget {
                           imagesOnly: true,
                           embed: true,
                           onDone: (stash) {
-                            state.input.update(action: 'remove', key: fileId);
+                            state.input.remove(fileId);
                             state.input.addAll({'cv': stash.fileId()});
                           },
                         );
@@ -75,7 +75,7 @@ class LinkHeader extends StatelessWidget {
                         label: 'Remove Image',
                         leading: Icons.close,
                         onTap: () async {
-                          state.input.update(action: 'remove', key: fileId);
+                          state.input.remove(fileId);
                           state.input.addAll({'cv': ''});
                         },
                       ),
@@ -109,7 +109,7 @@ class LinkHeader extends StatelessWidget {
               children: [
                 //
                 AppButton(
-                  onPressed: () => input.update(action: 'add', key: feature.share.lt, value: isActive ? '0' : '1'),
+                  onPressed: () => input.update(feature.share.lt, isActive ? '0' : '1'),
                   smallRightPadding: true,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,

@@ -30,9 +30,9 @@ class BookingTime extends StatelessWidget {
               children: [
                 AppIcon(Icons.access_time_rounded, size: 16, faded: true),
                 spw(),
-                AppText(text: 'Time', fontWeight: FontWeight.bold, faded: true),
+                AppText(text: 'Time', weight: FontWeight.bold, faded: true),
                 tpw(),
-                AppText(text: ':', fontWeight: FontWeight.w900, faded: true),
+                AppText(text: ':', weight: FontWeight.w900, faded: true),
               ],
             ),
           ),

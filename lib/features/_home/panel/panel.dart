@@ -31,7 +31,7 @@ class Panel extends StatelessWidget {
         margin: paddingM(),
         decoration: BoxDecoration(
           color: styler.appColor(0.5),
-          borderRadius: BorderRadius.circular(borderRadiusSmall),
+          borderRadius: BorderRadius.circular(borderRadiusTiny),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,7 +49,7 @@ class Panel extends StatelessWidget {
                   children: [
                     AppImage('sayari.png', size: 22),
                     if (showPanel) spw(),
-                    if (showPanel) Expanded(child: AppText(size: large, text: 'Sayari', fontWeight: FontWeight.w800)),
+                    if (showPanel) Expanded(child: AppText(size: large, text: 'Sayari', weight: FontWeight.bold)),
                   ],
                 ),
               ),
