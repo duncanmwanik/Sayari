@@ -26,7 +26,8 @@ String getNavigationItemTitle(String type) {
   return '${type.substring(0, 1).toUpperCase()}${type.substring(1)}';
 }
 
-void popWhatsOnTop({dynamic value}) {
+void popWhatsOnTop({dynamic value, void Function()? todo}) {
+  todo;
   if (navigatorState.currentContext!.canPop()) {
     navigatorState.currentContext!.pop(value);
   }

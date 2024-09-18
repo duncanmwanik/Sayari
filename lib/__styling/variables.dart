@@ -89,4 +89,4 @@ const IconData deleteIcon = Icons.delete_outlined;
 const IconData deleteForeverIcon = Icons.delete_forever_rounded;
 const IconData restoreIcon = Icons.arrow_upward_rounded;
 
-const EdgeInsets zeroPadding = EdgeInsets.zero;
+const EdgeInsets noPadding = EdgeInsets.zero;

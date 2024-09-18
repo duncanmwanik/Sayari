@@ -7,8 +7,8 @@ import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/toast.dart';
-import '../../_calendar/_helpers/helpers.dart';
 import '../../_spaces/_helpers/common.dart';
+import '../../calendar/_helpers/helpers.dart';
 import '../../files/_helpers/handler.dart';
 import '../../reminders/_helpers/register_reminder.dart';
 import '../../share/_helpers/share.dart';
@@ -61,7 +61,7 @@ Future<void> createItem({String? type_, String? newId, String? newSubId, Map? da
           db: 'spaces', parentId: liveSpace(), type: type, action: 'c', itemId: itemId, subId: subId, extras: extras, data: data);
       // for shared items
       if (state.input.isShared()) {
-        shareItem(itemId: itemId, type: state.views.itemsView, title: data['t'] ?? 'Shared Item');
+        shareItem(itemId: itemId, type: state.views.itemView, title: data['t'] ?? 'Shared Item');
       }
     }
     //

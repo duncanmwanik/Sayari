@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-const String sayariDefaultPath = kDebugMode ? 'http://localhost:3000' : 'https://getsayari.web.app';
+const String sayariDefaultPath = kDebugMode ? 'http://localhost:52319' : 'https://getsayari.web.app';
 const String sayariSharePath = '$sayariDefaultPath/universe';
 
 const String chooseColorText = 'Pick a Color';

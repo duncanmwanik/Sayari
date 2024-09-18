@@ -13,3 +13,5 @@ String getWindowTitle(String type, String itemTitle) {
                       ? 'Links - $itemTitle'
                       : 'Sayari';
 }
+
+String sharedId(String? path) => path != null ? path.substring(path.length - 13) : 'sayari';

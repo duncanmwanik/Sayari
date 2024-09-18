@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
-import '../buttons/action_button.dart';
+import '../buttons/action.dart';
 import '../others/text.dart';
 
 List<Widget> confirmationMenu({String? title, String? yeslabel, required Function() onConfirm}) {

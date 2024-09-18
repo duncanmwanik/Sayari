@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../__styling/variables.dart';
-import '../../../../_widgets/buttons/buttons.dart';
+import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../_helpers/admin_helpers.dart';

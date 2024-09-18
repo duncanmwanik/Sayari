@@ -36,9 +36,9 @@ class HorizontalNavigationBox extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         //
-                        navItem(sessionsSelectedIcon, feature.calendar.t, views.view == feature.calendar.t),
-                        //
                         navItem(notesSelectedIcon, feature.items.t, views.view == feature.items.t),
+                        //
+                        navItem(sessionsSelectedIcon, feature.calendar.t, views.view == feature.calendar.t),
                         //
                         if (showNavOption(feature.chat.t)) navItem(chatSelectedIcon, feature.chat.t, views.view == feature.chat.t),
                         //

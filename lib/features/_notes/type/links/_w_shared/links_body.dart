@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/global.dart';
-import '../../../../../_widgets/buttons/buttons.dart';
+import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/others/scroll.dart';
 import '../../../../../_widgets/others/text.dart';

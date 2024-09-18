@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/providers.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/menu/menu_item.dart';
+import '../../_widgets/others/icons.dart';
 import '_helpers/download.dart';
 import '_helpers/helper.dart';
 
@@ -18,9 +20,11 @@ class FileOptions extends StatelessWidget {
     return AppButton(
       tooltip: 'Options',
       menuItems: fileOptions(fileId, fileName),
-      isSquare: true,
-      leading: moreIcon,
+      isRound: isImageFile(fileName),
+      padding: padding(p: 3),
+      color: styler.secondaryColor(),
       noStyling: !isImageFile(fileName),
+      child: AppIcon(moreIcon),
     );
   }
 }

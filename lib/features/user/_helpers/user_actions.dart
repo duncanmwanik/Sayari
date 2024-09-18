@@ -16,8 +16,6 @@ Future<void> addSpaceToGroup(String spaceId) async {
     List groupNames = state.input.selectedGroups;
 
     if (groupNames.isNotEmpty) {
-      showSnackBar('Adding space to ${groupNames.length == 1 ? 'group' : 'groups'}...');
-
       for (String groupName in groupNames) {
         Map groupSpaces = userDataBox.get(groupName, defaultValue: {});
         groupSpaces[spaceId] = 0;

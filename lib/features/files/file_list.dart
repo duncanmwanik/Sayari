@@ -72,7 +72,7 @@ class FileList extends StatelessWidget {
                 ],
               ),
               // Other files
-              if (filesIds.isNotEmpty) sph(),
+              if (filesIds.isNotEmpty) mph(),
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

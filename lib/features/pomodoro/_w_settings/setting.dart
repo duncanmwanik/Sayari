@@ -4,7 +4,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/constants.dart';
-import '../../../_widgets/buttons/color_button.dart';
+import '../../../_widgets/others/color.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/forms/numeric.dart';
 import '../../../_widgets/others/text.dart';

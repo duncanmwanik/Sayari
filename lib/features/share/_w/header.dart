@@ -5,11 +5,11 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/buttons/buttons.dart';
-import '../../../_widgets/layout/layout_button.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/images.dart';
 import '../../../_widgets/others/text.dart';
 import '../../../_widgets/others/theme.dart';
+import '../../_notes/layout/layout_button.dart';
 import 'shared_info.dart';
 
 class SharedHeader extends StatelessWidget {

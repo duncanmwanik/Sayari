@@ -35,7 +35,7 @@ Future<void> showAppBottomSheet({
       isScrollControlled: true,
       useSafeArea: true,
       elevation: 10,
-      barrierColor: isDark() && !isImage() ? white.withOpacity(0.1) : null,
+      barrierColor: null,
       backgroundColor: transparent,
       //
       builder: (context) {
@@ -107,9 +107,8 @@ Future<void> showAppBottomSheet({
                                 isMinimized
                                     ? Flexible(
                                         child: Padding(
-                                        padding: noContentHorizontalPadding
-                                            ? zeroPadding
-                                            : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
+                                        padding:
+                                            noContentHorizontalPadding ? noPadding : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
                                         child: content,
                                       ))
                                     : Expanded(

@@ -32,9 +32,9 @@ class VeticalNavigationBox extends StatelessWidget {
               child: Column(
                 children: [
                   //
-                  navItem(sessionsSelectedIcon, feature.calendar.t, views.view == feature.calendar.t),
-                  msph(),
                   navItem(notesSelectedIcon, feature.items.t, views.view == feature.items.t),
+                  msph(),
+                  navItem(sessionsSelectedIcon, feature.calendar.t, views.view == feature.calendar.t),
                   msph(),
                   if (showNavOption(feature.chat.t)) navItem(chatSelectedIcon, feature.chat.t, views.view == feature.chat.t),
                   if (showNavOption(feature.chat.t)) msph(),

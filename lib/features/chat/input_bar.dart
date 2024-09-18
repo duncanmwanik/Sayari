@@ -9,7 +9,7 @@ import '../../__styling/variables.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/ui.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '../_spaces/_helpers/checks_space.dart';

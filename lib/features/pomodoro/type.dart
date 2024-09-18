@@ -6,7 +6,7 @@ import '../../__styling/variables.dart';
 import '../../_providers/common/pomodoro.dart';
 import '../../_variables/colors.dart';
 import '../../_variables/constants.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/helpers.dart';
 

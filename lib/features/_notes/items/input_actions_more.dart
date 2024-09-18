@@ -6,7 +6,7 @@ import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/common/input.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../files/_helpers/upload.dart';
@@ -54,7 +54,7 @@ class MoreInputActions extends StatelessWidget {
               leading: Icons.share_rounded,
               onTap: () {
                 input.update(feature.share.lt, '1');
-                shareItem(itemId: input.itemId, type: state.views.itemsView, title: input.data['t'] ?? 'Shared Item');
+                shareItem(itemId: input.itemId, type: state.views.itemView, title: input.data['t'] ?? 'Shared Item');
               },
             ),
           //

@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../__styling/variables.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 
 class OptionsToggler extends StatelessWidget {
@@ -23,9 +23,9 @@ class OptionsToggler extends StatelessWidget {
         // OptionToggle(label: 'Forms', type: feature.forms.lt),
         OptionToggle(label: 'Bookings', type: feature.bookings.lt),
       ],
-      tooltip: 'Options',
-      isRound: true,
+      tooltip: 'Customize',
       noStyling: true,
+      smallVerticalPadding: true,
       leading: moreIcon,
     );
   }

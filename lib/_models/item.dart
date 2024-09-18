@@ -1,4 +1,7 @@
 import '../__styling/helpers.dart';
+import '../_helpers/_common/global.dart';
+import '../_helpers/_common/helpers.dart';
+import '../_variables/constants.dart';
 import '../_variables/features.dart';
 import '../features/_notes/type/tasks/_helpers/helper.dart';
 import '../features/files/_helpers/helper.dart';
@@ -11,6 +14,7 @@ class Item {
   final Map data;
   final String extra;
 
+  String itemType() => [feature.notes.lt, feature.links.lt, feature.bookings.lt].firstWhere((key) => data[key] != null);
   String title() => data['t'] != null && data['t'] != '' ? data['t'] : 'Untitled';
   String color() => data['c'] ?? '';
   String emoji() => data['j'] ?? '';
@@ -20,8 +24,12 @@ class Item {
   String labels() => data['l'] ?? '';
   String coverId() => data['w'] ?? '';
   String coverName() => data[coverId()] ?? '';
+  String sharedLink() => '$sayariDefaultPath/${features[itemType()]!.path}/${minString(title())}_$id';
+  String demoLink() => '/${features[itemType()]!.path}/${minString(title())}_$id';
   Map files() => getFiles(data);
   Map subItems() => getSubItems(data);
+  int customHabitDatesCount() => getSplitList(data['hd']).length;
+  int checkedHabitCount() => data.keys.where((key) => key.toString().startsWith('hc')).length;
   int checkedCount() => data.keys.where((key) => key.startsWith('i') && data[key]['v'] == '1').length;
   int taskCount() => data.keys.where((key) => key.startsWith('i')).length;
 

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../__styling/spacing.dart';
-import '../../../../__styling/variables.dart';
-import '../../../../_widgets/buttons/buttons.dart';
-import '../../../../_widgets/buttons/close_button.dart';
+import '../../../../_widgets/buttons/button.dart';
+import '../../../../_widgets/buttons/close.dart';
 import '../../../../_widgets/menu/menu_item.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
@@ -44,33 +43,14 @@ class CreateOptions extends StatelessWidget {
             ),
             //
           ],
-          borderRadius: borderRadiusLarge,
-          padding: EdgeInsets.zero,
-          noStyling: true,
-          child: Container(
-            height: 30,
-            padding: EdgeInsets.only(left: 10, right: 15),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadiusLarge),
-              gradient: LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                transform: GradientRotation(1.5),
-                colors: [
-                  styler.accentColor().withOpacity(0.3),
-                  styler.accentColor().withOpacity(0.15),
-                  styler.accentColor().withOpacity(0.05),
-                ],
-              ),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppIcon(Icons.add_rounded, faded: true, size: 18),
-                spw(),
-                AppText(text: 'Create'),
-              ],
-            ),
+          smallLeftPadding: true,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              AppIcon(Icons.add_rounded, faded: true, size: 18),
+              spw(),
+              AppText(text: 'Create'),
+            ],
           ),
         ),
         //

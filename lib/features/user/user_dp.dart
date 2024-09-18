@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/file.dart';
 
 import '../../__styling/variables.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
@@ -48,7 +48,6 @@ class UserDp extends StatelessWidget {
 
               return file != null
                   ? AppButton(
-                      tooltip: tooltip,
                       onPressed: onPressed ??
                           (noViewer
                               ? null
@@ -62,7 +61,11 @@ class UserDp extends StatelessWidget {
                                       downloadPath: 'dp.jpg',
                                     ),
                                   )),
+                      tooltip: tooltip,
+                      height: radius,
+                      width: radius,
                       color: hoverColor,
+                      padding: noPadding,
                       hoverColor: hoverColor,
                       menuItems: menuItems ??
                           (isTiny || noViewer
@@ -88,7 +91,6 @@ class UserDp extends StatelessWidget {
                                   //
                                 ]),
                       isRound: true,
-                      padding: EdgeInsets.all(isTiny ? 0 : 3),
                       child: FutureBuilder(
                           future: file.readAsBytes(),
                           builder: (context, snapshot) {
@@ -111,8 +113,8 @@ class UserDp extends StatelessWidget {
                             }
                             return CircleAvatar(
                               backgroundColor: transparent,
-                              radius: radius + 1,
-                              child: Center(child: AppLoader()),
+                              radius: radius,
+                              child: AppLoader(),
                             );
                           }),
                     )
@@ -123,12 +125,14 @@ class UserDp extends StatelessWidget {
             tooltip: tooltip,
             onPressed: menuItems != null ? null : onPressed,
             menuItems: menuItems,
+            height: radius,
+            width: radius,
             isRound: true,
-            padding: EdgeInsets.all(isTiny ? 3 : 3),
+            padding: noPadding,
             child: CircleAvatar(
               backgroundColor: transparent,
               radius: radius,
-              child: AppLoader(color: styler.appColor(2), size: isTiny ? 18 : 40, stroke: isTiny ? 2 : 4),
+              child: AppLoader(),
             ),
           );
         });

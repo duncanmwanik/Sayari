@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 
 class BlockSeparator extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/variables.dart';
 import '../../../_providers/common/views.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/svg.dart';
 
 class PanelToggle extends StatelessWidget {

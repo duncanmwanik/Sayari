@@ -4,9 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/providers.dart';
-import '../../../_variables/features.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 
@@ -24,7 +22,7 @@ class PreviewNote extends StatelessWidget {
       child: Padding(
         padding: padding(s: 't'),
         child: AppButton(
-          onPressed: () => context.go(path ?? '/${features[state.views.itemsView]!.path}/${item.id}'),
+          onPressed: () => context.go(path ?? item.demoLink()),
           showBorder: true,
           child: Row(
             mainAxisSize: MainAxisSize.min,

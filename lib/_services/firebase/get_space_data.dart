@@ -24,7 +24,7 @@ Future<void> getAllSpaceData(String spaceId, {bool? isFirstTime}) async {
 
   showSyncingLoader(false);
 
-  printThis(':::: Updated all space data for "${getSpaceName(spaceId)}"');
+  printThis(':::: Updated all space data for "${liveSpaceTitle(id: spaceId)}"');
 }
 
 Future<void> getSpaceInfo(String spaceId) async {

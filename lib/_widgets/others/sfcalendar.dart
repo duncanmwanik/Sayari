@@ -33,7 +33,7 @@ class SfCalendar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<DateTimeProvider>(builder: (context, date, child) {
-      print(date.selectedDate);
+      // print(date.selectedDate);
 
       return Container(
         height: isOverview ? 220 : 80.w,

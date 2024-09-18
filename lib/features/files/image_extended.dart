@@ -11,7 +11,7 @@ import '../../__styling/spacing.dart';
 import '../../_providers/providers.dart';
 import '../../_services/firebase/storage.dart';
 import '../../_services/hive/local_storage_service.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '../_spaces/_helpers/common.dart';

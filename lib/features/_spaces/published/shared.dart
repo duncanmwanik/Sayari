@@ -4,9 +4,9 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_widgets/layout/list_of_items.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
+import '../../_notes/item_view.dart';
 import '../../share/_w/header.dart';
 import 'shared_intro.dart';
 
@@ -50,8 +50,8 @@ class PublishBookBody extends StatelessWidget {
                       ),
                       Expanded(
                           child: Container(
-                        margin: padding(s: 'l'),
-                        padding: padding(s: 'ltr'),
+                        // margin: padding(s: 'l'),
+                        // padding: padding(s: 'ltr'),
                         decoration: BoxDecoration(
                           border: Border(left: BorderSide(color: styler.borderColor(), width: isDark() ? 0.5 : 1)),
                         ),

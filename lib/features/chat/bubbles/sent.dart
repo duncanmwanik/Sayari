@@ -8,7 +8,7 @@ import '../../../_helpers/date_time/misc.dart';
 import '../../../_providers/providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/common.dart';

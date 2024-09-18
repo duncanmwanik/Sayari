@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_helpers/_common/misc.dart';
 import '../../../_models/item.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/text.dart';
 
-class PublishedLabel extends StatelessWidget {
-  const PublishedLabel({super.key, required this.item});
+class PublishedItem extends StatelessWidget {
+  const PublishedItem({super.key, required this.item});
 
   final Item item;
 
@@ -15,11 +17,11 @@ class PublishedLabel extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: 4.5),
       child: AppButton(
-        onPressed: () {},
+        onPressed: () => copyToClipboard(item.sharedLink()),
+        tooltip: 'Copy link',
         color: styler.accent,
-        borderRadius: borderRadiusTiny,
-        padding: EdgeInsets.symmetric(horizontal: 5),
-        child: AppText(text: 'Blog', color: Colors.white, size: tiny),
+        padding: paddingC('l5,r5,t2,b2'),
+        child: AppText(text: 'Published in blog', color: Colors.white, size: tiny),
       ),
     );
   }

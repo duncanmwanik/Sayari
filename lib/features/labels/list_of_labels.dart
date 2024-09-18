@@ -8,7 +8,7 @@ import '../../_helpers/_common/global.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/features.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/others/other.dart';
 import '../../_widgets/others/text.dart';
 import '../_notes/_helpers/quick_edit.dart';

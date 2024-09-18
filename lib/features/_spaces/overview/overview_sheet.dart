@@ -7,7 +7,7 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/misc.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_helpers/date_time/date_info.dart';
-import '../../../_widgets/buttons/close_button.dart';
+import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/divider.dart';

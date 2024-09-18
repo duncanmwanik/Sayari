@@ -6,7 +6,7 @@ import '../../../../../_helpers/_common/global.dart';
 import '../../../../../_models/item.dart';
 import '../../../../../_providers/providers.dart';
 import '../../../../../_variables/features.dart';
-import '../../../../../_widgets/buttons/buttons.dart';
+import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/forms/input.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';

@@ -8,9 +8,9 @@ import '../../../_widgets/others/others/other.dart';
 DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
   Color quillTextColor = styler.textColor(bgColor: bgColor);
   Color quillFadedTextColor = styler.textColor(faded: true, bgColor: bgColor);
-  FontWeight fontWeight = FontWeight.w600;
-  FontWeight boldFontWeight = FontWeight.bold;
-  String fontFamily = 'Nunito';
+  FontWeight weight = FontWeight.w500;
+  FontWeight bold = FontWeight.bold;
+  String fontFamily = 'Inter';
   double fontSize = 15;
 
   return DefaultStyles(
@@ -20,29 +20,21 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
           height: 1.3,
           color: quillFadedTextColor,
           fontFamily: fontFamily,
-          fontWeight: fontWeight),
+          fontWeight: weight),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     leading: DefaultTextBlockStyle(
       TextStyle(
-          fontSize: isOverview ? fontSize - 4 : fontSize,
-          height: 1.3,
-          color: quillTextColor,
-          fontFamily: fontFamily,
-          fontWeight: fontWeight),
+          fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillTextColor, fontFamily: fontFamily, fontWeight: weight),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     paragraph: DefaultTextBlockStyle(
       TextStyle(
-          fontSize: isOverview ? fontSize - 4 : fontSize,
-          height: 1.3,
-          color: quillTextColor,
-          fontFamily: fontFamily,
-          fontWeight: fontWeight),
+          fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillTextColor, fontFamily: fontFamily, fontWeight: weight),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
@@ -53,7 +45,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
         color: quillTextColor,
         letterSpacing: -1,
         height: 1,
-        fontWeight: boldFontWeight,
+        fontWeight: bold,
         decoration: TextDecoration.none,
         fontFamily: fontFamily,
       ),
@@ -67,7 +59,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
         color: quillTextColor,
         letterSpacing: -0.8,
         height: 1.067,
-        fontWeight: boldFontWeight,
+        fontWeight: bold,
         decoration: TextDecoration.none,
         fontFamily: fontFamily,
       ),
@@ -81,7 +73,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
         color: quillTextColor,
         letterSpacing: -0.5,
         height: 1.083,
-        fontWeight: boldFontWeight,
+        fontWeight: bold,
         decoration: TextDecoration.none,
         fontFamily: fontFamily,
       ),
@@ -95,7 +87,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
         color: quillTextColor,
         letterSpacing: -0.4,
         height: 1.1,
-        fontWeight: boldFontWeight,
+        fontWeight: bold,
         decoration: TextDecoration.none,
         fontFamily: fontFamily,
       ),
@@ -109,7 +101,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
         color: quillTextColor,
         letterSpacing: -0.2,
         height: 1.11,
-        fontWeight: boldFontWeight,
+        fontWeight: bold,
         decoration: TextDecoration.none,
         fontFamily: fontFamily,
       ),
@@ -123,7 +115,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
         color: quillTextColor,
         letterSpacing: -0.1,
         height: 1.125,
-        fontWeight: boldFontWeight,
+        fontWeight: bold,
         decoration: TextDecoration.none,
         fontFamily: fontFamily,
       ),
@@ -133,11 +125,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
     ),
     lists: DefaultListBlockStyle(
       TextStyle(
-          fontSize: isOverview ? fontSize - 4 : fontSize,
-          height: 1.3,
-          color: quillTextColor,
-          fontFamily: fontFamily,
-          fontWeight: fontWeight),
+          fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillTextColor, fontFamily: fontFamily, fontWeight: weight),
       VerticalSpacing(6, 0),
       VerticalSpacing(0, 6),
       null,
@@ -147,7 +135,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
       TextStyle(
         color: quillTextColor,
         fontFamily: fontFamily,
-        fontWeight: fontWeight,
+        fontWeight: weight,
         fontSize: fontSize - 2,
         height: 1.15,
       ),
@@ -161,7 +149,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
     ),
     link: TextStyle(
       color: styler.accentColor(),
-      fontWeight: boldFontWeight,
+      fontWeight: bold,
     ),
     inlineCode: InlineCodeStyle(
       backgroundColor: styler.appColor(1),
@@ -190,11 +178,11 @@ class CustomQuillCheckbox implements QuillCheckboxBuilder {
         splashColor: transparent,
         child: Container(
           width: 17,
-          height: 17,
+          height: isOverview ? 13 : 17,
           margin: EdgeInsets.symmetric(horizontal: isOverview ? 4.5 : 6.9),
           decoration: BoxDecoration(
             color: isChecked ? styler.accentColor() : null,
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(3),
             border: isChecked ? null : Border.all(color: styler.textColor(faded: true, bgColor: bgColor), width: 1.5),
           ),
           child:

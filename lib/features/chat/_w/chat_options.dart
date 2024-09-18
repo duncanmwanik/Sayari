@@ -11,22 +11,16 @@ class ChatOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ChatProvider>(builder: (context, chat, child) {
-      return Align(
-        alignment: Alignment.topLeft,
-        child: Padding(
-          padding: paddingS('b'),
-          child: Wrap(
-            spacing: smallWidth(),
-            runSpacing: smallWidth(),
-            children: [
-              //
-              ChatOption(type: 'All'),
-              ChatOption(type: 'Pinned', iconData: Icons.push_pin_outlined),
-              ChatOption(type: 'Starred', iconData: Icons.star_outlined),
-              //
-            ],
-          ),
-        ),
+      return Wrap(
+        spacing: smallWidth(),
+        runSpacing: smallWidth(),
+        children: [
+          //
+          ChatOption(type: 'All'),
+          ChatOption(type: 'Pinned', iconData: Icons.push_pin_outlined),
+          ChatOption(type: 'Starred', iconData: Icons.star_outlined),
+          //
+        ],
       );
     });
   }

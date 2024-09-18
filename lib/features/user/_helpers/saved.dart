@@ -4,7 +4,7 @@ import '../../../_helpers/_common/global.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/navigation.dart';
-import '../../../_widgets/buttons/action_button.dart';
+import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
 import 'set_user_data.dart';
 

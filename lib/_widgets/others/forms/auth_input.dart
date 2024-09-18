@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/helpers.dart';
 import '../../../__styling/variables.dart';
-import '../../buttons/buttons.dart';
+import '../../buttons/button.dart';
 import '../icons.dart';
 import '../loader.dart';
 
@@ -59,13 +59,13 @@ class _EmailFormInputState extends State<FormInput> {
         onFieldSubmitted: widget.onFieldSubmitted,
         textInputAction: widget.textInputAction,
         obscureText: isPassword && hidePassword,
-        style: const TextStyle(fontSize: medium, fontWeight: FontWeight.w600),
+        style: const TextStyle(fontSize: medium),
         cursorColor: styler.accentColor(),
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           hintText: widget.hintText,
           hintStyle: const TextStyle(fontSize: medium),
-          errorStyle: const TextStyle(fontSize: small, fontWeight: FontWeight.w600, color: Colors.red),
+          errorStyle: const TextStyle(fontSize: small, color: Colors.red),
           contentPadding: const EdgeInsets.only(left: 7, right: 7),
           border: InputBorder.none,
           isDense: true,

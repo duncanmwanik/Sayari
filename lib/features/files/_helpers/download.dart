@@ -59,9 +59,7 @@ Future<void> downloadFile(
       } else {
         await checkForStoragePermissions();
         io.File file = io.File(
-          downloadPath != null
-              ? '/storage/emulated/0/Sayari/$fileName'
-              : '/storage/emulated/0/Sayari/${getCurrentSpaceName() ?? 'Others'}/$fileName',
+          downloadPath != null ? '/storage/emulated/0/Sayari/$fileName' : '/storage/emulated/0/Sayari/${liveSpaceTitle()}/$fileName',
         );
         await file.create(recursive: true);
         var bytes = await io.File(fileBox.get(fileId)).readAsBytes();
@@ -83,9 +81,7 @@ Future<void> downloadFile(
         } else {
           await checkForStoragePermissions();
           io.File file = io.File(
-            downloadPath != null
-                ? '/storage/emulated/0/Sayari/$fileName'
-                : '/storage/emulated/0/Sayari/${getCurrentSpaceName() ?? 'Others'}/$fileName',
+            downloadPath != null ? '/storage/emulated/0/Sayari/$fileName' : '/storage/emulated/0/Sayari/${liveSpaceTitle()}/$fileName',
           );
           await file.create(recursive: true);
           await file.writeAsBytes(bytes);
@@ -116,7 +112,7 @@ Future<void> downloadFile(
             io.File file = io.File(
               downloadPath != null
                   ? '/storage/emulated/0/Sayari/$fileName'
-                  : '/storage/emulated/0/Sayari/${getCurrentSpaceName() ?? 'Others'}/$fileName',
+                  : '/storage/emulated/0/Sayari/${liveSpaceTitle(other: 'Others')}/$fileName',
             );
             await file.create(recursive: true);
             await file.writeAsBytes(bytes);

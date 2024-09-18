@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_providers/common/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/text.dart';
 
 class Option extends StatelessWidget {
@@ -25,14 +23,13 @@ class Option extends StatelessWidget {
           return Visibility(
             visible: box.get('showNoteOption_$type', defaultValue: true),
             child: Consumer<ViewsProvider>(builder: (context, views, child) {
-              bool isSelectedView = views.itemsView == type;
+              bool isSelectedView = views.itemView == type;
 
               return Padding(
                 padding: paddingS('r'),
                 child: AppButton(
                   onPressed: isSelectedView ? null : () => views.setNotesView(type),
-                  color: isSelectedView ? styler.accentColor(isDark() ? 4 : 2) : transparent,
-                  borderRadius: borderRadiusCrazy,
+                  noStyling: !isSelectedView,
                   smallVerticalPadding: true,
                   child: AppText(text: label),
                 ),

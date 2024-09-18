@@ -7,7 +7,7 @@ import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/theme.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/images.dart';
 import '../../_widgets/others/text.dart';
@@ -31,16 +31,8 @@ class ErrorScreen extends StatelessWidget {
                 padding: paddingM(),
                 child: AppButton(
                   onPressed: () async => context.go('/'),
-                  leading: Icons.arrow_back_rounded,
-                  noStyling: true,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      AppIcon(Icons.arrow_back_rounded),
-                      mpw(),
-                      AppText(size: normal, text: 'Sayari Universe'),
-                    ],
-                  ),
+                  isSquare: true,
+                  child: AppIcon(Icons.arrow_back_rounded),
                 ),
               ),
               //
@@ -51,14 +43,9 @@ class ErrorScreen extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        AppImage('oops.png', height: 25.h),
+                        AppImage('oops.png', height: 25.h, fit: BoxFit.fitHeight),
                         sph(),
-                        AppText(
-                          size: normal,
-                          text: 'Lost in space.\n...',
-                          weight: FontWeight.bold,
-                          textAlign: TextAlign.center,
-                        ),
+                        AppText(size: normal, text: 'Lost in space.\n...', textAlign: TextAlign.center),
                         mph(),
                         AppButton(
                           onPressed: () => context.go('/'),

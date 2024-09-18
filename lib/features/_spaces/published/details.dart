@@ -8,7 +8,7 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_providers/common/input.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/others/checkbox.dart';
 import '../../../_widgets/others/icons.dart';
@@ -79,22 +79,17 @@ class _PublishSpaceState extends State<PublishedSpace> {
                     child: AppText(text: 'Unpublish'),
                   ),
                   //
-                  CopyLink(
-                    path: '/${features[feature.space.lt]!.path}/${liveSpace()}',
-                    isMinimized: true,
-                  ),
+                  CopyLink(path: publishedSpaceLink(true), isMinimized: true),
                   //
                 ],
               ),
               //
               mph(),
-              //
               ImageFile(
                 fileId,
                 fileName,
                 images: {fileId: fileName},
                 height: (isTabAndBelow() ? 15.h : 20.h) / 0.7092,
-                // width: isTabAndBelow() ? 15.h : 20.h,
                 fit: BoxFit.fitHeight,
                 showOptions: false,
               ),

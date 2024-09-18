@@ -4,7 +4,7 @@ import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_models/item.dart';
 import '../../../../../_variables/features.dart';
-import '../../../../../_widgets/buttons/buttons.dart';
+import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
 
@@ -16,51 +16,52 @@ class LinksOverview extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isActive = item.data[feature.share.lt] == '1';
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        //
-        AppButton(
-          borderRadius: borderRadiusTiny,
-          smallLeftPadding: true,
-          child: Row(
-            children: [
-              AppIcon(Icons.dataset_linked_outlined, size: 16, faded: true, bgColor: item.color()),
-              spw(),
-              Expanded(child: AppText(text: 'Links:', bgColor: item.color())),
-              spw(),
-              AppText(
-                text: item.data.keys.where((key) => key.toString().startsWith('lk')).length.toString(),
-                weight: FontWeight.bold,
-                faded: true,
-                bgColor: item.color(),
-              ),
-            ],
-          ),
-        ),
-        //
-        sph(),
-        // active status
-        Align(
-          alignment: Alignment.topLeft,
-          child: Padding(
-            padding: paddingM('lt'),
+    return Padding(
+      padding: paddingM('t'),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          //
+          AppButton(
+            borderRadius: borderRadiusTiny,
+            smallLeftPadding: true,
             child: Row(
               children: [
-                AppIcon(isActive ? Icons.rocket_launch_rounded : Icons.cancel, size: small, faded: true),
+                AppIcon(Icons.dataset_linked_outlined, size: 16, faded: true, bgColor: item.color()),
+                spw(),
+                Expanded(child: AppText(text: 'Links:', bgColor: item.color())),
                 spw(),
                 AppText(
-                  text: isActive ? 'Active' : 'Not Active',
-                  size: small,
+                  text: item.data.keys.where((key) => key.toString().startsWith('lk')).length.toString(),
+                  weight: FontWeight.bold,
                   faded: true,
                   bgColor: item.color(),
                 ),
               ],
             ),
           ),
-        ),
-        //
-      ],
+          // active status
+          Align(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: paddingM('lt'),
+              child: Row(
+                children: [
+                  AppIcon(isActive ? Icons.rocket_launch_rounded : Icons.cancel, size: small, faded: true),
+                  spw(),
+                  AppText(
+                    text: isActive ? 'Active' : 'Not Active',
+                    size: small,
+                    faded: true,
+                    bgColor: item.color(),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          //
+        ],
+      ),
     );
   }
 }

@@ -7,7 +7,7 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/helpers.dart';
 import '../../_providers/common/input.dart';
 import '../../_variables/features.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/checkbox.dart';
@@ -30,8 +30,10 @@ class Share extends StatelessWidget {
       return Visibility(
           visible: data[feature.share.lt] != null && input.isNote() && !isShare(),
           child: Padding(
-            padding: paddingS('t'),
+            padding: paddingS('tb'),
             child: AppButton(
+              noStyling: true,
+              showBorder: true,
               smallRightPadding: true,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -50,9 +52,9 @@ class Share extends StatelessWidget {
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            AppIcon(Icons.share_rounded, size: 16, faded: true),
+                            AppIcon(Icons.share_rounded, size: medium, faded: true),
                             spw(),
-                            AppText(text: 'Shared'),
+                            AppText(text: 'Share settings'),
                           ],
                         ),
                         //
@@ -93,10 +95,9 @@ class Share extends StatelessWidget {
                   ),
                   //
                   if (isExpanded) sph(),
-                  if (isExpanded) CopyLink(path: '/${features[feature.share.lt]!.path}/${input.itemId}'),
+                  if (isExpanded) CopyLink(path: input.item.sharedLink()),
                   if (isExpanded) AppDivider(),
                   //
-                  if (isExpanded) tph(),
                   if (isExpanded)
                     Padding(
                       padding: paddingM('l'),
@@ -134,7 +135,7 @@ class Share extends StatelessWidget {
                           ),
                         ),
                         AppText(text: ' • ', faded: true),
-                        CopyLink(path: '/${features[feature.notes.lt]!.path}/${input.itemId}'),
+                        CopyLink(label: 'Copy blog link', path: input.item.sharedLink()),
                       ],
                     ),
                   //

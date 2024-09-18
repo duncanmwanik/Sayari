@@ -5,7 +5,7 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_models/item.dart';
 import '../../../_variables/emojis.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/images.dart';
 import '../_helpers/quick_edit.dart';

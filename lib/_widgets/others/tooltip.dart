@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 
+import '../../__styling/spacing.dart';
 import '../../__styling/styler.dart';
 import '../../__styling/variables.dart';
 import 'text.dart';
@@ -17,11 +18,11 @@ class AppTooltip extends StatelessWidget {
     return message != null
         ? JustTheTooltip(
             backgroundColor: styler.isDark ? AppColors.lightTertiary : Colors.black.withOpacity(0.8),
-            borderRadius: BorderRadius.circular(borderRadiusTiny),
+            borderRadius: BorderRadius.circular(borderRadiusSuperTiny),
             waitDuration: const Duration(milliseconds: 500),
             offset: 10,
             content: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 2),
+              padding: paddingC('l5,r5,t2,b2'),
               child: AppText(size: small, text: message ?? '', color: styler.isDark ? black : white),
             ),
             preferredDirection: axisDirection ?? AxisDirection.down,

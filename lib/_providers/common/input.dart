@@ -151,13 +151,13 @@ class InputProvider with ChangeNotifier {
   // for spaces only
   List selectedGroups = [];
 
-  void updateSelectedGroups(String action, String group) {
-    if (action == 'add') {
-      selectedGroups.contains(group) ? selectedGroups.remove(group) : selectedGroups.add(group);
-    }
-    if (action == 'clear') {
-      selectedGroups.clear();
-    }
+  void updateSelectedGroups(String group) {
+    selectedGroups.contains(group) ? selectedGroups.remove(group) : selectedGroups.add(group);
+    notifyListeners();
+  }
+
+  void clearSelectedGroups() {
+    selectedGroups.clear();
     notifyListeners();
   }
 }

@@ -11,12 +11,12 @@ import '../../../../_models/item.dart';
 import '../../../../_providers/common/datetime.dart';
 import '../../../../_providers/common/input.dart';
 import '../../../../_providers/common/views.dart';
-import '../../../../_widgets/buttons/buttons.dart';
+import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/divider.dart';
 import '../../../../_widgets/others/others/swipe_detector.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../../_calendar/_helpers/swipe.dart';
+import '../../../calendar/_helpers/swipe.dart';
 import '../../_helpers/quick_edit.dart';
 
 class HabitWeek extends StatefulWidget {

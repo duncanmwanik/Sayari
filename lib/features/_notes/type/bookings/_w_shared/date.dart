@@ -6,7 +6,7 @@ import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/date_time/misc.dart';
 import '../../../../../_providers/common/datetime.dart';
 import '../../../../../_providers/providers.dart';
-import '../../../../../_widgets/buttons/buttons.dart';
+import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';

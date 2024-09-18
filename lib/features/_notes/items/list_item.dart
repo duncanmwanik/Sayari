@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/helpers.dart';
-import 'item_actions.dart';
+import 'actions.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({super.key, required this.item});
@@ -35,7 +35,7 @@ class ListItem extends StatelessWidget {
                     AppButton(
                       width: 15,
                       height: 15,
-                      padding: zeroPadding,
+                      padding: noPadding,
                       borderRadius: borderRadiusTiny,
                       color: item.hasColor() ? styler.getItemColor(item.color(), false) : styler.appColor(2),
                     ),

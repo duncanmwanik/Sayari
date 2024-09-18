@@ -6,9 +6,7 @@ String handleFirebaseAuthError(FirebaseAuthException e, {String process = 'proce
   String message = e.message ?? '';
   errorPrint('sign-in-firebaseAuth: code: ${e.code}', e);
 
-  if (e.code == 'user-not-found' ||
-      e.code == 'invalid-login-credentials' ||
-      ['user-not-found', 'The supplied auth credential is incorrect, malformed or has expired.'].contains(message)) {
+  if (e.code == 'user-not-found' || e.code == 'invalid-login-credentials') {
     return 'No account found for that email.';
   }
   //

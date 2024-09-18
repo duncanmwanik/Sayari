@@ -55,13 +55,7 @@ class Applayout extends StatelessWidget {
                                   Expanded(
                                     child: Container(
                                       width: double.infinity,
-                                      margin: isSmallPC() ? paddingM('rb') : zeroPadding,
-                                      padding: padding(
-                                        l: views.isCalendar() ? 0 : 7,
-                                        r: views.isCalendar() ? 0 : 7,
-                                        t: views.isCalendar() && views.isItems() ? 0 : 7,
-                                        b: isSmallPC() ? 7 : 0,
-                                      ),
+                                      margin: isSmallPC() ? paddingM('rb') : noPadding,
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(borderRadiusSmall),
                                       ),

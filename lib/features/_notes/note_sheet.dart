@@ -8,7 +8,7 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/helpers.dart';
 import '../../_providers/common/input.dart';
 import '../../_providers/providers.dart';
-import '../../_widgets/buttons/close_button.dart';
+import '../../_widgets/buttons/close.dart';
 import '../../_widgets/others/forms/input.dart';
 import '../../_widgets/others/others/scroll.dart';
 import '../../_widgets/sheets/bottom_sheet.dart';

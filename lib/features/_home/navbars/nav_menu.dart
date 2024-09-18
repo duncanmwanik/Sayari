@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../explore/explore_sheet.dart';

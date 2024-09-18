@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/helpers.dart';
 import '../../../_providers/providers.dart';
-import '../../buttons/buttons.dart';
+import '../../buttons/button.dart';
 import '../icons.dart';
 
 class DataInput extends StatefulWidget {
@@ -35,7 +35,7 @@ class DataInput extends StatefulWidget {
     this.textColor,
     this.hoverColor,
     this.bgColor,
-    this.weight = FontWeight.w600,
+    this.weight = FontWeight.w500,
     this.contentPadding,
     this.fontSize = medium,
     this.borderRadius = borderRadiusSmall,

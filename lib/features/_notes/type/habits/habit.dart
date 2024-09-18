@@ -35,7 +35,6 @@ class Habit extends StatelessWidget {
               if (view == '2') HabitYear(),
               //
               lph(),
-              //
               CheckedDates(),
               //
             ],

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../_widgets/buttons/buttons.dart';
-import '../../_widgets/buttons/close_button.dart';
+import '../../_widgets/buttons/button.dart';
+import '../../_widgets/buttons/close.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/scroll.dart';
 import '../../_widgets/sheets/bottom_sheet.dart';

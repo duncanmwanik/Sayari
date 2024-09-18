@@ -31,10 +31,10 @@ class ProgressBar extends StatelessWidget {
                     // icon
                     AppIcon(
                       Icons.check_circle,
-                      size: mediumSmall,
+                      size: medium,
                       color: isComplete ? styler.accent : null,
                       bgColor: item.color(),
-                      extraFaded: true,
+                      faded: true,
                     ),
                     spw(),
                     // bar
@@ -51,10 +51,9 @@ class ProgressBar extends StatelessWidget {
                     AppText(
                       text: '${item.checkedCount()} / ${item.taskCount()}',
                       color: isComplete ? styler.accent : null,
-                      size: tiny,
-                      weight: FontWeight.bold,
+                      size: small,
                       bgColor: item.color(),
-                      extraFaded: true,
+                      faded: true,
                     ),
                   ],
                 ),

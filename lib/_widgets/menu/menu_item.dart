@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
-import '../buttons/buttons.dart';
+import '../buttons/button.dart';
 import '../others/icons.dart';
 import '../others/text.dart';
 
@@ -68,7 +68,6 @@ class _MenuItemState extends State<MenuItem> {
           b: widget.smallHeight ? 1 : 6,
           r: widget.trailing != null ? 8 : 12,
         ),
-        borderRadius: borderRadiusTinySmall,
         hoverColor: widget.hoverColor,
         noStyling: true,
         child: Row(

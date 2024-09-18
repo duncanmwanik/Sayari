@@ -13,8 +13,8 @@ import '../_notes/type/bookings/_w_shared/body.dart';
 import '../_notes/type/links/_w_shared/links_body.dart';
 import '../_spaces/published/shared.dart';
 import '_helpers/helpers.dart';
-import '_w/blog_body.dart';
 import '_w/shared_info.dart';
+import 'blog/blog_body.dart';
 
 class ShareScreen extends StatefulWidget {
   const ShareScreen({super.key, required this.id, required this.type});
@@ -26,6 +26,7 @@ class ShareScreen extends StatefulWidget {
 }
 
 class _ShareScreenState extends State<ShareScreen> {
+  String id = '';
   String isActive = '';
   String spaceId = '';
   String userId = '';
@@ -60,9 +61,6 @@ class _ShareScreenState extends State<ShareScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // printThis(isActive);
-    // printThis(widget.id);
-
     return Title(
       title: getWindowTitle(widget.type, sharedData['t'] ?? 'Sayari'),
       color: styler.accentColor(),

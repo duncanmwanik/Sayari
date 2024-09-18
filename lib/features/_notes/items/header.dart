@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/helpers.dart';
 import '../../../_models/item.dart';
-import '../../../_widgets/buttons/buttons.dart';
-import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
+import 'actions.dart';
 import 'emoji.dart';
-import 'item_actions.dart';
-import 'published.dart';
+import 'pinned.dart';
 
 class ItemHeader extends StatelessWidget {
   const ItemHeader({super.key, required this.item});
@@ -32,11 +29,9 @@ class ItemHeader extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    //
                     // emoji
                     if (item.isTask()) TaskEmoji(item: item),
                     if (item.isTask()) tpw(),
-                    //
                     // title
                     Flexible(
                         child: Padding(
@@ -52,29 +47,17 @@ class ItemHeader extends StatelessWidget {
                       ),
                     )),
                     //
-                    // if note is shared
-                    if (item.isShared() && !isShare()) spw(),
-                    if (item.isShared() && !item.isPublished() && !isShare())
-                      AppButton(
-                        noStyling: true,
-                        isSquare: true,
-                        child: AppIcon(Icons.share, size: 14, faded: true, bgColor: item.color()),
-                      ),
-                    //
-                    // if note is published
-                    if (item.isPublished() && !isShare()) PublishedLabel(item: item),
-                    //
                   ],
                 ),
               ),
-              // if note is pinned
-              // if (!item.hasOverview() && !isShare()) PinnedIcon(item: item),
+              //
+              PinnedIcon(item: item)
               //
             ],
           ),
         ),
         //
-        Positioned(right: 5, top: 5, child: ItemActions(item: item)),
+        if (!item.hasOverview()) Positioned(right: 5, top: 5, child: ItemActions(item: item)),
         //
       ],
     );

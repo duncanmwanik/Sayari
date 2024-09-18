@@ -5,7 +5,7 @@ import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/input.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '../_notes/_helpers/quick_edit.dart';
@@ -46,7 +46,6 @@ class Reminder extends StatelessWidget {
         child: Padding(
           padding: paddingM('t'),
           child: AppButton(
-            tooltip: 'Reminder',
             menuWidth: 200,
             menuItems: reminderMenu(
               reminder: reminder_,

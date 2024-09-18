@@ -7,18 +7,17 @@ import '../../features/_spaces/_helpers/common.dart';
 
 class ViewsProvider with ChangeNotifier {
   //
-  String view = globalBox.get('view', defaultValue: feature.calendar.t);
+  String view = globalBox.get('view', defaultValue: feature.notes.t);
   bool isView(String type) => view == type;
   bool isCalendar() => view == feature.calendar.t;
   bool isItems() => view == feature.items.t;
   bool isChat() => view == feature.chat.t;
   bool isExplore() => view == feature.explore.t;
   bool isCode() => view == feature.code.t;
-
-  bool isItemView(String type) => itemsView == type;
+  bool isItemView(String type) => itemView == type;
 
   String layout = globalBox.get(
-    '${liveSpace()}_layout_${globalBox.get('view', defaultValue: feature.items.t)}',
+    '${liveSpace()}_layout_${globalBox.get('itemView', defaultValue: feature.notes.lt)}',
     defaultValue: 'grid',
   );
 
@@ -30,7 +29,7 @@ class ViewsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  //
+  // calendar view
 
   int calendarView = globalBox.get('calendarView', defaultValue: 2);
 
@@ -40,17 +39,21 @@ class ViewsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  //
+  // item view
 
-  String itemsView = globalBox.get('itemsView', defaultValue: feature.notes.lt);
+  String itemView = globalBox.get('itemView', defaultValue: feature.notes.lt);
 
   void setNotesView(String type) {
-    itemsView = type;
-    globalBox.put('itemsView', type);
+    layout = globalBox.get(
+      '${liveSpace()}_layout_$type',
+      defaultValue: type == feature.tasks.lt ? 'column' : 'grid',
+    );
+    itemView = type;
+    globalBox.put('itemView', type);
     notifyListeners();
   }
 
-  //
+  // layout
 
   void setLayout(String type, String newLayout) {
     layout = newLayout;
@@ -63,7 +66,7 @@ class ViewsProvider with ChangeNotifier {
   bool isColumn() => layout == 'column';
   bool isList() => layout == 'list';
 
-  //
+  // panel
 
   bool showPanelOptions = globalBox.get('${liveSpace()}_showPanelOptions', defaultValue: true);
 
@@ -73,7 +76,7 @@ class ViewsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  //
+  // label
 
   String selectedLabel = globalBox.get('${liveSpace()}_selected_label', defaultValue: 'All');
 

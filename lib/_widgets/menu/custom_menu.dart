@@ -11,6 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
+import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
 
 const Duration _kMenuDuration = Duration(milliseconds: 300);
@@ -194,7 +195,7 @@ class _PopupMenu<T> extends StatelessWidget {
                   elevation: 0,
                   clipBehavior: Clip.antiAlias,
                   type: MaterialType.card,
-                  color: styler.secondaryColor().withOpacity(0.5),
+                  color: styler.secondaryColor().withOpacity(isImage() ? 0.5 : 1),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(borderRadiusTinySmall + 1),
                     side: BorderSide(color: Colors.grey.withOpacity(styler.isDark ? 0.1 : 0.2), width: styler.isDark ? 1 : 1.5),

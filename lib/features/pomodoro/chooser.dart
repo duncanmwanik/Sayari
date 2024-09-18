@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/common/pomodoro.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/text.dart';
 import 'type.dart';
 

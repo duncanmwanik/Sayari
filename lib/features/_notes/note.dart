@@ -6,15 +6,19 @@ import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
+import '../../_helpers/_common/helpers.dart';
 import '../../_models/item.dart';
 import '../../_providers/common/selection.dart';
 import '../../_providers/providers.dart';
 import '../../_widgets/others/others/divider.dart';
+import '../_spaces/_helpers/common.dart';
 import '../files/overview.dart';
+import '../share/_w/preview.dart';
 import '_helpers/ontap.dart';
 import '_w/text_overview.dart';
 import 'items/details.dart';
 import 'items/header.dart';
+import 'items/published.dart';
 import 'type/bookings/_w/overview.dart';
 import 'type/finance/_w/overview.dart';
 import 'type/habits/overview.dart';
@@ -38,8 +42,8 @@ class Note extends StatelessWidget {
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: 200),
           child: MouseRegion(
-            onEnter: (event) => state.hover.set(item.id),
-            onExit: (event) => state.hover.reset(),
+            onEnter: (event) => isShare() ? null : state.hover.set(item.id),
+            onExit: (event) => isShare() ? null : state.hover.reset(),
             child: Card(
               elevation: 0,
               margin: EdgeInsets.zero,
@@ -76,33 +80,29 @@ class Note extends StatelessWidget {
                       Flexible(
                         child: Padding(
                           padding: padding(s: 'lrb'),
-                          child: SingleChildScrollView(
-                            padding: EdgeInsets.zero,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                //
-                                ItemDetails(item: item),
-                                if (item.hasFinances()) FinanceOverview(item: item),
-                                if (item.hasBookings()) BookingOverview(item: item),
-                                if (item.hasHabits()) HabitOverview(item: item),
-                                if (item.hasLinks()) LinksOverview(item: item),
-                                if (item.showEditorOverview()) Flexible(child: NoteTextOverview(item: item)),
-                                if (item.isTask()) Flexible(child: NoteTask(item: item)),
-                                // if (item.isShared() && !isShare()) tph(),
-                                // if (item.isShared() && !isShare()) PreviewNote(item: item),
-                                // temp
-                                // if (item.id == '1724578910529' && !isShare()) sph(),
-                                // if (item.id == '1724578910529' && !isShare())
-                                //   PreviewNote(
-                                //     item: item,
-                                //     label: 'View Published Book',
-                                //     path: '/${features[feature.space.lt]!.path}/${liveSpace()}',
-                                //   ),
-                                //
-                              ],
-                            ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              //
+                              // if note is published
+                              if (item.isPublished() && !isShare()) PublishedItem(item: item),
+                              ItemDetails(item: item),
+                              if (item.hasFinances()) FinanceOverview(item: item),
+                              if (item.hasBookings()) BookingOverview(item: item),
+                              if (item.hasHabits()) HabitOverview(item: item),
+                              if (item.hasLinks()) LinksOverview(item: item),
+                              if (item.showEditorOverview()) Flexible(child: NoteTextOverview(item: item)),
+                              if (item.isTask()) Flexible(child: NoteTask(item: item)),
+                              if ((item.isPublished() || item.id == '1724578910529') && !isShare()) tph(),
+                              if ((item.isPublished() || item.id == '1724578910529') && !isShare())
+                                PreviewNote(
+                                  item: item,
+                                  label: item.id == '1724578910529' ? 'View Published Book' : null,
+                                  path: item.id == '1724578910529' ? publishedSpaceLink() : null,
+                                ),
+                              //`
+                            ],
                           ),
                         ),
                       ),

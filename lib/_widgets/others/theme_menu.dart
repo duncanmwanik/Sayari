@@ -6,7 +6,7 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_providers/providers.dart';
 import '../../_variables/colors.dart';
-import '../buttons/buttons.dart';
+import '../buttons/button.dart';
 import 'color_item.dart';
 import 'others/divider.dart';
 import 'text.dart';

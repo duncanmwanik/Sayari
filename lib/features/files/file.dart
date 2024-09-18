@@ -6,7 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_services/hive/local_storage_service.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/helper.dart';
 import '_vars/variables.dart';
@@ -32,18 +32,23 @@ class FileItem extends StatelessWidget {
         builder: (context, box, widget) {
           return AppButton(
             onPressed: () async => openFile(fileId),
-            tooltip: isOverview ? fileName : null,
-            padding: EdgeInsets.all(5),
+            padding: noPadding,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                //
-                AppButton(
-                  borderRadius: borderRadiusTiny,
-                  color: fileTypeColors[getfileExtension(fileName)] ?? Colors.blue,
-                  child: AppText(text: getfileExtension(fileName).toUpperCase(), size: tiny),
+                // extension
+                Container(
+                  decoration: BoxDecoration(
+                    color: fileTypeColors[getfileExtension(fileName)] ?? Colors.blue,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(borderRadiusTiny),
+                      bottomLeft: Radius.circular(borderRadiusTiny),
+                    ),
+                  ),
+                  padding: paddingC('l5,r5,t5,b5'),
+                  child: AppText(text: getfileExtension(fileName).toUpperCase(), color: white, size: tiny),
                 ),
-                // for input sheets
+                // name
                 if (!isOverview) spw(),
                 if (!isOverview) Flexible(child: AppText(text: fileName)),
                 if (!isOverview) spw(),

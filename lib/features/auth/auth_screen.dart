@@ -13,7 +13,7 @@ import '../../_helpers/forms/form_validation_helper.dart';
 import '../../_providers/common/theme.dart';
 import '../../_variables/intro_features.dart';
 import '../../_variables/navigation.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/forms/auth_input.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';

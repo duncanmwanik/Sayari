@@ -5,7 +5,7 @@ import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/global.dart';
 import '../../../../../_providers/providers.dart';
 import '../../../../../_variables/colors.dart';
-import '../../../../../_widgets/buttons/buttons.dart';
+import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../../_spaces/_helpers/checks_space.dart';

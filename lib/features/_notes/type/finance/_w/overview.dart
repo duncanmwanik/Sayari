@@ -12,68 +12,72 @@ class FinanceOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IgnorePointer(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppIcon(Icons.circle, size: 8, color: Colors.green),
-              tpw(),
-              AppText(text: 'Income    :', bold: true, bgColor: item.color()),
-              tpw(),
-              Flexible(
-                child: AppText(
-                  text: 'Ksh. ${formatThousands(item.totalIncome())}',
-                  bgColor: item.color(),
-                  weight: FontWeight.w600,
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Padding(
+        padding: paddingM('t'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AppIcon(Icons.circle, size: 8, color: Colors.green),
+                tpw(),
+                AppText(text: 'Income    :', bold: true, bgColor: item.color()),
+                tpw(),
+                Flexible(
+                  child: AppText(
+                    text: 'Ksh. ${formatThousands(item.totalIncome())}',
+                    bgColor: item.color(),
+                    weight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          //
-          sph(),
-          //
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppIcon(Icons.circle, size: 8, color: Colors.red),
-              tpw(),
-              AppText(text: 'Expenses:', bold: true, bgColor: item.color()),
-              tpw(),
-              Flexible(
-                child: AppText(
-                  text: 'Ksh. ${formatThousands(item.totalExpense())}',
-                  bgColor: item.color(),
-                  weight: FontWeight.w600,
+              ],
+            ),
+            //
+            sph(),
+            //
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AppIcon(Icons.circle, size: 8, color: Colors.red),
+                tpw(),
+                AppText(text: 'Expenses:', bold: true, bgColor: item.color()),
+                tpw(),
+                Flexible(
+                  child: AppText(
+                    text: 'Ksh. ${formatThousands(item.totalExpense())}',
+                    bgColor: item.color(),
+                    weight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          //
-          sph(),
-          //
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AppIcon(Icons.circle, size: 8, color: Colors.blue),
-              tpw(),
-              AppText(text: 'Savings   :', bold: true, bgColor: item.color()),
-              tpw(),
-              Flexible(
-                child: AppText(
-                  text: 'Ksh. ${formatThousands(item.totalSavings())}',
-                  bgColor: item.color(),
-                  weight: FontWeight.w600,
+              ],
+            ),
+            //
+            sph(),
+            //
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AppIcon(Icons.circle, size: 8, color: Colors.blue),
+                tpw(),
+                AppText(text: 'Savings   :', bold: true, bgColor: item.color()),
+                tpw(),
+                Flexible(
+                  child: AppText(
+                    text: 'Ksh. ${formatThousands(item.totalSavings())}',
+                    bgColor: item.color(),
+                    weight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            ],
-          ),
-          //
-        ],
+              ],
+            ),
+            //
+          ],
+        ),
       ),
     );
   }

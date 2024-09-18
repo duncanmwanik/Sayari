@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/spacing.dart';
-import '../buttons/buttons.dart';
+import '../buttons/button.dart';
 import 'images.dart';
 import 'text.dart';
 

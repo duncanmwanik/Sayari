@@ -8,7 +8,7 @@ import '../../../../../_helpers/_common/global.dart';
 import '../../../../../_models/item.dart';
 import '../../../../../_providers/providers.dart';
 import '../../../../../_variables/features.dart';
-import '../../../../../_widgets/buttons/buttons.dart';
+import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/checkbox.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../../files/_helpers/helper.dart';
@@ -48,7 +48,7 @@ class _ItemState extends State<SubItem> {
         onHover: (value) => setState(() => isHovered = value),
         hoverColor: transparent,
         noStyling: true,
-        padding: zeroPadding,
+        padding: noPadding,
         child: Container(
           padding: padding(l: widget.item.showChecks() ? 4 : 7, t: 6, r: 6, b: 6),
           decoration: BoxDecoration(
@@ -109,8 +109,7 @@ class _ItemState extends State<SubItem> {
                             child: Padding(
                               padding: EdgeInsets.only(top: 1),
                               child: AppText(
-                                text: widget.subItemData['t'] ?? '---',
-                                weight: widget.item.hasColor() || !isDark() ? FontWeight.w600 : FontWeight.w400,
+                                text: widget.subItemData['t'] ?? 'No description',
                                 bgColor: widget.item.color(),
                               ),
                             ),

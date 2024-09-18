@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../explore/explore_sheet.dart';
 import '../../pomodoro/sheet.dart';
@@ -24,7 +24,7 @@ class UserOptions extends StatelessWidget {
         mph(),
         PanelToggle(),
         //
-        if (showNavOption(feature.explore.t)) mph(),
+        if (showNavOption(feature.explore.t)) sph(),
         if (showNavOption(feature.explore.t))
           AppButton(
             onPressed: () => showExploreSheet(),
@@ -68,7 +68,7 @@ class UserOptions extends StatelessWidget {
           tooltipDirection: AxisDirection.right,
           isSquare: true,
           noStyling: true,
-          child: AppIcon(Icons.help, extraFaded: true),
+          child: AppIcon(Icons.help, faded: true),
         ),
         //
         mph(),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../buttons/buttons.dart';
+import '../buttons/button.dart';
 import 'theme_menu.dart';
 
 class ThemeButton extends StatelessWidget {
@@ -13,7 +13,7 @@ class ThemeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: rightPadding ? paddingM('r') : zeroPadding,
+      padding: rightPadding ? paddingM('r') : noPadding,
       child: AppButton(
         menuWidth: 300,
         menuItems: themeMenu(),

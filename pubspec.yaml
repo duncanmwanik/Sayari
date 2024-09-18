@@ -78,14 +78,6 @@ flutter:
     - assets/icons/
     - assets/emojis/
   fonts:
-    - family: Nunito
-      fonts:
-        - asset: assets/fonts/Nunito/Nunito-Black.ttf
-        - asset: assets/fonts/Nunito/Nunito-ExtraBold.ttf
-        - asset: assets/fonts/Nunito/Nunito-Bold.ttf
-        - asset: assets/fonts/Nunito/Nunito-SemiBold.ttf
-        - asset: assets/fonts/Nunito/Nunito-Medium.ttf
-        - asset: assets/fonts/Nunito/Nunito-Regular.ttf
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter/Inter_24pt-Black.ttf

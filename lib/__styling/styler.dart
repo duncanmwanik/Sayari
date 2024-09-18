@@ -22,8 +22,8 @@ class AppColors {
   static const Color darkSecondary = Color(0xff272829);
   static const Color lightSecondary = Color(0xfffcfcfd);
 
-  static const Color darkTertiary = Color(0xff282a29);
-  static const Color lightTertiary = Color(0xffefefef);
+  static const Color darkTertiary = Color(0xff383a39);
+  static const Color lightTertiary = Color(0xffdfdfdf);
 
   static Color lightHover = Colors.grey.withOpacity(0.2);
   static Color darkHover = Colors.grey.withOpacity(0.1);

@@ -6,7 +6,7 @@ import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/common/pomodoro.dart';
 import '../../../_providers/providers.dart';
-import '../../../_widgets/buttons/action_button.dart';
+import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
 import '../../../_widgets/others/checkbox.dart';
 import '../../../_widgets/others/others/divider.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../__styling/helpers.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_widgets/buttons/buttons.dart';
+import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/images.dart';
 import '../../../../_widgets/others/loader.dart';
@@ -48,7 +48,6 @@ class _SpaceTileState extends State<SpaceTile> {
                         await selectNewSpace(widget.spaceId);
                         setState(() => isLoading = false);
                       },
-                borderRadius: borderRadiusSmall,
                 color: styler.appColor(1),
                 padding: EdgeInsets.only(left: 10, right: 4),
                 height: 40,

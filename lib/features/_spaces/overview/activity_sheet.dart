@@ -5,7 +5,7 @@ import 'package:styled_text/styled_text.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/misc.dart';
-import '../../../_widgets/buttons/close_button.dart';
+import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';

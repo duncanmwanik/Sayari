@@ -4,7 +4,7 @@ import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../__styling/breakpoints.dart';
-import '../../../_widgets/buttons/buttons.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../user/user_dp.dart';
 import 'cover.dart';
 

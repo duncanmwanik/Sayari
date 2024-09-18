@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../_helpers/_common/navigation.dart';
 import '../../../../../_variables/features.dart';
-import '../../../../../_widgets/buttons/buttons.dart';
+import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/menu/confirmation.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../files/_helpers/helper.dart';

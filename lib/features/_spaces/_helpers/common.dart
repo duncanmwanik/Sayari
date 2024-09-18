@@ -1,6 +1,9 @@
 import '../../../../_services/hive/local_storage_service.dart';
 import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/_common/helpers.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
+import '../../../_variables/constants.dart';
+import '../../../_variables/features.dart';
 import '../../user/_helpers/set_user_data.dart';
 
 Future<String> getSpaceNameFromCloud(String spaceId) async {
@@ -14,14 +17,11 @@ Future<String> getSpaceNameFromCloud(String spaceId) async {
   }
 }
 
-String liveSpace() {
-  return globalBox.get('${liveUser()}_currentSpaceId', defaultValue: 'none');
-}
+String liveSpace() => globalBox.get('${liveUser()}_currentSpaceId', defaultValue: 'none');
+String liveSpaceTitle({String? id, String? other}) => spaceNamesBox.get(id ?? liveSpace(), defaultValue: other ?? '');
 
-String getSpaceName(String spaceId) {
-  return spaceNamesBox.get(spaceId, defaultValue: 'No Name');
-}
+String publishedSpaceLink([bool link = false]) => link
+    ? '$sayariDefaultPath/${features[feature.space.lt]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}'
+    : '/${features[feature.space.lt]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}';
 
-String? getCurrentSpaceName() {
-  return spaceNamesBox.get(liveSpace(), defaultValue: null);
-}
+String publishedSpaceId(String? path) => path != null ? path.substring(path.length - 17) : 'sayari';

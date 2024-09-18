@@ -4,9 +4,8 @@ import 'package:provider/provider.dart';
 import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_providers/common/input.dart';
-import '../../../../../_providers/providers.dart';
 import '../../../../../_variables/features.dart';
-import '../../../../../_widgets/buttons/buttons.dart';
+import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
 import 'bookings_list.dart';
@@ -77,7 +76,7 @@ class Booking extends StatelessWidget {
                     if (isExpanded) mph(),
                     if (isExpanded) BookingHeader(),
                     if (isExpanded && isActive) sph(),
-                    if (isExpanded && isActive) CopyLink(path: '/${features[state.views.itemsView]!.path}/${input.itemId}'),
+                    if (isExpanded && isActive) CopyLink(path: input.item.sharedLink()),
                     //
                   ],
                 ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/images.dart';
 import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/text.dart';

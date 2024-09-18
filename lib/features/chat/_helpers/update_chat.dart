@@ -16,6 +16,6 @@ Future<void> updateChat(String spaceId, String messageId) async {
       await Hive.box('${spaceId}_$feature.chat.t').put(messageId, messageData);
     });
 
-    showNotification(type: feature.chat.t, title: getSpaceName(spaceId), body: chatData.join('<br>'), data: {'type': 'c'});
+    showNotification(type: feature.chat.t, title: liveSpaceTitle(), body: chatData.join('<br>'), data: {'type': 'c'});
   });
 }

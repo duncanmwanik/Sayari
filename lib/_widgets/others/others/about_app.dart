@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../buttons/buttons.dart';
+import '../../buttons/button.dart';
 import '../icons.dart';
 import '../images.dart';
 import '../text.dart';
@@ -17,17 +17,11 @@ class AboutApp extends StatelessWidget {
       children: [
         //
         elph(),
-        //
         const AppImage('sayari.png', size: 50),
-        //
         spw(),
-        //
         const Flexible(child: AppText(size: large, text: 'Sayari', faded: true, weight: FontWeight.bold)),
-        //
         sph(),
-        //
         const AppText(size: small, text: 'Version: 2.0.2', faded: true),
-        //
         tph(),
         //
         Row(

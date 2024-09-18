@@ -5,8 +5,8 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_helpers/date_time/date_info.dart';
 import '../../_helpers/date_time/misc.dart';
-import '../../_widgets/buttons/action_button.dart';
-import '../../_widgets/buttons/buttons.dart';
+import '../../_widgets/buttons/action.dart';
+import '../../_widgets/buttons/button.dart';
 import '../../_widgets/dialogs/dialog_select_date.dart';
 import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/icons.dart';
@@ -84,7 +84,6 @@ class _MyWidgetState extends State<MyWidget> {
                       if (dates.isNotEmpty) setState(() => date = getDatePart(dates.first));
                     });
                   },
-                  borderRadius: borderRadiusSmall,
                   noStyling: true,
                   child: Padding(
                     padding: padding(p: 2.5),
@@ -117,7 +116,6 @@ class _MyWidgetState extends State<MyWidget> {
                       if (value != null) setState(() => time = (getTimePartFromTimeOfDay(value)));
                     });
                   },
-                  borderRadius: borderRadiusSmall,
                   noStyling: true,
                   child: Padding(
                     padding: padding(p: 2.5),

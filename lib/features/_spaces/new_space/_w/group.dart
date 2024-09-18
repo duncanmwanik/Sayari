@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_providers/common/input.dart';
-import '../../../../_widgets/buttons/buttons.dart';
+import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/dialogs/dialog_select_groups.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
@@ -22,18 +22,12 @@ class Groups extends StatelessWidget {
           //
           Row(
             children: [
-              //
               AppIcon(Icons.folder_outlined, size: 16),
-              //
               spw(),
-              //
               AppButton(
                 onPressed: () => showSelectGroupsDialog(),
-                child: AppText(
-                  text: 'Add to Group',
-                ),
+                child: AppText(text: 'Add to Group'),
               ),
-              //
             ],
           ),
           //
@@ -60,12 +54,9 @@ class Groups extends StatelessWidget {
                         )),
                         spw(),
                         AppButton(
-                          onPressed: () => inputProvider.updateSelectedGroups('add', groupName),
+                          onPressed: () => inputProvider.updateSelectedGroups(groupName),
                           noStyling: true,
-                          child: AppIcon(
-                            closeIcon,
-                            faded: true,
-                          ),
+                          child: AppIcon(closeIcon, faded: true),
                         ),
                       ],
                     ));

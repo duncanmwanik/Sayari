@@ -5,7 +5,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../buttons/buttons.dart';
+import '../buttons/button.dart';
 import 'icons.dart';
 import 'text.dart';
 
@@ -49,7 +49,7 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
             Expanded(
                 child: Padding(
               padding: const EdgeInsets.only(top: 3),
-              child: HtmlText(text: message, color: black),
+              child: HtmlText(text: message, color: Colors.black87),
             )),
             //
             spw(),

@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/_common/helpers.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/providers.dart';
 import '../../../_variables/features.dart';
@@ -13,7 +14,7 @@ Future<void> prepareNoteForEdit(Item item, {bool isFull = false}) async {
 }
 
 Future<void> prepareNoteForCreation() async {
-  String itemsView = state.views.itemsView;
+  String itemsView = state.views.itemView;
   String id = getUniqueId();
   state.quill.reset();
 
@@ -58,9 +59,11 @@ Future<void> prepareNoteForCreation() async {
 String getQuills() => jsonEncode(state.quill.controller.document.toDelta().toJson());
 
 String quillDescription() {
-  return state.input.isBooking() || state.input.isLink()
-      ? 'Type a short intro here...'
-      : state.input.isLink()
+  return isShare()
+      ? '...'
+      : state.input.isBooking() || state.input.isLink()
           ? 'Type a short intro here...'
-          : 'Start typing here...';
+          : state.input.isLink()
+              ? 'Type a short intro here...'
+              : 'Start typing here...';
 }
