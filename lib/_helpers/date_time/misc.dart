@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../../_providers/common/datetime.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
+import '../../_providers/datetime.dart';
 import '../../_variables/date_time.dart';
 
 String get12HourTimeFrom24HourTime(String? time, {bool? islonger, bool showSeconds = false}) {

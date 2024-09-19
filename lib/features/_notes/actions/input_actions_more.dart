@@ -3,13 +3,12 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
-import '../../../_providers/common/input.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
+import '../../../_providers/input.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../files/_helpers/upload.dart';
 import '../../share/_helpers/share.dart';
 import '../../tts/_helpers/tts_service.dart';
 import '../../tts/_state/tts_provider.dart';
@@ -28,13 +27,6 @@ class MoreInputActions extends StatelessWidget {
         menuItems: [
           //
           if (input.isHabit()) HabitOptions(),
-          //
-          if (!input.isTask())
-            MenuItem(
-              label: 'Attach file',
-              leading: Icons.file_present_outlined,
-              onTap: () async => await getFilesToUpload(),
-            ),
           //
           if (input.isNote())
             Consumer<TTSProvider>(

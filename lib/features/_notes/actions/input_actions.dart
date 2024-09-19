@@ -4,11 +4,12 @@ import 'package:provider/provider.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_helpers/_common/global.dart';
-import '../../../../_providers/common/input.dart';
+import '../../../_providers/input.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/color.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
+import '../../files/_helpers/upload.dart';
 import '../../labels/menu.dart';
 import '../../reminders/reminder_menu.dart';
 import '../type/finance/graphs_sheet.dart';
@@ -29,9 +30,10 @@ class CommonInputActions extends StatelessWidget {
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           //
-          if (input.isHabit()) HabitHeader(),
           if (input.isHabit()) spw(),
+          if (input.isHabit()) HabitHeader(),
           //
+          if (input.isFinance()) spw(),
           if (input.isFinance())
             AppButton(
               onPressed: () => showFinanceGraphsBottomSheet(),
@@ -40,8 +42,8 @@ class CommonInputActions extends StatelessWidget {
               isSquare: true,
               child: AppIcon(Icons.insert_chart_outlined_rounded, faded: true),
             ),
-          if (input.isFinance()) spw(),
           //
+          spw(),
           AppButton(
             onPressed: () => input.update('p', isPinned ? '0' : '1'),
             tooltip: isPinned ? 'UnPin' : 'Unpin',
@@ -51,7 +53,6 @@ class CommonInputActions extends StatelessWidget {
           ),
           //
           spw(),
-          //
           AppButton(
             tooltip: 'Reminder',
             menuWidth: 200,
@@ -66,7 +67,6 @@ class CommonInputActions extends StatelessWidget {
           ),
           //
           spw(),
-          //
           AppButton(
             menuItems: labelsMenu(
               isSelection: true,
@@ -80,7 +80,6 @@ class CommonInputActions extends StatelessWidget {
           ),
           //
           spw(),
-          //
           ColorButton(
             menuItems: colorMenu(
               selectedColor: bgColor,
@@ -90,7 +89,15 @@ class CommonInputActions extends StatelessWidget {
           ),
           //
           spw(),
+          AppButton(
+            onPressed: () async => await getFilesToUpload(),
+            tooltip: 'Attach File',
+            noStyling: true,
+            isSquare: true,
+            child: AppIcon(Icons.attach_file, faded: true),
+          ),
           //
+          spw(),
           MoreInputActions(),
           //
         ],

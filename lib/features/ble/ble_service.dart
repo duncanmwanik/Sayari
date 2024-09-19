@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
 import '../../_helpers/_common/global.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_widgets/others/toast.dart';
 import 'permissions.dart';

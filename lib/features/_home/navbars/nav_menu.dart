@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../__styling/breakpoints.dart';
-import '../../../__styling/spacing.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
@@ -30,7 +29,7 @@ class NavMenu extends StatelessWidget {
         //
         if (!showNavOption(feature.code.t)) MenuItem(label: 'Code', leading: Icons.code, onTap: () => goToView(feature.code.t)),
         //
-        if (showWorkspace) PopupMenuDivider(height: smallHeight()),
+        if (showWorkspace) menuDivider(),
         // user
         if (showUser) MenuItem(label: 'User', faded: true),
         //
@@ -42,7 +41,7 @@ class NavMenu extends StatelessWidget {
         if (!showNavOption(feature.pomodoro.t) || !showPanelOptions())
           MenuItem(label: 'Pomodoro', leading: Icons.timer, onTap: () => showPomodoroSheet()),
         //
-        if (showWorkspace || showUser) PopupMenuDivider(height: smallHeight()),
+        if (showWorkspace || showUser) menuDivider(),
         //
         MenuItem(label: 'Customize', leading: Icons.tune, menuItems: pinnedNavOptions()),
         //

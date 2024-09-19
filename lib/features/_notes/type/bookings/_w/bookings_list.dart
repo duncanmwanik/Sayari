@@ -7,7 +7,7 @@ import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/date_time/date_info.dart';
 import '../../../../../_helpers/date_time/misc.dart';
-import '../../../../../_providers/common/input.dart';
+import '../../../../../_providers/input.dart';
 import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../../../_widgets/menu/menu_item.dart';

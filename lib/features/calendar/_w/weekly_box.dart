@@ -6,7 +6,7 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/misc.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/common/input.dart';
+import '../../../_providers/input.dart';
 import '../../../_variables/colors.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/helpers.dart';

@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
-import '../../../../../_helpers/_common/misc.dart';
-import '../../../../../_providers/common/input.dart';
+import '../../../../../_helpers/_common/clipboard.dart';
+import '../../../../../_providers/input.dart';
 import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';

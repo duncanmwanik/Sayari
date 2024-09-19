@@ -4,13 +4,13 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_providers/common/views.dart';
+import '../../../_providers/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/checks_space.dart';
 import '../_helpers/nav.dart';
+import '../panel/user_options.dart';
 import 'nav_item.dart';
-import 'user_options.dart';
 
 class VeticalNavigationBox extends StatelessWidget {
   const VeticalNavigationBox({super.key, required this.isCollapsed});

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
-import '../../../_providers/common/pomodoro.dart';
+import '../../../_providers/pomodoro.dart';
 import '../../../_variables/colors.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';

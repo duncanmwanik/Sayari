@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 import '../../_variables/global.dart';
 import '../../_variables/navigation.dart';
 import '../../_widgets/others/snackbar.dart';
@@ -27,7 +27,7 @@ String getNavigationItemTitle(String type) {
 }
 
 void popWhatsOnTop({dynamic value, void Function()? todo}) {
-  todo;
+  if (todo != null) todo();
   if (navigatorState.currentContext!.canPop()) {
     navigatorState.currentContext!.pop(value);
   }

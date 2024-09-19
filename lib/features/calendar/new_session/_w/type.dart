@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../__styling/variables.dart';
-import '../../../../_providers/common/input.dart';
+import '../../../../_providers/input.dart';
 import '../../../../_variables/features.dart';
 import '../../../_notes/items/picker_type.dart';
 import '../../_vars/variables.dart';
@@ -19,7 +18,7 @@ class TypePicker extends StatelessWidget {
         initial: input.data['y'],
         typeEntries: sessionsTypes,
         onSelect: (chosenType, chosenValue) => input.update('y', chosenType),
-        bgColor: transparent,
+        // bgColor: transparent,
       );
     });
   }

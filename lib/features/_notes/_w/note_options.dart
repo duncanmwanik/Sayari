@@ -3,13 +3,13 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
-import '../../../_providers/common/views.dart';
+import '../../../_providers/views.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/text.dart';
 import '../../labels/selector.dart';
+import '../layout/layout_button.dart';
 import 'new.dart';
 import 'option.dart';
-import 'options_toggler.dart';
 
 class NoteOptions extends StatelessWidget {
   const NoteOptions({super.key});
@@ -38,11 +38,8 @@ class NoteOptions extends StatelessWidget {
                     //
                     Option(label: 'Notes', type: feature.notes.lt),
                     Option(label: 'Tasks', type: feature.tasks.lt),
-                    Option(label: 'Finances', type: feature.finances.lt),
+                    Option(label: 'Finance', type: feature.finances.lt),
                     Option(label: 'Habits', type: feature.habits.lt),
-                    Option(label: 'Links', type: feature.links.lt),
-                    // Option(label: 'Portfolio', type: feature.portfolios.lt),
-                    Option(label: 'Bookings', type: feature.bookings.lt),
                     lpw(),
                     //
                   ],
@@ -50,10 +47,10 @@ class NoteOptions extends StatelessWidget {
               ),
             ),
             //
+            if (isNotPhone()) spw(),
+            if (isNotPhone()) NewOptions(),
             spw(),
-            OptionsToggler(),
-            if (!isPhone()) spw(),
-            if (!isPhone()) NewOptions(),
+            LayoutButton(),
             //
           ],
         ),

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../_models/item.dart';
-import '../../../../_providers/common/selection.dart';
+import '../../../../_providers/selection.dart';
 import '_w_item/progress_bar.dart';
 import 'subitems.dart';
 

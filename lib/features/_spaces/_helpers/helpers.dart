@@ -1,4 +1,4 @@
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/new_space/space_sheet.dart';

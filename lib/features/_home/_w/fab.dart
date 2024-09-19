@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/variables.dart';
-import '../../../_providers/common/theme.dart';
-import '../../../_providers/common/views.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
+import '../../../_providers/theme.dart';
+import '../../../_providers/views.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../_notes/_helpers/helpers.dart';
@@ -18,7 +18,7 @@ class HomeFab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer2<ViewsProvider, ThemeProvider>(builder: (context, views, theme, child) {
-      bool showFab = !isSmallPC() && isASpaceSelected() && isAdmin() && (views.isCalendar() || views.isItems());
+      bool showFab = isPhone() && isASpaceSelected() && isAdmin() && (views.isCalendar() || views.isItems());
 
       return Visibility(
         visible: showFab,

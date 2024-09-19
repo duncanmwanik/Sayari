@@ -7,6 +7,7 @@ import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/confirmation.dart';
 import '../../../_widgets/others/icons.dart';
 import '../_helpers/actions.dart';
+import '../_helpers/delete.dart';
 import '../_helpers/helpers.dart';
 
 class SessionOptions extends StatelessWidget {

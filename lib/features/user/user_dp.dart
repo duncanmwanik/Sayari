@@ -5,19 +5,18 @@ import 'package:flutter_cache_manager/file.dart';
 
 import '../../__styling/variables.dart';
 import '../../_widgets/buttons/button.dart';
-import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/others/other.dart';
 import '../files/_helpers/download.dart';
-import '../files/_helpers/dp.dart';
 import '../files/viewer.dart';
 import '_helpers/set_user_data.dart';
+import 'dp_options.dart';
 
 class UserDp extends StatelessWidget {
   const UserDp(
       {super.key,
-      this.isTiny = false,
+      this.isTiny = true,
       this.noViewer = false,
       this.userId,
       this.tooltip,
@@ -61,35 +60,12 @@ class UserDp extends StatelessWidget {
                                       downloadPath: 'dp.jpg',
                                     ),
                                   )),
-                      tooltip: tooltip,
                       height: radius,
                       width: radius,
                       color: hoverColor,
                       padding: noPadding,
                       hoverColor: hoverColor,
-                      menuItems: menuItems ??
-                          (isTiny || noViewer
-                              ? []
-                              : [
-                                  //
-                                  MenuItem(onTap: () async => await chooseUserDp(), label: 'Edit', leading: Icons.edit),
-                                  //
-                                  MenuItem(
-                                    onTap: () async => await showImageViewer(
-                                      images: {'dp': 'dp.jpg'},
-                                      onDownload: () async => await downloadFile(
-                                        db: 'users',
-                                        fileId: 'dp',
-                                        fileName: 'dp.jpg',
-                                        cloudFilePath: '${liveUser()}/' 'dp.jpg',
-                                        downloadPath: 'dp.jpg',
-                                      ),
-                                    ),
-                                    label: 'View',
-                                    leading: Icons.image_outlined,
-                                  ),
-                                  //
-                                ]),
+                      menuItems: noViewer ? [] : menuItems ?? dpMenu(),
                       isRound: true,
                       child: FutureBuilder(
                           future: file.readAsBytes(),
@@ -128,6 +104,7 @@ class UserDp extends StatelessWidget {
             height: radius,
             width: radius,
             isRound: true,
+            dryWidth: true,
             padding: noPadding,
             child: CircleAvatar(
               backgroundColor: transparent,

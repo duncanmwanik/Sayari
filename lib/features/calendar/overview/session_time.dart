@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_helpers/date_time/date_info.dart';
 import '../../../_helpers/date_time/misc.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 

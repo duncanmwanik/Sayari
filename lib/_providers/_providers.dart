@@ -3,17 +3,17 @@ import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
 import '../features/tts/_state/tts_provider.dart';
-import 'common/ble.dart';
-import 'common/data.dart';
-import 'common/datetime.dart';
-import 'common/global.dart';
-import 'common/input.dart';
-import 'common/misc.dart';
-import 'common/pomodoro.dart';
-import 'common/quill.dart';
-import 'common/selection.dart';
-import 'common/theme.dart';
-import 'common/views.dart';
+import 'ble.dart';
+import 'data.dart';
+import 'datetime.dart';
+import 'global.dart';
+import 'input.dart';
+import 'misc.dart';
+import 'pomodoro.dart';
+import 'quill.dart';
+import 'selection.dart';
+import 'theme.dart';
+import 'views.dart';
 
 //
 // all app providers

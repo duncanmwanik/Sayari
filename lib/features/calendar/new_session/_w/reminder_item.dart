@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
-import '../../../../__styling/variables.dart';
 import '../../../../_helpers/_common/global.dart';
-import '../../../../_providers/common/input.dart';
+import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/forms/numeric.dart';
 import '../../../../_widgets/others/icons.dart';
@@ -44,7 +43,6 @@ class ReminderItem extends StatelessWidget {
                   hintText: 'No.',
                   initialValue: reminderNo,
                   maxLength: 2,
-                  borderRadius: borderRadiusSmall,
                   padding: EdgeInsets.zero,
                 ),
               ),
@@ -64,7 +62,6 @@ class ReminderItem extends StatelessWidget {
                 initial: reminderPeriodsMap[reminderPeriod],
                 typeEntries: {'minutes': 'm', 'hours': 'h', 'days': 'd', 'weeks': 'w'},
                 smallVerticalPadding: true,
-                borderRadius: borderRadiusSmall,
               ),
             ),
             // remove reminder

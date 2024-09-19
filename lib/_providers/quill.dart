@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
-import '../../_helpers/_common/global.dart';
+import '../_helpers/_common/global.dart';
 
 class QuillProvider with ChangeNotifier {
   QuillController controller = QuillController.basic();

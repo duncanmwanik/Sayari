@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:provider/provider.dart';
 
-import '../../../_providers/common/input.dart';
-import '../../../_providers/common/quill.dart';
+import '../../../_providers/input.dart';
+import '../../../_providers/quill.dart';
 import '../quill/toolbar.dart';
 import '../type/finance/_w/footer.dart';
 

@@ -3,7 +3,7 @@ import 'dart:convert';
 import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/helpers.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
 import '../note_sheet.dart';
 

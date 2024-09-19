@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../_services/hive/local_storage_service.dart';
+import '../_services/hive/local_storage_service.dart';
 
 class ChatProvider with ChangeNotifier {
   String type = globalBox.get('chatType', defaultValue: 'All');

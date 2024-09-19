@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/navigation.dart';
-import '../../../_providers/common/pomodoro.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
+import '../../../_providers/pomodoro.dart';
 import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
 import '../../../_widgets/others/checkbox.dart';
@@ -19,7 +19,6 @@ Future<void> showPomodoroSettingsDialog() async {
   Map previousdata = getNewMapFrom(state.pomodoro.data);
 
   await showAppDialog(
-    title: 'Pomodoro Settings',
     content: Consumer<PomodoroProvider>(builder: (context, pomodoroProvider, child) {
       bool isAutoPlayOn = pomodoroProvider.data['ap'] == '1';
       bool isAlarmOn = pomodoroProvider.data['ao'] == '1';
@@ -30,9 +29,6 @@ Future<void> showPomodoroSettingsDialog() async {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //
-            AppDivider(height: 0),
-            //
-            tph(),
             PomodoroSetting(type: 'f'),
             //
             tph(), AppDivider(height: smallHeight()),

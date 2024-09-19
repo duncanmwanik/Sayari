@@ -4,7 +4,7 @@ import 'package:reorderables/reorderables.dart';
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/snap_scroll_physics.dart';

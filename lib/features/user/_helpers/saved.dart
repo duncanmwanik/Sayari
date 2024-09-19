@@ -34,7 +34,7 @@ void saveItem(String itemId, bool isSaved) {
         ActionButton(isCancel: true),
         ActionButton(
           label: 'Sign in',
-          onPressed: () => navigatorState.currentContext!.go('/welcome'),
+          onPressed: () => navigatorState.currentContext!.go('/getstarted'),
         ),
       ],
     );

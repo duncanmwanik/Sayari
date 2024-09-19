@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 
 import '../../../_helpers/_common/global.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/common.dart';

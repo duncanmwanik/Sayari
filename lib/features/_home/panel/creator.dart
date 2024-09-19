@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
-import '../../../_providers/common/views.dart';
+import '../../../_providers/views.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
@@ -32,8 +32,8 @@ class Creator extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             AppIcon(Icons.add),
-            if (!isPhone()) spw(),
-            if (!isPhone())
+            if (isNotPhone()) spw(),
+            if (isNotPhone())
               Flexible(
                 child: AppText(
                   text: isItemsView ? features[views.itemView]!.message : features[views.view]!.message,

@@ -1,13 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-const String sayariDefaultPath = kDebugMode ? 'http://localhost:52319' : 'https://getsayari.web.app';
-const String sayariSharePath = '$sayariDefaultPath/universe';
-
-const String chooseColorText = 'Pick a Color';
-const String newNoteHintText = 'Start typing here...';
-
-FocusNode noteTextFocusNode = FocusNode();
+const String sayariDefaultPath = kDebugMode ? 'http://localhost:60279' : 'https://getsayari.web.app';
 
 Map specialLabelsIcons = {'Trash': Icons.auto_delete_rounded, 'Archive': Icons.archive_rounded, 'All': Icons.label_rounded};
 

@@ -1,5 +1,5 @@
 import '../../../_helpers/_common/global.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 
 List getChosenItems(Map data, String currentLabel, [String? itemType]) {
   List allKeys = data.keys.toList();

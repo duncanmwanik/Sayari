@@ -5,6 +5,7 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../buttons/button.dart';
 import '../others/icons.dart';
+import '../others/others/divider.dart';
 import '../others/text.dart';
 
 class MenuItem extends StatefulWidget {
@@ -13,6 +14,7 @@ class MenuItem extends StatefulWidget {
     required this.label,
     this.onTap,
     this.menuItems,
+    this.menuWidth,
     this.leading,
     this.trailing,
     this.trailingColor,
@@ -30,6 +32,7 @@ class MenuItem extends StatefulWidget {
   final IconData? leading;
   final Function()? onTap;
   final List<Widget>? menuItems;
+  final double? menuWidth;
   final IconData? trailing;
   final Color? trailingColor;
   final Color? hoverColor;
@@ -60,6 +63,7 @@ class _MenuItemState extends State<MenuItem> {
                 Future.delayed(const Duration(seconds: 0), widget.onTap); // Future.delayed prevents onTap not working
               }
             : null,
+        menuWidth: widget.menuWidth,
         menuItems: widget.menuItems,
         popMenu: widget.menuItems != null,
         padding: padding(
@@ -102,3 +106,5 @@ class _MenuItemState extends State<MenuItem> {
     );
   }
 }
+
+Widget menuDivider([double? height]) => AppDivider(height: height ?? smallHeight());

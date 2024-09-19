@@ -9,8 +9,8 @@ import '../../explore/explore_sheet.dart';
 import '../../pomodoro/sheet.dart';
 import '../../saved/saved_sheet.dart';
 import '../_helpers/nav.dart';
-import '../panel/toggle.dart';
-import 'nav_menu.dart';
+import '../navbars/nav_menu.dart';
+import 'toggle.dart';
 
 class UserOptions extends StatelessWidget {
   const UserOptions({super.key});
@@ -24,7 +24,7 @@ class UserOptions extends StatelessWidget {
         mph(),
         PanelToggle(),
         //
-        if (showNavOption(feature.explore.t)) sph(),
+        if (showNavOption(feature.explore.t)) mph(),
         if (showNavOption(feature.explore.t))
           AppButton(
             onPressed: () => showExploreSheet(),

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../../_helpers/_common/global.dart';
-import '../../../../../_providers/providers.dart';
+import '../../../../../_providers/_providers.dart';
 
 void addLink({bool isTitle = false}) {
   String linkId = '${isTitle ? 'lkt' : 'lk'}${getUniqueId()}';

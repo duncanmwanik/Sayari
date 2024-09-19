@@ -4,7 +4,7 @@ import 'package:flutter_quill/flutter_quill.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/helpers.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../files/_helpers/upload.dart';
 import '../../files/image.dart';
 
@@ -35,6 +35,7 @@ class ImageEmbedBuilder extends EmbedBuilder {
       images: {fileId: fileName},
       showOptions: false,
       hoverColor: transparent,
+      radius: borderRadiusTiny,
     );
   }
 }

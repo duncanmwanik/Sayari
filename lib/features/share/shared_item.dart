@@ -5,7 +5,7 @@ import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/helpers.dart';
-import '../../_providers/common/input.dart';
+import '../../_providers/input.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/dialogs/confirmation_dialog.dart';
@@ -30,7 +30,7 @@ class Share extends StatelessWidget {
       return Visibility(
           visible: data[feature.share.lt] != null && input.isNote() && !isShare(),
           child: Padding(
-            padding: paddingS('tb'),
+            padding: paddingC('t8,b4'),
             child: AppButton(
               noStyling: true,
               showBorder: true,

@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 import '../../../../__styling/variables.dart';
 import '../../../__styling/helpers.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/common/misc.dart';
-import '../../../_providers/common/selection.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
+import '../../../_providers/misc.dart';
+import '../../../_providers/selection.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/other.dart';
 

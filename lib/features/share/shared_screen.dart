@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/common/misc.dart';
-import '../../_providers/common/theme.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
+import '../../_providers/misc.dart';
+import '../../_providers/theme.dart';
 import '../../_services/firebase/database.dart';
 import '../../_variables/features.dart';
 import '../_notes/type/bookings/_w_shared/body.dart';

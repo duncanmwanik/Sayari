@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../_providers/common/views.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
+import '../../_providers/views.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/others/empty_box.dart';
 import '../_spaces/_helpers/common.dart';

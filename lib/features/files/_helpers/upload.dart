@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../../_helpers/_common/global.dart';
 import '../../../_models/files.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 
 Future<void> getFilesToUpload({

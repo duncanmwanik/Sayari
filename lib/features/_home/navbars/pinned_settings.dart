@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../__styling/breakpoints.dart';
-import '../../../__styling/spacing.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../_spaces/_helpers/checks_space.dart';
@@ -17,7 +16,7 @@ List<Widget> pinnedNavOptions() {
     //
     if (isCodeSpace()) NavOptionToggle(type: feature.code.t),
     //
-    PopupMenuDivider(height: smallHeight()),
+    menuDivider(),
     // user
     MenuItem(label: 'User', faded: true),
     NavOptionToggle(type: feature.explore.t),

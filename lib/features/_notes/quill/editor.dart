@@ -3,7 +3,7 @@ import 'package:flutter_quill/flutter_quill.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../_helpers/_common/helpers.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../_helpers/helpers.dart';
 import 'editor_style.dart';
 import 'embed_image.dart';

@@ -9,7 +9,7 @@ List<Widget> colorMenu({String? selectedColor, String title = '', Function(Strin
   return [
     //
     if (title.isNotEmpty) MenuItem(label: title),
-    if (title.isNotEmpty) PopupMenuDivider(height: smallHeight()),
+    if (title.isNotEmpty) menuDivider(),
     //
     Wrap(
       spacing: tinyWidth(),

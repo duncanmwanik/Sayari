@@ -10,8 +10,8 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
-import '../../_providers/common/misc.dart';
-import '../../_providers/common/theme.dart';
+import '../../_providers/misc.dart';
+import '../../_providers/theme.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/others/empty_box.dart';
 import '../_spaces/_helpers/common.dart';

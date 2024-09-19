@@ -5,7 +5,7 @@ import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/misc.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';

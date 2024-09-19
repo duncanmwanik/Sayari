@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 import '../../_widgets/others/toast.dart';
 import '../../features/auth/_helpers/user_details_helper.dart';
 import '../../features/user/_helpers/set_user_data.dart';

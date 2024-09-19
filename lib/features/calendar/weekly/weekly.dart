@@ -8,7 +8,7 @@ import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/date_time/date_info.dart';
 import '../../../_helpers/date_time/misc.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/common/datetime.dart';
+import '../../../_providers/datetime.dart';
 import '../../../_variables/date_time.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';

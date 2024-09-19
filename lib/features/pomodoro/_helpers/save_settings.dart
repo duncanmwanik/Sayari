@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:collection/collection.dart';
 
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/others/toast.dart';

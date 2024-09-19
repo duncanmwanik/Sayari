@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
-import '../../../../../_helpers/_common/misc.dart';
+import '../../../../../_helpers/_common/clipboard.dart';
 import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/menu/menu_item.dart';
 import '../../../../../_widgets/others/icons.dart';
@@ -23,7 +22,7 @@ class ShareOptions extends StatelessWidget {
     return AppButton(
       menuItems: [
         MenuItem(label: 'Share ${isProfile ? 'Profile' : 'Link'}', faded: true),
-        PopupMenuDivider(height: tinyHeight()),
+        menuDivider(),
         MenuItem(label: 'Copy Link', leading: Icons.copy, onTap: () => copyToClipboard(message)),
         MenuItem(label: 'X', leading: FontAwesomeIcons.xTwitter, onTap: () {}),
         MenuItem(label: 'Whatsapp', leading: FontAwesomeIcons.whatsapp, onTap: () {}),

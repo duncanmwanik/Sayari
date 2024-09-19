@@ -8,8 +8,8 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/helpers.dart';
 import '../../_models/item.dart';
-import '../../_providers/common/selection.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
+import '../../_providers/selection.dart';
 import '../../_widgets/others/others/divider.dart';
 import '../_spaces/_helpers/common.dart';
 import '../files/overview.dart';
@@ -35,10 +35,11 @@ class Note extends StatelessWidget {
       bool isSelected = selection.isSelected(item.id);
       bool isGrid = state.views.isGrid();
       bool isRow = state.views.isRow();
+      bool isColumn = state.views.isColumn();
 
       return SizedBox(
-        width: isRow ? 500 : (isTabAndBelow() ? 45.w : 250),
-        height: isGrid ? 370 : null,
+        width: isRow ? 500 : (isColumn ? 270 : (isTabAndBelow() ? 45.w : 240)),
+        height: isGrid ? 320 : null,
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: 200),
           child: MouseRegion(

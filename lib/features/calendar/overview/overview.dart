@@ -4,7 +4,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/misc.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
 import '../../../_widgets/others/icons.dart';
@@ -80,7 +80,7 @@ Future showSessionOverviewDialog(Item item) {
             visible: fileMap.isNotEmpty,
             child: Padding(
               padding: padding(s: 't'),
-              child: FileList(fileData: fileMap),
+              child: FileList(fileData: fileMap, isOverview: true),
             ),
           ),
           //

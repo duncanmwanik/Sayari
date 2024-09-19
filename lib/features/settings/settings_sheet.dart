@@ -33,11 +33,9 @@ Future<void> showSettingsBottomSheet() async {
               sph(),
               //
               AccountDetails(),
-              //
               mph(),
               //
               ThemeSettings(),
-              //
               mph(),
               //
               AccountSupport(),

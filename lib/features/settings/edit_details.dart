@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
-import '../../_providers/common/theme.dart';
+import '../../_providers/theme.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/buttons/close.dart';
 import '../../_widgets/others/forms/input.dart';

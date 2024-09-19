@@ -7,7 +7,7 @@ import '../../_helpers/_common/background_ops.dart';
 import '../../_helpers/_common/keyboard.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_helpers/pending/retry_pending_actions.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 import '../../_services/activity/listen_for_updates.dart';
 import '../../_variables/navigation.dart';
 import '_w/fab.dart';
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
         body: Applayout(),
         drawer: AppDrawer(),
         endDrawer: AppEndDrawer(),
-        floatingActionButton: isSmallPC() ? null : HomeFab(),
+        floatingActionButton: isPhone() ? HomeFab() : null,
         key: scaffoldState,
       ),
     );

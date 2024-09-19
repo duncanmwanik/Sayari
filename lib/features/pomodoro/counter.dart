@@ -7,7 +7,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/date_time/misc.dart';
-import '../../_providers/common/pomodoro.dart';
+import '../../_providers/pomodoro.dart';
 import '../../_variables/colors.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';

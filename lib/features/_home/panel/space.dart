@@ -68,7 +68,7 @@ class SpaceName extends StatelessWidget {
                       tooltip: 'Manage Workspace',
                       isSquare: true,
                       noStyling: true,
-                      child: AppIcon(Icons.more_horiz, faded: true),
+                      child: AppIcon(Icons.menu, faded: true),
                     ),
                   //
                 ],

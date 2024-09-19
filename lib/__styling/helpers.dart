@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../__styling/variables.dart';
 import '../../_services/hive/local_storage_service.dart';
-import '../_providers/providers.dart';
+import '../_providers/_providers.dart';
 import '../_variables/colors.dart';
 import 'styler.dart';
 
@@ -40,6 +40,7 @@ void changeStatusAndNavigationBarColor(String theme, {bool isSecondary = false})
 }
 
 bool isDark() => 'dark' == state.theme.themeType;
+bool isDarkOnly() => 'dark' == state.theme.themeType && !isImage();
 bool isImage() => !['dark', 'light', 'black'].contains(state.theme.themeImage);
 bool isBlack() => 'black' == state.theme.themeImage;
 

@@ -6,7 +6,7 @@ import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/global.dart';
 import '../../../../../_helpers/_common/navigation.dart';
-import '../../../../../_providers/common/input.dart';
+import '../../../../../_providers/input.dart';
 import '../../../../../_variables/features.dart';
 import '../../../../../_widgets/buttons/action.dart';
 import '../../../../../_widgets/buttons/button.dart';

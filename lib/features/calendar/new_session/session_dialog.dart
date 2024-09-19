@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/navigation.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
@@ -96,7 +96,6 @@ Future<void> showSessionBottomSheet() async {
             //
             ph(15),
             Files(),
-            spph(),
             //
           ],
         ),

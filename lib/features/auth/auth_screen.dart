@@ -10,7 +10,7 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/global.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_helpers/forms/form_validation_helper.dart';
-import '../../_providers/common/theme.dart';
+import '../../_providers/theme.dart';
 import '../../_variables/intro_features.dart';
 import '../../_variables/navigation.dart';
 import '../../_widgets/buttons/button.dart';

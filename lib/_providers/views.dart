@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import '../../_helpers/_common/global.dart';
-import '../../_services/hive/local_storage_service.dart';
-import '../../_variables/features.dart';
-import '../../features/_spaces/_helpers/common.dart';
+import '../_helpers/_common/global.dart';
+import '../_services/hive/local_storage_service.dart';
+import '../_variables/features.dart';
+import '../features/_spaces/_helpers/common.dart';
 
 class ViewsProvider with ChangeNotifier {
   //
-  String view = globalBox.get('view', defaultValue: feature.notes.t);
+  String view = globalBox.get('view', defaultValue: feature.items.t);
   bool isView(String type) => view == type;
   bool isCalendar() => view == feature.calendar.t;
   bool isItems() => view == feature.items.t;

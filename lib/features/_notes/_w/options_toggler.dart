@@ -4,31 +4,19 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../__styling/variables.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
-import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 
-class OptionsToggler extends StatelessWidget {
-  const OptionsToggler({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AppButton(
-      menuItems: [
-        OptionToggle(label: 'Notes', type: feature.notes.lt, isDefault: true),
-        OptionToggle(label: 'Tasks', type: feature.tasks.lt),
-        OptionToggle(label: 'Finances', type: feature.finances.lt),
-        OptionToggle(label: 'Habits', type: feature.habits.lt),
-        OptionToggle(label: 'Links', type: feature.links.lt),
-        // OptionToggle(label: 'Portfolio', type: feature.portfolios.lt),
-        // OptionToggle(label: 'Forms', type: feature.forms.lt),
-        OptionToggle(label: 'Bookings', type: feature.bookings.lt),
-      ],
-      tooltip: 'Customize',
-      noStyling: true,
-      smallVerticalPadding: true,
-      leading: moreIcon,
-    );
-  }
+List<Widget> noteOptionsMenu() {
+  return [
+    OptionToggle(label: 'Notes', type: feature.notes.lt, isDefault: true),
+    OptionToggle(label: 'Tasks', type: feature.tasks.lt),
+    OptionToggle(label: 'Finance', type: feature.finances.lt),
+    OptionToggle(label: 'Habits', type: feature.habits.lt),
+    // OptionToggle(label: 'Links', type: feature.links.lt),
+    // OptionToggle(label: 'Portfolio', type: feature.portfolios.lt),
+    // OptionToggle(label: 'Forms', type: feature.forms.lt),
+    // OptionToggle(label: 'Bookings', type: feature.bookings.lt),
+  ];
 }
 
 class OptionToggle extends StatelessWidget {

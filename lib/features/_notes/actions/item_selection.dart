@@ -6,8 +6,8 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
-import '../../../_providers/common/selection.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
+import '../../../_providers/selection.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/menu/menu_item.dart';
@@ -128,9 +128,9 @@ class SelectedItemOptions extends StatelessWidget {
                       child: AppIcon(colorIcon, faded: true),
                     ),
                     //
-                    if (!isPhone()) spw(),
+                    if (isNotPhone()) spw(),
                     //
-                    if (!isPhone())
+                    if (isNotPhone())
                       AppButton(
                         onPressed: () {
                           if (isArchive) {
@@ -150,9 +150,9 @@ class SelectedItemOptions extends StatelessWidget {
                         child: AppIcon(isArchive ? unarchiveIcon : archiveIcon, faded: true),
                       ),
                     //
-                    if (!isPhone()) spw(),
+                    if (isNotPhone()) spw(),
                     //
-                    if (!isPhone())
+                    if (isNotPhone())
                       AppButton(
                         onPressed: () {
                           selection.selected.forEach((id, data) async {

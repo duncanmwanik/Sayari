@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 import '../../_widgets/dialogs/dialog_select_date.dart';
 import '../../_widgets/others/sfcalendar.dart';
 import '../_common/navigation.dart';

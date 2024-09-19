@@ -11,8 +11,8 @@ import '__styling/helpers.dart';
 import '__styling/theme.dart';
 import '__styling/variables.dart';
 import '_helpers/errors/error_handler.dart';
-import '_providers/common/theme.dart';
-import '_providers/providers.dart';
+import '_providers/_providers.dart';
+import '_providers/theme.dart';
 import '_services/firebase/database.dart';
 import '_services/hive/load_boxes.dart';
 import '_services/notifications/init_notifications.dart';
@@ -25,8 +25,6 @@ Future<void> main() async {
     await initializeFirebase();
     await initializeNotifications();
     usePathUrlStrategy();
-
-    // printThis(settingBox.toMap());
 
     runApp(const MyApp());
   }, (error, stackTrace) => handleUnhandledExceptions(error, stackTrace));

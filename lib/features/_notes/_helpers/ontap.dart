@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_single_quotes
 
 import '../../../_models/item.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_widgets/others/toast.dart';
 import 'create_item.dart';
 import 'edit_item.dart';

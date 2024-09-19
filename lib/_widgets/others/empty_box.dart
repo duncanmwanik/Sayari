@@ -11,12 +11,14 @@ class EmptyBox extends StatelessWidget {
     super.key,
     this.label = 'Nothing here...',
     this.isSpaced = true,
+    this.showImage = true,
     this.onPressed,
     this.size,
   });
 
   final String label;
   final bool isSpaced;
+  final bool showImage;
   final double? size;
   final Function()? onPressed;
 
@@ -28,8 +30,8 @@ class EmptyBox extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             //
-            AppImage('sayari.png', size: size ?? 15.h),
-            sph(),
+            if (showImage) AppImage('sayari.png', size: size ?? 15.h),
+            if (showImage) sph(),
             //
             Row(
               mainAxisSize: MainAxisSize.min,

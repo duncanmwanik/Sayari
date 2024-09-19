@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/misc.dart';
+import '../../../_helpers/_common/clipboard.dart';
 import '../../../_models/item.dart';
 import '../../../_widgets/buttons/button.dart';
+import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 
 class PublishedItem extends StatelessWidget {
@@ -19,9 +20,15 @@ class PublishedItem extends StatelessWidget {
       child: AppButton(
         onPressed: () => copyToClipboard(item.sharedLink()),
         tooltip: 'Copy link',
-        color: styler.accent,
-        padding: paddingC('l5,r5,t2,b2'),
-        child: AppText(text: 'Published in blog', color: Colors.white, size: tiny),
+        padding: paddingC('l5,r5,t3,b3'),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AppIcon(Icons.share, faded: true, size: tiny),
+            tpw(),
+            AppText(text: 'Shared${item.isPublished() ? ' & Published' : ''}', bgColor: item.color(), size: tiny),
+          ],
+        ),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 
 import '../../../_helpers/_common/global.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 
 Map compareData({required String type}) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/helpers.dart';
-import '../../_services/hive/local_storage_service.dart';
+import '../__styling/helpers.dart';
+import '../_services/hive/local_storage_service.dart';
 
 class ThemeProvider with ChangeNotifier {
   String themeImage = settingBox.get('themeImage', defaultValue: 'dark');

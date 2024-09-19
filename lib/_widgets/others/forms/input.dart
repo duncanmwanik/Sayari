@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/helpers.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../buttons/button.dart';
 import '../icons.dart';
 
@@ -38,8 +38,9 @@ class DataInput extends StatefulWidget {
     this.weight = FontWeight.w500,
     this.contentPadding,
     this.fontSize = medium,
-    this.borderRadius = borderRadiusSmall,
+    this.borderRadius = borderRadiusTiny,
     this.prefix,
+    this.suffix,
   });
 
   final TextEditingController? controller;
@@ -72,6 +73,7 @@ class DataInput extends StatefulWidget {
   final double fontSize;
   final double borderRadius;
   final Widget? prefix;
+  final Widget? suffix;
 
   @override
   State<DataInput> createState() => _DataInputState();
@@ -119,13 +121,14 @@ class _DataInputState extends State<DataInput> {
         hoverColor: widget.hoverColor ?? styler.appColor(0.5),
         border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(widget.borderRadius)),
         prefixIcon: widget.prefix,
-        suffixIcon: widget.isPassword
-            ? AppButton(
-                onPressed: () => setState(() => showPassword = !showPassword),
-                noStyling: true,
-                isSquare: true,
-                child: AppIcon(showPassword ? Icons.visibility_rounded : Icons.visibility_off_rounded, faded: true))
-            : null,
+        suffixIcon: widget.suffix ??
+            (widget.isPassword
+                ? AppButton(
+                    onPressed: () => setState(() => showPassword = !showPassword),
+                    noStyling: true,
+                    isSquare: true,
+                    child: AppIcon(showPassword ? Icons.visibility_rounded : Icons.visibility_off_rounded, faded: true))
+                : null),
         suffixIconConstraints: const BoxConstraints(minHeight: 0, minWidth: 0),
       ),
     );

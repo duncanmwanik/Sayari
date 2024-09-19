@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_providers/common/misc.dart';
+import '../../../_providers/misc.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
@@ -22,9 +22,7 @@ class ChatOption extends StatelessWidget {
         onPressed: () => chat.setType(type),
         noStyling: chat.type != type,
         showBorder: chat.type != type,
-        smallVerticalPadding: true,
         smallLeftPadding: iconData != null,
-        borderRadius: borderRadiusCrazy,
         color: chat.type == type ? styler.accentColor(isDark() ? 4 : 2) : null,
         child: Row(
           mainAxisSize: MainAxisSize.min,

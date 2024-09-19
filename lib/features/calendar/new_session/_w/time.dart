@@ -5,7 +5,7 @@ import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_helpers/_common/navigation.dart';
 import '../../../../_helpers/date_time/misc.dart';
-import '../../../../_providers/common/input.dart';
+import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
@@ -49,7 +49,7 @@ class TimePicker extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (!hasStart) AppText(text: 'Starts at'),
-                        AppText(text: startTime, weight: FontWeight.bold),
+                        AppText(text: startTime),
                       ],
                     )),
                 //
@@ -74,14 +74,16 @@ class TimePicker extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             if (!hasEnd) AppText(text: 'Ends at '),
-                            AppText(text: stopTime, weight: FontWeight.bold),
+                            AppText(text: stopTime),
                           ],
                         )),
                     //
+                    if (hasEnd) spw(),
                     if (hasEnd)
                       AppButton(
                         onPressed: () => input.remove('e'),
                         noStyling: true,
+                        isSquare: true,
                         child: AppIcon(closeIcon, size: 14),
                       ),
                     //

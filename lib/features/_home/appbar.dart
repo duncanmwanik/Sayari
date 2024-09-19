@@ -4,18 +4,16 @@ import 'package:provider/provider.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/common/selection.dart';
-import '../../_providers/common/views.dart';
+import '../../_providers/selection.dart';
+import '../../_providers/views.dart';
 import '../../_widgets/others/others/sync_indicator.dart';
 import '../../_widgets/others/theme.dart';
 import '../_notes/_w/note_options.dart';
-import '../_notes/items/item_selection.dart';
-import '../_notes/layout/layout_button.dart';
+import '../_notes/actions/item_selection.dart';
 import '../calendar/info_header.dart';
 import '../chat/_w/chat_options.dart';
 import '../pomodoro/_w/pomo_indicator.dart';
 import '../search/search_btn.dart';
-import '../user/dp_options.dart';
 import '../user/user_dp.dart';
 import 'panel/space.dart';
 
@@ -28,7 +26,7 @@ class CustomAppBar extends StatelessWidget {
       bool isItemSelection = selection.isSelection;
 
       return Padding(
-        padding: paddingS(),
+        padding: isTabAndBelow() ? paddingM() : paddingS(),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -42,26 +40,24 @@ class CustomAppBar extends StatelessWidget {
               child: isItemSelection
                   ? SelectedItemOptions()
                   : Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         //
                         if (!isSmallPC()) Expanded(child: SpaceName()),
                         if (isSmallPC() && views.isCalendar()) Expanded(child: CalendarOptions()),
                         if (isSmallPC() && views.isItems()) Expanded(child: NoteOptions()),
                         if (isSmallPC() && views.isChat()) Expanded(child: ChatOptions()),
-                        spw(),
                         //
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             //
+                            spw(),
                             CloudSyncIndicator(),
                             PomodoroIndicator(),
                             Search(),
-                            LayoutButton(),
-                            ThemeButton(),
+                            if (isNotPhone()) ThemeButton(),
                             pw(5),
-                            UserDp(isTiny: true, menuItems: dpMenu(), tooltip: 'Account Options'),
+                            const UserDp(),
                             //
                           ],
                         ),

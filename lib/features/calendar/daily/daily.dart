@@ -7,7 +7,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/common/datetime.dart';
+import '../../../_providers/datetime.dart';
 import '../../../_variables/date_time.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';
@@ -73,7 +73,7 @@ class DailyView extends StatelessWidget {
                                 AppDivider(
                                   height: 0,
                                   thickness: isCurrentHour ? 1 : (0.05),
-                                  color: isCurrentHour ? styler.accentColor() : Colors.black,
+                                  color: isCurrentHour ? styler.accentColor() : null,
                                 ),
                               //
                               if (indexHour != 0) tph(),

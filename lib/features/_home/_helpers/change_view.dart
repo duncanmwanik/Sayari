@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../_variables/features.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../_notes/item_view.dart';
 import '../../calendar/session_view.dart';
 import '../../chat/chat_view.dart';

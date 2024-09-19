@@ -10,6 +10,7 @@ Future<void> signOutUser() async {
       yeslabel: 'Sign Out',
       onAccept: () async {
         await FirebaseAuth.instance.signOut();
-        navigatorState.currentContext!.go('/welcome');
+
+        navigatorState.currentContext!.go('/getstarted');
       });
 }

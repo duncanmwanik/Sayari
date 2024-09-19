@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-import '../../_services/hive/local_storage_service.dart';
-import '../../_variables/constants.dart';
+import '../_services/hive/local_storage_service.dart';
+import '../_variables/constants.dart';
 
 class PomodoroProvider with ChangeNotifier {
   //

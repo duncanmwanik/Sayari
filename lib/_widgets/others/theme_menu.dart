@@ -4,9 +4,10 @@ import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 import '../../_variables/colors.dart';
 import '../buttons/button.dart';
+import '../menu/menu_item.dart';
 import 'color_item.dart';
 import 'others/divider.dart';
 import 'text.dart';
@@ -16,6 +17,9 @@ List<Widget> themeMenu() {
   accentColors.removeWhere((key, value) => !value.isThemeAccent);
 
   return [
+    //
+    MenuItem(label: 'Choose theme'), tph(),
+    //
     GridView.count(
       shrinkWrap: true,
       mainAxisSpacing: tinyWidth(),
@@ -37,7 +41,7 @@ List<Widget> themeMenu() {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(borderRadiusSmall - 2),
+              borderRadius: BorderRadius.circular(borderRadiusTiny),
               image: DecorationImage(image: AssetImage(getThemeImage(themeImage)), fit: BoxFit.cover),
               border: Border.all(color: themeImage == state.theme.themeImage ? styler.borderColor() : transparent),
             ),

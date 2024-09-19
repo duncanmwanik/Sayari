@@ -44,7 +44,7 @@ class _NewlabelInputState extends State<NewlabelInput> {
             }
           },
           noStyling: true,
-          isRound: true,
+          isSquare: true,
           child: AppIcon(showSaveButton ? closeIcon : Icons.add_rounded, faded: true, size: 18),
         ),
         //
@@ -88,7 +88,7 @@ class _NewlabelInputState extends State<NewlabelInput> {
               setState(() => showSaveButton = false);
             },
             noStyling: true,
-            isRound: true,
+            isSquare: true,
             child: AppIcon(Icons.done_rounded, size: 18, faded: true),
           )
         //

@@ -1,4 +1,4 @@
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 
 Future delay(int seconds) async => await Future.delayed(Duration(seconds: seconds));
 bool isShare() => state.share.isShare();

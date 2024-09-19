@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/common/input.dart';
+import '../../_providers/input.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/helper.dart';
@@ -34,78 +34,84 @@ class FileList extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Images
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Flexible(
-                    child: GridView.extent(
-                      shrinkWrap: true,
-                      maxCrossAxisExtent: isOverview ? 40 : 80,
-                      mainAxisSpacing: tinyWidth(),
-                      crossAxisSpacing: tinyWidth(),
-                      children: List.generate(imageIds.length > 4 && isOverview ? 4 : imageIds.length, (index) {
-                        String fileId = imageIds[index];
-                        String fileName = fileData_[fileId];
-
-                        return ImageFile(
-                          fileId,
-                          fileName,
-                          images: images,
-                          isOverview: isOverview,
-                          height: isOverview ? 30 : 80,
-                          width: isOverview ? 30 : 80,
-                          radius: isOverview ? borderRadiusTiny : null,
-                          selectedIndex: index,
-                        );
-                      }),
-                    ),
-                  ),
-                  //
-                  if (imageIds.length > 4 && isOverview)
-                    Padding(
-                      padding: paddingM(),
-                      child: AppText(text: '+ ${imageIds.length - 4}', faded: true),
-                    ),
-                  //
-                ],
-              ),
-              // Other files
-              if (filesIds.isNotEmpty) mph(),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  //
-                  if (!isOverview)
+              // images
+              if (imageIds.isNotEmpty)
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //
                     Flexible(
-                      child: Wrap(
-                        spacing: isOverview ? tinyWidth() : smallWidth(),
-                        runSpacing: isOverview ? tinyWidth() : smallWidth(),
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: List.generate(filesIds.length > 5 && isOverview ? 5 : filesIds.length, (index) {
-                          String fileId = filesIds[index];
+                      child: GridView.extent(
+                        shrinkWrap: true,
+                        maxCrossAxisExtent: isOverview ? 40 : 80,
+                        mainAxisSpacing: tinyWidth(),
+                        crossAxisSpacing: tinyWidth(),
+                        children: List.generate(imageIds.length > 4 && isOverview ? 4 : imageIds.length, (index) {
+                          String fileId = imageIds[index];
                           String fileName = fileData_[fileId];
 
-                          return FileItem(fileId: fileId, fileName: fileName, isOverview: isOverview);
+                          return ImageFile(
+                            fileId,
+                            fileName,
+                            images: images,
+                            isOverview: isOverview,
+                            height: isOverview ? 30 : 80,
+                            width: isOverview ? 30 : 80,
+                            radius: isOverview ? borderRadiusTiny : null,
+                            selectedIndex: index,
+                          );
                         }),
                       ),
                     ),
-                  //
-                  if (isOverview)
-                    Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AppIcon(Icons.attach_file, size: small, faded: true),
-                        tpw(),
-                        Flexible(
-                            child: AppText(
-                                text: '${filesIds.length} file${filesIds.length > 1 ? 's' : ''} attached', size: small, faded: true)),
-                      ],
-                    ),
-                  //
-                ],
-              ),
+                    // overview hidden image count
+                    if (imageIds.length > 4 && isOverview)
+                      Padding(
+                        padding: paddingM(),
+                        child: AppText(text: '+ ${imageIds.length - 4}', faded: true),
+                      ),
+                    //
+                  ],
+                ),
+              // Other files
+              if (filesIds.isNotEmpty) mph(),
+              if (filesIds.isNotEmpty)
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    // input
+                    if (!isOverview)
+                      Flexible(
+                        child: Wrap(
+                          spacing: isOverview ? tinyWidth() : smallWidth(),
+                          runSpacing: isOverview ? tinyWidth() : smallWidth(),
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: List.generate(filesIds.length > 5 && isOverview ? 5 : filesIds.length, (index) {
+                            String fileId = filesIds[index];
+                            String fileName = fileData_[fileId];
+
+                            return FileItem(fileId: fileId, fileName: fileName, isOverview: isOverview);
+                          }),
+                        ),
+                      ),
+                    // overview
+                    if (isOverview)
+                      Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          AppIcon(Icons.attach_file, size: small, faded: true),
+                          tpw(),
+                          Flexible(
+                              child: AppText(
+                            text: '${filesIds.length} file${filesIds.length > 1 ? 's' : ''} attached',
+                            size: small,
+                            faded: true,
+                          )),
+                        ],
+                      ),
+                    //
+                  ],
+                ),
               //
             ],
           ),

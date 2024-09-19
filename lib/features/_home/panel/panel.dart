@@ -5,14 +5,11 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_providers/common/global.dart';
-import '../../../_providers/common/views.dart';
-import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/others/images.dart';
+import '../../../_providers/global.dart';
+import '../../../_providers/views.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/sfcalendar.dart';
-import '../../../_widgets/others/text.dart';
 import '../../code/_w/code_files_list.dart';
 import '../../labels/manager.dart';
 import '../navbars/navbar_vertical.dart';
@@ -33,33 +30,14 @@ class Panel extends StatelessWidget {
         height: double.maxFinite,
         margin: paddingM(),
         decoration: BoxDecoration(
-          color: styler.appColor(isDark() ? 0.5 : 0.8),
+          color: styler.appColor(isDark() ? 0.5 : 0.7),
           borderRadius: BorderRadius.circular(borderRadiusTiny),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //
-            Padding(
-              padding: padding(t: 8),
-              child: AppButton(
-                onPressed: () => views.setShowWebBoxOptions(!views.showPanelOptions),
-                height: 30,
-                noStyling: true,
-                hoverColor: transparent,
-                padding: EdgeInsets.zero,
-                child: Row(
-                  children: [
-                    AppImage('sayari.png', size: 22),
-                    if (showPanel) spw(),
-                    if (showPanel) Expanded(child: AppText(size: normal, text: 'Sayari', faded: true, weight: FontWeight.w700)),
-                  ],
-                ),
-              ),
-            ),
-            //
-            tph(),
-            Padding(padding: paddingS('lr'), child: SpaceName(isMin: !showPanel)),
+            Padding(padding: paddingS('ltr'), child: SpaceName(isMin: !showPanel)),
             AppDivider(),
             //
             Expanded(

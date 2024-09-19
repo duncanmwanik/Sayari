@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/common/pomodoro.dart';
+import '../../_providers/pomodoro.dart';
 import '../../_variables/colors.dart';
 import '../../_variables/constants.dart';
 import '../../_widgets/buttons/button.dart';

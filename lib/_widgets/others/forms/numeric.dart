@@ -14,6 +14,7 @@ class NumericFormInput extends StatelessWidget {
       this.focusNode,
       this.bgColor,
       this.textColor,
+      this.fontSize,
       this.borderRadius,
       this.padding});
 
@@ -24,6 +25,7 @@ class NumericFormInput extends StatelessWidget {
   final FocusNode? focusNode;
   final Color? bgColor;
   final Color? textColor;
+  final double? fontSize;
   final double? borderRadius;
   final EdgeInsetsGeometry? padding;
 
@@ -34,7 +36,7 @@ class NumericFormInput extends StatelessWidget {
       padding: padding ?? paddingM('lr'),
       decoration: BoxDecoration(
         color: bgColor ?? styler.appColor(1),
-        borderRadius: BorderRadius.circular(borderRadius ?? borderRadiusMedium),
+        borderRadius: BorderRadius.circular(borderRadius ?? borderRadiusTiny),
       ),
       alignment: Alignment.center,
       child: IntrinsicWidth(
@@ -46,10 +48,10 @@ class NumericFormInput extends StatelessWidget {
           keyboardType: TextInputType.number,
           inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}'))],
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: medium, color: textColor ?? styler.textColor(), fontWeight: FontWeight.w400),
+          style: TextStyle(fontSize: fontSize ?? medium, color: textColor ?? styler.textColor(), fontWeight: FontWeight.w400),
           decoration: InputDecoration(
             hintText: hintText ?? 'No',
-            hintStyle: TextStyle(fontSize: medium, color: styler.textColor(faded: true), fontWeight: FontWeight.w400),
+            hintStyle: TextStyle(fontSize: fontSize ?? medium, color: styler.textColor(faded: true), fontWeight: FontWeight.w400),
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),
             border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(borderRadiusLarge)),
             counterStyle: const TextStyle(height: double.minPositive),

@@ -4,7 +4,7 @@ import 'package:flutter_cache_manager/file.dart';
 import '../../../../__styling/variables.dart';
 import '../../__styling/spacing.dart';
 import '../../_models/item.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';

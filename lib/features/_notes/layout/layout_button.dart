@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
-import '../../../_providers/common/views.dart';
-import '../../../_variables/constants.dart';
+import '../../../__styling/variables.dart';
+import '../../../_helpers/_common/navigation.dart';
+import '../../../_providers/views.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
+import '../../../_widgets/others/others/divider.dart';
+import '../_w/options_toggler.dart';
 
 class LayoutButton extends StatelessWidget {
   const LayoutButton({super.key});
@@ -15,49 +18,52 @@ class LayoutButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ViewsProvider>(builder: (context, views, child) {
-      bool showLayoutButton = views.isItems();
-
-      return Visibility(
-        visible: showLayoutButton,
-        child: Padding(
-          padding: paddingM('r'),
-          child: AppButton(
-            menuItems: [
-              //
+      return AppButton(
+        menuItems: [
+          //
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
               if (!views.isItemView(feature.tasks.lt))
-                MenuItem(
-                  label: 'Grid',
-                  trailing: Icons.grid_view_outlined,
-                  isSelected: views.layout == 'grid',
-                  onTap: () => views.setLayout(views.itemView, 'grid'),
+                AppButton(
+                  onPressed: () => popWhatsOnTop(todo: () => views.setLayout(views.itemView, 'grid')),
+                  isSquare: true,
+                  noStyling: views.layout != 'grid',
+                  child: AppIcon(Icons.grid_view_outlined, color: views.layout == 'grid' ? styler.accent : null),
                 ),
-              MenuItem(
-                label: 'Row',
-                trailing: Icons.view_agenda_outlined,
-                isSelected: views.layout == 'row',
-                onTap: () => views.setLayout(views.itemView, 'row'),
+              AppButton(
+                onPressed: () => popWhatsOnTop(todo: () => views.setLayout(views.itemView, 'row')),
+                isSquare: true,
+                noStyling: views.layout != 'row',
+                child: AppIcon(Icons.view_agenda_outlined, color: views.layout == 'row' ? styler.accent : null),
               ),
-              MenuItem(
-                label: 'Column',
-                trailing: Icons.view_column,
-                isSelected: views.layout == 'column',
-                onTap: () => views.setLayout(views.itemView, 'column'),
+              AppButton(
+                onPressed: () => popWhatsOnTop(todo: () => views.setLayout(views.itemView, 'column')),
+                isSquare: true,
+                noStyling: views.layout != 'column',
+                child: AppIcon(Icons.view_column, color: views.layout == 'column' ? styler.accent : null),
               ),
-              MenuItem(
-                label: 'List',
-                trailing: Icons.format_list_bulleted_rounded,
-                isSelected: views.layout == 'list',
-                onTap: () => views.setLayout(views.itemView, 'list'),
+              AppButton(
+                onPressed: () => popWhatsOnTop(todo: () => views.setLayout(views.itemView, 'list')),
+                isSquare: true,
+                noStyling: views.layout != 'list',
+                child: AppIcon(Icons.format_list_bulleted_rounded, color: views.layout == 'list' ? styler.accent : null),
               ),
-              //
             ],
-            menuWidth: 120,
-            tooltip: 'Layout',
-            isSquare: true,
-            noStyling: true,
-            child: AppIcon(layoutIcons[views.layout] ?? Icons.lens, faded: true),
           ),
-        ),
+          //
+          AppDivider(height: smallHeight()),
+          MenuItem(label: 'Sort By', faded: true),
+          MenuItem(label: 'Newest', onTap: () {}),
+          MenuItem(label: 'Oldest', onTap: () {}),
+          MenuItem(label: 'Title', onTap: () {}),
+          AppDivider(height: smallHeight()),
+          MenuItem(label: 'Customize Pinned', leading: Icons.tune, menuItems: noteOptionsMenu()),
+        ],
+        tooltip: 'Layout',
+        isSquare: true,
+        noStyling: true,
+        child: AppIcon(moreIcon, faded: true),
       );
     });
   }

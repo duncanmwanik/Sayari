@@ -6,7 +6,7 @@ import '../../../../../__styling/spacing.dart';
 import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/_common/global.dart';
 import '../../../../../_models/item.dart';
-import '../../../../../_providers/providers.dart';
+import '../../../../../_providers/_providers.dart';
 import '../../../../../_variables/features.dart';
 import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/checkbox.dart';

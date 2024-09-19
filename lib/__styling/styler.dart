@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../_providers/providers.dart';
+import '../_providers/_providers.dart';
 import '../_variables/colors.dart';
 import 'helpers.dart';
 import 'variables.dart';

@@ -100,7 +100,7 @@ class PopupMenuItemState<T, W extends CustomPopupMenuItem<T>> extends State<W> {
   Widget build(BuildContext context) {
     // here
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 1),
       child: widget.child,
     );
   }
@@ -188,16 +188,16 @@ class _PopupMenu<T> extends StatelessWidget {
           return FadeTransition(
             opacity: opacity.animate(route.animation!),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(borderRadiusTinySmall + 1),
+              borderRadius: BorderRadius.circular(borderRadiusTiny + 1),
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
                 child: Material(
                   elevation: 0,
                   clipBehavior: Clip.antiAlias,
                   type: MaterialType.card,
-                  color: styler.secondaryColor().withOpacity(isImage() ? 0.5 : 1),
+                  color: styler.secondaryColor().withOpacity(isImage() ? 0.4 : 0.8),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(borderRadiusTinySmall + 1),
+                    borderRadius: BorderRadius.circular(borderRadiusTiny + 1),
                     side: BorderSide(color: Colors.grey.withOpacity(styler.isDark ? 0.1 : 0.2), width: styler.isDark ? 1 : 1.5),
                   ),
                   shadowColor: route.shadowColor ?? popupMenuTheme.shadowColor ?? defaults.shadowColor,

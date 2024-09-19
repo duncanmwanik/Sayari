@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../__styling/variables.dart';
 import '../../__styling/spacing.dart';
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 import '../../_services/firebase/storage.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_widgets/buttons/button.dart';

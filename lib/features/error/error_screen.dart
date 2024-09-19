@@ -6,7 +6,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/common/theme.dart';
+import '../../_providers/theme.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/images.dart';

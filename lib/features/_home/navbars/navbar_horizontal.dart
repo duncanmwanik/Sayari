@@ -4,8 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/variables.dart';
-import '../../../_providers/common/theme.dart';
-import '../../../_providers/common/views.dart';
+import '../../../_providers/theme.dart';
+import '../../../_providers/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/checks_space.dart';

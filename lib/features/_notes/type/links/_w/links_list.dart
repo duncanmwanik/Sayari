@@ -6,7 +6,7 @@ import 'package:reorderables/reorderables.dart';
 
 import '../../../../../__styling/spacing.dart';
 import '../../../../../_helpers/_common/global.dart';
-import '../../../../../_providers/common/input.dart';
+import '../../../../../_providers/input.dart';
 import 'link_item.dart';
 
 class LinksList extends StatefulWidget {

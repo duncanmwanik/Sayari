@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/common/views.dart';
+import '../../_providers/views.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/svg.dart';
 import '../../_widgets/others/text.dart';
@@ -19,10 +19,7 @@ class LabelSelector extends StatelessWidget {
     return Consumer<ViewsProvider>(builder: (context, labels, child) {
       return AppButton(
         menuItems: labelsMenu(onDone: (newLabels) => labels.updateSelectedLabel(newLabels.first)),
-        noStyling: true,
-        borderWidth: 0.3,
         isDropDown: true,
-        smallVerticalPadding: true,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

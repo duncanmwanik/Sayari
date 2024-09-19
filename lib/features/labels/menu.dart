@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/spacing.dart';
 import '../../_widgets/menu/menu_item.dart';
 import 'manager.dart';
 
@@ -13,7 +12,7 @@ List<Widget> labelsMenu({
   return [
     //
     if (title.isNotEmpty) MenuItem(label: title),
-    if (title.isNotEmpty) PopupMenuDivider(height: smallHeight()),
+    if (title.isNotEmpty) menuDivider(),
     //
     LabelManager(isPopup: true, isSelection: isSelection, alreadySelected: alreadySelected, onDone: onDone),
     //

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../../_providers/providers.dart';
 import '../../../../_variables/features.dart';
 import '../../../__styling/spacing.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../features/_spaces/_helpers/common.dart';
 import '../../buttons/button.dart';

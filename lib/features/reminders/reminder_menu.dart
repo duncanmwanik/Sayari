@@ -24,7 +24,7 @@ List<Widget> reminderMenu({
   return [
     //
     if (title.isNotEmpty) MenuItem(label: title),
-    if (title.isNotEmpty) PopupMenuDivider(height: smallHeight()),
+    if (title.isNotEmpty) menuDivider(),
     //
     MyWidget(reminder: reminder, onSet: onSet, onRemove: onRemove),
     //

@@ -7,7 +7,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/date_time/date_info.dart';
 import '../../../_helpers/date_time/misc.dart';
-import '../../../_providers/common/datetime.dart';
+import '../../../_providers/datetime.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../_providers/common/input.dart';
 import '../../../../__styling/spacing.dart';
-import '../../../../_providers/providers.dart';
+import '../../../../_providers/_providers.dart';
+import '../../../../_providers/input.dart';
 import '../../../../_variables/features.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/checkbox.dart';

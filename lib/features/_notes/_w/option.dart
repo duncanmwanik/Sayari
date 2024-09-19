@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
-import '../../../_providers/common/views.dart';
+import '../../../_providers/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/text.dart';
@@ -30,7 +30,6 @@ class Option extends StatelessWidget {
                 child: AppButton(
                   onPressed: isSelectedView ? null : () => views.setNotesView(type),
                   noStyling: !isSelectedView,
-                  smallVerticalPadding: true,
                   child: AppText(text: label),
                 ),
               );

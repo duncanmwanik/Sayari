@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../features/_notes/_helpers/chosen.dart';
+import '../features/_notes/_helpers/chosen.dart';
 
 class DataProvider with ChangeNotifier {
   Map data = {};

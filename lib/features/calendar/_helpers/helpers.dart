@@ -1,6 +1,6 @@
 import '../../../_helpers/_common/global.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../new_session/session_dialog.dart';

@@ -2,7 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/navigation.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';

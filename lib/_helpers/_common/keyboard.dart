@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
-import '../../_providers/providers.dart';
+import '../../_providers/_providers.dart';
 import '../../_variables/navigation.dart';
 
 void listenToKeyboardChanges() {

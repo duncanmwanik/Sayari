@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../_helpers/_common/misc.dart';
+import '../../../_helpers/_common/clipboard.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../_spaces/_helpers/checks_space.dart';
 import '../_helpers/helpers.dart';

@@ -53,9 +53,9 @@ Future<dynamic> showAppDialog({
                 filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
                 child: Container(
                   width: double.maxFinite,
-                  padding: padding ?? paddingM(),
+                  padding: padding ?? paddingL(),
                   constraints: BoxConstraints(maxWidth: maxWidth ?? (isPhone() ? double.infinity : webMaxDialogWidth), maxHeight: 70.h),
-                  color: white.withOpacity(isDark() ? 0.1 : 0.6),
+                  color: styler.secondaryColor().withOpacity(isImage() ? 0.4 : 0.8),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: crossAxisAlignment,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
-import '../../../../_providers/common/input.dart';
+import '../../../../_providers/input.dart';
 import '../../../../_widgets/others/forms/input.dart';
 import '../../../../_widgets/others/icons.dart';
 

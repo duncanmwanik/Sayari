@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../../__styling/spacing.dart';
-import '../../../../../_providers/common/input.dart';
+import '../../../../../_providers/input.dart';
 import '../_helpers/helpers.dart';
 import 'entry.dart';
 

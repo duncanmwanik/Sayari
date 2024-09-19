@@ -7,6 +7,7 @@ import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/list_tile.dart';
 import '../../../_widgets/others/text.dart';
 import '../../user/_helpers/set_user_data.dart';
+import '../../user/dp_options.dart';
 import '../../user/user_dp.dart';
 import '../edit_details.dart';
 import 'title.dart';
@@ -23,7 +24,7 @@ class AccountDetails extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //
-              Center(child: UserDp()),
+              Center(child: UserDp(isTiny: false, menuItems: dpSettingsMenu())),
               //
               mph(),
               //

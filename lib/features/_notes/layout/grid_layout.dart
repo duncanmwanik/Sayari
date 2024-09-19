@@ -5,7 +5,7 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_helpers/_common/helpers.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/providers.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../_helpers/order_items.dart';

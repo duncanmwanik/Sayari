@@ -5,8 +5,8 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/common/misc.dart';
-import '../../../_providers/common/selection.dart';
+import '../../../_providers/misc.dart';
+import '../../../_providers/selection.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/menu/menu_item.dart';
@@ -38,8 +38,8 @@ class ItemActions extends StatelessWidget {
           padding: isPersistent ? null : padding(p: 3),
           menuItems: [
             //
-            MenuItem(label: item.title()),
-            PopupMenuDivider(height: smallHeight()),
+            MenuItem(label: item.title(), faded: true),
+            menuDivider(),
             //
             if (!item.isDeleted())
               MenuItem(
@@ -104,7 +104,7 @@ class ItemActions extends StatelessWidget {
                 },
               ),
             //
-            PopupMenuDivider(height: smallHeight()),
+            menuDivider(),
             //
             if (!item.isDeleted())
               MenuItem(

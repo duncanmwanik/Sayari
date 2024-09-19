@@ -7,7 +7,7 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/date_time/jump_to_date.dart';
 import '../../_helpers/date_time/misc.dart';
-import '../../_providers/common/datetime.dart';
+import '../../_providers/datetime.dart';
 
 class SfCalendar extends StatelessWidget {
   const SfCalendar(

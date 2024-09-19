@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../_helpers/_common/misc.dart';
+import '../../../../_helpers/_common/clipboard.dart';
 import '../../../../_services/firebase/_helpers/helpers.dart';
 import '../../../../_services/hive/local_storage_service.dart';
 import '../../../../_widgets/others/loader.dart';

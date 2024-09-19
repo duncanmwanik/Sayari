@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/misc.dart';
+import '../../../_helpers/_common/clipboard.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_helpers/date_time/date_info.dart';
 import '../../../_widgets/buttons/close.dart';

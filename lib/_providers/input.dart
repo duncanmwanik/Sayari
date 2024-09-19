@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../_helpers/_common/helpers.dart';
-import '../../_models/item.dart';
-import '../../_variables/features.dart';
+import '../_helpers/_common/helpers.dart';
+import '../_models/item.dart';
+import '../_variables/features.dart';
 
 class InputProvider with ChangeNotifier {
   //

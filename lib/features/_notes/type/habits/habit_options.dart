@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../_helpers/_common/global.dart';
-import '../../../../_providers/common/input.dart';
+import '../../../../_providers/input.dart';
 import '../../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../../_widgets/menu/menu_item.dart';

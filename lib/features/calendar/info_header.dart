@@ -1,19 +1,22 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
+import '../../_helpers/_common/misc.dart';
 import '../../_helpers/date_time/date_info.dart';
 import '../../_helpers/date_time/jump_to_date.dart';
-import '../../_providers/common/datetime.dart';
-import '../../_providers/common/views.dart';
+import '../../_helpers/date_time/misc.dart';
+import '../../_providers/datetime.dart';
+import '../../_providers/views.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
+import '../_home/panel/creator.dart';
+import '_helpers/go_to_today.dart';
 import '_helpers/swipe.dart';
-import '_w/calendar_actions.dart';
+import '_w/view_chooser.dart';
 
 class CalendarOptions extends StatelessWidget {
   const CalendarOptions({super.key});
@@ -32,23 +35,11 @@ class CalendarOptions extends StatelessWidget {
       ];
 
       return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           //
           Expanded(
             child: Row(
-              mainAxisSize: MainAxisSize.min,
               children: [
-                // previous date
-                if (kIsWeb)
-                  AppButton(
-                    noStyling: true,
-                    tooltip: 'Previous',
-                    isSquare: true,
-                    child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
-                    onPressed: () => swipeToNew(direction: 'left'),
-                  ),
-                tpw(),
                 // date info
                 Flexible(
                   child: AppButton(
@@ -58,25 +49,42 @@ class CalendarOptions extends StatelessWidget {
                     noStyling: true,
                     padding: noPadding,
                     hoverColor: transparent,
-                    child: FittedBox(child: AppText(size: normal, text: infoList[views.calendarView], weight: FontWeight.bold)),
+                    child: AppText(size: extra, text: infoList[views.calendarView], weight: FontWeight.bold),
                   ),
                 ),
                 // next date
-                tpw(),
-                if (kIsWeb)
-                  AppButton(
-                    noStyling: true,
-                    tooltip: 'Next',
-                    isSquare: true,
-                    child: AppIcon(Icons.keyboard_arrow_right, size: 18, faded: true),
-                    onPressed: () => swipeToNew(direction: 'right'),
-                  ),
-                //
+                mpw(),
+                // previous date
+                AppButton(
+                  tooltip: 'Previous',
+                  isSquare: true,
+                  child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
+                  onPressed: () => swipeToNew(direction: 'left'),
+                ),
+                spw(),
+                AppButton(
+                  tooltip: 'Next',
+                  isSquare: true,
+                  child: AppIcon(Icons.keyboard_arrow_right, size: 18, faded: true),
+                  onPressed: () => swipeToNew(direction: 'right'),
+                ),
+                // go to today
+                spw(),
+                AppButton(
+                  onPressed: () => date.isToday_ ? doNothing() : goToToday(views.calendarView),
+                  tooltip: getDateInfo(getDatePart(date.now)),
+                  child: AppText(text: 'Today'),
+                ),
               ],
             ),
           ),
-          //
-          Flexible(child: CalendarActions(date: date)),
+          // Spacer(),
+          spw(),
+          // add session
+          if (isNotPhone()) Creator(),
+          if (isNotPhone()) spw(),
+          // choose view
+          ViewChooser(),
           //
         ],
       );
