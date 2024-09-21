@@ -22,10 +22,10 @@ Widget changeView(String type) {
 }
 
 void goToView(String type) {
-  if (type != state.views.view) {
-    state.scroll.updateShowAppbar(true);
-    state.views.setHomeView(type);
-    state.input.clearData();
-    state.data.clear();
-  }
+  // if (type != state.views.view) {
+  state.scroll.updateShowAppbar(true);
+  state.views.setHomeView(type);
+  state.input.clearData();
+  state.data.clear();
+  // }
 }

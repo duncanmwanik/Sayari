@@ -57,7 +57,7 @@ class ItemHeader extends StatelessWidget {
           ),
         ),
         //
-        if (!item.hasOverview()) Positioned(right: 5, top: 5, child: ItemActions(item: item)),
+        if (!item.hasOverview()) Positioned(right: 0, top: 0, child: ItemActions(item: item)),
         //
       ],
     );

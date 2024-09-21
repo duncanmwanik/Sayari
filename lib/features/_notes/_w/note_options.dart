@@ -4,12 +4,10 @@ import 'package:provider/provider.dart';
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_providers/views.dart';
-import '../../../_variables/features.dart';
 import '../../../_widgets/others/text.dart';
 import '../../labels/selector.dart';
 import '../layout/layout_button.dart';
 import 'new.dart';
-import 'option.dart';
 
 class NoteOptions extends StatelessWidget {
   const NoteOptions({super.key});
@@ -29,27 +27,10 @@ class NoteOptions extends StatelessWidget {
             if (showLabelSelector) Padding(padding: EdgeInsets.only(bottom: 3), child: AppText(text: '|', extraFaded: true)),
             if (showLabelSelector) spw(),
             //
-            Expanded(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    //
-                    Option(label: 'Notes', type: feature.notes.lt),
-                    Option(label: 'Tasks', type: feature.tasks.lt),
-                    Option(label: 'Finance', type: feature.finances.lt),
-                    Option(label: 'Habits', type: feature.habits.lt),
-                    lpw(),
-                    //
-                  ],
-                ),
-              ),
-            ),
+            Expanded(child: spw()),
             //
-            if (isNotPhone()) spw(),
             if (isNotPhone()) NewOptions(),
-            spw(),
+            if (isNotPhone()) spw(),
             LayoutButton(),
             //
           ],

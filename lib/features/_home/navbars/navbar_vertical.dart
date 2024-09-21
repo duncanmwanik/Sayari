@@ -8,6 +8,7 @@ import '../../../_providers/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/checks_space.dart';
+import '../_helpers/change_view.dart';
 import '../_helpers/nav.dart';
 import '../panel/user_options.dart';
 import 'nav_item.dart';
@@ -32,7 +33,25 @@ class VeticalNavigationBox extends StatelessWidget {
               child: Column(
                 children: [
                   //
-                  navItem(notesSelectedIcon, feature.items.t, views.view == feature.items.t),
+                  navItem(
+                    notesSelectedIcon,
+                    feature.items.t,
+                    views.view == feature.items.t,
+                    onPressed: () {
+                      views.setNotesView(feature.notes.lt);
+                      goToView(feature.items.t);
+                    },
+                  ),
+                  msph(),
+                  navItem(
+                    Icons.check_circle,
+                    feature.tasks.lt,
+                    views.view == feature.tasks.lt,
+                    onPressed: () {
+                      views.setNotesView(feature.tasks.lt);
+                      goToView(feature.items.t);
+                    },
+                  ),
                   msph(),
                   navItem(sessionsSelectedIcon, feature.calendar.t, views.view == feature.calendar.t),
                   msph(),

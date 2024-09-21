@@ -40,6 +40,7 @@ class SpaceName extends StatelessWidget {
                       tooltip: 'Choose Workspace',
                       noStyling: true,
                       isSquare: isMin,
+                      smallRightPadding: !isMin,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -53,7 +54,7 @@ class SpaceName extends StatelessWidget {
                               weight: FontWeight.w600,
                             ),
                           //
-                          tpw(),
+                          if (!isMin) spw(),
                           AppIcon(Icons.arrow_drop_down, tiny: isMin, faded: true),
                           //
                         ],

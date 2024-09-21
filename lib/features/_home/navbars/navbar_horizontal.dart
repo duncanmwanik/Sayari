@@ -10,6 +10,7 @@ import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/checks_space.dart';
 import '../../explore/explore_sheet.dart';
+import '../_helpers/change_view.dart';
 import '../_helpers/nav.dart';
 import 'nav_item.dart';
 import 'nav_menu.dart';
@@ -37,7 +38,15 @@ class HorizontalNavigationBox extends StatelessWidget {
                       children: [
                         //
                         navItem(notesSelectedIcon, feature.items.t, views.view == feature.items.t),
-                        //
+                        navItem(
+                          Icons.check_circle,
+                          feature.tasks.lt,
+                          views.view == feature.tasks.lt,
+                          onPressed: () {
+                            views.setNotesView(feature.tasks.lt);
+                            goToView(feature.items.t);
+                          },
+                        ),
                         navItem(sessionsSelectedIcon, feature.calendar.t, views.view == feature.calendar.t),
                         //
                         if (showNavOption(feature.chat.t)) navItem(chatSelectedIcon, feature.chat.t, views.view == feature.chat.t),

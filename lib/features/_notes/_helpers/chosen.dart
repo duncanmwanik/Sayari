@@ -1,5 +1,6 @@
 import '../../../_helpers/_common/global.dart';
 import '../../../_providers/_providers.dart';
+import '../../../_variables/features.dart';
 
 List getChosenItems(Map data, String currentLabel, [String? itemType]) {
   List allKeys = data.keys.toList();
@@ -15,7 +16,8 @@ List getChosenItems(Map data, String currentLabel, [String? itemType]) {
     bool isPinned = noteData['p'] == '1';
     bool isDeleted = noteData['x'] == '1';
     bool isArchived = noteData['a'] == '1';
-    bool isNoteViewType = noteData.containsKey(itemType ?? state.views.itemView);
+    bool isNoteViewType =
+        state.views.isItemView(feature.tasks.lt) ? noteData.containsKey(feature.tasks.lt) : !noteData.containsKey(feature.tasks.lt);
 
     if (!isNoteViewType && state.views.isItems()) continue;
 

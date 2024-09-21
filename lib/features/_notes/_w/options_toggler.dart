@@ -10,12 +10,6 @@ List<Widget> noteOptionsMenu() {
   return [
     OptionToggle(label: 'Notes', type: feature.notes.lt, isDefault: true),
     OptionToggle(label: 'Tasks', type: feature.tasks.lt),
-    OptionToggle(label: 'Finance', type: feature.finances.lt),
-    OptionToggle(label: 'Habits', type: feature.habits.lt),
-    // OptionToggle(label: 'Links', type: feature.links.lt),
-    // OptionToggle(label: 'Portfolio', type: feature.portfolios.lt),
-    // OptionToggle(label: 'Forms', type: feature.forms.lt),
-    // OptionToggle(label: 'Bookings', type: feature.bookings.lt),
   ];
 }
 

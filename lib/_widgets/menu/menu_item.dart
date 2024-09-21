@@ -107,4 +107,4 @@ class _MenuItemState extends State<MenuItem> {
   }
 }
 
-Widget menuDivider([double? height]) => AppDivider(height: height ?? smallHeight());
+Widget menuDivider([double? height]) => AppDivider(height: height ?? tinyHeight());

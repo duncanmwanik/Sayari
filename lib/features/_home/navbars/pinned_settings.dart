@@ -10,10 +10,7 @@ List<Widget> pinnedNavOptions() {
   return [
     // workspace
     MenuItem(label: 'Workspace', faded: true),
-    NavOptionToggle(type: feature.calendar.t, isDefault: true),
-    NavOptionToggle(type: feature.items.t, isDefault: true),
     NavOptionToggle(type: feature.chat.t),
-    //
     if (isCodeSpace()) NavOptionToggle(type: feature.code.t),
     //
     menuDivider(),

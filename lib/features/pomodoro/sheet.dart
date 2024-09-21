@@ -41,7 +41,7 @@ Future<void> showPomodoroSheet() async {
               PomodoroChooser(),
               spph(),
               PomodoroCounter(),
-              lpph()
+              spph()
               //
             ],
           ),
