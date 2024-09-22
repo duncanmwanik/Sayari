@@ -23,7 +23,7 @@ class CodeFilesList extends StatelessWidget {
     return Padding(
       padding: isSheet ? paddingM('t') : paddingM('lr'),
       child: ValueListenableBuilder(
-          valueListenable: Hive.box('${liveSpace()}_${feature.code.t}').listenable(),
+          valueListenable: Hive.box('${liveSpace()}_${feature.code}').listenable(),
           builder: (context, box, widget) {
             List codeFilesKeys = box.keys.toList();
 
@@ -40,7 +40,7 @@ class CodeFilesList extends StatelessWidget {
                           padding: paddingS('b'),
                           child: AppButton(
                             onPressed: () {
-                              input.setInputData(typ: feature.code.t, id: codeId, dta: codeMap);
+                              input.setInputData(typ: feature.code, id: codeId, dta: codeMap);
                               if (isSheet) popWhatsOnTop();
                             },
                             smallRightPadding: true,

@@ -15,7 +15,7 @@ class BookingOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int count = item.data.keys.where((key) => key.toString().startsWith('bb')).toList().length;
-    bool isActive = item.data[feature.share.lt] == '1';
+    bool isActive = item.data[feature.share] == '1';
 
     return Padding(
       padding: paddingM('t'),

@@ -8,8 +8,8 @@ import '../../../_widgets/menu/menu_item.dart';
 
 List<Widget> noteOptionsMenu() {
   return [
-    OptionToggle(label: 'Notes', type: feature.notes.lt, isDefault: true),
-    OptionToggle(label: 'Tasks', type: feature.tasks.lt),
+    OptionToggle(label: 'Notes', type: feature.notes, isDefault: true),
+    OptionToggle(label: 'Tasks', type: feature.tasks),
   ];
 }
 

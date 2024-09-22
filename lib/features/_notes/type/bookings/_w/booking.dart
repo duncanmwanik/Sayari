@@ -19,11 +19,11 @@ class Booking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool isActive = input.data[feature.share.lt] == '1';
+      bool isActive = input.data[feature.share] == '1';
       bool isExpanded = input.data['ep'] == '1';
 
       return Visibility(
-        visible: input.data[feature.bookings.lt] != null,
+        visible: input.data[feature.bookings] != null,
         child: Container(
           margin: padding(s: 'b'),
           padding: paddingM(),

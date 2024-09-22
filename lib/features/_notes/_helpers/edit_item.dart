@@ -61,14 +61,14 @@ Future<void> editItem() async {
             type: type,
             itemId: subId.isNotEmpty ? subId : itemId,
             itemData: validatedData,
-            reminder: type == feature.calendar.t ? itemId : null);
+            reminder: type == feature.calendar ? itemId : null);
         //
         handleFilesCloud(liveSpace(), validatedData, items: editedKeys);
         //
         await syncToCloud(
             db: 'spaces',
             parentId: liveSpace(),
-            type: type_,
+            type: feature.cloud(type_),
             action: 'e',
             itemId: itemId,
             subId: subId,
@@ -81,7 +81,7 @@ Future<void> editItem() async {
             update: true,
             itemId: feature.isSpace(type) ? liveSpace() : state.input.itemId,
             updateData: {
-              feature.share.lt: validatedData[feature.share.lt] ?? '0',
+              feature.share: validatedData[feature.share] ?? '0',
               'u': liveUser(),
               'n': liveUserName(),
               't': validatedData['t'] ?? '',

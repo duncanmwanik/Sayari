@@ -29,7 +29,7 @@ class DeleteItem extends StatelessWidget {
       menuItems: confirmationMenu(
         title: 'Delete task item?',
         onConfirm: () {
-          deleteItemForever(type: feature.items.t, itemId: listId, subId: itemId, files: getFiles(itemData));
+          deleteItemForever(type: feature.items, itemId: listId, subId: itemId, files: getFiles(itemData));
           popWhatsOnTop(); // close popup menu
           popWhatsOnTop(); // close dialog
         },

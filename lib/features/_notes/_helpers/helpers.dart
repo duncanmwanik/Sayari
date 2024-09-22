@@ -8,7 +8,7 @@ import '../../../_variables/features.dart';
 import '../note_sheet.dart';
 
 Future<void> prepareNoteForEdit(Item item, {bool isFull = false}) async {
-  state.input.setInputData(isNw: false, typ: feature.items.t, itm: item, id: item.id, dta: item.data);
+  state.input.setInputData(isNw: false, typ: feature.items, itm: item, id: item.id, dta: item.data);
   await state.quill.reset(quills: item.data['n']);
   await showNoteBottomSheet(isMinimized: item.isTask());
 }
@@ -18,32 +18,32 @@ Future<void> prepareNoteForCreation() async {
   String id = getUniqueId();
   state.quill.reset();
 
-  if (itemsView == feature.notes.lt) {
-    state.input.setInputData(typ: feature.items.t, dta: {feature.notes.lt: '1'});
+  if (itemsView == feature.notes) {
+    state.input.setInputData(typ: feature.items, dta: {feature.notes: '1'});
   }
   //
-  else if (itemsView == feature.tasks.lt) {
-    state.input.setInputData(typ: feature.items.t, dta: {feature.tasks.lt: '1'});
+  else if (itemsView == feature.tasks) {
+    state.input.setInputData(typ: feature.items, dta: {feature.tasks: '1'});
   }
   //
-  else if (itemsView == feature.finances.lt) {
-    state.input.setInputData(typ: feature.items.t, dta: {feature.finances.lt: '1'});
+  else if (itemsView == feature.finances) {
+    state.input.setInputData(typ: feature.items, dta: {feature.finances: '1'});
   }
   //
-  else if (itemsView == feature.habits.lt) {
-    state.input.setInputData(typ: feature.items.t, dta: {feature.habits.lt: '1'});
+  else if (itemsView == feature.habits) {
+    state.input.setInputData(typ: feature.items, dta: {feature.habits: '1'});
   }
   //
-  else if (itemsView == feature.links.lt) {
-    state.input.setInputData(typ: feature.items.t, dta: {feature.links.lt: '1', feature.share.lt: '1'});
+  else if (itemsView == feature.links) {
+    state.input.setInputData(typ: feature.items, dta: {feature.links: '1', feature.share: '1'});
   }
   //
-  else if (itemsView == feature.portfolios.lt) {
-    state.input.setInputData(typ: feature.items.t, dta: {feature.portfolios.lt: '1', feature.share.lt: '1'});
+  else if (itemsView == feature.portfolios) {
+    state.input.setInputData(typ: feature.items, dta: {feature.portfolios: '1', feature.share: '1'});
   }
   //
-  else if (itemsView == feature.bookings.lt) {
-    state.input.setInputData(typ: feature.items.t, dta: {feature.bookings.lt: '1', feature.share.lt: '1'});
+  else if (itemsView == feature.bookings) {
+    state.input.setInputData(typ: feature.items, dta: {feature.bookings: '1', feature.share: '1'});
   }
   //
   else {

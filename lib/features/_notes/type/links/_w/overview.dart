@@ -14,7 +14,7 @@ class LinksOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isActive = item.data[feature.share.lt] == '1';
+    bool isActive = item.data[feature.share] == '1';
 
     return Padding(
       padding: paddingM('t'),

@@ -13,7 +13,7 @@ class TypePicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       return AppTypePicker(
-        type: feature.calendar.t,
+        type: feature.calendar,
         subType: 'y',
         initial: input.data['y'],
         typeEntries: sessionsTypes,

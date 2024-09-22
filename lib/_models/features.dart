@@ -1,11 +1,10 @@
 class Feature {
-  const Feature({required this.t, required this.lt});
+  const Feature({required this.t});
   final String t;
-  final String lt;
 }
 
 class FeatureData {
-  const FeatureData({required this.title, this.path = 'blog', required this.message});
+  const FeatureData({this.title = '', this.path = '', this.message = ''});
   final String title;
   final String path;
   final String message;

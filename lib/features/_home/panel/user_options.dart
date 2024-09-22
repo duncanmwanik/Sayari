@@ -24,8 +24,8 @@ class UserOptions extends StatelessWidget {
         mph(),
         PanelToggle(),
         //
-        if (showNavOption(feature.explore.t)) mph(),
-        if (showNavOption(feature.explore.t))
+        if (showNavOption(feature.explore)) mph(),
+        if (showNavOption(feature.explore))
           AppButton(
             onPressed: () => showExploreSheet(),
             tooltip: 'Explore',
@@ -35,8 +35,8 @@ class UserOptions extends StatelessWidget {
             child: AppIcon(Icons.explore_rounded, faded: true),
           ),
         //
-        if (showNavOption(feature.saved.t)) mph(),
-        if (showNavOption(feature.saved.t))
+        if (showNavOption(feature.saved)) mph(),
+        if (showNavOption(feature.saved))
           AppButton(
             onPressed: () => showSavedSheet(),
             tooltip: 'Saved',
@@ -46,8 +46,8 @@ class UserOptions extends StatelessWidget {
             child: AppIcon(Icons.bookmark, faded: true),
           ),
         //
-        if (showNavOption(feature.pomodoro.t)) mph(),
-        if (showNavOption(feature.pomodoro.t))
+        if (showNavOption(feature.pomodoro)) mph(),
+        if (showNavOption(feature.pomodoro))
           AppButton(
             onPressed: () => showPomodoroSheet(),
             tooltip: 'Pomodoro',

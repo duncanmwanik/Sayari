@@ -24,7 +24,7 @@ class LayoutButton extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              if (!views.isItemView(feature.tasks.lt))
+              if (!views.isItemView(feature.tasks))
                 AppButton(
                   onPressed: () => popWhatsOnTop(todo: () => views.setLayout(views.itemView, 'grid')),
                   isSquare: true,

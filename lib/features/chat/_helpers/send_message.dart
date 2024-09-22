@@ -24,10 +24,11 @@ Future<void> sendMessage() async {
       String messageId = getUniqueId();
       messageData.addAll({'u': liveUserName()});
 
-      Box box = Hive.box('${spaceId}_${feature.chat.t}');
+      Box box = Hive.box('${spaceId}_${feature.chat}');
       await box.put(messageId, messageData);
       await handleFilesCloud(spaceId, messageData);
-      await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.chat.t, action: 'c', itemId: messageId, data: messageData);
+      await syncToCloud(
+          db: 'spaces', parentId: spaceId, type: feature.cloud(feature.chat), action: 'c', itemId: messageId, data: messageData);
       await box.put(messageId, messageData);
     }
   } catch (e) {

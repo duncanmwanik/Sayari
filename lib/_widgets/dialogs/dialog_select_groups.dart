@@ -8,7 +8,6 @@ import '../../_helpers/_common/navigation.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
 import '../../_services/hive/local_storage_service.dart';
-import '../../features/_spaces/_helpers/space_names.dart';
 import '../../features/_spaces/manager/_w/dialog_create_group.dart';
 import '../buttons/action.dart';
 import '../buttons/button.dart';
@@ -18,8 +17,6 @@ import '../others/text.dart';
 import 'app_dialog.dart';
 
 Future showSelectGroupsDialog() {
-  List groupNames = [];
-
   return showAppDialog(
     title: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,19 +38,16 @@ Future showSelectGroupsDialog() {
       ],
     ),
     content: ValueListenableBuilder(
-        valueListenable: userDataBox.listenable(),
+        valueListenable: userGroupsBox.listenable(),
         builder: (context, box, widget) {
-          Map userSpaceData = box.toMap();
-          groupNames = getGroupNamesAsList(userSpaceData);
-
-          return groupNames.isNotEmpty
+          return box.isNotEmpty
               ? ListView.separated(
                   shrinkWrap: true,
                   physics: const BouncingScrollPhysics(),
-                  itemCount: groupNames.length,
+                  itemCount: box.length,
                   separatorBuilder: (context, index) => tph(),
                   itemBuilder: (context, index) {
-                    String group = groupNames[index];
+                    String group = box.keyAt(index);
 
                     return Consumer<InputProvider>(
                         builder: (context, input, child) => AppButton(

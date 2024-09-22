@@ -45,7 +45,7 @@ class SharedHeader extends StatelessWidget {
           ),
           //
           Spacer(),
-          if (feature.isSpaceT(state.share.type)) LayoutButton(),
+          if (feature.isSpace(state.share.type)) LayoutButton(),
           ThemeButton(),
           tpw(),
           SharedAction(hasInfo: false),

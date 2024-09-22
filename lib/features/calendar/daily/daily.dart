@@ -27,7 +27,7 @@ class DailyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<DateTimeProvider>(builder: (context, dateProvider, child) {
       return ValueListenableBuilder(
-          valueListenable: Hive.box('${liveSpace()}_${feature.calendar.t}').listenable(),
+          valueListenable: Hive.box('${liveSpace()}_${feature.calendar}').listenable(),
           builder: (context, box, widget) {
             String selectedDate = dateProvider.selectedDate;
             Map todaySessionsMap = sortSessionsByTime(box.get(selectedDate, defaultValue: {}));

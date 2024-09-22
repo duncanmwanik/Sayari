@@ -8,12 +8,12 @@ import '../../_spaces/_helpers/common.dart';
 
 Future<void> deleteLabel(String label) async {
   try {
-    await Hive.box('${liveSpace()}_${feature.labels.t}').delete(label);
+    await Hive.box('${liveSpace()}_${feature.labels}').delete(label);
     if (state.views.selectedLabel == label) {
       state.views.updateSelectedLabel('All');
     }
 
-    await syncToCloud(db: 'spaces', parentId: liveSpace(), type: feature.labels.t, action: 'd', itemId: label);
+    await syncToCloud(db: 'spaces', parentId: liveSpace(), type: feature.cloud(feature.flags), action: 'd', itemId: label);
   }
   //
   catch (e) {

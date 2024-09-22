@@ -43,7 +43,7 @@ class _LabelManagerState extends State<LabelManager> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: Hive.box('${liveSpace()}_${feature.labels.t}').listenable(),
+        valueListenable: Hive.box('${liveSpace()}_${feature.labels}').listenable(),
         builder: (context, box, wdgt) {
           String selected = state.views.selectedLabel;
 

@@ -33,7 +33,7 @@ class ChatView extends StatelessWidget {
           // message list
           Align(
             child: ValueListenableBuilder(
-                valueListenable: Hive.box('${liveSpace()}_${feature.chat.t}').listenable(),
+                valueListenable: Hive.box('${liveSpace()}_${feature.chat}').listenable(),
                 builder: (context, box, widget) {
                   //
                   List chatIds = chat.type == 'Pinned'

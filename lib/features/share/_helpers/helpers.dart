@@ -1,15 +1,15 @@
 import '../../../_variables/features.dart';
 
 String getWindowTitle(String type, String itemTitle) {
-  return feature.isSpaceT(type)
+  return feature.isSpace(type)
       ? itemTitle
-      : feature.isShareT(type)
+      : feature.isShare(type)
           ? 'Shared - $itemTitle'
-          : feature.isNoteT(type)
+          : feature.isNote(type)
               ? 'Blog - $itemTitle'
-              : feature.isBookingT(type)
+              : feature.isBooking(type)
                   ? 'Booking - $itemTitle'
-                  : feature.isLinkT(type)
+                  : feature.isLink(type)
                       ? 'Links - $itemTitle'
                       : 'Sayari';
 }

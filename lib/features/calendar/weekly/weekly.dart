@@ -79,7 +79,7 @@ class WeeklyView extends StatelessWidget {
                                       DateInfo date = DateInfo(getDatePart(dates.currentWeekDates[indexWeekDay]));
 
                                       return ValueListenableBuilder(
-                                          valueListenable: Hive.box('${liveSpace()}_${feature.calendar.t}').listenable(),
+                                          valueListenable: Hive.box('${liveSpace()}_${feature.calendar}').listenable(),
                                           builder: (context, box, widget) {
                                             Map todaySessionsMap = sortSessionsByTime(box.get(date.date, defaultValue: {}));
                                             Map hourMap = getHourMap(getNewMapFrom(todaySessionsMap), indexHour);

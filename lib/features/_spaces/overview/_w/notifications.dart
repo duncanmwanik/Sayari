@@ -21,20 +21,19 @@ Future showSpaceNotificationsDialog() {
             padding: EdgeInsets.zero,
             children: [
               //
-              NotificationItem(label: feature.space.t, value: box.get(feature.space.t, defaultValue: false), type: feature.space.t),
+              NotificationItem(label: feature.space, value: box.get(feature.space, defaultValue: false), type: feature.space),
               //
               AppDivider(height: 0),
               //
-              NotificationItem(
-                  label: feature.calendar.t, value: box.get(feature.calendar.t, defaultValue: false), type: feature.calendar.t),
+              NotificationItem(label: feature.calendar, value: box.get(feature.calendar, defaultValue: false), type: feature.calendar),
               //
               AppDivider(height: 0),
               //
-              NotificationItem(label: feature.items.t, value: box.get(feature.items.t, defaultValue: false), type: feature.items.t),
+              NotificationItem(label: feature.items, value: box.get(feature.items, defaultValue: false), type: feature.items),
               //
               AppDivider(height: 0),
               //
-              NotificationItem(label: feature.chat.t, value: box.get(feature.chat.t, defaultValue: false), type: feature.chat.t),
+              NotificationItem(label: feature.chat, value: box.get(feature.chat, defaultValue: false), type: feature.chat),
               //
               msph(),
               //

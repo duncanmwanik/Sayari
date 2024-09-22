@@ -101,7 +101,7 @@ class LinkHeader extends StatelessWidget {
           mph(),
           // active button
           Consumer<InputProvider>(builder: (context, input, child) {
-            bool isActive = input.data[feature.share.lt] == '1';
+            bool isActive = input.data[feature.share] == '1';
 
             return Wrap(
               spacing: smallWidth(),
@@ -109,7 +109,7 @@ class LinkHeader extends StatelessWidget {
               children: [
                 //
                 AppButton(
-                  onPressed: () => input.update(feature.share.lt, isActive ? '0' : '1'),
+                  onPressed: () => input.update(feature.share, isActive ? '0' : '1'),
                   smallRightPadding: true,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,

@@ -13,29 +13,38 @@ Future<void> getAllUserDataFromCloud(String userId) async {
   try {
     hasAccessToInternet().then((hasIntenet) async {
       if (hasIntenet) {
-        // workspaces and groups
-        await cloudService.getData(db: 'users', '$userId/data').then((snapshot) async {
+        // workspaces
+        await cloudService.getData(db: 'users', '$userId/spaces').then((snapshot) async {
           Map userData = snapshot.value != null ? snapshot.value as Map : {};
           if (userData.isNotEmpty) {
-            await userDataBox.clear();
-            await userDataBox.putAll(userData);
+            await userSpacesBox.clear();
+            await userSpacesBox.putAll(userData);
             await saveSpacesNamesToLocalStorage(userData);
+          }
+        });
+        // groups
+        await cloudService.getData(db: 'users', '$userId/groups').then((snapshot) async {
+          Map groupData = snapshot.value != null ? snapshot.value as Map : {};
+          if (groupData.isNotEmpty) {
+            await userGroupsBox.clear();
+            await userGroupsBox.putAll(groupData);
+            await saveSpacesNamesToLocalStorage(groupData);
           }
         });
         // settings
         await cloudService.getData(db: 'users', '$userId/settings').then((snapshot) async {
-          Map userData = snapshot.value != null ? snapshot.value as Map : {};
-          if (userData.isNotEmpty) {
+          Map settingsData = snapshot.value != null ? snapshot.value as Map : {};
+          if (settingsData.isNotEmpty) {
             await settingBox.clear();
-            await settingBox.putAll(userData);
+            await settingBox.putAll(settingsData);
           }
         });
-        // settings
+        // saved
         await cloudService.getData(db: 'users', '$userId/saved').then((snapshot) async {
-          Map userData = snapshot.value != null ? snapshot.value as Map : {};
-          if (userData.isNotEmpty) {
+          Map savedData = snapshot.value != null ? snapshot.value as Map : {};
+          if (savedData.isNotEmpty) {
             await savedBox.clear();
-            await savedBox.putAll(userData);
+            await savedBox.putAll(savedData);
           }
         });
         // update latest version locally

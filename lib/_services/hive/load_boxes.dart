@@ -34,18 +34,19 @@ Future<void> loadSelectedSpaceBoxes(String spaceId) async {
   await Hive.openBox('${spaceId}_activity');
   await Hive.openBox('${spaceId}_notifications');
   await Hive.openBox('${spaceId}_subtypes');
-  await Hive.openBox('${spaceId}_${feature.chat.t}');
-  await Hive.openBox('${spaceId}_${feature.calendar.t}');
-  await Hive.openBox('${spaceId}_${feature.items.t}');
-  await Hive.openBox('${spaceId}_${feature.code.t}');
-  await Hive.openBox('${spaceId}_${feature.flags.t}');
-  await Hive.openBox('${spaceId}_${feature.labels.t}');
+  await Hive.openBox('${spaceId}_${feature.chat}');
+  await Hive.openBox('${spaceId}_${feature.calendar}');
+  await Hive.openBox('${spaceId}_${feature.items}');
+  await Hive.openBox('${spaceId}_${feature.code}');
+  await Hive.openBox('${spaceId}_${feature.flags}');
+  await Hive.openBox('${spaceId}_${feature.labels}');
 }
 
 Future<void> loadUserBoxes(String userId) async {
   await Hive.openBox(userId);
   await Hive.openBox('${userId}_info');
-  userDataBox = await Hive.openBox('${userId}_data');
+  userSpacesBox = await Hive.openBox('${userId}_spaces');
+  userGroupsBox = await Hive.openBox('${userId}_groups');
   settingBox = await Hive.openBox('${userId}_settings');
   savedBox = await Hive.openBox('${userId}_saved');
 }

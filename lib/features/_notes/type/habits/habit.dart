@@ -19,7 +19,7 @@ class Habit extends StatelessWidget {
       String view = input.data['hv'] ?? '0';
 
       return Visibility(
-        visible: input.data[feature.habits.lt] != null,
+        visible: input.data[feature.habits] != null,
         child: Container(
           margin: padding(s: 'b'),
           padding: paddingM(),

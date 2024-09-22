@@ -21,7 +21,7 @@ String liveSpace() => globalBox.get('${liveUser()}_currentSpaceId', defaultValue
 String liveSpaceTitle({String? id, String? other}) => spaceNamesBox.get(id ?? liveSpace(), defaultValue: other ?? '');
 
 String publishedSpaceLink([bool link = false]) => link
-    ? '$sayariDefaultPath/${features[feature.space.lt]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}'
-    : '/${features[feature.space.lt]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}';
+    ? '$sayariDefaultPath/${features[feature.space]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}'
+    : '/${features[feature.space]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}';
 
 String publishedSpaceId(String? path) => path != null ? path.substring(path.length - 17) : 'sayari';

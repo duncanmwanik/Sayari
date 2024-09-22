@@ -17,7 +17,7 @@ List getChosenItems(Map data, String currentLabel, [String? itemType]) {
     bool isDeleted = noteData['x'] == '1';
     bool isArchived = noteData['a'] == '1';
     bool isNoteViewType =
-        state.views.isItemView(feature.tasks.lt) ? noteData.containsKey(feature.tasks.lt) : !noteData.containsKey(feature.tasks.lt);
+        state.views.isItemView(feature.tasks) ? noteData.containsKey(feature.tasks) : !noteData.containsKey(feature.tasks);
 
     if (!isNoteViewType && state.views.isItems()) continue;
 

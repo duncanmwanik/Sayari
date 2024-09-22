@@ -8,13 +8,13 @@ import '../../chat/chat_view.dart';
 import '../../code/code_view.dart';
 
 Widget changeView(String type) {
-  if (type == feature.calendar.t) {
+  if (type == feature.calendar) {
     return SessionsView();
-  } else if (type == feature.items.t) {
+  } else if (type == feature.items) {
     return ListOfItems();
-  } else if (type == feature.chat.t) {
+  } else if (type == feature.chat) {
     return ChatView();
-  } else if (type == feature.code.t) {
+  } else if (type == feature.code) {
     return CodeView();
   } else {
     return SessionsView();

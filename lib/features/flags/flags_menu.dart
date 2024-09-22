@@ -50,7 +50,7 @@ class _FlagsManagerState extends State<FlagsManager> {
                 Flag(isNewFlag: true),
                 //
                 ValueListenableBuilder(
-                  valueListenable: Hive.box('${liveSpace()}_${feature.flags.t}').listenable(),
+                  valueListenable: Hive.box('${liveSpace()}_${feature.flags}').listenable(),
                   builder: (context, box, widget) {
                     List flags = box.keys.toList();
 

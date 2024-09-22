@@ -35,31 +35,30 @@ class VeticalNavigationBox extends StatelessWidget {
                   //
                   navItem(
                     notesSelectedIcon,
-                    feature.items.t,
-                    views.view == feature.items.t,
+                    feature.items,
+                    views.view == feature.items,
                     onPressed: () {
-                      views.setNotesView(feature.notes.lt);
-                      goToView(feature.items.t);
+                      views.setNotesView(feature.notes);
+                      goToView(feature.items);
                     },
                   ),
                   msph(),
                   navItem(
                     Icons.check_circle,
-                    feature.tasks.lt,
-                    views.view == feature.tasks.lt,
+                    feature.tasks,
+                    views.view == feature.tasks,
                     onPressed: () {
-                      views.setNotesView(feature.tasks.lt);
-                      goToView(feature.items.t);
+                      views.setNotesView(feature.tasks);
+                      goToView(feature.items);
                     },
                   ),
                   msph(),
-                  navItem(sessionsSelectedIcon, feature.calendar.t, views.view == feature.calendar.t),
+                  navItem(sessionsSelectedIcon, feature.calendar, views.view == feature.calendar),
                   msph(),
-                  if (showNavOption(feature.chat.t)) navItem(chatSelectedIcon, feature.chat.t, views.view == feature.chat.t),
-                  if (showNavOption(feature.chat.t)) msph(),
-                  if (isCodeSpace() && showNavOption(feature.code.t))
-                    navItem(codeSelectedIcon, feature.code.t, views.view == feature.code.t),
-                  if (isCodeSpace() && showNavOption(feature.code.t)) msph(),
+                  if (showNavOption(feature.chat)) navItem(chatSelectedIcon, feature.chat, views.view == feature.chat),
+                  if (showNavOption(feature.chat)) msph(),
+                  if (isCodeSpace() && showNavOption(feature.code)) navItem(codeSelectedIcon, feature.code, views.view == feature.code),
+                  if (isCodeSpace() && showNavOption(feature.code)) msph(),
                   //
                   Spacer(),
                   //

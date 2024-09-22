@@ -10,7 +10,7 @@ void deleteSession({required Item item}) async {
   try {
     // TODOs: cancel well reminders
     cancelScheduledNotification(item.id);
-    deleteItemForever(type: feature.calendar.t, itemId: item.extra, subId: item.id, files: getFiles(item.data));
+    deleteItemForever(type: feature.calendar, itemId: item.extra, subId: item.id, files: getFiles(item.data));
   } catch (e) {
     showToast(0, 'Could not delete session');
     errorPrint('delete-session', e);

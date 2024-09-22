@@ -60,7 +60,7 @@ Future showPeriodEntryDialog({required String financeType, String? entryId, Map 
               children: [
                 //
                 AppTypePicker(
-                  type: feature.finances.t,
+                  type: feature.finances,
                   subType: financeType,
                   initial: entryType,
                   typeEntries:

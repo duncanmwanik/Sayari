@@ -37,26 +37,25 @@ class HorizontalNavigationBox extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         //
-                        navItem(notesSelectedIcon, feature.items.t, views.view == feature.items.t),
+                        navItem(notesSelectedIcon, feature.items, views.view == feature.items),
                         navItem(
                           Icons.check_circle,
-                          feature.tasks.lt,
-                          views.view == feature.tasks.lt,
+                          feature.tasks,
+                          views.view == feature.tasks,
                           onPressed: () {
-                            views.setNotesView(feature.tasks.lt);
-                            goToView(feature.items.t);
+                            views.setNotesView(feature.tasks);
+                            goToView(feature.items);
                           },
                         ),
-                        navItem(sessionsSelectedIcon, feature.calendar.t, views.view == feature.calendar.t),
+                        navItem(sessionsSelectedIcon, feature.calendar, views.view == feature.calendar),
                         //
-                        if (showNavOption(feature.chat.t)) navItem(chatSelectedIcon, feature.chat.t, views.view == feature.chat.t),
+                        if (showNavOption(feature.chat)) navItem(chatSelectedIcon, feature.chat, views.view == feature.chat),
                         //
-                        if (isCodeSpace() && showNavOption(feature.code.t))
-                          navItem(codeSelectedIcon, feature.code.t, views.view == feature.code.t),
+                        if (isCodeSpace() && showNavOption(feature.code))
+                          navItem(codeSelectedIcon, feature.code, views.view == feature.code),
                         //
-                        if (showNavOption(feature.explore.t))
-                          navItem(exploreSelectedIcon, feature.explore.t, views.view == feature.explore.t,
-                              onPressed: () => showExploreSheet()),
+                        if (showNavOption(feature.explore))
+                          navItem(exploreSelectedIcon, feature.explore, views.view == feature.explore, onPressed: () => showExploreSheet()),
                         //
                         NavMenu(),
                         //

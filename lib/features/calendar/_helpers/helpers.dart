@@ -18,7 +18,7 @@ Future<void> prepareSessionCreation({String? date, int? hour}) async {
 
 Future<void> prepareSessionEditing(Item item) async {
   state.input.resetSessionData();
-  state.input.setInputData(isNw: false, typ: feature.calendar.t, id: item.extra, sId: item.id, dta: item.data);
+  state.input.setInputData(isNw: false, typ: feature.calendar, id: item.extra, sId: item.id, dta: item.data);
   showSessionBottomSheet();
 }
 
@@ -37,7 +37,7 @@ Map getHourMap(Map source, int hour) {
 }
 
 void removeDuplicateReminders(String type, Map data) {
-  if (type == feature.calendar.t && data['r'] != null) {
+  if (type == feature.calendar && data['r'] != null) {
     data['r'] = getJoinedList(getSplitList(data['r']).toSet().toList());
   }
 }

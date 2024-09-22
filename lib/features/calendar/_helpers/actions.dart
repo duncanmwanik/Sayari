@@ -23,11 +23,11 @@ void copySessionToDates({required Item item, required bool move}) async {
 
       showSnackBar('${move ? 'Moving' : 'Copying'} session to selected dates...');
 
-      state.input.setInputData(typ: feature.calendar.t, id: item.id, dta: item.data);
+      state.input.setInputData(typ: feature.calendar, id: item.id, dta: item.data);
       state.input.updateSelectedDates('set', dates: newDates);
       createItem();
       if (move) {
-        deleteItemForever(type: feature.calendar.t, itemId: item.extra, subId: item.id, files: getFiles(item.data));
+        deleteItemForever(type: feature.calendar, itemId: item.extra, subId: item.id, files: getFiles(item.data));
       }
     });
     //

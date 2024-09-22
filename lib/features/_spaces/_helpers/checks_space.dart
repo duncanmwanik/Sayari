@@ -7,8 +7,8 @@ import 'common.dart';
 
 bool isASpaceSelected() => liveSpace() != 'none';
 bool isLiveSpace(String spaceId) => spaceId == liveSpace();
-bool isSpaceAlreadyAdded(String spaceId) => userDataBox.containsKey(spaceId);
-bool isDefaultSpace(String spaceId) => userDataBox.get(spaceId, defaultValue: 0) == 1;
+bool isSpaceAlreadyAdded(String spaceId) => userSpacesBox.containsKey(spaceId);
+bool isDefaultSpace(String spaceId) => userSpacesBox.get(spaceId, defaultValue: 0) == 1;
 
 Future<String> getSpaceNameFuture(String spaceId) async {
   if (spaceNamesBox.containsKey(spaceId)) {

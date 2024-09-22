@@ -14,10 +14,10 @@ class BookingHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool isActive = input.data[feature.share.lt] == '1';
+      bool isActive = input.data[feature.share] == '1';
 
       return AppButton(
-        onPressed: () => input.update(feature.share.lt, isActive ? '0' : '1'),
+        onPressed: () => input.update(feature.share, isActive ? '0' : '1'),
         smallRightPadding: true,
         child: Row(
           mainAxisSize: MainAxisSize.min,

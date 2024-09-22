@@ -10,15 +10,15 @@ List<Widget> pinnedNavOptions() {
   return [
     // workspace
     MenuItem(label: 'Workspace', faded: true),
-    NavOptionToggle(type: feature.chat.t),
-    if (isCodeSpace()) NavOptionToggle(type: feature.code.t),
+    NavOptionToggle(type: feature.chat),
+    if (isCodeSpace()) NavOptionToggle(type: feature.code),
     //
     menuDivider(),
     // user
     MenuItem(label: 'User', faded: true),
-    NavOptionToggle(type: feature.explore.t),
-    if (showPanelOptions()) NavOptionToggle(type: feature.saved.t),
-    if (showPanelOptions()) NavOptionToggle(type: feature.pomodoro.t),
+    NavOptionToggle(type: feature.explore),
+    if (showPanelOptions()) NavOptionToggle(type: feature.saved),
+    if (showPanelOptions()) NavOptionToggle(type: feature.pomodoro),
     //
   ];
 }

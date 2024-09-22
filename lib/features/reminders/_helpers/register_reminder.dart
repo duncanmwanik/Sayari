@@ -20,7 +20,7 @@ Future<void> registerReminder({
       //
       // for sessions
       //
-      if (type == feature.calendar.t) {
+      if (type == feature.calendar) {
         String lead = itemData['l'] != null ? '<br>Led by: <b>${itemData['l']}</b>.' : '';
         String venue = itemData['v'] != null ? '<br>Venue: <b>${itemData['v']}</b>.' : '';
         String description = itemData['a'] != null ? '<br>${itemData['a']}.' : '';
@@ -50,13 +50,13 @@ Future<void> registerReminder({
 
         if (date.isAfter(DateTime.now())) {
           //
-          if (type == feature.items.t) {
+          if (type == feature.items) {
             title = itemData['t'] ?? 'Note';
             body = itemData['n'] ?? '';
             data = {'type': type};
           }
           //
-          if (type == feature.items.t) {
+          if (type == feature.items) {
             title = itemData['t'] ?? 'List';
             body = 'You may have some items to work on.';
             data = {'type': type};

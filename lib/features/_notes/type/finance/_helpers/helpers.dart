@@ -9,7 +9,7 @@ import '../../../../../_variables/features.dart';
 import '../../../../_spaces/_helpers/common.dart';
 
 List getChosenPeriods(List allPeriods, String currentLabel) {
-  Box box = Hive.box('${liveSpace()}_${feature.finances.t}');
+  Box box = Hive.box('${liveSpace()}_${feature.finances}');
   List chosenPeriods = [];
 
   for (var periodId in allPeriods) {

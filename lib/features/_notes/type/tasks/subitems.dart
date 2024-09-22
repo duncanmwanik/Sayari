@@ -31,7 +31,7 @@ class ListOfSubItems extends StatelessWidget {
             maxMainAxisCount: 1,
             padding: EdgeInsets.zero,
             onReorder: (oldIndex, newIndex) => orderItems(
-              type: feature.items.t,
+              type: feature.items,
               oldItemId: subItemsKeys[oldIndex],
               newItemId: subItemsKeys[newIndex],
               itemsLength: subItemsKeys.length,

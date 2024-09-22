@@ -31,7 +31,7 @@ Future<bool> syncToCloud({
       bool isEdit = action.startsWith('e');
       bool isDelete = action.startsWith('d');
       bool isUpdate = action.startsWith('u');
-      bool isForSession = type == feature.calendar.t;
+      bool isForSession = type == feature.calendar;
       //
       //
       //

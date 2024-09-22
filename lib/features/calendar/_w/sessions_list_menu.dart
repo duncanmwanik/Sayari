@@ -18,7 +18,7 @@ import '../_helpers/sort.dart';
 import 'daily_box.dart';
 
 List<Widget> sessionListMenu(String date) {
-  Map todaySessionsMap = sortSessionsByTime(storage(feature.calendar.t).get(date, defaultValue: {}));
+  Map todaySessionsMap = sortSessionsByTime(storage(feature.calendar).get(date, defaultValue: {}));
 
   return [
     //

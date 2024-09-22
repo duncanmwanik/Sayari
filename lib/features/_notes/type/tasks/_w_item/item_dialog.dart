@@ -108,7 +108,7 @@ Future<void> showItemDialog(String itemId, Map itemData, String listId) async {
           //
           AppDivider(),
           //
-          if (reminder.isNotEmpty) Align(alignment: Alignment.centerLeft, child: Reminder(type: feature.items.t, reminder: reminder)),
+          if (reminder.isNotEmpty) Align(alignment: Alignment.centerLeft, child: Reminder(type: feature.items, reminder: reminder)),
           if (reminder.isNotEmpty && alreadySelectedFlags.isNotEmpty) sph(),
           //
           ItemFlagList(flagList: alreadySelectedFlags),

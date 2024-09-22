@@ -22,7 +22,7 @@ class CodeSelector extends StatelessWidget {
       child: Padding(
         padding: paddingM('b'),
         child: ValueListenableBuilder(
-            valueListenable: Hive.box('${liveSpace()}_${feature.code.t}').listenable(),
+            valueListenable: Hive.box('${liveSpace()}_${feature.code}').listenable(),
             builder: (context, box, widget) {
               return Consumer<InputProvider>(builder: (context, input, child) {
                 return AppButton(

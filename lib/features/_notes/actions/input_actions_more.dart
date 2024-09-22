@@ -45,7 +45,7 @@ class MoreInputActions extends StatelessWidget {
               label: 'Share',
               leading: Icons.share_rounded,
               onTap: () {
-                input.update(feature.share.lt, '1');
+                input.update(feature.share, '1');
                 shareItem(itemId: input.itemId, type: state.views.itemView, title: input.data['t'] ?? 'Shared Item');
               },
             ),

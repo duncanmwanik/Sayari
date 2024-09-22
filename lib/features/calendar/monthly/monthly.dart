@@ -53,7 +53,7 @@ class MonthlyView extends StatelessWidget {
                             DateInfo date = DateInfo(getDatePart(dateProvider.monthDatesMap[indexDate]));
 
                             return ValueListenableBuilder(
-                                valueListenable: storage(feature.calendar.t).listenable(),
+                                valueListenable: storage(feature.calendar).listenable(),
                                 builder: (context, box, widget) {
                                   Map todaySessionsMap = sortSessionsByTime(box.get(date.date, defaultValue: {}));
 

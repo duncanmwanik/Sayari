@@ -17,11 +17,11 @@ Future<void> addSpaceToGroup(String spaceId) async {
 
     if (groupNames.isNotEmpty) {
       for (String groupName in groupNames) {
-        Map groupSpaces = userDataBox.get(groupName, defaultValue: {});
+        Map groupSpaces = userGroupsBox.get(groupName, defaultValue: {});
         groupSpaces[spaceId] = 0;
-        userDataBox.put(groupName, groupSpaces);
+        userGroupsBox.put(groupName, groupSpaces);
 
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'data', action: 'c', itemId: groupName, subId: spaceId, data: 0);
+        syncToCloud(db: 'users', parentId: liveUser(), type: 'groups', action: 'c', itemId: groupName, subId: spaceId, data: 0);
       }
     }
   } catch (e) {
@@ -34,11 +34,11 @@ Future<void> removeSpaceFromGroup(String spaceId, String groupName) async {
     showSnackBar('Removing space from <b>$groupName</b>...');
 
     String userId = liveUser();
-    Map groupSpaces = userDataBox.get(groupName);
+    Map groupSpaces = userGroupsBox.get(groupName);
     groupSpaces.remove(spaceId);
-    userDataBox.put(groupName, groupSpaces);
+    userGroupsBox.put(groupName, groupSpaces);
     //
-    syncToCloud(db: 'users', parentId: userId, type: 'data', action: 'd', itemId: groupName, subId: spaceId);
+    syncToCloud(db: 'users', parentId: userId, type: 'groups', action: 'd', itemId: groupName, subId: spaceId);
     //
   } catch (e) {
     errorPrint('remove-space-from-group', e);
@@ -53,18 +53,20 @@ Future<void> addSpaceToUserData(
 }) async {
   try {
     // add space to user spaces data
-    syncToCloud(db: 'users', parentId: userId, type: 'data', action: 'c', itemId: spaceId, data: isDefault ? 1 : 0);
+    // default space cannot be deleted and contains shared data across all other spaces
+    await userSpacesBox.put(spaceId, isDefault ? 1 : 0);
+    syncToCloud(db: 'users', parentId: userId, type: 'spaces', action: 'c', itemId: spaceId, data: isDefault ? 1 : 0);
     // save default space id to user info
     if (isDefault) syncToCloud(db: 'users', parentId: userId, type: 'info', action: 'c', itemId: 's', data: spaceId);
     // add space to the selected groups
     if (groupList.isNotEmpty) {
-      for (String groupName in groupList) {
+      for (String group in groupList) {
         // add space to local
-        Map groupSpaces = userDataBox.get(groupName, defaultValue: {});
+        Map groupSpaces = userGroupsBox.get(group, defaultValue: {});
         groupSpaces[spaceId] = 0;
-        userDataBox.put(groupName, groupSpaces);
+        userGroupsBox.put(group, groupSpaces);
 
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'data', action: 'c', itemId: groupName, subId: spaceId, data: 0);
+        syncToCloud(db: 'users', parentId: liveUser(), type: 'groups', action: 'c', itemId: group, subId: spaceId, data: 0);
       }
     }
 
@@ -76,34 +78,27 @@ Future<void> addSpaceToUserData(
 
 Future<void> removeSpaceFromUserSpaceData(String userId, String spaceId) async {
   try {
-    Map userSpaces = userDataBox.toMap();
+    // remove space from all spaces folder
+    if (userSpacesBox.containsKey(spaceId)) {
+      userSpacesBox.delete(spaceId);
+      syncToCloud(db: 'users', parentId: userId, type: 'spaces', action: 'd', itemId: spaceId);
+    }
 
-    userSpaces.forEach((key, value) async {
-      // if it's a space
-      if (key.toString().startsWith('space') && key.toString() == spaceId) {
-        userDataBox.delete(key);
-        syncToCloud(db: 'users', parentId: userId, type: 'data', action: 'd', itemId: spaceId);
+    // remove space from groups
+    Map userGroups = userGroupsBox.toMap();
+
+    userGroups.forEach((group, spaces) async {
+      Map groupSpaces = spaces as Map;
+      // making a new map unlinks the map used for the loop(forEach)
+      // prevents a null error, trust me, si ni mi nakshow
+      Map newSpaces = getNewMapFrom(groupSpaces);
+
+      if (groupSpaces.containsKey(spaceId)) {
+        newSpaces.remove(spaceId);
+        syncToCloud(db: 'users', parentId: userId, type: 'groups', action: 'd', itemId: group, subId: spaceId);
       }
-      // if it's a group
-      else {
-        Map groupSpaces = value as Map;
-        // making a new map unlinks the map used for the loop(forEach)
-        // prevents a null error, trust me nakshow
-        Map newGroupSpaces = getNewMapFrom(groupSpaces);
-        groupSpaces.forEach((space, value) async {
-          if (space.toString() == spaceId) {
-            newGroupSpaces.remove(spaceId);
-            //
-            syncToCloud(db: 'users', parentId: userId, type: 'data', action: 'd', itemId: key, subId: spaceId);
-            //
-          }
-        });
-        userDataBox.put(key, newGroupSpaces);
-      }
+      userGroupsBox.put(group, newSpaces);
     });
-
-    syncToCloud(db: 'users', parentId: userId, type: 'data', action: 'd', itemId: spaceId);
-
     //
   } catch (e) {
     errorPrint('remove-space-from-user-data', e);
@@ -116,11 +111,9 @@ Future<void> createGroup(String groupName) async {
       if (isValidGroupName(groupName)) {
         hideKeyboard();
         popWhatsOnTop();
-
         // {k:0} allows us to keep the group even if it has no space
-        userDataBox.put(groupName, {'k': 0});
-
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'data', action: 'c', itemId: groupName, subId: 'k', data: 0);
+        userGroupsBox.put(groupName, {'k': 0});
+        syncToCloud(db: 'users', parentId: liveUser(), type: 'groups', action: 'c', itemId: groupName, subId: 'k', data: 0);
         //
       } else {
         showToast(0, 'Enter a valid name');
@@ -140,9 +133,9 @@ Future<void> deleteGroup(String groupName) async {
       yeslabel: 'Delete',
       onAccept: () async {
         showSnackBar('Deleting <b>$groupName</b>...');
-        userDataBox.delete(groupName);
+        userGroupsBox.delete(groupName);
 
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'data', action: 'd', itemId: groupName);
+        syncToCloud(db: 'users', parentId: liveUser(), type: 'groups', action: 'd', itemId: groupName);
       },
     );
   } catch (e) {

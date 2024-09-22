@@ -43,7 +43,7 @@ class AppTypePicker extends StatelessWidget {
       tooltip: 'Type',
       menuItems: [
         ValueListenableBuilder(
-            valueListenable: Hive.box('${liveSpace()}_${feature.subTypes.t}').listenable(),
+            valueListenable: Hive.box('${liveSpace()}_${feature.subTypes}').listenable(),
             builder: (context, box, wdgt) {
               Map userTypes = box.get('${type}_$subType', defaultValue: {});
 

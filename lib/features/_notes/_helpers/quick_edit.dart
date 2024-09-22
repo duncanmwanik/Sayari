@@ -2,6 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_helpers/_common/global.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/common.dart';
 
 Future<void> editItemExtras({
@@ -44,7 +45,14 @@ Future<void> editItemExtras({
     box.put(itemId, itemData);
 
     await syncToCloud(
-        db: 'spaces', parentId: spaceId, type: type, action: 'e', itemId: itemId, subId: subId, keys: key, data: {key: value});
+        db: 'spaces',
+        parentId: spaceId,
+        type: feature.cloud(type),
+        action: 'e',
+        itemId: itemId,
+        subId: subId,
+        keys: key,
+        data: {key: value});
     //
   } catch (e) {
     errorPrint('quick-edit-$type-$key-$value', e);

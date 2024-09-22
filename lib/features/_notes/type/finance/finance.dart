@@ -16,7 +16,7 @@ class Finance extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(
       builder: (context, input, child) => Visibility(
-        visible: input.data[feature.finances.lt] != null,
+        visible: input.data[feature.finances] != null,
         child: Padding(
           padding: paddingS('t'),
           child: Column(

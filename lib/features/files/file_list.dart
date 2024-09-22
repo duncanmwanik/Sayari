@@ -99,12 +99,12 @@ class FileList extends StatelessWidget {
                       Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          AppIcon(Icons.attach_file, size: small, faded: true),
+                          AppIcon(Icons.folder, size: small, faded: true),
                           tpw(),
                           Flexible(
                               child: AppText(
                             text: '${filesIds.length} file${filesIds.length > 1 ? 's' : ''} attached',
-                            size: small,
+                            size: tiny,
                             faded: true,
                           )),
                         ],

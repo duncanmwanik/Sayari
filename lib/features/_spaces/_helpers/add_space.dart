@@ -20,7 +20,6 @@ Future<void> addSpaceFromId(String spaceId) async {
             if (hasInternet) {
               await doesSpaceExist(spaceId).then((spaceName) async {
                 if (spaceName != 'none') {
-                  await userDataBox.put(spaceId, 0);
                   await spaceNamesBox.put(spaceId, spaceName);
 
                   await addSpaceToUserData(liveUser(), spaceId, []);

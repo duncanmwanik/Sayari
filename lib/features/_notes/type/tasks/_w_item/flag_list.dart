@@ -28,7 +28,7 @@ class ItemFlagList extends StatelessWidget {
             String flag = flagList[index] ?? 'missing*';
 
             // If the flag is not deleted
-            if (Hive.box('${liveSpace()}_${feature.flags.t}').containsKey(flag)) {
+            if (Hive.box('${liveSpace()}_${feature.flags}').containsKey(flag)) {
               return Padding(
                 padding: padding(p: 2, s: 'r'),
                 child: ItemFlag(

@@ -28,7 +28,7 @@ class Share extends StatelessWidget {
       bool isExpanded = data['ep'] == '1';
 
       return Visibility(
-          visible: data[feature.share.lt] != null && input.isNote() && !isShare(),
+          visible: data[feature.share] != null && input.isNote() && !isShare(),
           child: Padding(
             padding: paddingC('t8,b4'),
             child: AppButton(
@@ -78,7 +78,7 @@ class Share extends StatelessWidget {
                                 content: 'The note will also be unpublished, if published.',
                                 yeslabel: 'Unshare',
                                 onAccept: () {
-                                  input.remove(feature.share.lt);
+                                  input.remove(feature.share);
                                   input.remove('sp');
                                   shareItem(delete: true, itemId: input.itemId);
                                 },

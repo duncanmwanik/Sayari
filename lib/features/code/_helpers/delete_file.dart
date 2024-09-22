@@ -4,7 +4,7 @@ import '../../_notes/_helpers/delete_item.dart';
 
 Future<void> deleteCodeFile(String codeId) async {
   try {
-    deleteItemForever(type: feature.code.t, itemId: codeId, files: {});
+    deleteItemForever(type: feature.code, itemId: codeId, files: {});
   } catch (e) {
     errorPrint('delete-code-file', e);
   }

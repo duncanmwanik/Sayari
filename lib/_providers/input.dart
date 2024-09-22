@@ -17,14 +17,14 @@ class InputProvider with ChangeNotifier {
 
   String? color() => data['c'];
 
-  bool isNote() => data[feature.notes.lt] != null;
-  bool isFinance() => data[feature.finances.lt] != null;
-  bool isTask() => data[feature.tasks.lt] != null;
-  bool isHabit() => data[feature.habits.lt] != null;
-  bool isLink() => data[feature.links.lt] != null;
-  bool isBooking() => data[feature.bookings.lt] != null;
-  bool isPortfolio() => data[feature.portfolios.lt] != null;
-  bool isShared() => data[feature.share.lt] != null;
+  bool isNote() => data[feature.notes] != null;
+  bool isFinance() => data[feature.finances] != null;
+  bool isTask() => data[feature.tasks] != null;
+  bool isHabit() => data[feature.habits] != null;
+  bool isLink() => data[feature.links] != null;
+  bool isBooking() => data[feature.bookings] != null;
+  bool isPortfolio() => data[feature.portfolios] != null;
+  bool isShared() => data[feature.share] != null;
   bool showEditor() => isNote() || isPortfolio() || isBooking() || isLink();
   bool showFooter() => (isNote() || isBooking() || isFinance()) && !isShare();
 
@@ -141,7 +141,7 @@ class InputProvider with ChangeNotifier {
 
   void resetSessionData() {
     clearData();
-    type = feature.calendar.t;
+    type = feature.calendar;
     data['y'] = 'Session';
     data['c'] = '0';
     data['r'] = '30.m';

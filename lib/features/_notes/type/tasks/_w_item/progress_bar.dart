@@ -5,7 +5,7 @@ import '../../../../../__styling/variables.dart';
 import '../../../../../_models/item.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';
-import 'new_item.dart';
+import 'new_item_button.dart';
 
 class ProgressBar extends StatelessWidget {
   const ProgressBar({super.key, required this.item});
@@ -30,8 +30,8 @@ class ProgressBar extends StatelessWidget {
                   children: [
                     // icon
                     AppIcon(
-                      Icons.check_circle,
-                      size: medium,
+                      Icons.check_box_rounded,
+                      size: normal,
                       color: isComplete ? styler.accent : null,
                       bgColor: item.color(),
                       faded: true,
@@ -62,7 +62,7 @@ class ProgressBar extends StatelessWidget {
           ),
           // new task item
           mpw(),
-          NewItemInput(item: item),
+          NewItemButton(item: item),
           //
         ],
       ),

@@ -12,7 +12,7 @@ Future<void> addLabel(String label) async {
     //
     // if label dows not exist already or is a default label
     //
-    if (Hive.box('${liveSpace()}_${feature.labels.t}').containsKey(label) || specialLabelsIcons.keys.contains(label)) {
+    if (Hive.box('${liveSpace()}_${feature.labels}').containsKey(label) || specialLabelsIcons.keys.contains(label)) {
       // Future helps us show the toast consistently : bug
       Future.delayed(Duration(seconds: 0), () => showToast(0, 'Label already exists!'));
     }
@@ -20,9 +20,9 @@ Future<void> addLabel(String label) async {
     //
     //
     else {
-      Hive.box('${liveSpace()}_${feature.labels.t}').put(label, '0');
+      Hive.box('${liveSpace()}_${feature.labels}').put(label, '0');
 
-      await syncToCloud(db: 'spaces', parentId: liveSpace(), type: feature.labels.t, action: 'c', itemId: label, data: '0');
+      await syncToCloud(db: 'spaces', parentId: liveSpace(), type: feature.cloud(feature.flags), action: 'c', itemId: label, data: '0');
     }
     //
     //

@@ -9,6 +9,7 @@ late Box fileBox;
 late Box cachedFileBox;
 late Box fileNamesBox;
 // for user
-late Box userDataBox;
+late Box userSpacesBox;
+late Box userGroupsBox;
 late Box settingBox;
 late Box savedBox;

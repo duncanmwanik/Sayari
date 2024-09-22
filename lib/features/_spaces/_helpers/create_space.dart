@@ -19,9 +19,9 @@ Future<void> createNewSpace({bool isNewUser = false, bool isDefault = false}) as
   try {
     //
     // if from sign-up, we set space input data manually
-    if (isNewUser) state.input.setInputData(typ: feature.space.t, dta: {'t': 'My Workspace'});
+    if (isNewUser) state.input.setInputData(typ: feature.space, dta: {'t': 'My Workspace'});
     //
-    if (validateInput(type: feature.space.t)) {
+    if (validateInput(type: feature.space)) {
       // close the create space bottom sheet if not from sign-up
       if (!isNewUser) popWhatsOnTop();
       String userId = liveUser();
@@ -32,10 +32,6 @@ Future<void> createNewSpace({bool isNewUser = false, bool isDefault = false}) as
       // remove empty keys
       state.input.data.removeWhere((key, value) => value.toString().isEmpty);
 
-      // LOCAL
-      // add space to user data locally
-      // default space cannot be deleted and contains shared data across all other spaces
-      await userDataBox.put(spaceId, isDefault ? 1 : 0);
       // save space info data locally
       await Hive.openBox('${spaceId}_info').then((box) async => await box.putAll(state.input.data));
       // add space creator to space admins list as a super-admin
@@ -44,8 +40,6 @@ Future<void> createNewSpace({bool isNewUser = false, bool isDefault = false}) as
       await Hive.openBox('${spaceId}_admins').then((box) async => await box.put(userId, '1'));
       // add space name to space names tracking box
       await spaceNamesBox.put(spaceId, state.input.data['t']);
-
-      // CLOUD
       // add space to cloud user data
       await addSpaceToUserData(userId, spaceId, groupList, isDefault: isDefault);
       // create space in the cloud

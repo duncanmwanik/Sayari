@@ -21,17 +21,17 @@ class DevTools extends StatelessWidget {
         // AppText(text: 100.w.toString()),
         //
         AppButton(
-          onPressed: () => state.views.setHomeView(feature.items.t),
+          onPressed: () => state.views.setHomeView(feature.items),
           noStyling: true,
           child: const AppText(text: 'I'),
         ),
         AppButton(
-          onPressed: () => Hive.box('${liveSpace()}_${feature.calendar.t}').clear(),
+          onPressed: () => Hive.box('${liveSpace()}_${feature.calendar}').clear(),
           noStyling: true,
           child: const AppText(text: 'C'),
         ),
         AppButton(
-          onPressed: () => Hive.box('${liveSpace()}_${feature.pomodoro.t}').clear(),
+          onPressed: () => Hive.box('${liveSpace()}_${feature.pomodoro}').clear(),
           noStyling: true,
           child: const AppText(text: 'P'),
         ),

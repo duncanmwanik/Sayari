@@ -8,13 +8,13 @@ bool validateInput({required String type, bool validate = true}) {
     String title = state.input.data['t'] ?? '';
     bool isCreate = state.input.itemId.isEmpty;
 
-    if (type == feature.space.t) {
+    if (type == feature.space) {
       if (title.isEmpty) {
         message = 'Enter space name';
       }
     }
 
-    if (type == feature.calendar.t) {
+    if (type == feature.calendar) {
       String startTime = state.input.data['s'] ?? '';
 
       if (title.isEmpty) {
@@ -26,13 +26,13 @@ bool validateInput({required String type, bool validate = true}) {
       }
     }
 
-    if (type == feature.items.t) {
+    if (type == feature.items) {
       if (isCreate && title.isEmpty && state.quill.controller.document.toPlainText().trim().isEmpty) {
         return false;
       }
     }
 
-    if (type == feature.finances.t) {
+    if (type == feature.finances) {
       if (state.input.data.isEmpty) {
         return false;
       }

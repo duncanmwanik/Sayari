@@ -33,7 +33,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool isPublished = input.data[feature.share.lt] == '1';
+      bool isPublished = input.data[feature.share] == '1';
       String fileId = input.data['w'] ?? '';
       String fileName = input.data[fileId] ?? '';
       printThis(input.data);
@@ -53,7 +53,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                 children: [
                   //
                   AppButton(
-                    onPressed: () => input.update(feature.share.lt, isPublished ? '0' : '1'),
+                    onPressed: () => input.update(feature.share, isPublished ? '0' : '1'),
                     smallRightPadding: true,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
@@ -70,7 +70,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                       title: 'Unpublish as book?',
                       yeslabel: 'Unpublish',
                       onAccept: () {
-                        input.remove(feature.share.lt);
+                        input.remove(feature.share);
                         shareItem(delete: true, itemId: liveSpace());
                       },
                     ),

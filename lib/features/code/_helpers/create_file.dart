@@ -10,7 +10,7 @@ Future<void> createCodeFile({String title = '', Map? codeMap}) async {
     popWhatsOnTop();
     print('object');
     createItem(
-      type_: feature.code.t,
+      type_: feature.code,
       data_: codeMap ?? {'t': title.isEmpty ? 'Untitled' : title},
     );
   } catch (e) {
@@ -22,7 +22,7 @@ Future<void> editCodeFile({required String title, required String codeId}) async
   try {
     hideKeyboard();
     popWhatsOnTop();
-    editItemExtras(type: feature.code.t, itemId: codeId, key: 't', value: title.isEmpty ? 'Untitled' : title);
+    editItemExtras(type: feature.code, itemId: codeId, key: 't', value: title.isEmpty ? 'Untitled' : title);
   } catch (e) {
     errorPrint('edit-code-file', e);
   }

@@ -4,8 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../_services/hive/local_storage_service.dart';
-import '../../labels/manager.dart';
-import '../_helpers/space_names.dart';
 import '_w/creator_options.dart';
 import '_w/group_list.dart';
 import '_w/space_list.dart';
@@ -16,11 +14,8 @@ class SpaceManager extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: userDataBox.listenable(),
+        valueListenable: userSpacesBox.listenable(),
         builder: (context, box, widget) {
-          Map userSpaceData = box.toMap();
-          List groupNames = getGroupNamesAsList(userSpaceData);
-
           return ListView(
             shrinkWrap: true,
             padding: EdgeInsets.only(right: 10, left: 10, top: kIsWeb ? 8 : 30),
@@ -30,11 +25,9 @@ class SpaceManager extends StatelessWidget {
               //
               sph(),
               //
-              GroupList(userSpaces: {...userSpaceData}, groupNames: groupNames),
+              GroupList(),
               //
-              SpaceList(userSpaceData: {...userSpaceData}, groupNames: groupNames),
-              //
-              if (!kIsWeb) LabelManager(isPopup: true),
+              SpaceList(),
               //
               spph(),
               //

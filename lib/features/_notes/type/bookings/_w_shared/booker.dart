@@ -127,7 +127,7 @@ class _ShareScreenState extends State<Booker> {
                                     isShare: true,
                                     db: 'spaces',
                                     parentId: widget.spaceId,
-                                    type: feature.items.t,
+                                    type: feature.cloud(feature.items),
                                     itemId: widget.itemId,
                                     action: 'e',
                                     keys: bookingId,

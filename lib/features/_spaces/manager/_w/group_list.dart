@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../../_services/hive/local_storage_service.dart';
 import 'group_tile.dart';
 
 class GroupList extends StatelessWidget {
-  const GroupList({super.key, required this.userSpaces, required this.groupNames});
-
-  final Map<dynamic, dynamic> userSpaces;
-  final List groupNames;
+  const GroupList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    userSpaces.removeWhere((key, value) => key.toString().startsWith('space'));
-
-    return ListView.builder(
-        shrinkWrap: true,
-        padding: EdgeInsets.zero,
-        physics: BouncingScrollPhysics(),
-        itemCount: userSpaces.keys.toList().length,
-        itemBuilder: (context, index) {
-          String key = userSpaces.keys.toList()[index];
-
-          return GroupTile(
-            groupName: key,
-            groupSpaces: userSpaces[key],
-            groupNames: groupNames,
-          );
+    return ValueListenableBuilder(
+        valueListenable: userGroupsBox.listenable(),
+        builder: (context, box, widget) {
+          return ListView.builder(
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              physics: BouncingScrollPhysics(),
+              itemCount: box.length,
+              itemBuilder: (context, index) {
+                return GroupTile(
+                  groupName: box.keyAt(index),
+                  groupSpaces: box.getAt(index),
+                );
+              });
         });
   }
 }

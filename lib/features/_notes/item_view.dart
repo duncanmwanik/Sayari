@@ -22,12 +22,12 @@ class ListOfItems extends StatelessWidget {
 
     return Consumer<ViewsProvider>(builder: (context, views, child) {
       return ValueListenableBuilder(
-          valueListenable: Hive.box('${liveSpace()}_${feature.items.t}').listenable(),
+          valueListenable: Hive.box('${liveSpace()}_${feature.items}').listenable(),
           builder: (context, box, wdgt) {
             state.data.setAll(
               data ?? box.toMap(),
               isPublish ? 'All' : views.selectedLabel,
-              isPublish ? feature.notes.lt : null,
+              isPublish ? feature.notes : null,
             );
 
             return (state.data.isEmpty())

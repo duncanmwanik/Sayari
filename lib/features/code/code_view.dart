@@ -23,9 +23,9 @@ class CodeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     state.input.setInputData(
-      typ: feature.code.t,
+      typ: feature.code,
       id: '1718203152818',
-      dta: Hive.box('${liveSpace()}_${feature.code.t}').get('1718203152818'),
+      dta: Hive.box('${liveSpace()}_${feature.code}').get('1718203152818'),
       notify: false,
     );
 

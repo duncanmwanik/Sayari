@@ -13,8 +13,7 @@ Future<void> getAllSpaceData(String spaceId, {bool? isFirstTime}) async {
   await getSpaceInfo(spaceId);
   await getSpaceNameFromCloud(spaceId);
   await getSpaceAdminData(spaceId);
-  await getSpaceData(spaceId, feature.chat.t);
-  await getSpaceData(spaceId, feature.code.t);
+  await getSpaceData(spaceId, feature.cloud(feature.chat));
   await getSpaceAllSessions(spaceId);
   await getSpaceAllNotes(spaceId);
   await getSpaceAllLabels(spaceId);
@@ -29,10 +28,9 @@ Future<void> getAllSpaceData(String spaceId, {bool? isFirstTime}) async {
 
 Future<void> getSpaceInfo(String spaceId) async {
   try {
-    Box box = await Hive.openBox('${spaceId}_info');
-
     await cloudService.getData(db: 'spaces', '$spaceId/info').then((snapshot) async {
       Map spaceInfo = snapshot.value != null ? snapshot.value as Map : {};
+      Box box = await Hive.openBox('${spaceId}_info');
       box.putAll(spaceInfo);
       spaceNamesBox.put(spaceId, spaceInfo['t']);
     });
@@ -46,10 +44,9 @@ Future<void> getSpaceAdminData(String spaceId) async {
     await cloudService.getData(db: 'spaces', '$spaceId/admins').then((snapshot) async {
       Map spaceAdminData = snapshot.value != null ? snapshot.value as Map : {};
       if (spaceAdminData.isNotEmpty) {
-        await Hive.openBox('${spaceId}_admins').then((box) async {
-          await box.clear();
-          box.putAll(spaceAdminData);
-        });
+        Box box = await Hive.openBox('${spaceId}_admins');
+        await box.clear();
+        box.putAll(spaceAdminData);
       }
     });
   } catch (e) {
@@ -59,9 +56,9 @@ Future<void> getSpaceAdminData(String spaceId) async {
 
 Future<void> getSpaceAllSessions(String spaceId) async {
   try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.calendar.t}').then((snapshot) async {
+    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.calendar)}').then((snapshot) async {
       Map spaceSessions = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${spaceId}_${feature.calendar.t}').then((box) {
+      await Hive.openBox('${spaceId}_${feature.calendar}').then((box) {
         spaceSessions.forEach((date, sessions) {
           box.put(date, sessions);
         });
@@ -74,9 +71,9 @@ Future<void> getSpaceAllSessions(String spaceId) async {
 
 Future<void> getSpaceAllNotes(String spaceId) async {
   try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.items.t}').then((snapshot) async {
+    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.items)}').then((snapshot) async {
       Map spaceNotes = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${spaceId}_${feature.items.t}').then((box) {
+      await Hive.openBox('${spaceId}_${feature.items}').then((box) {
         box.putAll(spaceNotes);
       });
     });
@@ -87,9 +84,9 @@ Future<void> getSpaceAllNotes(String spaceId) async {
 
 Future<void> getSpaceAllLabels(String spaceId) async {
   try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.labels.t}').then((snapshot) async {
+    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.labels)}').then((snapshot) async {
       Map labelsData = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${spaceId}_${feature.labels.t}').then((box) {
+      await Hive.openBox('${spaceId}_${feature.labels}').then((box) {
         box.putAll(labelsData);
       });
     });
@@ -100,9 +97,9 @@ Future<void> getSpaceAllLabels(String spaceId) async {
 
 Future<void> getSpaceAllFlags(String spaceId) async {
   try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.flags.t}').then((snapshot) async {
+    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.flags)}').then((snapshot) async {
       Map flagsData = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${spaceId}_${feature.flags.t}').then((box) {
+      await Hive.openBox('${spaceId}_${feature.flags}').then((box) {
         box.putAll(flagsData);
       });
     });
@@ -126,9 +123,9 @@ Future<void> getSpaceData(String spaceId, String type) async {
 
 Future<void> getSpaceTypes(String spaceId) async {
   try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.subTypes.t}').then((snapshot) async {
+    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.subTypes)}').then((snapshot) async {
       Map data = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${spaceId}_${feature.subTypes.t}').then((box) {
+      await Hive.openBox('${spaceId}_${feature.subTypes}').then((box) {
         box.putAll(data);
       });
     });

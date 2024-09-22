@@ -13,9 +13,9 @@ Future<void> updateChat(String spaceId, String messageId) async {
 
     newMessages.forEach((messageId, messageData) async {
       chatData.add('<b>${messageData['u']}</b>: ${messageData['n']}');
-      await Hive.box('${spaceId}_$feature.chat.t').put(messageId, messageData);
+      await Hive.box('${spaceId}_$feature.chat').put(messageId, messageData);
     });
 
-    showNotification(type: feature.chat.t, title: liveSpaceTitle(), body: chatData.join('<br>'), data: {'type': 'c'});
+    showNotification(type: feature.chat, title: liveSpaceTitle(), body: chatData.join('<br>'), data: {'type': 'c'});
   });
 }

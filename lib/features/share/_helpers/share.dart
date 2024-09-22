@@ -42,7 +42,7 @@ Future<void> shareItem({
           'n': liveUserName(),
           'y': type,
           't': title,
-          feature.share.lt: isActive,
+          feature.share: isActive,
           'c': tokens,
         },
         log: false,

@@ -21,7 +21,7 @@ class TaskOptions extends StatelessWidget {
       bool addToTop = input.data['at'] == '1';
 
       return Visibility(
-        visible: input.data[feature.tasks.lt] != null,
+        visible: input.data[feature.tasks] != null,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,

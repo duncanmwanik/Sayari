@@ -27,28 +27,28 @@ final GoRouter router = GoRouter(
 
     // shared item
     GoRoute(
-      path: '/${features[feature.share.lt]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.share.lt, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.share]!.path}/:id',
+      builder: (context, state_) => ShareScreen(type: feature.share, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
     ),
     // blog items
     GoRoute(
-      path: '/${features[feature.notes.lt]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.notes.lt, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.notes]!.path}/:id',
+      builder: (context, state_) => ShareScreen(type: feature.notes, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
     ),
     // bookings
     GoRoute(
-      path: '/${features[feature.bookings.lt]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.bookings.lt, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.bookings]!.path}/:id',
+      builder: (context, state_) => ShareScreen(type: feature.bookings, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
     ),
     // links
     GoRoute(
-      path: '/${features[feature.links.lt]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.links.lt, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.links]!.path}/:id',
+      builder: (context, state_) => ShareScreen(type: feature.links, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
     ),
     // books
     GoRoute(
-      path: '/${features[feature.space.lt]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.space.lt, id: publishedSpaceId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.space]!.path}/:id',
+      builder: (context, state_) => ShareScreen(type: feature.space, id: publishedSpaceId(state_.pathParameters['id'] ?? 'fun')),
     ),
   ],
   errorPageBuilder: (context, state) {

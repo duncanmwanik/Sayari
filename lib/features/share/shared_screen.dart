@@ -45,7 +45,7 @@ class _ShareScreenState extends State<ShareScreen> {
       Map data = snapshot.value != null ? snapshot.value as Map : {};
       if (data.isNotEmpty) {
         setState(() {
-          isActive = data[feature.share.lt] ?? '0';
+          isActive = data[feature.share] ?? '0';
           spaceId = data['s'];
           userId = data['u'];
           sharedData = data;
@@ -78,7 +78,7 @@ class _ShareScreenState extends State<ShareScreen> {
                       ? FutureBuilder(
                           future: cloudService.getData(
                             db: 'spaces',
-                            feature.isSpaceT(widget.type) ? '$spaceId/${feature.items.t}' : '$spaceId/${feature.items.t}/${widget.id}',
+                            feature.isSpace(widget.type) ? '$spaceId/${feature.items}' : '$spaceId/${feature.items}/${widget.id}',
                           ),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState == ConnectionState.done) {
@@ -91,15 +91,15 @@ class _ShareScreenState extends State<ShareScreen> {
                                 return data.isNotEmpty
                                     ? Align(
                                         alignment: Alignment.topCenter,
-                                        child: feature.isShareT(widget.type) || feature.isNoteT(widget.type)
+                                        child: feature.isShare(widget.type) || feature.isNote(widget.type)
                                             ? BlogBody(itemId: widget.id, userId: userId, userName: userName, data: data)
-                                            : feature.isBookingT(widget.type)
+                                            : feature.isBooking(widget.type)
                                                 ? BookingBody(
                                                     spaceId: spaceId, itemId: widget.id, userId: userId, userName: userName, data: data)
-                                                : feature.isLinkT(widget.type)
+                                                : feature.isLink(widget.type)
                                                     ? LinksBody(
                                                         spaceId: spaceId, itemId: widget.id, userId: userId, userName: userName, data: data)
-                                                    : feature.isSpaceT(widget.type)
+                                                    : feature.isSpace(widget.type)
                                                         ? PublishBookBody(
                                                             sharedData: sharedData,
                                                             userName: userName,

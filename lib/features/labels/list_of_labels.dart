@@ -50,7 +50,7 @@ class LabelList extends StatelessWidget {
               children: List.generate(labelList.length, (index) {
                 String label = labelList[index];
 
-                if (Hive.box('${liveSpace()}_${feature.labels.t}').containsKey(label)) {
+                if (Hive.box('${liveSpace()}_${feature.labels}').containsKey(label)) {
                   // label
                   return AppButton(
                     menuItems: labelsMenu(

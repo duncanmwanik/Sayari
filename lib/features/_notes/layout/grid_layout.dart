@@ -33,7 +33,7 @@ class GridLayout extends StatelessWidget {
             b: largeHeightPlaceHolder(),
           ),
           onReorder: (oldIndex, newIndex) => orderItems(
-            type: feature.items.t,
+            type: feature.items,
             oldItemId: state.data.ids[oldIndex],
             newItemId: state.data.ids[newIndex],
             itemsLength: state.data.ids.length,
@@ -42,8 +42,8 @@ class GridLayout extends StatelessWidget {
           ),
           children: List.generate(state.data.ids.length, (index) {
             String itemId = state.data.ids[index];
-            Map itemData = storage(feature.items.t).get(itemId, defaultValue: {});
-            Item item = Item(type: feature.items.t, id: itemId, data: itemData);
+            Map itemData = storage(feature.items).get(itemId, defaultValue: {});
+            Item item = Item(type: feature.items, id: itemId, data: itemData);
 
             return Note(key: Key(item.id), item: item);
           }),

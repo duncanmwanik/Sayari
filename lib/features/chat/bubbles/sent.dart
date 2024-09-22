@@ -28,7 +28,7 @@ class SentMessageBubble extends StatelessWidget {
     bool isShortMessage = message.length < 20;
 
     return ValueListenableBuilder(
-        valueListenable: Hive.box('${liveSpace()}_${feature.chat.t}').listenable(keys: [id]),
+        valueListenable: Hive.box('${liveSpace()}_${feature.chat}').listenable(keys: [id]),
         builder: (context, box, wdgt) {
           bool isPending = pendingBox.containsKey(id);
           Map files = getFiles(data);

@@ -5,15 +5,14 @@ import 'space_tile.dart';
 import 'tile.dart';
 
 class GroupTile extends StatelessWidget {
-  const GroupTile({super.key, required this.groupName, required this.groupSpaces, required this.groupNames});
+  const GroupTile({super.key, required this.groupName, required this.groupSpaces});
 
   final String groupName;
   final Map groupSpaces;
-  final List groupNames;
 
   @override
   Widget build(BuildContext context) {
-    groupSpaces.removeWhere((key, value) => !key.toString().startsWith('space'));
+    groupSpaces.removeWhere((key, value) => key.toString() == 'k');
 
     return Tile(
       title: groupName,

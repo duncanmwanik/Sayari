@@ -42,7 +42,7 @@ class _ItemState extends State<SubItem> {
       child: AppButton(
         onPressed: () async {
           state.input.setInputData(
-              isNw: false, typ: feature.items.t, itm: widget.item, id: widget.item.id, sId: widget.subItemId, dta: widget.subItemData);
+              isNw: false, typ: feature.items, itm: widget.item, id: widget.item.id, sId: widget.subItemId, dta: widget.subItemData);
           showItemDialog(widget.subItemId, widget.subItemData, widget.item.id);
         },
         onHover: (value) => setState(() => isHovered = value),
@@ -96,7 +96,7 @@ class _ItemState extends State<SubItem> {
                                 margin: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
                                 onTap: () {
                                   editItemExtras(
-                                      type: feature.items.t,
+                                      type: feature.items,
                                       itemId: widget.item.id,
                                       subId: widget.subItemId,
                                       key: 'v',
@@ -120,7 +120,7 @@ class _ItemState extends State<SubItem> {
                       if (reminder.isNotEmpty) kIsWeb ? mph() : msph(),
                       if (reminder.isNotEmpty)
                         Reminder(
-                          type: feature.items.t,
+                          type: feature.items,
                           itemId: widget.item.id,
                           subId: widget.subItemId,
                           reminder: reminder,

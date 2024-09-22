@@ -7,17 +7,17 @@ import '../features/_spaces/_helpers/common.dart';
 
 class ViewsProvider with ChangeNotifier {
   //
-  String view = globalBox.get('view', defaultValue: feature.items.t);
+  String view = globalBox.get('view', defaultValue: feature.items);
   bool isView(String type) => view == type;
-  bool isCalendar() => view == feature.calendar.t;
-  bool isItems() => view == feature.items.t;
-  bool isChat() => view == feature.chat.t;
-  bool isExplore() => view == feature.explore.t;
-  bool isCode() => view == feature.code.t;
+  bool isCalendar() => view == feature.calendar;
+  bool isItems() => view == feature.items;
+  bool isChat() => view == feature.chat;
+  bool isExplore() => view == feature.explore;
+  bool isCode() => view == feature.code;
   bool isItemView(String type) => itemView == type;
 
   String layout = globalBox.get(
-    '${liveSpace()}_layout_${globalBox.get('itemView', defaultValue: feature.notes.lt)}',
+    '${liveSpace()}_layout_${globalBox.get('itemView', defaultValue: feature.notes)}',
     defaultValue: 'grid',
   );
 
@@ -41,12 +41,12 @@ class ViewsProvider with ChangeNotifier {
 
   // item view
 
-  String itemView = globalBox.get('itemView', defaultValue: feature.notes.lt);
+  String itemView = globalBox.get('itemView', defaultValue: feature.notes);
 
   void setNotesView(String type) {
     layout = globalBox.get(
       '${liveSpace()}_layout_$type',
-      defaultValue: type == feature.tasks.lt ? 'column' : 'grid',
+      defaultValue: type == feature.tasks ? 'column' : 'grid',
     );
     itemView = type;
     globalBox.put('itemView', type);

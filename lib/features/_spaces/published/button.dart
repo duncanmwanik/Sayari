@@ -19,7 +19,7 @@ class PublishButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isPublished = spaceData[feature.share.lt] == '1';
+    bool isPublished = spaceData[feature.share] == '1';
 
     return Wrap(
       spacing: mediumWidth(),
@@ -30,8 +30,8 @@ class PublishButton extends StatelessWidget {
         AppButton(
           onPressed: () {
             prepareSpaceForEdit(spaceData);
-            if (!isPublished) state.input.update(feature.share.lt, '1');
-            shareItem(itemId: liveSpace(), type: feature.space.lt, title: spaceData['t'] ?? 'Book');
+            if (!isPublished) state.input.update(feature.share, '1');
+            shareItem(itemId: liveSpace(), type: feature.space, title: spaceData['t'] ?? 'Book');
           },
           smallLeftPadding: true,
           color: isPublished ? styler.accentColor(5) : null,

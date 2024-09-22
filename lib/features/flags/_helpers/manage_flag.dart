@@ -8,9 +8,9 @@ import '../../_spaces/_helpers/common.dart';
 Future<void> createFlag(String flag, String color) async {
   try {
     String spaceId = liveSpace();
-    Hive.box('${liveSpace()}_${feature.flags.t}').put(flag, color);
+    Hive.box('${liveSpace()}_${feature.flags}').put(flag, color);
 
-    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.flags.t, action: 'c', itemId: flag, data: color);
+    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.cloud(feature.flags), action: 'c', itemId: flag, data: color);
   } catch (e) {
     errorPrint('add-flag', e);
   }
@@ -19,12 +19,11 @@ Future<void> createFlag(String flag, String color) async {
 Future<void> editFlag(String newFlag, String color, String previousFlag) async {
   try {
     String spaceId = liveSpace();
-    Hive.box('${liveSpace()}_${feature.flags.t}').put(newFlag, color);
-    Hive.box('${liveSpace()}_${feature.flags.t}').delete(previousFlag);
+    Hive.box('${liveSpace()}_${feature.flags}').put(newFlag, color);
+    Hive.box('${liveSpace()}_${feature.flags}').delete(previousFlag);
 
-    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.flags.t, action: 'd', itemId: previousFlag);
-    await syncToCloud(
-        db: 'spaces', parentId: spaceId, type: feature.flags.t, action: 'c', itemId: newFlag, data: color);
+    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.cloud(feature.flags), action: 'd', itemId: previousFlag);
+    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.cloud(feature.flags), action: 'c', itemId: newFlag, data: color);
   } catch (e) {
     errorPrint('edit-flag', e);
   }
@@ -33,8 +32,8 @@ Future<void> editFlag(String newFlag, String color, String previousFlag) async {
 Future<void> deleteFlag(String flag) async {
   try {
     String spaceId = liveSpace();
-    Hive.box('${liveSpace()}_${feature.flags.t}').delete(flag);
-    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.flags.t, action: 'd', itemId: flag);
+    Hive.box('${liveSpace()}_${feature.flags}').delete(flag);
+    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.cloud(feature.flags), action: 'd', itemId: flag);
   } catch (e) {
     errorPrint('delete-flag', e);
   }
@@ -42,7 +41,7 @@ Future<void> deleteFlag(String flag) async {
 
 String getFlagColor(String flag) {
   try {
-    return Hive.box('${liveSpace()}_${feature.flags.t}').get(flag, defaultValue: '0');
+    return Hive.box('${liveSpace()}_${feature.flags}').get(flag, defaultValue: '0');
   } catch (_) {
     return '0';
   }
