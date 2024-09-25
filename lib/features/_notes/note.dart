@@ -9,21 +9,21 @@ import '../../__styling/variables.dart';
 import '../../_helpers/_common/helpers.dart';
 import '../../_models/item.dart';
 import '../../_providers/_providers.dart';
-import '../../_providers/selection.dart';
 import '../../_widgets/others/others/divider.dart';
 import '../_spaces/_helpers/common.dart';
 import '../files/overview.dart';
 import '../share/_w/preview.dart';
 import '_helpers/ontap.dart';
 import '_w/text_overview.dart';
+import 'bookings/_w/overview.dart';
+import 'finance/_w/overview.dart';
+import 'habits/overview.dart';
 import 'items/details.dart';
 import 'items/header.dart';
 import 'items/published.dart';
-import 'type/bookings/_w/overview.dart';
-import 'type/finance/_w/overview.dart';
-import 'type/habits/overview.dart';
-import 'type/links/_w/overview.dart';
-import 'type/tasks/task.dart';
+import 'links/_w/overview.dart';
+import 'state/selection.dart';
+import 'tasks/task.dart';
 
 class Note extends StatelessWidget {
   const Note({super.key, required this.item});
@@ -57,8 +57,8 @@ class Note extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: () => onTapNote(item),
-                onLongPress: isSelected ? null : () => onLongPressNote(item),
+                onTap: item.isTask() ? null : () => onTapNote(item),
+                onLongPress: isSelected || item.isTask() ? null : () => onLongPressNote(item),
                 borderRadius: BorderRadius.circular(borderRadiusTinySmall),
                 hoverColor: styler.appColor(isImage() ? 0.5 : (styler.isDark ? 0.2 : 0.3)),
                 focusColor: transparent,
@@ -73,10 +73,7 @@ class Note extends StatelessWidget {
                       ImageOverview(item: item),
                       ItemHeader(item: item),
                       tph(),
-                      Padding(
-                        padding: paddingS('lr'),
-                        child: AppDivider(height: 0, thickness: 1, color: styler.appColor(isDark() ? 1 : 1.5)),
-                      ),
+                      Padding(padding: paddingS('lr'), child: AppDivider()),
                       //
                       Flexible(
                         child: Padding(

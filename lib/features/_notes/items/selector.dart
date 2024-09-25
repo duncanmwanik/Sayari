@@ -6,10 +6,10 @@ import '../../../../__styling/variables.dart';
 import '../../../__styling/helpers.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
-import '../../../_providers/misc.dart';
-import '../../../_providers/selection.dart';
+import '../../../_providers/hover.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/other.dart';
+import '../state/selection.dart';
 
 class ItemSelector extends StatelessWidget {
   const ItemSelector({super.key, required this.item});

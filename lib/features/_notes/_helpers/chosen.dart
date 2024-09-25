@@ -1,25 +1,23 @@
 import '../../../_helpers/_common/global.dart';
-import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
 
-List getChosenItems(Map data, String currentLabel, [String? itemType]) {
-  List allKeys = data.keys.toList();
-  allKeys.sort((a, b) => int.parse(data[a]['o']).compareTo(int.parse(data[b]['o'])));
-  List finalKeys = allKeys.reversed.toList();
+List getChosenItems(Map data, String currentLabel, String type) {
+  List allIds = data.keys.toList();
+  allIds.sort((a, b) => int.parse(data[a]['o']).compareTo(int.parse(data[b]['o'])));
+  List finalIds = allIds.reversed.toList();
 
   List chosen = [];
   List pinned = [];
 
-  for (var itemId in finalKeys) {
+  for (var itemId in finalIds) {
     Map noteData = data[itemId];
     List labelList = getSplitList(noteData['l']);
     bool isPinned = noteData['p'] == '1';
     bool isDeleted = noteData['x'] == '1';
     bool isArchived = noteData['a'] == '1';
-    bool isNoteViewType =
-        state.views.isItemView(feature.tasks) ? noteData.containsKey(feature.tasks) : !noteData.containsKey(feature.tasks);
+    bool isChosenType = feature.isTask(type) ? noteData.containsKey(type) : !noteData.containsKey(feature.tasks);
 
-    if (!isNoteViewType && state.views.isItems()) continue;
+    if (!isChosenType) continue;
 
     if (isPinned) pinned.add(itemId);
 

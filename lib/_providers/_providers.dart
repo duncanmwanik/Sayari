@@ -2,16 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 
+import '../features/_notes/state/quill.dart';
+import '../features/_notes/state/selection.dart';
+import '../features/calendar/state/datetime.dart';
+import '../features/chat/state/chat.dart';
+import '../features/files/state/data.dart';
+import '../features/pomodoro/state/pomodoro.dart';
+import '../features/share/state/share.dart';
 import '../features/tts/_state/tts_provider.dart';
-import 'ble.dart';
-import 'data.dart';
-import 'datetime.dart';
 import 'global.dart';
+import 'hover.dart';
 import 'input.dart';
-import 'misc.dart';
-import 'pomodoro.dart';
-import 'quill.dart';
-import 'selection.dart';
 import 'theme.dart';
 import 'views.dart';
 
@@ -26,7 +27,6 @@ List<SingleChildWidget> allProviders = [
   ChangeNotifierProvider(create: (context) => QuillProvider()),
   ChangeNotifierProvider(create: (context) => TTSProvider()),
   ChangeNotifierProvider(create: (context) => PomodoroProvider()),
-  ChangeNotifierProvider(create: (context) => BleProvider()),
   ChangeNotifierProvider(create: (context) => ChatProvider()),
   //
   ChangeNotifierProvider(create: (context) => GlobalProvider()),
@@ -35,7 +35,6 @@ List<SingleChildWidget> allProviders = [
   ChangeNotifierProvider(create: (context) => DateTimeProvider()),
   ChangeNotifierProvider(create: (context) => SelectionProvider()),
   // misc
-  ChangeNotifierProvider(create: (context) => ScrollProvider()),
   ChangeNotifierProvider(create: (context) => HoverProvider()),
   ChangeNotifierProvider(create: (context) => ShareProvider()),
 ];
@@ -55,9 +54,7 @@ class AppState {
   late SelectionProvider selection;
   late TTSProvider tts;
   late PomodoroProvider pomodoro;
-  late BleProvider ble;
   late ChatProvider chat;
-  late ScrollProvider scroll;
   late HoverProvider hover;
   late ShareProvider share;
 
@@ -72,9 +69,7 @@ class AppState {
     selection = appContext.read<SelectionProvider>();
     tts = appContext.read<TTSProvider>();
     pomodoro = appContext.read<PomodoroProvider>();
-    ble = appContext.read<BleProvider>();
     chat = appContext.read<ChatProvider>();
-    scroll = appContext.read<ScrollProvider>();
     hover = appContext.read<HoverProvider>();
     share = appContext.read<ShareProvider>();
   }

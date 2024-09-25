@@ -34,9 +34,9 @@ class AuthIntro extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AppText(text: introFeatures[index].title, size: 20, weight: FontWeight.w900),
-                  sph(),
-                  AppText(text: introFeatures[index].description, faded: true),
+                  AppText(text: introFeatures[index].title, size: 20, weight: FontWeight.bold),
+                  tph(),
+                  AppText(text: introFeatures[index].description, faded: true, weight: FontWeight.w400),
                 ],
               ),
             ),

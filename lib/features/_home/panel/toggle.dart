@@ -19,7 +19,7 @@ class PanelToggle extends StatelessWidget {
         noStyling: true,
         child: AppIcon(
           views.showPanelOptions ? Icons.keyboard_double_arrow_left : Icons.keyboard_double_arrow_right,
-          faded: true,
+          extraFaded: true,
         ),
       );
     });

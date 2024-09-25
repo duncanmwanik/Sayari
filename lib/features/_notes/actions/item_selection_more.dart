@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/global.dart';
 import '../../../_providers/_providers.dart';
-import '../../../_providers/selection.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
 import '../_helpers/quick_edit.dart';
+import '../state/selection.dart';
 
 class ItemSelectionMore extends StatelessWidget {
   const ItemSelectionMore({super.key});
@@ -35,7 +34,7 @@ class ItemSelectionMore extends StatelessWidget {
                   await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '1');
                 });
               }
-              clearItemSelection();
+              state.selection.clear();
             },
           ),
           //
@@ -46,7 +45,7 @@ class ItemSelectionMore extends StatelessWidget {
               selection.selected.forEach((id, data) async {
                 await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');
               });
-              clearItemSelection();
+              state.selection.clear();
             },
           ),
           //

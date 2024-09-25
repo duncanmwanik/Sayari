@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_providers/misc.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
+import '../state/chat.dart';
 
 class ChatOption extends StatelessWidget {
   const ChatOption({super.key, required this.type, this.iconData});

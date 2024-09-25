@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../__styling/variables.dart';
-import '../../../_providers/pomodoro.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
+import '../state/pomodoro.dart';
 
 class PlayPauseTimer extends StatelessWidget {
   const PlayPauseTimer({super.key, required this.isCurrentTimer, this.onPressed});

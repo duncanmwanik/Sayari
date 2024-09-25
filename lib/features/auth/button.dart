@@ -38,7 +38,7 @@ class SignInButton extends StatelessWidget {
                 //
                 if (imagePath != null) AppImage(imagePath ?? '', size: normal),
                 if (imagePath != null) spw(),
-                Flexible(child: AppText(text: label, weight: FontWeight.w600)),
+                Flexible(child: AppText(text: label, weight: FontWeight.w500)),
                 //
               ],
             ),

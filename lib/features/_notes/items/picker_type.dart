@@ -9,7 +9,7 @@ import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/svg.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/common.dart';
-import '../type/finance/_w/new_type.dart';
+import '../finance/_w/new_type.dart';
 
 class AppTypePicker extends StatelessWidget {
   const AppTypePicker({
@@ -23,6 +23,7 @@ class AppTypePicker extends StatelessWidget {
     this.textColor,
     this.borderRadius,
     this.smallVerticalPadding = false,
+    this.showNew = false,
   });
 
   final String type;
@@ -34,6 +35,7 @@ class AppTypePicker extends StatelessWidget {
   final Color? textColor;
   final double? borderRadius;
   final bool smallVerticalPadding;
+  final bool showNew;
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +57,8 @@ class AppTypePicker extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       //
-                      if (type.isNotEmpty) NewType(type: type, subType: subType),
-                      if (type.isNotEmpty) tph(),
+                      if (showNew && type.isNotEmpty) NewType(type: type, subType: subType),
+                      if (showNew && type.isNotEmpty) tph(),
                       //
                       for (var type in typeKeys) MenuItem(label: type, onTap: () => onSelect(type, typeEntries[type])),
                       //

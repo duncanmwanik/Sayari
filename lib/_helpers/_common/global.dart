@@ -3,7 +3,6 @@ import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 
-import '../../_providers/_providers.dart';
 import '../../_widgets/others/toast.dart';
 import '../../features/auth/_helpers/user_details_helper.dart';
 import '../../features/user/_helpers/set_user_data.dart';
@@ -20,14 +19,6 @@ void printThis(var stuff) {
   }
 }
 
-Map<String, dynamic> getJsonMap(Map data) {
-  return Map<String, dynamic>.from(data);
-}
-
-String capitalizeStackTrace(String phrase) {
-  return phrase.split('-').map((element) => '${element[0].toUpperCase()}${element.substring(1).toLowerCase()}').join(' ');
-}
-
 Future<void> doSomeFirstTimeWork() async {
   if (await isFirstTimer()) {
     showToast(1, 'Welcome ${liveUserName()}...', duration: 6000);
@@ -35,9 +26,9 @@ Future<void> doSomeFirstTimeWork() async {
   }
 }
 
-Map getNewMapFrom(Map map) {
-  return json.decode(json.encode(map));
-}
+Map<String, dynamic> getJsonMap(Map data) => Map<String, dynamic>.from(data);
+
+Map getNewMapFrom(Map map) => json.decode(json.encode(map));
 
 List<String> getSplitList(String? string, {String separator = '|', bool clearEmpties = true}) {
   try {
@@ -71,10 +62,4 @@ bool hasFlagList(String? flagList) {
   }
 }
 
-String getUniqueId() {
-  return DateTime.now().millisecondsSinceEpoch.toString();
-}
-
-void clearItemSelection() {
-  state.selection.clearAnyItemSelections();
-}
+String getUniqueId() => DateTime.now().millisecondsSinceEpoch.toString();

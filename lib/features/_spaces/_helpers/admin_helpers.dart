@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_helpers/_common/global.dart';
@@ -55,7 +54,7 @@ Future<void> addAdminToSpace(String email) async {
   }
 }
 
-Future<void> removeAdminFromSpace(BuildContext context, String userId, String userEmail) async {
+Future<void> removeMemberFromSpace(String userId, String userEmail) async {
   try {
     await showConfirmationDialog(
       title: 'Remove admin <b>$userEmail</b>?',
@@ -75,6 +74,18 @@ Future<void> removeAdminFromSpace(BuildContext context, String userId, String us
         });
       },
     );
+  } catch (e) {
+    errorPrint('remove-admin', e);
+    showToast(0, 'Could not remove admin');
+  }
+}
+
+Future<void> changePersonPriviledge(String userId, String value) async {
+  try {
+    String spaceId = liveSpace();
+    Hive.box('${spaceId}_admins').put(userId, value);
+    await syncToCloud(db: 'spaces', parentId: spaceId, type: 'admins', action: 'e', itemId: userId, data: value);
+    // await syncToCloud(db: 'spaces', parentId: spaceId, type: 'admins', action: 'c', itemId: userId, data: '0');
   } catch (e) {
     errorPrint('remove-admin', e);
     showToast(0, 'Could not remove admin');

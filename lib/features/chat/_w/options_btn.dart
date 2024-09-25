@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/variables.dart';
-import '../../../_providers/misc.dart';
+import '../../../_providers/hover.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 
@@ -21,7 +21,7 @@ class MessageOptions extends StatelessWidget {
         child: AppButton(
           menuItems: menuItems,
           isRound: true,
-          child: AppIcon(Icons.keyboard_arrow_down, size: normal),
+          child: AppIcon(Icons.more_horiz, size: normal),
         ),
       ),
     );

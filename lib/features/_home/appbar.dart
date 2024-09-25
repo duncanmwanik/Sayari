@@ -4,12 +4,12 @@ import 'package:provider/provider.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/selection.dart';
 import '../../_providers/views.dart';
 import '../../_widgets/others/others/sync_indicator.dart';
 import '../../_widgets/others/theme.dart';
 import '../_notes/_w/note_options.dart';
 import '../_notes/actions/item_selection.dart';
+import '../_notes/state/selection.dart';
 import '../calendar/info_header.dart';
 import '../chat/_w/chat_options.dart';
 import '../pomodoro/_w/pomo_indicator.dart';
@@ -44,11 +44,10 @@ class CustomAppBar extends StatelessWidget {
                         //
                         if (!isSmallPC()) Expanded(child: SpaceName()),
                         if (isSmallPC() && views.isCalendar()) Expanded(child: CalendarOptions()),
-                        if (isSmallPC() && views.isItems()) Expanded(child: NoteOptions()),
+                        if (isSmallPC() && (views.isNotes() || views.isTasks())) Expanded(child: NoteOptions()),
                         if (isSmallPC() && views.isChat()) Expanded(child: ChatOptions()),
                         //
                         Row(
-                          mainAxisSize: MainAxisSize.min,
                           children: [
                             //
                             spw(),
@@ -66,9 +65,9 @@ class CustomAppBar extends StatelessWidget {
                     ),
             ),
             //
-            if (!isSmallPC() && (views.isCalendar() || views.isItems() || views.isChat())) sph(),
+            if (!isSmallPC() && (views.isCalendar() || views.isNotes() || views.isTasks() || views.isChat())) sph(),
+            if (!isSmallPC() && (views.isNotes() || views.isTasks())) NoteOptions(),
             if (!isSmallPC() && views.isCalendar()) CalendarOptions(),
-            if (!isSmallPC() && views.isItems()) NoteOptions(),
             if (!isSmallPC() && views.isChat()) ChatOptions(),
             //
           ],

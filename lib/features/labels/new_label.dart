@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_widgets/buttons/button.dart';
@@ -28,9 +26,6 @@ class _NewlabelInputState extends State<NewlabelInput> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        //
-        if (!kIsWeb) widget.isSelection ? spw() : mspw(),
-        if (kIsWeb) spw(),
         //
         AppButton(
           onPressed: () {
@@ -71,7 +66,7 @@ class _NewlabelInputState extends State<NewlabelInput> {
               color: transparent,
               hoverColor: transparent,
               borderRadius: borderRadiusLarge,
-              contentPadding: EdgeInsets.only(left: 10, top: 10, bottom: 10),
+              contentPadding: EdgeInsets.only(left: 3, top: 10, bottom: 10),
             ),
           ),
         ),

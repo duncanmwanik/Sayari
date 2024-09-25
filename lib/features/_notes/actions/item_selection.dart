@@ -7,7 +7,6 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_providers/_providers.dart';
-import '../../../_providers/selection.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/menu/menu_item.dart';
@@ -17,9 +16,9 @@ import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/common.dart';
 import '../../files/_helpers/helper.dart';
 import '../../labels/menu.dart';
-import '../../reminders/reminder_menu.dart';
 import '../_helpers/delete_item.dart';
 import '../_helpers/quick_edit.dart';
+import '../state/selection.dart';
 
 class SelectedItemOptions extends StatelessWidget {
   const SelectedItemOptions({super.key});
@@ -40,7 +39,7 @@ class SelectedItemOptions extends StatelessWidget {
               children: [
                 // cancel
                 AppButton(
-                  onPressed: () => clearItemSelection(),
+                  onPressed: () => state.selection.clear(),
                   noStyling: true,
                   isSquare: true,
                   tooltip: 'Cancel Selection',
@@ -66,7 +65,7 @@ class SelectedItemOptions extends StatelessWidget {
                         selection.selected.forEach((id, data) async {
                           await editItemExtras(type: data['type'], itemId: id, key: 'p', value: '1');
                         });
-                        clearItemSelection();
+                        state.selection.clear();
                       },
                       noStyling: true,
                       isSquare: true,
@@ -83,7 +82,7 @@ class SelectedItemOptions extends StatelessWidget {
                           selection.selected.forEach((id, data) async {
                             await editItemExtras(type: data['type'], itemId: id, key: 'l', value: getJoinedList(newLabels));
                           });
-                          clearItemSelection();
+                          state.selection.clear();
                         },
                       ),
                       noStyling: true,
@@ -95,31 +94,13 @@ class SelectedItemOptions extends StatelessWidget {
                     spw(),
                     //
                     AppButton(
-                      menuWidth: 200,
-                      menuItems: reminderMenu(
-                        onSet: (newReminder) {
-                          selection.selected.forEach((id, data) async {
-                            await editItemExtras(type: data['type'], itemId: id, key: 'r', value: newReminder);
-                          });
-                          clearItemSelection();
-                        },
-                      ),
-                      noStyling: true,
-                      isSquare: true,
-                      tooltip: 'Reminder',
-                      child: AppIcon(reminderIcon, faded: true),
-                    ),
-                    //
-                    spw(),
-                    //
-                    AppButton(
                       menuWidth: 300,
                       menuItems: colorMenu(
                         onSelect: (newColor) async {
                           selection.selected.forEach((id, data) async {
                             await editItemExtras(type: data['type'], itemId: id, key: 'c', value: newColor);
                           });
-                          clearItemSelection();
+                          state.selection.clear();
                         },
                       ),
                       noStyling: true,
@@ -142,7 +123,7 @@ class SelectedItemOptions extends StatelessWidget {
                               await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '1');
                             });
                           }
-                          clearItemSelection();
+                          state.selection.clear();
                         },
                         noStyling: true,
                         isSquare: true,
@@ -158,7 +139,7 @@ class SelectedItemOptions extends StatelessWidget {
                           selection.selected.forEach((id, data) async {
                             await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');
                           });
-                          clearItemSelection();
+                          state.selection.clear();
                         },
                         noStyling: true,
                         isSquare: true,
@@ -176,7 +157,7 @@ class SelectedItemOptions extends StatelessWidget {
                     selection.selected.forEach((id, data) async {
                       await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '0');
                     });
-                    clearItemSelection();
+                    state.selection.clear();
                   },
                   noStyling: true,
                   isSquare: true,
@@ -197,7 +178,7 @@ class SelectedItemOptions extends StatelessWidget {
                           Map files = getFiles(Hive.box('${liveSpace()}_${data['type']}').get(id, defaultValue: {}));
                           await deleteItemForever(type: data['type'], itemId: id, files: files);
                         });
-                        clearItemSelection();
+                        state.selection.clear();
                       },
                     );
                   },
@@ -232,7 +213,7 @@ class SelectedItemOptions extends StatelessWidget {
                             await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '1');
                           });
                         }
-                        clearItemSelection();
+                        state.selection.clear();
                       },
                     ),
                     //
@@ -243,7 +224,7 @@ class SelectedItemOptions extends StatelessWidget {
                         selection.selected.forEach((id, data) async {
                           await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');
                         });
-                        clearItemSelection();
+                        state.selection.clear();
                       },
                     ),
                     //

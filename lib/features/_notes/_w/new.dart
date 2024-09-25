@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_providers/views.dart';
+import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
+import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
-import '../../_home/panel/creator.dart';
-import '../_helpers/helpers.dart';
+import '../_helpers/prepare.dart';
+import 'dp_options.dart';
 
 class NewOptions extends StatelessWidget {
   const NewOptions({super.key});
@@ -17,22 +20,34 @@ class NewOptions extends StatelessWidget {
       return Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          //
-          Creator(),
-          //
-          spw(),
-          //
+          // new note
           AppButton(
-            onPressed: () => prepareNoteForCreation(),
+            onPressed: () => prepareNoteForCreation(feature.notes),
+            smallLeftPadding: !isTabAndBelow(),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // AppIcon(Icons.my_library_add_rounded, tiny: true),
-                // spw(),
-                AppText(text: 'Templates'),
+                AppIcon(Icons.add),
+                if (isNotPhone()) spw(),
+                if (isNotPhone()) Flexible(child: AppText(text: features[views.view]!.message, overflow: TextOverflow.ellipsis)),
               ],
             ),
           ),
+          // new note from template
+          if (views.isNotes()) spw(),
+          if (views.isNotes())
+            AppButton(
+              menuItems: templatesMenu(),
+              isDropDown: true,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AppText(text: 'Templates'),
+                  spw(),
+                  AppIcon(Icons.arrow_drop_down, tiny: true),
+                ],
+              ),
+            ),
           //
         ],
       );

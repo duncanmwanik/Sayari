@@ -10,7 +10,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
-import '../../_providers/misc.dart';
 import '../../_providers/theme.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/others/empty_box.dart';
@@ -19,6 +18,7 @@ import '../user/_helpers/set_user_data.dart';
 import 'bubbles/incoming.dart';
 import 'bubbles/sent.dart';
 import 'input_bar.dart';
+import 'state/chat.dart';
 
 class ChatView extends StatelessWidget {
   const ChatView({super.key});

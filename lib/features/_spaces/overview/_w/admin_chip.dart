@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
+import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
+import '../../../../_variables/features.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
+import '../../../_notes/items/picker_type.dart';
 import '../../_helpers/admin_helpers.dart';
 import '../../_helpers/checks_space.dart';
+import '../../_var/variables.dart';
 
 class AdminChip extends StatelessWidget {
   const AdminChip({super.key, required this.userEmail, required this.userId, required this.spaceId});
@@ -23,12 +27,25 @@ class AdminChip extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Flexible(child: AppText(text: userEmail)),
+            Expanded(child: AppText(text: userEmail)),
+            // change priviledges
+
+            AppTypePicker(
+              type: feature.calendar,
+              subType: 'y',
+              initial: superPriviledges.keys.firstWhere((key) => superPriviledges[key] == adminPriviledge(userId)),
+              typeEntries: isSuperAdmin() ? superPriviledges : adminPriviledges,
+              onSelect: (chosenType, chosenValue) async {
+                await changePersonPriviledge(userId, chosenValue);
+              },
+            ),
+            if (isAdmin()) spw(),
+            // remove person
             if (isAdmin())
               AppButton(
                 onPressed: () async {
                   if (isAdmin()) {
-                    await removeAdminFromSpace(context, userId, userEmail);
+                    await removeMemberFromSpace(userId, userEmail);
                   }
                 },
                 noStyling: true,

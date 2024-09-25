@@ -3,7 +3,7 @@ import '../_helpers/_common/global.dart';
 import '../_helpers/_common/helpers.dart';
 import '../_variables/constants.dart';
 import '../_variables/features.dart';
-import '../features/_notes/type/tasks/_helpers/helper.dart';
+import '../features/_notes/tasks/_helpers/helper.dart';
 import '../features/files/_helpers/helper.dart';
 
 class Item {
@@ -14,7 +14,10 @@ class Item {
   final Map data;
   final String extra;
 
-  String itemType() => [feature.notes, feature.links, feature.bookings].firstWhere((key) => data[key] != null);
+  void update() {}
+
+  String itemType() =>
+      [feature.notes, feature.tasks, feature.links, feature.bookings, feature.habits].firstWhere((key) => data[key] != null);
   String title() => data['t'] != null && data['t'] != '' ? data['t'] : 'Untitled';
   String color() => data['c'] ?? '';
   String emoji() => data['j'] ?? '';

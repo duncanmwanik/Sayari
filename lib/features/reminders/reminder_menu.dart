@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
-import '../../_helpers/date_time/date_info.dart';
-import '../../_helpers/date_time/misc.dart';
 import '../../_widgets/buttons/action.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/dialogs/dialog_select_date.dart';
@@ -14,6 +12,8 @@ import '../../_widgets/others/others/divider.dart';
 import '../../_widgets/others/svg.dart';
 import '../../_widgets/others/text.dart';
 import '../../_widgets/others/toast.dart';
+import '../calendar/_helpers/date_time/date_info.dart';
+import '../calendar/_helpers/date_time/misc.dart';
 
 List<Widget> reminderMenu({
   String? reminder,

@@ -6,14 +6,14 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/date_time/misc.dart';
-import '../../_providers/pomodoro.dart';
 import '../../_variables/colors.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
+import '../calendar/_helpers/date_time/misc.dart';
 import '_helpers/helpers.dart';
 import '_w/pause_play_btn.dart';
+import 'state/pomodoro.dart';
 
 class PomodoroCounter extends StatelessWidget {
   const PomodoroCounter({super.key});
@@ -72,7 +72,7 @@ class PomodoroCounter extends StatelessWidget {
                         getTimePartFromTimeOfDay(TimeOfDay.fromDateTime(pomo.end)),
                         showSeconds: true,
                         islonger: true,
-                      ) : ' ---'}</b>',
+                      ) : ' --'}</b>',
                     color: styler.textColor(extraFaded: !pomo.isTiming),
                   ),
                   // pause/play

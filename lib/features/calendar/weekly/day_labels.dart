@@ -3,14 +3,14 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/date_time/date_info.dart';
-import '../../../_helpers/date_time/get_week_no.dart';
-import '../../../_helpers/date_time/misc.dart';
-import '../../../_providers/datetime.dart';
 import '../../../_variables/date_time.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/text.dart';
+import '../_helpers/date_time/date_info.dart';
+import '../_helpers/date_time/get_week_no.dart';
+import '../_helpers/date_time/misc.dart';
 import '../_w/sessions_list_menu.dart';
+import '../state/datetime.dart';
 
 class WeekDayLabels extends StatelessWidget {
   const WeekDayLabels({super.key});

@@ -5,9 +5,9 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/date_time/jump_to_date.dart';
-import '../../_helpers/date_time/misc.dart';
-import '../../_providers/datetime.dart';
+import '../../features/calendar/_helpers/date_time/jump_to_date.dart';
+import '../../features/calendar/_helpers/date_time/misc.dart';
+import '../../features/calendar/state/datetime.dart';
 
 class SfCalendar extends StatelessWidget {
   const SfCalendar(
@@ -80,7 +80,6 @@ class SfCalendar extends StatelessWidget {
             ),
             todayTextStyle: TextStyle(
               fontSize: isOverview ? tiny : null,
-              fontWeight: FontWeight.bold,
               color: styler.textColor(),
             ),
             todayCellDecoration: BoxDecoration(

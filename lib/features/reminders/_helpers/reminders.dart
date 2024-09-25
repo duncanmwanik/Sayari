@@ -1,5 +1,5 @@
-import '../../../_helpers/date_time/date_info.dart';
-import '../../../_helpers/date_time/misc.dart';
+import '../../calendar/_helpers/date_time/date_info.dart';
+import '../../calendar/_helpers/date_time/misc.dart';
 
 Map reminderPeriodsMap = {'m': 'minutes', 'h': 'hours', 'd': 'days', 'w': 'weeks'};
 Map periodMinutes = {'m': 1, 'h': 60, 'd': 1440, 'w': 10080};

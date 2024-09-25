@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'styler.dart';
 
@@ -38,6 +37,7 @@ const double normal = 16.0;
 const double medium = 14.0;
 const double mediumSmall = 13.0;
 const double small = 12.0;
+const double tinySmall = 11.0;
 const double tiny = 10.0;
 
 // border radius sizes
@@ -65,7 +65,7 @@ const List<IconData> toastIcons = [Icons.info_rounded, Icons.check_circle_rounde
 const List<Color> toastColors = [Colors.red, Colors.green, Colors.blue, Colors.pink];
 
 // icons
-const IconData sessionsSelectedIcon = FontAwesomeIcons.solidCalendar;
+const IconData sessionsSelectedIcon = Icons.looks_one_rounded;
 const String notesSelectedIcon = 'note-sticky-solid';
 const String chatSelectedIcon = 'comment-solid';
 const String exploreSelectedIcon = 'compass-solid';

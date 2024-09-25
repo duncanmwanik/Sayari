@@ -5,16 +5,16 @@ import 'package:provider/provider.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/_providers.dart';
-import '../../_providers/misc.dart';
 import '../../_providers/theme.dart';
 import '../../_services/firebase/database.dart';
 import '../../_variables/features.dart';
-import '../_notes/type/bookings/_w_shared/body.dart';
-import '../_notes/type/links/_w_shared/links_body.dart';
+import '../_notes/bookings/_w_shared/body.dart';
+import '../_notes/links/_w_shared/links_body.dart';
 import '../_spaces/published/shared.dart';
 import '_helpers/helpers.dart';
 import '_w/shared_info.dart';
 import 'blog/blog_body.dart';
+import 'state/share.dart';
 
 class ShareScreen extends StatefulWidget {
   const ShareScreen({super.key, required this.id, required this.type});
@@ -78,7 +78,7 @@ class _ShareScreenState extends State<ShareScreen> {
                       ? FutureBuilder(
                           future: cloudService.getData(
                             db: 'spaces',
-                            feature.isSpace(widget.type) ? '$spaceId/${feature.items}' : '$spaceId/${feature.items}/${widget.id}',
+                            feature.isSpace(widget.type) ? '$spaceId/${feature.notes}' : '$spaceId/${feature.notes}/${widget.id}',
                           ),
                           builder: (context, snapshot) {
                             if (snapshot.connectionState == ConnectionState.done) {
@@ -86,7 +86,6 @@ class _ShareScreenState extends State<ShareScreen> {
                                 return SharedAction();
                               } else if (snapshot.hasData) {
                                 Map data = snapshot.data!.value != null ? snapshot.data!.value as Map : {};
-                                // printThis(data);
 
                                 return data.isNotEmpty
                                     ? Align(

@@ -57,7 +57,7 @@ class _LabelItemState extends State<LabelItem> {
               },
         onHover: (value) => setState(() => isHovered = value),
         padding: EdgeInsets.only(
-          left: widget.isSelection ? 10 : 15,
+          left: widget.isSelection ? 10 : 10,
           right: showDelete ? 3 : (widget.isPopup ? 7 : 15),
           top: kIsWeb ? 3 : 6,
           bottom: kIsWeb ? 3 : 6,
@@ -68,7 +68,7 @@ class _LabelItemState extends State<LabelItem> {
             //
             widget.isSelection
                 ? AppCheckBox(smallPadding: true, isChecked: widget.isSelected, onTap: widget.onSelect)
-                : AppIcon(widget.iconData, faded: true, size: 18),
+                : AppIcon(widget.iconData, faded: true, size: 16),
             mpw(),
             Expanded(child: AppText(text: widget.label, weight: FontWeight.w500, overflow: TextOverflow.ellipsis)),
             tpw(),

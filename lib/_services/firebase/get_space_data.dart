@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../_helpers/_common/global.dart';
-import '../../_helpers/_common/loaders.dart';
+import '../../_helpers/_common/helpers.dart';
 import '../../_variables/features.dart';
 import '../../features/_spaces/_helpers/common.dart';
 import '../hive/local_storage_service.dart';
@@ -13,12 +13,12 @@ Future<void> getAllSpaceData(String spaceId, {bool? isFirstTime}) async {
   await getSpaceInfo(spaceId);
   await getSpaceNameFromCloud(spaceId);
   await getSpaceAdminData(spaceId);
-  await getSpaceData(spaceId, feature.cloud(feature.chat));
+  await getSpaceData(spaceId, feature.notes);
+  await getSpaceData(spaceId, feature.labels);
+  await getSpaceData(spaceId, feature.flags);
+  await getSpaceData(spaceId, feature.subTypes);
+  await getSpaceData(spaceId, feature.chat);
   await getSpaceAllSessions(spaceId);
-  await getSpaceAllNotes(spaceId);
-  await getSpaceAllLabels(spaceId);
-  await getSpaceAllFlags(spaceId);
-  await getSpaceTypes(spaceId);
   await getSpaceActivityVersion(spaceId);
 
   showSyncingLoader(false);
@@ -56,7 +56,7 @@ Future<void> getSpaceAdminData(String spaceId) async {
 
 Future<void> getSpaceAllSessions(String spaceId) async {
   try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.calendar)}').then((snapshot) async {
+    await cloudService.getData(db: 'spaces', '$spaceId/${feature.calendar}').then((snapshot) async {
       Map spaceSessions = snapshot.value != null ? snapshot.value as Map : {};
       await Hive.openBox('${spaceId}_${feature.calendar}').then((box) {
         spaceSessions.forEach((date, sessions) {
@@ -69,42 +69,15 @@ Future<void> getSpaceAllSessions(String spaceId) async {
   }
 }
 
-Future<void> getSpaceAllNotes(String spaceId) async {
+Future<void> getSpaceActivityVersion(String spaceId) async {
   try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.items)}').then((snapshot) async {
-      Map spaceNotes = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${spaceId}_${feature.items}').then((box) {
-        box.putAll(spaceNotes);
-      });
+    await cloudService.getData(db: 'spaces', '$spaceId/activity/latest').then((snapshot) {
+      if (snapshot.value != null) {
+        activityVersionBox.put(spaceId, snapshot.value as String);
+      }
     });
   } catch (e) {
-    errorPrint('get-space-notes-from-firebase', e);
-  }
-}
-
-Future<void> getSpaceAllLabels(String spaceId) async {
-  try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.labels)}').then((snapshot) async {
-      Map labelsData = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${spaceId}_${feature.labels}').then((box) {
-        box.putAll(labelsData);
-      });
-    });
-  } catch (e) {
-    errorPrint('get-space--labels-from-firebase', e);
-  }
-}
-
-Future<void> getSpaceAllFlags(String spaceId) async {
-  try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.flags)}').then((snapshot) async {
-      Map flagsData = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${spaceId}_${feature.flags}').then((box) {
-        box.putAll(flagsData);
-      });
-    });
-  } catch (e) {
-    errorPrint('get-space-flags-from-firebase', e);
+    errorPrint('get-space-activity-data-from-firebase', e);
   }
 }
 
@@ -118,30 +91,5 @@ Future<void> getSpaceData(String spaceId, String type) async {
     });
   } catch (e) {
     errorPrint('get-space-$type-from-firebase', e);
-  }
-}
-
-Future<void> getSpaceTypes(String spaceId) async {
-  try {
-    await cloudService.getData(db: 'spaces', '$spaceId/${feature.cloud(feature.subTypes)}').then((snapshot) async {
-      Map data = snapshot.value != null ? snapshot.value as Map : {};
-      await Hive.openBox('${spaceId}_${feature.subTypes}').then((box) {
-        box.putAll(data);
-      });
-    });
-  } catch (e) {
-    errorPrint('get-space-flags-from-firebase', e);
-  }
-}
-
-Future<void> getSpaceActivityVersion(String spaceId) async {
-  try {
-    await cloudService.getData(db: 'spaces', '$spaceId/activity/latest').then((snapshot) {
-      if (snapshot.value != null) {
-        activityVersionBox.put(spaceId, snapshot.value as String);
-      }
-    });
-  } catch (e) {
-    errorPrint('get-space-activity-data-from-firebase', e);
   }
 }

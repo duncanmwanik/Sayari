@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../../_helpers/_common/navigation.dart';
 import '../buttons/action.dart';
 import '../others/sfcalendar.dart';
@@ -13,15 +11,12 @@ Future<List> showSelectDateDialog({
   List initialDates = const [],
   bool isMultiple = false,
   bool showTitle = false,
-  EdgeInsets? padding,
   Function(DateTime)? onSelect,
 }) async {
   List selectedDates = [];
 
   await showAppDialog(
     maxWidth: 330,
-    padding: padding,
-    crossAxisAlignment: CrossAxisAlignment.center,
     //
     title: showTitle ? AppText(text: title) : null,
     //

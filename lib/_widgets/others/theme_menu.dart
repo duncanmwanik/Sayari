@@ -50,7 +50,6 @@ List<Widget> themeMenu() {
                 size: small,
                 text: '${themeImage.substring(0, 1).toUpperCase()}${themeImage.substring(1)}',
                 color: color,
-                weight: FontWeight.bold,
               ),
             ),
           ),

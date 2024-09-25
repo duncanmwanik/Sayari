@@ -7,7 +7,6 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/datetime.dart';
 import '../../../_variables/date_time.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';
@@ -19,6 +18,7 @@ import '../_helpers/helpers.dart';
 import '../_helpers/sort.dart';
 import '../_helpers/swipe.dart';
 import '../_w/daily_box.dart';
+import '../state/datetime.dart';
 
 class DailyView extends StatelessWidget {
   const DailyView({super.key});
@@ -71,7 +71,6 @@ class DailyView extends StatelessWidget {
                               //
                               if (indexHour != 0)
                                 AppDivider(
-                                  height: 0,
                                   thickness: isCurrentHour ? 1 : (0.05),
                                   color: isCurrentHour ? styler.accentColor() : null,
                                 ),

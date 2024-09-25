@@ -5,10 +5,7 @@ import 'package:provider/provider.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/date_time/date_info.dart';
-import '../../../_helpers/date_time/misc.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/datetime.dart';
 import '../../../_variables/date_time.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';
@@ -16,10 +13,13 @@ import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/common.dart';
+import '../_helpers/date_time/date_info.dart';
+import '../_helpers/date_time/misc.dart';
 import '../_helpers/helpers.dart';
 import '../_helpers/sort.dart';
 import '../_helpers/swipe.dart';
 import '../_w/weekly_box.dart';
+import '../state/datetime.dart';
 import 'day_labels.dart';
 
 class WeeklyView extends StatelessWidget {
@@ -51,7 +51,7 @@ class WeeklyView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           //
-                          if (indexHour != 0) AppDivider(height: 0, thickness: 0.05),
+                          if (indexHour != 0) AppDivider(thickness: 0.05),
                           //
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,7 +111,7 @@ class WeeklyView extends StatelessWidget {
                                                       children: [
                                                         //
                                                         if (isCurrentHour && date.isToday())
-                                                          AppDivider(height: 0, thickness: 1, color: styler.accentColor()),
+                                                          AppDivider(thickness: 1, color: styler.accentColor()),
                                                         // Session List
                                                         Flexible(
                                                           child: Column(

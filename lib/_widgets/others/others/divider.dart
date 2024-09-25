@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/helpers.dart';
 import '../../../__styling/variables.dart';
 
 class AppDivider extends StatelessWidget {
@@ -13,9 +12,9 @@ class AppDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: color ?? (isDark() ? white.withOpacity(0.7) : black.withOpacity(0.6)),
-      thickness: thickness ?? 0.15,
-      height: height,
+      color: color ?? styler.borderColor(),
+      thickness: thickness ?? 1,
+      height: height ?? 0,
     );
   }
 }

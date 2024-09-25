@@ -13,7 +13,7 @@ Future<void> selectNewSpace(String spaceId, {bool isFirstTime = false}) async {
   try {
     // if the chosen space is not the currently selected space
     // we clear any item selection from previous space
-    state.selection.clearAnyItemSelections();
+    state.selection.clear();
     // we load all boxes for the chosen space
     await loadSelectedSpaceBoxes(spaceId);
     // we update the current selected space id to the chosen space

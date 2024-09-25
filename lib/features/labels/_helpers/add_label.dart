@@ -22,7 +22,7 @@ Future<void> addLabel(String label) async {
     else {
       Hive.box('${liveSpace()}_${feature.labels}').put(label, '0');
 
-      await syncToCloud(db: 'spaces', parentId: liveSpace(), type: feature.cloud(feature.flags), action: 'c', itemId: label, data: '0');
+      await syncToCloud(db: 'spaces', parentId: liveSpace(), type: feature.flags, action: 'c', itemId: label, data: '0');
     }
     //
     //

@@ -1,5 +1,5 @@
 import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/pending/pending_actions.dart';
+import '../../../_services/activity/pending/pending_actions.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/local_storage_service.dart';

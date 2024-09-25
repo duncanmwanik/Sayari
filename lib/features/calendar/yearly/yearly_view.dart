@@ -4,20 +4,20 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/date_time/date_info.dart';
-import '../../../_helpers/date_time/misc.dart';
-import '../../../_helpers/date_time/months.dart';
-import '../../../_providers/datetime.dart';
 import '../../../_variables/date_time.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';
+import '../_helpers/date_time/date_info.dart';
+import '../_helpers/date_time/misc.dart';
+import '../_helpers/date_time/months.dart';
 import '../_helpers/helpers.dart';
 import '../_helpers/swipe.dart';
 import '../_w/sessions_list_menu.dart';
 import '../monthly/weekday_labels.dart';
+import '../state/datetime.dart';
 
 class YearlyView extends StatelessWidget {
   const YearlyView({super.key});

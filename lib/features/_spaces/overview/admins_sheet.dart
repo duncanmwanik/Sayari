@@ -42,14 +42,13 @@ Future<void> showAdminsBottomSheet({required String title}) async {
             alignment: Alignment.topRight,
             child: AppButton(
                 onPressed: () async => await showAddAdminDialog(),
-                borderRadius: borderRadiusLarge,
                 smallLeftPadding: true,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     AppIcon(Icons.add_rounded),
                     tpw(),
-                    AppText(text: 'Add Admin'),
+                    AppText(text: 'Add Member'),
                   ],
                 )),
           ),

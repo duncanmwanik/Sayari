@@ -43,7 +43,6 @@ Future<void> shareItem({
           'y': type,
           't': title,
           feature.share: isActive,
-          'c': tokens,
         },
         log: false,
       );

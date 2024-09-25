@@ -27,25 +27,33 @@ bool isSpaceOpened(String spaceId) {
   }
 }
 
-Future<bool> isOwner(String spaceId) async {
+Future<bool> isOwner([String? spaceId]) async {
   try {
-    Box box = await Hive.openBox('${spaceId}_info');
+    Box box = await Hive.openBox('${spaceId ?? liveSpace()}_info');
     return box.get('o', defaultValue: 'none') == liveUser();
   } catch (e) {
     return false;
   }
 }
 
-bool isAdmin() {
+bool isSuperAdmin() {
   try {
-    return Hive.box('${liveSpace()}_admins').containsKey(liveUser());
+    return Hive.box('${liveSpace()}_info').get('o', defaultValue: 'none') == liveUser();
   } catch (e) {
-    errorPrint('isSpaceAdmin', e);
+    errorPrint('isSuperAdmin', e);
     return false;
   }
 }
 
-bool isCodeSpace() {
-  return true;
-  // return Hive.box('${liveSpace()}_info').get('cd', defaultValue: '0') == '1';
+bool isAdmin() {
+  try {
+    return ['0', '1'].contains(Hive.box('${liveSpace()}_admins').get(liveUser(), defaultValue: '2'));
+  } catch (e) {
+    errorPrint('isAdmin', e);
+    return false;
+  }
+}
+
+String adminPriviledge(String userId) {
+  return Hive.box('${liveSpace()}_admins').get(userId, defaultValue: '2');
 }

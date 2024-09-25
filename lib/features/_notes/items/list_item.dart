@@ -6,8 +6,8 @@ import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/text.dart';
-import '../_helpers/helpers.dart';
-import 'actions.dart';
+import '../_helpers/prepare.dart';
+import '../actions/actions.dart';
 
 class ListItem extends StatelessWidget {
   const ListItem({super.key, required this.item});

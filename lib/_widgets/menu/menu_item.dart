@@ -80,7 +80,7 @@ class _MenuItemState extends State<MenuItem> {
               AppIcon(
                 widget.leading,
                 size: widget.leadingSize ?? normal,
-                faded: !isHovered,
+                faded: true,
                 color: widget.isSelected ? styler.accentColor() : null,
               ),
             if (widget.leading != null) spw(),
@@ -97,7 +97,7 @@ class _MenuItemState extends State<MenuItem> {
               AppIcon(
                 widget.trailing,
                 size: widget.trailingSize ?? 16,
-                faded: !isHovered,
+                faded: true,
                 color: widget.isSelected ? styler.accentColor() : widget.trailingColor,
               ),
           ],
@@ -107,4 +107,4 @@ class _MenuItemState extends State<MenuItem> {
   }
 }
 
-Widget menuDivider([double? height]) => AppDivider(height: height ?? tinyHeight());
+Widget menuDivider() => AppDivider(height: tinyHeight());

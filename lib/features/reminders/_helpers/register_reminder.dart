@@ -50,13 +50,13 @@ Future<void> registerReminder({
 
         if (date.isAfter(DateTime.now())) {
           //
-          if (type == feature.items) {
+          if (type == feature.notes) {
             title = itemData['t'] ?? 'Note';
             body = itemData['n'] ?? '';
             data = {'type': type};
           }
           //
-          if (type == feature.items) {
+          if (type == feature.notes) {
             title = itemData['t'] ?? 'List';
             body = 'You may have some items to work on.';
             data = {'type': type};

@@ -68,7 +68,7 @@ Future<void> editItem() async {
         await syncToCloud(
             db: 'spaces',
             parentId: liveSpace(),
-            type: feature.cloud(type_),
+            type: type_,
             action: 'e',
             itemId: itemId,
             subId: subId,

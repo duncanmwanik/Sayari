@@ -1,31 +1,30 @@
 import 'package:flutter/material.dart';
 
-import '../_helpers/_common/global.dart';
 import '../_services/hive/local_storage_service.dart';
 import '../_variables/features.dart';
 import '../features/_spaces/_helpers/common.dart';
+import '_providers.dart';
 
 class ViewsProvider with ChangeNotifier {
   //
-  String view = globalBox.get('view', defaultValue: feature.items);
+  String view = globalBox.get('view', defaultValue: feature.notes);
   bool isView(String type) => view == type;
   bool isCalendar() => view == feature.calendar;
-  bool isItems() => view == feature.items;
+  bool isNotes() => view == feature.notes;
+  bool isTasks() => view == feature.tasks;
   bool isChat() => view == feature.chat;
   bool isExplore() => view == feature.explore;
-  bool isCode() => view == feature.code;
-  bool isItemView(String type) => itemView == type;
 
   String layout = globalBox.get(
-    '${liveSpace()}_layout_${globalBox.get('itemView', defaultValue: feature.notes)}',
-    defaultValue: 'grid',
+    '${liveSpace()}_layout_${globalBox.get('view', defaultValue: feature.notes)}',
+    defaultValue: feature.isTask(globalBox.get('view', defaultValue: feature.notes)) ? 'column' : 'grid',
   );
 
   void setHomeView(String type) {
     view = type;
     globalBox.put('view', type);
-    layout = globalBox.get('${liveSpace()}_layout_$view', defaultValue: 'grid');
-    clearItemSelection();
+    layout = globalBox.get('${liveSpace()}_layout_$view', defaultValue: feature.isTask(type) ? 'column' : 'grid');
+    state.selection.clear();
     notifyListeners();
   }
 
@@ -39,22 +38,7 @@ class ViewsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  // item view
-
-  String itemView = globalBox.get('itemView', defaultValue: feature.notes);
-
-  void setNotesView(String type) {
-    layout = globalBox.get(
-      '${liveSpace()}_layout_$type',
-      defaultValue: type == feature.tasks ? 'column' : 'grid',
-    );
-    itemView = type;
-    globalBox.put('itemView', type);
-    notifyListeners();
-  }
-
   // layout
-
   void setLayout(String type, String newLayout) {
     layout = newLayout;
     globalBox.put('${liveSpace()}_layout_$type', newLayout);

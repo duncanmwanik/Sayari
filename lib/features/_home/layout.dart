@@ -7,11 +7,11 @@ import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/helpers.dart';
-import '../../_helpers/date_time/date_info.dart';
-import '../../_providers/datetime.dart';
 import '../../_providers/theme.dart';
 import '../../_providers/views.dart';
 import '../../_widgets/others/others/scroll.dart';
+import '../calendar/_helpers/date_time/date_info.dart';
+import '../calendar/state/datetime.dart';
 import '_helpers/change_view.dart';
 import 'appbar.dart';
 import 'navbars/navbar_horizontal.dart';
@@ -42,8 +42,7 @@ class Applayout extends StatelessWidget {
                         //
                         Expanded(
                           child: Title(
-                            title:
-                                'Sayari • ${capitalFirst(views.isItems() ? 'space' : views.isCalendar() ? getDayInfo(dates.selectedDate) : views.view)}',
+                            title: 'Sayari • ${capitalFirst(views.isCalendar() ? getDayInfo(dates.selectedDate) : views.view)}',
                             color: styler.accentColor(),
                             child: NoScrollBars(
                               child: Column(

@@ -13,7 +13,7 @@ Future<void> deleteLabel(String label) async {
       state.views.updateSelectedLabel('All');
     }
 
-    await syncToCloud(db: 'spaces', parentId: liveSpace(), type: feature.cloud(feature.flags), action: 'd', itemId: label);
+    await syncToCloud(db: 'spaces', parentId: liveSpace(), type: feature.flags, action: 'd', itemId: label);
   }
   //
   catch (e) {

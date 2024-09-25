@@ -23,15 +23,15 @@ Future showSpaceNotificationsDialog() {
               //
               NotificationItem(label: feature.space, value: box.get(feature.space, defaultValue: false), type: feature.space),
               //
-              AppDivider(height: 0),
+              AppDivider(),
               //
               NotificationItem(label: feature.calendar, value: box.get(feature.calendar, defaultValue: false), type: feature.calendar),
               //
-              AppDivider(height: 0),
+              AppDivider(),
               //
-              NotificationItem(label: feature.items, value: box.get(feature.items, defaultValue: false), type: feature.items),
+              NotificationItem(label: feature.notes, value: box.get(feature.notes, defaultValue: false), type: feature.notes),
               //
-              AppDivider(height: 0),
+              AppDivider(),
               //
               NotificationItem(label: feature.chat, value: box.get(feature.chat, defaultValue: false), type: feature.chat),
               //

@@ -68,7 +68,7 @@ class HtmlText extends StatelessWidget {
       text: text,
       overflow: overflow,
       textAlign: textAlign,
-      style: TextStyle(fontSize: size, fontWeight: FontWeight.w500, color: color ?? styler.textColor()),
+      style: TextStyle(fontSize: size, color: color ?? styler.textColor()),
       tags: {
         'b': StyledTextTag(style: TextStyle(fontWeight: FontWeight.bold, color: color ?? styler.textColor(), fontSize: size)),
       },

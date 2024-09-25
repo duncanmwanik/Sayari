@@ -12,7 +12,7 @@ import '../../../_widgets/others/icons.dart';
 import '../../share/_helpers/share.dart';
 import '../../tts/_helpers/tts_service.dart';
 import '../../tts/_state/tts_provider.dart';
-import '../type/habits/habit_options.dart';
+import '../habits/habit_options.dart';
 
 class MoreInputActions extends StatelessWidget {
   const MoreInputActions({super.key});
@@ -46,7 +46,7 @@ class MoreInputActions extends StatelessWidget {
               leading: Icons.share_rounded,
               onTap: () {
                 input.update(feature.share, '1');
-                shareItem(itemId: input.itemId, type: state.views.itemView, title: input.data['t'] ?? 'Shared Item');
+                shareItem(itemId: input.itemId, type: input.item.type, title: input.data['t'] ?? 'Shared Item');
               },
             ),
           //

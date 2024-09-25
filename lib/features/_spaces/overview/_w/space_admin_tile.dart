@@ -17,12 +17,9 @@ class SpaceAdminTile extends StatelessWidget {
       leading: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          AppIcon(Icons.admin_panel_settings_rounded, size: 18),
+          AppIcon(Icons.people, size: 18),
           spw(),
-          Flexible(
-              child: AppText(
-            text: isAdmin() ? 'Admins' : 'Admins',
-          )),
+          Flexible(child: AppText(text: 'Members')),
         ],
       ),
       trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: 18),

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/date_time/misc.dart';
 import '../../../_widgets/others/text.dart';
+import '../../calendar/_helpers/date_time/misc.dart';
 
 class LastEdit extends StatelessWidget {
   const LastEdit({super.key, this.timestamp});

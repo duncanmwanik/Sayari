@@ -5,9 +5,6 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/date_time/date_info.dart';
-import '../../../_helpers/date_time/misc.dart';
-import '../../../_providers/datetime.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
@@ -15,10 +12,13 @@ import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';
+import '../_helpers/date_time/date_info.dart';
+import '../_helpers/date_time/misc.dart';
 import '../_helpers/helpers.dart';
 import '../_helpers/sort.dart';
 import '../_helpers/swipe.dart';
 import '../_w/sessions_list_menu.dart';
+import '../state/datetime.dart';
 import 'day_label.dart';
 import 'list_of_sessions.dart';
 import 'weekday_labels.dart';
@@ -71,29 +71,40 @@ class MonthlyView extends StatelessWidget {
                                         color: date.isToday() ? styler.accentColor(0.5) : null,
                                         border: Border.all(color: styler.borderColor(), width: styler.isDark ? 0.1 : 0.2),
                                       ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                      child: Stack(
                                         children: [
-                                          MonthDayNumberLabel(date: date),
-                                          MonthDaySessionList(date: date.date, todaySessionsMap: todaySessionsMap),
-                                          if (todaySessionsMap.length > 1)
-                                            AppButton(
-                                              menuItems: sessionListMenu(date.date),
-                                              dryWidth: true,
-                                              smallRightPadding: true,
-                                              smallVerticalPadding: true,
-                                              borderRadius: borderRadiusTiny,
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  AppText(text: 'More', size: small),
-                                                  tpw(),
-                                                  AppIcon(Icons.keyboard_arrow_down, size: medium),
-                                                ],
+                                          // box
+                                          Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            children: [
+                                              MonthDayNumberLabel(date: date),
+                                              MonthDaySessionList(date: date.date, todaySessionsMap: todaySessionsMap),
+                                            ],
+                                          ),
+                                          // more menu
+                                          if (todaySessionsMap.length > 3)
+                                            Align(
+                                              alignment: Alignment.bottomRight,
+                                              child: AppButton(
+                                                menuItems: sessionListMenu(date.date),
+                                                dryWidth: true,
+                                                smallRightPadding: true,
+                                                smallVerticalPadding: true,
+                                                borderRadius: borderRadiusSuperTiny,
+                                                color: styler.tertiaryColor(),
+                                                child: Row(
+                                                  mainAxisSize: MainAxisSize.max,
+                                                  children: [
+                                                    AppText(text: 'More', size: small),
+                                                    tpw(),
+                                                    AppIcon(Icons.keyboard_arrow_down, size: medium),
+                                                  ],
+                                                ),
                                               ),
                                             ),
+                                          //
                                         ],
                                       ),
                                     ),

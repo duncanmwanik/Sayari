@@ -10,14 +10,12 @@ class AppCheckBox extends StatefulWidget {
     required this.isChecked,
     this.onTap,
     this.smallPadding = false,
-    this.isRound = false,
     this.margin,
   });
 
   final bool isChecked;
   final Function()? onTap;
   final bool smallPadding;
-  final bool isRound;
   final EdgeInsetsGeometry? margin;
 
   @override
@@ -36,15 +34,14 @@ class _AppCheckBoxState extends State<AppCheckBox> {
         child: InkWell(
           onTap: widget.onTap,
           onHover: (value) => setState(() => isHovered = value),
-          customBorder: widget.isRound ? const CircleBorder() : null,
-          borderRadius: widget.isRound ? null : BorderRadius.circular(7),
+          borderRadius: BorderRadius.circular(borderRadiusSuperTiny),
           child: Container(
             width: 15,
             height: 15,
             margin: widget.margin ?? EdgeInsets.all(widget.smallPadding ? 2 : 7),
             decoration: BoxDecoration(
               color: widget.isChecked ? styler.accentColor() : null,
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(borderRadiusSuperTiny),
               border: Border.all(
                 color: widget.isChecked ? transparent : Colors.grey,
                 width: 1.5,

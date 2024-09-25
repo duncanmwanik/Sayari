@@ -14,7 +14,7 @@ import '../../../_widgets/others/checkbox.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/text.dart';
-import '../../_notes/type/bookings/_w/copy_link.dart';
+import '../../_notes/bookings/_w/copy_link.dart';
 import '../../files/_helpers/upload.dart';
 import '../../files/image.dart';
 import '../../share/_helpers/share.dart';
@@ -125,7 +125,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                   //
                   AppButton(
                     onPressed: () {
-                      input.removeAll('f');
+                      input.removeStart('f');
                       input.addAll({'w': ''});
                     },
                     noStyling: true,
@@ -136,7 +136,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                 ],
               ),
               //
-              AppDivider(),
+              AppDivider(height: mediumHeight()),
               //
             ],
           ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../_helpers/_common/clipboard.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../_spaces/_helpers/checks_space.dart';
+import '../_helpers/delete.dart';
 import '../_helpers/helpers.dart';
 
 List<Widget> messageMenu(String id, Map data) {
@@ -29,6 +30,15 @@ List<Widget> messageMenu(String id, Map data) {
         label: isPinned ? 'Unpin' : 'Pin',
         leading: isPinned ? Icons.push_pin : Icons.push_pin_outlined,
       ),
+    //
+    if (isAdmin())
+      MenuItem(
+        onTap: () {},
+        label: isPinned ? 'Unstar' : 'Star',
+        leading: isPinned ? Icons.star : Icons.star_outline,
+      ),
+    //
+    menuDivider(),
     //
     if (isAdmin())
       MenuItem(

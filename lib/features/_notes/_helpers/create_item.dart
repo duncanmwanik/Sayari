@@ -58,17 +58,10 @@ Future<void> createItem({String? type_, String? newId, String? newSubId, Map? da
 
       await handleFilesCloud(liveSpace(), data);
       await syncToCloud(
-          db: 'spaces',
-          parentId: liveSpace(),
-          type: feature.cloud(type),
-          action: 'c',
-          itemId: itemId,
-          subId: subId,
-          extras: extras,
-          data: data);
+          db: 'spaces', parentId: liveSpace(), type: type, action: 'c', itemId: itemId, subId: subId, extras: extras, data: data);
       // for shared items
       if (state.input.isShared()) {
-        shareItem(itemId: itemId, type: state.views.itemView, title: data['t'] ?? 'Shared Item');
+        shareItem(itemId: itemId, type: state.input.type, title: data['t'] ?? 'Shared Item');
       }
     }
     //

@@ -114,7 +114,7 @@ class AppStyles {
   // -------------------------- Other Colors
 
   Color borderColor() {
-    return Colors.grey.withOpacity(0.2);
+    return styler.appColor(isDark ? 1 : 1.5);
   }
 
   Color listItemColor({String? bgColor}) {

@@ -121,7 +121,6 @@ class _FlagItemState extends State<Flag> {
                     onFieldSubmitted: (_) => update(),
                     onTap: () => setState(() => isEdit = true),
                     textColor: textColor,
-                    borderRadius: borderRadiusTinySmall,
                     color: widget.isNewFlag ? (isEdit ? null : transparent) : backgroundColors[flagColor]!.color,
                     contentPadding: isEdit || widget.isNewFlag ? padding() : paddingM(),
                   ),

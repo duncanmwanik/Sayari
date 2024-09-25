@@ -100,7 +100,7 @@ class PopupMenuItemState<T, W extends CustomPopupMenuItem<T>> extends State<W> {
   Widget build(BuildContext context) {
     // here
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 1),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
       child: widget.child,
     );
   }

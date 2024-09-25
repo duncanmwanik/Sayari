@@ -6,7 +6,7 @@ import '../../_variables/navigation.dart';
 
 void listenToKeyboardChanges() {
   keyboardSubscription = KeyboardVisibilityController().onChange.listen((bool isKeyboardVisible) {
-    state.global.updateIsKeyboardOpenOpen(isKeyboardVisible);
+    state.global.updateIsKeyboardOpen(isKeyboardVisible);
 
     if (!isKeyboardVisible) {
       FocusManager.instance.primaryFocus?.unfocus();
@@ -15,7 +15,5 @@ void listenToKeyboardChanges() {
 }
 
 void disposelListeningToKeyboardChanges() {
-  try {
-    keyboardSubscription.cancel();
-  } catch (_) {}
+  keyboardSubscription.cancel();
 }

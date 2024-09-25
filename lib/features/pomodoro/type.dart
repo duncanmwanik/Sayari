@@ -3,12 +3,12 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/pomodoro.dart';
 import '../../_variables/colors.dart';
 import '../../_variables/constants.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/helpers.dart';
+import 'state/pomodoro.dart';
 
 class PomodoroType extends StatelessWidget {
   const PomodoroType({super.key, required this.type});
@@ -21,7 +21,7 @@ class PomodoroType extends StatelessWidget {
       bool isCurrent = pomo.currentTimer == type;
 
       return AppButton(
-        onPressed: () => startTimer(type),
+        onPressed: () => chooseTimer(type),
         width: 150,
         borderRadius: borderRadiusLarge,
         noStyling: !isCurrent,

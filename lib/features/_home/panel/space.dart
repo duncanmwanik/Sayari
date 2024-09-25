@@ -34,18 +34,18 @@ class SpaceName extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   // selected space name
-                  Flexible(
-                    child: AppButton(
-                      onPressed: () => openDrawer(),
-                      tooltip: 'Choose Workspace',
-                      noStyling: true,
-                      isSquare: isMin,
-                      smallRightPadding: !isMin,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          // name
-                          if (!isMin)
+                  if (!isMin)
+                    Flexible(
+                      child: AppButton(
+                        onPressed: () => openDrawer(),
+                        tooltip: 'Change Workspace',
+                        noStyling: true,
+                        isSquare: isMin,
+                        smallRightPadding: !isMin,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            // name
                             AppText(
                               size: medium,
                               text: name,
@@ -53,27 +53,36 @@ class SpaceName extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               weight: FontWeight.w600,
                             ),
-                          //
-                          if (!isMin) spw(),
-                          AppIcon(Icons.arrow_drop_down, tiny: isMin, faded: true),
-                          //
-                        ],
+                            //
+                            AppIcon(Icons.arrow_drop_down, tiny: isMin, faded: true),
+                            //
+                          ],
+                        ),
                       ),
                     ),
-                  ),
+                  if (!isMin) AppText(size: small, text: ' | ', extraFaded: true),
                   // workspace settings
-                  if (!isMin) tpw(),
                   if (!isMin)
                     AppButton(
                       onPressed: () => isASpaceSelected ? showSpaceOverviewBottomSheet() : openDrawer(),
                       tooltip: 'Manage Workspace',
                       isSquare: true,
                       noStyling: true,
-                      child: AppIcon(Icons.menu, faded: true),
+                      child: AppIcon(moreIcon, faded: true),
                     ),
                   //
                 ],
               ),
+              // worspace
+              if (isSmallPC() && isMin) tph(),
+              if (isSmallPC() && isMin)
+                AppButton(
+                  onPressed: () => openDrawer(),
+                  tooltip: 'Choose Workspace',
+                  isSquare: true,
+                  noStyling: true,
+                  child: AppIcon(Icons.arrow_drop_down, faded: true),
+                ),
               // worspace settings
               if (isSmallPC() && isMin) tph(),
               if (isSmallPC() && isMin)
@@ -82,7 +91,7 @@ class SpaceName extends StatelessWidget {
                   tooltip: 'Manage Workspace',
                   isSquare: true,
                   noStyling: true,
-                  child: AppIcon(Icons.more_horiz, faded: true),
+                  child: AppIcon(moreIcon, faded: true),
                 ),
               //
             ],

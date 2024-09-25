@@ -5,7 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../_helpers/_common/global.dart';
-import '../../_helpers/_common/misc.dart';
+import '../../_helpers/_common/helpers.dart';
 import '../../_widgets/others/toast.dart';
 import '../hive/local_storage_service.dart';
 import '_helpers/handle_errors.dart';
@@ -39,10 +39,7 @@ class CloudStorage {
   //
 
   Future<bool> downloadFile(
-      {required String db,
-      required String fileName,
-      required String cloudFilePath,
-      required String downloadPath}) async {
+      {required String db, required String fileName, required String cloudFilePath, required String downloadPath}) async {
     final fileRef = (db == 'spaces' ? spacesRef : usersRef).child(cloudFilePath);
 
     try {
@@ -86,10 +83,7 @@ class CloudStorage {
 
   Future<void> deleteFile({required String db, required String path}) async {
     try {
-      await (db == 'spaces' ? spacesRef : usersRef)
-          .child(path)
-          .delete()
-          .then((value) => printThis('Deleted file $path'));
+      await (db == 'spaces' ? spacesRef : usersRef).child(path).delete().then((value) => printThis('Deleted file $path'));
     } on FirebaseException catch (e) {
       errorPrint('firebase-delete-file', e);
     } catch (e) {

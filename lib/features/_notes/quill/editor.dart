@@ -24,7 +24,7 @@ class _SuperEditorState extends State<SuperEditor> {
     return IgnorePointer(
       ignoring: isShare(),
       child: Padding(
-        padding: padding(s: 't', p: 30),
+        padding: paddingC('t20'),
         child: QuillEditor.basic(
           scrollController: scrollController,
           configurations: QuillEditorConfigurations(

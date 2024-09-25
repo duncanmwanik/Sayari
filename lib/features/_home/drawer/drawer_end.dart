@@ -4,7 +4,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/variables.dart';
-import '../../code/code_blocks.dart';
+import '../../../_widgets/others/others/other.dart';
 
 class AppEndDrawer extends StatelessWidget {
   const AppEndDrawer({super.key});
@@ -19,7 +19,7 @@ class AppEndDrawer extends StatelessWidget {
       shape: RoundedRectangleBorder(),
       child: Container(
         decoration: getImageBackgroundDecoration(),
-        child: CodeBlocks(),
+        child: NoWidget(),
       ),
     );
   }

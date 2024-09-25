@@ -10,7 +10,7 @@ import '__routing/routes.dart';
 import '__styling/helpers.dart';
 import '__styling/theme.dart';
 import '__styling/variables.dart';
-import '_helpers/errors/error_handler.dart';
+import '_helpers/_common/error_handler.dart';
 import '_providers/_providers.dart';
 import '_providers/theme.dart';
 import '_services/firebase/database.dart';

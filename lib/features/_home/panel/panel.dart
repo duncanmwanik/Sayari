@@ -10,7 +10,6 @@ import '../../../_providers/views.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/sfcalendar.dart';
-import '../../code/_w/code_files_list.dart';
 import '../../labels/manager.dart';
 import '../navbars/navbar_vertical.dart';
 import 'space.dart';
@@ -23,22 +22,23 @@ class Panel extends StatelessWidget {
     return Consumer2<ViewsProvider, GlobalProvider>(builder: (context, views, global, child) {
       bool showPanel = views.showPanelOptions && showPanelOptions();
       bool showCalendar = views.isCalendar() || views.isChat();
-      bool showLabelManager = views.isItems();
+      bool showLabelManager = views.isNotes() || views.isTasks();
 
       return Container(
-        width: showPanel ? 251 : 51,
+        width: showPanel ? 253 : 53,
         height: double.maxFinite,
         margin: paddingM(),
         decoration: BoxDecoration(
-          color: styler.appColor(isDark() ? 0.5 : 0.7),
-          borderRadius: BorderRadius.circular(borderRadiusTiny),
-        ),
+            color: isDarkOnly() ? styler.appColor(0.3) : null,
+            borderRadius: BorderRadius.circular(borderRadiusTiny),
+            border: isDarkOnly() ? null : Border.all(color: styler.borderColor())),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //
             Padding(padding: paddingS('ltrb'), child: SpaceName(isMin: !showPanel)),
-            AppDivider(height: 0),
+            if (!showPanel) tph(),
+            Padding(padding: paddingS('lr'), child: AppDivider()),
             sph(),
             //
             Expanded(
@@ -60,7 +60,6 @@ class Panel extends StatelessWidget {
                             //
                             if (showCalendar) Center(child: SfCalendar(isOverview: true)),
                             if (showLabelManager) LabelManager(),
-                            if (views.isCode()) CodeFilesList(),
                             //
                           ],
                         ),

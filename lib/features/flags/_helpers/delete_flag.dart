@@ -9,7 +9,7 @@ Future<void> deleteFlag(String flag) async {
   try {
     String spaceId = liveSpace();
     Hive.box('${liveSpace()}_${feature.flags}').delete(flag);
-    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.cloud(feature.flags), action: 'd', itemId: flag);
+    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.flags, action: 'd', itemId: flag);
   } catch (e) {
     errorPrint('delete-flag', e);
   }

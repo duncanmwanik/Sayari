@@ -9,7 +9,6 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/_common/navigation.dart';
 import '../../_variables/navigation.dart';
-import '../others/others/divider.dart';
 import '../others/others/other.dart';
 import '../others/text.dart';
 
@@ -18,9 +17,7 @@ Future<dynamic> showAppDialog({
   Widget? content,
   List<Widget>? actions,
   bool smallTitlePadding = false,
-  bool showDivider = true,
-  EdgeInsets? padding,
-  CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
+  bool smallTitleColor = true,
   double? maxWidth,
   Function? prep,
 }) {
@@ -53,31 +50,28 @@ Future<dynamic> showAppDialog({
                 filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
                 child: Container(
                   width: double.maxFinite,
-                  padding: padding ?? paddingL(),
                   constraints: BoxConstraints(maxWidth: maxWidth ?? (isPhone() ? double.infinity : webMaxDialogWidth), maxHeight: 70.h),
                   color: styler.secondaryColor().withOpacity(isImage() ? 0.4 : 0.8),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: crossAxisAlignment,
                     children: [
                       //
                       if (title != null)
                         Align(
                           alignment: Alignment.topLeft,
-                          child: title.runtimeType == String ? HtmlText(text: title, color: styler.textColor()) : title,
+                          child: Container(
+                            color: smallTitleColor ? styler.appColor(isDark() ? 0.5 : 1) : null,
+                            padding: paddingM(),
+                            width: double.infinity,
+                            child: title.runtimeType == String ? HtmlText(text: title, color: styler.textColor()) : title,
+                          ),
                         ),
                       //
-                      if (title != null)
-                        AppDivider(
-                          height: smallTitlePadding ? tinyHeight() : mediumHeight(),
-                          color: showDivider ? null : transparent,
-                        ),
+                      if (content != null) Flexible(child: Padding(padding: paddingM(), child: content)),
                       //
-                      if (content != null) Flexible(child: content),
-                      //
-                      if (actions != null) mph(),
-                      //
-                      if (actions != null) Row(mainAxisAlignment: MainAxisAlignment.end, children: actions),
+                      if (actions != null) tph(),
+                      if (actions != null)
+                        Padding(padding: paddingM(), child: Row(mainAxisAlignment: MainAxisAlignment.end, children: actions)),
                       //
                     ],
                   ),

@@ -27,8 +27,7 @@ Future<void> sendMessage() async {
       Box box = Hive.box('${spaceId}_${feature.chat}');
       await box.put(messageId, messageData);
       await handleFilesCloud(spaceId, messageData);
-      await syncToCloud(
-          db: 'spaces', parentId: spaceId, type: feature.cloud(feature.chat), action: 'c', itemId: messageId, data: messageData);
+      await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.chat, action: 'c', itemId: messageId, data: messageData);
       await box.put(messageId, messageData);
     }
   } catch (e) {

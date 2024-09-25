@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_providers/pomodoro.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/text.dart';
+import 'state/pomodoro.dart';
 import 'type.dart';
 
 class PomodoroChooser extends StatelessWidget {

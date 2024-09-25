@@ -17,7 +17,7 @@ class NavMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool showWorkspace = !showNavOption(feature.chat) || !showNavOption(feature.code);
+    bool showWorkspace = !showNavOption(feature.chat);
     bool showUser =
         !showNavOption(feature.explore) || !showNavOption(feature.saved) || (!showNavOption(feature.pomodoro) || !showPanelOptions());
 
@@ -27,7 +27,6 @@ class NavMenu extends StatelessWidget {
         if (showWorkspace) MenuItem(label: 'Workspace', faded: true),
         if (!showNavOption(feature.chat)) MenuItem(label: 'Chat', leading: Icons.message_rounded, onTap: () => goToView(feature.chat)),
         //
-        if (!showNavOption(feature.code)) MenuItem(label: 'Code', leading: Icons.code, onTap: () => goToView(feature.code)),
         //
         if (showWorkspace) menuDivider(),
         // user

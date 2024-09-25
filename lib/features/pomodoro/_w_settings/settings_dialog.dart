@@ -5,13 +5,13 @@ import '../../../__styling/spacing.dart';
 import '../../../_helpers/_common/global.dart';
 import '../../../_helpers/_common/navigation.dart';
 import '../../../_providers/_providers.dart';
-import '../../../_providers/pomodoro.dart';
 import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
 import '../../../_widgets/others/checkbox.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/list_tile.dart';
 import '../_helpers/save_settings.dart';
+import '../state/pomodoro.dart';
 import 'alarm_chooser.dart';
 import 'setting.dart';
 
@@ -19,6 +19,7 @@ Future<void> showPomodoroSettingsDialog() async {
   Map previousdata = getNewMapFrom(state.pomodoro.data);
 
   await showAppDialog(
+    title: 'Pomodoro Settings',
     content: Consumer<PomodoroProvider>(builder: (context, pomodoroProvider, child) {
       bool isAutoPlayOn = pomodoroProvider.data['ap'] == '1';
       bool isAlarmOn = pomodoroProvider.data['ao'] == '1';

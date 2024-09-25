@@ -12,8 +12,8 @@ import '../../../_widgets/others/icons.dart';
 import '../../files/_helpers/upload.dart';
 import '../../labels/menu.dart';
 import '../../reminders/reminder_menu.dart';
-import '../type/finance/graphs_sheet.dart';
-import '../type/habits/header.dart';
+import '../finance/graphs_sheet.dart';
+import '../habits/header.dart';
 import 'input_actions_more.dart';
 
 class CommonInputActions extends StatelessWidget {

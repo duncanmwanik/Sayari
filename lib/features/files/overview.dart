@@ -9,7 +9,7 @@ import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/text.dart';
-import '../_notes/items/actions.dart';
+import '../_notes/actions/actions.dart';
 import '_helpers/download.dart';
 import '_helpers/helper.dart';
 import 'viewer.dart';
@@ -128,13 +128,9 @@ class ImageOverview extends StatelessWidget {
                   ),
                 ),
               ),
-            // pinned icon
-            if (!isInput)
-              Align(
-                alignment: Alignment.topRight,
-                child: ItemActions(item: item),
-              ),
-            // /
+            //
+            if (!isInput) ItemActions(item: item),
+            //
           ],
         ),
       ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/date_time/misc.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
@@ -13,6 +12,7 @@ import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/text.dart';
 import '../../files/_helpers/helper.dart';
 import '../../files/file_list.dart';
+import '../_helpers/date_time/misc.dart';
 import 'session_options.dart';
 import 'session_reminders.dart';
 import 'session_time.dart';
@@ -25,7 +25,7 @@ Future showSessionOverviewDialog(Item item) {
 
   return showAppDialog(
     smallTitlePadding: true,
-    showDivider: false,
+    smallTitleColor: false,
     //
     title: SessionType(item: item),
     //
@@ -40,7 +40,7 @@ Future showSessionOverviewDialog(Item item) {
           // time
           SessionTime(startTime: item.data['s'], endTime: item.data['e'] ?? ''),
           // lead
-          if (item.data['l'] != null) AppDivider(),
+          if (item.data['l'] != null) AppDivider(height: mediumHeight()),
           if (item.data['l'] != null)
             Row(
               mainAxisSize: MainAxisSize.min,
@@ -51,7 +51,7 @@ Future showSessionOverviewDialog(Item item) {
               ],
             ),
           // venue
-          if (item.data['v'] != null) AppDivider(),
+          if (item.data['v'] != null) AppDivider(height: mediumHeight()),
           if (item.data['v'] != null)
             Row(
               mainAxisSize: MainAxisSize.min,
@@ -62,10 +62,10 @@ Future showSessionOverviewDialog(Item item) {
               ],
             ),
           // reminders
-          if (item.data['r'] != null) AppDivider(),
+          if (item.data['r'] != null) AppDivider(height: mediumHeight()),
           if (item.data['r'] != null) SessionReminders(reminderString: item.data['r'] ?? ''),
           // description
-          if (item.data['a'] != null) AppDivider(),
+          if (item.data['a'] != null) AppDivider(height: mediumHeight()),
           if (item.data['a'] != null)
             Row(
               mainAxisSize: MainAxisSize.min,

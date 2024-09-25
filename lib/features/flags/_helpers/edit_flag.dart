@@ -11,8 +11,8 @@ Future<void> editFlag(String newFlag, String color, String previousFlag) async {
     Hive.box('${liveSpace()}_${feature.flags}').put(newFlag, color);
     Hive.box('${liveSpace()}_${feature.flags}').delete(previousFlag);
 
-    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.cloud(feature.flags), action: 'd', itemId: previousFlag);
-    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.cloud(feature.flags), action: 'c', itemId: newFlag, data: color);
+    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.flags, action: 'd', itemId: previousFlag);
+    await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.flags, action: 'c', itemId: newFlag, data: color);
   } catch (e) {
     errorPrint('edit-flag', e);
   }

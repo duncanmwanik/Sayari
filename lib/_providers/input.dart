@@ -40,9 +40,9 @@ class InputProvider with ChangeNotifier {
     clearData();
     isNew = isNw;
     item = itm;
-    type = typ.toString();
-    itemId = id.toString();
-    subId = sId.toString();
+    type = typ;
+    itemId = id;
+    subId = sId;
     data = {...dta};
     previousData = {...dta};
     if (notify) notifyListeners();
@@ -75,7 +75,7 @@ class InputProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void removeAll(String start) {
+  void removeStart(String start) {
     data.removeWhere((key, value) => key.toString().startsWith(start));
     notifyListeners();
   }

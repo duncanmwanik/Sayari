@@ -5,10 +5,10 @@ import 'package:provider/provider.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/_providers.dart';
-import '../../../_providers/quill.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
+import '../state/quill.dart';
 import 'embed_image.dart';
 
 Widget getQuillToolbar() {
@@ -135,7 +135,7 @@ Widget getQuillToolbar() {
           tooltip: full ? 'Minimize' : 'More Styling',
           noStyling: !full,
           isSquare: true,
-          child: AppIcon(full ? Icons.close_rounded : Icons.add_rounded, faded: true),
+          child: AppIcon(full ? Icons.close_rounded : Icons.more_horiz, faded: true),
         ),
       ],
     );

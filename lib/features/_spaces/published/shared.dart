@@ -4,6 +4,7 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../_notes/item_view.dart';
@@ -35,9 +36,9 @@ class PublishBookBody extends StatelessWidget {
                         mph(),
                         PublishedBookIntro(sharedData: sharedData, data: data, userName: userName),
                         mph(),
-                        AppDivider(height: 0),
+                        AppDivider(),
                         mph(),
-                        Flexible(child: ListOfItems(data: data)),
+                        Flexible(child: ListOfItems(data: data, type: feature.notes)),
                       ],
                     ),
                   )
@@ -55,7 +56,7 @@ class PublishBookBody extends StatelessWidget {
                         decoration: BoxDecoration(
                           border: Border(left: BorderSide(color: styler.borderColor(), width: isDark() ? 0.5 : 1)),
                         ),
-                        child: ListOfItems(data: data),
+                        child: ListOfItems(data: data, type: feature.notes),
                       )),
                     ],
                   ),

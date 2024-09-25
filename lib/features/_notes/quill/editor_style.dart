@@ -83,7 +83,7 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
     ),
     h4: DefaultTextBlockStyle(
       TextStyle(
-        fontSize: isOverview ? fontSize + 0 : 4,
+        fontSize: isOverview ? fontSize + 0 : fontSize + 4,
         color: quillTextColor,
         letterSpacing: -0.4,
         height: 1.1,

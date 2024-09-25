@@ -4,19 +4,19 @@ import 'package:provider/provider.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/misc.dart';
-import '../../_helpers/date_time/date_info.dart';
-import '../../_helpers/date_time/jump_to_date.dart';
-import '../../_helpers/date_time/misc.dart';
-import '../../_providers/datetime.dart';
+import '../../_helpers/_common/helpers.dart';
 import '../../_providers/views.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
-import '../_home/panel/creator.dart';
+import '_helpers/date_time/date_info.dart';
+import '_helpers/date_time/jump_to_date.dart';
+import '_helpers/date_time/misc.dart';
 import '_helpers/go_to_today.dart';
+import '_helpers/helpers.dart';
 import '_helpers/swipe.dart';
 import '_w/view_chooser.dart';
+import 'state/datetime.dart';
 
 class CalendarOptions extends StatelessWidget {
   const CalendarOptions({super.key});
@@ -40,7 +40,15 @@ class CalendarOptions extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
+                // previous date
+                AppButton(
+                  tooltip: 'Previous',
+                  isSquare: true,
+                  child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
+                  onPressed: () => swipeToNew(direction: 'left'),
+                ),
                 // date info
+                spw(),
                 Flexible(
                   child: AppButton(
                     onPressed: () => jumpToDateDialog(),
@@ -49,18 +57,10 @@ class CalendarOptions extends StatelessWidget {
                     noStyling: true,
                     padding: noPadding,
                     hoverColor: transparent,
-                    child: AppText(size: extra, text: infoList[views.calendarView], weight: FontWeight.bold),
+                    child: AppText(size: extra, text: infoList[views.calendarView], weight: FontWeight.w800),
                   ),
                 ),
                 // next date
-                mpw(),
-                // previous date
-                AppButton(
-                  tooltip: 'Previous',
-                  isSquare: true,
-                  child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
-                  onPressed: () => swipeToNew(direction: 'left'),
-                ),
                 spw(),
                 AppButton(
                   tooltip: 'Next',
@@ -78,10 +78,21 @@ class CalendarOptions extends StatelessWidget {
               ],
             ),
           ),
-          // Spacer(),
           spw(),
           // add session
-          if (isNotPhone()) Creator(),
+          if (isNotPhone())
+            AppButton(
+              onPressed: () => prepareSessionCreation(),
+              smallLeftPadding: !isTabAndBelow(),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AppIcon(Icons.add),
+                  if (isNotPhone()) spw(),
+                  if (isNotPhone()) Flexible(child: AppText(text: 'Create Session', overflow: TextOverflow.ellipsis)),
+                ],
+              ),
+            ),
           if (isNotPhone()) spw(),
           // choose view
           ViewChooser(),

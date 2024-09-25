@@ -91,8 +91,8 @@ Future<void> showAppBottomSheet({
                                 padding: EdgeInsets.only(top: 6, left: 6, right: 6),
                                 child: header,
                               ),
-                            if (header != null) ph(5),
-                            if (header != null && showTopDivider) AppDivider(height: 0),
+                            if (header != null) ph(6),
+                            if (header != null && showTopDivider) AppDivider(),
                             //
                             // Content ----------
                             //
@@ -116,7 +116,7 @@ Future<void> showAppBottomSheet({
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  AppDivider(height: 0),
+                                  AppDivider(),
                                   Padding(
                                     padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
                                     child: footer,

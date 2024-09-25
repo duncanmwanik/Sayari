@@ -13,17 +13,17 @@ import '../../_widgets/others/forms/input.dart';
 import '../../_widgets/others/others/scroll.dart';
 import '../../_widgets/sheets/bottom_sheet.dart';
 import '../files/overview.dart';
-import '../share/shared_item.dart';
+import '../share/shared_settings.dart';
 import '_helpers/ontap.dart';
 import '_w/footer.dart';
 import 'actions/input_actions.dart';
+import 'bookings/_w/booking.dart';
+import 'finance/finance.dart';
+import 'habits/habit.dart';
 import 'items/details.dart';
+import 'links/_w/links.dart';
 import 'quill/editor.dart';
-import 'type/bookings/_w/booking.dart';
-import 'type/finance/finance.dart';
-import 'type/habits/habit.dart';
-import 'type/links/_w/links.dart';
-import 'type/tasks/task_options.dart';
+import 'tasks/task_options.dart';
 
 Future<void> showNoteBottomSheet({String? id, bool isMinimized = false}) async {
   await showAppBottomSheet(

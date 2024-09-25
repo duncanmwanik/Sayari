@@ -26,15 +26,20 @@ String getTimerString(Duration timer) {
   return '${minutes.length < 2 ? '0$minutes' : minutes}:${seconds.length < 2 ? '0$seconds' : seconds}';
 }
 
-void startTimer(String type, {int? remainingTime}) {
-  Duration timer = Duration(minutes: int.parse(state.pomodoro.data['${type}t'] ?? '1'));
-
+void chooseTimer(String type) {
   state.pomodoro.reset();
   state.pomodoro.updateCurrentTimer(type);
+}
+
+void startTimer(String type, {int? remainingTime}) {
+  Duration timer = Duration(
+    minutes: int.parse(state.pomodoro.data['${type}t'] ?? '1'),
+  );
+
   state.pomodoro.updateStartStop(remainingTime != null ? Duration(seconds: remainingTime) : timer);
 
   state.pomodoro.updateCounter(Timer.periodic(Duration(seconds: 1), (counter_) {
-    // if timer is done
+    // if timer is done`
     if (getRemainingTime() == 0) {
       printThis('done timing');
       counter_.cancel();

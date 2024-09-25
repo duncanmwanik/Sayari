@@ -27,7 +27,7 @@ Future<void> showSessionBottomSheet() async {
 
   await showAppDialog(
     smallTitlePadding: true,
-    showDivider: false, padding: padding(p: 8),
+    // smallTitleColor: false,
     //
     title: Row(
       children: [

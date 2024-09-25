@@ -26,7 +26,7 @@ bool validateInput({required String type, bool validate = true}) {
       }
     }
 
-    if (type == feature.items) {
+    if (type == feature.notes) {
       if (isCreate && title.isEmpty && state.quill.controller.document.toPlainText().trim().isEmpty) {
         return false;
       }

@@ -12,17 +12,19 @@ class MonthDaySessionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: List.generate(
-        todaySessionsMap.length > 1 ? 2 : todaySessionsMap.length,
-        (index) {
-          String itemId = todaySessionsMap.keys.toList()[index];
-          Item item = Item(id: itemId, data: todaySessionsMap[itemId], extra: date);
+        child: SingleChildScrollView(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: List.generate(
+          todaySessionsMap.length,
+          (index) {
+            String itemId = todaySessionsMap.keys.toList()[index];
+            Item item = Item(id: itemId, data: todaySessionsMap[itemId], extra: date);
 
-          return MonthBox(item: item);
-        },
+            return MonthBox(item: item);
+          },
+        ),
       ),
     ));
   }

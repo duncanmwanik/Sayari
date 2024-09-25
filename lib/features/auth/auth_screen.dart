@@ -131,7 +131,7 @@ class _SignInScreenState extends State<AuthScreen> {
                                 ),
                               //
                               ph(9),
-                              if (!isResetPassword) AppText(text: 'Or continue with email', size: small, extraFaded: true),
+                              if (!isResetPassword) AppText(text: 'OR', size: small, extraFaded: true),
                               if (!isResetPassword) ph(9),
                               //
                               Column(
@@ -262,7 +262,8 @@ class _SignInScreenState extends State<AuthScreen> {
                                               });
                                             },
                                             noStyling: true,
-                                            child: AppText(text: 'Forgot password?', weight: isDark() ? FontWeight.w400 : null),
+                                            child:
+                                                AppText(text: 'Forgot password?', weight: isDark() ? FontWeight.w400 : null, faded: true),
                                           ),
                                         //
                                         if (isSignIn)

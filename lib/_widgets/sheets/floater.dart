@@ -92,7 +92,7 @@ class Floater extends StatelessWidget {
                               child: header,
                             ),
                           if (header != null) ph(5),
-                          if (header != null && showTopDivider) AppDivider(height: 0),
+                          if (header != null && showTopDivider) AppDivider(),
                           //
                           // Content ----------
                           //
@@ -115,7 +115,7 @@ class Floater extends StatelessWidget {
                             Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                AppDivider(height: 0),
+                                AppDivider(),
                                 Padding(
                                   padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
                                   child: footer,
