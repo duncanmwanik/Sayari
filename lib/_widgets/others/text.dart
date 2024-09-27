@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:styled_text/styled_text.dart';
 
 import '../../__styling/variables.dart';
@@ -42,7 +43,7 @@ class AppText extends StatelessWidget {
       textAlign: textAlign,
       overflow: overflow ?? TextOverflow.visible,
       maxLines: maxlines,
-      style: TextStyle(
+      style: GoogleFonts.inter(
         fontSize: size ?? 13,
         fontWeight: weight ?? (bold ? FontWeight.bold : FontWeight.w500),
         color: color ?? styler.textColor(faded: faded, extraFaded: extraFaded, bgColor: bgColor),
@@ -68,9 +69,9 @@ class HtmlText extends StatelessWidget {
       text: text,
       overflow: overflow,
       textAlign: textAlign,
-      style: TextStyle(fontSize: size, color: color ?? styler.textColor()),
+      style: GoogleFonts.inter(fontSize: size, color: color ?? styler.textColor()),
       tags: {
-        'b': StyledTextTag(style: TextStyle(fontWeight: FontWeight.bold, color: color ?? styler.textColor(), fontSize: size)),
+        'b': StyledTextTag(style: GoogleFonts.inter(fontWeight: FontWeight.bold, color: color ?? styler.textColor(), fontSize: size)),
       },
     );
   }

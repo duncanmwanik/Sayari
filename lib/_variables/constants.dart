@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-const String sayariDefaultPath = kDebugMode ? 'http://localhost:54522' : 'https://getsayari.web.app';
+const String sayariDefaultPath = kDebugMode ? 'http://localhost:64593' : 'https://getsayari.web.app';
 
 Map specialLabelsIcons = {'Trash': Icons.auto_delete_rounded, 'Archive': Icons.archive_rounded, 'All': Icons.label_rounded};
 

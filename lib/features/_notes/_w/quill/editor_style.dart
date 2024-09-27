@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../__styling/variables.dart';
 import '../../../../_widgets/others/icons.dart';
@@ -10,131 +11,115 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
   Color quillFadedTextColor = styler.textColor(faded: true, bgColor: bgColor);
   FontWeight weight = FontWeight.w500;
   FontWeight bold = FontWeight.bold;
-  String fontFamily = 'Inter';
   double fontSize = 15;
 
   return DefaultStyles(
     placeHolder: DefaultTextBlockStyle(
-      TextStyle(
-          fontSize: isOverview ? fontSize - 4 : fontSize,
-          height: 1.3,
-          color: quillFadedTextColor,
-          fontFamily: fontFamily,
-          fontWeight: weight),
+      GoogleFonts.inter(fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillFadedTextColor, fontWeight: weight),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     leading: DefaultTextBlockStyle(
-      TextStyle(
-          fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillTextColor, fontFamily: fontFamily, fontWeight: weight),
+      GoogleFonts.inter(fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillTextColor, fontWeight: weight),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     paragraph: DefaultTextBlockStyle(
-      TextStyle(
-          fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillTextColor, fontFamily: fontFamily, fontWeight: weight),
+      GoogleFonts.inter(fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillTextColor, fontWeight: weight),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     h1: DefaultTextBlockStyle(
-      TextStyle(
+      GoogleFonts.inter(
         fontSize: isOverview ? fontSize + 14 : fontSize + 18,
         color: quillTextColor,
         letterSpacing: -1,
         height: 1,
         fontWeight: bold,
         decoration: TextDecoration.none,
-        fontFamily: fontFamily,
       ),
       VerticalSpacing(fontSize, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     h2: DefaultTextBlockStyle(
-      TextStyle(
+      GoogleFonts.inter(
         fontSize: isOverview ? fontSize + 10 : fontSize + 14,
         color: quillTextColor,
         letterSpacing: -0.8,
         height: 1.067,
         fontWeight: bold,
         decoration: TextDecoration.none,
-        fontFamily: fontFamily,
       ),
       VerticalSpacing(8, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     h3: DefaultTextBlockStyle(
-      TextStyle(
+      GoogleFonts.inter(
         fontSize: isOverview ? fontSize + 4 : 8,
         color: quillTextColor,
         letterSpacing: -0.5,
         height: 1.083,
         fontWeight: bold,
         decoration: TextDecoration.none,
-        fontFamily: fontFamily,
       ),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     h4: DefaultTextBlockStyle(
-      TextStyle(
+      GoogleFonts.inter(
         fontSize: isOverview ? fontSize + 0 : fontSize + 4,
         color: quillTextColor,
         letterSpacing: -0.4,
         height: 1.1,
         fontWeight: bold,
         decoration: TextDecoration.none,
-        fontFamily: fontFamily,
       ),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     h5: DefaultTextBlockStyle(
-      TextStyle(
+      GoogleFonts.inter(
         fontSize: isOverview ? fontSize - 2 : fontSize + 2,
         color: quillTextColor,
         letterSpacing: -0.2,
         height: 1.11,
         fontWeight: bold,
         decoration: TextDecoration.none,
-        fontFamily: fontFamily,
       ),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     h6: DefaultTextBlockStyle(
-      TextStyle(
+      GoogleFonts.inter(
         fontSize: isOverview ? fontSize - 4 : fontSize,
         color: quillTextColor,
         letterSpacing: -0.1,
         height: 1.125,
         fontWeight: bold,
         decoration: TextDecoration.none,
-        fontFamily: fontFamily,
       ),
       VerticalSpacing(0, 0),
       VerticalSpacing(0, 0),
       null,
     ),
     lists: DefaultListBlockStyle(
-      TextStyle(
-          fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillTextColor, fontFamily: fontFamily, fontWeight: weight),
+      GoogleFonts.inter(fontSize: isOverview ? fontSize - 4 : fontSize, height: 1.3, color: quillTextColor, fontWeight: weight),
       VerticalSpacing(6, 0),
       VerticalSpacing(0, 6),
       null,
       CustomQuillCheckbox(isOverview, bgColor),
     ),
     code: DefaultTextBlockStyle(
-      TextStyle(
+      GoogleFonts.inter(
         color: quillTextColor,
-        fontFamily: fontFamily,
         fontWeight: weight,
         fontSize: fontSize - 2,
         height: 1.15,
@@ -147,14 +132,14 @@ DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
         border: Border.all(color: quillTextColor.withOpacity(0.05), width: 1),
       ),
     ),
-    link: TextStyle(
+    link: GoogleFonts.inter(
       color: styler.accentColor(),
       fontWeight: bold,
     ),
     inlineCode: InlineCodeStyle(
       backgroundColor: styler.appColor(1),
       radius: Radius.circular(borderRadiusSmall),
-      style: TextStyle(fontSize: 14, color: quillTextColor, fontFamily: fontFamily),
+      style: GoogleFonts.inter(fontSize: 14, color: quillTextColor),
     ),
   );
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
@@ -48,13 +49,13 @@ class NumericFormInput extends StatelessWidget {
           keyboardType: TextInputType.number,
           inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}'))],
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: fontSize ?? medium, color: textColor ?? styler.textColor(), fontWeight: FontWeight.w400),
+          style: GoogleFonts.inter(fontSize: fontSize ?? medium, color: textColor ?? styler.textColor(), fontWeight: FontWeight.w400),
           decoration: InputDecoration(
             hintText: hintText ?? 'No',
-            hintStyle: TextStyle(fontSize: fontSize ?? medium, color: styler.textColor(faded: true), fontWeight: FontWeight.w400),
+            hintStyle: GoogleFonts.inter(fontSize: fontSize ?? medium, color: styler.textColor(faded: true), fontWeight: FontWeight.w400),
             contentPadding: const EdgeInsets.symmetric(horizontal: 10),
             border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(borderRadiusLarge)),
-            counterStyle: const TextStyle(height: double.minPositive),
+            counterStyle: GoogleFonts.inter(height: double.minPositive),
             counterText: '',
           ),
         ),

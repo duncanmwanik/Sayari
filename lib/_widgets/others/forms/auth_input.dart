@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../__styling/helpers.dart';
 import '../../../__styling/variables.dart';
@@ -59,13 +60,13 @@ class _EmailFormInputState extends State<FormInput> {
         onFieldSubmitted: widget.onFieldSubmitted,
         textInputAction: widget.textInputAction,
         obscureText: isPassword && hidePassword,
-        style: const TextStyle(fontSize: medium),
+        style: GoogleFonts.inter(fontSize: medium),
         cursorColor: styler.accentColor(),
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           hintText: widget.hintText,
-          hintStyle: const TextStyle(fontSize: medium),
-          errorStyle: const TextStyle(fontSize: small, color: Colors.red),
+          hintStyle: GoogleFonts.inter(fontSize: medium),
+          errorStyle: GoogleFonts.inter(fontSize: small, color: Colors.red),
           contentPadding: const EdgeInsets.only(left: 7, right: 7),
           border: InputBorder.none,
           isDense: true,

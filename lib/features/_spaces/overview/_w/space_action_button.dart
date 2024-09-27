@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
@@ -22,7 +23,7 @@ Widget spaceActionButton({required String label, required IconData iconData, Fun
               spw(),
               Text(
                 label,
-                style: TextStyle(fontSize: medium),
+                style: GoogleFonts.inter(fontSize: medium),
               ),
             ],
           )),

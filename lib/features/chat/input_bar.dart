@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
@@ -91,10 +92,10 @@ class MessageInputBar extends StatelessWidget {
                                   textInputAction: kIsWeb ? TextInputAction.next : null,
                                   minLines: 1,
                                   maxLines: 8,
-                                  style: TextStyle(fontSize: medium, color: styler.textColor()),
+                                  style: GoogleFonts.inter(fontSize: medium, color: styler.textColor()),
                                   decoration: InputDecoration(
                                     hintText: 'Type a message...',
-                                    hintStyle: TextStyle(fontSize: medium, color: styler.textColor(faded: true)),
+                                    hintStyle: GoogleFonts.inter(fontSize: medium, color: styler.textColor(faded: true)),
                                     filled: false,
                                     contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                                     border: InputBorder.none,

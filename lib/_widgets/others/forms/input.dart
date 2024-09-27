@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../__styling/variables.dart';
 import '../../../_helpers/helpers.dart';
@@ -103,14 +104,14 @@ class _DataInputState extends State<DataInput> {
       textInputAction: widget.textInputAction,
       textCapitalization: widget.textCapitalization,
       inputFormatters: widget.isNumerals ? [FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d{0,2}'))] : null,
-      style: TextStyle(
+      style: GoogleFonts.inter(
           fontSize: widget.fontSize, color: widget.textColor ?? styler.textColor(bgColor: widget.bgColor), fontWeight: widget.weight),
       textAlignVertical: TextAlignVertical.center,
       cursorColor: styler.accentColor(),
       decoration: InputDecoration(
         hintText: widget.hintText,
         contentPadding: widget.contentPadding,
-        hintStyle: TextStyle(
+        hintStyle: GoogleFonts.inter(
             fontSize: widget.fontSize,
             color: widget.textColor ?? styler.textColor(faded: true, bgColor: widget.bgColor),
             fontWeight: widget.weight),

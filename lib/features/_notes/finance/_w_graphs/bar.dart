@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BarChartSample2 extends StatefulWidget {
   const BarChartSample2({super.key});
@@ -62,14 +63,14 @@ class BarChartSample2State extends State<BarChartSample2> {
                 ),
                 Text(
                   'Transactions',
-                  style: TextStyle(color: Colors.white, fontSize: 22),
+                  style: GoogleFonts.inter(color: Colors.white, fontSize: 22),
                 ),
                 SizedBox(
                   width: 4,
                 ),
                 Text(
                   'state',
-                  style: TextStyle(color: Color(0xff77839a), fontSize: 16),
+                  style: GoogleFonts.inter(color: Color(0xff77839a), fontSize: 16),
                 ),
               ],
             ),
@@ -163,7 +164,7 @@ class BarChartSample2State extends State<BarChartSample2> {
   }
 
   Widget leftTitles(double value, TitleMeta meta) {
-    const style = TextStyle(
+    TextStyle style = GoogleFonts.inter(
       color: Color(0xff7589a2),
       fontWeight: FontWeight.bold,
       fontSize: 14,
@@ -190,7 +191,7 @@ class BarChartSample2State extends State<BarChartSample2> {
 
     final Widget text = Text(
       titles[value.toInt()],
-      style: TextStyle(
+      style: GoogleFonts.inter(
         color: Color(0xff7589a2),
         fontWeight: FontWeight.bold,
         fontSize: 14,

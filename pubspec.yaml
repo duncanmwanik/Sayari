@@ -29,6 +29,7 @@ dependencies:
   # navigation
   go_router: ^14.2.7
   # style & assets
+  google_fonts: ^6.2.1
   flutter_svg: ^2.0.9
   font_awesome_flutter: ^10.7.0
   responsive_sizer: ^3.1.1
@@ -60,7 +61,7 @@ dependencies:
   file: any
 
 dependency_overrides:
-  # intl: 0.17.0
+  http: 1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -77,18 +78,18 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/emojis/
-  fonts:
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter/Inter_24pt-Black.ttf
-        - asset: assets/fonts/Inter/Inter_24pt-ExtraBold.ttf
-        - asset: assets/fonts/Inter/Inter_24pt-Bold.ttf
-        - asset: assets/fonts/Inter/Inter_24pt-SemiBold.ttf
-        - asset: assets/fonts/Inter/Inter_24pt-Medium.ttf
-        - asset: assets/fonts/Inter/Inter_24pt-Regular.ttf
-        - asset: assets/fonts/Inter/Inter_24pt-Light.ttf
-        - asset: assets/fonts/Inter/Inter_24pt-ExtraLight.ttf
-        - asset: assets/fonts/Inter/Inter_24pt-Thin.ttf
+  # fonts:
+  #   - family: Inter
+  #     fonts:
+  #       - asset: assets/fonts/Inter/Inter_24pt-Black.ttf
+  #       - asset: assets/fonts/Inter/Inter_24pt-ExtraBold.ttf
+  #       - asset: assets/fonts/Inter/Inter_24pt-Bold.ttf
+  #       - asset: assets/fonts/Inter/Inter_24pt-SemiBold.ttf
+  #       - asset: assets/fonts/Inter/Inter_24pt-Medium.ttf
+  #       - asset: assets/fonts/Inter/Inter_24pt-Regular.ttf
+  #       - asset: assets/fonts/Inter/Inter_24pt-Light.ttf
+  #       - asset: assets/fonts/Inter/Inter_24pt-ExtraLight.ttf
+  #       - asset: assets/fonts/Inter/Inter_24pt-Thin.ttf
 
 flutter_launcher_icons:
   android: "launcher_icon"

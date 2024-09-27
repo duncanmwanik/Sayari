@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../__styling/variables.dart';
 
@@ -94,7 +95,7 @@ class Lines extends StatelessWidget {
       ];
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
+    TextStyle style = GoogleFonts.inter(
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
@@ -130,7 +131,7 @@ class Lines extends StatelessWidget {
       );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
+    TextStyle style = GoogleFonts.inter(
       fontWeight: FontWeight.bold,
       fontSize: 16,
     );
@@ -317,7 +318,7 @@ class LineChartSample1State extends State<LineChartSample1> {
               ),
               Text(
                 'Monthly Sales',
-                style: TextStyle(
+                style: GoogleFonts.inter(
                   color: styler.textColor(),
                   fontSize: 32,
                   fontWeight: FontWeight.bold,

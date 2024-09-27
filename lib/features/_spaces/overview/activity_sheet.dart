@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:styled_text/styled_text.dart';
 
@@ -47,9 +48,10 @@ Future<void> showActivityBottomSheet() async {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusSmall)),
                       title: StyledText(
                         text: activityText,
-                        style: TextStyle(color: styler.textColor(), fontWeight: FontWeight.normal, fontSize: medium),
+                        style: GoogleFonts.inter(color: styler.textColor(), fontWeight: FontWeight.normal, fontSize: medium),
                         tags: {
-                          'b': StyledTextTag(style: TextStyle(fontWeight: FontWeight.bold, color: styler.textColor(), fontSize: medium)),
+                          'b': StyledTextTag(
+                              style: GoogleFonts.inter(fontWeight: FontWeight.bold, color: styler.textColor(), fontSize: medium)),
                         },
                       ),
                       subtitle: AppText(size: small, text: date, weight: FontWeight.w400, faded: true),

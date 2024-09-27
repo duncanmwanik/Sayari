@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -55,7 +56,7 @@ class SfCalendar extends StatelessWidget {
           headerStyle: DateRangePickerHeaderStyle(
             backgroundColor: transparent,
             textAlign: TextAlign.center,
-            textStyle: TextStyle(
+            textStyle: GoogleFonts.inter(
               fontWeight: FontWeight.bold,
               fontSize: isOverview ? mediumSmall : medium,
               color: styler.textColor(faded: isOverview),
@@ -65,7 +66,7 @@ class SfCalendar extends StatelessWidget {
           monthViewSettings: DateRangePickerMonthViewSettings(
             showTrailingAndLeadingDates: true,
             viewHeaderStyle: DateRangePickerViewHeaderStyle(
-              textStyle: TextStyle(
+              textStyle: GoogleFonts.inter(
                 fontSize: tiny,
                 fontWeight: FontWeight.w500,
                 color: styler.textColor(faded: true),
@@ -74,11 +75,11 @@ class SfCalendar extends StatelessWidget {
           ),
           //month cells
           monthCellStyle: DateRangePickerMonthCellStyle(
-            textStyle: TextStyle(
+            textStyle: GoogleFonts.inter(
               fontSize: isOverview ? tiny : null,
               color: styler.textColor(),
             ),
-            todayTextStyle: TextStyle(
+            todayTextStyle: GoogleFonts.inter(
               fontSize: isOverview ? tiny : null,
               color: styler.textColor(),
             ),
@@ -92,17 +93,17 @@ class SfCalendar extends StatelessWidget {
                     color: styler.appColor(styler.isDark ? 0.3 : 1),
                     borderRadius: BorderRadius.circular(borderRadiusTiny),
                   ),
-            trailingDatesTextStyle: TextStyle(
+            trailingDatesTextStyle: GoogleFonts.inter(
               fontSize: isOverview ? tiny : null,
               color: styler.textColor(extraFaded: true),
             ),
-            leadingDatesTextStyle: TextStyle(
+            leadingDatesTextStyle: GoogleFonts.inter(
               fontSize: isOverview ? tiny : null,
               color: styler.textColor(extraFaded: true),
             ),
           ),
           //selected cells
-          selectionTextStyle: TextStyle(
+          selectionTextStyle: GoogleFonts.inter(
             fontSize: isOverview ? tiny : null,
             fontWeight: isOverview ? FontWeight.w500 : FontWeight.bold,
             color: white,

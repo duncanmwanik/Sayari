@@ -69,7 +69,7 @@ class Item {
   bool isBooking() => data[feature.bookings] != null;
   bool isPortfolio() => data[feature.portfolios] != null;
   bool isShared() => data[feature.share] != null;
-  bool isPublished() => data['sp'] == '1';
+  bool isPublished() => data[feature.publish] == '1';
   bool isPinned() => data['p'] == '1';
   bool isArchived() => data['a'] == '1';
   bool isDeleted() => data['x'] == '1';

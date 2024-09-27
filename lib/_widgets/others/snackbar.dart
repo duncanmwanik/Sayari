@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:styled_text/styled_text.dart';
 
 import '../../__styling/breakpoints.dart';
@@ -24,9 +25,9 @@ void showSnackBar(String message) {
               Expanded(
                 child: StyledText(
                   text: message,
-                  style: const TextStyle(fontWeight: FontWeight.w500, fontSize: medium),
+                  style: GoogleFonts.inter(fontWeight: FontWeight.w500, fontSize: medium),
                   tags: {
-                    'b': StyledTextTag(style: const TextStyle(fontWeight: FontWeight.bold, fontSize: medium)),
+                    'b': StyledTextTag(style: GoogleFonts.inter(fontWeight: FontWeight.bold, fontSize: medium)),
                   },
                 ),
               ),

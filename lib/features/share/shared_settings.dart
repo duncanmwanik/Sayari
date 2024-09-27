@@ -79,7 +79,7 @@ class Share extends StatelessWidget {
                                 yeslabel: 'Unshare',
                                 onAccept: () {
                                   input.remove(feature.share);
-                                  input.remove('sp');
+                                  input.remove(feature.publish);
                                   shareItem(delete: true, id: input.item.id);
                                 },
                               ),
