@@ -25,7 +25,7 @@ class WeekBox extends StatelessWidget {
       return Flexible(
         child: InkWell(
           onTap: () => showSessionOverviewDialog(item),
-          onLongPress: () => prepareSessionEditing(item),
+          onLongPress: () => editSession(item),
           borderRadius: BorderRadius.circular(borderRadiusTiny),
           child: Container(
             padding: EdgeInsets.all(5),

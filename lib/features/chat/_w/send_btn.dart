@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../_providers/input.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
-import '../_helpers/send_message.dart';
+import '../_helpers/send.dart';
 
 class SendMessageButton extends StatelessWidget {
   const SendMessageButton({super.key});
@@ -21,7 +21,7 @@ class SendMessageButton extends StatelessWidget {
         height: 45,
         width: 45,
         isSquare: true,
-        child: AppIcon(Icons.arrow_forward_rounded, extraFaded: !enabled),
+        child: AppIcon(Icons.send, extraFaded: !enabled),
       );
     });
   }

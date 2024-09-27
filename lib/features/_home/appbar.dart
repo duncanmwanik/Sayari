@@ -11,7 +11,7 @@ import '../_notes/_w/note_options.dart';
 import '../_notes/actions/item_selection.dart';
 import '../_notes/state/selection.dart';
 import '../calendar/info_header.dart';
-import '../chat/_w/chat_options.dart';
+import '../chat/_w/filters.dart';
 import '../pomodoro/w/pomo_indicator.dart';
 import '../search/search_btn.dart';
 import '../user/user_dp.dart';
@@ -45,7 +45,7 @@ class CustomAppBar extends StatelessWidget {
                         if (!isSmallPC()) Expanded(child: SpaceName()),
                         if (isSmallPC() && views.isCalendar()) Expanded(child: CalendarOptions()),
                         if (isSmallPC() && (views.isNotes() || views.isTasks())) Expanded(child: NoteOptions()),
-                        if (isSmallPC() && views.isChat()) Expanded(child: ChatOptions()),
+                        if (isSmallPC() && views.isChat()) Expanded(child: ChatFilters()),
                         //
                         Row(
                           children: [
@@ -68,7 +68,7 @@ class CustomAppBar extends StatelessWidget {
             if (!isSmallPC() && (views.isCalendar() || views.isNotes() || views.isTasks() || views.isChat())) sph(),
             if (!isSmallPC() && (views.isNotes() || views.isTasks())) NoteOptions(),
             if (!isSmallPC() && views.isCalendar()) CalendarOptions(),
-            if (!isSmallPC() && views.isChat()) ChatOptions(),
+            if (!isSmallPC() && views.isChat()) ChatFilters(),
             //
           ],
         ),

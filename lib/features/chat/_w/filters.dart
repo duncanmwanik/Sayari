@@ -5,8 +5,8 @@ import '../../../__styling/spacing.dart';
 import '../state/chat.dart';
 import 'option.dart';
 
-class ChatOptions extends StatelessWidget {
-  const ChatOptions({super.key});
+class ChatFilters extends StatelessWidget {
+  const ChatFilters({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +16,9 @@ class ChatOptions extends StatelessWidget {
         runSpacing: smallWidth(),
         children: [
           //
-          ChatOption(type: 'All'),
-          ChatOption(type: 'Pinned', iconData: Icons.push_pin_outlined),
-          ChatOption(type: 'Starred', iconData: Icons.star_outlined),
+          ChatFilter(type: 'All'),
+          ChatFilter(type: 'Pinned', iconData: Icons.push_pin_outlined),
+          ChatFilter(type: 'Starred', iconData: Icons.star_outlined),
           //
         ],
       );

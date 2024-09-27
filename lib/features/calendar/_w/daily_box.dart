@@ -26,7 +26,7 @@ class DayBox extends StatelessWidget {
       padding: EdgeInsets.only(top: 5, right: 10, left: 10),
       child: AppButton(
         onPressed: () => showSessionOverviewDialog(item),
-        onLongPress: () => prepareSessionEditing(item),
+        onLongPress: () => editSession(item),
         color: backgroundColors[item.color()]!.color,
         padding: EdgeInsets.only(top: 3, bottom: 7, left: 6, right: 4),
         borderRadius: borderRadiusTiny,

@@ -25,6 +25,7 @@ class Features {
   bool isCalendar(String type) => calendar == type;
   bool isNote(String type) => notes == type;
   bool isTask(String type) => tasks == type;
+  bool isChat(String type) => chat == type;
   bool isFinance(String type) => finances == type;
   bool isLink(String type) => links == type;
   bool isBooking(String type) => bookings == type;

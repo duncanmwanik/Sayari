@@ -85,15 +85,18 @@ class DateInfo {
   int month() => dateTime.month;
   int year() => dateTime.year;
 
-  bool isToday() => dateTime.day == now.day && dateTime.month == now.month && dateTime.year == now.year;
+  bool isToday() => date == getDatePart(now);
   bool isCurrentMonth() => state.dateTime.selectedMonth == now.month && state.dateTime.selectedYear == now.year;
   bool isCurrentYear() => state.dateTime.selectedYear == now.year;
   bool isSelectedMonth(String refDate) => dateTime.month == DateTime.parse(refDate).month;
 
   bool isFuture() => dateTime.isAfter(now.add(const Duration(days: 1)));
   bool isPast() => dateTime.isBefore(now.subtract(const Duration(days: 1)));
-
+  bool isYesterday() => date == getDatePart(now.subtract(const Duration(days: 1)));
+  //
   String dayString() => dateTime.day.toString();
   String monthString() => monthNamesListShort[dateTime.month - 1];
   String weekday() => weekDaysList[dateTime.weekday == 7 ? 0 : dateTime.weekday].shortName;
+  //
+  String formatFull() => getDateFull(date);
 }

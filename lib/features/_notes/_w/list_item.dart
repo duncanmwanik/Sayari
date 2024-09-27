@@ -19,7 +19,7 @@ class ListItem extends StatelessWidget {
     return Padding(
       padding: paddingS('b'),
       child: AppButton(
-        onPressed: () => prepareNoteForEdit(item),
+        onPressed: () => editNote(item),
         color: styler.appColor(isDarkOnly() ? 0.3 : 0.5),
         hoverColor: styler.appColor(0.5),
         padding: paddingC('l12,r8,t8,b8'),

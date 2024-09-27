@@ -28,8 +28,8 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-    state.share.unsetType();
     WidgetsBinding.instance.addObserver(this);
+    state.share.unset();
     retryPendingActions();
     listenForKeyboard();
   }
@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     return WillPopScope(
       onWillPop: () => confirmExitApp(),
       child: Scaffold(
-        body: Applayout(),
+        body: AppLayout(),
         drawer: AppDrawer(),
         endDrawer: AppEndDrawer(),
         floatingActionButton: HomeFab(),

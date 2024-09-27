@@ -48,9 +48,9 @@ class DailyView extends StatelessWidget {
                     return Material(
                       color: transparent,
                       child: InkWell(
-                        onTap: () => prepareSessionCreation(date: selectedDate, hour: indexHour),
-                        onDoubleTap: () => prepareSessionCreation(date: selectedDate, hour: indexHour),
-                        onLongPress: () => prepareSessionCreation(date: selectedDate, hour: indexHour),
+                        onTap: () => createSession(date: selectedDate, hour: indexHour),
+                        onDoubleTap: () => createSession(date: selectedDate, hour: indexHour),
+                        onLongPress: () => createSession(date: selectedDate, hour: indexHour),
                         mouseCursor: SystemMouseCursors.basic,
                         hoverColor: hourMap.isNotEmpty ? transparent : styler.appColor(1),
                         highlightColor: hourMap.isNotEmpty ? transparent : styler.appColor(1),

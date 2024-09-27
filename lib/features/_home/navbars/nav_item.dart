@@ -10,7 +10,7 @@ import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/svg.dart';
 import '../../../_widgets/others/text.dart';
-import '../_helpers/change_view.dart';
+import '../_helpers/go_to_view.dart';
 
 Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Function()? onPressed}) {
   return AppButton(

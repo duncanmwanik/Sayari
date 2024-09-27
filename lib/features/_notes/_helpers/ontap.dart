@@ -13,7 +13,7 @@ void onTapNote(Item item) {
     if (item.isDeleted()) {
       showToast(2, 'Restore item to open it.');
     } else {
-      prepareNoteForEdit(item);
+      editNote(item);
     }
   } else {
     if (state.selection.isSelected(item.id)) {

@@ -3,7 +3,7 @@ import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
 import '../new_session/session_dialog.dart';
 
-Future<void> prepareSessionCreation({String? date, int? hour}) async {
+Future<void> createSession({String? date, int? hour}) async {
   state.input.set(Item(
     parent: feature.calendar,
     type: feature.calendar,
@@ -15,7 +15,7 @@ Future<void> prepareSessionCreation({String? date, int? hour}) async {
   showSessionBottomSheet();
 }
 
-Future<void> prepareSessionEditing(Item item) async {
+Future<void> editSession(Item item) async {
   state.input.set(item);
   showSessionBottomSheet();
 }

@@ -8,7 +8,7 @@ import '../../../_widgets/others/icons.dart';
 import '../../explore/explore_sheet.dart';
 import '../../pomodoro/sheet.dart';
 import '../../saved/saved_sheet.dart';
-import '../_helpers/change_view.dart';
+import '../_helpers/go_to_view.dart';
 import '../_helpers/nav.dart';
 import 'pinned_menu.dart';
 
@@ -17,27 +17,26 @@ class NavMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool showWorkspace = !showNavOption(feature.chat);
-    bool showUser =
-        !showNavOption(feature.explore) || !showNavOption(feature.saved) || (!showNavOption(feature.pomodoro) || !showPanelOptions());
+    bool showWorkspace = !showNavItem(feature.chat);
+    bool showUser = !showNavItem(feature.explore) || !showNavItem(feature.saved) || (!showNavItem(feature.pomodoro) || !showPanelOptions());
 
     return AppButton(
       menuItems: [
         // workspace
         if (showWorkspace) MenuItem(label: 'Workspace', faded: true),
-        if (!showNavOption(feature.chat)) MenuItem(label: 'Chat', leading: Icons.message_rounded, onTap: () => goToView(feature.chat)),
+        if (!showNavItem(feature.chat)) MenuItem(label: 'Chat', leading: Icons.message_rounded, onTap: () => goToView(feature.chat)),
         //
         //
         if (showWorkspace) menuDivider(),
         // user
         if (showUser) MenuItem(label: 'User', faded: true),
         //
-        if (!showNavOption(feature.explore)) MenuItem(label: 'Explore', leading: Icons.explore, onTap: () => showExploreSheet()),
+        if (!showNavItem(feature.explore)) MenuItem(label: 'Explore', leading: Icons.explore, onTap: () => showExploreSheet()),
         //
-        if (!showNavOption(feature.saved) || !showPanelOptions())
+        if (!showNavItem(feature.saved) || !showPanelOptions())
           MenuItem(label: 'Saved', leading: Icons.bookmark, onTap: () => showSavedSheet()),
         //
-        if (!showNavOption(feature.pomodoro) || !showPanelOptions())
+        if (!showNavItem(feature.pomodoro) || !showPanelOptions())
           MenuItem(label: 'Pomodoro', leading: Icons.timer, onTap: () => showPomodoroSheet()),
         //
         if (showWorkspace || showUser) menuDivider(),

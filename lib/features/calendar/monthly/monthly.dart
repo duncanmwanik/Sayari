@@ -58,8 +58,8 @@ class MonthlyView extends StatelessWidget {
                                   Map todaySessionsMap = sortSessions(box.get(date.date, defaultValue: {}));
 
                                   return AppButton(
-                                    onPressed: () => prepareSessionCreation(date: date.date, hour: TimeOfDay.now().hour),
-                                    onLongPress: () => prepareSessionCreation(date: date.date, hour: TimeOfDay.now().hour),
+                                    onPressed: () => createSession(date: date.date, hour: TimeOfDay.now().hour),
+                                    onLongPress: () => createSession(date: date.date, hour: TimeOfDay.now().hour),
                                     padding: noPadding,
                                     noStyling: true,
                                     borderRadius: 0,

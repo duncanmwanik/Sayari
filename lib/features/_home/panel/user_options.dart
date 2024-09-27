@@ -17,8 +17,8 @@ class UserOptions extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         //
-        // if (showNavOption(feature.explore)) mph(),
-        // if (showNavOption(feature.explore))
+        // if (showNavItem(feature.explore)) mph(),
+        // if (showNavItem(feature.explore))
         //   AppButton(
         //     onPressed: () => showExploreSheet(),
         //     tooltip: 'Explore',
@@ -28,8 +28,8 @@ class UserOptions extends StatelessWidget {
         //     child: AppIcon(Icons.explore_rounded, faded: true),
         //   ),
         //
-        // if (showNavOption(feature.saved)) mph(),
-        // if (showNavOption(feature.saved))
+        // if (showNavItem(feature.saved)) mph(),
+        // if (showNavItem(feature.saved))
         //   AppButton(
         //     onPressed: () => showSavedSheet(),
         //     tooltip: 'Saved',
@@ -39,8 +39,8 @@ class UserOptions extends StatelessWidget {
         //     child: AppIcon(Icons.bookmark, faded: true),
         //   ),
         //
-        if (showNavOption(feature.pomodoro)) mph(),
-        if (showNavOption(feature.pomodoro))
+        if (showNavItem(feature.pomodoro)) mph(),
+        if (showNavItem(feature.pomodoro))
           AppButton(
             onPressed: () => showPomodoroSheet(),
             tooltip: 'Pomodoro',

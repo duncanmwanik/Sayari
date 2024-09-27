@@ -38,8 +38,8 @@ class VeticalNavigationBox extends StatelessWidget {
                   mph(),
                   navItem(sessionsIcon, size: 17, feature.calendar, views.view == feature.calendar),
                   mph(),
-                  if (showNavOption(feature.chat)) navItem(chatIcon, feature.chat, views.view == feature.chat),
-                  if (showNavOption(feature.chat)) mph(),
+                  if (showNavItem(feature.chat)) navItem(chatIcon, feature.chat, views.view == feature.chat),
+                  if (showNavItem(feature.chat)) mph(),
                   //
                   PanelToggle(),
                   //

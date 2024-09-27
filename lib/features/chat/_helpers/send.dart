@@ -10,6 +10,7 @@ import '../../../_variables/features.dart';
 import '../../../_variables/ui.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../_spaces/_helpers/common.dart';
+import '../../calendar/_helpers/date_time/misc.dart';
 import '../../files/_helpers/handler.dart';
 import '../../user/_helpers/set_user_data.dart';
 
@@ -27,10 +28,13 @@ Future<void> sendMessage() async {
       messageData.addAll({'u': liveUserName()});
 
       Box box = storage(feature.chat);
-      await box.put(messageId, messageData);
+      String date = getDatePart(DateTime.now());
+      Map dateChats = box.get(date, defaultValue: {});
+      dateChats[messageId] = messageData;
+      box.put(date, dateChats);
+
       await handleFilesCloud(spaceId, messageData);
-      await syncToCloud(db: 'spaces', space: spaceId, parent: feature.chat, action: 'c', id: messageId, data: messageData);
-      await box.put(messageId, messageData);
+      await syncToCloud(db: 'spaces', space: spaceId, parent: feature.chat, action: 'c', id: date, sid: messageId, data: messageData);
     }
   } catch (e) {
     showToast(1, 'Message not sent. Tap to resend.');

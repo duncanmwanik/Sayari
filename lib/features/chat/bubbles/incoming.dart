@@ -3,30 +3,28 @@ import 'package:flutter/material.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/images.dart';
 import '../../../_widgets/others/text.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
-import '../../files/_helpers/helper.dart';
 import '../../files/file_list.dart';
-import '../_w/options.dart';
-import '../_w/options_btn.dart';
+import '../_w/actions.dart';
 
 class IncomingMessageBubble extends StatelessWidget {
-  const IncomingMessageBubble({super.key, required this.id, required this.data});
-  final String id;
-  final Map data;
+  const IncomingMessageBubble({super.key, required this.item});
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
-    String userName = data['u'] ?? 'User';
-    String message = data['n'];
-    Map files = getFiles(data);
+    String userName = item.data['u'] ?? 'User';
+    String message = item.data['n'];
+    Map files = item.files();
 
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       return MouseRegion(
-        onEnter: (value) => state.hover.set(id),
+        onEnter: (value) => state.hover.set(item.sid),
         onExit: (value) => state.hover.reset(),
         child: Row(
           children: [
@@ -78,7 +76,7 @@ class IncomingMessageBubble extends StatelessWidget {
                       ph(1),
                       Align(
                         alignment: Alignment.centerRight,
-                        child: AppText(text: getMessageTime(id), size: 8, faded: true, weight: FontWeight.w500),
+                        child: AppText(text: getMessageTime(item.sid), size: 8, faded: true, weight: FontWeight.w500),
                       ),
                       //
                     ],
@@ -88,7 +86,7 @@ class IncomingMessageBubble extends StatelessWidget {
             ),
             // options
             tpw(),
-            MessageOptions(id: id, menuItems: messageMenu(id, data)),
+            MessageActions(item: item),
             //
           ],
         ),

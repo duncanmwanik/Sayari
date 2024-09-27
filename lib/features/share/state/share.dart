@@ -6,7 +6,6 @@ class ShareProvider with ChangeNotifier {
 
   void setData(Map data_) {
     data_ = data_;
-    // notifyListeners();
   }
 
   void setSharedData(Map data_) {
@@ -17,16 +16,17 @@ class ShareProvider with ChangeNotifier {
   //
   String type = '';
   bool isShare() => type.isNotEmpty;
-  void setType(String typ) {
+  void set(String typ) {
     type = typ;
   }
 
-  void unsetType() {
+  void unset() {
     type = '';
   }
 
-  bool isLoading = false;
+  //
 
+  bool isLoading = false;
   void updateIsLoading(bool value) {
     isLoading = value;
     notifyListeners();

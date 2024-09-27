@@ -9,8 +9,8 @@ import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../state/chat.dart';
 
-class ChatOption extends StatelessWidget {
-  const ChatOption({super.key, required this.type, this.iconData});
+class ChatFilter extends StatelessWidget {
+  const ChatFilter({super.key, required this.type, this.iconData});
 
   final String type;
   final IconData? iconData;
@@ -18,18 +18,20 @@ class ChatOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ChatProvider>(builder: (context, chat, child) {
+      bool isSelected = chat.type == type;
+
       return AppButton(
         onPressed: () => chat.setType(type),
-        noStyling: chat.type != type,
-        showBorder: chat.type != type,
+        noStyling: !isSelected,
+        showBorder: !isSelected,
         smallLeftPadding: iconData != null,
-        color: chat.type == type ? styler.accentColor(isDark() ? 4 : 2) : null,
+        color: isSelected ? styler.accentColor(isDark() ? 4 : 2) : null,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             if (iconData != null) AppIcon(iconData, size: medium, faded: true),
             if (iconData != null) spw(),
-            AppText(text: type, faded: true),
+            AppText(text: type, faded: !isSelected),
           ],
         ),
       );

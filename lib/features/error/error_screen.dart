@@ -19,7 +19,7 @@ class ErrorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: getImageBackgroundDecoration(),
+      decoration: backgroundImage(),
       child: Scaffold(
         backgroundColor: transparent,
         body: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {

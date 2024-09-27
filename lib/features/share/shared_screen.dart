@@ -37,7 +37,7 @@ class _ShareScreenState extends State<ShareScreen> {
   @override
   void initState() {
     super.initState();
-    state.share.setType(widget.type);
+    state.share.set(widget.type);
     getSharedData();
   }
 

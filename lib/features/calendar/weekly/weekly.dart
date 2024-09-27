@@ -88,9 +88,9 @@ class WeeklyView extends StatelessWidget {
                                               child: Material(
                                                 color: transparent,
                                                 child: InkWell(
-                                                  onTap: () => prepareSessionCreation(date: date.date, hour: indexHour),
-                                                  onDoubleTap: () => prepareSessionCreation(date: date.date, hour: indexHour),
-                                                  onLongPress: () => prepareSessionCreation(date: date.date, hour: indexHour),
+                                                  onTap: () => createSession(date: date.date, hour: indexHour),
+                                                  onDoubleTap: () => createSession(date: date.date, hour: indexHour),
+                                                  onLongPress: () => createSession(date: date.date, hour: indexHour),
                                                   hoverColor: hourMap.isNotEmpty ? transparent : styler.appColor(1),
                                                   highlightColor: hourMap.isNotEmpty ? transparent : styler.appColor(1),
                                                   mouseCursor: SystemMouseCursors.basic,

@@ -60,6 +60,6 @@ bool hasColour(String? bgColor) {
   }
 }
 
-BoxDecoration getImageBackgroundDecoration() {
+BoxDecoration backgroundImage() {
   return BoxDecoration(image: DecorationImage(image: AssetImage(getDefaultThemeImage()), fit: BoxFit.cover));
 }

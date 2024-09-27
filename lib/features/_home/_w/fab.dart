@@ -27,13 +27,9 @@ class HomeFab extends StatelessWidget {
           padding: EdgeInsets.only(bottom: 50, right: 0),
           child: AppButton(
             onPressed: () {
-              if (state.views.isCalendar()) {
-                prepareSessionCreation();
-              } else if (state.views.isTasks()) {
-                prepareNoteForCreation(feature.tasks);
-              } else if (state.views.isNotes()) {
-                prepareNoteForCreation(feature.notes);
-              }
+              if (state.views.isCalendar()) createSession();
+              if (state.views.isTasks()) createNote(feature.tasks);
+              if (state.views.isNotes()) createNote(feature.notes);
             },
             height: 50,
             width: 50,

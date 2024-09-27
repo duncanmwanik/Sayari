@@ -79,9 +79,8 @@ class YearlyView extends StatelessWidget {
 
                                           return AppButton(
                                               menuItems: sessionListMenu(date.date),
-                                              onLongPress: isSelectedMonth
-                                                  ? () => prepareSessionCreation(date: date.date, hour: TimeOfDay.now().hour)
-                                                  : null,
+                                              onLongPress:
+                                                  isSelectedMonth ? () => createSession(date: date.date, hour: TimeOfDay.now().hour) : null,
                                               noStyling: true,
                                               isSquare: true,
                                               padding: noPadding,

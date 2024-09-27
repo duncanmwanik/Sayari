@@ -39,10 +39,10 @@ class HorizontalNavigationBox extends StatelessWidget {
                         navItem(tasksIcon, size: 20.5, feature.tasks, views.view == feature.tasks),
                         navItem(sessionsIcon, size: 17, feature.calendar, views.view == feature.calendar),
                         //
-                        if (showNavOption(feature.chat)) navItem(chatIcon, feature.chat, views.view == feature.chat),
+                        if (showNavItem(feature.chat)) navItem(chatIcon, feature.chat, views.view == feature.chat),
                         //
                         //
-                        if (showNavOption(feature.explore))
+                        if (showNavItem(feature.explore))
                           navItem(exploreIcon, feature.explore, views.view == feature.explore, onPressed: () => showExploreSheet()),
                         //
                         NavMenu(),

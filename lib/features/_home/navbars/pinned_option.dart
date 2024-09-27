@@ -19,12 +19,12 @@ class PinnedNavOption extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: settingBox.listenable(keys: ['showNavOption_$type']),
+        valueListenable: settingBox.listenable(keys: ['showNavItem_$type']),
         builder: (context, box, widget) {
-          bool show = box.get('showNavOption_$type', defaultValue: '1') == '1';
+          bool show = box.get('showNavItem_$type', defaultValue: '1') == '1';
 
           return MenuItem(
-            onTap: isDefault ? null : () => box.put('showNavOption_$type', show ? '0' : '1'),
+            onTap: isDefault ? null : () => box.put('showNavItem_$type', show ? '0' : '1'),
             label: capitalFirst(type),
             trailing: show ? Icons.push_pin : Icons.push_pin_outlined,
             trailingColor: isDefault

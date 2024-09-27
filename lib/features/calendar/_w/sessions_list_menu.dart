@@ -40,7 +40,7 @@ List<Widget> sessionListMenu(String date) {
           AppButton(
             onPressed: () {
               popWhatsOnTop(); // close menu
-              prepareSessionCreation(date: date, hour: TimeOfDay.now().hour);
+              createSession(date: date, hour: TimeOfDay.now().hour);
             },
             tooltip: 'Create Session Today',
             noStyling: true,

@@ -20,7 +20,7 @@ class MonthBox extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 0.1.w, vertical: 0.1.h),
       child: AppButton(
         onPressed: () => showSessionOverviewDialog(item),
-        onLongPress: () => prepareSessionEditing(item),
+        onLongPress: () => editSession(item),
         color: backgroundColors[item.color()]!.color,
         padding: EdgeInsets.symmetric(vertical: 1, horizontal: 5),
         borderRadius: borderRadiusSuperTiny,

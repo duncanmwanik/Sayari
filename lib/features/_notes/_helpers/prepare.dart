@@ -4,13 +4,13 @@ import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
 import '../note_sheet.dart';
 
-Future<void> prepareNoteForEdit(Item item) async {
+Future<void> editNote(Item item) async {
   state.input.set(item);
   await state.quill.reset(quills: item.data['n']);
   await showNoteBottomSheet(item);
 }
 
-Future<void> prepareNoteForCreation(String type) async {
+Future<void> createNote(String type) async {
   state.quill.reset();
 
   Item item = Item(

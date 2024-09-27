@@ -26,7 +26,7 @@ class SessionOptions extends StatelessWidget {
         AppButton(
           onPressed: () {
             popWhatsOnTop();
-            prepareSessionEditing(item);
+            editSession(item);
           },
           tooltip: 'Edit Session',
           noStyling: true,

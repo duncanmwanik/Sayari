@@ -1,5 +1,5 @@
 import '../../../_services/hive/local_storage_service.dart';
 
-bool showNavOption(String type) {
-  return settingBox.get('showNavOption_$type', defaultValue: '1') == '1';
+bool showNavItem(String type) {
+  return settingBox.get('showNavItem_$type', defaultValue: '1') == '1';
 }

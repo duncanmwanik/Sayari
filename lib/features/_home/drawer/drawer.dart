@@ -18,7 +18,7 @@ class AppDrawer extends StatelessWidget {
       surfaceTintColor: transparent,
       shape: RoundedRectangleBorder(),
       child: Container(
-        decoration: getImageBackgroundDecoration(),
+        decoration: backgroundImage(),
         child: SpaceManager(),
       ),
     );
