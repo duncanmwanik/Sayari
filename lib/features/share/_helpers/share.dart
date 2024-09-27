@@ -1,11 +1,12 @@
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/global.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/common.dart';
 import '../../user/_helpers/set_user_data.dart';
 
 Future<void> shareItem({
-  required String itemId,
+  required String id,
   bool update = false,
   bool delete = false,
   String type = '',
@@ -17,15 +18,15 @@ Future<void> shareItem({
   try {
     // deleting a shared item
     if (delete) {
-      await syncToCloud(db: 'shared', parentId: itemId, action: 'd', log: false);
+      await syncToCloud(db: 'shared', space: id, action: 'd', log: false);
     }
     // updating a shared item
     else if (update) {
       await syncToCloud(
         db: 'shared',
-        parentId: itemId,
+        space: id,
         action: 'e',
-        keys: getJoinedList(updateData.keys.toList()),
+        keys: joinList(updateData.keys.toList()),
         data: updateData,
         log: false,
       );
@@ -34,7 +35,7 @@ Future<void> shareItem({
     else {
       await syncToCloud(
         db: 'shared',
-        parentId: itemId,
+        space: id,
         action: 'u',
         data: {
           's': liveSpace(),
@@ -49,6 +50,6 @@ Future<void> shareItem({
     }
     //
   } catch (e) {
-    errorPrint('${update ? 'update' : (delete ? 'delete' : 'create')}-shared-$type-$itemId', e);
+    errorPrint('${update ? 'update' : (delete ? 'delete' : 'create')}-shared-$type-$id', e);
   }
 }

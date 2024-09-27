@@ -1,52 +1,52 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../../_services/hive/get_data.dart';
 import '../../_spaces/_helpers/common.dart';
 
 Future<void> editItemExtras({
-  String? parentId,
-  required String type,
-  required String itemId,
+  String? space,
+  required String parent,
+  required String id,
   required String key,
   String? value,
-  String subId = '',
+  String sid = '',
 }) async {
   try {
-    String spaceId = parentId ?? liveSpace();
+    String spaceId = space ?? liveSpace();
 
-    Box box = Hive.box('${spaceId}_$type');
-    Map itemData = box.get(itemId);
+    Box box = storage(parent);
+    Map itemData = box.get(id);
 
-    printThis('edit $itemId --- $subId --- $key --- $value');
+    printThis('edit $id --- $sid --- $key --- $value');
 
     bool isRemoveKey = key.startsWith('d');
     String removedKey = isRemoveKey ? key.split('/')[1] : key;
 
     if (isRemoveKey) {
-      if (subId.isNotEmpty) {
-        Map subItemData = itemData[subId];
+      if (sid.isNotEmpty) {
+        Map subItemData = itemData[sid];
         subItemData.remove(removedKey);
-        itemData[subId] = subItemData;
+        itemData[sid] = subItemData;
       } else {
         itemData.remove(removedKey);
       }
     } else {
-      if (subId.isNotEmpty) {
-        Map subItemData = itemData[subId];
+      if (sid.isNotEmpty) {
+        Map subItemData = itemData[sid];
         subItemData[key] = value;
-        itemData[subId] = subItemData;
+        itemData[sid] = subItemData;
       } else {
         itemData[key] = value;
       }
     }
 
-    box.put(itemId, itemData);
+    box.put(id, itemData);
 
-    await syncToCloud(
-        db: 'spaces', parentId: spaceId, type: type, action: 'e', itemId: itemId, subId: subId, keys: key, data: {key: value});
+    await syncToCloud(db: 'spaces', space: spaceId, parent: parent, action: 'e', id: id, sid: sid, keys: key, data: {key: value});
     //
   } catch (e) {
-    errorPrint('quick-edit-$type-$key-$value', e);
+    errorPrint('quick-edit-$parent-$key-$value', e);
   }
 }

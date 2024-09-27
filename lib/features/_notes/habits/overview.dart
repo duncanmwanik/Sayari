@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../_models/item.dart';
-import '../../../_variables/date_time.dart';
 import '../../../_widgets/others/text.dart';
+import '../../calendar/_vars/date_time.dart';
 import 'month.dart';
 import 'progress_bar.dart';
 

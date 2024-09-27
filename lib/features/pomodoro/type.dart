@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
 import '../../_variables/colors.dart';
-import '../../_variables/constants.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/helpers.dart';
 import 'state/pomodoro.dart';
+import 'var/variables.dart';
 
 class PomodoroType extends StatelessWidget {
   const PomodoroType({super.key, required this.type});

@@ -3,7 +3,7 @@ import '../../../../_providers/_providers.dart';
 double getTotalAmount(String start) {
   double total = 0;
 
-  state.input.data.forEach((key, value) {
+  state.input.item.data.forEach((key, value) {
     if (key.toString().startsWith(start)) {
       double amount = double.parse(value['a']);
       total += amount;

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/helpers.dart';
+import '../../_helpers/helpers.dart';
 import '../../_providers/input.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/button.dart';
@@ -23,12 +23,12 @@ class Share extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      Map data = input.data;
-      bool isPublished = data['sp'] == '1';
+      Map data = input.item.data;
+      bool isPublished = data[feature.publish] == '1';
       bool isExpanded = data['ep'] == '1';
 
       return Visibility(
-          visible: data[feature.share] != null && input.isNote() && !isShare(),
+          visible: data[feature.share] != null && input.item.isNote() && !isShare(),
           child: Padding(
             padding: paddingC('t8,b4'),
             child: AppButton(
@@ -74,13 +74,13 @@ class Share extends StatelessWidget {
                               label: 'Unshare Note',
                               leading: Icons.delete_rounded,
                               onTap: () => showConfirmationDialog(
-                                title: 'Unshare note <b>${input.data['t'] ?? ''}</b>?',
+                                title: 'Unshare note <b>${input.item.data['t'] ?? ''}</b>?',
                                 content: 'The note will also be unpublished, if published.',
                                 yeslabel: 'Unshare',
                                 onAccept: () {
                                   input.remove(feature.share);
                                   input.remove('sp');
-                                  shareItem(delete: true, itemId: input.itemId);
+                                  shareItem(delete: true, id: input.item.id);
                                 },
                               ),
                             ),
@@ -95,7 +95,7 @@ class Share extends StatelessWidget {
                   ),
                   //
                   if (isExpanded) sph(),
-                  if (isExpanded) CopyLink(path: input.item.sharedLink()),
+                  if (isExpanded) CopyLink(path: input.item.sharedLink(), label: 'Copy shared link'),
                   if (isExpanded) AppDivider(height: mediumHeight()),
                   //
                   if (isExpanded)
@@ -117,11 +117,11 @@ class Share extends StatelessWidget {
                       children: [
                         AppButton(
                           onPressed: () {
-                            input.update('sp', isPublished ? '0' : '1');
+                            input.update(feature.publish, isPublished ? '0' : '1');
                             shareItem(
                               update: true,
-                              itemId: input.itemId,
-                              updateData: {'sp': isPublished ? '0' : '1'},
+                              id: input.item.id,
+                              updateData: {feature.publish: isPublished ? '0' : '1'},
                             );
                           },
                           smallRightPadding: true,
@@ -135,7 +135,7 @@ class Share extends StatelessWidget {
                           ),
                         ),
                         AppText(text: ' • ', faded: true),
-                        CopyLink(label: 'Copy blog link', path: input.item.sharedLink()),
+                        CopyLink(label: 'Copy blog link', path: input.item.publishedLink()),
                       ],
                     ),
                   //

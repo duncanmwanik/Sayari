@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../../../_models/item.dart';
+
 class SelectionProvider with ChangeNotifier {
 // ---------- selected item list
-  Map selected = {};
+  List<Item> selected = [];
   bool isSelection = false;
 
-  void select(String id, String title, String type) {
-    selected[id] = {'title': title, 'type': type};
+  void select(Item item) {
+    selected.add(item);
     isSelection = true;
     notifyListeners();
   }
 
   void unSelect(String id) {
-    selected.remove(id);
+    selected.removeWhere((item) => item.id == id);
     isSelection = selected.isNotEmpty;
     notifyListeners();
   }
@@ -24,6 +26,6 @@ class SelectionProvider with ChangeNotifier {
   }
 
   bool isSelected(String id) {
-    return selected.containsKey(id);
+    return selected.any((item) => item.id == id);
   }
 }

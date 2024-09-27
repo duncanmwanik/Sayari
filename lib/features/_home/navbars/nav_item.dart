@@ -4,7 +4,7 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
@@ -23,11 +23,11 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Functi
     child: SizedBox(
       width: size ?? 19,
       height: size ?? 19,
-      child: feature.isSession(type)
+      child: feature.isCalendar(type)
           ? AppButton(
               padding: noPadding,
               color: styler.textColor(faded: true),
-              borderRadius: borderRadiusSuperTiny,
+              borderRadius: 1,
               child: Center(
                   child: Column(
                 mainAxisSize: MainAxisSize.min,

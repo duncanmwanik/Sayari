@@ -17,11 +17,11 @@ class TaskOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool showCheckBoxes = input.data['v'] == '1';
-      bool addToTop = input.data['at'] == '1';
+      bool showCheckBoxes = input.item.data['v'] == '1';
+      bool addToTop = input.item.data['at'] == '1';
 
       return Visibility(
-        visible: input.data[feature.tasks] != null,
+        visible: input.item.data[feature.tasks] != null,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,

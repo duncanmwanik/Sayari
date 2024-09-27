@@ -1,13 +1,11 @@
-import 'package:hive_flutter/hive_flutter.dart';
-
-import '../../_helpers/_common/global.dart';
-import '../../_helpers/_common/navigation.dart';
-import '../../features/_spaces/_helpers/common.dart';
+import '../../_helpers/debug.dart';
+import '../../_helpers/navigation.dart';
+import '../hive/get_data.dart';
 import '../hive/local_storage_service.dart';
 
 bool isActivityActedOn(String spaceId, String timestamp) {
   try {
-    return Hive.box('${spaceId}_activity').containsKey(timestamp);
+    return storage('activity', spaceId: spaceId).containsKey(timestamp);
   } catch (e) {
     errorPrint('is-activity-acted-on', e);
     return false;
@@ -16,13 +14,11 @@ bool isActivityActedOn(String spaceId, String timestamp) {
 
 Future<void> deleteActivity(String activityId) async {
   try {
-    Hive.box('${liveSpace()}_activity').delete(activityId);
+    storage('activity').delete(activityId);
     popWhatsOnTop();
   } catch (e) {
     errorPrint('delete-activity-for-user', e);
   }
 }
 
-String lastActivity(String subject) {
-  return activityVersionBox.get(subject, defaultValue: '');
-}
+String lastActivity(String subject) => activityVersionBox.get(subject, defaultValue: '');

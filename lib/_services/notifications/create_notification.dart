@@ -1,7 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../_helpers/_common/global.dart';
+import '../../_helpers/debug.dart';
 import '../../_widgets/others/toast.dart';
 import 'notifications.dart';
 
@@ -9,8 +9,6 @@ Future<void> showNotification(
     {required String type, required String title, required String body, required Map<String, String> data}) async {
   try {
     if (isNotificationAllowed(type)) {
-      // print('showing notification: $body');
-
       if (kIsWeb) {
         showToast(3, '<b>$title</b><br>$body', duration: 5000);
       } else {
@@ -54,7 +52,7 @@ Future<void> createReminderNotification({
       wakeUpScreen: true,
     ),
     actionButtons: [
-      NotificationActionButton(key: 'view_details', label: 'View Details'),
+      NotificationActionButton(key: 'view_details', label: 'Open'),
     ],
     schedule: NotificationCalendar(
       year: date.year,
@@ -67,10 +65,10 @@ Future<void> createReminderNotification({
   );
 }
 
-int getNotificationId(String id) {
+int notificationId(String id) {
   return id.length > 9 ? int.parse(id.substring(id.length - 9)) : int.parse(id);
 }
 
 Future<void> cancelScheduledNotification(String id) async {
-  await AwesomeNotifications().cancel(getNotificationId(id));
+  await AwesomeNotifications().cancel(notificationId(id));
 }

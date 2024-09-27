@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
-import '../../../../_helpers/_common/global.dart';
+import '../../../../_helpers/global.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/forms/numeric.dart';
 import '../../../../_widgets/others/icons.dart';
-import '../../../_notes/items/picker_type.dart';
+import '../../../_notes/_w/picker_type.dart';
 import '../../../reminders/_helpers/reminders.dart';
 
 class ReminderItem extends StatelessWidget {
@@ -34,10 +34,10 @@ class ReminderItem extends StatelessWidget {
                   onChanged: (value) {
                     if (value.isNotEmpty) {
                       String newReminder = '${value.trim()}.$reminderPeriod';
-                      List remindersList = getSplitList((input.data['r'] ?? ''));
+                      List remindersList = splitList((input.item.data['r'] ?? ''));
                       remindersList.remove(reminder);
                       remindersList.add(newReminder);
-                      input.update('r', getJoinedList(remindersList));
+                      input.update('r', joinList(remindersList));
                     }
                   },
                   hintText: 'No.',
@@ -54,10 +54,10 @@ class ReminderItem extends StatelessWidget {
               child: AppTypePicker(
                 onSelect: (chosenKey, chosenValue) {
                   String newReminder = '$reminderNo.$chosenValue';
-                  List remindersList = getSplitList((input.data['r'] ?? ''));
+                  List remindersList = splitList((input.item.data['r'] ?? ''));
                   remindersList.remove(reminder);
                   remindersList.add(newReminder);
-                  input.update('r', getJoinedList(remindersList));
+                  input.update('r', joinList(remindersList));
                 },
                 initial: reminderPeriodsMap[reminderPeriod],
                 typeEntries: {'minutes': 'm', 'hours': 'h', 'days': 'd', 'weeks': 'w'},
@@ -68,12 +68,12 @@ class ReminderItem extends StatelessWidget {
             tpw(),
             AppButton(
               onPressed: () {
-                List remindersList = getSplitList((input.data['r'] ?? ''));
+                List remindersList = splitList((input.item.data['r'] ?? ''));
                 remindersList.remove(reminder);
                 if (remindersList.isEmpty) {
                   input.remove('r');
                 } else {
-                  input.update('r', getJoinedList(remindersList));
+                  input.update('r', joinList(remindersList));
                 }
               },
               noStyling: true,

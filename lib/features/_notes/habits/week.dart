@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/input.dart';
 import '../../../_providers/views.dart';
@@ -37,10 +37,10 @@ class _HabitWeekState extends State<HabitWeek> {
     bool isInput = widget.item == null;
 
     return Consumer3<InputProvider, DateTimeProvider, ViewsProvider>(builder: (context, input, dateTime, views, child) {
-      Map data = widget.item != null ? widget.item!.data : input.data;
+      Map data = widget.item != null ? widget.item!.data : input.item.data;
       String? bgColor = data['c'];
       bool isCustom = data['hf'] == 'custom';
-      List<String> customDates = isCustom ? getSplitList(data['hd']) : [];
+      List<String> customDates = isCustom ? splitList(data['hd']) : [];
       List<DateTime> weekDays = dateTime.currentWeekDates;
       if (isCustom) {
         days = customDates.sublist(startDate >= customDates.length ? 0 : startDate).take(7).toList();
@@ -135,8 +135,8 @@ class _HabitWeekState extends State<HabitWeek> {
                                     isChecked ? input.remove(checkedKey) : input.update(checkedKey, getUniqueId());
                                   } else {
                                     editItemExtras(
-                                      type: widget.item!.type,
-                                      itemId: widget.item!.id,
+                                      parent: widget.item!.parent,
+                                      id: widget.item!.id,
                                       key: isChecked ? 'd/$checkedKey' : checkedKey,
                                       value: isChecked ? '0' : getUniqueId(),
                                     );
@@ -169,20 +169,6 @@ class _HabitWeekState extends State<HabitWeek> {
                                     //
                                   ],
                                 ),
-                                //
-                                // Positioned(
-                                //   right: isInput ? 2 : width / 12,
-                                //   top: isInput ? 2 : 0,
-                                //   child: AppIcon(
-                                //     isChecked ? Icons.done_rounded : Icons.close_rounded,
-                                //     size: 14,
-                                //     color: isChecked
-                                //         ? white
-                                //         : isMissed
-                                //             ? styler.textColor(faded: true, bgColor: isInput ? null : bgColor)
-                                //             : transparent,
-                                //   ),
-                                // ),
                                 //
                               ],
                             ),

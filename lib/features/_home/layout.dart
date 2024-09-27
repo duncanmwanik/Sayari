@@ -6,7 +6,7 @@ import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/helpers.dart';
+import '../../_helpers/helpers.dart';
 import '../../_providers/theme.dart';
 import '../../_providers/views.dart';
 import '../../_widgets/others/others/scroll.dart';

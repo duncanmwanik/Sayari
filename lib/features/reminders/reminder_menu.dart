@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../../_widgets/buttons/action.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/dialogs/dialog_select_date.dart';
@@ -158,7 +158,7 @@ class _MyWidgetState extends State<MyWidget> {
                   ),
                 //
                 ActionButton(
-                  label: hasReminder ? 'Done' : 'Set',
+                  label: hasReminder ? 'Save' : 'Set',
                   onPressed: () {
                     if (date.isNotEmpty && time.isNotEmpty) {
                       popWhatsOnTop();

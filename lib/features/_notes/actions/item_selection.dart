@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
@@ -13,8 +12,6 @@ import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
-import '../../_spaces/_helpers/common.dart';
-import '../../files/_helpers/helper.dart';
 import '../../labels/menu.dart';
 import '../_helpers/delete_item.dart';
 import '../_helpers/quick_edit.dart';
@@ -62,8 +59,8 @@ class SelectedItemOptions extends StatelessWidget {
                     //
                     AppButton(
                       onPressed: () {
-                        selection.selected.forEach((id, data) async {
-                          await editItemExtras(type: data['type'], itemId: id, key: 'p', value: '1');
+                        selection.selected.forEach((item) async {
+                          await editItemExtras(parent: item.parent, id: item.id, key: 'p', value: '1');
                         });
                         state.selection.clear();
                       },
@@ -79,8 +76,8 @@ class SelectedItemOptions extends StatelessWidget {
                       menuItems: labelsMenu(
                         isSelection: true,
                         onDone: (newLabels) async {
-                          selection.selected.forEach((id, data) async {
-                            await editItemExtras(type: data['type'], itemId: id, key: 'l', value: getJoinedList(newLabels));
+                          selection.selected.forEach((item) async {
+                            await editItemExtras(parent: item.parent, id: item.id, key: 'l', value: joinList(newLabels));
                           });
                           state.selection.clear();
                         },
@@ -97,8 +94,8 @@ class SelectedItemOptions extends StatelessWidget {
                       menuWidth: 300,
                       menuItems: colorMenu(
                         onSelect: (newColor) async {
-                          selection.selected.forEach((id, data) async {
-                            await editItemExtras(type: data['type'], itemId: id, key: 'c', value: newColor);
+                          selection.selected.forEach((item) async {
+                            await editItemExtras(parent: item.parent, id: item.id, key: 'c', value: newColor);
                           });
                           state.selection.clear();
                         },
@@ -115,12 +112,12 @@ class SelectedItemOptions extends StatelessWidget {
                       AppButton(
                         onPressed: () {
                           if (isArchive) {
-                            selection.selected.forEach((id, data) async {
-                              await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '0');
+                            selection.selected.forEach((item) async {
+                              await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: '0');
                             });
                           } else {
-                            selection.selected.forEach((id, data) async {
-                              await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '1');
+                            selection.selected.forEach((item) async {
+                              await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: '1');
                             });
                           }
                           state.selection.clear();
@@ -136,8 +133,8 @@ class SelectedItemOptions extends StatelessWidget {
                     if (isNotPhone())
                       AppButton(
                         onPressed: () {
-                          selection.selected.forEach((id, data) async {
-                            await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');
+                          selection.selected.forEach((item) async {
+                            await editItemExtras(parent: item.parent, id: item.id, key: 'x', value: '1');
                           });
                           state.selection.clear();
                         },
@@ -154,8 +151,8 @@ class SelectedItemOptions extends StatelessWidget {
               if (isTrash)
                 AppButton(
                   onPressed: () {
-                    selection.selected.forEach((id, data) async {
-                      await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '0');
+                    selection.selected.forEach((item) async {
+                      await editItemExtras(parent: item.parent, id: item.id, key: 'x', value: '0');
                     });
                     state.selection.clear();
                   },
@@ -174,9 +171,8 @@ class SelectedItemOptions extends StatelessWidget {
                       title: 'Delete selected items forever?',
                       yeslabel: 'Delete',
                       onAccept: () async {
-                        selection.selected.forEach((id, data) async {
-                          Map files = getFiles(Hive.box('${liveSpace()}_${data['type']}').get(id, defaultValue: {}));
-                          await deleteItemForever(type: data['type'], itemId: id, files: files);
+                        selection.selected.forEach((item) async {
+                          await deleteItemForever(item);
                         });
                         state.selection.clear();
                       },
@@ -205,12 +201,12 @@ class SelectedItemOptions extends StatelessWidget {
                       leading: isArchive ? unarchiveIcon : archiveIcon,
                       onTap: () async {
                         if (isArchive) {
-                          selection.selected.forEach((id, data) async {
-                            await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '0');
+                          selection.selected.forEach((item) async {
+                            await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: '0');
                           });
                         } else {
-                          selection.selected.forEach((id, data) async {
-                            await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '1');
+                          selection.selected.forEach((item) async {
+                            await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: '1');
                           });
                         }
                         state.selection.clear();
@@ -221,8 +217,8 @@ class SelectedItemOptions extends StatelessWidget {
                       label: 'Delete',
                       leading: deleteIcon,
                       onTap: () async {
-                        selection.selected.forEach((id, data) async {
-                          await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');
+                        selection.selected.forEach((item) async {
+                          await editItemExtras(parent: item.parent, id: item.id, key: 'x', value: '1');
                         });
                         state.selection.clear();
                       },

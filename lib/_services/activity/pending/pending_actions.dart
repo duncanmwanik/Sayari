@@ -1,37 +1,36 @@
 import 'dart:async';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/global.dart';
 import '../../hive/local_storage_service.dart';
 
 Future<void> addToPendingActions({
   required String db,
-  required String parentId,
-  required String type,
+  required String space,
+  required String parent,
   required String action,
   Map data = const {},
-  String itemId = '',
-  String subId = '',
+  String id = '',
+  String sid = '',
   String keys = '',
   String extras = '',
   bool log = true,
-  isDefault = false,
 }) async {
   String pendingActionId = getUniqueId();
 
   await pendingBox.put(pendingActionId, {
     'db': db,
-    'parentId': parentId,
-    'type': type,
+    'space': space,
+    'parent': parent,
     'action': action,
     'data': data,
-    'itemId': itemId,
-    'subId': subId,
+    'id': id,
+    'sid': sid,
     'keys': keys,
     'extras': extras,
     'log': log,
-    'isDefault': isDefault,
   });
-  printThis('New pending action: $pendingActionId > $type $action $keys : $itemId');
+  printThis('New pending action: $pendingActionId > $parent $action $keys : $id');
 }
 
 // remove this

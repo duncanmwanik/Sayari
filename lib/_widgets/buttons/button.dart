@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../menu/menu.dart';
 import '../others/icons.dart';
 import '../others/others/dry_intrinsic_size.dart';

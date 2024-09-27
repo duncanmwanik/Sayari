@@ -10,7 +10,7 @@ import '../../pomodoro/sheet.dart';
 import '../../saved/saved_sheet.dart';
 import '../_helpers/change_view.dart';
 import '../_helpers/nav.dart';
-import 'pinned_settings.dart';
+import 'pinned_menu.dart';
 
 class NavMenu extends StatelessWidget {
   const NavMenu({super.key});

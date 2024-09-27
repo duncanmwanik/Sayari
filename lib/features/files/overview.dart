@@ -15,20 +15,20 @@ import '_helpers/helper.dart';
 import 'viewer.dart';
 
 class ImageOverview extends StatelessWidget {
-  const ImageOverview({super.key, this.item = const Item(), this.isInput = false});
+  const ImageOverview({super.key, required this.item});
 
   final Item item;
-  final bool isInput;
 
   @override
   Widget build(BuildContext context) {
-    String fileId = item.exists() ? item.coverId() : state.input.data['w'] ?? '';
-    String fileName = item.exists() ? item.coverName() : state.input.data[fileId] ?? '';
+    bool isInput = !item.exists();
+    String fileId = item.exists() ? item.coverId() : state.input.item.data['w'] ?? '';
+    String fileName = item.exists() ? item.coverName() : state.input.item.data[fileId] ?? '';
 
     return Visibility(
       visible: fileId.isNotEmpty,
       child: SizedBox(
-        height: isInput ? 300 : 150,
+        height: isInput ? 300 : 130,
         width: double.maxFinite,
         child: Stack(
           fit: StackFit.passthrough,

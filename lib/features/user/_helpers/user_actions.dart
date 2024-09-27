@@ -1,6 +1,6 @@
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/debug.dart';
 import '../../../_helpers/forms/regex_checks.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/local_storage_service.dart';
@@ -21,7 +21,7 @@ Future<void> addSpaceToGroup(String spaceId) async {
         groupSpaces[spaceId] = 0;
         userGroupsBox.put(groupName, groupSpaces);
 
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'groups', action: 'c', itemId: groupName, subId: spaceId, data: 0);
+        syncToCloud(db: 'users', space: liveUser(), parent: 'groups', action: 'c', id: groupName, sid: spaceId, data: 0);
       }
     }
   } catch (e) {
@@ -38,7 +38,7 @@ Future<void> removeSpaceFromGroup(String spaceId, String groupName) async {
     groupSpaces.remove(spaceId);
     userGroupsBox.put(groupName, groupSpaces);
     //
-    syncToCloud(db: 'users', parentId: userId, type: 'groups', action: 'd', itemId: groupName, subId: spaceId);
+    syncToCloud(db: 'users', space: userId, parent: 'groups', action: 'd', id: groupName, sid: spaceId);
     //
   } catch (e) {
     errorPrint('remove-space-from-group', e);
@@ -55,9 +55,9 @@ Future<void> addSpaceToUserData(
     // add space to user spaces data
     // default space cannot be deleted and contains shared data across all other spaces
     await userSpacesBox.put(spaceId, isDefault ? 1 : 0);
-    syncToCloud(db: 'users', parentId: userId, type: 'spaces', action: 'c', itemId: spaceId, data: isDefault ? 1 : 0);
+    syncToCloud(db: 'users', space: userId, parent: 'spaces', action: 'c', id: spaceId, data: isDefault ? 1 : 0);
     // save default space id to user info
-    if (isDefault) syncToCloud(db: 'users', parentId: userId, type: 'info', action: 'c', itemId: 's', data: spaceId);
+    if (isDefault) syncToCloud(db: 'users', space: userId, parent: 'info', action: 'c', id: 's', data: spaceId);
     // add space to the selected groups
     if (groupList.isNotEmpty) {
       for (String group in groupList) {
@@ -66,7 +66,7 @@ Future<void> addSpaceToUserData(
         groupSpaces[spaceId] = 0;
         userGroupsBox.put(group, groupSpaces);
 
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'groups', action: 'c', itemId: group, subId: spaceId, data: 0);
+        syncToCloud(db: 'users', space: liveUser(), parent: 'groups', action: 'c', id: group, sid: spaceId, data: 0);
       }
     }
 
@@ -81,7 +81,7 @@ Future<void> removeSpaceFromUserSpaceData(String userId, String spaceId) async {
     // remove space from all spaces folder
     if (userSpacesBox.containsKey(spaceId)) {
       userSpacesBox.delete(spaceId);
-      syncToCloud(db: 'users', parentId: userId, type: 'spaces', action: 'd', itemId: spaceId);
+      syncToCloud(db: 'users', space: userId, parent: 'spaces', action: 'd', id: spaceId);
     }
 
     // remove space from groups
@@ -91,11 +91,11 @@ Future<void> removeSpaceFromUserSpaceData(String userId, String spaceId) async {
       Map groupSpaces = spaces as Map;
       // making a new map unlinks the map used for the loop(forEach)
       // prevents a null error, trust me, si ni mi nakshow
-      Map newSpaces = getNewMapFrom(groupSpaces);
+      Map newSpaces = {...groupSpaces};
 
       if (groupSpaces.containsKey(spaceId)) {
         newSpaces.remove(spaceId);
-        syncToCloud(db: 'users', parentId: userId, type: 'groups', action: 'd', itemId: group, subId: spaceId);
+        syncToCloud(db: 'users', space: userId, parent: 'groups', action: 'd', id: group, sid: spaceId);
       }
       userGroupsBox.put(group, newSpaces);
     });
@@ -113,7 +113,7 @@ Future<void> createGroup(String groupName) async {
         popWhatsOnTop();
         // {k:0} allows us to keep the group even if it has no space
         userGroupsBox.put(groupName, {'k': 0});
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'groups', action: 'c', itemId: groupName, subId: 'k', data: 0);
+        syncToCloud(db: 'users', space: liveUser(), parent: 'groups', action: 'c', id: groupName, sid: 'k', data: 0);
         //
       } else {
         showToast(0, 'Enter a valid name');
@@ -135,7 +135,7 @@ Future<void> deleteGroup(String groupName) async {
         showSnackBar('Deleting <b>$groupName</b>...');
         userGroupsBox.delete(groupName);
 
-        syncToCloud(db: 'users', parentId: liveUser(), type: 'groups', action: 'd', itemId: groupName);
+        syncToCloud(db: 'users', space: liveUser(), parent: 'groups', action: 'd', id: groupName);
       },
     );
   } catch (e) {

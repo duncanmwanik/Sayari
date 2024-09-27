@@ -12,7 +12,7 @@ import '../_notes/actions/item_selection.dart';
 import '../_notes/state/selection.dart';
 import '../calendar/info_header.dart';
 import '../chat/_w/chat_options.dart';
-import '../pomodoro/_w/pomo_indicator.dart';
+import '../pomodoro/w/pomo_indicator.dart';
 import '../search/search_btn.dart';
 import '../user/user_dp.dart';
 import 'panel/space.dart';

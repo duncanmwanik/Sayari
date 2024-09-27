@@ -12,8 +12,8 @@ import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '../calendar/_helpers/date_time/misc.dart';
 import '_helpers/helpers.dart';
-import '_w/pause_play_btn.dart';
 import 'state/pomodoro.dart';
+import 'w/pause_play_btn.dart';
 
 class PomodoroCounter extends StatelessWidget {
   const PomodoroCounter({super.key});

@@ -11,7 +11,7 @@ import '../../_widgets/others/others/other.dart';
 import '../files/_helpers/download.dart';
 import '../files/viewer.dart';
 import '_helpers/set_user_data.dart';
-import 'dp_options.dart';
+import 'dp_menu.dart';
 
 class UserDp extends StatelessWidget {
   const UserDp(

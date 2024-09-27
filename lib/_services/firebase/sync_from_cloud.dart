@@ -1,26 +1,27 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../_helpers/_common/global.dart';
+import '../../_helpers/debug.dart';
+import '../../_helpers/global.dart';
 import '../../_variables/features.dart';
 import '../activity/save_activity.dart';
 import 'database.dart';
 
-Future<bool> syncFromCloud(String parentId, String timestamp, String activity) async {
+Future<bool> syncFromCloud(String space, String timestamp, String activity) async {
   try {
-    // '$db,$type,$action,$itemId,$subId,$keys,$extras,$userName'
-    List<String> activityData = getSplitList(activity, separator: ',', clearEmpties: false);
+    // '$db,$type,$action,$id,$sid,$keys,$extras,$userName'
+    List<String> activityData = splitList(activity, separator: ',', clearEmpties: false);
     String db = activityData[0];
     String type = activityData[1];
     String action = activityData[2];
-    String itemId = activityData[3];
-    String subId = activityData[4];
+    String id = activityData[3];
+    String sid = activityData[4];
     String keys = activityData[5];
     String extras = activityData[6];
     String userName = activityData[7];
 
-    printThis('::Updating-> $db,$type,$action,$itemId,$subId,$keys,$extras,$userName');
+    printThis('::Updating-> $db,$type,$action,$id,$sid,$keys,$extras,$userName');
 
-    Box box = await Hive.openBox('${parentId}_$type');
+    Box box = await Hive.openBox('${space}_$type');
 
     //
     // create --------------------------------------------------
@@ -29,16 +30,16 @@ Future<bool> syncFromCloud(String parentId, String timestamp, String activity) a
       //
       // for session ops
       //
-      if (feature.isSession(type)) {
-        String firstDate = getSplitList(extras).first;
+      if (feature.isCalendar(type)) {
+        String firstDate = splitList(extras).first;
 
-        await cloudService.getData(db: db, '$parentId/$type/$firstDate/$itemId').then((snapshot) async {
+        await cloudService.getData(db: db, '$space/$type/$firstDate/$id').then((snapshot) async {
           var data = snapshot.value as Map;
 
           if (data.isNotEmpty) {
-            for (String date in getSplitList(extras)) {
+            for (String date in splitList(extras)) {
               Map sessionMap = box.get(date, defaultValue: {});
-              sessionMap[itemId] = data;
+              sessionMap[id] = data;
               await box.put(date, sessionMap);
             }
           }
@@ -47,13 +48,13 @@ Future<bool> syncFromCloud(String parentId, String timestamp, String activity) a
       //
       //
       else if (db == 'users') {
-        if (subId.isNotEmpty) {
-          Map itemData = box.get(itemId, defaultValue: {});
-          itemData[subId] = 0;
-          await box.put(itemId, itemData);
-          box.put(itemId, {subId: 0});
+        if (sid.isNotEmpty) {
+          Map itemData = box.get(id, defaultValue: {});
+          itemData[sid] = 0;
+          await box.put(id, itemData);
+          box.put(id, {sid: 0});
         } else {
-          await box.put(itemId, 0);
+          await box.put(id, 0);
         }
       }
       //
@@ -61,7 +62,7 @@ Future<bool> syncFromCloud(String parentId, String timestamp, String activity) a
       //
       else {
         await cloudService
-            .getData(db: db, '$parentId/$type${itemId.isNotEmpty ? '/$itemId' : ''}${subId.isNotEmpty ? '/$subId' : ''}')
+            .getData(db: db, '$space/$type${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}')
             .then((snapshot) async {
           var data = snapshot.value;
 
@@ -69,17 +70,17 @@ Future<bool> syncFromCloud(String parentId, String timestamp, String activity) a
             bool isMap = data.runtimeType.toString().contains('Map');
             if (isMap) {
               (data as Map)['z'] = timestamp; // set time of edit
-              // if (subId.isEmpty) title = (data)['t'];
+              // if (sid.isEmpty) title = (data)['t'];
             }
 
-            if (subId.isNotEmpty) {
-              Map itemData = box.get(itemId);
-              itemData[subId] = data;
+            if (sid.isNotEmpty) {
+              Map itemData = box.get(id);
+              itemData[sid] = data;
               itemData['z'] = timestamp; // set time of edit
-              await box.put(itemId, itemData);
+              await box.put(id, itemData);
             } else {
-              if (itemId.isNotEmpty) {
-                await box.put(itemId, data);
+              if (id.isNotEmpty) {
+                await box.put(id, data);
               } else {
                 await box.putAll(data as Map);
               }
@@ -92,25 +93,25 @@ Future<bool> syncFromCloud(String parentId, String timestamp, String activity) a
     // edit -------------------------------------------------- edit
     //
     if (action == 'e') {
-      getSplitList(keys).forEach((editedKey) async {
+      splitList(keys).forEach((editedKey) async {
         //
         // delete key
         //
         if (editedKey.startsWith('d')) {
           String key = editedKey.split('/')[1];
-          Map itemData = box.get(itemId, defaultValue: {});
+          Map itemData = box.get(id, defaultValue: {});
 
-          if (subId.isNotEmpty) {
-            Map subItemData = itemData[subId];
+          if (sid.isNotEmpty) {
+            Map subItemData = itemData[sid];
             subItemData.remove(key);
             subItemData['z'] = timestamp; // set time of edit
-            itemData[subId] = subItemData;
-            await box.put(itemId, itemData);
+            itemData[sid] = subItemData;
+            await box.put(id, itemData);
           } else {
-            if (itemId.isNotEmpty) {
+            if (id.isNotEmpty) {
               itemData.remove(key);
               itemData['z'] = timestamp; // set time of edit
-              await box.put(itemId, itemData);
+              await box.put(id, itemData);
             } else {
               await box.delete(key);
             }
@@ -122,24 +123,24 @@ Future<bool> syncFromCloud(String parentId, String timestamp, String activity) a
         else {
           //
           await cloudService
-              .getData(db: db, '$parentId/$type${itemId.isNotEmpty ? '/$itemId' : ''}${subId.isNotEmpty ? '/$subId' : ''}/$editedKey')
+              .getData(db: db, '$space/$type${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}/$editedKey')
               .then((snapshot) async {
             var value = snapshot.value;
 
             if (value != null) {
-              Map itemData = box.get(itemId, defaultValue: {});
+              Map itemData = box.get(id, defaultValue: {});
 
-              if (subId.isNotEmpty) {
-                Map subItemData = itemData[subId];
+              if (sid.isNotEmpty) {
+                Map subItemData = itemData[sid];
                 subItemData[editedKey] = value;
                 subItemData['z'] = timestamp; // set time of edit
-                itemData[subId] = subItemData;
-                await box.put(itemId, itemData);
+                itemData[sid] = subItemData;
+                await box.put(id, itemData);
               } else {
-                if (itemId.isNotEmpty) {
+                if (id.isNotEmpty) {
                   itemData[editedKey] = value;
                   itemData['z'] = timestamp; // set time of edit
-                  await box.put(itemId, itemData);
+                  await box.put(id, itemData);
                 } else {
                   await box.put(editedKey, value);
                 }
@@ -155,16 +156,16 @@ Future<bool> syncFromCloud(String parentId, String timestamp, String activity) a
     // delete --------------------------------------------------
     //
     if (action == 'd') {
-      if (subId.isNotEmpty) {
-        Map itemData = box.get(itemId);
-        itemData.remove(subId);
-        await box.put(itemId, itemData);
+      if (sid.isNotEmpty) {
+        Map itemData = box.get(id);
+        itemData.remove(sid);
+        await box.put(id, itemData);
       } else {
-        await box.delete(itemId);
+        await box.delete(id);
       }
     }
 
-    await saveActivity(parentId, timestamp, activity);
+    await saveActivity(space, timestamp, activity);
 
     return true;
   } catch (e) {

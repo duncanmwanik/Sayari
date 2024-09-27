@@ -41,16 +41,6 @@ class AppTheme {
         elevation: isDark ? 1 : 6,
         foregroundColor: isDark ? AppColors.lightPrimary : AppColors.darkPrimary,
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          elevation: 0,
-          backgroundColor: isDark ? AppColors.darkPrimary : AppColors.lightPrimary,
-          foregroundColor: AppColors.accentHoverButton,
-          textStyle: const TextStyle(fontSize: normal, fontWeight: FontWeight.bold),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadiusTiny)),
-          shadowColor: AppColors.transparent,
-        ),
-      ),
       dividerTheme: DividerThemeData(
         color: isDark ? AppColors.darkDividerColor : AppColors.lightDividerColor,
       ),

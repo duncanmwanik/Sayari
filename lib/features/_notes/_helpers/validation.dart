@@ -1,49 +1,53 @@
+import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/toast.dart';
 
-bool validateInput({required String type, bool validate = true}) {
-  if (validate) {
-    String message = '';
-    String title = state.input.data['t'] ?? '';
-    bool isCreate = state.input.itemId.isEmpty;
+bool validateInput(Item item, [bool isNew = false]) {
+  String message = '';
+  String title = state.input.item.data['t'] ?? '';
+  bool hasTitle = title.isNotEmpty;
 
-    if (type == feature.space) {
-      if (title.isEmpty) {
-        message = 'Enter space name';
-      }
+  if (feature.isSpace(item.type)) {
+    if (!hasTitle) {
+      message = 'Enter space name';
     }
+  }
 
-    if (type == feature.calendar) {
-      String startTime = state.input.data['s'] ?? '';
+  if (feature.isCalendar(item.type)) {
+    String startTime = state.input.item.data['s'] ?? '';
 
-      if (title.isEmpty) {
-        message = 'Enter session title';
-      } else if (startTime.isEmpty) {
-        message = 'Choose a start time';
-      } else if (isCreate && state.input.selectedDates.isEmpty) {
-        message = 'Select at least one date';
-      }
+    if (!hasTitle) {
+      message = 'Enter session title';
+    } else if (startTime.isEmpty) {
+      message = 'Choose a start time';
+    } else if (isNew && state.input.selectedDates.isEmpty) {
+      message = 'Select at least one date';
     }
+  }
 
-    if (type == feature.notes) {
-      if (isCreate && title.isEmpty && state.quill.controller.document.toPlainText().trim().isEmpty) {
-        return false;
-      }
-    }
-
-    if (type == feature.finances) {
-      if (state.input.data.isEmpty) {
-        return false;
-      }
-    }
-
-    // show toast message
-
-    if (message.isNotEmpty) {
-      showToast(0, message);
+  if (feature.isNote(item.type)) {
+    if (isNew && !hasTitle && state.quill.controller.document.toPlainText().trim().isEmpty) {
       return false;
     }
+  }
+
+  if (feature.isTask(item.type)) {
+    if (isNew && !hasTitle && item.taskCount() == 0) {
+      return false;
+    }
+  }
+
+  if (feature.isFinance(item.type)) {
+    if (isNew && !hasTitle && state.input.item.data.isEmpty) {
+      return false;
+    }
+  }
+
+  // show toast message
+  if (message.isNotEmpty) {
+    showToast(0, message);
+    return false;
   }
 
   return true;

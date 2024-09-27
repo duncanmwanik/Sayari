@@ -27,7 +27,7 @@ class ColumnLayout extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         onReorder: (oldIndex, newIndex) => orderItems(
-          type: feature.notes,
+          parent: feature.notes,
           oldItemId: state.data.ids[oldIndex],
           newItemId: state.data.ids[newIndex],
           itemsLength: state.data.ids.length,
@@ -35,9 +35,11 @@ class ColumnLayout extends StatelessWidget {
           newIndex: newIndex,
         ),
         children: List.generate(state.data.ids.length, (index) {
-          String itemId = state.data.ids[index];
-          Map itemData = storage(feature.notes).get(state.data.ids[index], defaultValue: {});
-          Item item = Item(type: feature.notes, id: itemId, data: itemData);
+          Item item = Item(
+            parent: feature.notes,
+            id: state.data.ids[index],
+            data: storage(feature.notes).get(state.data.ids[index], defaultValue: {}),
+          );
 
           return ReorderableDelayedDragStartListener(
             index: index,

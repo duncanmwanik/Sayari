@@ -1,19 +1,15 @@
+import 'regex_checks.dart';
+
 class Validator {
   static String? validateName({required String name}) {
-    if (name.isEmpty) {
-      return 'Please enter name';
-    }
-
+    if (name.isEmpty) return 'Please enter name';
     return null;
   }
 
   static String? validateEmail({required String email}) {
-    RegExp emailRegExp = RegExp(
-        r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$");
-
     if (email.isEmpty) {
       return 'Please enter email';
-    } else if (!emailRegExp.hasMatch(email)) {
+    } else if (!isValidEmail(email)) {
       return 'Enter valid email';
     }
 

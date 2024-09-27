@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_models/item.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
@@ -13,12 +13,12 @@ import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/checks_space.dart';
 import '../_helpers/date_time/date_info.dart';
-import '../_helpers/helpers.dart';
+import '../_helpers/prepare.dart';
 import '../_helpers/sort.dart';
 import 'daily_box.dart';
 
 List<Widget> sessionListMenu(String date) {
-  Map todaySessionsMap = sortSessionsByTime(storage(feature.calendar).get(date, defaultValue: {}));
+  Map todaySessionsMap = sortSessions(storage(feature.calendar).get(date, defaultValue: {}));
 
   return [
     //
@@ -59,8 +59,14 @@ List<Widget> sessionListMenu(String date) {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: List.generate(todaySessionsMap.length, (index) {
-              String itemId = todaySessionsMap.keys.toList()[index];
-              Item item = Item(id: itemId, data: todaySessionsMap[itemId], extra: date);
+              String id = todaySessionsMap.keys.toList()[index];
+              Item item = Item(
+                parent: feature.calendar,
+                type: feature.calendar,
+                id: date,
+                sid: id,
+                data: todaySessionsMap[id],
+              );
 
               return DayBox(item: item);
             }),

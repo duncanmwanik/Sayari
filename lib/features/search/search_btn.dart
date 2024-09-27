@@ -5,6 +5,8 @@ import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import 'search_sheet.dart';
 
+List g = [];
+
 class Search extends StatelessWidget {
   const Search({super.key});
 

@@ -1,4 +1,4 @@
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_variables/features.dart';
 
 List getChosenItems(Map data, String currentLabel, String type) {
@@ -9,9 +9,9 @@ List getChosenItems(Map data, String currentLabel, String type) {
   List chosen = [];
   List pinned = [];
 
-  for (var itemId in finalIds) {
-    Map noteData = data[itemId];
-    List labelList = getSplitList(noteData['l']);
+  for (var id in finalIds) {
+    Map noteData = data[id];
+    List labelList = splitList(noteData['l']);
     bool isPinned = noteData['p'] == '1';
     bool isDeleted = noteData['x'] == '1';
     bool isArchived = noteData['a'] == '1';
@@ -19,31 +19,31 @@ List getChosenItems(Map data, String currentLabel, String type) {
 
     if (!isChosenType) continue;
 
-    if (isPinned) pinned.add(itemId);
+    if (isPinned) pinned.add(id);
 
     if (currentLabel == 'All') {
       if (!isDeleted && !isArchived) {
-        chosen.add(itemId);
+        chosen.add(id);
       }
     } else if (currentLabel == 'Trash') {
       if (isDeleted) {
-        chosen.add(itemId);
+        chosen.add(id);
       }
     } else if (currentLabel == 'Archive') {
       if (isArchived && !isDeleted) {
-        chosen.add(itemId);
+        chosen.add(id);
       }
     } else {
       if (labelList.contains(currentLabel) && !isDeleted && !isArchived) {
-        chosen.add(itemId);
+        chosen.add(id);
       }
     }
   }
 
-  for (var itemId in pinned) {
-    if (chosen.contains(itemId)) {
-      chosen.remove(itemId);
-      chosen.insert(0, itemId);
+  for (var id in pinned) {
+    if (chosen.contains(id)) {
+      chosen.remove(id);
+      chosen.insert(0, id);
     }
   }
 

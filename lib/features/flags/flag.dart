@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../../_variables/colors.dart';
 import '../../_widgets/buttons/action.dart';
 import '../../_widgets/buttons/button.dart';
@@ -12,25 +12,26 @@ import '../../_widgets/others/color.dart';
 import '../../_widgets/others/color_menu.dart';
 import '../../_widgets/others/forms/input.dart';
 import '../../_widgets/others/icons.dart';
+import '../../_widgets/others/others/divider.dart';
 import '_helpers/manage_flag.dart';
 
 class Flag extends StatefulWidget {
   const Flag({
     super.key,
+    this.flagId = '',
     this.flag = '',
     this.color = '0',
     this.onPressed,
     this.onDelete,
     this.isSelected = false,
-    this.isNewFlag = false,
   });
 
+  final String flagId;
   final String flag;
   final String color;
   final Function()? onPressed;
   final Function()? onDelete;
   final bool isSelected;
-  final bool isNewFlag;
 
   @override
   State<Flag> createState() => _FlagItemState();
@@ -39,27 +40,31 @@ class Flag extends StatefulWidget {
 class _FlagItemState extends State<Flag> {
   TextEditingController controller = TextEditingController();
   bool isEdit = false;
+  bool isNew = false;
   String flagColor = '0';
 
   @override
   void initState() {
     controller.text = widget.flag;
-    setState(() => flagColor = widget.color);
+    setState(() {
+      flagColor = widget.color;
+      isNew = widget.flagId.isEmpty;
+    });
     super.initState();
   }
 
   void update() {
     String newFlag = controller.text.trim();
     if (newFlag.isNotEmpty) {
-      if (widget.isNewFlag) {
-        createFlag(newFlag, flagColor);
+      if (isNew) {
+        createFlag('$flagColor,$newFlag');
         setState(() {
           controller.clear();
           flagColor = '0';
         });
       } else {
         if (newFlag.isNotEmpty && (newFlag != widget.flag || flagColor != widget.color)) {
-          editFlag(newFlag, flagColor, widget.flag);
+          editFlag(widget.flagId, '$flagColor,$newFlag');
         }
       }
     } else {
@@ -75,7 +80,7 @@ class _FlagItemState extends State<Flag> {
 
   @override
   Widget build(BuildContext context) {
-    Color? textColor = widget.isNewFlag ? null : backgroundColors[flagColor]!.textColor;
+    Color? textColor = isNew ? null : backgroundColors[flagColor]!.textColor;
 
     return Padding(
       padding: paddingS('lrb'),
@@ -85,50 +90,51 @@ class _FlagItemState extends State<Flag> {
           Row(
             children: [
               //
-              widget.isNewFlag || isEdit
-                  ? isEdit
-                      ? ColorButton(
-                          isSmall: true,
-                          menuItems: colorMenu(
-                            selectedColor: flagColor,
-                            onSelect: (newColor) => setState(() => flagColor = newColor),
-                          ),
-                          bgColor: flagColor,
-                        )
-                      : AppButton(
-                          onPressed: () => setState(() => isEdit = true),
-                          noStyling: true,
-                          isSquare: true,
-                          child: AppIcon(Icons.add_rounded, faded: true, size: 18),
-                        )
-                  : AppCheckBox(isChecked: widget.isSelected, onTap: widget.onPressed),
+              if (isEdit)
+                ColorButton(
+                  isSmall: true,
+                  menuItems: colorMenu(
+                    selectedColor: flagColor,
+                    onSelect: (newColor) => setState(() => flagColor = newColor),
+                  ),
+                  color: flagColor,
+                ),
+              if (isNew && !isEdit)
+                AppButton(
+                  onPressed: () => setState(() => isEdit = true),
+                  noStyling: true,
+                  isSquare: true,
+                  child: AppIcon(Icons.add_rounded, faded: true, size: 18),
+                ),
+              if (!isNew && !isEdit) AppCheckBox(isChecked: widget.isSelected, onTap: widget.onPressed),
               //
               tpw(),
               //
               Expanded(
                 child: AppButton(
-                  onPressed: isEdit || widget.isNewFlag ? null : widget.onPressed,
-                  noStyling: true,
-                  padding: EdgeInsets.zero,
+                  onPressed: isEdit || isNew ? null : widget.onPressed,
+                  color: isNew && !isEdit ? transparent : backgroundColors[flagColor]!.color,
+                  hoverColor: transparent,
                   child: DataInput(
-                    hintText: widget.isNewFlag ? 'Add Flag' : 'Flag',
+                    hintText: isNew ? 'Add Flag' : 'Flag',
                     controller: controller,
                     autofocus: isEdit,
                     maxLines: 3,
                     isDense: true,
-                    enabled: isEdit || widget.isNewFlag,
+                    enabled: isEdit || isNew,
                     textInputAction: TextInputAction.done,
                     onFieldSubmitted: (_) => update(),
                     onTap: () => setState(() => isEdit = true),
                     textColor: textColor,
-                    color: widget.isNewFlag ? (isEdit ? null : transparent) : backgroundColors[flagColor]!.color,
-                    contentPadding: isEdit || widget.isNewFlag ? padding() : paddingM(),
+                    color: transparent,
+                    hoverColor: transparent,
+                    contentPadding: noPadding,
                   ),
                 ),
               ),
               //
-              if (!isEdit && !widget.isNewFlag) spw(),
-              if (!isEdit && !widget.isNewFlag)
+              if (!isEdit && !isNew) spw(),
+              if (!isEdit && !isNew)
                 AppButton(
                   menuWidth: 200,
                   menuItems: [
@@ -144,7 +150,6 @@ class _FlagItemState extends State<Flag> {
           ),
           //
           if (isEdit) tph(),
-          //
           if (isEdit)
             Row(
               mainAxisSize: MainAxisSize.max,
@@ -170,7 +175,7 @@ class _FlagItemState extends State<Flag> {
               ],
             ),
           //
-          if (isEdit) sph()
+          if (isNew) AppDivider(height: smallHeight()),
           //
         ],
       ),

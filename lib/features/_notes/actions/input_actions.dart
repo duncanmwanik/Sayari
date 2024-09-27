@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_providers/input.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/color.dart';
@@ -22,19 +22,19 @@ class CommonInputActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      String? reminder = input.data['r'];
-      String? bgColor = input.data['c'];
-      bool isPinned = input.data['p'] == '1';
+      String? reminder = input.item.data['r'];
+      String? bgColor = input.item.data['c'];
+      bool isPinned = input.item.data['p'] == '1';
 
       return Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
           //
-          if (input.isHabit()) spw(),
-          if (input.isHabit()) HabitHeader(),
+          if (input.item.isHabit()) spw(),
+          if (input.item.isHabit()) HabitHeader(),
           //
-          if (input.isFinance()) spw(),
-          if (input.isFinance())
+          if (input.item.isFinance()) spw(),
+          if (input.item.isFinance())
             AppButton(
               onPressed: () => showFinanceGraphsBottomSheet(),
               tooltip: 'View Graphs',
@@ -70,7 +70,7 @@ class CommonInputActions extends StatelessWidget {
           AppButton(
             menuItems: labelsMenu(
               isSelection: true,
-              alreadySelected: getSplitList(input.data['l']),
+              alreadySelected: splitList(input.item.data['l']),
               onDone: (newLabels) => input.update('l', newLabels.join('|')),
             ),
             tooltip: 'Label',
@@ -85,7 +85,7 @@ class CommonInputActions extends StatelessWidget {
               selectedColor: bgColor,
               onSelect: (newColor) => input.update('c', newColor),
             ),
-            bgColor: bgColor,
+            color: bgColor,
           ),
           //
           spw(),

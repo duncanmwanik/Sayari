@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/helpers.dart';
+import '../../../_helpers/helpers.dart';
 import '../../../_providers/_providers.dart';
 import '../../buttons/button.dart';
 import '../icons.dart';
@@ -96,7 +96,7 @@ class _DataInputState extends State<DataInput> {
       focusNode: widget.focusNode,
       enabled: widget.enabled,
       autofocus: widget.autofocus,
-      initialValue: widget.controller == null ? widget.initialValue ?? state.input.data[widget.inputKey] : null,
+      initialValue: widget.controller == null ? widget.initialValue ?? state.input.item.data[widget.inputKey] : null,
       minLines: widget.minLines,
       maxLines: widget.maxLines,
       keyboardType: widget.keyboardType,

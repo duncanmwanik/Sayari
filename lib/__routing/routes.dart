@@ -17,14 +17,16 @@ final GoRouter router = GoRouter(
   observers: [BotToastNavigatorObserver()],
   navigatorKey: navigatorState,
   routes: [
+    // home
     GoRoute(
       path: '/',
       builder: (context, state) => HomeScreen(),
       redirect: (context, state) async => await isFirstTimer() ? '/getstarted' : null,
     ),
+    // start
     GoRoute(path: '/getstarted', builder: (context, state) => AuthScreen()),
+    // test
     GoRoute(path: '/test/:id', builder: (context, state) => TestScreen(id: state.pathParameters['id'] ?? 'Kawabanga')),
-
     // shared item
     GoRoute(
       path: '/${features[feature.share]!.path}/:id',
@@ -32,8 +34,8 @@ final GoRouter router = GoRouter(
     ),
     // blog items
     GoRoute(
-      path: '/${features[feature.notes]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.notes, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.publish]!.path}/:id',
+      builder: (context, state_) => ShareScreen(type: feature.publish, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
     ),
     // bookings
     GoRoute(
@@ -51,7 +53,6 @@ final GoRouter router = GoRouter(
       builder: (context, state_) => ShareScreen(type: feature.space, id: publishedSpaceId(state_.pathParameters['id'] ?? 'fun')),
     ),
   ],
-  errorPageBuilder: (context, state) {
-    return MaterialPage(child: ErrorScreen());
-  },
+  // error
+  errorPageBuilder: (context, state) => MaterialPage(child: ErrorScreen()),
 );

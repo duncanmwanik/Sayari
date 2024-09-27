@@ -3,10 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/navigation.dart';
+import '../../../../_helpers/navigation.dart';
 import '../../../../_providers/_providers.dart';
 import '../../../../_providers/input.dart';
-import '../../../../_variables/date_time.dart';
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';
@@ -18,6 +17,7 @@ import '../../../../_widgets/others/text.dart';
 import '../../../../_widgets/others/toast.dart';
 import '../../_helpers/date_time/date_info.dart';
 import '../../_helpers/date_time/misc.dart';
+import '../../_vars/date_time.dart';
 
 Future<void> showDateRangeDialog() async {
   await showAppDialog(
@@ -33,6 +33,7 @@ Future<void> showDateRangeDialog() async {
                   alignment: Alignment.center,
                   child: Wrap(
                     spacing: smallWidth(),
+                    runSpacing: smallWidth(),
                     children: [
                       //
                       AppButton(
@@ -77,10 +78,8 @@ Future<void> showDateRangeDialog() async {
                   ),
                 ),
                 //
-                AppDivider(),
-                //
+                AppDivider(height: mediumHeight()),
                 AppText(text: 'Repeats on', textAlign: TextAlign.center),
-                //
                 sph(),
                 //
                 Row(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../_helpers/_common/navigation.dart';
+import '../../../../_helpers/navigation.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/buttons/close.dart';
 import '../../../../_widgets/others/text.dart';

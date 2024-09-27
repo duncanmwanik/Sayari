@@ -1,18 +1,25 @@
 import '../__styling/helpers.dart';
-import '../_helpers/_common/global.dart';
-import '../_helpers/_common/helpers.dart';
+import '../_helpers/global.dart';
+import '../_helpers/helpers.dart';
 import '../_variables/constants.dart';
 import '../_variables/features.dart';
 import '../features/_notes/tasks/_helpers/helper.dart';
 import '../features/files/_helpers/helper.dart';
 
 class Item {
-  const Item({this.type = '', this.id = '', this.data = const {}, this.extra = ''});
+  Item({
+    this.parent = '',
+    this.type = '',
+    this.id = '',
+    this.sid = '',
+    required this.data,
+  });
 
-  final String type;
-  final String id;
-  final Map data;
-  final String extra;
+  String parent;
+  String type;
+  String id;
+  String sid;
+  Map data;
 
   void update() {}
 
@@ -27,35 +34,49 @@ class Item {
   String labels() => data['l'] ?? '';
   String coverId() => data['w'] ?? '';
   String coverName() => data[coverId()] ?? '';
-  String sharedLink() => '$sayariDefaultPath/${features[itemType()]!.path}/${minString(title())}_$id';
-  String demoLink() => '/${features[itemType()]!.path}/${minString(title())}_$id';
+  String sharedLink() => '$sayariDefaultPath/${features[itemType()]!.path}/${minString(title())}-$id';
+  String publishedLink() => '$sayariDefaultPath/${features[feature.publish]!.path}/${minString(title())}-$id';
+  String demoLink() => '/${features[itemType()]!.path}/${minString(title())}-$id';
   Map files() => getFiles(data);
+  List<String> flags() => splitList(data['g']);
   Map subItems() => getSubItems(data);
-  int customHabitDatesCount() => getSplitList(data['hd']).length;
+  int customHabitDatesCount() => splitList(data['hd']).length;
   int checkedHabitCount() => data.keys.where((key) => key.toString().startsWith('hc')).length;
   int checkedCount() => data.keys.where((key) => key.startsWith('i') && data[key]['v'] == '1').length;
   int taskCount() => data.keys.where((key) => key.startsWith('i')).length;
 
+  bool isNew() => id.isEmpty;
   bool exists() => data.isNotEmpty;
   bool hasTitle() => data['t'] != null && data['t'] != '';
   bool hasColor() => hasColour(data['c']);
   bool hasEmoji() => data['j'] != null;
+  bool hasReminder() => reminder().isNotEmpty;
   bool hasDetails() => reminder().isNotEmpty || labels().isNotEmpty || files().isNotEmpty;
   bool hasOverview() => data['w'] != null && data['w'] != '';
   bool hasFiles() => files().isNotEmpty;
-  bool isTask() => data[feature.tasks] != null;
+  bool hasFlags() => flags().isNotEmpty;
+  bool hasTasks() => taskCount() != 0;
   bool hasFinances() => data[feature.finances] != null;
   bool hasHabits() => data[feature.habits] != null;
   bool hasLinks() => data[feature.links] != null;
   bool hasPortfolios() => data[feature.portfolios] != null;
   bool hasBookings() => data[feature.bookings] != null;
   bool isNote() => data[feature.notes] != null;
-  bool isShared() => data[feature.share] == '1';
+  bool isTask() => data[feature.tasks] != null;
+  bool isFinance() => data[feature.finances] != null;
+  bool isHabit() => data[feature.habits] != null;
+  bool isLink() => data[feature.links] != null;
+  bool isBooking() => data[feature.bookings] != null;
+  bool isPortfolio() => data[feature.portfolios] != null;
+  bool isShared() => data[feature.share] != null;
   bool isPublished() => data['sp'] == '1';
   bool isPinned() => data['p'] == '1';
   bool isArchived() => data['a'] == '1';
   bool isDeleted() => data['x'] == '1';
+  bool isChecked() => data['v'] == '1';
   bool showChecks() => data['v'] == '1';
+  bool showEditor() => isNote() || isPortfolio() || isBooking() || isLink();
+  bool showFooter() => (isNote() || isBooking() || isFinance()) && !isShare();
   bool showEditorOverview() => isNote() || hasPortfolios();
   bool showNewEntriesFirst() => data['at'] == '1';
 

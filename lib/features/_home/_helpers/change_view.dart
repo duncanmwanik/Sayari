@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../_variables/features.dart';
 import '../../../_providers/_providers.dart';
-import '../../_notes/item_view.dart';
+import '../../_notes/notes_view.dart';
 import '../../calendar/session_view.dart';
 import '../../chat/chat_view.dart';
 
@@ -22,8 +22,8 @@ Widget changeView(String type) {
 
 void goToView(String type) {
   if (type != state.views.view) {
-    state.views.setHomeView(type);
-    state.input.clearData();
+    state.views.setView(type);
+    state.input.clear();
     state.data.clear();
   }
 }

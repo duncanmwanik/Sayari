@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
 
 String handleFirebaseAuthError(FirebaseAuthException e, {String process = 'process'}) {
   String message = e.message ?? '';

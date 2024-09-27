@@ -29,14 +29,16 @@ class IncomingMessageBubble extends StatelessWidget {
         onEnter: (value) => state.hover.set(id),
         onExit: (value) => state.hover.reset(),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // user dp
-            AppButton(
-              onPressed: () {},
-              noStyling: true,
-              isRound: true,
-              child: AppImage('sayari.png', size: title),
+            Align(
+              alignment: Alignment.topLeft,
+              child: AppButton(
+                onPressed: () {},
+                noStyling: true,
+                isRound: true,
+                child: AppImage('sayari.png', size: title),
+              ),
             ),
             // message
             tpw(),
@@ -71,7 +73,7 @@ class IncomingMessageBubble extends StatelessWidget {
                       FileList(fileData: files),
                       if (files.isNotEmpty) mph(),
                       // message
-                      AppText(size: 12, text: message, weight: isDark() ? FontWeight.w400 : FontWeight.w600),
+                      AppText(size: 12, text: message, weight: isDark() ? FontWeight.w400 : FontWeight.w500),
                       // time
                       ph(1),
                       Align(

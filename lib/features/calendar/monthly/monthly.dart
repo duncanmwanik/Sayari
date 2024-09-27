@@ -14,7 +14,7 @@ import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/date_time/date_info.dart';
 import '../_helpers/date_time/misc.dart';
-import '../_helpers/helpers.dart';
+import '../_helpers/prepare.dart';
 import '../_helpers/sort.dart';
 import '../_helpers/swipe.dart';
 import '../_w/sessions_list_menu.dart';
@@ -55,7 +55,7 @@ class MonthlyView extends StatelessWidget {
                             return ValueListenableBuilder(
                                 valueListenable: storage(feature.calendar).listenable(),
                                 builder: (context, box, widget) {
-                                  Map todaySessionsMap = sortSessionsByTime(box.get(date.date, defaultValue: {}));
+                                  Map todaySessionsMap = sortSessions(box.get(date.date, defaultValue: {}));
 
                                   return AppButton(
                                     onPressed: () => prepareSessionCreation(date: date.date, hour: TimeOfDay.now().hour),

@@ -18,7 +18,7 @@ class Goals extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       return Visibility(
-        visible: input.data['cx'] != '1',
+        visible: input.item.data['cx'] != '1',
         child: Padding(
           padding: paddingS('b'),
           child: Wrap(
@@ -46,7 +46,7 @@ class Goal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      String goal = input.data['g$type'] ?? '';
+      String goal = input.item.data['g$type'] ?? '';
       bool isMet = getTotalAmount(type) >= double.parse(goal.isNotEmpty ? goal : '0') && goal.isNotEmpty;
       Color color = type == 'in'
           ? Colors.green

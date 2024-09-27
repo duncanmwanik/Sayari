@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../_models/item.dart';
 import '../../../_variables/colors.dart';
 import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/others/text.dart';
 
 class SessionType extends StatelessWidget {
@@ -14,7 +13,7 @@ class SessionType extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.min,
       children: [
         // session type
         AppButton(
@@ -26,8 +25,6 @@ class SessionType extends StatelessWidget {
             color: backgroundColors[item.color()]!.textColor,
           ),
         ),
-        //
-        AppCloseButton(faded: true),
         //
       ],
     );

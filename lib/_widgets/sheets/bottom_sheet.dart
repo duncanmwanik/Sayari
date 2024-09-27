@@ -8,7 +8,7 @@ import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../../_providers/_providers.dart';
 import '../../_variables/navigation.dart';
 import '../others/others/divider.dart';

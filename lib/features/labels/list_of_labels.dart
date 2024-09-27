@@ -1,42 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
-import '../../_helpers/_common/global.dart';
+import '../../_helpers/global.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
+import '../../_services/hive/get_data.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/others/other.dart';
 import '../../_widgets/others/text.dart';
 import '../_notes/_helpers/quick_edit.dart';
-import '../_spaces/_helpers/common.dart';
 import 'menu.dart';
 
 class LabelList extends StatelessWidget {
-  const LabelList({super.key, this.type, this.labels, this.bgColor, this.itemId});
+  const LabelList({super.key, this.labels, this.bgColor, this.id});
 
-  final String? type;
   final String? labels;
   final String? bgColor;
-  final String? itemId;
+  final String? id;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      String type_ = type ?? input.type;
-      List labelList = getSplitList(labels ?? state.input.data['l']);
+      List labelList = splitList(labels ?? state.input.item.data['l']);
 
       Future<void> removeLabel(String label) async {
         await Future.delayed(Duration.zero);
         labelList.remove(label);
 
-        if (itemId != null) {
-          await editItemExtras(type: type_, itemId: itemId!, key: 'l', value: getJoinedList(labelList));
+        if (id != null) {
+          await editItemExtras(parent: feature.notes, id: id!, key: 'l', value: joinList(labelList));
         } else {
-          state.input.update('l', getJoinedList(labelList));
+          state.input.update('l', joinList(labelList));
         }
       }
 
@@ -50,7 +47,7 @@ class LabelList extends StatelessWidget {
               children: List.generate(labelList.length, (index) {
                 String label = labelList[index];
 
-                if (Hive.box('${liveSpace()}_${feature.labels}').containsKey(label)) {
+                if (storage(feature.labels).containsKey(label)) {
                   // label
                   return AppButton(
                     menuItems: labelsMenu(
@@ -58,8 +55,8 @@ class LabelList extends StatelessWidget {
                       alreadySelected: labelList,
                       onDone: (newLabels) async {
                         labels != null
-                            ? await editItemExtras(type: type_, itemId: itemId!, key: 'l', value: getJoinedList(newLabels))
-                            : state.input.update('l', getJoinedList(newLabels));
+                            ? await editItemExtras(parent: feature.notes, id: id!, key: 'l', value: joinList(newLabels))
+                            : state.input.update('l', joinList(newLabels));
                       },
                     ),
                     color: hasColour(bgColor) ? Colors.white24 : null,

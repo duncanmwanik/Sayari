@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/helpers.dart';
+import '../../_helpers/helpers.dart';
 import '../../_providers/views.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
@@ -13,7 +13,7 @@ import '_helpers/date_time/date_info.dart';
 import '_helpers/date_time/jump_to_date.dart';
 import '_helpers/date_time/misc.dart';
 import '_helpers/go_to_today.dart';
-import '_helpers/helpers.dart';
+import '_helpers/prepare.dart';
 import '_helpers/swipe.dart';
 import '_w/view_chooser.dart';
 import 'state/datetime.dart';
@@ -25,14 +25,14 @@ class CalendarOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer2<DateTimeProvider, ViewsProvider>(builder: (context, dates, views, child) {
       DateInfo date = DateInfo(dates.selectedDate);
-      bool isToday = [date.isToday(), false, date.isCurrentMonth(), date.isCurrentYear()][views.calendarView];
-      date.isToday_ = isToday;
       List infoList = [
         getDayInfo(dates.selectedDate),
         getWeekInfo(dates.currentWeekDates[0], dates.currentWeekDates[6]),
         getMonthInfo(dates.selectedYear, dates.selectedMonth),
         dates.selectedYear.toString(),
       ];
+      bool isToday = [date.isToday(), false, date.isCurrentMonth(), date.isCurrentYear()][views.calendarView];
+      date.isToday_ = isToday;
 
       return Row(
         children: [
@@ -40,15 +40,7 @@ class CalendarOptions extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
-                // previous date
-                AppButton(
-                  tooltip: 'Previous',
-                  isSquare: true,
-                  child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
-                  onPressed: () => swipeToNew(direction: 'left'),
-                ),
                 // date info
-                spw(),
                 Flexible(
                   child: AppButton(
                     onPressed: () => jumpToDateDialog(),
@@ -59,6 +51,14 @@ class CalendarOptions extends StatelessWidget {
                     hoverColor: transparent,
                     child: AppText(size: extra, text: infoList[views.calendarView], weight: FontWeight.w800),
                   ),
+                ),
+                // previous date
+                mpw(),
+                AppButton(
+                  tooltip: 'Previous',
+                  isSquare: true,
+                  child: AppIcon(Icons.keyboard_arrow_left, size: 18, faded: true),
+                  onPressed: () => swipeToNew(direction: 'left'),
                 ),
                 // next date
                 spw(),

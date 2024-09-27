@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/navigation.dart';
+import '../../../../_helpers/navigation.dart';
 import '../../../../_providers/_providers.dart';
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';
@@ -12,7 +12,7 @@ import '../../../../_widgets/others/text.dart';
 import '../../../../_widgets/others/toast.dart';
 
 Future showPeriodBudgetDialog({required String type, required String key}) {
-  TextEditingController amountController = TextEditingController(text: state.input.data[key]);
+  TextEditingController amountController = TextEditingController(text: state.input.item.data[key]);
 
   return showAppDialog(
     //

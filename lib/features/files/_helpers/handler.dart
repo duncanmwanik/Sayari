@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/global.dart';
 import '../../../_services/firebase/storage.dart';
 import '../../../_services/hive/local_storage_service.dart';
 
@@ -28,7 +29,7 @@ Future<void> handleFilesCloud(String spaceId, Map source, {String? items}) async
   // editing items
   //
   else {
-    getSplitList(items).forEach((item) async {
+    splitList(items).forEach((item) async {
       try {
         // add new file
         if (item.toString().startsWith('f')) {

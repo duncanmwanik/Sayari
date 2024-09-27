@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/internet_connection.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/internet_connection.dart';
 import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/toast.dart';
 import 'auth_error_handler.dart';

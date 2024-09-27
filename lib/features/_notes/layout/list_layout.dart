@@ -8,7 +8,7 @@ import '../../../_providers/_providers.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../_helpers/order_items.dart';
-import '../items/list_item.dart';
+import '../_w/list_item.dart';
 
 class ListLayout extends StatelessWidget {
   const ListLayout({super.key});
@@ -24,7 +24,7 @@ class ListLayout extends StatelessWidget {
         b: largeHeightPlaceHolder(),
       ),
       onReorder: (oldIndex, newIndex) => orderItems(
-        type: feature.notes,
+        parent: feature.notes,
         oldItemId: state.data.ids[oldIndex],
         newItemId: state.data.ids[newIndex],
         itemsLength: state.data.ids.length,
@@ -32,9 +32,11 @@ class ListLayout extends StatelessWidget {
         newIndex: newIndex,
       ),
       children: List.generate(state.data.ids.length, (index) {
-        String itemId = state.data.ids[index];
-        Map itemData = storage(feature.notes).get(itemId, defaultValue: {});
-        Item item = Item(type: feature.notes, id: itemId, data: itemData);
+        Item item = Item(
+          parent: feature.notes,
+          id: state.data.ids[index],
+          data: storage(feature.notes).get(state.data.ids[index], defaultValue: {}),
+        );
 
         return ReorderableDelayedDragStartListener(
           index: index,

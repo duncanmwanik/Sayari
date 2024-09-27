@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_providers/input.dart';
 import '../../../_providers/views.dart';
 import '../../../_widgets/buttons/button.dart';
@@ -93,10 +93,10 @@ class HabitYear extends StatelessWidget {
                                   sph(),
                                   //
                                   Consumer<InputProvider>(builder: (context, input, child) {
-                                    Map data = input.data;
+                                    Map data = input.item.data;
                                     String? bgColor = data['c'];
                                     bool isCustom = data['hf'] == 'custom';
-                                    List<String> customDates = isCustom ? getSplitList(data['hd']) : [];
+                                    List<String> customDates = isCustom ? splitList(data['hd']) : [];
 
                                     return Wrap(
                                       spacing: 2,

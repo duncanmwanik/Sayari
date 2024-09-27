@@ -35,15 +35,15 @@ class HorizontalNavigationBox extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         //
-                        navItem(notesSelectedIcon, feature.notes, views.view == feature.notes),
-                        navItem(Icons.check_box_rounded, size: 20.5, feature.tasks, views.view == feature.tasks),
-                        navItem(sessionsSelectedIcon, size: 17, feature.calendar, views.view == feature.calendar),
+                        navItem(notesIcon, feature.notes, views.view == feature.notes),
+                        navItem(tasksIcon, size: 20.5, feature.tasks, views.view == feature.tasks),
+                        navItem(sessionsIcon, size: 17, feature.calendar, views.view == feature.calendar),
                         //
-                        if (showNavOption(feature.chat)) navItem(chatSelectedIcon, feature.chat, views.view == feature.chat),
+                        if (showNavOption(feature.chat)) navItem(chatIcon, feature.chat, views.view == feature.chat),
                         //
                         //
                         if (showNavOption(feature.explore))
-                          navItem(exploreSelectedIcon, feature.explore, views.view == feature.explore, onPressed: () => showExploreSheet()),
+                          navItem(exploreIcon, feature.explore, views.view == feature.explore, onPressed: () => showExploreSheet()),
                         //
                         NavMenu(),
                         //

@@ -8,11 +8,10 @@ import 'booker.dart';
 import 'intro.dart';
 
 class BookingBody extends StatelessWidget {
-  const BookingBody(
-      {super.key, required this.spaceId, required this.itemId, required this.userId, required this.userName, required this.data});
+  const BookingBody({super.key, required this.spaceId, required this.id, required this.userId, required this.userName, required this.data});
 
   final String spaceId;
-  final String itemId;
+  final String id;
   final String userId;
   final String userName;
   final Map data;
@@ -45,7 +44,7 @@ class BookingBody extends StatelessWidget {
                         //
                         mpw(),
                         //
-                        Booker(spaceId: spaceId, itemId: itemId, data: data, userName: userName),
+                        Booker(spaceId: spaceId, id: id, data: data, userName: userName),
                         //
                       ],
                     ),

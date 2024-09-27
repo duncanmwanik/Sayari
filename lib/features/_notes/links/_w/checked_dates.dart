@@ -21,7 +21,7 @@ class CheckedDates extends StatelessWidget {
     bool isInput = item == null;
 
     return Consumer<InputProvider>(builder: (context, input, child) {
-      Map data = item != null ? item!.data : input.data;
+      Map data = item != null ? item!.data : input.item.data;
       List checkedDates = data.keys.where((key) => key.toString().startsWith('hc')).toList();
       bool isExpanded = data['he'] == '1';
 

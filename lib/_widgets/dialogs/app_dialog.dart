@@ -7,8 +7,10 @@ import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../../_variables/navigation.dart';
+import '../buttons/button.dart';
+import '../others/icons.dart';
 import '../others/others/other.dart';
 import '../others/text.dart';
 
@@ -16,8 +18,9 @@ Future<dynamic> showAppDialog({
   dynamic title,
   Widget? content,
   List<Widget>? actions,
-  bool smallTitlePadding = false,
-  bool smallTitleColor = true,
+  EdgeInsets? contentPadding,
+  bool showTitleColor = true,
+  bool showClose = true,
   double? maxWidth,
   Function? prep,
 }) {
@@ -54,20 +57,39 @@ Future<dynamic> showAppDialog({
                   color: styler.secondaryColor().withOpacity(isImage() ? 0.4 : 0.8),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //
                       if (title != null)
                         Align(
                           alignment: Alignment.topLeft,
                           child: Container(
-                            color: smallTitleColor ? styler.appColor(isDark() ? 0.5 : 1) : null,
+                            color: showTitleColor ? styler.appColor(isDark() ? 0.5 : 1) : null,
                             padding: paddingM(),
                             width: double.infinity,
-                            child: title.runtimeType == String ? HtmlText(text: title, color: styler.textColor()) : title,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: title.runtimeType == String ? HtmlText(text: title, color: styler.textColor()) : title,
+                                ),
+                                if (showClose)
+                                  AppButton(
+                                    onPressed: () => popWhatsOnTop(),
+                                    padding: paddingS(),
+                                    isSquare: true,
+                                    child: AppIcon(closeIcon, size: 16, faded: true),
+                                  )
+                              ],
+                            ),
                           ),
                         ),
                       //
-                      if (content != null) Flexible(child: Padding(padding: paddingM(), child: content)),
+                      if (content != null)
+                        Flexible(
+                            child: Padding(
+                          padding: contentPadding ?? paddingM(),
+                          child: content,
+                        )),
                       //
                       if (actions != null) tph(),
                       if (actions != null)

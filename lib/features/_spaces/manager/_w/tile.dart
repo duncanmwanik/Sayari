@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../__styling/helpers.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_widgets/others/icons.dart';
@@ -32,7 +33,10 @@ class Tile extends StatelessWidget {
       color: transparent,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(borderRadiusTiny),
-        side: styler.lightSpaceBorder(),
+        side: BorderSide(
+          color: Colors.grey.withOpacity(isDark() ? 0.15 : (isImage() ? 1 : 0.3)),
+          width: isImage() ? 1.5 : (isDark() ? 0.7 : 1),
+        ),
       ),
       clipBehavior: Clip.antiAlias,
       margin: EdgeInsets.only(bottom: 5),

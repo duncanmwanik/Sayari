@@ -5,8 +5,8 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/global.dart';
 import '../../../../_helpers/forms/form_validation_helper.dart';
+import '../../../../_helpers/global.dart';
 import '../../../../_providers/_providers.dart';
 import '../../../../_services/firebase/sync_to_cloud.dart';
 import '../../../../_variables/features.dart';
@@ -27,13 +27,13 @@ class Booker extends StatefulWidget {
   const Booker({
     super.key,
     required this.spaceId,
-    required this.itemId,
+    required this.id,
     required this.userName,
     required this.data,
   });
 
   final String spaceId;
-  final String itemId;
+  final String id;
   final String userName;
   final Map data;
 
@@ -50,8 +50,8 @@ class _ShareScreenState extends State<Booker> {
 
   @override
   Widget build(BuildContext context) {
-    List availableDates = getSplitList(widget.data['bd']);
-    List availableTimes = getSplitList(widget.data['bt']);
+    List availableDates = splitList(widget.data['bd']);
+    List availableTimes = splitList(widget.data['bt']);
 
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: 500),
@@ -126,9 +126,9 @@ class _ShareScreenState extends State<Booker> {
                                   await syncToCloud(
                                     isShare: true,
                                     db: 'spaces',
-                                    parentId: widget.spaceId,
-                                    type: feature.notes,
-                                    itemId: widget.itemId,
+                                    space: widget.spaceId,
+                                    parent: feature.notes,
+                                    id: widget.id,
                                     action: 'e',
                                     keys: bookingId,
                                     data: {

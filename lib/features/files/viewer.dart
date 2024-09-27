@@ -10,7 +10,7 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_variables/navigation.dart';
 import '../../_widgets/buttons/button.dart';

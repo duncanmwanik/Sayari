@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/hover.dart';
 import '../../../_widgets/buttons/button.dart';
@@ -43,68 +43,73 @@ class ItemActions extends StatelessWidget {
               padding: isPersistent ? null : padding(p: 3),
               menuItems: [
                 //
-                MenuItem(label: item.title(), faded: true),
+                MenuItem(label: item.title(), faded: true, smallHeight: true, popTrailing: true),
                 menuDivider(),
                 //
                 if (!item.isDeleted())
                   MenuItem(
                     label: 'Select',
                     leading: Icons.check_box_outlined,
-                    onTap: () => selection.select(item.id, item.title(), item.type),
+                    onTap: () => selection.select(item),
                   ),
                 //
                 if (!item.isDeleted())
                   MenuItem(
                     label: item.isPinned() ? 'Unpin' : 'Pin',
                     leading: item.isPinned() ? Icons.push_pin : Icons.push_pin_outlined,
-                    onTap: () => editItemExtras(type: item.type, itemId: item.id, key: item.isPinned() ? 'd/p' : 'p', value: '1'),
+                    onTap: () => editItemExtras(parent: item.parent, id: item.id, key: item.isPinned() ? 'd/p' : 'p', value: '1'),
                   ),
                 //
                 if (!item.isDeleted())
                   MenuItem(
-                    label: item.hasEmoji() ? 'Remove emoji' : 'Add enoji',
-                    leading: item.hasEmoji() ? Icons.clear : Icons.emoji_emotions_outlined,
-                    // onTap: () => editItemExtras(type: item.type, itemId: item.id, key: item.isPinned() ? 'd/p' : 'p', value: '1'),
-                  ),
-                //
-                if (!item.isDeleted())
-                  MenuItem(
-                    label: 'Add Label',
+                    label: 'Label',
                     leading: labelIcon,
                     menuItems: labelsMenu(
                       title: item.title(),
                       isSelection: true,
-                      alreadySelected: getSplitList(item.labels()),
+                      alreadySelected: splitList(item.labels()),
                       onDone: (newLabels) async {
-                        await editItemExtras(type: item.type, itemId: item.id, key: 'l', value: getJoinedList(newLabels));
+                        await editItemExtras(parent: item.parent, id: item.id, key: 'l', value: joinList(newLabels));
                       },
                     ),
                   ),
                 //
                 if (!item.isDeleted())
                   MenuItem(
-                    label: 'Add Reminder',
+                    label: 'Reminder',
                     leading: reminderIcon,
                     menuItems: reminderMenu(
                       title: item.title(),
                       reminder: item.reminder(),
                       onSet: (newReminder) async {
-                        await editItemExtras(type: item.type, itemId: item.id, key: 'r', value: newReminder);
+                        await editItemExtras(parent: item.parent, id: item.id, key: 'r', value: newReminder);
                       },
                     ),
                   ),
                 //
                 if (!item.isDeleted())
                   MenuItem(
-                    label: 'Choose Color',
+                    label: 'Color',
                     leading: colorIcon,
                     menuItems: colorMenu(
                       title: item.title(),
                       selectedColor: item.color(),
                       onSelect: (newColor) async {
-                        await editItemExtras(type: item.type, itemId: item.id, key: 'c', value: newColor);
+                        await editItemExtras(
+                          parent: item.parent,
+                          id: item.id,
+                          key: newColor.isEmpty ? 'd/c' : 'c',
+                          value: newColor,
+                        );
                       },
                     ),
+                  ),
+                //
+                if (!item.isDeleted())
+                  MenuItem(
+                    label: 'Emoji',
+                    leading: item.hasEmoji() ? Icons.clear : Icons.emoji_emotions_outlined,
+                    // onTap: () => editItemExtras(parent: item.parent, id: item.id, key: item.isPinned() ? 'd/p' : 'p', value: '1'),
                   ),
                 //
                 if (!item.isDeleted())
@@ -112,7 +117,7 @@ class ItemActions extends StatelessWidget {
                     label: item.isArchived() ? 'Unarchive' : 'Archive',
                     leading: item.isArchived() ? unarchiveIcon : archiveIcon,
                     onTap: () async {
-                      await editItemExtras(type: item.type, itemId: item.id, key: 'a', value: item.isArchived() ? '0' : '1');
+                      await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: item.isArchived() ? '0' : '1');
                     },
                   ),
                 //
@@ -122,8 +127,9 @@ class ItemActions extends StatelessWidget {
                   MenuItem(
                     label: 'Move To Trash',
                     leading: deleteIcon,
+                    color: Colors.red,
                     onTap: () async {
-                      await editItemExtras(type: item.type, itemId: item.id, key: 'x', value: '1');
+                      await editItemExtras(parent: item.parent, id: item.id, key: 'x', value: '1');
                     },
                   ),
                 //
@@ -131,20 +137,24 @@ class ItemActions extends StatelessWidget {
                   MenuItem(
                     label: 'Restore From Trash',
                     leading: restoreIcon,
+                    color: Colors.green,
                     onTap: () async {
-                      await editItemExtras(type: item.type, itemId: item.id, key: 'x', value: '0');
+                      await editItemExtras(parent: item.parent, id: item.id, key: 'x', value: '0');
                     },
                   ),
                 //
-                if (item.isDeleted() && isNotSelection)
+                // if (item.isDeleted() && isNotSelection)
+                if (isNotSelection)
                   MenuItem(
                     label: 'Delete Forever',
                     leading: deleteForeverIcon,
+                    color: Colors.red,
                     onTap: () async {
                       await showConfirmationDialog(
-                        title: 'Delete selected item forever?',
+                        title: 'Delete <b>${item.title()}</b> forever?',
+                        content: 'You will not be able to recover the item.',
                         yeslabel: 'Delete',
-                        onAccept: () async => await deleteItemForever(type: item.type, itemId: item.id, files: item.files()),
+                        onAccept: () async => await deleteItemForever(item),
                       );
                     },
                   ),

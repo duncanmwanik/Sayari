@@ -18,7 +18,7 @@ class HabitHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      Map data = item != null ? item!.data : input.data;
+      Map data = item != null ? item!.data : input.item.data;
       String view = data['hv'] ?? '1';
 
       return AppButton(

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_models/files.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_services/hive/local_storage_service.dart';

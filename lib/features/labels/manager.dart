@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../__styling/spacing.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../../_providers/_providers.dart';
+import '../../_services/hive/get_data.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/action.dart';
 import '../_spaces/_helpers/checks_space.dart';
-import '../_spaces/_helpers/common.dart';
 import 'label.dart';
 import 'new_label.dart';
 
@@ -43,7 +43,7 @@ class _LabelManagerState extends State<LabelManager> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: Hive.box('${liveSpace()}_${feature.labels}').listenable(),
+        valueListenable: storage(feature.labels).listenable(),
         builder: (context, box, wdgt) {
           String selected = state.views.selectedLabel;
 

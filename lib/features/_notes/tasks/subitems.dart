@@ -7,9 +7,7 @@ import '../../../_models/item.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/order_items.dart';
-import '_w_item/subitem.dart';
-
-// TODOs: code min
+import 'subitem.dart';
 
 class ListOfSubItems extends StatelessWidget {
   const ListOfSubItems({super.key, required this.item});
@@ -32,7 +30,7 @@ class ListOfSubItems extends StatelessWidget {
             padding: EdgeInsets.zero,
             needsLongPressDraggable: false,
             onReorder: (oldIndex, newIndex) => orderItems(
-              type: feature.notes,
+              parent: feature.notes,
               oldItemId: subItemsKeys[oldIndex],
               newItemId: subItemsKeys[newIndex],
               itemsLength: subItemsKeys.length,
@@ -40,10 +38,14 @@ class ListOfSubItems extends StatelessWidget {
               newIndex: newIndex,
             ),
             children: List.generate(subItemsKeys.length, (index) {
-              String subItemId = subItemsKeys[index];
-              Map subItemData = subItemsData[subItemId];
+              Item sitem = Item(
+                parent: feature.notes,
+                id: item.id,
+                sid: subItemsKeys[index],
+                data: subItemsData[subItemsKeys[index]],
+              );
 
-              return SubItem(key: UniqueKey(), subItemId: subItemId, subItemData: subItemData, item: item);
+              return SubItem(sitem: sitem, item: item);
             }),
           )
         : Padding(

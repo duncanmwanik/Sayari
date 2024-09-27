@@ -1,22 +1,21 @@
 // ignore_for_file: unused_local_variable
 
-import 'package:hive/hive.dart';
+import '../../_helpers/debug.dart';
+import '../hive/get_data.dart';
 
-import '../../_helpers/_common/global.dart';
-
-Future saveActivity(String parentId, String timestamp, String activity) async {
+Future saveActivity(String spaceId, String timestamp, String activity) async {
   try {
-    // List<String> activityData = getSplitList(activity, separator: ',', clearEmpties: false);
+    // List<String> activityData = splitList(activity, separator: ',', clearEmpties: false);
     // String db = activityData[0];
     // String type = activityData[1];
     // String action = activityData[2];
-    // String itemId = activityData[3];
-    // String subId = activityData[4];
+    // String id = activityData[3];
+    // String sid = activityData[4];
     // String keys = activityData[5];
     // String extras = activityData[6];
     // String userName = activityData[7];
 
-    Hive.box('${parentId}_activity').put(timestamp, activity);
+    storage('activity', spaceId: spaceId).put(timestamp, activity);
 
     // if (db == 'spaces' && itemTitle.isNotEmpty) {
     //   String activityDescription = '';
@@ -33,9 +32,9 @@ Future saveActivity(String parentId, String timestamp, String activity) async {
     //   if (activityDescription.isNotEmpty) {
     //     // await showNotification(
     //     //   type: type,
-    //     //   title: getSpaceName(parentId),
+    //     //   title: getSpaceName(spaceId),
     //     //   body: activityDescription,
-    //     //   data: {'type': type, 'parentId': parentId, 'itemId': itemId},
+    //     //   data: {'type': type, 'spaceId': spaceId, 'id': id},
     //     // );
     //   }
     // }

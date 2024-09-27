@@ -12,11 +12,11 @@ class SendMessageButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool enabled = input.data['n'] != null && input.data['n'].toString().isNotEmpty;
+      bool enabled = input.item.data['n'] != null && input.item.data['n'].toString().isNotEmpty;
 
       return AppButton(
         onPressed: enabled ? () => sendMessage() : null,
-        noStyling: true,
+        noStyling: !enabled,
         tooltip: 'Send',
         height: 45,
         width: 45,

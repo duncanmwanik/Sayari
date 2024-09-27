@@ -4,11 +4,11 @@ import 'package:flutter/widgets.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../__styling/spacing.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
+import '../../_services/hive/get_data.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/action.dart';
 import '../../_widgets/others/empty_box.dart';
-import '../_spaces/_helpers/common.dart';
 import '_w/../flag.dart';
 
 List<Widget> flagsMenu({List<String> alreadySelected = const [], Function(List<String> newFlags)? onDone}) {
@@ -46,25 +46,26 @@ class _FlagsManagerState extends State<FlagsManager> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //
-                Flag(isNewFlag: true),
-                //
+                // new flag
+                Flag(),
+                // flag list
                 ValueListenableBuilder(
-                  valueListenable: Hive.box('${liveSpace()}_${feature.flags}').listenable(),
+                  valueListenable: storage(feature.flags).listenable(),
                   builder: (context, box, widget) {
-                    List flags = box.keys.toList();
-
                     if (box.keys.isNotEmpty) {
                       return Column(
-                        children: List.generate(flags.length, (index) {
-                          String flag = flags[index];
-                          String color = box.get(flag, defaultValue: '0');
+                        children: List.generate(box.keys.length, (index) {
+                          String flagId = box.keyAt(index);
+                          String flagData = box.get(flagId, defaultValue: '0,Flag');
+                          String color = flagData.substring(0, flagData.indexOf(','));
+                          String flag = flagData.substring(flagData.indexOf(',') + 1);
                           return Flag(
+                            flagId: flagId,
                             flag: flag,
                             color: color,
-                            isSelected: selectedFlags.contains(flag),
+                            isSelected: selectedFlags.contains(flagId),
                             onPressed: () => setState(() {
-                              selectedFlags.contains(flag) ? selectedFlags.remove(flag) : selectedFlags.add(flag);
+                              selectedFlags.contains(flagId) ? selectedFlags.remove(flagId) : selectedFlags.add(flagId);
                             }),
                             onDelete: () => setState(() => selectedFlags.removeAt(index)),
                           );

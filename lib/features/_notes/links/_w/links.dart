@@ -17,7 +17,7 @@ class Links extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       return Visibility(
-        visible: input.data[feature.links] != null,
+        visible: input.item.data[feature.links] != null,
         child: Container(
           margin: padding(s: 'tb'),
           decoration: BoxDecoration(

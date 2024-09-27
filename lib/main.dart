@@ -10,7 +10,7 @@ import '__routing/routes.dart';
 import '__styling/helpers.dart';
 import '__styling/theme.dart';
 import '__styling/variables.dart';
-import '_helpers/_common/error_handler.dart';
+import '_helpers/error_handler.dart';
 import '_providers/_providers.dart';
 import '_providers/theme.dart';
 import '_services/firebase/database.dart';
@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
       providers: allProviders,
       child: Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
         state.setContext(context);
-        bool isDarkTheme = getThemeAsBoolean(themeProvider.themeType);
-        styler.initialize(isDarkTheme);
+        bool isDark = isDarkTheme(themeProvider.themeType);
+        styler.initialize(isDark);
 
         return ResponsiveSizer(
           builder: (ctx, ort, stp) {
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               scrollBehavior: AppScrollBehavior(),
               builder: BotToastInit(),
               title: 'Sayari',
-              theme: AppTheme.themeData(isDarkTheme),
+              theme: AppTheme.themeData(isDark),
               debugShowCheckedModeBanner: false,
             );
           },

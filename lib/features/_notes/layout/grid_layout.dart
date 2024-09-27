@@ -3,7 +3,7 @@ import 'package:reorderables/reorderables.dart';
 
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
-import '../../../_helpers/_common/helpers.dart';
+import '../../../_helpers/helpers.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_services/hive/get_data.dart';
@@ -33,7 +33,7 @@ class GridLayout extends StatelessWidget {
             b: largeHeightPlaceHolder(),
           ),
           onReorder: (oldIndex, newIndex) => orderItems(
-            type: feature.notes,
+            parent: feature.notes,
             oldItemId: state.data.ids[oldIndex],
             newItemId: state.data.ids[newIndex],
             itemsLength: state.data.ids.length,
@@ -41,9 +41,11 @@ class GridLayout extends StatelessWidget {
             newIndex: newIndex,
           ),
           children: List.generate(state.data.ids.length, (index) {
-            String itemId = state.data.ids[index];
-            Map itemData = storage(feature.notes).get(itemId, defaultValue: {});
-            Item item = Item(type: feature.notes, id: itemId, data: itemData);
+            Item item = Item(
+              parent: feature.notes,
+              id: state.data.ids[index],
+              data: storage(feature.notes).get(state.data.ids[index], defaultValue: {}),
+            );
 
             return Note(key: Key(item.id), item: item);
           }),

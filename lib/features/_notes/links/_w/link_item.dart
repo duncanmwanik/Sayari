@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/global.dart';
-import '../../../../_helpers/_common/navigation.dart';
+import '../../../../_helpers/global.dart';
+import '../../../../_helpers/navigation.dart';
 import '../../../../_providers/_providers.dart';
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/buttons/button.dart';
@@ -114,7 +114,7 @@ class _HabitWeekState extends State<LinkItem> {
                             MenuItem(
                               label: 'View Image',
                               leading: Icons.image,
-                              onTap: () => showImageViewer(images: {linkImageId: state.input.data[linkImageId] ?? ''}),
+                              onTap: () => showImageViewer(images: {linkImageId: state.input.item.data[linkImageId] ?? ''}),
                             ),
                           if (linkImageId.isNotEmpty)
                             MenuItem(
@@ -132,8 +132,8 @@ class _HabitWeekState extends State<LinkItem> {
                   hoverColor: hasImage ? transparent : null,
                   child: ImageFile(
                     linkImageId,
-                    state.input.data[linkImageId] ?? '',
-                    images: {linkImageId: state.input.data[linkImageId] ?? ''},
+                    state.input.item.data[linkImageId] ?? '',
+                    images: {linkImageId: state.input.item.data[linkImageId] ?? ''},
                     showOptions: false,
                     size: 30,
                     hoverColor: transparent,
@@ -182,7 +182,6 @@ class _HabitWeekState extends State<LinkItem> {
                 AppButton(
                   onPressed: () async {
                     if (!isEdit) setState(() => isEdit = true);
-                    printThis(linkImageId);
                   },
                   noStyling: true,
                   isSquare: true,
@@ -219,9 +218,9 @@ class _HabitWeekState extends State<LinkItem> {
                     title: 'Remove link${titleController.text.isNotEmpty ? ': ${titleController.text} ' : ''}?',
                     yeslabel: 'Remove',
                     onConfirm: () {
-                      List linkOrderList = getSplitList(state.input.data['lo']);
+                      List linkOrderList = splitList(state.input.item.data['lo']);
                       linkOrderList.remove(widget.linkId);
-                      state.input.update('lo', getJoinedList(linkOrderList));
+                      state.input.update('lo', joinList(linkOrderList));
                       state.input.remove(widget.linkId);
                       state.input.remove(linkImageId);
                       // in case we have edited the link image

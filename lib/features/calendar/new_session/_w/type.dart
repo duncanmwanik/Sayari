@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../_providers/input.dart';
 import '../../../../_variables/features.dart';
-import '../../../_notes/items/picker_type.dart';
+import '../../../_notes/_w/picker_type.dart';
 import '../../_vars/variables.dart';
 
 class TypePicker extends StatelessWidget {
@@ -15,7 +15,7 @@ class TypePicker extends StatelessWidget {
       return AppTypePicker(
         type: feature.calendar,
         subType: 'y',
-        initial: input.data['y'],
+        initial: input.item.data['y'],
         typeEntries: sessionsTypes,
         onSelect: (chosenType, chosenValue) => input.update('y', chosenType),
         // bgColor: transparent,

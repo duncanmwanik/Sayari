@@ -32,14 +32,14 @@ class VeticalNavigationBox extends StatelessWidget {
               child: Column(
                 children: [
                   //
-                  navItem(notesSelectedIcon, feature.notes, views.view == feature.notes),
-                  msph(),
-                  navItem(Icons.check_box_rounded, size: 20.5, feature.tasks, views.view == feature.tasks),
-                  msph(),
-                  navItem(sessionsSelectedIcon, size: 17, feature.calendar, views.view == feature.calendar),
-                  msph(),
-                  if (showNavOption(feature.chat)) navItem(chatSelectedIcon, feature.chat, views.view == feature.chat),
-                  if (showNavOption(feature.chat)) msph(),
+                  navItem(notesIcon, feature.notes, views.view == feature.notes),
+                  mph(),
+                  navItem(tasksIcon, size: 20.5, feature.tasks, views.view == feature.tasks),
+                  mph(),
+                  navItem(sessionsIcon, size: 17, feature.calendar, views.view == feature.calendar),
+                  mph(),
+                  if (showNavOption(feature.chat)) navItem(chatIcon, feature.chat, views.view == feature.chat),
+                  if (showNavOption(feature.chat)) mph(),
                   //
                   PanelToggle(),
                   //

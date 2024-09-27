@@ -4,7 +4,6 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
-import '../../../_variables/features.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/divider.dart';
@@ -19,13 +18,13 @@ import 'session_time.dart';
 import 'session_type.dart';
 
 Future showSessionOverviewDialog(Item item) {
-  updateSelectedDate(item.extra);
-  state.input.setInputData(isNw: false, typ: feature.calendar, id: item.id, dta: item.data);
+  updateSelectedDate(item.id);
+  state.input.set(item);
   Map fileMap = getFiles(item.data);
 
   return showAppDialog(
-    smallTitlePadding: true,
-    smallTitleColor: false,
+    showTitleColor: false,
+    contentPadding: paddingM('lrb'),
     //
     title: SessionType(item: item),
     //

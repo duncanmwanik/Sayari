@@ -22,7 +22,7 @@ class NewOptions extends StatelessWidget {
         children: [
           // new note
           AppButton(
-            onPressed: () => prepareNoteForCreation(feature.notes),
+            onPressed: () => prepareNoteForCreation(views.view),
             smallLeftPadding: !isTabAndBelow(),
             child: Row(
               mainAxisSize: MainAxisSize.min,

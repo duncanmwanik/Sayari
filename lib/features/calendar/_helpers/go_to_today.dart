@@ -3,9 +3,9 @@ import 'date_time/misc.dart';
 
 Future<void> goToToday(int view) async {
   DateTime now = DateTime.now();
+  state.dateTime.updateSelectedDate(getDatePart(now));
 
   if (view == 0) {
-    state.dateTime.updateSelectedDate(getDatePart(now));
     // Scrollable.ensureVisible(GlobalObjectKey(TimeOfDay.now().hour).currentContext ?? context, duration: Duration(milliseconds: 500), curve: Curves.easeInOutCubic);
   }
   if (view == 1) {

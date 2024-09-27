@@ -8,15 +8,15 @@ import 'icons.dart';
 import 'svg.dart';
 
 class ColorButton extends StatelessWidget {
-  const ColorButton({super.key, this.bgColor, required this.menuItems, this.isSmall = false});
+  const ColorButton({super.key, this.color, required this.menuItems, this.isSmall = false});
 
-  final String? bgColor;
+  final String? color;
   final List<Widget> menuItems;
   final bool isSmall;
 
   @override
   Widget build(BuildContext context) {
-    bool hasColor = hasColour(bgColor);
+    bool hasColor = hasColour(color);
 
     return AppButton(
       tooltip: 'Color',
@@ -34,7 +34,7 @@ class ColorButton extends StatelessWidget {
                 AppIcon(
                   Icons.lens,
                   size: 20,
-                  color: hasColor ? styler.getItemColor(bgColor, false) : (styler.isDark ? Colors.white24 : Colors.black54),
+                  color: hasColor ? styler.getItemColor(color, false) : (styler.isDark ? Colors.white24 : Colors.black54),
                 ),
                 pw(3),
                 const AppSvg(dropDownSvg, size: 14),

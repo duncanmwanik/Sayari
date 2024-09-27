@@ -6,9 +6,9 @@ import '../../../../__styling/variables.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/dialogs/dialog_select_date.dart';
+import '../../../../_widgets/menu/confirmation.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../_helpers/helpers.dart';
 import 'date_item.dart';
 import 'date_range_dialog.dart';
 
@@ -71,7 +71,12 @@ class DatePicker extends StatelessWidget {
                               Visibility(
                                   visible: input.selectedDates.isNotEmpty,
                                   child: AppButton(
-                                    onPressed: () => clearAllSelectedDates(),
+                                    menuItems: confirmationMenu(
+                                      title: 'Clear all dates?',
+                                      yeslabel: 'Clear',
+                                      content: "You can remove individual dates by pressing 'x'.",
+                                      onConfirm: () => input.updateSelectedDates('clear'),
+                                    ),
                                     noStyling: true,
                                     child: AppText(text: 'Remove All', size: small),
                                   )),

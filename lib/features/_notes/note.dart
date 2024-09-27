@@ -6,7 +6,7 @@ import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/helpers.dart';
+import '../../_helpers/helpers.dart';
 import '../../_models/item.dart';
 import '../../_providers/_providers.dart';
 import '../../_widgets/others/others/divider.dart';
@@ -14,13 +14,13 @@ import '../_spaces/_helpers/common.dart';
 import '../files/overview.dart';
 import '../share/_w/preview.dart';
 import '_helpers/ontap.dart';
+import '_w/details.dart';
+import '_w/header.dart';
+import '_w/shared_info.dart';
 import '_w/text_overview.dart';
 import 'bookings/_w/overview.dart';
 import 'finance/_w/overview.dart';
 import 'habits/overview.dart';
-import 'items/details.dart';
-import 'items/header.dart';
-import 'items/published.dart';
 import 'links/_w/overview.dart';
 import 'state/selection.dart';
 import 'tasks/task.dart';
@@ -82,9 +82,8 @@ class Note extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              //
                               // if note is published
-                              if (item.isPublished() && !isShare()) PublishedItem(item: item),
+                              SharedInfo(item: item),
                               ItemDetails(item: item),
                               if (item.hasFinances()) FinanceOverview(item: item),
                               if (item.hasBookings()) BookingOverview(item: item),

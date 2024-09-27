@@ -25,7 +25,7 @@ class _HabitWeekState extends State<LinkUserName> {
   @override
   void initState() {
     setState(() {
-      titleController.text = state.input.data['ln'] ?? liveUserName();
+      titleController.text = state.input.item.data['ln'] ?? liveUserName();
     });
     super.initState();
   }
@@ -96,7 +96,7 @@ class _HabitWeekState extends State<LinkUserName> {
                 if (isEdit)
                   AppButton(
                     onPressed: () {
-                      titleController.text = state.input.data['ln'] ?? liveUserName();
+                      titleController.text = state.input.item.data['ln'] ?? liveUserName();
                       setState(() => isEdit = false);
                     },
                     noStyling: true,

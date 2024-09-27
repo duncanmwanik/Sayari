@@ -8,31 +8,32 @@ import 'edit_item.dart';
 import 'helpers.dart';
 import 'prepare.dart';
 
-void onTapNote(Item note) {
+void onTapNote(Item item) {
   if (state.selection.selected.isEmpty) {
-    if (note.isDeleted()) {
+    if (item.isDeleted()) {
       showToast(2, 'Restore item to open it.');
     } else {
-      prepareNoteForEdit(note);
+      prepareNoteForEdit(item);
     }
   } else {
-    if (state.selection.selected.containsKey(note.id)) {
-      state.selection.unSelect(note.id);
+    if (state.selection.isSelected(item.id)) {
+      state.selection.unSelect(item.id);
     } else {
-      state.selection.select(note.id, note.title(), note.type);
+      state.selection.select(item);
     }
   }
 }
 
-void onLongPressNote(Item note) {
-  if (state.selection.selected.containsKey(note.id)) {
-    state.selection.unSelect(note.id);
+void onLongPressNote(Item item) {
+  if (state.selection.isSelected(item.id)) {
+    state.selection.unSelect(item.id);
   } else {
-    state.selection.select(note.id, note.title(), note.type);
+    state.selection.select(item);
   }
 }
 
-void whenCompleteNote(String? id) {
-  if (state.input.showEditor()) state.input.update('n', getQuills());
-  state.input.isNew ? createItem(newId: id) : editItem();
+void whenCompleteNote() {
+  if (state.input.item.showEditor()) state.input.update('n', getQuills());
+
+  state.input.item.isNew() ? createItem() : editItem();
 }

@@ -5,18 +5,18 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/global.dart';
 import '../../../_models/item.dart';
-import '../../../_variables/date_time.dart';
+import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';
-import '../../_spaces/_helpers/common.dart';
 import '../_helpers/helpers.dart';
+import '../_helpers/prepare.dart';
 import '../_helpers/sort.dart';
 import '../_helpers/swipe.dart';
+import '../_vars/date_time.dart';
 import '../_w/daily_box.dart';
 import '../state/datetime.dart';
 
@@ -27,10 +27,10 @@ class DailyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<DateTimeProvider>(builder: (context, dateProvider, child) {
       return ValueListenableBuilder(
-          valueListenable: Hive.box('${liveSpace()}_${feature.calendar}').listenable(),
+          valueListenable: storage(feature.calendar).listenable(),
           builder: (context, box, widget) {
             String selectedDate = dateProvider.selectedDate;
-            Map todaySessionsMap = sortSessionsByTime(box.get(selectedDate, defaultValue: {}));
+            Map todaySessionsMap = sortSessions(box.get(selectedDate, defaultValue: {}));
 
             return SwipeDetector(
               onSwipeRight: () => swipeToNew(isSwipeRight: true),
@@ -43,20 +43,14 @@ class DailyView extends StatelessWidget {
                   padding: EdgeInsets.only(bottom: largeHeightPlaceHolder()),
                   itemBuilder: (BuildContext context, int indexHour) {
                     bool isCurrentHour = TimeOfDay.now().hour == indexHour;
-                    Map hourMap = getHourMap(getNewMapFrom(todaySessionsMap), indexHour);
+                    Map hourMap = getHourMap({...todaySessionsMap}, indexHour);
 
                     return Material(
                       color: transparent,
                       child: InkWell(
-                        onTap: () {
-                          prepareSessionCreation(date: selectedDate, hour: indexHour);
-                        },
-                        onDoubleTap: () {
-                          prepareSessionCreation(date: selectedDate, hour: indexHour);
-                        },
-                        onLongPress: () {
-                          prepareSessionCreation(date: selectedDate, hour: indexHour);
-                        },
+                        onTap: () => prepareSessionCreation(date: selectedDate, hour: indexHour),
+                        onDoubleTap: () => prepareSessionCreation(date: selectedDate, hour: indexHour),
+                        onLongPress: () => prepareSessionCreation(date: selectedDate, hour: indexHour),
                         mouseCursor: SystemMouseCursors.basic,
                         hoverColor: hourMap.isNotEmpty ? transparent : styler.appColor(1),
                         highlightColor: hourMap.isNotEmpty ? transparent : styler.appColor(1),
@@ -71,10 +65,9 @@ class DailyView extends StatelessWidget {
                               //
                               if (indexHour != 0)
                                 AppDivider(
-                                  thickness: isCurrentHour ? 1 : (0.05),
+                                  thickness: isCurrentHour ? 1 : (0.5),
                                   color: isCurrentHour ? styler.accentColor() : null,
                                 ),
-                              //
                               if (indexHour != 0) tph(),
                               //
                               Row(
@@ -101,8 +94,14 @@ class DailyView extends StatelessWidget {
                                         physics: NeverScrollableScrollPhysics(),
                                         itemCount: hourMap.length,
                                         itemBuilder: (BuildContext context, int indexSessionId) {
-                                          String itemId = hourMap.keys.toList()[indexSessionId];
-                                          Item item = Item(id: itemId, data: hourMap[itemId], extra: selectedDate);
+                                          String id = hourMap.keys.toList()[indexSessionId];
+                                          Item item = Item(
+                                            parent: feature.calendar,
+                                            type: feature.calendar,
+                                            id: selectedDate,
+                                            sid: id,
+                                            data: hourMap[id],
+                                          );
 
                                           return DayBox(item: item);
                                         }),

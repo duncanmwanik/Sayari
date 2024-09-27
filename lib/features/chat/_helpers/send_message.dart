@@ -1,9 +1,11 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/global.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../../../_variables/ui.dart';
 import '../../../_widgets/others/toast.dart';
@@ -15,8 +17,8 @@ Future<void> sendMessage() async {
   try {
     hideKeyboard();
     messageController.clear();
-    Map messageData = {...state.input.data};
-    state.input.clearData();
+    Map messageData = {...state.input.item.data};
+    state.input.clear();
     String message = messageData['n'] ?? '';
 
     if (message.isNotEmpty) {
@@ -24,10 +26,10 @@ Future<void> sendMessage() async {
       String messageId = getUniqueId();
       messageData.addAll({'u': liveUserName()});
 
-      Box box = Hive.box('${spaceId}_${feature.chat}');
+      Box box = storage(feature.chat);
       await box.put(messageId, messageData);
       await handleFilesCloud(spaceId, messageData);
-      await syncToCloud(db: 'spaces', parentId: spaceId, type: feature.chat, action: 'c', itemId: messageId, data: messageData);
+      await syncToCloud(db: 'spaces', space: spaceId, parent: feature.chat, action: 'c', id: messageId, data: messageData);
       await box.put(messageId, messageData);
     }
   } catch (e) {

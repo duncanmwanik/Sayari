@@ -20,7 +20,7 @@ class FileList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      Map fileData_ = fileData ?? getFiles(input.data);
+      Map fileData_ = fileData ?? getFiles(input.item.data);
       List filesIds = fileData_.keys.toList().where((key) => !isImageFile(fileData_[key])).toList();
       List imageIds = fileData_.keys.toList().where((key) => isImageFile(fileData_[key])).toList();
       Map images = {...fileData_};

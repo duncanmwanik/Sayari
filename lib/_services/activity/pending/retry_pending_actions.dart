@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/internet_connection.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/internet_connection.dart';
 import '../../firebase/sync_to_cloud.dart';
 import '../../hive/local_storage_service.dart';
 
@@ -17,12 +17,12 @@ void retryPendingActions() {
         pendingBox.toMap().forEach((pendingId, syncAction) async {
           await syncToCloud(
             db: syncAction['db'],
-            parentId: syncAction['parentId'],
-            type: syncAction['where'],
+            space: syncAction['space'],
+            parent: syncAction['parent'],
             action: syncAction['action'],
             data: syncAction['data'],
-            itemId: syncAction['itemId'],
-            subId: syncAction['subId'],
+            id: syncAction['id'],
+            sid: syncAction['sid'],
             keys: syncAction['keys'],
             extras: syncAction['extras'],
             log: syncAction['log'],

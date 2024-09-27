@@ -5,6 +5,7 @@ import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/input.dart';
+import '../../_variables/features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
@@ -18,28 +19,25 @@ class Reminder extends StatelessWidget {
     super.key,
     this.reminder,
     this.bgColor,
-    this.type,
-    this.itemId = '',
-    this.subId = '',
+    this.id = '',
+    this.sid = '',
     this.isInput = true,
   });
 
-  final String? type;
   final String? reminder;
   final String? bgColor;
 
-  final String itemId;
-  final String subId;
+  final String id;
+  final String sid;
   final bool isInput;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      String reminder_ = reminder ?? input.data['r'] ?? '';
-      String type_ = type ?? input.type;
+      String reminder_ = reminder ?? input.item.data['r'] ?? '';
 
       bool hasPassed = isLive(reminder_);
-      bool isInput = itemId.isEmpty;
+      bool isInput = id.isEmpty;
 
       return Visibility(
         visible: hasReminder(reminder_),
@@ -53,14 +51,14 @@ class Reminder extends StatelessWidget {
                 if (isInput) {
                   input.update('r', newReminder);
                 } else {
-                  await editItemExtras(type: type_, itemId: itemId, key: 'r', value: newReminder, subId: subId);
+                  await editItemExtras(parent: feature.notes, id: id, key: 'r', value: newReminder, sid: sid);
                 }
               },
               onRemove: () async {
                 if (isInput) {
                   input.remove('r');
                 } else {
-                  await editItemExtras(type: type_, itemId: itemId, subId: subId, key: 'd/r', value: '');
+                  await editItemExtras(parent: feature.notes, id: id, sid: sid, key: 'd/r', value: '');
                 }
               },
             ),

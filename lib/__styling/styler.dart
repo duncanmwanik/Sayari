@@ -8,14 +8,6 @@ import 'variables.dart';
 class AppColors {
   static const Color accent = Colors.red;
 
-  static Color accentHoverButton = Colors.grey;
-
-  static const Color cursorColor = Colors.redAccent;
-
-  static const Color transparent = Colors.transparent;
-
-  static Color fabColor = accent;
-
   static const Color darkPrimary = Color(0xff1b1d1c);
   static const Color lightPrimary = Color(0xffffffff);
 
@@ -27,9 +19,6 @@ class AppColors {
 
   static Color lightHover = Colors.grey.withOpacity(0.2);
   static Color darkHover = Colors.grey.withOpacity(0.1);
-
-  static const Color darkBar = Color(0xff222222);
-  static const Color lightBar = Color(0xffefefef);
 
   static const Color darkText = Colors.white;
   static const Color lightText = Color(0xff333333);
@@ -93,10 +82,6 @@ class AppStyles {
     return Colors.grey.withOpacity(weight / 10);
   }
 
-  Color hoverColor() {
-    return isDark ? const Color(0xff1e1f1e) : const Color(0xfff7f7f7);
-  }
-
   // -------------------------- Text Colors
 
   Color textColor({bool faded = false, bool extraFaded = false, String? bgColor}) {
@@ -113,9 +98,7 @@ class AppStyles {
 
   // -------------------------- Other Colors
 
-  Color borderColor() {
-    return styler.appColor(isDark ? 1 : 1.5);
-  }
+  Color borderColor() => styler.appColor(isDark ? 1 : 1.5);
 
   Color listItemColor({String? bgColor}) {
     if (hasColour(bgColor)) {
@@ -125,36 +108,7 @@ class AppStyles {
     }
   }
 
-  Color fileColor(String fileExtension) {
-    if (['jpg', 'png', 'jpeg', 'jfif'].contains(fileExtension)) {
-      return accentColor();
-    } else if (['pdf'].contains(fileExtension)) {
-      return Colors.redAccent;
-    } else {
-      return Colors.deepOrange;
-    }
-  }
-
-  Color reminderOverviewColor([String? bgColor]) {
-    if (hasColour(bgColor)) {
-      return Colors.black12;
-    } else {
-      return isDark ? Colors.white10 : Colors.black12;
-    }
-  }
-
   // -------------------------- Shadows
-  List<BoxShadow>? listItemShadow() {
-    List<BoxShadow> shadow = [
-      BoxShadow(
-        color: Colors.grey.withOpacity(0.7),
-        spreadRadius: 0.25,
-        offset: const Offset(0, 0.5),
-      )
-    ];
-
-    return isDark || isImage() ? null : shadow;
-  }
 
   List<BoxShadow>? itemShadow([bool isHovered = true]) {
     return isDark
@@ -170,25 +124,9 @@ class AppStyles {
   }
 
   // -------------------------- Borders
-  BoxBorder? itemBorder(bool isSelected, bool isHovered) {
-    double w = (isDark ? 0.3 : 0.7);
-    Color color = isImage()
-        ? transparent
-        : isDark
-            ? Colors.grey.withOpacity(isHovered ? 0.5 : 0.2)
-            : Colors.grey.withOpacity(isHovered ? 0.7 : 0.4);
-    return Border.all(color: isSelected ? accentColor() : color, width: w);
-  }
-
-  BorderSide lightSpaceBorder() {
-    return BorderSide(
-      color: Colors.grey.withOpacity(isDark ? 0.15 : (isImage() ? 1 : 0.3)),
-      width: isImage() ? 1.5 : (isDark ? 0.7 : 1),
-    );
-  }
 
   Color? getItemColor(String? bgColor, bool isHovered, {bool isShadeColor = false}) {
-    if (bgColor != null && bgColor.isNotEmpty && bgColor != 'x') {
+    if (bgColor != null && bgColor.isNotEmpty) {
       return isShadeColor ? backgroundColors[bgColor]!.shadeColor : backgroundColors[bgColor]!.color;
     } else {
       return isImage()
@@ -199,14 +137,5 @@ class AppStyles {
                   ? styler.appColor(0.5)
                   : transparent;
     }
-  }
-
-  // -------------------------- Box Decorations
-  BoxDecoration itemBoxDecoration(bool isSelected, bool isHovered, String bgColor) {
-    return BoxDecoration(
-      color: getItemColor(bgColor, isHovered),
-      border: itemBorder(isSelected, isHovered),
-      borderRadius: BorderRadius.circular(borderRadiusSmall),
-    );
   }
 }

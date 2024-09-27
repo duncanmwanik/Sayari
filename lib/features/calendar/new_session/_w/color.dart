@@ -13,10 +13,10 @@ class SessionColor extends StatelessWidget {
     return Consumer<InputProvider>(builder: (context, input, child) {
       return ColorButton(
         menuItems: colorMenu(
-          selectedColor: input.data['c'],
+          selectedColor: input.item.data['c'],
           onSelect: (newColor) => input.update('c', newColor),
         ),
-        bgColor: input.data['c'],
+        color: input.item.data['c'],
       );
     });
   }

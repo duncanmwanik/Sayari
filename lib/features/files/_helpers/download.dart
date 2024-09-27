@@ -7,8 +7,8 @@ import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart' as cache;
 
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/helpers.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/helpers.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/storage.dart';
 import '../../../_services/hive/local_storage_service.dart';

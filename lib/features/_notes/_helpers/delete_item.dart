@@ -1,32 +1,33 @@
 import 'package:hive/hive.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_models/item.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../../_services/hive/get_data.dart';
 import '../../_spaces/_helpers/common.dart';
 import '../../files/_helpers/handler.dart';
 import '../../share/_helpers/share.dart';
 
-Future<void> deleteItemForever({required String type, required String itemId, String subId = '', required Map files}) async {
-  try {
-    String spaceId = liveSpace();
+Future<void> deleteItemForever(Item item) async {
+  safeRun(
+    where: 'deleteItemForever',
+    () async {
+      printThis('delete ${item.parent} ${item.id} ${item.sid}');
+      String spaceId = liveSpace();
 
-    printThis('delete $type --- $itemId --- $subId');
+      Box box = storage(item.parent);
 
-    Box box = Hive.box('${spaceId}_$type');
+      if (item.sid.isNotEmpty) {
+        Map itemData = box.get(item.id);
+        itemData.remove(item.sid);
+        box.put(item.id, itemData);
+      } else {
+        await box.delete(item.id);
+      }
 
-    if (subId.isNotEmpty) {
-      Map itemData = box.get(itemId);
-      itemData.remove(subId);
-      box.put(itemId, itemData);
-    } else {
-      await box.delete(itemId);
-    }
-
-    syncToCloud(db: 'spaces', parentId: spaceId, type: type, action: 'd', itemId: itemId, subId: subId);
-    shareItem(delete: true, itemId: itemId);
-    handleFilesDeletion(spaceId, files);
-    //
-  } catch (e) {
-    errorPrint('delete-item-forever-$type', e);
-  }
+      syncToCloud(db: 'spaces', space: spaceId, parent: item.parent, action: 'd', id: item.id, sid: item.sid);
+      shareItem(delete: true, id: item.id);
+      handleFilesDeletion(spaceId, item.files());
+    },
+  );
 }

@@ -16,10 +16,10 @@ Future<void> savePomodoroSettings(Map previousdata) async {
 
       syncToCloud(
         db: 'users',
-        parentId: liveUser(),
-        type: 'settings',
+        space: liveUser(),
+        parent: 'settings',
         action: 'c',
-        itemId: 'pm',
+        id: 'pm',
         data: jsonEncode(state.pomodoro.data),
       );
     }

@@ -4,11 +4,11 @@ import 'package:provider/provider.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/views.dart';
-import '../../../_variables/constants.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/svg.dart';
 import '../../../_widgets/others/text.dart';
+import '../var/variables.dart';
 
 class ViewChooser extends StatelessWidget {
   const ViewChooser({super.key});

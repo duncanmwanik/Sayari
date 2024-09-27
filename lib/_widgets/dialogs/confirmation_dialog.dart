@@ -1,4 +1,4 @@
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../buttons/action.dart';
 import '../others/others/other.dart';
 import '../others/text.dart';

@@ -8,12 +8,12 @@ import '../../_providers/_providers.dart';
 import '../../_providers/theme.dart';
 import '../../_services/firebase/database.dart';
 import '../../_variables/features.dart';
+import '../_notes/blog/blog_body.dart';
 import '../_notes/bookings/_w_shared/body.dart';
 import '../_notes/links/_w_shared/links_body.dart';
 import '../_spaces/published/shared.dart';
 import '_helpers/helpers.dart';
 import '_w/shared_info.dart';
-import 'blog/blog_body.dart';
 import 'state/share.dart';
 
 class ShareScreen extends StatefulWidget {
@@ -28,6 +28,7 @@ class ShareScreen extends StatefulWidget {
 class _ShareScreenState extends State<ShareScreen> {
   String id = '';
   String isActive = '';
+  String isPublished = '';
   String spaceId = '';
   String userId = '';
   String userName = 'Maker Mo';
@@ -46,6 +47,7 @@ class _ShareScreenState extends State<ShareScreen> {
       if (data.isNotEmpty) {
         setState(() {
           isActive = data[feature.share] ?? '0';
+          isPublished = data[feature.publish] ?? '0';
           spaceId = data['s'];
           userId = data['u'];
           sharedData = data;
@@ -54,6 +56,7 @@ class _ShareScreenState extends State<ShareScreen> {
       } else {
         setState(() {
           isActive = '0';
+          isPublished = '0';
         });
       }
     });
@@ -90,21 +93,37 @@ class _ShareScreenState extends State<ShareScreen> {
                                 return data.isNotEmpty
                                     ? Align(
                                         alignment: Alignment.topCenter,
-                                        child: feature.isShare(widget.type) || feature.isNote(widget.type)
-                                            ? BlogBody(itemId: widget.id, userId: userId, userName: userName, data: data)
-                                            : feature.isBooking(widget.type)
-                                                ? BookingBody(
-                                                    spaceId: spaceId, itemId: widget.id, userId: userId, userName: userName, data: data)
-                                                : feature.isLink(widget.type)
-                                                    ? LinksBody(
-                                                        spaceId: spaceId, itemId: widget.id, userId: userId, userName: userName, data: data)
-                                                    : feature.isSpace(widget.type)
-                                                        ? PublishBookBody(
-                                                            sharedData: sharedData,
+                                        child:
+                                            // shared or published
+                                            feature.isShare(widget.type) || (feature.isPublish(widget.type) && isPublished == '1')
+                                                ? BlogBody(id: widget.id, userId: userId, userName: userName, data: data)
+                                                // booking
+                                                : feature.isBooking(widget.type)
+                                                    ? BookingBody(
+                                                        spaceId: spaceId,
+                                                        id: widget.id,
+                                                        userId: userId,
+                                                        userName: userName,
+                                                        data: data,
+                                                      )
+                                                    // links
+                                                    : feature.isLink(widget.type)
+                                                        ? LinksBody(
+                                                            spaceId: spaceId,
+                                                            id: widget.id,
+                                                            userId: userId,
                                                             userName: userName,
                                                             data: data,
                                                           )
-                                                        : SharedAction(),
+                                                        // book
+                                                        : feature.isSpace(widget.type)
+                                                            ? PublishBookBody(
+                                                                sharedData: sharedData,
+                                                                userName: userName,
+                                                                data: data,
+                                                              )
+                                                            // else
+                                                            : SharedAction(),
                                       )
                                     : SharedAction();
                               }

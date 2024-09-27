@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/buttons/close.dart';
@@ -23,11 +23,10 @@ import '_w/type.dart';
 import '_w/venue.dart';
 
 Future<void> showSessionBottomSheet() async {
-  bool isNew = state.input.itemId.isEmpty;
+  bool isNew = state.input.item.isNew();
 
   await showAppDialog(
-    smallTitlePadding: true,
-    // smallTitleColor: false,
+    showClose: false,
     //
     title: Row(
       children: [

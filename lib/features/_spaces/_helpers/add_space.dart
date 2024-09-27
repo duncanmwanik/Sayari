@@ -1,6 +1,6 @@
-import '../../../_helpers/_common/internet_connection.dart';
-import '../../../_helpers/_common/navigation.dart';
 import '../../../_helpers/forms/regex_checks.dart';
+import '../../../_helpers/internet_connection.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/others/toast.dart';

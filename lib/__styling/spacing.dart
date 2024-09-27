@@ -1,27 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../_helpers/_common/global.dart';
+import '../_helpers/global.dart';
 import 'breakpoints.dart';
 import 'variables.dart';
-
-int gridCount(double width) {
-  if (width >= 1900) {
-    return 8;
-  } else if (width >= 1590) {
-    return 7;
-  } else if (width >= 1300) {
-    return 6;
-  } else if (width >= 1000) {
-    return 5;
-  } else if (width >= 780) {
-    return 4;
-  } else if (width >= 600) {
-    return 3;
-  } else {
-    return 2;
-  }
-}
 
 // ---------- paddings
 
@@ -38,7 +20,7 @@ EdgeInsets padding({String s = 'lrtb', double p = 12, double? l, double? t, doub
 }
 
 EdgeInsets paddingC(String sides) {
-  List pads = getSplitList(sides, separator: ',');
+  List pads = splitList(sides, separator: ',');
   return padding(
     l: double.tryParse(pads.firstWhere((p) => p.startsWith('l'), orElse: () => '00').substring(1)) ?? 0,
     t: double.tryParse(pads.firstWhere((p) => p.startsWith('t'), orElse: () => '00').substring(1)) ?? 0,

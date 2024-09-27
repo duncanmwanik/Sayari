@@ -8,7 +8,7 @@ import '../_variables/colors.dart';
 import 'styler.dart';
 
 void changeStatusAndNavigationBarColor(String theme, {bool isSecondary = false}) {
-  bool isDark = getThemeAsBoolean(theme);
+  bool isDark = isDarkTheme(theme);
 
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
@@ -48,28 +48,12 @@ String getThemeImage(String themeImage, {bool isSmall = false}) {
   return 'assets/images/$themeImage${isSmall ? '_small' : ''}.jpg';
 }
 
-String getDefaultThemeImage() {
-  return getThemeImage(state.theme.themeImage);
-}
-
-String getThemeType() {
-  return settingBox.get('themeType', defaultValue: 'dark');
-}
-
-bool getThemeAsBoolean(String theme) {
-  bool isDark = false;
-
-  if (theme == 'dark') {
-    isDark = true;
-  }
-  if (theme == 'light') {
-    isDark = false;
-  }
-  return isDark;
-}
+String getDefaultThemeImage() => getThemeImage(state.theme.themeImage);
+String getThemeType() => settingBox.get('themeType', defaultValue: 'dark');
+bool isDarkTheme(String theme) => theme == 'dark';
 
 bool hasColour(String? bgColor) {
-  if (bgColor == null || bgColor == 'x' || bgColor.isEmpty || !backgroundColors.containsKey(bgColor)) {
+  if (bgColor == null || bgColor.isEmpty || !backgroundColors.containsKey(bgColor)) {
     return false;
   } else {
     return true;
@@ -77,7 +61,5 @@ bool hasColour(String? bgColor) {
 }
 
 BoxDecoration getImageBackgroundDecoration() {
-  return BoxDecoration(
-    image: DecorationImage(image: AssetImage(getDefaultThemeImage()), fit: BoxFit.cover),
-  );
+  return BoxDecoration(image: DecorationImage(image: AssetImage(getDefaultThemeImage()), fit: BoxFit.cover));
 }

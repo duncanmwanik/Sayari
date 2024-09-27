@@ -1,9 +1,9 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/internet_connection.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/debug.dart';
 import '../../../_helpers/forms/regex_checks.dart';
+import '../../../_helpers/internet_connection.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_services/firebase/database.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
@@ -29,7 +29,7 @@ Future<void> addAdminToSpace(String email) async {
                     userEmailsBox.put(userId, email);
                     Hive.box('${spaceId}_admins').put(userId, '0');
 
-                    await syncToCloud(db: 'spaces', parentId: spaceId, type: 'admins', action: 'c', itemId: userId, data: '0');
+                    await syncToCloud(db: 'spaces', space: spaceId, parent: 'admins', action: 'c', id: userId, data: '0');
 
                     closeDialog();
                     showToast(1, 'Added new admin <b>$email</b>');
@@ -65,7 +65,7 @@ Future<void> removeMemberFromSpace(String userId, String userEmail) async {
           if (!isOwner) {
             Hive.box('${spaceId}_admins').delete(userId);
 
-            await syncToCloud(db: 'spaces', parentId: spaceId, type: 'admins', action: 'd', itemId: userId);
+            await syncToCloud(db: 'spaces', space: spaceId, parent: 'admins', action: 'd', id: userId);
 
             showToast(1, 'Removed admin <b>$userEmail</b>');
           } else {
@@ -84,8 +84,8 @@ Future<void> changePersonPriviledge(String userId, String value) async {
   try {
     String spaceId = liveSpace();
     Hive.box('${spaceId}_admins').put(userId, value);
-    await syncToCloud(db: 'spaces', parentId: spaceId, type: 'admins', action: 'e', itemId: userId, data: value);
-    // await syncToCloud(db: 'spaces', parentId: spaceId, type: 'admins', action: 'c', itemId: userId, data: '0');
+    await syncToCloud(db: 'spaces', space: spaceId, parent: 'admins', action: 'e', id: userId, data: value);
+    // await syncToCloud(db: 'spaces', space: spaceId, parent: 'admins', action: 'c', id: userId, data: '0');
   } catch (e) {
     errorPrint('remove-admin', e);
     showToast(0, 'Could not remove admin');

@@ -3,7 +3,7 @@ import 'package:styled_text/styled_text.dart';
 
 import '../../__styling/breakpoints.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../../_variables/navigation.dart';
 import '../buttons/button.dart';
 import 'icons.dart';

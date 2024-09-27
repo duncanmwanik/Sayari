@@ -9,7 +9,6 @@ class ColorObject {
 }
 
 Map<String, ColorObject> backgroundColors = {
-  'x': const ColorObject(color: Colors.transparent, shadeColor: Colors.transparent, textColor: Colors.grey),
   '0': ColorObject(color: Colors.red, shadeColor: Colors.red.shade200, textColor: Colors.white, isThemeAccent: true),
   '1': ColorObject(color: Colors.green, shadeColor: Colors.green.shade200, textColor: Colors.white, isThemeAccent: true),
   '2': ColorObject(color: Colors.blue, shadeColor: Colors.blue.shade200, textColor: Colors.white, isThemeAccent: true),

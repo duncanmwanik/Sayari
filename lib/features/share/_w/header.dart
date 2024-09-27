@@ -23,7 +23,7 @@ class SharedHeader extends StatelessWidget {
     return Container(
       padding: paddingM('ltb'),
       decoration: BoxDecoration(
-        border: Border(bottom: BorderSide(color: styler.borderColor())),
+        border: Border(bottom: BorderSide(color: styler.borderColor(), width: 0.5)),
       ),
       child: Row(
         children: [

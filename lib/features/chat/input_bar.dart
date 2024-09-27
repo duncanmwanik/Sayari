@@ -18,6 +18,7 @@ import '../files/_helpers/helper.dart';
 import '../files/_helpers/upload.dart';
 import '../files/file_list.dart';
 import '_helpers/send_message.dart';
+import '_w/clear_btn.dart';
 import '_w/send_btn.dart';
 
 class MessageInputBar extends StatelessWidget {
@@ -25,7 +26,7 @@ class MessageInputBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    messageController.text = state.input.data['n'] ?? '';
+    messageController.text = state.input.item.data['n'] ?? '';
     messageController.selection = TextSelection.collapsed(offset: messageController.text.length);
 
     return Align(
@@ -47,7 +48,7 @@ class MessageInputBar extends StatelessWidget {
                     children: [
                       //
                       Consumer<InputProvider>(
-                          builder: (context, input, child) => FileList(fileData: getFiles(input.data), isOverview: false)),
+                          builder: (context, input, child) => FileList(fileData: getFiles(input.item.data), isOverview: false)),
                       //
                       Row(
                         children: [
@@ -94,7 +95,7 @@ class MessageInputBar extends StatelessWidget {
                           ),
                           //
                           spw(),
-                          //
+                          ClearMessageButton(),
                           SendMessageButton(),
                           //
                         ],

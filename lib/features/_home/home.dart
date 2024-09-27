@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 
-import '../../_helpers/_common/background_ops.dart';
-import '../../_helpers/_common/keyboard.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/background_ops.dart';
+import '../../_helpers/keyboard.dart';
+import '../../_helpers/navigation.dart';
 import '../../_providers/_providers.dart';
-import '../../_services/activity/listen_for_updates.dart';
+import '../../_services/activity/helpers.dart';
 import '../../_services/activity/pending/retry_pending_actions.dart';
 import '../../_variables/navigation.dart';
 import '_w/fab.dart';
@@ -31,14 +31,14 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     state.share.unsetType();
     WidgetsBinding.instance.addObserver(this);
     retryPendingActions();
-    listenToKeyboardChanges();
+    listenForKeyboard();
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
     disposeSyncListeners();
-    disposelListeningToKeyboardChanges();
+    cancelKeyboardSubscription();
     super.dispose();
   }
 

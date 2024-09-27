@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../../../_helpers/_common/global.dart';
+import '../../../../_helpers/global.dart';
 import '../../../../_providers/_providers.dart';
 
 void addLink({bool isTitle = false}) {
   String linkId = '${isTitle ? 'lkt' : 'lk'}${getUniqueId()}';
-  List linkOrderList = getSplitList(state.input.data['lo']);
+  List linkOrderList = splitList(state.input.item.data['lo']);
   linkOrderList.add(linkId);
-  state.input.update('lo', getJoinedList(linkOrderList));
+  state.input.update('lo', joinList(linkOrderList));
   state.input.update(linkId, jsonEncode({}));
 }
 

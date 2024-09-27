@@ -5,7 +5,8 @@ import 'package:provider/provider.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/helpers.dart';
+import '../../_helpers/helpers.dart';
+import '../../_models/item.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
 import '../../_widgets/buttons/close.dart';
@@ -15,20 +16,20 @@ import '../../_widgets/sheets/bottom_sheet.dart';
 import '../files/overview.dart';
 import '../share/shared_settings.dart';
 import '_helpers/ontap.dart';
+import '_w/details.dart';
 import '_w/footer.dart';
+import '_w/quill/editor.dart';
 import 'actions/input_actions.dart';
 import 'bookings/_w/booking.dart';
 import 'finance/finance.dart';
 import 'habits/habit.dart';
-import 'items/details.dart';
 import 'links/_w/links.dart';
-import 'quill/editor.dart';
 import 'tasks/task_options.dart';
 
-Future<void> showNoteBottomSheet({String? id, bool isMinimized = false}) async {
+Future<void> showNoteBottomSheet(Item item) async {
   await showAppBottomSheet(
-    isMinimized: isMinimized && isSmallPC(),
-    isShort: isMinimized && !isSmallPC(),
+    isMinimized: item.isTask() && isSmallPC(),
+    isShort: item.isTask() && !isSmallPC(),
     noContentHorizontalPadding: true,
     //
     header: Row(
@@ -46,7 +47,7 @@ Future<void> showNoteBottomSheet({String? id, bool isMinimized = false}) async {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //
-            Consumer<InputProvider>(builder: (x, input, c) => ImageOverview(isInput: true)),
+            Consumer<InputProvider>(builder: (x, input, c) => ImageOverview(item: Item(data: {}))),
             //
             sph(),
             Padding(
@@ -64,19 +65,19 @@ Future<void> showNoteBottomSheet({String? id, bool isMinimized = false}) async {
                     weight: FontWeight.bold,
                     textCapitalization: TextCapitalization.sentences,
                     filled: false,
-                    autofocus: state.input.itemId.isEmpty,
+                    autofocus: item.isNew(),
                     contentPadding: EdgeInsets.zero,
                   ),
                   //
                   Share(),
                   Finance(),
                   Links(),
-                  ItemDetails(),
+                  ItemDetails(item: Item(data: {})),
                   TaskOptions(),
                   Habit(),
                   Booking(),
-                  if (state.input.showEditor()) SuperEditor(),
-                  if (!state.input.isTask()) spph(),
+                  if (state.input.item.showEditor()) SuperEditor(),
+                  if (!item.isTask()) spph(),
                   //
                 ],
               ),
@@ -87,9 +88,9 @@ Future<void> showNoteBottomSheet({String? id, bool isMinimized = false}) async {
       ),
     ),
     //
-    footer: state.input.showFooter() ? NoteFooter() : null,
+    footer: item.showFooter() ? NoteFooter() : null,
     //
-    whenComplete: isShare() ? null : () => whenCompleteNote(id),
+    whenComplete: isShare() ? null : () => whenCompleteNote(),
     //
   );
 }

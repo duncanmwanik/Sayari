@@ -5,7 +5,6 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/global.dart';
 import '../../../_providers/input.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
@@ -33,10 +32,9 @@ class _PublishSpaceState extends State<PublishedSpace> {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool isPublished = input.data[feature.share] == '1';
-      String fileId = input.data['w'] ?? '';
-      String fileName = input.data[fileId] ?? '';
-      printThis(input.data);
+      bool isPublished = input.item.data[feature.share] == '1';
+      String fileId = input.item.data['w'] ?? '';
+      String fileName = input.item.data[fileId] ?? '';
 
       return Visibility(
         visible: isPublished,
@@ -71,7 +69,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                       yeslabel: 'Unpublish',
                       onAccept: () {
                         input.remove(feature.share);
-                        shareItem(delete: true, itemId: liveSpace());
+                        shareItem(delete: true, id: liveSpace());
                       },
                     ),
                     noStyling: true,
@@ -125,7 +123,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                   //
                   AppButton(
                     onPressed: () {
-                      input.removeStart('f');
+                      input.removeMatch('f');
                       input.addAll({'w': ''});
                     },
                     noStyling: true,

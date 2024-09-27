@@ -11,9 +11,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../_providers/theme.dart';
+import '../../_services/hive/get_data.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/others/empty_box.dart';
-import '../_spaces/_helpers/common.dart';
 import '../user/_helpers/set_user_data.dart';
 import 'bubbles/incoming.dart';
 import 'bubbles/sent.dart';
@@ -33,7 +33,7 @@ class ChatView extends StatelessWidget {
           // message list
           Align(
             child: ValueListenableBuilder(
-                valueListenable: Hive.box('${liveSpace()}_${feature.chat}').listenable(),
+                valueListenable: storage(feature.chat).listenable(),
                 builder: (context, box, widget) {
                   //
                   List chatIds = chat.type == 'Pinned'

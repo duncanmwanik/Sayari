@@ -1,6 +1,6 @@
 import 'package:flutter_tts/flutter_tts.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
 import '../../../_providers/_providers.dart';
 
 TTSService ttsService = TTSService();

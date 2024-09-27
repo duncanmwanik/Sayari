@@ -31,7 +31,7 @@ class PublishButton extends StatelessWidget {
           onPressed: () {
             prepareSpaceForEdit(spaceData);
             if (!isPublished) state.input.update(feature.share, '1');
-            shareItem(itemId: liveSpace(), type: feature.space, title: spaceData['t'] ?? 'Book');
+            shareItem(id: liveSpace(), type: feature.space, title: spaceData['t'] ?? 'Book');
           },
           smallLeftPadding: true,
           color: isPublished ? styler.accentColor(5) : null,

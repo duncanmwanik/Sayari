@@ -26,12 +26,12 @@ class ItemSelectionMore extends StatelessWidget {
             leading: isArchive ? unarchiveIcon : archiveIcon,
             onTap: () async {
               if (isArchive) {
-                selection.selected.forEach((id, data) async {
-                  await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '0');
+                selection.selected.forEach((item) async {
+                  await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: '0');
                 });
               } else {
-                selection.selected.forEach((id, data) async {
-                  await editItemExtras(type: data['type'], itemId: id, key: 'a', value: '1');
+                selection.selected.forEach((item) async {
+                  await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: '1');
                 });
               }
               state.selection.clear();
@@ -42,8 +42,8 @@ class ItemSelectionMore extends StatelessWidget {
             label: 'Move To Trash',
             leading: deleteIcon,
             onTap: () async {
-              selection.selected.forEach((id, data) async {
-                await editItemExtras(type: data['type'], itemId: id, key: 'x', value: '1');
+              selection.selected.forEach((item) async {
+                await editItemExtras(parent: item.parent, id: item.id, key: 'x', value: '1');
               });
               state.selection.clear();
             },

@@ -4,9 +4,9 @@ import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_variables/date_time.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/empty_box.dart';
+import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';
@@ -14,7 +14,9 @@ import '../_helpers/date_time/date_info.dart';
 import '../_helpers/date_time/misc.dart';
 import '../_helpers/date_time/months.dart';
 import '../_helpers/helpers.dart';
+import '../_helpers/prepare.dart';
 import '../_helpers/swipe.dart';
+import '../_vars/date_time.dart';
 import '../_w/sessions_list_menu.dart';
 import '../monthly/weekday_labels.dart';
 import '../state/datetime.dart';
@@ -59,7 +61,7 @@ class YearlyView extends StatelessWidget {
                               constraints: BoxConstraints(maxWidth: 230, maxHeight: 245),
                               decoration: BoxDecoration(
                                 color: styler.appColor(1),
-                                borderRadius: BorderRadius.circular(borderRadiusSmall),
+                                borderRadius: BorderRadius.circular(borderRadiusTiny),
                               ),
                               child: LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
                                 double width = constraints.maxWidth;
@@ -81,22 +83,39 @@ class YearlyView extends StatelessWidget {
                                                   ? () => prepareSessionCreation(date: date.date, hour: TimeOfDay.now().hour)
                                                   : null,
                                               noStyling: true,
-                                              isRound: true,
+                                              isSquare: true,
                                               padding: noPadding,
-                                              child: Container(
-                                                width: width / 7.5,
-                                                height: width / 7.5,
-                                                decoration: BoxDecoration(
-                                                  color: date.isToday() && isSelectedMonth ? styler.accentColor(5) : null,
-                                                  borderRadius: BorderRadius.circular(borderRadiusSmall),
-                                                ),
-                                                child: Center(
-                                                  child: AppText(
-                                                    size: small,
-                                                    text: date.dayString(),
-                                                    color: isSelectedMonth ? null : styler.appColor(2),
+                                              child: Stack(
+                                                children: [
+                                                  //
+                                                  Container(
+                                                    width: width / 7.5,
+                                                    height: width / 7.5,
+                                                    decoration: BoxDecoration(
+                                                      color: date.isToday() && isSelectedMonth ? styler.accentColor(3) : null,
+                                                      borderRadius: BorderRadius.circular(borderRadiusTiny),
+                                                    ),
+                                                    child: Center(
+                                                      child: AppText(
+                                                        size: small,
+                                                        text: date.dayString(),
+                                                        color: isSelectedMonth ? null : styler.appColor(2),
+                                                      ),
+                                                    ),
                                                   ),
-                                                ),
+                                                  //
+                                                  if (hasSessions(date.date))
+                                                    Positioned(
+                                                      top: 2,
+                                                      left: width / 16,
+                                                      child: AppIcon(
+                                                        Icons.circle,
+                                                        size: 3,
+                                                        color: styler.accent,
+                                                      ),
+                                                    )
+                                                  //
+                                                ],
                                               ));
                                         }),
                                       ),

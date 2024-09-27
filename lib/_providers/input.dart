@@ -1,93 +1,52 @@
 import 'package:flutter/material.dart';
 
-import '../_helpers/_common/helpers.dart';
 import '../_models/item.dart';
-import '../_variables/features.dart';
 
 class InputProvider with ChangeNotifier {
-  //
-  bool isNew = true;
-  late Item item;
-  String type = '';
-  String itemId = '';
-  String subId = '';
-
-  Map data = {};
+  Item item = Item(data: {});
   Map previousData = {};
 
-  String? color() => data['c'];
-
-  bool isNote() => data[feature.notes] != null;
-  bool isFinance() => data[feature.finances] != null;
-  bool isTask() => data[feature.tasks] != null;
-  bool isHabit() => data[feature.habits] != null;
-  bool isLink() => data[feature.links] != null;
-  bool isBooking() => data[feature.bookings] != null;
-  bool isPortfolio() => data[feature.portfolios] != null;
-  bool isShared() => data[feature.share] != null;
-  bool showEditor() => isNote() || isPortfolio() || isBooking() || isLink();
-  bool showFooter() => (isNote() || isBooking() || isFinance()) && !isShare();
-
-  void setInputData({
-    bool isNw = true,
-    required String typ,
-    Item itm = const Item(),
-    String id = '',
-    String sId = '',
-    Map dta = const {},
-    bool notify = true,
-  }) {
-    clearData();
-    isNew = isNw;
+  void set(Item itm) {
     item = itm;
-    type = typ;
-    itemId = id;
-    subId = sId;
-    data = {...dta};
-    previousData = {...dta};
-    if (notify) notifyListeners();
+    previousData = {...item.data};
+    notifyListeners();
   }
 
   void update(String key, var value, {String subKey = ''}) {
     if (subKey.isNotEmpty) {
-      Map subData = data[key] ?? {};
+      Map subData = item.data[key] ?? {};
       subData[subKey] = value;
-      data[key] = subData;
+      item.data[key] = subData;
     } else {
-      data[key] = value;
+      item.data[key] = value;
     }
     notifyListeners();
   }
 
   void remove(String key, {String subKey = ''}) {
     if (subKey.isNotEmpty) {
-      Map subData = data[key] ?? {};
+      Map subData = item.data[key] ?? {};
       subData.remove(subKey);
-      data[key] = subData;
+      item.data[key] = subData;
     } else {
-      data.remove(key);
+      item.data.remove(key);
     }
     notifyListeners();
   }
 
   void addAll(Map all) {
-    data.addAll(all);
+    item.data.addAll(all);
     notifyListeners();
   }
 
-  void removeStart(String start) {
-    data.removeWhere((key, value) => key.toString().startsWith(start));
+  void removeMatch(String match) {
+    item.data.removeWhere((key, value) => key.toString().startsWith(match));
     notifyListeners();
   }
 
-  void clearData() {
-    isNew = false;
-    item = Item();
-    data = {};
+  void clear() {
+    item = Item(data: {});
     previousData = {};
-    type = '';
-    itemId = '';
-    subId = '';
   }
 
   // for finance only ---------- ----------
@@ -110,13 +69,10 @@ class InputProvider with ChangeNotifier {
   List selectedDates = [];
 
   void updateSelectedDates(String action, {String date = '', List dates = const []}) {
-    action == 'add' ? selectedDates.add(date) : selectedDates.remove(date);
-    if (action == 'clear') {
-      selectedDates.clear();
-    }
-    if (action == 'set') {
-      selectedDates = dates;
-    }
+    if (action == 'add') selectedDates.add(date);
+    if (action == 'remove') selectedDates.remove(date);
+    if (action == 'clear') selectedDates.clear();
+    if (action == 'set') selectedDates = dates;
     notifyListeners();
   }
 
@@ -137,15 +93,6 @@ class InputProvider with ChangeNotifier {
   void updateSelectedWeekDays(String action, int weekday) {
     action == 'add' ? selectedWeekDays.add(weekday) : selectedWeekDays.remove(weekday);
     notifyListeners();
-  }
-
-  void resetSessionData() {
-    clearData();
-    type = feature.calendar;
-    data['y'] = 'Session';
-    data['c'] = '0';
-    data['r'] = '30.m';
-    selectedDates = [];
   }
 
   // for spaces only

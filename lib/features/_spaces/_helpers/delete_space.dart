@@ -1,4 +1,4 @@
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
 import '../../../_services/activity/pending/pending_actions.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
@@ -31,7 +31,7 @@ Future<void> deleteSpace({required String spaceId, required String spaceName}) a
         await isSpaceOwnerFirebase(spaceId, userId).then((isSpaceOwner) async {
           if (isSpaceOwner) {
             // delete workspace from cloud
-            await syncToCloud(db: 'spaces', parentId: spaceId, action: 'd');
+            await syncToCloud(db: 'spaces', space: spaceId, action: 'd');
             // remove workspace from local and cloud user data
             await removeSpaceFromUserSpaceData(userId, spaceId);
             // unselect workspace if it was the app-wide selectesd workspace
@@ -50,7 +50,7 @@ Future<void> deleteSpace({required String spaceId, required String spaceName}) a
   } catch (e) {
     errorPrint('delete-workspace', e);
     showToast(0, 'Could not delete workspace.');
-    await addToPendingActions(db: 'spaces', parentId: spaceId, type: 'user', action: 'd', data: {'spaceName': spaceName});
+    await addToPendingActions(db: 'spaces', space: spaceId, parent: 'user', action: 'd', data: {'spaceName': spaceName});
   }
 }
 

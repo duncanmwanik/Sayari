@@ -17,9 +17,9 @@ class CheckedDates extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      Map data = input.data;
+      Map data = input.item.data;
       List checkedDates = data.keys.where((key) => key.toString().startsWith('hc')).toList();
-      bool isExpanded = input.data['ep'] == '1';
+      bool isExpanded = input.item.data['ep'] == '1';
 
       return Column(
         children: [

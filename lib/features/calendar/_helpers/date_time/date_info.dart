@@ -1,5 +1,5 @@
 import '../../../../_providers/_providers.dart';
-import '../../../../_variables/date_time.dart';
+import '../../_vars/date_time.dart';
 import 'misc.dart';
 
 String getDayInfo(String date) {

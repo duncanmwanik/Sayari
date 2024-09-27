@@ -4,24 +4,23 @@ import 'package:flutter/material.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/global.dart';
+import '../../../../_helpers/global.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/scroll.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../../_widgets/others/theme.dart';
 import '../../../files/image.dart';
+import '../../../share/_w/share_link.dart';
 import '../../../share/_w/shared_info.dart';
 import '../_helpers/helpers.dart';
 import 'intro.dart';
-import 'share_menu.dart';
 
 class LinksBody extends StatelessWidget {
-  const LinksBody(
-      {super.key, required this.spaceId, required this.itemId, required this.userId, required this.userName, required this.data});
+  const LinksBody({super.key, required this.spaceId, required this.id, required this.userId, required this.userName, required this.data});
 
   final String spaceId;
-  final String itemId;
+  final String id;
   final String userId;
   final String userName;
   final Map data;
@@ -29,7 +28,7 @@ class LinksBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isActive = data['la'] == '1';
-    List linkKeys = getSplitList(data['lo']);
+    List linkKeys = splitList(data['lo']);
 
     return isActive
         ? SizedBox(
@@ -96,7 +95,7 @@ class LinksBody extends StatelessWidget {
                                       )),
                                       //
                                       if (!isTitle) mpw(),
-                                      if (!isTitle) ShareOptions(title: title, link: link),
+                                      if (!isTitle) ShareLink(title: title, link: link, isShareIcon: false),
                                       if (!isTitle) tpw(),
                                       //
                                     ],

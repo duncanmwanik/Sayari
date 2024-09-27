@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../_helpers/_common/clipboard.dart';
+import '../../../../_helpers/clipboard.dart';
 import '../../../../_services/firebase/_helpers/helpers.dart';
 import '../../../../_services/hive/local_storage_service.dart';
 import '../../../../_widgets/others/loader.dart';
@@ -15,7 +15,7 @@ class SpaceOwnerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppListTile(
-      onTap: () async => await copyToClipboard(ownerId),
+      onTap: () async => await copyText(ownerId),
       leading: AppText(
         text: 'Owner',
       ),

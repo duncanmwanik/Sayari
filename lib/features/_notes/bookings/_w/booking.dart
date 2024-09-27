@@ -9,7 +9,6 @@ import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import 'bookings_list.dart';
-import 'copy_link.dart';
 import 'date_times.dart';
 import 'header.dart';
 
@@ -19,11 +18,11 @@ class Booking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool isActive = input.data[feature.share] == '1';
-      bool isExpanded = input.data['ep'] == '1' || input.data['ep'] == null;
+      bool isActive = input.item.data[feature.share] == '1';
+      bool isExpanded = input.item.data['ep'] == '1' || input.item.data['ep'] == null;
 
       return Visibility(
-        visible: input.data[feature.bookings] != null,
+        visible: input.item.data[feature.bookings] != null,
         child: Padding(
           padding: paddingM('t'),
           child: Column(
@@ -71,7 +70,7 @@ class Booking extends StatelessWidget {
                     if (isExpanded) mph(),
                     if (isExpanded) BookingHeader(),
                     if (isExpanded && isActive) sph(),
-                    if (isExpanded && isActive) CopyLink(path: input.item.sharedLink()),
+                    // if (isExpanded && isActive) CopyLink(path: input.item.sharedLink()),
                     //
                   ],
                 ),

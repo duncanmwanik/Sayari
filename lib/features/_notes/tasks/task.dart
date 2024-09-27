@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_models/item.dart';
 import '../state/selection.dart';
-import '_w_item/new_item.dart';
-import '_w_item/progress_bar.dart';
+import 'new_item.dart';
 import 'subitems.dart';
+import 'w_items/progress_bar.dart';
 
 // TODOs: code min
 class NoteTask extends StatelessWidget {
@@ -17,13 +17,13 @@ class NoteTask extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SelectionProvider>(builder: (context, selection, child) {
       return Padding(
-        padding: paddingM('t'),
+        padding: item.showChecks() ? paddingM('t') : paddingC('t1'),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
             //
-            ProgressBar(item: item),
+            if (item.hasTasks()) ProgressBar(item: item),
             //
             Flexible(child: ListOfSubItems(item: item)),
             //

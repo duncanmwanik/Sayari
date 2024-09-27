@@ -1,6 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_services/hive/get_data.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../user/_helpers/set_user_data.dart';
 import 'common.dart';
@@ -38,7 +39,7 @@ Future<bool> isOwner([String? spaceId]) async {
 
 bool isSuperAdmin() {
   try {
-    return Hive.box('${liveSpace()}_info').get('o', defaultValue: 'none') == liveUser();
+    return storage('info').get('o', defaultValue: 'none') == liveUser();
   } catch (e) {
     errorPrint('isSuperAdmin', e);
     return false;
@@ -47,7 +48,7 @@ bool isSuperAdmin() {
 
 bool isAdmin() {
   try {
-    return ['0', '1'].contains(Hive.box('${liveSpace()}_admins').get(liveUser(), defaultValue: '2'));
+    return ['0', '1'].contains(storage('admins').get(liveUser(), defaultValue: '2'));
   } catch (e) {
     errorPrint('isAdmin', e);
     return false;
@@ -55,5 +56,5 @@ bool isAdmin() {
 }
 
 String adminPriviledge(String userId) {
-  return Hive.box('${liveSpace()}_admins').get(userId, defaultValue: '2');
+  return storage('admins').get(userId, defaultValue: '2');
 }

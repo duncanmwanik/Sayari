@@ -15,10 +15,10 @@ class Habit extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      String view = input.data['hv'] ?? '0';
+      String view = input.item.data['hv'] ?? '0';
 
       return Visibility(
-        visible: input.data[feature.habits] != null,
+        visible: input.item.data[feature.habits] != null,
         child: Container(
           margin: padding(s: 'b'),
           padding: paddingM(),

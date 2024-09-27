@@ -5,12 +5,12 @@ import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/_providers.dart';
+import '../../../_services/hive/get_data.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
-import '../../_spaces/_helpers/common.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
 import '../../files/_helpers/helper.dart';
 import '../../files/file_list.dart';
@@ -28,7 +28,7 @@ class SentMessageBubble extends StatelessWidget {
     bool isShortMessage = message.length < 20;
 
     return ValueListenableBuilder(
-        valueListenable: Hive.box('${liveSpace()}_${feature.chat}').listenable(keys: [id]),
+        valueListenable: storage(feature.chat).listenable(keys: [id]),
         builder: (context, box, wdgt) {
           bool isPending = pendingBox.containsKey(id);
           Map files = getFiles(data);
@@ -62,7 +62,7 @@ class SentMessageBubble extends StatelessWidget {
                             FileList(fileData: files),
                             if (files.isNotEmpty) mph(),
                             // message
-                            AppText(size: 12, text: message, weight: isDark() ? FontWeight.w400 : FontWeight.w600),
+                            AppText(size: 12, text: message, weight: isDark() ? FontWeight.w400 : FontWeight.w500),
                             if (isShortMessage) sph(),
                             // sent status Icon
                             ph(1),

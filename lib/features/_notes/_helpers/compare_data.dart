@@ -1,11 +1,11 @@
 import 'package:collection/collection.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 
 Map compareData({required String type}) {
-  Map editedData = state.input.data;
+  Map editedData = state.input.item.data;
   Map previousData = state.input.previousData;
 
   List editedKeys = [];
@@ -39,5 +39,5 @@ Map compareData({required String type}) {
     }
   });
 
-  return {'editedKeys': getJoinedList(editedKeys), 'validatedData': editedData};
+  return {'editedKeys': joinList(editedKeys), 'validatedData': editedData};
 }

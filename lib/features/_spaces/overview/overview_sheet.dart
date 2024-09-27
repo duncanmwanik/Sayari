@@ -4,8 +4,9 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/clipboard.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/clipboard.dart';
+import '../../../_helpers/navigation.dart';
+import '../../../_services/hive/get_data.dart';
 import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/icons.dart';
@@ -39,7 +40,7 @@ Future<void> showSpaceOverviewBottomSheet() async {
     ),
     //
     content: ValueListenableBuilder(
-        valueListenable: Hive.box('${liveSpace()}_info').listenable(),
+        valueListenable: storage('info').listenable(),
         builder: (context, box, widget) {
           Map spaceData = box.toMap();
           String description = spaceData['n'] ?? '';
@@ -67,7 +68,7 @@ Future<void> showSpaceOverviewBottomSheet() async {
                           AppListTile(
                             leading: 'Space Id',
                             trailing: spaceId,
-                            onTap: () async => await copyToClipboard(spaceId),
+                            onTap: () async => await copyText(spaceId),
                           ),
                           kIsWeb ? sph() : tsph(),
                           SpaceOwnerTile(ownerId: spaceData['o'] ?? '-'),

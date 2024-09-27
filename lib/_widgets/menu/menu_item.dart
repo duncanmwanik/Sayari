@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../buttons/button.dart';
 import '../others/icons.dart';
 import '../others/others/divider.dart';
@@ -17,6 +17,7 @@ class MenuItem extends StatefulWidget {
     this.menuWidth,
     this.leading,
     this.trailing,
+    this.color,
     this.trailingColor,
     this.hoverColor,
     this.leadingSize,
@@ -26,6 +27,7 @@ class MenuItem extends StatefulWidget {
     this.isSelected = false,
     this.center = false,
     this.pop = true,
+    this.popTrailing = false,
   });
 
   final String label;
@@ -34,6 +36,7 @@ class MenuItem extends StatefulWidget {
   final List<Widget>? menuItems;
   final double? menuWidth;
   final IconData? trailing;
+  final Color? color;
   final Color? trailingColor;
   final Color? hoverColor;
   final double? leadingSize;
@@ -43,6 +46,7 @@ class MenuItem extends StatefulWidget {
   final bool isSelected;
   final bool center;
   final bool pop;
+  final bool popTrailing;
 
   @override
   State<MenuItem> createState() => _MenuItemState();
@@ -70,7 +74,7 @@ class _MenuItemState extends State<MenuItem> {
           l: 8,
           t: widget.smallHeight ? 1 : 6,
           b: widget.smallHeight ? 1 : 6,
-          r: widget.trailing != null ? 8 : 12,
+          r: widget.trailing != null ? 8 : (widget.popTrailing ? 2 : 8),
         ),
         hoverColor: widget.hoverColor,
         noStyling: true,
@@ -81,24 +85,32 @@ class _MenuItemState extends State<MenuItem> {
                 widget.leading,
                 size: widget.leadingSize ?? normal,
                 faded: true,
-                color: widget.isSelected ? styler.accentColor() : null,
+                color: widget.color ?? (widget.isSelected ? styler.accentColor() : null),
               ),
             if (widget.leading != null) spw(),
             Expanded(
               child: AppText(
                 text: widget.label,
-                color: widget.isSelected ? styler.accentColor() : null,
-                extraFaded: widget.faded,
+                color: widget.color ?? (widget.isSelected ? styler.accentColor() : null),
+                faded: widget.faded,
                 textAlign: widget.center ? TextAlign.center : null,
               ),
             ),
-            if (widget.trailing != null) spw(),
+            if (widget.trailing != null || widget.popTrailing) spw(),
             if (widget.trailing != null)
               AppIcon(
                 widget.trailing,
                 size: widget.trailingSize ?? 16,
                 faded: true,
-                color: widget.isSelected ? styler.accentColor() : widget.trailingColor,
+                color: widget.color ?? (widget.isSelected ? styler.accentColor() : widget.trailingColor),
+              ),
+            if (widget.popTrailing)
+              AppButton(
+                onPressed: () => popWhatsOnTop(),
+                padding: paddingS(),
+                noStyling: true,
+                isSquare: true,
+                child: AppIcon(closeIcon, size: widget.trailingSize ?? 16, faded: true),
               ),
           ],
         ),

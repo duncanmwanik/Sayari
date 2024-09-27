@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_providers/input.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/dialogs/dialog_select_date.dart';
@@ -14,8 +14,8 @@ class HabitOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool isCustom = input.data['hf'] == 'custom';
-      List<String> customDates = isCustom ? getSplitList(input.data['hd']) : [];
+      bool isCustom = input.item.data['hf'] == 'custom';
+      List<String> customDates = isCustom ? splitList(input.item.data['hd']) : [];
 
       return Column(
         mainAxisSize: MainAxisSize.min,
@@ -32,7 +32,7 @@ class HabitOptions extends StatelessWidget {
               ).then((chosenDates) {
                 if (chosenDates.isNotEmpty && !DeepCollectionEquality().equals(chosenDates, customDates)) {
                   chosenDates.sort();
-                  input.update('hd', getJoinedList(chosenDates));
+                  input.update('hd', joinList(chosenDates));
                   input.update('hf', 'custom');
                 }
               });

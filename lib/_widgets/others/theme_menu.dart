@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../../_providers/_providers.dart';
 import '../../_variables/colors.dart';
 import '../buttons/button.dart';
@@ -18,7 +18,8 @@ List<Widget> themeMenu() {
 
   return [
     //
-    MenuItem(label: 'Choose theme'), tph(),
+    MenuItem(label: 'Choose theme', smallHeight: true, popTrailing: true),
+    tph(),
     //
     GridView.count(
       shrinkWrap: true,
@@ -65,10 +66,10 @@ List<Widget> themeMenu() {
       crossAxisSpacing: tinyWidth(),
       crossAxisCount: 8,
       children: List.generate(accentColors.length, (index) {
-        String colorKey = accentColors.keys.toList()[index];
+        String color = accentColors.keys.toList()[index];
 
         return ColorItem(
-          colorKey: colorKey,
+          color: color,
           selectedColor: state.theme.themeAccent,
           onSelect: (newColor) {
             state.theme.setThemeImage(state.theme.themeImage, state.theme.themeType, newColor);

@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/global.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/input.dart';
 import '../../../_providers/views.dart';
@@ -29,10 +29,10 @@ class HabitMonth extends StatelessWidget {
     bool isInput = item == null;
 
     return Consumer3<InputProvider, DateTimeProvider, ViewsProvider>(builder: (context, input, dateTime, views, child) {
-      Map data = item != null ? item!.data : input.data;
+      Map data = item != null ? item!.data : input.item.data;
       String? bgColor = data['c'];
       bool isCustom = data['hf'] == 'custom';
-      List<String> customDates = isCustom ? getSplitList(data['hd']) : [];
+      List<String> customDates = isCustom ? splitList(data['hd']) : [];
 
       return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
         double width = constraints.maxWidth < 300 ? constraints.maxWidth : 300;
@@ -110,8 +110,8 @@ class HabitMonth extends StatelessWidget {
                                       isChecked ? input.remove(checkedKey) : input.update(checkedKey, getUniqueId());
                                     } else {
                                       editItemExtras(
-                                        type: item!.type,
-                                        itemId: item!.id,
+                                        parent: item!.parent,
+                                        id: item!.id,
                                         key: isChecked ? 'd/$checkedKey' : checkedKey,
                                         value: isChecked ? '0' : getUniqueId(),
                                       );

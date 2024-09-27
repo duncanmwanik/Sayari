@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_services/firebase/database.dart';
 import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/toast.dart';

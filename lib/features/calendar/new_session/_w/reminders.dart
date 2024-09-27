@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/global.dart';
-import '../../../../_helpers/_common/navigation.dart';
+import '../../../../_helpers/global.dart';
+import '../../../../_helpers/navigation.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
@@ -17,7 +17,7 @@ class Reminders extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      List remindersList = getSplitList((input.data['r']));
+      List remindersList = splitList((input.item.data['r']));
 
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +39,7 @@ class Reminders extends StatelessWidget {
                         onPressed: () async {
                           hideKeyboard();
                           remindersList.add('30.m');
-                          input.update('r', getJoinedList(remindersList));
+                          input.update('r', joinList(remindersList));
                         },
                         noStyling: true,
                         showBorder: true,

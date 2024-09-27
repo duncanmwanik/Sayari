@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_services/hive/load_boxes.dart';
 import '../../../_services/hive/local_storage_service.dart';

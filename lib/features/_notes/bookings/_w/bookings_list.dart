@@ -14,7 +14,7 @@ import '../../../../_widgets/others/others/divider.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../calendar/_helpers/date_time/date_info.dart';
 import '../../../calendar/_helpers/date_time/misc.dart';
-import 'dialog_change_date.dart';
+import 'change_date.dart';
 
 class BookingsList extends StatelessWidget {
   const BookingsList({super.key});
@@ -22,9 +22,9 @@ class BookingsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      Map data = input.data;
+      Map data = input.item.data;
       List allBookings = data.keys.where((key) => key.toString().startsWith('bb')).toList();
-      bool isBookingsExpanded = input.data['ep0'] == '1';
+      bool isBookingsExpanded = input.item.data['ep0'] == '1';
 
       return Column(
         mainAxisSize: MainAxisSize.min,

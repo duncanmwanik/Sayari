@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/variables.dart';
-import '../../_helpers/_common/navigation.dart';
+import '../../_helpers/navigation.dart';
 import '../../_variables/colors.dart';
 import '../buttons/button.dart';
 import 'icons.dart';
 
 class ColorItem extends StatefulWidget {
-  const ColorItem({super.key, this.selectedColor, required this.colorKey, this.onSelect});
+  const ColorItem({super.key, this.selectedColor, required this.color, this.onSelect});
 
   final String? selectedColor;
-  final String colorKey;
+  final String color;
   final Function(String newColor)? onSelect;
 
   @override
@@ -23,20 +23,20 @@ class _ColorItemState extends State<ColorItem> {
   @override
   Widget build(BuildContext context) {
     return AppButton(
-      onPressed: () => popWhatsOnTop(todo: () => widget.onSelect!(widget.colorKey)),
+      onPressed: () => popWhatsOnTop(todo: () => widget.onSelect!(widget.color)),
       onHover: (value) => setState(() => isHovered = value),
       isSquare: true,
-      color: widget.colorKey == 'x' ? styler.appColor(1) : backgroundColors[widget.colorKey]!.color,
+      width: 30,
+      height: 30,
+      dryWidth: true,
+      padding: noPadding,
+      color: backgroundColors[widget.color]!.color,
       child: Center(
         child: AppIcon(
-          isHovered ? Icons.lens : (widget.colorKey == 'x' ? Icons.close : Icons.done_rounded),
+          isHovered ? Icons.lens : Icons.done_rounded,
           size: isHovered ? 10 : 15,
           faded: true,
-          color: widget.colorKey == 'x'
-              ? null
-              : widget.selectedColor == widget.colorKey || isHovered
-                  ? backgroundColors[widget.colorKey]!.textColor
-                  : transparent,
+          color: widget.selectedColor == widget.color || isHovered ? backgroundColors[widget.color]!.textColor : transparent,
         ),
       ),
     );

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_models/item.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/confirmation.dart';
 import '../../../_widgets/others/icons.dart';
-import '../_helpers/actions.dart';
+import '../_helpers/copy.dart';
 import '../_helpers/delete.dart';
-import '../_helpers/helpers.dart';
+import '../_helpers/prepare.dart';
 
 class SessionOptions extends StatelessWidget {
   const SessionOptions({super.key, required this.item});
@@ -25,7 +25,7 @@ class SessionOptions extends StatelessWidget {
         //
         AppButton(
           onPressed: () {
-            popWhatsOnTop(); // close overview dialog
+            popWhatsOnTop();
             prepareSessionEditing(item);
           },
           tooltip: 'Edit Session',
@@ -35,9 +35,7 @@ class SessionOptions extends StatelessWidget {
         ),
         //
         AppButton(
-          onPressed: () {
-            copySessionToDates(item: item, move: false);
-          },
+          onPressed: () => copySessionToDates(item: item, move: false),
           tooltip: 'Copy to Date',
           noStyling: true,
           isSquare: true,
@@ -45,9 +43,7 @@ class SessionOptions extends StatelessWidget {
         ),
         //
         AppButton(
-          onPressed: () {
-            copySessionToDates(item: item, move: true);
-          },
+          onPressed: () => copySessionToDates(item: item, move: true),
           tooltip: 'Move To Date',
           noStyling: true,
           isSquare: true,
@@ -57,11 +53,7 @@ class SessionOptions extends StatelessWidget {
         AppButton(
           menuItems: confirmationMenu(
             title: 'Delete session?',
-            onConfirm: () {
-              deleteSession(item: item);
-              popWhatsOnTop(); // close popup menu
-              popWhatsOnTop(); // close dialog
-            },
+            onConfirm: () => deleteSession(item: item),
           ),
           tooltip: 'Delete Session',
           noStyling: true,

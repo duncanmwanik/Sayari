@@ -6,7 +6,7 @@ import '../../../../_variables/features.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../../_notes/items/picker_type.dart';
+import '../../../_notes/_w/picker_type.dart';
 import '../../_helpers/admin_helpers.dart';
 import '../../_helpers/checks_space.dart';
 import '../../_var/variables.dart';

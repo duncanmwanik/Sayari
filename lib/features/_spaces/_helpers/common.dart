@@ -1,6 +1,6 @@
 import '../../../../_services/hive/local_storage_service.dart';
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/helpers.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/helpers.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_variables/constants.dart';
 import '../../../_variables/features.dart';

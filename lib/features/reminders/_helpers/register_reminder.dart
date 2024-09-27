@@ -1,11 +1,12 @@
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/global.dart';
 import '../../../_services/notifications/create_notification.dart';
 import '../../../_variables/features.dart';
 import 'reminders.dart';
 
 Future<void> registerReminder({
   required String type,
-  required String itemId,
+  required String id,
   required Map itemData,
   String? listName,
   String? reminder,
@@ -24,7 +25,7 @@ Future<void> registerReminder({
         String lead = itemData['l'] != null ? '<br>Led by: <b>${itemData['l']}</b>.' : '';
         String venue = itemData['v'] != null ? '<br>Venue: <b>${itemData['v']}</b>.' : '';
         String description = itemData['a'] != null ? '<br>${itemData['a']}.' : '';
-        List remindersList = getSplitList(itemData['r']);
+        List remindersList = splitList(itemData['r']);
 
         if (remindersList.isNotEmpty) {
           for (String reminder in remindersList) {
@@ -32,12 +33,12 @@ Future<void> registerReminder({
             DateTime date = DateTime.parse(reminderDateTime(reminderDate, itemData['s'])).subtract(Duration(minutes: reminderInMinutes));
 
             if (date.isAfter(DateTime.now())) {
-              int id = getNotificationId(itemId) + reminderInMinutes;
+              int nid = notificationId(id) + reminderInMinutes;
               title = itemData['t'] ?? 'Session';
               body = 'Starts in $reminderInMinutes minutes. $lead $venue $description';
               data = {'type': type};
 
-              await createReminderNotification(id: id, title: title, body: body, data: data, date: date);
+              await createReminderNotification(id: nid, title: title, body: body, data: data, date: date);
             }
           }
         }
@@ -63,7 +64,7 @@ Future<void> registerReminder({
           }
           //
           if (title.isNotEmpty) {
-            await createReminderNotification(id: getNotificationId(itemId), title: title, body: body, data: data, date: date);
+            await createReminderNotification(id: notificationId(id), title: title, body: body, data: data, date: date);
           }
           //
         }

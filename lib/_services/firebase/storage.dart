@@ -4,11 +4,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../_helpers/_common/global.dart';
-import '../../_helpers/_common/helpers.dart';
+import '../../_helpers/debug.dart';
+import '../../_helpers/helpers.dart';
 import '../../_widgets/others/toast.dart';
 import '../hive/local_storage_service.dart';
-import '_helpers/handle_errors.dart';
+import '_helpers/storage_errors.dart';
 
 CloudStorage cloudStorage = CloudStorage();
 

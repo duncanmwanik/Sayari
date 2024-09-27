@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/global.dart';
+import '../../../../_helpers/global.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/dialogs/dialog_select_date.dart';
@@ -17,8 +17,8 @@ class BookingDateTimes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      List<String> availableDates = getSplitList(input.data['bd']);
-      List<String> availableTimes = getSplitList(input.data['bt']);
+      List<String> availableDates = splitList(input.item.data['bd']);
+      List<String> availableTimes = splitList(input.item.data['bt']);
 
       return Column(
         mainAxisSize: MainAxisSize.min,
@@ -35,7 +35,7 @@ class BookingDateTimes extends StatelessWidget {
                 onPressed: () async {
                   await showSelectDateDialog(showTitle: true, isMultiple: true, initialDates: availableDates).then((chosenDates) {
                     if (chosenDates.isNotEmpty) {
-                      input.update('bd', getJoinedList(chosenDates));
+                      input.update('bd', joinList(chosenDates));
                     }
                   });
                 },
@@ -62,7 +62,7 @@ class BookingDateTimes extends StatelessWidget {
                       AppButton(
                         onPressed: () {
                           availableDates.remove(date);
-                          input.update('bd', getJoinedList(availableDates));
+                          input.update('bd', joinList(availableDates));
                         },
                         noStyling: true,
                         isRound: true,
@@ -91,7 +91,7 @@ class BookingDateTimes extends StatelessWidget {
                       await showTimePicker(context: context, cancelText: 'Cancel', confirmText: 'Add', initialTime: TimeOfDay.now());
                   if (time != null) {
                     availableTimes.add('${time.hour}:${time.minute}');
-                    input.update('bt', getJoinedList(availableTimes));
+                    input.update('bt', joinList(availableTimes));
                   }
                 },
                 color: styler.accentColor(1),
@@ -117,7 +117,7 @@ class BookingDateTimes extends StatelessWidget {
                       AppButton(
                         onPressed: () {
                           availableTimes.remove(time);
-                          input.update('bt', getJoinedList(availableTimes));
+                          input.update('bt', joinList(availableTimes));
                         },
                         noStyling: true,
                         isRound: true,

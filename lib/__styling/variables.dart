@@ -14,22 +14,11 @@ Map<String, String> themeImages = {
 };
 
 // sizes
-const double webMaxWidthPlus = 868.0;
 const double webMaxWidth = 768.0;
-const double webMinWidth = 250.0;
-const double webMaxSpaceManagerWidth = 300.0;
 const double webMaxDialogWidth = 400.0;
-const double webMinDialogWidth = 150;
-const double webMinDialogHeight = 300;
-const double webMaxButtonWidth = 300.0;
-const double webMaxButtonHeight = 50.0;
-const double webMaxListWidth = 200.0;
-const double phoneWidth = 500;
 
 // text sizes
-const double pomodoroIcon = 50.0;
-const double pomodoro = 30.0;
-const double blogTitle = 24.0;
+const double largeTitle = 24.0;
 const double title = 22.0;
 const double large = 20.0;
 const double extra = 18.0;
@@ -51,28 +40,25 @@ const double borderRadiusLarge = 30.0;
 const double borderRadiusCrazy = 200.0;
 
 // image sizes
-const double imageSizeTiny = 20.0;
 const double imageSizeSmall = 80.0;
-const double imageSizeMedium = 120.0;
-const double imageSizeLarge = 200.0;
 
 // global colors
 const Color transparent = Colors.transparent;
 const Color black = Colors.black;
 const Color white = Colors.white;
+const Color red = Colors.red;
 
 const List<IconData> toastIcons = [Icons.info_rounded, Icons.check_circle_rounded, Icons.info_rounded, Icons.info_rounded];
 const List<Color> toastColors = [Colors.red, Colors.green, Colors.blue, Colors.pink];
 
 // icons
-const IconData sessionsSelectedIcon = Icons.looks_one_rounded;
-const String notesSelectedIcon = 'note-sticky-solid';
-const String chatSelectedIcon = 'comment-solid';
-const String exploreSelectedIcon = 'compass-solid';
-const String codeSelectedIcon = 'code';
+const IconData sessionsIcon = Icons.looks_one_rounded;
+const String notesIcon = 'note-sticky-solid';
+const IconData tasksIcon = Icons.check_circle_rounded;
+const String chatIcon = 'comment-solid';
+const String exploreIcon = 'compass-solid';
 const IconData savedSeledctedIcon = Icons.bookmark_rounded;
 const String datePlusSvg = 'calendar-plus-regular';
-const String syncSvg = 'rotate-solid';
 const String dropDownSvg = 'dropdown';
 
 const IconData pinIcon = Icons.push_pin_rounded;

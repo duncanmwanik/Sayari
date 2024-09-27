@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../__styling/variables.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_providers/input.dart';
 import '../../../_variables/features.dart';
@@ -20,15 +20,15 @@ class MoreInputActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      bool isArchived = input.data['a'] == '1';
+      bool isArchived = input.item.data['a'] == '1';
 
       return AppButton(
         tooltip: 'More Actions',
         menuItems: [
           //
-          if (input.isHabit()) HabitOptions(),
+          if (input.item.isHabit()) HabitOptions(),
           //
-          if (input.isNote())
+          if (input.item.isNote())
             Consumer<TTSProvider>(
               builder: (context, tts, child) => MenuItem(
                 label: tts.isPlaying ? 'Stop Narration' : 'Narrate',
@@ -40,13 +40,13 @@ class MoreInputActions extends StatelessWidget {
               ),
             ),
           //
-          if (input.isNote() && !input.item.isShared())
+          if (input.item.isNote() && !input.item.isShared())
             MenuItem(
               label: 'Share',
               leading: Icons.share_rounded,
               onTap: () {
                 input.update(feature.share, '1');
-                shareItem(itemId: input.itemId, type: input.item.type, title: input.data['t'] ?? 'Shared Item');
+                shareItem(id: input.item.id, type: input.item.type, title: input.item.data['t'] ?? 'Shared Item');
               },
             ),
           //

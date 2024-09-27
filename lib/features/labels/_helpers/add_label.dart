@@ -1,7 +1,6 @@
-import 'package:hive_flutter/hive_flutter.dart';
-
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
+import '../../../_services/hive/get_data.dart';
 import '../../../_variables/constants.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/toast.dart';
@@ -12,7 +11,7 @@ Future<void> addLabel(String label) async {
     //
     // if label dows not exist already or is a default label
     //
-    if (Hive.box('${liveSpace()}_${feature.labels}').containsKey(label) || specialLabelsIcons.keys.contains(label)) {
+    if (storage(feature.labels).containsKey(label) || specialLabelsIcons.keys.contains(label)) {
       // Future helps us show the toast consistently : bug
       Future.delayed(Duration(seconds: 0), () => showToast(0, 'Label already exists!'));
     }
@@ -20,9 +19,9 @@ Future<void> addLabel(String label) async {
     //
     //
     else {
-      Hive.box('${liveSpace()}_${feature.labels}').put(label, '0');
+      storage(feature.labels).put(label, '0');
 
-      await syncToCloud(db: 'spaces', parentId: liveSpace(), type: feature.flags, action: 'c', itemId: label, data: '0');
+      await syncToCloud(db: 'spaces', space: liveSpace(), parent: feature.flags, action: 'c', id: label, data: '0');
     }
     //
     //

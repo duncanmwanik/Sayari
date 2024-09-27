@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/clipboard.dart';
+import '../../../../_helpers/clipboard.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
@@ -20,7 +20,7 @@ class CopyLink extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       return AppButton(
-        onPressed: () async => await copyToClipboard(path, desc: 'link'),
+        onPressed: () async => await copyText(path, description: 'Copied booking link.'),
         smallLeftPadding: !isMinimized,
         noStyling: isMinimized,
         isSquare: isMinimized,

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
-import '../../../_variables/date_time.dart';
 import '../../../_widgets/others/text.dart';
+import '../_vars/date_time.dart';
 
 class MonthlyWeekdayLabels extends StatelessWidget {
   const MonthlyWeekdayLabels({super.key, this.isInitials = false});

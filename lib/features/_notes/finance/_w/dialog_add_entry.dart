@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/global.dart';
-import '../../../../_helpers/_common/navigation.dart';
+import '../../../../_helpers/global.dart';
+import '../../../../_helpers/navigation.dart';
 import '../../../../_providers/_providers.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_variables/features.dart';
@@ -16,7 +16,7 @@ import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../../_widgets/others/toast.dart';
 import '../../../files/_helpers/upload.dart';
-import '../../items/picker_type.dart';
+import '../../_w/picker_type.dart';
 import '../_vars/variables.dart';
 
 Future showPeriodEntryDialog({required String financeType, String? entryId, Map entryData = const {}}) {

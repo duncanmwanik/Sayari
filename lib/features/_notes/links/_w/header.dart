@@ -21,8 +21,8 @@ class LinkHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String fileId = state.input.data['cv'] ?? '';
-    String fileName = state.input.data[fileId] ?? '';
+    String fileId = state.input.item.data['cv'] ?? '';
+    String fileName = state.input.item.data[fileId] ?? '';
     bool hasImage = fileId.isNotEmpty;
 
     return AppButton(
@@ -101,7 +101,7 @@ class LinkHeader extends StatelessWidget {
           mph(),
           // active button
           Consumer<InputProvider>(builder: (context, input, child) {
-            bool isActive = input.data[feature.share] == '1';
+            bool isActive = input.item.data[feature.share] == '1';
 
             return Wrap(
               spacing: smallWidth(),

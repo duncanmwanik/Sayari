@@ -11,7 +11,7 @@ class FinanceToggler extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(
       builder: (context, input, child) {
-        bool isExpanded = input.data['cx'] == '1' || input.data['cx'] == null;
+        bool isExpanded = input.item.data['cx'] == '1' || input.item.data['cx'] == null;
 
         return AppButton(
           isSquare: true,

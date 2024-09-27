@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../_models/item.dart';
+import '../../../_variables/features.dart';
 import '../_w/monthly_box.dart';
 
 class MonthDaySessionList extends StatelessWidget {
@@ -19,8 +20,14 @@ class MonthDaySessionList extends StatelessWidget {
         children: List.generate(
           todaySessionsMap.length,
           (index) {
-            String itemId = todaySessionsMap.keys.toList()[index];
-            Item item = Item(id: itemId, data: todaySessionsMap[itemId], extra: date);
+            String id = todaySessionsMap.keys.toList()[index];
+            Item item = Item(
+              parent: feature.calendar,
+              type: feature.calendar,
+              id: date,
+              sid: id,
+              data: todaySessionsMap[id],
+            );
 
             return MonthBox(item: item);
           },

@@ -56,17 +56,10 @@ class CloudData {
     return snapshot.value != null ? snapshot.value as String : '';
   }
 
-  Future<void> close() async {
-    await FirebaseDatabase.instance.goOffline();
-  }
-
-  Future<Map> timestamp() async {
-    return ServerValue.timestamp;
-  }
+  Future<void> close() async => await FirebaseDatabase.instance.goOffline();
+  Future<Map> timestamp() async => ServerValue.timestamp;
 }
 
 Future<void> initializeFirebase() async {
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 }

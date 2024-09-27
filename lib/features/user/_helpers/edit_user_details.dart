@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../_helpers/_common/global.dart';
-import '../../../_helpers/_common/internet_connection.dart';
-import '../../../_helpers/_common/navigation.dart';
+import '../../../_helpers/debug.dart';
+import '../../../_helpers/internet_connection.dart';
+import '../../../_helpers/navigation.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../auth/_helpers/auth_error_handler.dart';
 import 'set_user_data.dart';

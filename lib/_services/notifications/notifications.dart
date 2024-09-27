@@ -1,10 +1,8 @@
-import 'package:hive_flutter/hive_flutter.dart';
-
-import '../../features/_spaces/_helpers/common.dart';
+import '../hive/get_data.dart';
 
 bool isNotificationAllowed(String type) {
   try {
-    return Hive.box('${liveSpace()}_notifications').get(type, defaultValue: true);
+    return storage('notifications').get(type, defaultValue: true);
   } catch (e) {
     return false;
   }

@@ -7,7 +7,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-import '../../../_helpers/_common/global.dart';
+import '../../../_helpers/debug.dart';
 
 Future<void> signInWithGoogle() async {
   // Trigger the authentication flow

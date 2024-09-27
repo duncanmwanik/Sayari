@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_helpers/_common/navigation.dart';
+import '../../../../_helpers/navigation.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
@@ -16,10 +16,10 @@ class TimePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      String startTime = get12HourTimeFrom24HourTime(input.data['s'], islonger: true);
-      String stopTime = get12HourTimeFrom24HourTime(input.data['e'], islonger: true);
-      bool hasStart = input.data['s'] != null && input.data['s'] != '';
-      bool hasEnd = input.data['e'] != null && input.data['e'] != '';
+      String startTime = get12HourTimeFrom24HourTime(input.item.data['s'], islonger: true);
+      String stopTime = get12HourTimeFrom24HourTime(input.item.data['e'], islonger: true);
+      bool hasStart = input.item.data['s'] != null && input.item.data['s'] != '';
+      bool hasEnd = input.item.data['e'] != null && input.item.data['e'] != '';
 
       return Row(
         children: [
@@ -35,7 +35,7 @@ class TimePicker extends StatelessWidget {
                 AppButton(
                     onPressed: () async {
                       hideKeyboard();
-                      String time = hasStart ? input.data['s'] : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
+                      String time = hasStart ? input.item.data['s'] : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
                       TimeOfDay? startDayTime = await showTimePicker(
                           context: context,
                           cancelText: 'Cancel',
@@ -60,7 +60,7 @@ class TimePicker extends StatelessWidget {
                     AppButton(
                         onPressed: () async {
                           hideKeyboard();
-                          String time = hasEnd ? input.data['e'] : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
+                          String time = hasEnd ? input.item.data['e'] : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
                           TimeOfDay? stopDayTime = await showTimePicker(
                               context: context,
                               cancelText: 'Cancel',
