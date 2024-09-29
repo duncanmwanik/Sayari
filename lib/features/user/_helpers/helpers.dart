@@ -14,15 +14,11 @@ Future<void> setUserData(String userId, Map info) async {
   await Hive.box('${userId}_info').putAll(info);
 }
 
+bool isSignedIn() => liveUser() != 'none';
 String liveUser() => globalBox.get('currentUserId', defaultValue: 'none');
-
 String liveEmail() => userInfoBox.get('e', defaultValue: '');
-
 String liveUserName() => userInfoBox.get('n', defaultValue: '');
 
 String userDpId() => getfileNameOnly(userInfoBox.get('p', defaultValue: ''));
 String userDp() => userInfoBox.get('p', defaultValue: '');
-
-bool hasUserDp() => userInfoBox.get('p', defaultValue: '') != '';
-
-bool isSignedIn() => liveUser() != 'none';
+bool hasUserDp() => userInfoBox.get('p', defaultValue: '') != '' && userInfoBox.get('p', defaultValue: '') != 0;

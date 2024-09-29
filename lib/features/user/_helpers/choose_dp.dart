@@ -15,7 +15,7 @@ Future<void> chooseUserDp() async {
         if (hasUserDp()) removeUserDp();
         String dp = getFileNameCloud(stash.ids.first, stash.data.keys.first);
         userInfoBox.put('p', dp);
-        syncToCloud(db: 'users', space: liveUser(), parent: 'info', action: 'c', id: 'p', data: dp);
+        await syncToCloud(db: 'users', space: liveUser(), parent: 'info', action: 'c', id: 'p', data: dp);
         await cloudStorage.uploadFile(db: 'users', path: '${liveUser()}/$dp', fileId: stash.ids.first);
       },
     );

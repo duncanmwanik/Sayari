@@ -40,26 +40,18 @@ Future<bool> syncToCloud({
       // New stuff/ Creation
       //
       if (isNew) {
-        //
         // creating/copying/moving a session
-        //
         if (isForSession) {
           for (String date in splitList(extras)) {
             await cloudService.writeData(db: db, '$space/$parent/$date/$id', data);
           }
         }
-        //
         // others
-        //
         else {
           await cloudService.writeData(
               db: db, '$space/${parent.isNotEmpty ? '/$parent' : ''}${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}', data);
         }
-        //
-        //
       }
-      //
-      //
       // ----------------------------------------------
       // Updating stuff
       //
@@ -69,17 +61,12 @@ Future<bool> syncToCloud({
             db: db, '$space/${parent.isNotEmpty ? '/$parent' : ''}${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}', data);
         //
       }
-      //
-      //
       // ----------------------------------------------
       // Editing stuff
       //
-      //
       else if (isEdit) {
-        //
         // items is a string list of the edits made to a note, session etc.
         // if item starts with 'd' : the item as been deleted
-        //
         splitList(keys).forEach((editedKey) async {
           bool isRemoveKey = editedKey.startsWith('d');
           String removedKey = isRemoveKey ? editedKey.split('/')[1] : editedKey;
@@ -92,8 +79,6 @@ Future<bool> syncToCloud({
           }
         });
       }
-      //
-      //
       // ----------------------------------------------
       // Deleting items: Session/Note/Note/List
       //
@@ -101,10 +86,7 @@ Future<bool> syncToCloud({
         await cloudService.deleteData(
             db: db, '$space${parent.isNotEmpty ? '/$parent' : ''}${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}');
       }
-      //
-      //
       // --------------------------------------------------------------------------
-
       // if action is to , we don't log anymore
       if (db == 'spaces' && parent.isEmpty && isDelete) {
         log = false;

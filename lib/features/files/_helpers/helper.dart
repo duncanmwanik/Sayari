@@ -9,7 +9,7 @@ Map getFiles(Map source) {
   Map filesOnlyMap = {...source};
 
   source.forEach((key, value) {
-    if (!key.toString().startsWith('fl') || !key.toString().startsWith('fe')) {
+    if (!key.toString().startsWith('fl') && !key.toString().startsWith('fle')) {
       filesOnlyMap.remove(key);
     }
   });
@@ -18,7 +18,7 @@ Map getFiles(Map source) {
 }
 
 bool isImageFile(String fileName) => ['png', 'jpg', 'jpeg', 'webp', 'jfif'].contains(getfileExtension(fileName));
-// bool isImageEmbed(String fileId) => fileId.startsWith('fe');
+// bool isImageEmbed(String fileId) => fileId.startsWith('fle');
 
 String getfileExtension(String fileName) {
   try {

@@ -9,6 +9,7 @@ import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/storage.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../_spaces/_helpers/common.dart';
+import 'helper.dart';
 
 Future<cfile.File?> getCachedFile({
   required String fileId,
@@ -22,7 +23,10 @@ Future<cfile.File?> getCachedFile({
       String spaceId = isShare() ? state.share.sharedData['s'] : liveSpace();
 
       if (fileUrl.isEmpty) {
-        fileUrl = await cloudStorage.getFileUrl(db: db ?? 'spaces', cloudFilePath: cloudFilePath ?? '$spaceId/$fileName');
+        fileUrl = await cloudStorage.getFileUrl(
+          db: db ?? 'spaces',
+          cloudFilePath: cloudFilePath ?? '$spaceId/${getFileNameCloud(fileId, fileName)}',
+        );
         if (fileUrl.isNotEmpty) cachedFileBox.put(fileId, fileUrl);
         print(':: Gotten file url: $fileUrl');
       }

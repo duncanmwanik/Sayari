@@ -94,7 +94,7 @@ class CommonInputActions extends StatelessWidget {
             tooltip: 'Attach File',
             noStyling: true,
             isSquare: true,
-            child: AppIcon(Icons.attach_file, faded: true),
+            child: AppIcon(Icons.attach_file, tiny: true, faded: true),
           ),
           //
           spw(),

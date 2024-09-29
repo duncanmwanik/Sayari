@@ -5,7 +5,6 @@ import 'package:flutter_cache_manager/file.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../__styling/variables.dart';
-import '../../_helpers/debug.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
@@ -46,7 +45,6 @@ class UserDp extends StatelessWidget {
         valueListenable: userInfoBox.listenable(),
         builder: (context, box, widget) {
           bool hasDp = hasUserDp();
-          printThis(box.toMap());
 
           return hasDp
               ? FutureBuilder(

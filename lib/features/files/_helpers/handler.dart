@@ -15,7 +15,7 @@ Future<void> handleFilesCloud(String spaceId, Map source, {String? items}) async
   if (items == null) {
     source.forEach((key, value) async {
       try {
-        if (key.toString().startsWith('fl') || key.toString().startsWith('fe')) {
+        if (key.toString().startsWith('fl')) {
           if (fileBox.containsKey(key)) {
             String fileNameCloud = getFileNameCloud(key, value);
             await cloudStorage.uploadFile(db: 'spaces', path: '$spaceId/$fileNameCloud', fileId: key);
@@ -34,7 +34,7 @@ Future<void> handleFilesCloud(String spaceId, Map source, {String? items}) async
     splitList(items).forEach((item) async {
       try {
         // add new file
-        if (item.toString().startsWith('fl') || item.toString().startsWith('fe')) {
+        if (item.toString().startsWith('fl')) {
           if (fileBox.containsKey(item)) {
             String fileNameCloud = getFileNameCloud(item, source[item]);
             cloudStorage.uploadFile(db: 'spaces', path: '$spaceId/$fileNameCloud', fileId: item);

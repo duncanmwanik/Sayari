@@ -126,10 +126,7 @@ class ImageFile extends StatelessWidget {
 
                                             return ClipRRect(
                                               borderRadius: BorderRadius.circular(radius ?? borderRadiusSmall),
-                                              child: Image.memory(
-                                                bytes!,
-                                                fit: fit,
-                                              ),
+                                              child: Image.memory(bytes!, fit: fit),
                                             );
                                           }
                                         }
