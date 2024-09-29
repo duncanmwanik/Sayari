@@ -12,7 +12,6 @@ import '../../_spaces/_helpers/common.dart';
 import '../../calendar/_helpers/helpers.dart';
 import '../../files/_helpers/handler.dart';
 import '../../reminders/_helpers/register_reminder.dart';
-import '../../share/_helpers/share.dart';
 import 'validation.dart';
 
 Future<void> createItem() async {
@@ -25,6 +24,7 @@ Future<void> createItem() async {
       String id = state.input.item.isNew() ? getUniqueId() : state.input.item.id;
       String sid = state.input.item.isNew() ? '' : '${feature.isTask(state.input.item.type) ? 'i' : ''}${getUniqueId()}';
       String extras = '';
+      data['z'] = getUniqueId(); // update last edit time
 
       if (feature.isCalendar(parent)) closeDialog();
 
@@ -59,10 +59,6 @@ Future<void> createItem() async {
 
       await handleFilesCloud(liveSpace(), data);
       await syncToCloud(db: 'spaces', space: liveSpace(), parent: parent, action: 'c', id: id, sid: sid, extras: extras, data: data);
-      // for shared items
-      if (state.input.item.isShared()) {
-        shareItem(id: id, type: state.input.item.parent, title: data['t'] ?? 'Shared Item');
-      }
     }
     //
   } catch (e) {

@@ -5,6 +5,10 @@ class FileStash {
 
   void addFile(String fileName, dynamic value) => data[fileName] = value;
   void addFileId(String fileId) => ids.add(fileId);
+  void clear() {
+    data.clear();
+    ids.clear();
+  }
 
   String fileId() => ids.first;
   String fileName() => data.keys.first;

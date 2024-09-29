@@ -71,7 +71,7 @@ Future<void> getSpaceAllSessions(String spaceId) async {
 
 Future<void> getSpaceActivityVersion(String spaceId) async {
   try {
-    await cloudService.getData(db: 'spaces', '$spaceId/activity/latest').then((snapshot) {
+    await cloudService.getData(db: 'spaces', '$spaceId/activity/0').then((snapshot) {
       if (snapshot.value != null) {
         activityVersionBox.put(spaceId, snapshot.value as String);
       }

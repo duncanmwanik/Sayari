@@ -38,7 +38,7 @@ Future<void> showDateRangeDialog() async {
                       //
                       AppButton(
                         onPressed: () async {
-                          await showSelectDateDialog(title: 'Select start date', initialDate: input.dateRangeStart, showTitle: true)
+                          await showDateDialog(title: 'Select start date', initialDate: input.dateRangeStart, showTitle: true)
                               .then((dates) async {
                             if (dates.isNotEmpty) {
                               input.updateDateRangeStart('start', getDatePart(dates.first));
@@ -57,7 +57,7 @@ Future<void> showDateRangeDialog() async {
                       //
                       AppButton(
                         onPressed: () async {
-                          await showSelectDateDialog(title: 'Select end date', initialDate: input.dateRangeStart, showTitle: true)
+                          await showDateDialog(title: 'Select end date', initialDate: input.dateRangeStart, showTitle: true)
                               .then((dates) async {
                             if (dates.isNotEmpty) {
                               input.updateDateRangeStart('end', getDatePart(dates.first));

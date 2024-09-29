@@ -120,7 +120,8 @@ class _SignInScreenState extends State<AuthScreen> {
                                     SignInButton(
                                       onPressed: () async {
                                         setState(() => isBusyDemo = true);
-                                        await signInUsingEmailPassword(email: 'mo@gmail.com', password: '1234567', validate: false);
+                                        await signInUsingEmailPassword(
+                                            email: 'duncanmwanik@gmail.com', password: '12345678', validate: false);
                                         setState(() => isBusyDemo = false);
                                       },
                                       isBusy: isBusyDemo,
@@ -131,8 +132,8 @@ class _SignInScreenState extends State<AuthScreen> {
                                 ),
                               //
                               ph(9),
-                              if (!isResetPassword) AppText(text: 'OR', size: small, extraFaded: true),
-                              if (!isResetPassword) ph(9),
+                              if (!isNewAccount && !isResetPassword) AppText(text: 'OR', size: small, extraFaded: true),
+                              if (!isNewAccount && !isResetPassword) ph(9),
                               //
                               Column(
                                 mainAxisSize: MainAxisSize.min,

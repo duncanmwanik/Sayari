@@ -11,8 +11,8 @@ import '../../_widgets/others/forms/input.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '../../_widgets/sheets/bottom_sheet.dart';
-import '../user/_helpers/set_user_data.dart';
-import '_w/reset_password.dart';
+import '../user/_helpers/helpers.dart';
+import 'w/reset_password.dart';
 
 Future<void> showEditDetailsBottomSheet(BuildContext context) async {
   final formKey = GlobalKey<FormState>();

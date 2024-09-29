@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../_models/item.dart';
 import '../../../_variables/features.dart';
-import '../_w/monthly_box.dart';
+import '../w/monthly_box.dart';
 
 class MonthDaySessionList extends StatelessWidget {
   const MonthDaySessionList({super.key, required this.date, required this.todaySessionsMap});

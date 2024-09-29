@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../_helpers/debug.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_services/hive/local_storage_service.dart';
-import '../../user/_helpers/set_user_data.dart';
+import '../../user/_helpers/helpers.dart';
 import 'common.dart';
 
 bool isASpaceSelected() => liveSpace() != 'none';
@@ -48,7 +48,7 @@ bool isSuperAdmin() {
 
 bool isAdmin() {
   try {
-    return ['0', '1'].contains(storage('admins').get(liveUser(), defaultValue: '2'));
+    return ['1', '2'].contains(storage('admins').get(liveUser(), defaultValue: '2'));
   } catch (e) {
     errorPrint('isAdmin', e);
     return false;

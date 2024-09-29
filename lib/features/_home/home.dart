@@ -6,13 +6,13 @@ import '../../_helpers/background_ops.dart';
 import '../../_helpers/keyboard.dart';
 import '../../_helpers/navigation.dart';
 import '../../_providers/_providers.dart';
-import '../../_services/activity/helpers.dart';
+import '../../_services/activity/listen/helpers.dart';
 import '../../_services/activity/pending/retry_pending_actions.dart';
 import '../../_variables/navigation.dart';
-import '_w/fab.dart';
 import 'drawer/drawer.dart';
 import 'drawer/drawer_end.dart';
 import 'layout.dart';
+import 'w/fab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -37,15 +37,15 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    disposeSyncListeners();
+    disposeSync();
     cancelKeyboardSubscription();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    disposeSyncListeners();
-    initializeSyncListeners();
+    disposeSync();
+    initializeSync();
 
     return WillPopScope(
       onWillPop: () => confirmExitApp(),

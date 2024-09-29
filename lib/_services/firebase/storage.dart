@@ -12,18 +12,20 @@ import '_helpers/storage_errors.dart';
 
 CloudStorage cloudStorage = CloudStorage();
 
+// if you upgrade to blaze, remove the '$db/'
+
 class CloudStorage {
-  final spacesRef = FirebaseStorage.instanceFor(app: Firebase.app(), bucket: 'gs://sayaritables').ref();
-  final usersRef = FirebaseStorage.instanceFor(app: Firebase.app(), bucket: 'gs://sayariusers').ref();
+  final spacesRef = FirebaseStorage.instanceFor(app: Firebase.app(), bucket: 'gs://getsayari.appspot.com').ref();
+  final usersRef = FirebaseStorage.instanceFor(app: Firebase.app(), bucket: 'gs://getsayari.appspot.com').ref();
 
   Future<bool> uploadFile({required String db, required String path, required String fileId}) async {
     try {
       if (kIsWeb) {
-        (db == 'spaces' ? spacesRef : usersRef).child(path).putData(fileBox.get(fileId)).snapshotEvents.listen(
+        (db == 'spaces' ? spacesRef : usersRef).child('$db/$path').putData(fileBox.get(fileId)).snapshotEvents.listen(
               (taskSnapshot) => fileProgress(taskSnapshot, db, fileId, 'uploading'),
             );
       } else {
-        (db == 'spaces' ? spacesRef : usersRef).child(path).putFile(File(fileBox.get(fileId))).snapshotEvents.listen(
+        (db == 'spaces' ? spacesRef : usersRef).child('$db/$path').putFile(File(fileBox.get(fileId))).snapshotEvents.listen(
               (taskSnapshot) => fileProgress(taskSnapshot, db, fileId, 'uploading'),
             );
       }
@@ -40,7 +42,7 @@ class CloudStorage {
 
   Future<bool> downloadFile(
       {required String db, required String fileName, required String cloudFilePath, required String downloadPath}) async {
-    final fileRef = (db == 'spaces' ? spacesRef : usersRef).child(cloudFilePath);
+    final fileRef = (db == 'spaces' ? spacesRef : usersRef).child('$db/$cloudFilePath');
 
     try {
       if (kIsWeb) {
@@ -68,13 +70,13 @@ class CloudStorage {
   //
 
   Future<String> getFileUrl({required String db, required String cloudFilePath}) async {
-    final fileRef = (db == 'spaces' ? spacesRef : usersRef).child(cloudFilePath);
+    final fileRef = (db == 'spaces' ? spacesRef : usersRef).child('$db/$cloudFilePath');
     String fileUrl = await fileRef.getDownloadURL();
     return fileUrl;
   }
 
   Future<Uint8List?> getFileBytes({required String db, required String cloudFilePath}) async {
-    final fileRef = (db == 'spaces' ? spacesRef : usersRef).child(cloudFilePath);
+    final fileRef = (db == 'spaces' ? spacesRef : usersRef).child('$db/$cloudFilePath');
     Uint8List? bytes = await fileRef.getData();
     return bytes;
   }
@@ -83,11 +85,11 @@ class CloudStorage {
 
   Future<void> deleteFile({required String db, required String path}) async {
     try {
-      await (db == 'spaces' ? spacesRef : usersRef).child(path).delete().then((value) => printThis('Deleted file $path'));
+      await (db == 'spaces' ? spacesRef : usersRef).child('$db/$path').delete().then((value) => printThis('Deleted file $path'));
     } on FirebaseException catch (e) {
       errorPrint('firebase-delete-file', e);
     } catch (e) {
-      errorPrint('delete-file', e);
+      errorPrint('deleteFile', e);
     }
   }
   //

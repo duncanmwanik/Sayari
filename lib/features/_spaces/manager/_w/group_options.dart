@@ -4,7 +4,7 @@ import '../../../../__styling/variables.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/menu/menu_item.dart';
 import '../../../../_widgets/others/icons.dart';
-import '../../../user/_helpers/user_actions.dart';
+import '../../../user/_helpers/actions.dart';
 
 class GroupOptions extends StatelessWidget {
   const GroupOptions({super.key, required this.groupName});

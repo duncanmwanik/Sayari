@@ -19,9 +19,9 @@ import '../files/_helpers/helper.dart';
 import '../files/_helpers/upload.dart';
 import '../files/file_list.dart';
 import '_helpers/send.dart';
-import '_w/clear_btn.dart';
-import '_w/scroll_btn.dart';
-import '_w/send_btn.dart';
+import 'w/clear_btn.dart';
+import 'w/scroll_btn.dart';
+import 'w/send_btn.dart';
 
 class MessageInputBar extends StatelessWidget {
   const MessageInputBar({super.key});

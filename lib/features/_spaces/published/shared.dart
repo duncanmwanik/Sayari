@@ -8,7 +8,7 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../_notes/notes_view.dart';
-import '../../share/_w/header.dart';
+import '../../share/w/header.dart';
 import 'shared_intro.dart';
 
 class PublishBookBody extends StatelessWidget {

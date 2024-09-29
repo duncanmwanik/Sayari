@@ -25,7 +25,7 @@ class HabitOptions extends StatelessWidget {
             label: '${isCustom ? 'Edit' : 'Choose'} Custom Dates',
             leading: Icons.calendar_month_rounded,
             onTap: () async {
-              await showSelectDateDialog(
+              await showDateDialog(
                 showTitle: true,
                 isMultiple: true,
                 initialDates: customDates,

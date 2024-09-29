@@ -2,7 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../_variables/features.dart';
 import '../../features/_spaces/_helpers/common.dart';
-import '../../features/user/_helpers/set_user_data.dart';
+import '../../features/user/_helpers/helpers.dart';
 import 'local_storage_service.dart';
 
 Future<void> initializeHive() async {
@@ -43,7 +43,7 @@ Future<void> loadSelectedSpaceBoxes(String spaceId) async {
 
 Future<void> loadUserBoxes(String userId) async {
   await Hive.openBox(userId);
-  await Hive.openBox('${userId}_info');
+  userInfoBox = await Hive.openBox('${userId}_info');
   userSpacesBox = await Hive.openBox('${userId}_spaces');
   userGroupsBox = await Hive.openBox('${userId}_groups');
   settingBox = await Hive.openBox('${userId}_settings');

@@ -42,7 +42,7 @@ class DatePicker extends StatelessWidget {
                               // add date
                               AppButton(
                                   onPressed: () async {
-                                    await showSelectDateDialog(isMultiple: true, initialDates: input.selectedDates, showTitle: true)
+                                    await showDateDialog(isMultiple: true, initialDates: input.selectedDates, showTitle: true)
                                         .then((dates) async {
                                       if (dates.isNotEmpty) {
                                         input.updateSelectedDates('set', dates: dates);

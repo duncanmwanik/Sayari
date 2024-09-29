@@ -7,7 +7,7 @@ import '../../../_providers/_providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../share/_w/share_link.dart';
+import '../../share/w/share_link.dart';
 import '../../tts/_helpers/tts_service.dart';
 import '../../tts/_state/tts_provider.dart';
 import '../../user/_helpers/saved.dart';

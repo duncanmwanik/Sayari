@@ -80,7 +80,7 @@ class _MyWidgetState extends State<MyWidget> {
                 //
                 AppButton(
                   onPressed: () async {
-                    await showSelectDateDialog(initialDate: date).then((dates) {
+                    await showDateDialog(initialDate: date).then((dates) {
                       if (dates.isNotEmpty) setState(() => date = getDatePart(dates.first));
                     });
                   },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_helpers/global.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
@@ -33,7 +34,12 @@ class _NewItemInputState extends State<NewItemInput> {
   }
 
   void prepareInput() async {
-    state.input.set(Item(parent: widget.item.parent, type: feature.tasks, id: widget.item.id, data: {}));
+    state.input.set(Item(
+      parent: widget.item.parent,
+      type: feature.tasks,
+      id: widget.item.id,
+      data: {'o': getUniqueId(), 'z': getUniqueId()},
+    ));
   }
 
   // Allow next item creation

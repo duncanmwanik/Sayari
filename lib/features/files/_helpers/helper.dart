@@ -9,7 +9,7 @@ Map getFiles(Map source) {
   Map filesOnlyMap = {...source};
 
   source.forEach((key, value) {
-    if (!key.toString().startsWith('f') || key.toString().startsWith('fe')) {
+    if (!key.toString().startsWith('fl') || !key.toString().startsWith('fe')) {
       filesOnlyMap.remove(key);
     }
   });
@@ -24,7 +24,7 @@ String getfileExtension(String fileName) {
   try {
     return fileName.split('.').last;
   } catch (e) {
-    return '?';
+    return '';
   }
 }
 
@@ -34,6 +34,10 @@ String getfileNameOnly(String fileName) {
   } catch (e) {
     return 'FILE';
   }
+}
+
+String getFileNameCloud(String fileId, String fileName) {
+  return '$fileId.${getfileExtension(fileName)}';
 }
 
 void openFile(String fileId) {

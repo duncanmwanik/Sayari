@@ -64,7 +64,7 @@ class BookingDate extends StatelessWidget {
           //
           if (availableDates.isEmpty)
             AppButton(
-              onPressed: () => showSelectDateDialog(title: 'Choose a Date', showTitle: true)
+              onPressed: () => showDateDialog(title: 'Choose a Date', showTitle: true)
                   .then((date) => state.dateTime.updateDateTime('date', getDatePart(date.first))),
               smallRightPadding: true,
               borderRadius: borderRadiusSmall,
@@ -86,8 +86,8 @@ class BookingDate extends StatelessWidget {
           if (availableDates.isEmpty && dateTime.date.isNotEmpty) spw(),
           if (availableDates.isEmpty && dateTime.date.isNotEmpty)
             AppButton(
-              onPressed: () => showSelectDateDialog(title: 'Select a date')
-                  .then((date) => state.dateTime.updateDateTime('date', getDatePart(date.first))),
+              onPressed: () =>
+                  showDateDialog(title: 'Select a date').then((date) => state.dateTime.updateDateTime('date', getDatePart(date.first))),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

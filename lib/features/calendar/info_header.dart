@@ -5,8 +5,10 @@ import '../../__styling/breakpoints.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/helpers.dart';
+import '../../_helpers/navigation.dart';
 import '../../_providers/views.dart';
 import '../../_widgets/buttons/button.dart';
+import '../../_widgets/dialogs/dialog_select_date.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/date_time/date_info.dart';
@@ -15,8 +17,8 @@ import '_helpers/date_time/misc.dart';
 import '_helpers/go_to_today.dart';
 import '_helpers/prepare.dart';
 import '_helpers/swipe.dart';
-import '_w/view_chooser.dart';
 import 'state/datetime.dart';
+import 'w/view_chooser.dart';
 
 class CalendarOptions extends StatelessWidget {
   const CalendarOptions({super.key});
@@ -43,8 +45,8 @@ class CalendarOptions extends StatelessWidget {
                 // date info
                 Flexible(
                   child: AppButton(
-                    onPressed: () => jumpToDateDialog(),
-                    menuItems: isPhone() ? null : jumpToDateMenu(initialDate: date.date),
+                    onPressed: () => showDateDialog(onSelect: (date) => jumpToDate(date)),
+                    menuItems: isPhone() ? null : jumpToDateMenu((date) => popWhatsOnTop(todo: () => jumpToDate(date))),
                     tooltip: 'Go to date',
                     noStyling: true,
                     padding: noPadding,

@@ -1,6 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_helpers/debug.dart';
+import '../../../_helpers/global.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
@@ -12,39 +13,37 @@ import '../../_spaces/_helpers/common.dart';
 import '../../calendar/_helpers/helpers.dart';
 import '../../files/_helpers/handler.dart';
 import '../../reminders/_helpers/register_reminder.dart';
-import '../../share/_helpers/share.dart';
-import '../../user/_helpers/set_user_data.dart';
 import 'compare_data.dart';
 import 'validation.dart';
 
 Future<void> editItem() async {
   String parent = state.input.item.parent;
+  String type = state.input.item.type;
 
   try {
     // only continue if itemData has required data
     if (validateInput(state.input.item)) {
-      if (!feature.isSpace(parent)) popWhatsOnTop(); // close dialog
+      if (!feature.isSpace(type)) popWhatsOnTop(); // close dialog
       Map comparedData = compareData(type: parent);
       String editedKeys = comparedData['editedKeys'];
       Map validatedData = comparedData['validatedData'];
 
-      if (feature.isSpace(parent)) closeBottomSheetIfOpen();
+      if (feature.isSpace(type)) closeBottomSheetIfOpen();
       if (feature.isCalendar(parent)) closeDialog();
 
       if (editedKeys.isNotEmpty) {
         String id = state.input.item.id;
         String sid = state.input.item.sid;
         String extras = '';
-        String type_ = parent;
+        validatedData['z'] = getUniqueId(); // update last edit time
 
-        // printThis('editing $id --- $sid --- $editedKeys --- $validatedData');
+        // printThis('editing $id --- $sid --- $editedKeys --');
         removeDuplicateReminders(state.input.item);
 
         // for spaces only ----------
-        if (feature.isSpace(parent)) {
-          await storage('info').putAll(validatedData);
+        if (feature.isSpace(type)) {
+          await storage(parent).putAll(validatedData);
           await spaceNamesBox.put(liveSpace(), validatedData['t']);
-          type_ = 'info';
         }
         // all others ----------
         else {
@@ -66,7 +65,7 @@ Future<void> editItem() async {
         await syncToCloud(
             db: 'spaces',
             space: liveSpace(),
-            parent: type_,
+            parent: parent,
             action: 'e',
             id: id,
             sid: sid,
@@ -74,20 +73,6 @@ Future<void> editItem() async {
             data: validatedData,
             extras: extras);
         //
-        if (state.input.item.isShared()) {
-          shareItem(
-            update: true,
-            id: feature.isSpace(parent) ? liveSpace() : state.input.item.id,
-            updateData: {
-              feature.share: validatedData[feature.share] ?? '0',
-              'u': liveUser(),
-              'n': liveUserName(),
-              't': validatedData['t'] ?? '',
-              'w': validatedData['w'] ?? '',
-              feature.publish: validatedData[feature.publish] ?? '',
-            },
-          );
-        }
       }
     }
   }

@@ -10,7 +10,7 @@ import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/text.dart';
 import '../_notes/actions/actions.dart';
-import '_helpers/download.dart';
+import '_helpers/cached.dart';
 import '_helpers/helper.dart';
 import 'viewer.dart';
 

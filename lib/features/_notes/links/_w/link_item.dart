@@ -40,7 +40,7 @@ class _HabitWeekState extends State<LinkItem> {
     setState(() {
       titleController.text = widget.linkData['t'] ?? '';
       linkController.text = widget.linkData['l'] ?? '';
-      linkImageId = widget.linkData['f'] ?? '';
+      linkImageId = widget.linkData['fl'] ?? '';
       isEdit = widget.linkData.isEmpty;
     });
     super.initState();
@@ -85,7 +85,7 @@ class _HabitWeekState extends State<LinkItem> {
                       : () async {
                           if (!isEdit) setState(() => isEdit = true);
                           await getFilesToUpload(
-                              multiple: false,
+                              allowMultiple: false,
                               imagesOnly: true,
                               embed: true,
                               onDone: (stash) {
@@ -101,7 +101,7 @@ class _HabitWeekState extends State<LinkItem> {
                             onTap: () async {
                               if (!isEdit) setState(() => isEdit = true);
                               await getFilesToUpload(
-                                  multiple: false,
+                                  allowMultiple: false,
                                   imagesOnly: true,
                                   embed: true,
                                   onDone: (stash) {
@@ -224,7 +224,7 @@ class _HabitWeekState extends State<LinkItem> {
                       state.input.remove(widget.linkId);
                       state.input.remove(linkImageId);
                       // in case we have edited the link image
-                      state.input.remove(widget.linkData['f'] ?? '');
+                      state.input.remove(widget.linkData['fl'] ?? '');
                     },
                   ),
                   noStyling: true,
@@ -238,7 +238,7 @@ class _HabitWeekState extends State<LinkItem> {
                     setState(() {
                       titleController.text = widget.linkData['t'] ?? '';
                       linkController.text = widget.linkData['l'] ?? '';
-                      linkImageId = widget.linkData['f'] ?? '';
+                      linkImageId = widget.linkData['fl'] ?? '';
                       isEdit = false;
                     });
                   },
@@ -250,7 +250,7 @@ class _HabitWeekState extends State<LinkItem> {
                       Map linkData = {
                         't': titleController.text.trim(),
                         'l': linkController.text.trim(),
-                        'f': linkImageId,
+                        'fl': linkImageId,
                       };
                       state.input.update(widget.linkId, jsonEncode(linkData));
                       setState(() => isEdit = false);

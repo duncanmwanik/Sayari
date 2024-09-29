@@ -16,7 +16,7 @@ class SpaceName extends StatelessWidget {
         builder: (context, box, widget) {
           return AppText(
             size: normal,
-            text: liveSpace() != 'none' ? box.get(liveSpace(), defaultValue: 'No name') : '',
+            text: liveSpace() != 'none' ? box.get(liveSpace(), defaultValue: 'Untitled') : '',
           );
         });
   }

@@ -11,7 +11,7 @@ import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/images.dart';
 import '../../_widgets/others/text.dart';
-import '../user/_helpers/set_user_data.dart';
+import '../user/_helpers/helpers.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({super.key});

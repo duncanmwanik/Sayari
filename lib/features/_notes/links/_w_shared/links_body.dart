@@ -11,8 +11,8 @@ import '../../../../_widgets/others/others/scroll.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../../_widgets/others/theme.dart';
 import '../../../files/image.dart';
-import '../../../share/_w/share_link.dart';
-import '../../../share/_w/shared_info.dart';
+import '../../../share/w/share_link.dart';
+import '../../../share/w/shared_info.dart';
 import '../_helpers/helpers.dart';
 import 'intro.dart';
 
@@ -57,7 +57,7 @@ class LinksBody extends StatelessWidget {
                                 Map linkData = jsonDecode(data[linkId] ?? '{}');
                                 String title = linkData['t'] ?? '---';
                                 String link = linkData['l'] ?? '';
-                                String linkImageId = linkData['f'] ?? '';
+                                String linkImageId = linkData['fl'] ?? '';
                                 bool isTitle = linkId.startsWith('lkt');
 
                                 return AppButton(

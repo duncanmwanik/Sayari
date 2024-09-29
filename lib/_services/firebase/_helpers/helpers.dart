@@ -1,7 +1,7 @@
 import 'package:firebase_database/firebase_database.dart';
 
 import '../../../features/_spaces/_helpers/common.dart';
-import '../../../features/user/_helpers/set_user_data.dart';
+import '../../../features/user/_helpers/helpers.dart';
 import '../database.dart';
 
 Future<String> doesSpaceExist(String spaceId) async {

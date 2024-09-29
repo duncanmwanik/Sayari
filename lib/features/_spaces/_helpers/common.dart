@@ -4,7 +4,7 @@ import '../../../_helpers/helpers.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_variables/constants.dart';
 import '../../../_variables/features.dart';
-import '../../user/_helpers/set_user_data.dart';
+import '../../user/_helpers/helpers.dart';
 
 Future<String> getSpaceNameFromCloud(String spaceId) async {
   String spaceName = await doesSpaceExist(spaceId);
@@ -24,4 +24,10 @@ String publishedSpaceLink([bool link = false]) => link
     ? '$sayariDefaultPath/${features[feature.space]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}'
     : '/${features[feature.space]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}';
 
-String publishedSpaceId(String? path) => path != null ? path.substring(path.length - 17) : 'sayari';
+String publishedSpaceId(String? path) {
+  try {
+    return path != null ? path.substring(path.length - 17) : 'sayari';
+  } catch (e) {
+    return 'sayari';
+  }
+}

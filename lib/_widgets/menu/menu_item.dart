@@ -20,6 +20,7 @@ class MenuItem extends StatefulWidget {
     this.color,
     this.trailingColor,
     this.hoverColor,
+    this.labelSize,
     this.leadingSize,
     this.trailingSize,
     this.smallHeight = false,
@@ -39,6 +40,7 @@ class MenuItem extends StatefulWidget {
   final Color? color;
   final Color? trailingColor;
   final Color? hoverColor;
+  final double? labelSize;
   final double? leadingSize;
   final double? trailingSize;
   final bool smallHeight;
@@ -91,6 +93,7 @@ class _MenuItemState extends State<MenuItem> {
             Expanded(
               child: AppText(
                 text: widget.label,
+                size: widget.labelSize,
                 color: widget.color ?? (widget.isSelected ? styler.accentColor() : null),
                 faded: widget.faded,
                 textAlign: widget.center ? TextAlign.center : null,
@@ -119,4 +122,4 @@ class _MenuItemState extends State<MenuItem> {
   }
 }
 
-Widget menuDivider() => AppDivider(height: tinyHeight());
+Widget menuDivider({Color? color}) => AppDivider(height: tinyHeight(), color: color);

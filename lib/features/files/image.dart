@@ -13,7 +13,7 @@ import '../../_services/hive/local_storage_service.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
-import '_helpers/download.dart';
+import '_helpers/cached.dart';
 import 'options.dart';
 import 'viewer.dart';
 

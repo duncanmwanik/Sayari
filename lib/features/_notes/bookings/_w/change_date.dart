@@ -62,7 +62,7 @@ class _ChangerState extends State<Changer> {
         children: [
           //
           AppButton(
-            onPressed: () => showSelectDateDialog(
+            onPressed: () => showDateDialog(
               title: 'Choose New Date',
               initialDate: newDate,
             ).then((dates) {

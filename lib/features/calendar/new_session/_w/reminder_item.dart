@@ -7,7 +7,7 @@ import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/forms/numeric.dart';
 import '../../../../_widgets/others/icons.dart';
-import '../../../_notes/_w/picker_type.dart';
+import '../../../_notes/w/picker_type.dart';
 import '../../../reminders/_helpers/reminders.dart';
 
 class ReminderItem extends StatelessWidget {

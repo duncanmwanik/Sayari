@@ -72,8 +72,6 @@ class Goal extends StatelessWidget {
             if (goal.isEmpty) AppIcon(Icons.add_rounded, size: 18),
             tpw(),
             Flexible(child: AppText(text: goal.isNotEmpty ? '$title: Ksh. ${formatThousands(double.parse(goal))}' : 'Set Goal')),
-            if (isMet) tpw(),
-            if (isMet) AppIcon(Icons.done, color: color, size: 16),
           ],
         ),
       );

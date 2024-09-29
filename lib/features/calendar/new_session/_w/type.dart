@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../_providers/input.dart';
 import '../../../../_variables/features.dart';
-import '../../../_notes/_w/picker_type.dart';
+import '../../../_notes/w/picker_type.dart';
 import '../../_vars/variables.dart';
 
 class TypePicker extends StatelessWidget {

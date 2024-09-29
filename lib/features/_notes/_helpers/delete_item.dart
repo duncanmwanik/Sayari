@@ -6,7 +6,6 @@ import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../_spaces/_helpers/common.dart';
 import '../../files/_helpers/handler.dart';
-import '../../share/_helpers/share.dart';
 
 Future<void> deleteItemForever(Item item) async {
   safeRun(
@@ -26,7 +25,6 @@ Future<void> deleteItemForever(Item item) async {
       }
 
       syncToCloud(db: 'spaces', space: spaceId, parent: item.parent, action: 'd', id: item.id, sid: item.sid);
-      shareItem(delete: true, id: item.id);
       handleFilesDeletion(spaceId, item.files());
     },
   );

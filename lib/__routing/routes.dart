@@ -5,12 +5,11 @@ import 'package:go_router/go_router.dart';
 import '../_variables/features.dart';
 import '../_variables/navigation.dart';
 import '../features/_home/home.dart';
-import '../features/_spaces/_helpers/common.dart';
 import '../features/auth/_helpers/user_details_helper.dart';
 import '../features/auth/auth_screen.dart';
 import '../features/error/error_screen.dart';
-import '../features/share/_helpers/helpers.dart';
-import '../features/share/shared_screen.dart';
+import '../features/share/shared_note.dart';
+import '../features/share/shared_space.dart';
 import '../features/share/test_screen.dart';
 
 final GoRouter router = GoRouter(
@@ -26,31 +25,31 @@ final GoRouter router = GoRouter(
     // start
     GoRoute(path: '/getstarted', builder: (context, state) => AuthScreen()),
     // test
-    GoRoute(path: '/test/:id', builder: (context, state) => TestScreen(id: state.pathParameters['id'] ?? 'Kawabanga')),
+    GoRoute(path: '/test/:params', builder: (context, state) => TestScreen(id: state.pathParameters['params'] ?? '')),
     // shared item
     GoRoute(
-      path: '/${features[feature.share]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.share, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.share]!.path}/:params',
+      builder: (context, state) => SharedNote(type: feature.share, params: state.pathParameters['params'] ?? ''),
     ),
-    // blog items
+    // blog item
     GoRoute(
-      path: '/${features[feature.publish]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.publish, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.publish]!.path}/:params',
+      builder: (context, state) => SharedNote(type: feature.publish, params: state.pathParameters['params'] ?? ''),
     ),
     // bookings
     GoRoute(
-      path: '/${features[feature.bookings]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.bookings, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.bookings]!.path}/:params',
+      builder: (context, state) => SharedNote(type: feature.bookings, params: state.pathParameters['params'] ?? ''),
     ),
     // links
     GoRoute(
-      path: '/${features[feature.links]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.links, id: sharedId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.links]!.path}/:params',
+      builder: (context, state) => SharedNote(type: feature.links, params: state.pathParameters['params'] ?? ''),
     ),
     // books
     GoRoute(
-      path: '/${features[feature.space]!.path}/:id',
-      builder: (context, state_) => ShareScreen(type: feature.space, id: publishedSpaceId(state_.pathParameters['id'] ?? 'fun')),
+      path: '/${features[feature.space]!.path}/:params',
+      builder: (context, state) => SharedSpace(params: state.pathParameters['params'] ?? ''),
     ),
   ],
   // error

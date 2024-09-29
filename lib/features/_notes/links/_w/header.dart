@@ -38,7 +38,7 @@ class LinkHeader extends StatelessWidget {
                 ? null
                 : () async {
                     await getFilesToUpload(
-                      multiple: false,
+                      allowMultiple: false,
                       imagesOnly: true,
                       embed: true,
                       onDone: (stash) {
@@ -54,7 +54,7 @@ class LinkHeader extends StatelessWidget {
                       leading: Icons.edit,
                       onTap: () async {
                         await getFilesToUpload(
-                          multiple: false,
+                          allowMultiple: false,
                           imagesOnly: true,
                           embed: true,
                           onDone: (stash) {

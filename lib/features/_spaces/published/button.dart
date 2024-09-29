@@ -8,13 +8,11 @@ import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_notes/bookings/_w/copy_link.dart';
-import '../../share/_helpers/share.dart';
 import '../_helpers/common.dart';
 import '../_helpers/helpers.dart';
 
 class PublishButton extends StatelessWidget {
   const PublishButton({super.key, required this.spaceData});
-
   final Map spaceData;
 
   @override
@@ -31,7 +29,6 @@ class PublishButton extends StatelessWidget {
           onPressed: () {
             prepareSpaceForEdit(spaceData);
             if (!isPublished) state.input.update(feature.share, '1');
-            shareItem(id: liveSpace(), type: feature.space, title: spaceData['t'] ?? 'Book');
           },
           smallLeftPadding: true,
           color: isPublished ? styler.accentColor(5) : null,

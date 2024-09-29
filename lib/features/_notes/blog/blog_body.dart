@@ -7,8 +7,8 @@ import '../../../_providers/_providers.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/text.dart';
-import '../../share/_w/header.dart';
-import '../_w/quill/editor.dart';
+import '../../share/w/header.dart';
+import '../w/quill/editor.dart';
 import 'blog_info.dart';
 
 class BlogBody extends StatelessWidget {

@@ -15,23 +15,41 @@ import '../../_services/hive/get_data.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/others/empty_box.dart';
 import '../calendar/_helpers/date_time/date_info.dart';
-import '../calendar/state/datetime.dart';
-import '../user/_helpers/set_user_data.dart';
-import '_w/chat_date.dart';
-import '_w/var.dart';
+import '../user/_helpers/helpers.dart';
 import 'bubbles/incoming.dart';
 import 'bubbles/sent.dart';
 import 'input_bar.dart';
 import 'state/chat.dart';
+import 'w/chat_date.dart';
+import 'w/var.dart';
 
-class ChatView extends StatelessWidget {
+class ChatView extends StatefulWidget {
   const ChatView({super.key});
+
+  @override
+  State<ChatView> createState() => _ChatViewState();
+}
+
+class _ChatViewState extends State<ChatView> {
+  @override
+  void initState() {
+    chatScrollController = ScrollController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    chatScrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     String currentUserName = liveUserName();
 
-    return Consumer2<ChatProvider, DateTimeProvider>(builder: (context, chat, dateTime, child) {
+    return Consumer<ChatProvider>(builder: (context, chat, child) {
+      chat.clearGlobalKeys();
+
       return Stack(
         children: [
           // message list
@@ -57,6 +75,8 @@ class ChatView extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: List.generate(chatData.length, (dateIndex) {
                                 String date = chatData.keys.toList()[dateIndex];
+                                GlobalKey glabalKey = GlobalKey();
+                                chat.setGlobalKey(date, glabalKey);
                                 Map dateChats = chatData[date];
 
                                 List chatIds = chat.type == 'Pinned'
@@ -99,7 +119,7 @@ class ChatView extends StatelessWidget {
                       : EmptyBox(label: 'No messages');
                 }),
           ),
-          //
+          // input bar
           MessageInputBar(),
           //
         ],

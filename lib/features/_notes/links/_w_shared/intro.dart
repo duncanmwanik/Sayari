@@ -7,9 +7,9 @@ import '../../../../_providers/_providers.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../files/image.dart';
-import '../../../share/_w/share_link.dart';
-import '../../../user/user_dp.dart';
-import '../../_w/quill/editor_style.dart';
+import '../../../share/w/share_link.dart';
+import '../../../user/dp.dart';
+import '../../w/quill/editor_style.dart';
 
 class LinksIntro extends StatelessWidget {
   const LinksIntro({super.key, required this.userId, required this.userName, required this.data});

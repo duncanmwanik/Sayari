@@ -16,7 +16,6 @@ import '../../../_widgets/others/text.dart';
 import '../../_notes/bookings/_w/copy_link.dart';
 import '../../files/_helpers/upload.dart';
 import '../../files/image.dart';
-import '../../share/_helpers/share.dart';
 import '../_helpers/common.dart';
 
 class PublishedSpace extends StatefulWidget {
@@ -69,7 +68,6 @@ class _PublishSpaceState extends State<PublishedSpace> {
                       yeslabel: 'Unpublish',
                       onAccept: () {
                         input.remove(feature.share);
-                        shareItem(delete: true, id: liveSpace());
                       },
                     ),
                     noStyling: true,
@@ -101,7 +99,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                   AppButton(
                     onPressed: () async {
                       await getFilesToUpload(
-                        multiple: false,
+                        allowMultiple: false,
                         imagesOnly: true,
                         onDone: (stash) {
                           input.remove(fileId);
@@ -123,8 +121,8 @@ class _PublishSpaceState extends State<PublishedSpace> {
                   //
                   AppButton(
                     onPressed: () {
-                      input.removeMatch('f');
-                      input.addAll({'w': ''});
+                      input.removeMatch('fl');
+                      input.remove('w');
                     },
                     noStyling: true,
                     showBorder: true,

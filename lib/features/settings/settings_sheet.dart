@@ -7,14 +7,14 @@ import '../../_widgets/others/others/about_app.dart';
 import '../../_widgets/others/others/scroll.dart';
 import '../../_widgets/others/text.dart';
 import '../../_widgets/sheets/bottom_sheet.dart';
-import '_w/account_details.dart';
-import '_w/account_support.dart';
-import '_w/theme_settings.dart';
+import 'w/account_details.dart';
+import 'w/account_support.dart';
+import 'w/theme_settings.dart';
 
 Future<void> showSettingsBottomSheet() async {
   await showAppBottomSheet(
     isFull: true,
-    //
+    title: 'Settings',
     header: Row(
       children: [
         AppCloseButton(isX: false),

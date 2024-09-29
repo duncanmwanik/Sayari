@@ -17,9 +17,9 @@ import '../_helpers/helpers.dart';
 import '../_helpers/prepare.dart';
 import '../_helpers/swipe.dart';
 import '../_vars/date_time.dart';
-import '../_w/sessions_list_menu.dart';
 import '../monthly/weekday_labels.dart';
 import '../state/datetime.dart';
+import '../w/sessions_list_menu.dart';
 
 class YearlyView extends StatelessWidget {
   const YearlyView({super.key});

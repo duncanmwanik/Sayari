@@ -7,7 +7,7 @@ import '../../../_services/hive/load_boxes.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/toast.dart';
-import '../../user/_helpers/set_user_data.dart';
+import '../../user/_helpers/helpers.dart';
 
 Future<void> selectNewSpace(String spaceId, {bool isFirstTime = false}) async {
   try {

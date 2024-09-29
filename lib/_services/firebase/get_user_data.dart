@@ -48,10 +48,10 @@ Future<void> getAllUserDataFromCloud(String userId) async {
           }
         });
         // update latest version locally
-        await cloudService.getData(db: 'users', '$userId/activity/latest').then((snapshot) async {
-          String latestActivityVersion = snapshot.value != null ? snapshot.value as String : '';
-          if (latestActivityVersion.isNotEmpty) {
-            activityVersionBox.put(userId, latestActivityVersion);
+        await cloudService.getData(db: 'users', '$userId/activity/0').then((snapshot) async {
+          String latest = snapshot.value != null ? snapshot.value as String : '';
+          if (latest.isNotEmpty) {
+            activityVersionBox.put(userId, latest);
           }
         });
         printThis(':::: Updated all user data...');

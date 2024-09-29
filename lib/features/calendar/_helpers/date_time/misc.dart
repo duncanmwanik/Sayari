@@ -68,6 +68,7 @@ String getTimePartFromDateTime(String dateTime) {
 
 String getMonth(String date) => DateFormat('MMM').format(DateTime.parse(date));
 String getMonthFull(String date) => DateFormat('MMMM').format(DateTime.parse(date));
+String getWeekNo(String date) => DateFormat('w').format(DateTime.parse(date));
 String getDateNo(String date) => DateFormat('d').format(DateTime.parse(date));
 String getDateTitle(String date) => DateFormat('E').format(DateTime.parse(date));
 String getDateFull(String date) => DateFormat('E • MMM d, yyy').format(DateTime.parse(date));

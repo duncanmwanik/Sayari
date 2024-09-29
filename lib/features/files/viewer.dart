@@ -16,6 +16,7 @@ import '../../_variables/navigation.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
+import '_helpers/cached.dart';
 import '_helpers/download.dart';
 
 Future<void> showImageViewer({required Map images, Function()? onDownload, int selectedIndex = 0}) async {

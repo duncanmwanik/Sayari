@@ -6,8 +6,8 @@ import '../../../../__styling/variables.dart';
 import '../../../../_providers/_providers.dart';
 import '../../../../_widgets/others/others/divider.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../../user/user_dp.dart';
-import '../../_w/quill/editor_style.dart';
+import '../../../user/dp.dart';
+import '../../w/quill/editor_style.dart';
 
 class BookingIntro extends StatelessWidget {
   const BookingIntro({

@@ -20,11 +20,10 @@ class SpaceName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: spaceNamesBox.listenable(),
+        valueListenable: globalBox.listenable(),
         builder: (context, box, widget) {
           String spaceId = liveSpace();
           bool isASpaceSelected = spaceId != 'none';
-          String name = box.get(spaceId, defaultValue: 'Select a space');
 
           return Column(
             mainAxisSize: MainAxisSize.min,
@@ -46,13 +45,18 @@ class SpaceName extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             // name
-                            AppText(
-                              size: medium,
-                              text: name,
-                              textAlign: TextAlign.start,
-                              overflow: TextOverflow.ellipsis,
-                              weight: FontWeight.w600,
-                            ),
+                            ValueListenableBuilder(
+                                valueListenable: spaceNamesBox.listenable(),
+                                builder: (context, box, widget) {
+                                  String name = box.get(spaceId, defaultValue: 'Select a space');
+                                  return AppText(
+                                    size: medium,
+                                    text: name,
+                                    textAlign: TextAlign.start,
+                                    overflow: TextOverflow.ellipsis,
+                                    weight: FontWeight.w600,
+                                  );
+                                }),
                             //
                             AppIcon(Icons.arrow_drop_down, tiny: isMin, faded: true),
                             //

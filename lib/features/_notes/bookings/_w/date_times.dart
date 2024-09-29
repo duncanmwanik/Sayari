@@ -33,7 +33,7 @@ class BookingDateTimes extends StatelessWidget {
               //
               AppButton(
                 onPressed: () async {
-                  await showSelectDateDialog(showTitle: true, isMultiple: true, initialDates: availableDates).then((chosenDates) {
+                  await showDateDialog(showTitle: true, isMultiple: true, initialDates: availableDates).then((chosenDates) {
                     if (chosenDates.isNotEmpty) {
                       input.update('bd', joinList(chosenDates));
                     }

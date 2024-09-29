@@ -6,10 +6,10 @@ import '../../../../_variables/features.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../../_notes/_w/picker_type.dart';
+import '../../../_notes/w/picker_type.dart';
 import '../../_helpers/admin_helpers.dart';
 import '../../_helpers/checks_space.dart';
-import '../../_var/variables.dart';
+import '../../var/variables.dart';
 
 class AdminChip extends StatelessWidget {
   const AdminChip({super.key, required this.userEmail, required this.userId, required this.spaceId});

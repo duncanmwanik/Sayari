@@ -11,7 +11,7 @@ void copySessionToDates({required Item item, required bool move}) async {
   safeRun(
     where: 'copySessionToDates-move:$move',
     () async {
-      await showSelectDateDialog(
+      await showDateDialog(
         isMultiple: true,
         showTitle: true,
         title: 'Select dates to ${move ? 'move' : 'copy'} session',

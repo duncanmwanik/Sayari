@@ -24,13 +24,13 @@ class GridLayout extends StatelessWidget {
         child: ReorderableWrap(
           key: UniqueKey(),
           enableReorder: !isShare(),
+          ignorePrimaryScrollController: true,
           spacing: 12,
           runSpacing: 12,
           maxMainAxisCount: isGrid ? null : 1,
-          needsLongPressDraggable: true,
           padding: padding(
             t: isSmallPC() ? mediumHeight() : null,
-            b: largeHeightPlaceHolder(),
+            b: largeHeight(),
           ),
           onReorder: (oldIndex, newIndex) => orderItems(
             parent: feature.notes,

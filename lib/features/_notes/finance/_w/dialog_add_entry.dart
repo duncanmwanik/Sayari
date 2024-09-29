@@ -16,7 +16,7 @@ import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../../_widgets/others/toast.dart';
 import '../../../files/_helpers/upload.dart';
-import '../../_w/picker_type.dart';
+import '../../w/picker_type.dart';
 import '../_vars/variables.dart';
 
 Future showPeriodEntryDialog({required String financeType, String? entryId, Map entryData = const {}}) {

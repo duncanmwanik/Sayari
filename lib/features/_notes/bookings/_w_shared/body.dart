@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../_widgets/others/others/scroll.dart';
-import '../../../share/_w/header.dart';
-import '../../../share/_w/shared_info.dart';
+import '../../../share/w/header.dart';
+import '../../../share/w/shared_info.dart';
 import 'booker.dart';
 import 'intro.dart';
 

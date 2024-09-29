@@ -6,7 +6,7 @@ import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/navigation.dart';
 import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
-import 'set_user_data.dart';
+import 'helpers.dart';
 
 bool isSavedItem(String id) => savedBox.containsKey(id);
 

@@ -8,7 +8,7 @@ import '../../../_providers/_providers.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
 import '../_helpers/order_items.dart';
-import '../_w/list_item.dart';
+import '../w/list_item.dart';
 
 class ListLayout extends StatelessWidget {
   const ListLayout({super.key});
@@ -17,11 +17,12 @@ class ListLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return ReorderableWrap(
       key: UniqueKey(),
+      ignorePrimaryScrollController: true,
       maxMainAxisCount: 1,
       alignment: WrapAlignment.center,
       padding: padding(
         t: isSmallPC() ? mediumHeight() : null,
-        b: largeHeightPlaceHolder(),
+        b: largeHeight(),
       ),
       onReorder: (oldIndex, newIndex) => orderItems(
         parent: feature.notes,

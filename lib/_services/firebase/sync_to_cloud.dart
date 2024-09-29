@@ -2,7 +2,7 @@ import '../../_helpers/debug.dart';
 import '../../_helpers/global.dart';
 import '../../_helpers/internet_connection.dart';
 import '../../_variables/features.dart';
-import '../../features/user/_helpers/set_user_data.dart';
+import '../../features/user/_helpers/helpers.dart';
 import '../activity/pending/pending_actions.dart';
 import '../hive/local_storage_service.dart';
 import 'database.dart';
@@ -121,7 +121,7 @@ Future<bool> syncToCloud({
         if (!isShare) activityVersionBox.put(space, timeStamp);
 
         await cloudService.writeData(db: db, '$space/activity/$timeStamp', activity);
-        await cloudService.writeData(db: db, '$space/activity/latest', timeStamp);
+        await cloudService.writeData(db: db, '$space/activity/0', timeStamp);
 
         printThis('::Synced to cloud -> log: $timeStamp > $activity');
       }

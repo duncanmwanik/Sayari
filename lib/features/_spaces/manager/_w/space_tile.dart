@@ -60,18 +60,9 @@ class _SpaceTileState extends State<SpaceTile> {
                         children: [
                           //
                           AppImage('sayari.png', size: 16),
-                          //
                           spw(),
                           // space name
-                          Expanded(
-                            child: AppText(
-                              text: spaceName,
-                              textAlign: TextAlign.start,
-                              weight: FontWeight.bold,
-                              faded: true,
-                            ),
-                          ),
-                          //
+                          Expanded(child: AppText(text: spaceName, textAlign: TextAlign.start, faded: true)),
                           spw(),
                           // indicator, if space is selected
                           if (isSelected) AppIcon(Icons.done_rounded, size: 18, faded: true),

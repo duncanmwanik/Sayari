@@ -8,7 +8,7 @@ import '../../../../_widgets/others/forms/input.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/dry_intrinsic_size.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../../user/_helpers/set_user_data.dart';
+import '../../../user/_helpers/helpers.dart';
 
 class LinkUserName extends StatefulWidget {
   const LinkUserName({super.key});

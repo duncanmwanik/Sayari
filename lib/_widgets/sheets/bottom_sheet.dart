@@ -9,11 +9,13 @@ import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
+import '../../_helpers/ui.dart';
 import '../../_providers/_providers.dart';
 import '../../_variables/navigation.dart';
 import '../others/others/divider.dart';
 
 Future<void> showAppBottomSheet({
+  String? title,
   Widget? header,
   required Widget content,
   Widget? footer,
@@ -29,6 +31,7 @@ Future<void> showAppBottomSheet({
   // we record that the bottom sheet is open
   state.global.updateIsBottomSheetOpen(true);
   changeStatusAndNavigationBarColor(getThemeType(), isSecondary: true);
+  if (title != null) setWebTitle(title);
 
   await showModalBottomSheet(
       context: navigatorState.currentContext!,
@@ -144,4 +147,5 @@ Future<void> showAppBottomSheet({
 
   state.global.updateIsBottomSheetOpen(false);
   changeStatusAndNavigationBarColor(getThemeType());
+  if (title != null) resetWebTitle();
 }

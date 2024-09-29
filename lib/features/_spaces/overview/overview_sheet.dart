@@ -7,6 +7,7 @@ import '../../../__styling/variables.dart';
 import '../../../_helpers/clipboard.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_services/hive/get_data.dart';
+import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/icons.dart';
@@ -30,6 +31,7 @@ Future<void> showSpaceOverviewBottomSheet() async {
 
   await showAppBottomSheet(
     isFull: true,
+    title: spaceNamesBox.get(liveSpace(), defaultValue: 'Untitled'),
     //
     header: Row(
       children: [

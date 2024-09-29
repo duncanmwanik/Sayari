@@ -10,7 +10,7 @@ class Indicator extends StatelessWidget {
     super.key,
     required this.color,
     required this.text,
-    this.size = small,
+    this.size = tiny,
   });
   final Color color;
   final String text;
@@ -19,11 +19,11 @@ class Indicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         AppIcon(Icons.circle, size: size, color: color),
         spw(),
-        AppText(text: text, weight: FontWeight.bold),
+        AppText(text: text),
       ],
     );
   }

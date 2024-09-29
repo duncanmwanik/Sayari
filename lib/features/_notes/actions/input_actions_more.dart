@@ -9,9 +9,9 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../share/_helpers/share.dart';
 import '../../tts/_helpers/tts_service.dart';
 import '../../tts/_state/tts_provider.dart';
+import '../../user/_helpers/helpers.dart';
 import '../habits/habit_options.dart';
 
 class MoreInputActions extends StatelessWidget {
@@ -46,7 +46,7 @@ class MoreInputActions extends StatelessWidget {
               leading: Icons.share_rounded,
               onTap: () {
                 input.update(feature.share, '1');
-                shareItem(id: input.item.id, type: input.item.type, title: input.item.data['t'] ?? 'Shared Item');
+                input.update('u', liveUser());
               },
             ),
           //

@@ -78,18 +78,6 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/emojis/
-  # fonts:
-  #   - family: Inter
-  #     fonts:
-  #       - asset: assets/fonts/Inter/Inter_24pt-Black.ttf
-  #       - asset: assets/fonts/Inter/Inter_24pt-ExtraBold.ttf
-  #       - asset: assets/fonts/Inter/Inter_24pt-Bold.ttf
-  #       - asset: assets/fonts/Inter/Inter_24pt-SemiBold.ttf
-  #       - asset: assets/fonts/Inter/Inter_24pt-Medium.ttf
-  #       - asset: assets/fonts/Inter/Inter_24pt-Regular.ttf
-  #       - asset: assets/fonts/Inter/Inter_24pt-Light.ttf
-  #       - asset: assets/fonts/Inter/Inter_24pt-ExtraLight.ttf
-  #       - asset: assets/fonts/Inter/Inter_24pt-Thin.ttf
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -101,9 +89,9 @@ flutter_launcher_icons:
     image_path: "assets/images/sayari.png"
 
 flutter_native_splash:
-  # color: "#fafafc"
-  # color_dark: "#1b1d1c"
-  background_image: "assets/images/dune.jpg"
+  color: "#fafafc"
+  color_dark: "#1b1d1c"
+  # background_image: "assets/images/dune.jpg"
   image: "assets/images/sayari.png"
   fullscreen: true
 #

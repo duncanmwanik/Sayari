@@ -5,7 +5,7 @@ import '../../../../../__styling/variables.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../__styling/breakpoints.dart';
 import '../../../_widgets/buttons/button.dart';
-import '../../user/user_dp.dart';
+import '../../user/dp.dart';
 import 'cover.dart';
 
 class PublishedBookIntro extends StatelessWidget {
@@ -31,8 +31,8 @@ class PublishedBookIntro extends StatelessWidget {
             //
             mph(),
             AppText(
-              // text: sharedData['t'],
-              text: 'Being Mortal: Medicine and What Matters in the End',
+              text: sharedData['t'],
+              // text: 'Being Mortal: Medicine and What Matters in the End',
               size: extra,
               weight: FontWeight.bold,
               textAlign: TextAlign.center,

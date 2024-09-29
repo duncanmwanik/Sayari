@@ -18,8 +18,8 @@ import '../../../../_widgets/others/loader.dart';
 import '../../../../_widgets/others/others/divider.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../../_widgets/others/toast.dart';
-import '../../../share/_w/shared_info.dart';
 import '../../../share/state/share.dart';
+import '../../../share/w/shared_info.dart';
 import 'date.dart';
 import 'time.dart';
 

@@ -12,18 +12,18 @@ import '../../_providers/_providers.dart';
 import '../../_widgets/others/others/divider.dart';
 import '../_spaces/_helpers/common.dart';
 import '../files/overview.dart';
-import '../share/_w/preview.dart';
+import '../share/w/preview.dart';
 import '_helpers/ontap.dart';
-import '_w/details.dart';
-import '_w/header.dart';
-import '_w/shared_info.dart';
-import '_w/text_overview.dart';
 import 'bookings/_w/overview.dart';
 import 'finance/_w/overview.dart';
 import 'habits/overview.dart';
 import 'links/_w/overview.dart';
 import 'state/selection.dart';
 import 'tasks/task.dart';
+import 'w/details.dart';
+import 'w/header.dart';
+import 'w/shared_info.dart';
+import 'w/text_overview.dart';
 
 class Note extends StatelessWidget {
   const Note({super.key, required this.item});
@@ -32,6 +32,7 @@ class Note extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<SelectionProvider>(builder: (_, selection, __) {
+      bool isSelection = selection.isSelection;
       bool isSelected = selection.isSelected(item.id);
       bool isGrid = state.views.isGrid();
       bool isRow = state.views.isRow();
@@ -57,8 +58,8 @@ class Note extends StatelessWidget {
                 ),
               ),
               child: InkWell(
-                onTap: item.isTask() ? null : () => onTapNote(item),
-                onLongPress: isSelected || item.isTask() ? null : () => onLongPressNote(item),
+                onTap: item.isTask() && !isSelection ? null : () => onTapNote(item),
+                onLongPress: isSelected || (item.isTask() && !isSelection) ? null : () => onLongPressNote(item),
                 borderRadius: BorderRadius.circular(borderRadiusTinySmall),
                 hoverColor: styler.appColor(isImage() ? 0.5 : (styler.isDark ? 0.2 : 0.3)),
                 focusColor: transparent,

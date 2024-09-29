@@ -7,8 +7,8 @@ import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../_spaces/_helpers/checks_space.dart';
 import '../../_spaces/_helpers/select_space.dart';
-import '../../user/_helpers/set_user_data.dart';
-import '../../user/_helpers/user_actions.dart';
+import '../../user/_helpers/actions.dart';
+import '../../user/_helpers/helpers.dart';
 import 'common.dart';
 
 Future<void> deleteSpace({required String spaceId, required String spaceName}) async {
@@ -101,7 +101,6 @@ Future<void> removeMissingSpace({required String spaceId}) async {
     if (spaceId == liveSpace()) await updateSelectedSpace('none');
     //
   } catch (e) {
-    errorPrint('delete-workspace', e);
-    showToast(2, 'Missing workspace should be removed.');
+    errorPrint('delete-missing-workspace', e);
   }
 }

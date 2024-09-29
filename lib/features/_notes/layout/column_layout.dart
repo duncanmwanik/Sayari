@@ -24,6 +24,7 @@ class ColumnLayout extends StatelessWidget {
       ),
       physics: isPhone() ? const SnapScrollPhysics(snapSize: 300) : null,
       child: ReorderableRow(
+        ignorePrimaryScrollController: true,
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         onReorder: (oldIndex, newIndex) => orderItems(

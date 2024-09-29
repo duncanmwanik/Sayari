@@ -6,7 +6,7 @@ import '../../../_helpers/internet_connection.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../auth/_helpers/auth_error_handler.dart';
-import 'set_user_data.dart';
+import 'helpers.dart';
 
 Future<void> editUserDetails(String userName, String password) async {
   try {

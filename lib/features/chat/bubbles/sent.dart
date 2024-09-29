@@ -12,65 +12,82 @@ import '../../../_widgets/others/text.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
 import '../../files/_helpers/helper.dart';
 import '../../files/file_list.dart';
-import '../_w/actions.dart';
+import '../w/actions.dart';
 
-class SentMessageBubble extends StatelessWidget {
+class SentMessageBubble extends StatefulWidget {
   const SentMessageBubble({super.key, required this.item});
   final Item item;
 
   @override
+  State<SentMessageBubble> createState() => _SentMessageBubbleState();
+}
+
+class _SentMessageBubbleState extends State<SentMessageBubble> {
+  bool showMore = false;
+
+  @override
   Widget build(BuildContext context) {
-    String message = item.data['n'];
-    bool isShortMessage = message.length < 20;
-    bool isPending = pendingBox.containsKey(item.sid);
-    Map files = getFiles(item.data);
+    String message = widget.item.data['n'];
+    bool isPending = pendingBox.containsKey(widget.item.sid);
+    Map files = getFiles(widget.item.data);
+    bool isLong = message.length > 1000;
 
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+      double maxWidth = constraints.maxWidth * 0.7;
+
       return MouseRegion(
-        onEnter: (value) => state.hover.set(item.sid),
+        onEnter: (value) => state.hover.set(widget.item.sid),
         onExit: (value) => state.hover.reset(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             // options
-            MessageActions(item: item, isSent: true),
+            MessageActions(item: widget.item, isSent: true),
             // message
             tpw(),
             Flexible(
               child: AppButton(
                 onPressed: null,
                 padding: EdgeInsets.zero,
-                borderRadius: borderRadiusTinySmall,
+                borderRadius: borderRadiusTiny,
                 hoverColor: transparent,
                 color: Color.alphaBlend(styler.accentColor(3), black.withOpacity(0.01)),
                 child: Container(
                   padding: paddingM(),
-                  constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.7, minWidth: 100),
+                  constraints: BoxConstraints(maxWidth: maxWidth),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: isShortMessage ? CrossAxisAlignment.end : CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      //
+                      // files
                       FileList(fileData: files),
                       if (files.isNotEmpty) mph(),
                       // message
-                      AppText(size: 12, text: message, weight: isDark() ? FontWeight.w400 : FontWeight.w500),
-                      if (isShortMessage) sph(),
-                      // sent status Icon
-                      ph(1),
+                      AppText(
+                        size: small,
+                        text: isLong && !showMore ? message.substring(0, 1000) : message.padRight((maxWidth * 0.05).toInt()),
+                        weight: isDark() ? FontWeight.w400 : FontWeight.w500,
+                      ),
+                      // read more
+                      if (isLong)
+                        AppButton(
+                          onPressed: () => setState(() => showMore = !showMore),
+                          noStyling: true,
+                          hoverColor: transparent,
+                          smallVerticalPadding: true,
+                          child: AppText(text: showMore ? 'Show less' : 'Read more', size: small, color: Colors.blue),
+                        ),
+                      //
+                      ph(2),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           // time
-                          AppText(size: 8, text: getMessageTime(item.sid), faded: true, weight: FontWeight.w500),
-                          // status
+                          AppText(size: 8, text: getMessageTime(widget.item.sid), faded: true, weight: FontWeight.w500),
                           tpw(),
-                          AppIcon(
-                            isPending ? Icons.refresh_rounded : Icons.done_rounded,
-                            size: 10,
-                            faded: true,
-                          ),
+                          // status
+                          AppIcon(isPending ? Icons.refresh_rounded : Icons.done_rounded, size: 10, faded: true),
                           //
                         ],
                       ),

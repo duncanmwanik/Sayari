@@ -9,8 +9,8 @@ import '../../_services/hive/local_storage_service.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/helper.dart';
-import '_vars/variables.dart';
 import 'options.dart';
+import 'var/variables.dart';
 
 // TODOs: Verify path exists
 // TODOs: Get web path

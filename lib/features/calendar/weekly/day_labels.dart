@@ -6,11 +6,10 @@ import '../../../__styling/variables.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/date_time/date_info.dart';
-import '../_helpers/date_time/get_week_no.dart';
 import '../_helpers/date_time/misc.dart';
 import '../_vars/date_time.dart';
-import '../_w/sessions_list_menu.dart';
 import '../state/datetime.dart';
+import '../w/sessions_list_menu.dart';
 
 class WeekDayLabels extends StatelessWidget {
   const WeekDayLabels({super.key});
@@ -24,7 +23,7 @@ class WeekDayLabels extends StatelessWidget {
           SizedBox(
             width: 45,
             child: AppText(
-              text: getWeekNumber(dates.currentWeekDates[3]).toString(),
+              text: getWeekNo(getDatePart(dates.currentWeekDates[3])),
               faded: true,
               weight: FontWeight.w600,
               textAlign: TextAlign.center,

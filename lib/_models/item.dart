@@ -4,6 +4,7 @@ import '../_helpers/helpers.dart';
 import '../_variables/constants.dart';
 import '../_variables/features.dart';
 import '../features/_notes/tasks/_helpers/helper.dart';
+import '../features/_spaces/_helpers/common.dart';
 import '../features/files/_helpers/helper.dart';
 
 class Item {
@@ -34,9 +35,9 @@ class Item {
   String labels() => data['l'] ?? '';
   String coverId() => data['w'] ?? '';
   String coverName() => data[coverId()] ?? '';
-  String sharedLink() => '$sayariDefaultPath/${features[itemType()]!.path}/${minString(title())}-$id';
-  String publishedLink() => '$sayariDefaultPath/${features[feature.publish]!.path}/${minString(title())}-$id';
-  String demoLink() => '/${features[itemType()]!.path}/${minString(title())}-$id';
+  String sharedLink() => '$sayariDefaultPath/${features[itemType()]!.path}/${minString(title())}-${liveSpace()}$id';
+  String publishedLink() => '$sayariDefaultPath/${features[feature.publish]!.path}/${minString(title())}-${liveSpace()}$id';
+  String demoLink() => '/${features[itemType()]!.path}/${minString(title())}-${liveSpace()}$id';
   Map files() => getFiles(data);
   List<String> flags() => splitList(data['g']);
   Map subItems() => getSubItems(data);

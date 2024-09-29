@@ -11,4 +11,14 @@ class ChatProvider with ChangeNotifier {
     globalBox.put('chatType', value);
     notifyListeners();
   }
+
+  //
+  Map<String, GlobalKey> chatGlobalKeys = {};
+  void setGlobalKey(String date, GlobalKey glabalKey) {
+    chatGlobalKeys[date] = glabalKey;
+  }
+
+  void clearGlobalKeys() {
+    chatGlobalKeys.clear();
+  }
 }

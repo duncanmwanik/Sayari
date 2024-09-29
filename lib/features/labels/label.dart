@@ -59,8 +59,8 @@ class _LabelItemState extends State<LabelItem> {
         padding: EdgeInsets.only(
           left: widget.isSelection ? 10 : 10,
           right: showDelete ? 3 : (widget.isPopup ? 7 : 15),
-          top: kIsWeb ? 3 : 6,
-          bottom: kIsWeb ? 3 : 6,
+          top: kIsWeb ? 1 : 6,
+          bottom: kIsWeb ? 1 : 6,
         ),
         noStyling: !isCurrentLabel && !widget.isSelection,
         child: Row(

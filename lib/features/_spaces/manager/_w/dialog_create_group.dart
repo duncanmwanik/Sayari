@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';
 import '../../../../_widgets/others/forms/input.dart';
-import '../../../user/_helpers/user_actions.dart';
+import '../../../user/_helpers/actions.dart';
 
 Future<dynamic> showCreateGroupDialog() {
   final TextEditingController nameController = TextEditingController();

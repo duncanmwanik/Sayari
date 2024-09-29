@@ -17,8 +17,8 @@ import '../_helpers/prepare.dart';
 import '../_helpers/sort.dart';
 import '../_helpers/swipe.dart';
 import '../_vars/date_time.dart';
-import '../_w/daily_box.dart';
 import '../state/datetime.dart';
+import '../w/daily_box.dart';
 
 class DailyView extends StatelessWidget {
   const DailyView({super.key});

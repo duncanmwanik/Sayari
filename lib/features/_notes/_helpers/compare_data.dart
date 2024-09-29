@@ -33,7 +33,7 @@ Map compareData({required String type}) {
     if (!editedData.containsKey(key)) {
       editedData.remove(key);
       editedKeys.add('d/$key');
-      if (key.toString().startsWith('f')) {
+      if (key.toString().startsWith('fl')) {
         fileNamesBox.put(key, value);
       }
     }

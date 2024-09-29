@@ -121,7 +121,7 @@ class ItemActions extends StatelessWidget {
                     },
                   ),
                 //
-                menuDivider(),
+                if (!item.isDeleted()) menuDivider(),
                 //
                 if (!item.isDeleted())
                   MenuItem(

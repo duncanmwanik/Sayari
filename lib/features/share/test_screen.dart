@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/theme.dart';
-import '_w/shared_info.dart';
+import 'w/shared_info.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key, required this.id});

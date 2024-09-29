@@ -4,13 +4,14 @@ import '../others/sfcalendar.dart';
 import '../others/text.dart';
 import 'app_dialog.dart';
 
-Future<List> showSelectDateDialog({
+Future<List> showDateDialog({
   String title = 'Select one or more dates',
   String actionLabel = 'Done',
   String? initialDate,
   List initialDates = const [],
   bool isMultiple = false,
   bool showTitle = false,
+  bool pop = false,
   Function(DateTime)? onSelect,
 }) async {
   List selectedDates = [];
@@ -42,5 +43,6 @@ Future<List> showSelectDateDialog({
     //
   );
 
+  if (pop) popWhatsOnTop();
   return selectedDates;
 }

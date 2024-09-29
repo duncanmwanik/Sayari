@@ -9,8 +9,7 @@ import '../../../_providers/_providers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 
 Future<void> getFilesToUpload({
-  bool multiple = true,
-  bool dp = false,
+  bool allowMultiple = true,
   bool imagesOnly = false,
   bool embed = false,
   bool addToInput = true,
@@ -20,9 +19,9 @@ Future<void> getFilesToUpload({
 
   // try {
   FilePickerResult? results = await FilePicker.platform.pickFiles(
-    allowMultiple: multiple && !dp,
-    type: (dp || imagesOnly) ? FileType.custom : FileType.any,
-    allowedExtensions: (dp || imagesOnly) ? ['jpg', 'jpeg', 'png'] : null,
+    allowMultiple: allowMultiple,
+    type: imagesOnly ? FileType.custom : FileType.any,
+    allowedExtensions: imagesOnly ? ['jpg', 'jpeg', 'png', 'webp'] : null,
   );
 
   if (results != null) {
@@ -42,16 +41,10 @@ Future<void> getFilesToUpload({
       }
     }
 
-    if (dp) {
-      await fileBox.put('dp', stash.data.values.first);
-    }
-    //
-    else {
-      String fileId = embed ? 'fe${getUniqueId()}' : 'f${getUniqueId()}';
-      stash.addFileId(fileId);
-      if (addToInput) state.input.update(fileId, stash.fileName());
-      await fileBox.put(fileId, stash.fileValue());
-    }
+    String fileId = embed ? 'fe${getUniqueId()}' : 'f${getUniqueId()}';
+    stash.addFileId(fileId);
+    if (addToInput) state.input.update(fileId, stash.fileName());
+    await fileBox.put(fileId, stash.fileValue());
 
     if (stash.isValid()) onDone!(stash);
   }

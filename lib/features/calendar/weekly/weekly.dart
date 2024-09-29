@@ -18,8 +18,8 @@ import '../_helpers/prepare.dart';
 import '../_helpers/sort.dart';
 import '../_helpers/swipe.dart';
 import '../_vars/date_time.dart';
-import '../_w/weekly_box.dart';
 import '../state/datetime.dart';
+import '../w/weekly_box.dart';
 import 'day_labels.dart';
 
 class WeeklyView extends StatelessWidget {

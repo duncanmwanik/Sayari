@@ -7,14 +7,14 @@ import '../../__styling/variables.dart';
 import '../../_providers/views.dart';
 import '../../_widgets/others/others/sync_indicator.dart';
 import '../../_widgets/others/theme.dart';
-import '../_notes/_w/note_options.dart';
 import '../_notes/actions/item_selection.dart';
 import '../_notes/state/selection.dart';
+import '../_notes/w/note_options.dart';
 import '../calendar/info_header.dart';
-import '../chat/_w/filters.dart';
+import '../chat/w/filters.dart';
 import '../pomodoro/w/pomo_indicator.dart';
 import '../search/search_btn.dart';
-import '../user/user_dp.dart';
+import '../user/dp.dart';
 import 'panel/space.dart';
 
 class CustomAppBar extends StatelessWidget {

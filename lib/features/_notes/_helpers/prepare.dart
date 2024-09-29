@@ -16,7 +16,7 @@ Future<void> createNote(String type) async {
   Item item = Item(
     parent: feature.notes,
     type: type,
-    data: {type: '1', 'o': getUniqueId(), 'z': getUniqueId()},
+    data: {type: '1', 'o': getUniqueId()},
   );
   state.input.set(item);
   await showNoteBottomSheet(item);
