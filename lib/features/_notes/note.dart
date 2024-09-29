@@ -70,7 +70,7 @@ class Note extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ///
+                      //
                       ImageOverview(item: item),
                       ItemHeader(item: item),
                       tph(),
