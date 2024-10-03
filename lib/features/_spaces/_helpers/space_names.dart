@@ -25,14 +25,7 @@ Future<String> saveSpacesNamesToLocalStorage(Map userData) async {
   userData.forEach((key, value) async {
     if (key.toString().startsWith('space')) {
       await doesSpaceExist(key).then((spaceName) {
-        if (spaceName != 'none') {
-          spaceNamesBox.put(key, spaceName);
-          // if its default space
-          if (value == 1) {
-            // print('space value: $value : ${value.runtimeType} : $defaultSpace');
-            // selectNewSpace(defaultSpace, isFirstTime: true);
-          }
-        }
+        if (spaceName != 'none') spaceNamesBox.put(key, spaceName);
       });
     } else if (!key.toString().startsWith('space')) {
       Map groupSpaces = value as Map;

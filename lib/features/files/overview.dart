@@ -9,7 +9,7 @@ import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/text.dart';
-import '../_notes/actions/actions.dart';
+import '../_notes/w_actions/actions.dart';
 import '_helpers/cached.dart';
 import '_helpers/helper.dart';
 import 'viewer.dart';

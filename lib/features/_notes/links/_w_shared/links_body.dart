@@ -3,13 +3,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import '../../../../__styling/spacing.dart';
+import '../../../../__styling/theme_btn.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_helpers/global.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/scroll.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../../../_widgets/others/theme.dart';
 import '../../../files/image.dart';
 import '../../../share/w/share_link.dart';
 import '../../../share/w/shared_info.dart';

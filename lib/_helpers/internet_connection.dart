@@ -30,7 +30,6 @@ Future<bool> hasAccessToInternet() async {
   //   errorPrint('internet-checker', e);
   //   showToast(0, 'No internet connection.');
   //   errorPrint('internet-checker', 'No internet connection.');
-  //   printThis(e);
 
   //   return false;
   // }

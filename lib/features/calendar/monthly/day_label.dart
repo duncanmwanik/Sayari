@@ -22,15 +22,14 @@ class MonthDayNumberLabel extends StatelessWidget {
         margin: EdgeInsets.only(bottom: 2),
         padding: EdgeInsets.only(top: 2, bottom: 2, right: 4),
         decoration: BoxDecoration(
-          color: isToday ? styler.accentColor() : transparent,
           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(borderRadiusTiny)),
         ),
         child: AppText(
           size: small,
-          text: '${date.day() == 1 ? date.monthString() : ''} ${date.dayString()}',
+          text: '${(date.isToday() || date.day() == 1) ? date.monthString() : ''} ${date.dayString()}',
           weight: isSelectedMonth ? FontWeight.w600 : FontWeight.w100,
           extraFaded: !isSelectedMonth,
-          color: isToday ? white : null,
+          color: isToday ? styler.accentColor() : null,
         ),
       ),
     );

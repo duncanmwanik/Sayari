@@ -44,7 +44,7 @@ class UserDp extends StatelessWidget {
     return ValueListenableBuilder(
         valueListenable: userInfoBox.listenable(),
         builder: (context, box, widget) {
-          bool hasDp = hasUserDp();
+          bool hasDp = hasUserDp() && box.get('dp') != 0;
 
           return hasDp
               ? FutureBuilder(

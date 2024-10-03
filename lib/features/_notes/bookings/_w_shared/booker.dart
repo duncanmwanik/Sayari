@@ -12,7 +12,7 @@ import '../../../../_services/firebase/sync_to_cloud.dart';
 import '../../../../_variables/features.dart';
 import '../../../../_variables/navigation.dart';
 import '../../../../_widgets/buttons/button.dart';
-import '../../../../_widgets/others/forms/input.dart';
+import '../../../../_widgets/forms/input.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/loader.dart';
 import '../../../../_widgets/others/others/divider.dart';

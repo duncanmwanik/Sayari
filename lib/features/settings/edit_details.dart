@@ -7,7 +7,7 @@ import '../../_helpers/navigation.dart';
 import '../../_providers/theme.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/buttons/close.dart';
-import '../../_widgets/others/forms/input.dart';
+import '../../_widgets/forms/input.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '../../_widgets/sheets/bottom_sheet.dart';

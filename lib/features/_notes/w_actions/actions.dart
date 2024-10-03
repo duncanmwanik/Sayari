@@ -16,6 +16,7 @@ import '../../reminders/reminder_menu.dart';
 import '../_helpers/delete_item.dart';
 import '../_helpers/quick_edit.dart';
 import '../state/selection.dart';
+import '../w/emoji_menu.dart';
 
 class ItemActions extends StatelessWidget {
   const ItemActions({super.key, required this.item, this.isPersistent = false});
@@ -108,9 +109,11 @@ class ItemActions extends StatelessWidget {
                 if (!item.isDeleted())
                   MenuItem(
                     label: 'Emoji',
-                    leading: item.hasEmoji() ? Icons.clear : Icons.emoji_emotions_outlined,
-                    // onTap: () => editItemExtras(parent: item.parent, id: item.id, key: item.isPinned() ? 'd/p' : 'p', value: '1'),
+                    leading: Icons.emoji_emotions_outlined,
+                    menuItems: emojiMenu(item),
                   ),
+                //
+                if (!item.isDeleted()) menuDivider(),
                 //
                 if (!item.isDeleted())
                   MenuItem(
@@ -143,8 +146,8 @@ class ItemActions extends StatelessWidget {
                     },
                   ),
                 //
-                // if (item.isDeleted() && isNotSelection)
-                if (isNotSelection)
+                if (item.isDeleted() && isNotSelection)
+                  // if (isNotSelection)
                   MenuItem(
                     label: 'Delete Forever',
                     leading: deleteForeverIcon,

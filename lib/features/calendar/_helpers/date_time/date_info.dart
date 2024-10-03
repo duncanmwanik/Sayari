@@ -88,6 +88,7 @@ class DateInfo {
   bool isToday() => date == getDatePart(now);
   bool isCurrentMonth() => state.dateTime.selectedMonth == now.month && state.dateTime.selectedYear == now.year;
   bool isCurrentYear() => state.dateTime.selectedYear == now.year;
+  bool isWeekend() => [6, 7].contains(dateTime.weekday);
   bool isSelectedMonth(String refDate) => dateTime.month == DateTime.parse(refDate).month;
 
   bool isFuture() => dateTime.isAfter(now.add(const Duration(days: 1)));

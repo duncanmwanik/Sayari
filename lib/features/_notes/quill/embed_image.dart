@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
-import '../../../../__styling/variables.dart';
-import '../../../../_helpers/global.dart';
-import '../../../../_helpers/helpers.dart';
-import '../../../../_providers/_providers.dart';
-import '../../../files/_helpers/upload.dart';
-import '../../../files/image.dart';
+import '../../../__styling/variables.dart';
+import '../../../_helpers/global.dart';
+import '../../../_helpers/helpers.dart';
+import '../../../_providers/_providers.dart';
+import '../../files/_helpers/upload.dart';
+import '../../files/image.dart';
 
 class QuillEmbedImage extends CustomBlockEmbed {
   QuillEmbedImage(String data) : super(noteType, data);

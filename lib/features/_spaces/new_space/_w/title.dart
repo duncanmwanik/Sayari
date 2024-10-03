@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/variables.dart';
 import '../../../../_providers/input.dart';
-import '../../../../_widgets/others/forms/input.dart';
+import '../../../../_widgets/forms/input.dart';
 
 class TitleInput extends StatelessWidget {
   const TitleInput(this.isNewSpace, {super.key});

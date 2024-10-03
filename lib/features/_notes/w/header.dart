@@ -6,7 +6,7 @@ import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/ontap.dart';
-import '../actions/actions.dart';
+import '../w_actions/actions.dart';
 import 'emoji.dart';
 import 'pinned.dart';
 
@@ -29,7 +29,7 @@ class ItemHeader extends StatelessWidget {
         children: [
           // header
           Padding(
-            padding: paddingC('l10,t5,r5,b5'),
+            padding: paddingC(item.hasEmoji() ? 'l5,t5,r5,b5' : 'l10,t5,r5,b5'),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -40,8 +40,8 @@ class ItemHeader extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // emoji
-                      if (item.isTask()) TaskEmoji(item: item),
-                      if (item.isTask()) tpw(),
+                      if (item.hasEmoji()) Emoji(item: item),
+                      if (item.hasEmoji()) tpw(),
                       // title
                       Flexible(
                           child: Padding(

@@ -11,21 +11,21 @@ import '../../_models/item.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
 import '../../_widgets/buttons/close.dart';
-import '../../_widgets/others/forms/input.dart';
+import '../../_widgets/forms/input.dart';
 import '../../_widgets/others/others/scroll.dart';
 import '../../_widgets/sheets/bottom_sheet.dart';
 import '../files/overview.dart';
 import '../share/shared.dart';
 import '_helpers/ontap.dart';
-import 'actions/input_actions.dart';
 import 'bookings/_w/booking.dart';
 import 'finance/finance.dart';
 import 'habits/habit.dart';
 import 'links/_w/links.dart';
+import 'quill/editor.dart';
 import 'tasks/task_options.dart';
 import 'w/details.dart';
 import 'w/footer.dart';
-import 'w/quill/editor.dart';
+import 'w_actions/input_actions.dart';
 
 Future<void> showNoteBottomSheet(Item item) async {
   await showAppBottomSheet(

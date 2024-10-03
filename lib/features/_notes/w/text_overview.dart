@@ -5,8 +5,8 @@ import 'package:flutter_quill/flutter_quill.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../_models/item.dart';
-import 'quill/editor_style.dart';
-import 'quill/embed_image.dart';
+import '../quill/editor_style.dart';
+import '../quill/embed_image.dart';
 
 class NoteTextOverview extends StatelessWidget {
   const NoteTextOverview({super.key, required this.item});

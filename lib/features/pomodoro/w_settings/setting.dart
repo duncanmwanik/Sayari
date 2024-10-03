@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/_providers.dart';
+import '../../../_widgets/forms/numeric.dart';
 import '../../../_widgets/others/color.dart';
 import '../../../_widgets/others/color_menu.dart';
-import '../../../_widgets/others/forms/numeric.dart';
 import '../../../_widgets/others/text.dart';
 import '../var/variables.dart';
 

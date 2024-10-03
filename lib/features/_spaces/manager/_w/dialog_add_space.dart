@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../__styling/spacing.dart';
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';
-import '../../../../_widgets/others/forms/input.dart';
-import '../../../../_widgets/others/text.dart';
+import '../../../../_widgets/forms/input.dart';
 import '../../_helpers/add_space.dart';
 
 Future<dynamic> showAddSpaceDialog() {
@@ -12,24 +10,12 @@ Future<dynamic> showAddSpaceDialog() {
 
   return showAppDialog(
     title: 'Add Workspace',
-    content: ListView(
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      children: [
-        //
-        DataInput(
-          hintText: 'Workspace ID',
-          controller: nameController,
-          keyboardType: TextInputType.name,
-          autofocus: true,
-          onFieldSubmitted: (_) async => await addSpaceFromId(nameController.text.trim()),
-        ),
-        //
-        sph(),
-        //
-        AppText(text: 'You can get the Workspace ID from the space owner or admins.', faded: true),
-        //
-      ],
+    content: DataInput(
+      hintText: 'Workspace ID',
+      controller: nameController,
+      keyboardType: TextInputType.name,
+      autofocus: true,
+      onFieldSubmitted: (_) async => await addSpaceFromId(nameController.text.trim()),
     ),
     actions: [
       ActionButton(

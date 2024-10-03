@@ -20,7 +20,7 @@ class GridLayout extends StatelessWidget {
       bool isGrid = state.views.isGrid();
 
       return Align(
-        alignment: Alignment.topCenter,
+        alignment: Alignment.topLeft,
         child: ReorderableWrap(
           key: UniqueKey(),
           enableReorder: !isShare(),

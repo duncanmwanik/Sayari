@@ -37,8 +37,8 @@ class SpaceName extends StatelessWidget {
                     Flexible(
                       child: AppButton(
                         onPressed: () => openDrawer(),
-                        tooltip: 'Change Workspace',
-                        noStyling: true,
+                        tooltip: 'View Workspaces',
+                        color: styler.accentColor(1),
                         isSquare: isMin,
                         smallRightPadding: !isMin,
                         child: Row(
@@ -83,8 +83,8 @@ class SpaceName extends StatelessWidget {
                 AppButton(
                   onPressed: () => openDrawer(),
                   tooltip: 'Choose Workspace',
+                  color: styler.accentColor(1),
                   isSquare: true,
-                  noStyling: true,
                   child: AppIcon(Icons.arrow_drop_down, faded: true),
                 ),
               // worspace settings

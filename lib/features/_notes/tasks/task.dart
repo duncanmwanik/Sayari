@@ -6,9 +6,8 @@ import '../../../_models/item.dart';
 import '../state/selection.dart';
 import 'new_item.dart';
 import 'subitems.dart';
-import 'w_items/progress_bar.dart';
+import 'w_items/progress.dart';
 
-// TODOs: code min
 class NoteTask extends StatelessWidget {
   const NoteTask({super.key, required this.item});
   final Item item;
@@ -23,7 +22,7 @@ class NoteTask extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             //
-            if (item.hasTasks()) ProgressBar(item: item),
+            if (item.hasTasks() && item.showProgress()) ProgressBar(item: item),
             //
             Flexible(child: ListOfSubItems(item: item)),
             //

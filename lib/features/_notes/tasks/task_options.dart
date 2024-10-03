@@ -18,6 +18,7 @@ class TaskOptions extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       bool showCheckBoxes = input.item.data['v'] == '1';
+      bool showProgress = input.item.data['vp'] == '1';
       bool addToTop = input.item.data['at'] == '1';
 
       return Visibility(
@@ -38,11 +39,27 @@ class TaskOptions extends StatelessWidget {
                 children: [
                   AppCheckBox(isChecked: showCheckBoxes, smallPadding: true),
                   spw(),
-                  AppText(text: 'Show Checkboxes'),
+                  AppText(text: 'Show checkboxes'),
                 ],
               ),
             ),
             //
+            if (showCheckBoxes)
+              AppButton(
+                onPressed: () => input.update('vp', showProgress ? '0' : '1'),
+                noStyling: true,
+                smallLeftPadding: true,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AppCheckBox(isChecked: showProgress, smallPadding: true),
+                    spw(),
+                    AppText(text: 'Show progress info'),
+                  ],
+                ),
+              ),
+            //
+
             AppButton(
               onPressed: () => input.update('at', addToTop ? '0' : '1'),
               noStyling: true,

@@ -40,9 +40,9 @@ class Features {
 
 Map<String, FeatureData> features = {
   feature.space: const FeatureData(title: 'Spaces', path: 'book', message: 'Create Workspace'),
-  feature.calendar: const FeatureData(title: 'Calendar', message: 'Create Session'),
-  feature.notes: const FeatureData(title: 'Notes', path: 'shared', message: 'Create Note'),
-  feature.tasks: const FeatureData(title: 'Tasks', message: 'Create Task'),
+  feature.calendar: const FeatureData(title: 'Calendar', message: 'New Session'),
+  feature.notes: const FeatureData(title: 'Notes', path: 'shared', message: 'New Note'),
+  feature.tasks: const FeatureData(title: 'Tasks', message: 'New Task'),
   feature.finances: const FeatureData(title: 'Finance'),
   feature.habits: const FeatureData(title: 'Habits'),
   feature.links: const FeatureData(title: 'Links', path: 'links'),

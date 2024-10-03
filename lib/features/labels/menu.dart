@@ -11,8 +11,8 @@ List<Widget> labelsMenu({
 }) {
   return [
     //
-    if (title.isNotEmpty) MenuItem(label: title),
-    if (title.isNotEmpty) menuDivider(),
+    MenuItem(label: title, smallHeight: true, popTrailing: true),
+    menuDivider(),
     //
     LabelManager(isPopup: true, isSelection: isSelection, alreadySelected: alreadySelected, onDone: onDone),
     //

@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
-import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/list_tile.dart';
 import '../../../_widgets/others/text.dart';
 import '../../user/_helpers/helpers.dart';
 import '../../user/dp.dart';
 import '../../user/dp_menu.dart';
-import '../edit_details.dart';
 import 'title.dart';
 
 class AccountDetails extends StatelessWidget {
@@ -46,13 +43,13 @@ class AccountDetails extends StatelessWidget {
                 onTap: () {},
               ),
               //
-              tsph(),
+              // tsph(),
               //
-              AppListTile(
-                leading: AppText(text: 'Edit Account Details'),
-                trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: normal),
-                onTap: () => showEditDetailsBottomSheet(context),
-              ),
+              // AppListTile(
+              //   leading: AppText(text: 'Edit Account Details'),
+              //   trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: normal),
+              //   onTap: () => showEditDetailsBottomSheet(context),
+              // ),
               //
             ],
           );

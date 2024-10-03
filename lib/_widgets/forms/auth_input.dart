@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../__styling/helpers.dart';
-import '../../../__styling/variables.dart';
-import '../../buttons/button.dart';
-import '../icons.dart';
-import '../loader.dart';
+import '../../__styling/helpers.dart';
+import '../../__styling/variables.dart';
+import '../buttons/button.dart';
+import '../others/icons.dart';
+import '../others/loader.dart';
 
 class FormInput extends StatefulWidget {
   const FormInput({

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../__styling/variables.dart';
-import '../../../_helpers/helpers.dart';
-import '../../../_providers/_providers.dart';
-import '../../buttons/button.dart';
-import '../icons.dart';
+import '../../__styling/variables.dart';
+import '../../_helpers/helpers.dart';
+import '../../_providers/_providers.dart';
+import '../buttons/button.dart';
+import '../others/icons.dart';
 
 class DataInput extends StatefulWidget {
   const DataInput({
@@ -34,6 +34,7 @@ class DataInput extends StatefulWidget {
     this.isPassword = false,
     this.color,
     this.textColor,
+    this.cursorColor,
     this.hoverColor,
     this.bgColor,
     this.weight = FontWeight.w500,
@@ -67,6 +68,7 @@ class DataInput extends StatefulWidget {
   final bool isPassword;
   final Color? color;
   final Color? textColor;
+  final Color? cursorColor;
   final Color? hoverColor;
   final String? bgColor;
   final FontWeight weight;
@@ -107,7 +109,7 @@ class _DataInputState extends State<DataInput> {
       style: GoogleFonts.inter(
           fontSize: widget.fontSize, color: widget.textColor ?? styler.textColor(bgColor: widget.bgColor), fontWeight: widget.weight),
       textAlignVertical: TextAlignVertical.center,
-      cursorColor: styler.accentColor(),
+      cursorColor: widget.cursorColor ?? styler.accentColor(),
       decoration: InputDecoration(
         hintText: widget.hintText,
         contentPadding: widget.contentPadding,

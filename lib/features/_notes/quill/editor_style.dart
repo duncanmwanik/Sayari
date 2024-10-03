@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../__styling/variables.dart';
-import '../../../../_widgets/others/icons.dart';
-import '../../../../_widgets/others/others/other.dart';
+import '../../../__styling/variables.dart';
+import '../../../_widgets/others/icons.dart';
+import '../../../_widgets/others/others/other.dart';
 
 DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
   Color quillTextColor = styler.textColor(bgColor: bgColor);

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
+import '../../../__styling/theme_menu.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/list_tile.dart';
 import '../../../_widgets/others/text.dart';
-import '../../../_widgets/others/theme_menu.dart';
 import 'title.dart';
 
 class ThemeSettings extends StatelessWidget {

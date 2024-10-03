@@ -26,30 +26,31 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Functi
         color: styler.appColor(isDark() ? 1 : 2),
         padding: EdgeInsets.all(isSmallPC() ? 8 : 12),
         child: SizedBox(
-          width: isCalendar ? 17 : 19,
-          height: isCalendar ? 17 : 19,
+          width: 19,
+          height: 19,
           child: isCalendar
-              ? AppButton(
-                  padding: noPadding,
-                  color: styler.textColor(faded: true),
-                  borderRadius: 1,
-                  child: Center(
-                      child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: paddingC('l1,r1,t2'),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            AppIcon(Icons.circle, size: isDark() ? 2 : 1, color: styler.invertedTextColor()),
-                            AppIcon(Icons.circle, size: isDark() ? 2 : 1, color: styler.invertedTextColor()),
-                          ],
+              ? Padding(
+                  padding: padding(p: 1.5),
+                  child: AppButton(
+                    padding: noPadding,
+                    color: styler.textColor(faded: true),
+                    borderRadius: 2,
+                    child: Stack(
+                      children: [
+                        Padding(
+                          padding: paddingC('l1,r1,t1'),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              AppIcon(Icons.circle, size: isDark() ? 2 : 1, color: styler.invertedTextColor()),
+                              AppIcon(Icons.circle, size: isDark() ? 2 : 1, color: styler.invertedTextColor()),
+                            ],
+                          ),
                         ),
-                      ),
-                      AppText(text: DateTime.now().day.toString(), size: 9, color: styler.invertedTextColor()),
-                    ],
-                  )),
+                        Center(child: AppText(text: DateTime.now().day.toString(), size: 11, color: styler.invertedTextColor())),
+                      ],
+                    ),
+                  ),
                 )
               : icon.runtimeType == String
                   ? AppSvg(icon, size: size ?? 19, faded: true)
@@ -59,11 +60,11 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Functi
       // selected indicator
       if (isSelected)
         Positioned(
-          bottom: isPhone() ? 0 : 14,
+          bottom: isPhone() ? 0 : 11,
           left: isPhone() ? 17 : null,
           child: AppButton(
             width: isPhone() ? 8 : 3,
-            height: isPhone() ? 3 : 8,
+            height: isPhone() ? 3 : 11,
             padding: noPadding,
             color: styler.accent,
           ),

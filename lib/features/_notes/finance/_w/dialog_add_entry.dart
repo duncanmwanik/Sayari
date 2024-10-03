@@ -11,7 +11,7 @@ import '../../../../_variables/features.dart';
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';
-import '../../../../_widgets/others/forms/input.dart';
+import '../../../../_widgets/forms/input.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../../_widgets/others/toast.dart';

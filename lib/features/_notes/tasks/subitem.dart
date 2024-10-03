@@ -13,8 +13,8 @@ import '../../../_widgets/others/text.dart';
 import '../../files/file_list.dart';
 import '../../reminders/reminder.dart';
 import '../_helpers/quick_edit.dart';
+import 'w_items/edit_subitem.dart';
 import 'w_items/flag_list.dart';
-import 'w_items/item_dialog.dart';
 
 class SubItem extends StatefulWidget {
   const SubItem({super.key, required this.sitem, required this.item});

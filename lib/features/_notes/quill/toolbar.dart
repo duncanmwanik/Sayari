@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../__styling/spacing.dart';
-import '../../../../__styling/variables.dart';
-import '../../../../_providers/_providers.dart';
-import '../../../../_widgets/buttons/button.dart';
-import '../../../../_widgets/others/icons.dart';
-import '../../../../_widgets/others/text.dart';
-import '../../state/quill.dart';
+import '../../../__styling/spacing.dart';
+import '../../../__styling/variables.dart';
+import '../../../_providers/_providers.dart';
+import '../../../_widgets/buttons/button.dart';
+import '../../../_widgets/others/icons.dart';
+import '../../../_widgets/others/text.dart';
+import '../state/quill.dart';
 import 'embed_image.dart';
 
 Widget getQuillToolbar() {

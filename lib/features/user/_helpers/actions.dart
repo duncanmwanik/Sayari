@@ -132,9 +132,7 @@ Future<void> deleteGroup(String groupName) async {
       title: 'Delete group: $groupName?',
       yeslabel: 'Delete',
       onAccept: () async {
-        showSnackBar('Deleting <b>$groupName</b>...');
         userGroupsBox.delete(groupName);
-
         syncToCloud(db: 'users', space: liveUser(), parent: 'groups', action: 'd', id: groupName);
       },
     );

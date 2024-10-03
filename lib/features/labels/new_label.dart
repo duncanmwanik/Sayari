@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
 import '../../_widgets/buttons/button.dart';
-import '../../_widgets/others/forms/input.dart';
+import '../../_widgets/forms/input.dart';
 import '../../_widgets/others/icons.dart';
 import '_helpers/add_label.dart';
 
@@ -20,7 +20,7 @@ class NewlabelInput extends StatefulWidget {
 class _NewlabelInputState extends State<NewlabelInput> {
   final TextEditingController newLabelController = TextEditingController();
   FocusNode focusNode = FocusNode();
-  bool showSaveButton = false;
+  bool isAdd = false;
 
   @override
   Widget build(BuildContext context) {
@@ -29,37 +29,37 @@ class _NewlabelInputState extends State<NewlabelInput> {
         //
         AppButton(
           onPressed: () {
-            if (showSaveButton) {
-              setState(() => showSaveButton = false);
+            if (isAdd) {
+              setState(() => isAdd = false);
               newLabelController.clear();
               focusNode.unfocus();
             } else {
-              setState(() => showSaveButton = true);
+              setState(() => isAdd = true);
               focusNode.requestFocus();
             }
           },
           noStyling: true,
           isSquare: true,
-          child: AppIcon(showSaveButton ? closeIcon : Icons.add_rounded, faded: true, size: 18),
+          child: AppIcon(isAdd ? closeIcon : Icons.add_rounded, faded: true, size: 18),
         ),
         //
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(top: 2),
+            padding: const EdgeInsets.only(top: 2, left: 2),
             child: DataInput(
-              hintText: 'New Label',
+              hintText: 'Add Label',
               onFieldSubmitted: (value) async {
                 if (value.trim().isNotEmpty) {
                   await addLabel(value.trim());
                   newLabelController.clear();
-                  setState(() => showSaveButton = false);
+                  setState(() => isAdd = false);
                   hideKeyboard();
                 }
               },
-              onTap: () => setState(() => showSaveButton = true),
+              onTap: () => setState(() => isAdd = true),
               controller: newLabelController,
               focusNode: focusNode,
-              fontSize: 13,
+              fontSize: 12,
               maxLines: 3,
               textInputAction: TextInputAction.done,
               textCapitalization: TextCapitalization.sentences,
@@ -71,7 +71,7 @@ class _NewlabelInputState extends State<NewlabelInput> {
           ),
         ),
         //
-        if (showSaveButton)
+        if (isAdd)
           AppButton(
             onPressed: () async {
               if (newLabelController.text.trim().isNotEmpty) {
@@ -80,7 +80,7 @@ class _NewlabelInputState extends State<NewlabelInput> {
                 newLabelController.clear();
               }
               focusNode.unfocus();
-              setState(() => showSaveButton = false);
+              setState(() => isAdd = false);
             },
             noStyling: true,
             isSquare: true,

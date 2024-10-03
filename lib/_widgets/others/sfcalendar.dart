@@ -18,6 +18,7 @@ class SfCalendar extends StatelessWidget {
       this.isMultiple = false,
       this.isOverview = false,
       this.isBookingCalendar = false,
+      this.noInitial = true,
       this.selectedDates = const [],
       this.onSelect,
       this.color});
@@ -27,6 +28,7 @@ class SfCalendar extends StatelessWidget {
   final bool isMultiple;
   final bool isOverview;
   final bool isBookingCalendar;
+  final bool noInitial;
   final List selectedDates;
   final Function(DateTime date)? onSelect;
   final Color? color;
@@ -113,8 +115,8 @@ class SfCalendar extends StatelessWidget {
           selectionMode: isMultiple ? DateRangePickerSelectionMode.multiple : DateRangePickerSelectionMode.single,
           selectionColor: styler.accentColor(),
           //initial selected dates
-          initialSelectedDate: DateTime.tryParse(initialDate ?? date.selectedDate) ?? DateTime.now(),
-          initialDisplayDate: DateTime.tryParse(initialDate ?? date.selectedDate) ?? DateTime.now(),
+          initialSelectedDate: noInitial ? null : DateTime.tryParse(initialDate ?? date.selectedDate) ?? DateTime.now(),
+          initialDisplayDate: noInitial ? null : DateTime.tryParse(initialDate ?? date.selectedDate) ?? DateTime.now(),
           initialSelectedDates: initialDates.isNotEmpty
               ? List.generate(
                   initialDates.length,

@@ -21,33 +21,38 @@ class ProgressBar extends StatelessWidget {
         child: Padding(
           padding: paddingS('l'),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              // percentage
-              AppText(
-                text: '${(item.checkedCount() / item.taskCount() * 100).truncate()} %',
-                size: tinySmall,
-                color: styler.accentColor(),
-                weight: FontWeight.bold,
-              ),
-              spw(),
-              // bar
-              Expanded(
-                child: LinearProgressIndicator(
-                  value: item.checkedCount() / item.taskCount(),
-                  borderRadius: BorderRadius.circular(borderRadiusSmall),
-                  backgroundColor: styler.accentColor(2),
-                  valueColor: AlwaysStoppedAnimation(styler.accentColor()),
-                ),
-              ),
-              spw(),
               // count text
               AppText(
                 text: '${item.checkedCount()} / ${item.taskCount()}',
                 color: isComplete ? styler.accent : null,
-                size: tiny,
+                size: tinySmall,
                 bgColor: item.color(),
-                faded: true,
+                extraFaded: true,
               ),
+              spw(),
+              // bar
+              SizedBox(
+                height: medium,
+                width: medium,
+                child: CircularProgressIndicator(
+                  value: item.checkedCount() / item.taskCount(),
+                  backgroundColor: styler.accentColor(2),
+                  valueColor: AlwaysStoppedAnimation(styler.accentColor()),
+                  strokeCap: StrokeCap.round,
+                  strokeWidth: 3,
+                ),
+              ),
+              spw(),
+              // percentage
+              AppText(
+                text: '${(item.checkedCount() / item.taskCount() * 100).truncate()}%',
+                size: tinySmall,
+                color: styler.accentColor(),
+                weight: FontWeight.bold,
+              ),
+              //
             ],
           ),
         ),

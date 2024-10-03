@@ -14,7 +14,6 @@ import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '../_spaces/_helpers/checks_space.dart';
-import '../ai/ai_sheet.dart';
 import '../files/_helpers/helper.dart';
 import '../files/_helpers/upload.dart';
 import '../files/file_list.dart';
@@ -48,7 +47,7 @@ class MessageInputBar extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 2, vertical: 1),
                 decoration: BoxDecoration(
                   color: styler.appColor(1),
-                  borderRadius: BorderRadius.circular(borderRadiusTiny),
+                  borderRadius: BorderRadius.circular(borderRadiusSmall),
                 ),
                 child: isAdmin()
                     ? Column(
@@ -64,23 +63,24 @@ class MessageInputBar extends StatelessWidget {
                               //
                               AppButton(
                                 onPressed: () => getFilesToUpload(),
-                                tooltip: 'Attach',
+                                tooltip: 'Attach File',
                                 height: 45,
                                 width: 45,
                                 noStyling: true,
                                 isSquare: true,
+                                borderRadius: borderRadiusSmall,
                                 child: AppIcon(Icons.add_rounded),
                               ),
                               //
-                              AppButton(
-                                onPressed: () => showAISheet(),
-                                tooltip: 'Ask AI',
-                                height: 45,
-                                width: 45,
-                                noStyling: true,
-                                isSquare: true,
-                                child: AppIcon(Icons.bubble_chart_sharp),
-                              ),
+                              // AppButton(
+                              //   onPressed: () => showAISheet(),
+                              //   tooltip: 'Ask AI',
+                              //   height: 45,
+                              //   width: 45,
+                              //   noStyling: true,
+                              //   isSquare: true,
+                              //   child: AppIcon(Icons.bubble_chart_sharp),
+                              // ),
                               // Message Input
                               Expanded(
                                 child: TextFormField(

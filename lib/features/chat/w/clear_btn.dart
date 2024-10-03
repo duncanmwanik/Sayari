@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../__styling/variables.dart';
 import '../../../_providers/input.dart';
 import '../../../_variables/ui.dart';
 import '../../../_widgets/buttons/button.dart';
@@ -22,10 +23,11 @@ class ClearMessageButton extends StatelessWidget {
             input.remove('n');
           },
           noStyling: true,
-          tooltip: 'Clear Message',
+          tooltip: 'Clear Text',
           height: 45,
           width: 45,
           isSquare: true,
+          borderRadius: borderRadiusSmall,
           child: AppIcon(Icons.close, extraFaded: true),
         ),
       );

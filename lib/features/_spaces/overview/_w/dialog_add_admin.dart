@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';
-import '../../../../_widgets/others/forms/input.dart';
+import '../../../../_widgets/forms/input.dart';
 import '../../_helpers/admin_helpers.dart';
 
 Future showAddAdminDialog() {

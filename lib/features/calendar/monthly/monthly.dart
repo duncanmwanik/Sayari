@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_services/hive/get_data.dart';
@@ -68,7 +69,11 @@ class MonthlyView extends StatelessWidget {
                                       width: width / 7,
                                       height: height / 6,
                                       decoration: BoxDecoration(
-                                        color: date.isToday() ? styler.accentColor(0.5) : null,
+                                        color: date.isToday()
+                                            ? styler.accentColor(0.3)
+                                            : date.isWeekend()
+                                                ? styler.appColor(isDarkOnly() ? 0.25 : 0.5)
+                                                : null,
                                         border: Border.all(color: styler.borderColor(), width: styler.isDark ? 0.1 : 0.2),
                                       ),
                                       child: Stack(

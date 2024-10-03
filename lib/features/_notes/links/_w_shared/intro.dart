@@ -9,7 +9,7 @@ import '../../../../_widgets/others/text.dart';
 import '../../../files/image.dart';
 import '../../../share/w/share_link.dart';
 import '../../../user/dp.dart';
-import '../../w/quill/editor_style.dart';
+import '../../quill/editor_style.dart';
 
 class LinksIntro extends StatelessWidget {
   const LinksIntro({super.key, required this.userId, required this.userName, required this.data});

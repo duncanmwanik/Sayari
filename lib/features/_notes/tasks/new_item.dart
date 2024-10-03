@@ -7,7 +7,7 @@ import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/others/forms/input.dart';
+import '../../../_widgets/forms/input.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../_spaces/_helpers/checks_space.dart';
@@ -63,6 +63,7 @@ class _NewItemInputState extends State<NewItemInput> {
           children: [
             tsph(),
             // Add Button
+            if (!showSaveButton) tph(),
             if (!showSaveButton)
               AppButton(
                 isSquare: true,

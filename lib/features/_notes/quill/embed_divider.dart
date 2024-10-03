@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
-import '../../../../_providers/_providers.dart';
+import '../../../_providers/_providers.dart';
 
 class QuillEmbedDivider extends CustomBlockEmbed {
   QuillEmbedDivider(String data) : super(noteType, data);

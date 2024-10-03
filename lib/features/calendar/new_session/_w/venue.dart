@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../_providers/input.dart';
-import '../../../../_widgets/others/forms/input.dart';
+import '../../../../_widgets/forms/input.dart';
 import '../../../../_widgets/others/icons.dart';
 
 class Venue extends StatelessWidget {

@@ -6,11 +6,11 @@ import '../../_helpers/navigation.dart';
 import '../../_variables/colors.dart';
 import '../../_widgets/buttons/action.dart';
 import '../../_widgets/buttons/button.dart';
+import '../../_widgets/forms/input.dart';
 import '../../_widgets/menu/menu_item.dart';
 import '../../_widgets/others/checkbox.dart';
 import '../../_widgets/others/color.dart';
 import '../../_widgets/others/color_menu.dart';
-import '../../_widgets/others/forms/input.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/divider.dart';
 import '_helpers/manage_flag.dart';
@@ -81,6 +81,7 @@ class _FlagItemState extends State<Flag> {
   @override
   Widget build(BuildContext context) {
     Color? textColor = isNew ? null : backgroundColors[flagColor]!.textColor;
+    Color? cursorColor = isNew ? white : backgroundColors[flagColor]!.textColor;
 
     return Padding(
       padding: paddingS('lrb'),
@@ -94,6 +95,7 @@ class _FlagItemState extends State<Flag> {
                 ColorButton(
                   isSmall: true,
                   menuItems: colorMenu(
+                    showRemove: false,
                     selectedColor: flagColor,
                     onSelect: (newColor) => setState(() => flagColor = newColor),
                   ),
@@ -119,6 +121,7 @@ class _FlagItemState extends State<Flag> {
                     hintText: isNew ? 'Add Flag' : 'Flag',
                     controller: controller,
                     autofocus: isEdit,
+                    fontSize: small,
                     maxLines: 3,
                     isDense: true,
                     enabled: isEdit || isNew,
@@ -126,6 +129,7 @@ class _FlagItemState extends State<Flag> {
                     onFieldSubmitted: (_) => update(),
                     onTap: () => setState(() => isEdit = true),
                     textColor: textColor,
+                    cursorColor: cursorColor,
                     color: transparent,
                     hoverColor: transparent,
                     contentPadding: noPadding,

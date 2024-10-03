@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
-import '../buttons/button.dart';
+import '../_widgets/buttons/button.dart';
+import 'spacing.dart';
 import 'theme_menu.dart';
+import 'variables.dart';
 
 class ThemeButton extends StatelessWidget {
   const ThemeButton({super.key, this.showText = false, this.rightPadding = true});

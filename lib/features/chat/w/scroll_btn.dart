@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
-import 'var.dart';
 
 class ScrollChatsButton extends StatefulWidget {
   const ScrollChatsButton({super.key});
@@ -18,16 +16,16 @@ class _ScrollChatsButtonState extends State<ScrollChatsButton> {
 
   @override
   void initState() {
-    chatScrollController.addListener(listenForScrollEntent);
+    // chatScrollController.addListener(listenForScrollEntent);
     super.initState();
   }
 
   void listenForScrollEntent() {
-    if (chatScrollController.offset > 80.h) {
-      if (!visible) setState(() => visible = true);
-    } else {
-      if (visible) setState(() => visible = false);
-    }
+    // if (chatScrollController.offset > 80.h) {
+    //   if (!visible) setState(() => visible = true);
+    // } else {
+    //   if (visible) setState(() => visible = false);
+    // }
   }
 
   @override
@@ -37,11 +35,11 @@ class _ScrollChatsButtonState extends State<ScrollChatsButton> {
       child: Padding(
         padding: paddingM('b'),
         child: AppButton(
-          onPressed: () => chatScrollController.animateTo(
-            chatScrollController.position.minScrollExtent,
-            curve: Curves.easeOut,
-            duration: const Duration(milliseconds: 100),
-          ),
+          // onPressed: () => chatScrollController.animateTo(
+          //   chatScrollController.position.minScrollExtent,
+          //   curve: Curves.easeOut,
+          //   duration: const Duration(milliseconds: 100),
+          // ),
           height: 45,
           width: 45,
           isSquare: true,

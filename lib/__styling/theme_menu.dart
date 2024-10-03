@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
-import '../../_helpers/navigation.dart';
-import '../../_providers/_providers.dart';
-import '../../_variables/colors.dart';
-import '../buttons/button.dart';
-import '../menu/menu_item.dart';
-import 'color_item.dart';
-import 'others/divider.dart';
-import 'text.dart';
+import '../_helpers/navigation.dart';
+import '../_providers/_providers.dart';
+import '../_variables/colors.dart';
+import '../_widgets/buttons/button.dart';
+import '../_widgets/menu/menu_item.dart';
+import '../_widgets/others/color_item.dart';
+import '../_widgets/others/others/divider.dart';
+import '../_widgets/others/text.dart';
+import 'helpers.dart';
+import 'spacing.dart';
+import 'variables.dart';
 
 List<Widget> themeMenu() {
   Map<String, ColorObject> accentColors = {...backgroundColors};

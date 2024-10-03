@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
-import '../../_helpers/debug.dart';
 import '../../_providers/input.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
@@ -26,7 +25,6 @@ class FileList extends StatelessWidget {
       List imageIds = fileData_.keys.toList().where((key) => isImageFile(fileData_[key])).toList();
       Map images = {...fileData_};
       images.removeWhere((key, value) => !imageIds.contains(key));
-      printThis(fileData_);
 
       return Visibility(
         visible: fileData_.isNotEmpty,

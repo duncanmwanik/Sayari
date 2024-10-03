@@ -35,6 +35,7 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
         onEnter: (value) => state.hover.set(widget.item.sid),
         onExit: (value) => state.hover.reset(),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // user dp
             Align(

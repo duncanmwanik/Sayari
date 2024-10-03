@@ -11,7 +11,7 @@ import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';
-import '../../../../_widgets/others/forms/input.dart';
+import '../../../../_widgets/forms/input.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../_spaces/_helpers/checks_space.dart';
 import '../../../files/_helpers/upload.dart';
@@ -72,7 +72,7 @@ Future<void> showItemDialog(Item sitem) async {
                       ),
                       //
                       AppButton(
-                        tooltip: 'Attach Files',
+                        tooltip: 'Attach File',
                         onPressed: () async => await getFilesToUpload(),
                         isSquare: true,
                         child: AppIcon(Icons.attach_file_rounded, faded: true, size: 16),
@@ -89,12 +89,12 @@ Future<void> showItemDialog(Item sitem) async {
                         child: AppIcon(Icons.flag_outlined, faded: true, size: 16),
                       ),
                       //
-                      AppButton(
-                        tooltip: 'Add People',
-                        onPressed: () {},
-                        isSquare: true,
-                        child: AppIcon(Icons.person, faded: true, size: 16),
-                      ),
+                      // AppButton(
+                      //   tooltip: 'Add People',
+                      //   onPressed: () {},
+                      //   isSquare: true,
+                      //   child: AppIcon(Icons.person, faded: true, size: 16),
+                      // ),
                       //
                     ],
                   ),

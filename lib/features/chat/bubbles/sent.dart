@@ -40,6 +40,7 @@ class _SentMessageBubbleState extends State<SentMessageBubble> {
         onExit: (value) => state.hover.reset(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // options
             MessageActions(item: widget.item, isSent: true),

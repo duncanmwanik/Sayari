@@ -5,9 +5,7 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../explore/explore_sheet.dart';
 import '../../pomodoro/sheet.dart';
-import '../../saved/saved_sheet.dart';
 import '../_helpers/go_to_view.dart';
 import '../_helpers/nav.dart';
 import 'pinned_menu.dart';
@@ -25,22 +23,13 @@ class NavMenu extends StatelessWidget {
         // workspace
         if (showWorkspace) MenuItem(label: 'Workspace', faded: true),
         if (!showNavItem(feature.chat)) MenuItem(label: 'Chat', leading: Icons.message_rounded, onTap: () => goToView(feature.chat)),
-        //
-        //
         if (showWorkspace) menuDivider(),
         // user
         if (showUser) MenuItem(label: 'User', faded: true),
-        //
-        if (!showNavItem(feature.explore)) MenuItem(label: 'Explore', leading: Icons.explore, onTap: () => showExploreSheet()),
-        //
-        if (!showNavItem(feature.saved) || !showPanelOptions())
-          MenuItem(label: 'Saved', leading: Icons.bookmark, onTap: () => showSavedSheet()),
-        //
-        if (!showNavItem(feature.pomodoro) || !showPanelOptions())
-          MenuItem(label: 'Pomodoro', leading: Icons.timer, onTap: () => showPomodoroSheet()),
-        //
+        // MenuItem(label: 'Explore', leading: Icons.explore, onTap: () => showExploreSheet()),
+        // MenuItem(label: 'Saved', leading: Icons.bookmark, onTap: () => showSavedSheet()),
+        MenuItem(label: 'Pomodoro', leading: Icons.timer, onTap: () => showPomodoroSheet()),
         if (showWorkspace || showUser) menuDivider(),
-        //
         MenuItem(label: 'Customize', leading: Icons.tune, menuItems: pinnedNavOptions()),
         //
       ],

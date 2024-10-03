@@ -8,7 +8,6 @@ import '../../../_providers/theme.dart';
 import '../../../_providers/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
-import '../../explore/explore_sheet.dart';
 import '../_helpers/nav.dart';
 import 'nav_item.dart';
 import 'nav_menu.dart';
@@ -40,10 +39,6 @@ class HorizontalNavigationBox extends StatelessWidget {
                         navItem(sessionsIcon, size: 17, feature.calendar, views.view == feature.calendar),
                         //
                         if (showNavItem(feature.chat)) navItem(chatIcon, feature.chat, views.view == feature.chat),
-                        //
-                        //
-                        if (showNavItem(feature.explore))
-                          navItem(exploreIcon, feature.explore, views.view == feature.explore, onPressed: () => showExploreSheet()),
                         //
                         NavMenu(),
                         //

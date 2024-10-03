@@ -26,44 +26,39 @@ class ItemFlag extends StatelessWidget {
     String color = flagData.substring(0, flagData.indexOf(','));
     String flag = flagData.substring(flagData.indexOf(',') + 1);
 
-    if (isTinyFlag) {
-      return Container(
-        width: 30,
-        height: 8,
-        decoration: BoxDecoration(
-          color: backgroundColors[color]!.color,
-          borderRadius: BorderRadius.circular(borderRadiusSmall),
-        ),
-      );
-    } else {
-      return AppButton(
-        menuWidth: 300,
-        menuItems: flagsMenu(
-          alreadySelected: state.input.item.flags(),
-          onDone: (newFlags) => newFlags.isNotEmpty ? state.input.update('g', joinList(newFlags)) : state.input.remove('g'),
-        ),
-        color: backgroundColors[color]!.color,
-        padding: padding(l: 8, t: 2, b: 2, r: 0),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            // flag text
-            Flexible(child: AppText(text: flag, color: backgroundColors[color]!.textColor)),
-            //
-            spw(),
-            // remove flag
-            if (isAdmin())
-              AppButton(
-                onPressed: onPressedDelete ?? () {},
-                noStyling: true,
-                isSquare: true,
-                child: AppIcon(Icons.close, color: backgroundColors[color]!.textColor, size: normal),
-              ),
-            //
-          ],
-        ),
-      );
-    }
+    return AppButton(
+      menuWidth: 300,
+      menuItems: isTinyFlag
+          ? null
+          : flagsMenu(
+              alreadySelected: state.input.item.flags(),
+              onDone: (newFlags) => newFlags.isNotEmpty ? state.input.update('g', joinList(newFlags)) : state.input.remove('g'),
+            ),
+      color: backgroundColors[color]!.color,
+      padding: isTinyFlag ? noPadding : padding(l: 8, t: 2, b: 2, r: 4),
+      width: isTinyFlag ? 30 : null,
+      height: isTinyFlag ? 8 : null,
+      smallVerticalPadding: true,
+      child: isTinyFlag
+          ? null
+          : Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // flag text
+                Flexible(child: AppText(text: flag, color: backgroundColors[color]!.textColor)),
+                spw(),
+                // remove flag
+                if (isAdmin())
+                  AppButton(
+                    onPressed: onPressedDelete ?? () {},
+                    noStyling: true,
+                    padding: noPadding,
+                    child: AppIcon(Icons.close, color: backgroundColors[color]!.textColor, size: normal),
+                  ),
+                //
+              ],
+            ),
+    );
   }
 }

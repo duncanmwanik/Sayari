@@ -7,7 +7,7 @@ import '../../../_providers/_providers.dart';
 import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
-import '../../../_widgets/others/forms/input.dart';
+import '../../../_widgets/forms/input.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../_notes/_helpers/create_item.dart';

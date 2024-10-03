@@ -10,7 +10,6 @@ Future<void> signOutUser() async {
       yeslabel: 'Sign Out',
       onAccept: () async {
         await FirebaseAuth.instance.signOut();
-        // await Hive.deleteFromDisk();
         navigatorState.currentContext!.go('/getstarted');
       });
 }
