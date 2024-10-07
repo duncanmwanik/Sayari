@@ -66,11 +66,19 @@ class Entry extends StatelessWidget {
                                 ? Colors.red.shade300
                                 : Colors.blue.shade300),
                     pw(5),
-                    Flexible(child: AppText(size: small, text: entryData['y'])),
+                    Flexible(
+                        child: AppText(
+                            size: small,
+                            text: entryData['y'],
+                            color: isIncome
+                                ? Colors.green.shade300
+                                : isExpense
+                                    ? Colors.red.shade300
+                                    : Colors.blue.shade300)),
                     spw(),
                     AppIcon(Icons.lens, size: 4, faded: true),
                     spw(),
-                    Flexible(child: AppText(size: small, text: date)),
+                    Flexible(child: AppText(size: small, text: date, faded: true)),
                   ],
                 ),
                 //

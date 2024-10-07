@@ -38,7 +38,9 @@ class SpaceName extends StatelessWidget {
                       child: AppButton(
                         onPressed: () => openDrawer(),
                         tooltip: 'View Workspaces',
-                        color: styler.accentColor(1),
+                        showBorder: true,
+                        borderWidth: 0.3,
+                        color: styler.appColor(1),
                         isSquare: isMin,
                         smallRightPadding: !isMin,
                         child: Row(
@@ -49,13 +51,7 @@ class SpaceName extends StatelessWidget {
                                 valueListenable: spaceNamesBox.listenable(),
                                 builder: (context, box, widget) {
                                   String name = box.get(spaceId, defaultValue: 'Select a space');
-                                  return AppText(
-                                    size: medium,
-                                    text: name,
-                                    textAlign: TextAlign.start,
-                                    overflow: TextOverflow.ellipsis,
-                                    weight: FontWeight.w600,
-                                  );
+                                  return AppText(text: name, textAlign: TextAlign.start, overflow: TextOverflow.ellipsis);
                                 }),
                             //
                             AppIcon(Icons.arrow_drop_down, tiny: isMin, faded: true),

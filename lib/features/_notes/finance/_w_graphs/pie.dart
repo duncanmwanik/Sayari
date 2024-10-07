@@ -9,10 +9,12 @@ import '../../../../_widgets/others/text.dart';
 import 'indicator.dart';
 
 class AppPie extends StatefulWidget {
-  const AppPie({super.key, required this.label, required this.data});
+  const AppPie({super.key, required this.label, required this.data, this.size = 200, this.showInfo = true});
 
   final String label;
   final List data;
+  final double size;
+  final bool showInfo;
 
   @override
   State<AppPie> createState() => _AppPieState();
@@ -27,28 +29,27 @@ class _AppPieState extends State<AppPie> {
       mainAxisSize: MainAxisSize.min,
       children: [
         //
-        sph(),
-        //
-        Align(
-          alignment: Alignment.topLeft,
-          child: AppButton(
-            noStyling: true,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AppIcon(Icons.circle, size: small, faded: true),
-                spw(),
-                AppText(text: widget.label, faded: true, weight: FontWeight.bold),
-              ],
+        if (widget.showInfo) sph(),
+        if (widget.showInfo)
+          Align(
+            alignment: Alignment.topLeft,
+            child: AppButton(
+              noStyling: true,
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AppIcon(Icons.circle, size: small, faded: true),
+                  spw(),
+                  AppText(text: widget.label, faded: true, weight: FontWeight.bold),
+                ],
+              ),
             ),
           ),
-        ),
-        //
-        sph(),
+        if (widget.showInfo) sph(),
         //
         SizedBox(
-          width: 200,
-          height: 200,
+          width: widget.size,
+          height: widget.size,
           child: PieChart(
             PieChartData(
               pieTouchData: PieTouchData(
@@ -64,7 +65,7 @@ class _AppPieState extends State<AppPie> {
               ),
               borderData: FlBorderData(show: false),
               sectionsSpace: 0,
-              centerSpaceRadius: 40,
+              centerSpaceRadius: widget.size / 5,
               sections: List.generate(widget.data.length, (index) {
                 Map pieObject = widget.data[index];
 
@@ -77,9 +78,9 @@ class _AppPieState extends State<AppPie> {
           ),
         ),
         //
-        mph(),
-        //
-        for (var pieObject in widget.data) Indicator(color: pieObject['color'], text: pieObject['title']),
+        if (widget.showInfo) mph(),
+        if (widget.showInfo)
+          for (var pieObject in widget.data) Indicator(color: pieObject['color'], text: pieObject['title']),
         //
       ],
     );

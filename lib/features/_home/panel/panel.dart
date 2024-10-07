@@ -39,8 +39,8 @@ class Panel extends StatelessWidget {
             Padding(padding: paddingS('ltrb'), child: SpaceName(isMin: !showPanel)),
             if (!showPanel) tph(),
             Padding(padding: paddingS('lr'), child: AppDivider()),
-            sph(),
             //
+            msph(),
             Expanded(
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,

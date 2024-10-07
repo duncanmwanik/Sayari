@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_providers/input.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/text.dart';
 import '../../calendar/_helpers/date_time/date_info.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
@@ -23,7 +23,6 @@ class CheckedDates extends StatelessWidget {
 
       return Column(
         children: [
-          //
           // hide/show checked dates
           Padding(
             padding: padding(s: 'tb'),
@@ -33,23 +32,17 @@ class CheckedDates extends StatelessWidget {
               isSquare: true,
               hoverColor: transparent,
               padding: EdgeInsets.zero,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
                 children: [
-                  Row(
-                    children: [
-                      AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, faded: true),
-                      tpw(),
-                      AppText(text: '${isExpanded ? 'Hide' : 'Show'} checked dates', faded: true),
-                    ],
-                  ),
-                  AppDivider(height: mediumHeight()),
+                  AppIcon(isExpanded ? Icons.visibility_off : Icons.visibility, size: normal, faded: true),
+                  spw(),
+                  AppText(text: '${isExpanded ? 'Hide' : 'Show'} checked dates', faded: true),
                 ],
               ),
             ),
           ),
-          //
+          mph(),
+          // checked dates
           if (isExpanded)
             checkedDates.isNotEmpty
                 ? Column(
@@ -60,9 +53,8 @@ class CheckedDates extends StatelessWidget {
                         padding: EdgeInsets.only(top: 4),
                         child: AppButton(
                           onPressed: () {},
-                          borderRadius: borderRadiusTiny,
-                          smallLeftPadding: true,
-                          noStyling: true,
+                          padding: paddingC('l8,t6,r4,b6'),
+                          color: styler.appColor(1),
                           child: Row(
                             children: [
                               AppIcon(Icons.circle, size: small, color: styler.accent),
@@ -71,6 +63,13 @@ class CheckedDates extends StatelessWidget {
                               AppIcon(Icons.check_circle, size: medium, extraFaded: true),
                               tpw(),
                               AppText(text: getEditDateTime(data[checkedDate]), extraFaded: true),
+                              spw(),
+                              AppButton(
+                                onPressed: () => state.input.remove(checkedDate),
+                                noStyling: true,
+                                isSquare: true,
+                                child: AppIcon(Icons.close, faded: true, size: normal),
+                              )
                             ],
                           ),
                         ),
@@ -78,6 +77,7 @@ class CheckedDates extends StatelessWidget {
                     }),
                   )
                 : Center(child: AppText(text: 'Check dates to see them here', size: small, faded: true)),
+          //
         ],
       );
     });

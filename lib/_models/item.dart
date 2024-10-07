@@ -76,7 +76,6 @@ class Item {
   bool isDeleted() => data['x'] == '1';
   bool isChecked() => data['v'] == '1';
   bool showChecks() => data['v'] == '1';
-  bool showProgress() => (data['vp'] ?? '1') == '1';
   bool showEditor() => isNote() || isPortfolio() || isBooking() || isLink();
   bool showFooter() => (isNote() || isBooking() || isFinance()) && !isShare();
   bool showEditorOverview() => isNote() || hasPortfolios();

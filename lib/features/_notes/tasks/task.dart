@@ -18,11 +18,11 @@ class NoteTask extends StatelessWidget {
       return Padding(
         padding: item.showChecks() ? paddingM('t') : paddingC('t1'),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,
           children: [
             //
-            if (item.hasTasks() && item.showProgress()) ProgressBar(item: item),
+            if (item.hasTasks() && item.showChecks()) ProgressBar(item: item),
             //
             Flexible(child: ListOfSubItems(item: item)),
             //

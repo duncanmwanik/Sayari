@@ -76,7 +76,7 @@ class _SignInScreenState extends State<AuthScreen> {
           ),
         ),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+          filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
           child: Scaffold(
             backgroundColor: transparent,
             body: Align(

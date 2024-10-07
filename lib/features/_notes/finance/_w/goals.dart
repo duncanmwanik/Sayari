@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
+import '../../../../_providers/_providers.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
@@ -47,7 +48,8 @@ class Goal extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       String goal = input.item.data['g$type'] ?? '';
-      bool isMet = getTotalAmount(type) >= double.parse(goal.isNotEmpty ? goal : '0') && goal.isNotEmpty;
+      bool hasGoal = goal.isNotEmpty;
+      // bool isMet = getTotalAmount(state.input.item, type) >= double.parse(hasGoal ? goal : '0') && hasGoal;
       Color color = type == 'in'
           ? Colors.green
           : type == 'ex'
@@ -58,20 +60,25 @@ class Goal extends StatelessWidget {
       return AppButton(
         onPressed: () => showPeriodBudgetDialog(type: title, key: 'g$type'),
         smallVerticalPadding: true,
-        smallLeftPadding: goal.isEmpty || isMet,
+        smallLeftPadding: !hasGoal,
+        smallRightPadding: hasGoal,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            if (goal.isNotEmpty)
+            // set goal
+            if (!hasGoal) AppIcon(Icons.add_rounded, size: 18),
+            if (!hasGoal) tpw(),
+            if (!hasGoal) Flexible(child: AppText(text: 'Set Goal')),
+            // goal
+            if (hasGoal) Flexible(child: AppText(text: '$title: Ksh. ${formatThousands(double.parse(goal))}')),
+            if (hasGoal) tpw(),
+            if (hasGoal) AppText(text: ' | ', size: small, extraFaded: true),
+            if (hasGoal)
               AppText(
-                text: '${(double.parse(goal.isNotEmpty ? goal : '0') / getTotalAmount(type) * 100).truncate()} %',
+                text: '${(getTotalAmount(state.input.item, type) / double.parse(goal) * 100).truncate()}%',
                 color: color,
                 weight: FontWeight.bold,
               ),
-            if (goal.isNotEmpty) AppText(text: ' | ', size: small, extraFaded: true),
-            if (goal.isEmpty) AppIcon(Icons.add_rounded, size: 18),
-            tpw(),
-            Flexible(child: AppText(text: goal.isNotEmpty ? '$title: Ksh. ${formatThousands(double.parse(goal))}' : 'Set Goal')),
           ],
         ),
       );

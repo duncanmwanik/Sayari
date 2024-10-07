@@ -1,0 +1,8 @@
+{
+    "rules": {
+        "$tableId": {
+            ".write": "root.child($tableId).child('admins').child(auth.uid).exists() || !root.child($tableId).exists() || !root.child($tableId).child('admins').exists()",
+            ".read": "root.child('users').child(auth.uid).child('data').child($tableId).exists() || !root.child('tables').child($tableId).exists() || !root.child('tables').child($tableId).child('admins').exists()"
+        }
+    }
+}

@@ -6,6 +6,7 @@ import '../../../_helpers/helpers.dart';
 import '../../../_providers/_providers.dart';
 import '../_helpers/helpers.dart';
 import 'editor_style.dart';
+import 'embed_divider.dart';
 import 'embed_image.dart';
 
 class SuperEditor extends StatefulWidget {
@@ -36,6 +37,7 @@ class _SuperEditorState extends State<SuperEditor> {
             customStyles: getQuillEditorStyle(),
             embedBuilders: [
               QuillEmbedImageBuilder(addQuillEmbedImageBlock: addQuillEmbedImageBlock),
+              QuillEmbedDividerBuilder(addQuillEmbedDividerBlock: addQuillEmbedDividerBlock),
             ],
           ),
         ),

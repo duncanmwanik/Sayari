@@ -28,7 +28,7 @@ class ShareLink extends StatelessWidget {
         : 'Hey, check out $title! 👇\n\n$link\n\n\nGet all my links at https://sayari.me/duncanmwanik.';
     return AppButton(
       menuItems: [
-        MenuItem(label: 'Share ${isProfile ? 'Profile' : 'Link'}', faded: true),
+        MenuItem(label: 'Share ${isProfile ? 'Profile' : 'Link'}', smallHeight: true, popTrailing: true, faded: true),
         menuDivider(),
         MenuItem(label: 'Copy Link', leading: Icons.copy, onTap: () => copyText(message)),
         MenuItem(label: 'X', leading: FontAwesomeIcons.xTwitter, onTap: () {}),

@@ -13,7 +13,7 @@ import '_w_graphs/graph_menu.dart';
 import '_w_graphs/pie.dart';
 
 Future<void> showFinanceGraphsBottomSheet() async {
-  double allAmounts = getAllAmounts();
+  double allAmounts = getAllAmounts(state.input.item);
 
   await showAppBottomSheet(
     //
@@ -44,26 +44,24 @@ Future<void> showFinanceGraphsBottomSheet() async {
             data: [
               {
                 'title':
-                    'Income: Ksh. ${formatThousands(getTotalAmount('in'))}   ${((getTotalAmount('in') / allAmounts) * 100).toStringAsFixed(2)}%',
+                    'Income: Ksh. ${formatThousands(getTotalAmount(state.input.item, 'in'))}   ${((getTotalAmount(state.input.item, 'in') / allAmounts) * 100).toStringAsFixed(2)}%',
                 'color': Colors.green,
-                'value': (getTotalAmount('in') / allAmounts) * 100,
+                'value': (getTotalAmount(state.input.item, 'in') / allAmounts) * 100,
               },
               {
                 'title':
-                    'Expenses: Ksh. ${formatThousands(getTotalAmount('ex'))}   ${((getTotalAmount('ex') / allAmounts) * 100).toStringAsFixed(2)}%',
+                    'Expenses: Ksh. ${formatThousands(getTotalAmount(state.input.item, 'ex'))}   ${((getTotalAmount(state.input.item, 'ex') / allAmounts) * 100).toStringAsFixed(2)}%',
                 'color': Colors.red,
-                'value': (getTotalAmount('ex') / allAmounts) * 100,
+                'value': (getTotalAmount(state.input.item, 'ex') / allAmounts) * 100,
               },
               {
                 'title':
-                    'Savings: Ksh. ${formatThousands(getTotalAmount('sa'))}   ${((getTotalAmount('sa') / allAmounts) * 100).toStringAsFixed(2)}%',
+                    'Savings: Ksh. ${formatThousands(getTotalAmount(state.input.item, 'sa'))}   ${((getTotalAmount(state.input.item, 'sa') / allAmounts) * 100).toStringAsFixed(2)}%',
                 'color': Colors.blue,
-                'value': (getTotalAmount('sa') / allAmounts) * 100,
+                'value': (getTotalAmount(state.input.item, 'sa') / allAmounts) * 100,
               },
             ],
           ),
-          //
-          // AppDivider(height: largeHeight()),
           //
         ],
       ),

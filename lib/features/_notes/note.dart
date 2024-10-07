@@ -18,12 +18,12 @@ import 'bookings/_w/overview.dart';
 import 'finance/_w/overview.dart';
 import 'habits/overview.dart';
 import 'links/_w/overview.dart';
+import 'quill/overview_editor.dart';
 import 'state/selection.dart';
 import 'tasks/task.dart';
 import 'w/details.dart';
 import 'w/header.dart';
 import 'w/shared_info.dart';
-import 'w/text_overview.dart';
 
 class Note extends StatelessWidget {
   const Note({super.key, required this.item});
@@ -42,7 +42,7 @@ class Note extends StatelessWidget {
         width: isRow ? 500 : (isColumn ? 270 : (isTabAndBelow() ? 45.w : 240)),
         height: isGrid ? 320 : null,
         child: ConstrainedBox(
-          constraints: BoxConstraints(minHeight: 200),
+          constraints: BoxConstraints(minHeight: isRow ? 200 : 320),
           child: MouseRegion(
             onEnter: (event) => isShare() ? null : state.hover.set(item.id),
             onExit: (event) => isShare() ? null : state.hover.reset(),
@@ -90,7 +90,7 @@ class Note extends StatelessWidget {
                               if (item.hasBookings()) BookingOverview(item: item),
                               if (item.hasHabits()) HabitOverview(item: item),
                               if (item.hasLinks()) LinksOverview(item: item),
-                              if (item.showEditorOverview()) Flexible(child: NoteTextOverview(item: item)),
+                              if (item.showEditorOverview()) Flexible(child: NoteEditorOverview(item: item)),
                               if (item.isTask()) Flexible(child: NoteTask(item: item)),
                               if ((item.isPublished() || item.id == '1724578910529') && !isShare()) tph(),
                               if ((item.isPublished() || item.id == '1724578910529') && !isShare())

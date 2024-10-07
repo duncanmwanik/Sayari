@@ -66,14 +66,14 @@ class _NewItemInputState extends State<NewItemInput> {
             if (!showSaveButton) tph(),
             if (!showSaveButton)
               AppButton(
-                isSquare: true,
-                showBorder: widget.item.hasColor(),
-                color: styler.appColor(1),
                 onPressed: () {
                   prepareInput();
                   setState(() => showSaveButton = true);
                   newItemFocusNode.requestFocus();
                 },
+                smallVerticalPadding: true,
+                smallLeftPadding: true,
+                showBorder: widget.item.hasColor(),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

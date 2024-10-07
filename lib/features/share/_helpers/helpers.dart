@@ -14,17 +14,17 @@ String getWindowTitle(String type, String itemTitle) {
                       : 'Sayari';
 }
 
-String sharedId(String? path) {
+String sharedId(String path) {
   try {
-    return path != null ? path.substring(path.length - 13) : 'sayari';
+    return path.substring(path.length - 13);
   } catch (e) {
     return 'sayari';
   }
 }
 
-String sharedSpaceId(String? path) {
+String sharedSpaceId(String path) {
   try {
-    return path != null ? path.substring(path.length - 30, path.length - 13) : 'sayari';
+    return path.substring(path.length - 39, path.length - 13);
   } catch (e) {
     return 'sayari';
   }

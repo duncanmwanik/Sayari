@@ -25,7 +25,6 @@ class ListLayout extends StatelessWidget {
         b: largeHeight(),
       ),
       onReorder: (oldIndex, newIndex) => orderItems(
-        parent: feature.notes,
         oldItemId: state.data.ids[oldIndex],
         newItemId: state.data.ids[newIndex],
         itemsLength: state.data.ids.length,

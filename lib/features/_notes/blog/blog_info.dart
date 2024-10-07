@@ -19,7 +19,7 @@ class BlogInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String editTime = getEditDateTime(data['z'] ?? '${DateTime.now().millisecondsSinceEpoch}');
+    String editTime = getEditDateTimeShort(data['z'] ?? '${DateTime.now().millisecondsSinceEpoch}');
 
     return Row(
       mainAxisSize: MainAxisSize.max,

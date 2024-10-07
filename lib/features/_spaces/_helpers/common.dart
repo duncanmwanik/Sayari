@@ -24,9 +24,9 @@ String publishedSpaceLink([bool link = false]) => link
     ? '$sayariDefaultPath/${features[feature.space]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}'
     : '/${features[feature.space]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}';
 
-String publishedSpaceId(String? path) {
+String publishedSpaceId(String path) {
   try {
-    return path != null ? path.substring(path.length - 17) : 'sayari';
+    return path.substring(path.length - 26);
   } catch (e) {
     return 'sayari';
   }

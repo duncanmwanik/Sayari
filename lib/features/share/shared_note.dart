@@ -40,6 +40,7 @@ class _ShareScreenState extends State<SharedNote> {
     id = sharedId(widget.params);
     spaceId = sharedSpaceId(widget.params);
     state.share.set(widget.type);
+    printThis('$spaceId : $id');
     getSharedData();
   }
 
@@ -54,29 +55,30 @@ class _ShareScreenState extends State<SharedNote> {
           if (feature.isPublish(widget.type)) {
             await cloudService.getData(db: 'spaces', '$spaceId/${feature.notes}/$id/${feature.publish}').then((snapshot) async {
               isPublished = (snapshot.value != null ? snapshot.value as String : '0') == '1';
-              if (!isPublished) return;
+              if (!isPublished) isActive = '0';
             });
-            // get note data
-            await cloudService.getData(db: 'spaces', '$spaceId/${feature.notes}/$id').then((snapshot) async {
-              Map data = snapshot.value != null ? snapshot.value as Map : {};
-              setState(() {
-                userId = data['u'] ?? 'none';
-                noteData = data;
-                state.share.setSharedData(data);
-              });
-            });
-            //
           }
+          // get note data
+          await cloudService.getData(db: 'spaces', '$spaceId/${feature.notes}/$id').then((snapshot) async {
+            Map data = snapshot.value != null ? snapshot.value as Map : {};
+            setState(() {
+              userId = data['u'] ?? 'none';
+              noteData = data;
+              state.share.setSharedData(data);
+            });
+          });
+          //
         } else {
           isActive = '0';
         }
-        printThis(isActive);
       });
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    printThis(isActive);
+
     return Title(
       title: noteData['t'] ?? 'Sayari',
       color: styler.accentColor(),

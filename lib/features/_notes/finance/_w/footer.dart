@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../../__styling/breakpoints.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
+import '../../../../_providers/_providers.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
@@ -25,8 +26,11 @@ class PeriodFooter extends StatelessWidget {
             onPressed: () => showFinanceGraphsBottomSheet(),
             noStyling: true,
             smallLeftPadding: true,
-            child:
-                AppText(size: normal, text: 'Ksh. ${formatThousands(getTotalAmount('in'))}', color: Colors.green, weight: FontWeight.w900),
+            child: AppText(
+                size: normal,
+                text: 'Ksh. ${formatThousands(getTotalAmount(state.input.item, 'in'))}',
+                color: Colors.green,
+                weight: FontWeight.w900),
           ),
           //
           spw(),
@@ -37,7 +41,11 @@ class PeriodFooter extends StatelessWidget {
             onPressed: () => showFinanceGraphsBottomSheet(),
             noStyling: true,
             smallLeftPadding: true,
-            child: AppText(size: normal, text: 'Ksh. ${formatThousands(getTotalAmount('ex'))}', color: Colors.red, weight: FontWeight.w900),
+            child: AppText(
+                size: normal,
+                text: 'Ksh. ${formatThousands(getTotalAmount(state.input.item, 'ex'))}',
+                color: Colors.red,
+                weight: FontWeight.w900),
           ),
           //
           spw(),
@@ -48,8 +56,11 @@ class PeriodFooter extends StatelessWidget {
             onPressed: () => showFinanceGraphsBottomSheet(),
             noStyling: true,
             smallLeftPadding: true,
-            child:
-                AppText(size: normal, text: 'Ksh. ${formatThousands(getTotalAmount('sa'))}', color: Colors.blue, weight: FontWeight.w900),
+            child: AppText(
+                size: normal,
+                text: 'Ksh. ${formatThousands(getTotalAmount(state.input.item, 'sa'))}',
+                color: Colors.blue,
+                weight: FontWeight.w900),
           ),
           //
           Spacer(),

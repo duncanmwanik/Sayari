@@ -24,7 +24,7 @@ class PublishBookBody extends StatelessWidget {
       child: Column(
         children: [
           //
-          SharedHeader(userId: sharedData['u'], data: data),
+          SharedHeader(userId: sharedData['o'], data: data),
           //
           Expanded(
             child: isTabAndBelow()

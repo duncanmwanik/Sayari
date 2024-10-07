@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/breakpoints.dart';
+import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../buttons/button.dart';
@@ -28,9 +29,18 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
         ),
         padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
         decoration: BoxDecoration(
-          color: styler.isDark ? Colors.white : Colors.white,
+          color: styler.tertiaryColor(),
           borderRadius: BorderRadius.circular(borderRadiusTinySmall),
-          boxShadow: styler.itemShadow(),
+          boxShadow: isDark()
+              ? null
+              : [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.3),
+                    spreadRadius: 1,
+                    blurRadius: 1.5,
+                    offset: const Offset(0, 0),
+                  )
+                ],
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,23 +53,17 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
               padding: paddingS(),
               child: AppIcon(toastIcons[type], color: color ?? toastColors[type]),
             ),
-            //
             spw(),
-            //
-            Expanded(
-                child: Padding(
-              padding: const EdgeInsets.only(top: 3),
-              child: HtmlText(text: message, color: Colors.black87),
-            )),
-            //
+            // text
+            Expanded(child: Padding(padding: const EdgeInsets.only(top: 3), child: HtmlText(text: message))),
+            // close
             spw(),
-            //
             AppButton(
               onPressed: () => closeToast(),
               noStyling: true,
               isSquare: true,
               padding: paddingS(),
-              child: const AppIcon(Icons.close, color: Colors.black54, size: 18),
+              child: const AppIcon(Icons.close, size: 18),
             ),
             //
           ],

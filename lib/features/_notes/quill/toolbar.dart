@@ -9,6 +9,7 @@ import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../state/quill.dart';
+import 'embed_divider.dart';
 import 'embed_image.dart';
 
 Widget getQuillToolbar() {
@@ -71,6 +72,7 @@ Widget getQuillToolbar() {
         //   ),
         // ),
         //
+        // undo
         if (full)
           QuillToolbarHistoryButton(
             controller: controller,
@@ -78,6 +80,7 @@ Widget getQuillToolbar() {
             options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
           ),
         if (full) mspw(),
+        // redo
         if (full)
           QuillToolbarHistoryButton(
             controller: controller,
@@ -85,29 +88,49 @@ Widget getQuillToolbar() {
             options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
           ),
         if (full) mspw(),
+        // bold
         QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.bold, options: options),
         mspw(),
+        // italic
         if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.italic, options: options),
         if (full) mspw(),
+        // underline
         if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.underline, options: options),
         if (full) mspw(),
+        // clear formatting
         if (full) QuillToolbarClearFormatButton(controller: controller, options: options),
         if (full) mspw(),
+        // list numbered
         QuillToolbarToggleCheckListButton(
           controller: controller,
           options: QuillToolbarToggleCheckListButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
         ),
         mspw(),
-        QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ol, options: options),
-        mspw(),
+        // list bullets
         if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ul, options: options),
         if (full) mspw(),
+        // check list
+        QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ol, options: options),
+        mspw(),
+        // link
         if (full)
           QuillToolbarLinkStyleButton(
               controller: controller, options: QuillToolbarLinkStyleButtonOptions(iconTheme: iconTheme, iconSize: iconSize)),
         if (full) mspw(),
+        // code
         if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.codeBlock, options: options),
         if (full) mspw(),
+        // divider
+        if (full)
+          AppButton(
+            onPressed: () => addQuillEmbedDividerBlock(),
+            tooltip: 'Insert Divider',
+            noStyling: true,
+            isSquare: true,
+            child: AppIcon(Icons.remove, faded: true),
+          ),
+        if (full) mspw(),
+        // font sizes
         // if (full) sizeButton('H1', Attribute.h1),
         // if (full) mspw(),
         // if (full) sizeButton('H2', Attribute.h2),
@@ -122,6 +145,7 @@ Widget getQuillToolbar() {
         if (full) mspw(),
         if (full) sizeButton(' N ', Attribute.header),
         if (full) mspw(),
+        // image
         AppButton(
           onPressed: () => addQuillEmbedImageBlock(),
           tooltip: 'Insert Image',
@@ -129,6 +153,7 @@ Widget getQuillToolbar() {
           isSquare: true,
           child: AppIcon(Icons.image, faded: true),
         ),
+        // more options
         tpw(),
         AppButton(
           onPressed: () => quill.showFullToolBar(!full),

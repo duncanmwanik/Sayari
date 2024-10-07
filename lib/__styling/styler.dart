@@ -108,21 +108,6 @@ class AppStyles {
     }
   }
 
-  // -------------------------- Shadows
-
-  List<BoxShadow>? itemShadow([bool isHovered = true]) {
-    return isDark
-        ? null
-        : [
-            BoxShadow(
-              color: isHovered ? Colors.grey.withOpacity(0.3) : transparent,
-              spreadRadius: 1,
-              blurRadius: 1.5,
-              offset: const Offset(0, 0),
-            )
-          ];
-  }
-
   // -------------------------- Borders
 
   Color? getItemColor(String? bgColor, bool isHovered, {bool isShadeColor = false}) {

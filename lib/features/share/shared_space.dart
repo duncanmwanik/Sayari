@@ -49,16 +49,15 @@ class _ShareScreenState extends State<SharedSpace> {
             Map data = snapshot.value != null ? snapshot.value as Map : {};
 
             if (data.isNotEmpty) {
-              userId = data['o'] ?? 'none';
+              userId = data['o'];
               sharedData = data;
               state.share.setSharedData(data);
+              // get notes
+              await cloudService.getData(db: 'spaces', '$spaceId/${feature.notes}').then((snapshot) async {
+                Map data = snapshot.value != null ? snapshot.value as Map : {};
+                noteData = data;
+              });
             }
-          });
-          // get notes
-          await cloudService.getData(db: 'spaces', '$spaceId/${feature.notes}').then((snapshot) async {
-            Map data = snapshot.value != null ? snapshot.value as Map : {};
-            userId = data['u'] ?? 'none';
-            noteData = data;
           });
         } else {
           isActive = '0';

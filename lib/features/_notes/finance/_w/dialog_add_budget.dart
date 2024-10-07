@@ -16,7 +16,7 @@ Future showPeriodBudgetDialog({required String type, required String key}) {
 
   return showAppDialog(
     //
-    title: 'Set $type',
+    title: type,
     //
     content: Row(
       children: [

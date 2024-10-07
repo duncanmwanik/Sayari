@@ -75,6 +75,7 @@ String getDateFull(String date) => DateFormat('E • MMM d, yyy').format(DateTim
 String getDateFullNoYear(String date) => DateFormat('E • MMM d').format(DateTime.parse(date));
 String getEditDateTime(String timestamp) =>
     DateFormat('MMM d, yyy h:mm a').format(DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp)));
+String getEditDateTimeShort(String timestamp) => DateFormat('MMM d, yyy').format(DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp)));
 bool isCurrentMonth(String date) => DateTime.parse(date).month == state.dateTime.selectedMonth;
 bool isCurrentYear(String date) => DateTime.parse(date).year == DateTime.now().year;
 

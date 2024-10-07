@@ -1,9 +1,9 @@
-import '../../../../_providers/_providers.dart';
+import '../../../../_models/item.dart';
 
-double getTotalAmount(String start) {
+double getTotalAmount(Item item, String start) {
   double total = 0;
 
-  state.input.item.data.forEach((key, value) {
+  item.data.forEach((key, value) {
     if (key.toString().startsWith(start)) {
       double amount = double.parse(value['a']);
       total += amount;
@@ -13,6 +13,6 @@ double getTotalAmount(String start) {
   return total;
 }
 
-double getAllAmounts() {
-  return getTotalAmount('in') + getTotalAmount('ex') + getTotalAmount('sa');
+double getAllAmounts(Item item) {
+  return getTotalAmount(item, 'in') + getTotalAmount(item, 'ex') + getTotalAmount(item, 'sa');
 }

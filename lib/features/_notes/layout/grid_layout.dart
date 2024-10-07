@@ -20,7 +20,7 @@ class GridLayout extends StatelessWidget {
       bool isGrid = state.views.isGrid();
 
       return Align(
-        alignment: Alignment.topLeft,
+        alignment: isGrid ? Alignment.topLeft : Alignment.topCenter,
         child: ReorderableWrap(
           key: UniqueKey(),
           enableReorder: !isShare(),
@@ -33,7 +33,6 @@ class GridLayout extends StatelessWidget {
             b: largeHeight(),
           ),
           onReorder: (oldIndex, newIndex) => orderItems(
-            parent: feature.notes,
             oldItemId: state.data.ids[oldIndex],
             newItemId: state.data.ids[newIndex],
             itemsLength: state.data.ids.length,

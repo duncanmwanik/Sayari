@@ -28,7 +28,7 @@ Future showPeriodEntryDialog({required String financeType, String? entryId, Map 
 
   return showAppDialog(
     //
-    // title: '${isEdit ? 'Edit' : 'Add'} $financeType',
+    title: '${isEdit ? 'Edit' : 'Add'} $financeType',
     //
     content: Consumer<InputProvider>(builder: (context, input, child) {
       String entryType = input.entryType.isNotEmpty ? input.entryType : financeType;
@@ -74,6 +74,7 @@ Future showPeriodEntryDialog({required String financeType, String? entryId, Map 
                   onPressed: () async => await getFilesToUpload().then((fileMap) {}),
                   tooltip: 'Attach File',
                   noStyling: true,
+                  isSquare: true,
                   child: AppIcon(Icons.attach_file_rounded, faded: true, size: 18),
                 ),
                 // /

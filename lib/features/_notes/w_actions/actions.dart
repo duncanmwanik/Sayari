@@ -35,7 +35,7 @@ class ItemActions extends StatelessWidget {
         child: Align(
           alignment: Alignment.topRight,
           child: Padding(
-            padding: paddingC('t4,r4'),
+            padding: paddingC(isPersistent ? '' : 't4,r4'),
             child: AppButton(
               noStyling: isPersistent,
               isSquare: true,
