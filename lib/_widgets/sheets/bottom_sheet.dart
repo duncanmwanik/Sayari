@@ -20,7 +20,7 @@ Future<void> showAppBottomSheet({
   required Widget content,
   Widget? footer,
   bool isShort = false,
-  bool isMinimized = false,
+  bool isFloater = false,
   bool isFull = false,
   bool showTopDivider = true,
   bool showBlur = false,
@@ -42,7 +42,7 @@ Future<void> showAppBottomSheet({
       backgroundColor: transparent,
       constraints: BoxConstraints(
         maxHeight: isShort ? 70.h : double.infinity,
-        maxWidth: isFull ? double.maxFinite : webMaxWidth / (isMinimized ? 1.5 : 0.75),
+        maxWidth: isFull ? double.maxFinite : webMaxWidth / (isFloater ? 1.5 : 0.75),
       ),
       //
       builder: (context) {
@@ -86,20 +86,12 @@ Future<void> showAppBottomSheet({
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            //
                             // Header ----------
-                            //
-                            if (header != null)
-                              Padding(
-                                padding: EdgeInsets.only(top: 6, left: 6, right: 6),
-                                child: header,
-                              ),
+                            if (header != null) Padding(padding: EdgeInsets.only(top: 6, left: 6, right: 6), child: header),
                             if (header != null) ph(6),
                             if (header != null && showTopDivider) AppDivider(),
-                            //
                             // Content ----------
-                            //
-                            isMinimized
+                            isFloater
                                 ? Flexible(
                                     child: Padding(
                                     padding: noContentHorizontalPadding ? noPadding : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
@@ -112,22 +104,15 @@ Future<void> showAppBottomSheet({
                                         : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
                                     child: content,
                                   )),
-                            //
                             // Footer ----------
-                            //
                             if (footer != null)
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   AppDivider(),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-                                    child: footer,
-                                  ),
+                                  Padding(padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6), child: footer),
                                 ],
                               )
-                            //
-                            //
                             //
                           ],
                         ),

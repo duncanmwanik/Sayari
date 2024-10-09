@@ -77,9 +77,9 @@ class _NewItemInputState extends State<NewItemInput> {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    AppIcon(Icons.add_rounded, size: 18, faded: true, bgColor: widget.item.color()),
+                    AppIcon(Icons.add_rounded, size: medium, faded: true, bgColor: widget.item.color()),
                     spw(),
-                    Flexible(child: AppText(text: 'Add Item', bgColor: widget.item.color())),
+                    Flexible(child: AppText(text: 'Add Item', size: small, bgColor: widget.item.color())),
                   ],
                 ),
               ),

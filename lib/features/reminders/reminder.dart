@@ -64,6 +64,7 @@ class Reminder extends StatelessWidget {
             ),
             smallVerticalPadding: true,
             smallLeftPadding: true,
+            smallRightPadding: true,
             color: hasColour(bgColor) ? Colors.white24 : null,
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -74,7 +75,13 @@ class Reminder extends StatelessWidget {
                 // text
                 Flexible(
                   child: FittedBox(
-                    child: AppText(size: small, text: formatReminder(reminder_), faded: hasPassed, bgColor: bgColor, isCrossed: hasPassed),
+                    child: AppText(
+                      size: tiny,
+                      text: formatReminder(reminder_),
+                      faded: true,
+                      bgColor: bgColor,
+                      isCrossed: hasPassed,
+                    ),
                   ),
                 ),
                 //

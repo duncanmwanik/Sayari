@@ -15,25 +15,27 @@ class Finance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(
-      builder: (context, input, child) => Visibility(
-        visible: input.item.data[feature.finances] != null,
-        child: Padding(
-          padding: paddingS('t'),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              //
-              Dates(showIcon: false),
-              Goals(),
-              AddEntry(),
-              Entries(),
-              spph(),
-              //
-            ],
+      builder: (context, input, child) {
+        return Visibility(
+          visible: input.item.data[feature.finances] != null,
+          child: Padding(
+            padding: paddingS('t'),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                //
+                Dates(showIcon: false),
+                Goals(),
+                AddEntry(),
+                Entries(),
+                spph(),
+                //
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

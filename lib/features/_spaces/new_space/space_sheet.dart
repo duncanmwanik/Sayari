@@ -14,7 +14,7 @@ import '_w/title.dart';
 
 Future<void> showSpaceBottomSheet({required bool isNewSpace}) async {
   await showAppBottomSheet(
-    isMinimized: isNewSpace,
+    isFloater: isNewSpace,
     header: Header(isNewSpace),
     //
     content: ListView(

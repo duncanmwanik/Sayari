@@ -43,6 +43,7 @@ Future<void> showItemDialog(Item sitem) async {
             textInputAction: TextInputAction.done,
             enabled: isAdmin(),
             minLines: 2,
+            autofocus: true,
             isDense: true,
             color: styler.appColor(0.7),
           ),
@@ -90,7 +91,7 @@ Future<void> showItemDialog(Item sitem) async {
                       ),
                       //
                       // AppButton(
-                      //   tooltip: 'Add People',
+                      //   tooltip: 'Asign To Members',
                       //   onPressed: () {},
                       //   isSquare: true,
                       //   child: AppIcon(Icons.person, faded: true, size: 16),

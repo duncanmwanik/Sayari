@@ -58,109 +58,106 @@ Widget getQuillToolbar() {
   return Consumer<QuillProvider>(builder: (context, quill, child) {
     bool full = quill.fullToolbar;
 
-    return Wrap(
-      alignment: WrapAlignment.end,
-      crossAxisAlignment: WrapCrossAlignment.center,
-      runSpacing: tinyHeight(),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // QuillToolbarCustomButton(
-        //   controller: controller,
-        //   options: QuillToolbarCustomButtonOptions(
-        //     icon: AppText(text: 'Co', weight: FontWeight.bold),
-        //     iconTheme: iconTheme,
-        //     onPressed: () => print(controller.document.toDelta()),
-        //   ),
-        // ),
-        //
         // undo
-        if (full)
-          QuillToolbarHistoryButton(
-            controller: controller,
-            isUndo: true,
-            options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
-          ),
-        if (full) mspw(),
-        // redo
-        if (full)
-          QuillToolbarHistoryButton(
-            controller: controller,
-            isUndo: false,
-            options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
-          ),
-        if (full) mspw(),
-        // bold
-        QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.bold, options: options),
-        mspw(),
-        // italic
-        if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.italic, options: options),
-        if (full) mspw(),
-        // underline
-        if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.underline, options: options),
-        if (full) mspw(),
-        // clear formatting
-        if (full) QuillToolbarClearFormatButton(controller: controller, options: options),
-        if (full) mspw(),
-        // list numbered
-        QuillToolbarToggleCheckListButton(
+        QuillToolbarHistoryButton(
           controller: controller,
-          options: QuillToolbarToggleCheckListButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
+          isUndo: true,
+          options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
         ),
         mspw(),
-        // list bullets
-        if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ul, options: options),
-        if (full) mspw(),
-        // check list
-        QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ol, options: options),
+        // redo
+        QuillToolbarHistoryButton(
+          controller: controller,
+          isUndo: false,
+          options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
+        ),
         mspw(),
-        // link
-        if (full)
-          QuillToolbarLinkStyleButton(
-              controller: controller, options: QuillToolbarLinkStyleButtonOptions(iconTheme: iconTheme, iconSize: iconSize)),
-        if (full) mspw(),
-        // code
-        if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.codeBlock, options: options),
-        if (full) mspw(),
-        // divider
-        if (full)
-          AppButton(
-            onPressed: () => addQuillEmbedDividerBlock(),
-            tooltip: 'Insert Divider',
-            noStyling: true,
-            isSquare: true,
-            child: AppIcon(Icons.remove, faded: true),
+        //
+        Expanded(
+          child: Wrap(
+            alignment: WrapAlignment.end,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            runSpacing: tinyHeight(),
+            children: [
+              // bold
+              QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.bold, options: options),
+              mspw(),
+              // italic
+              if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.italic, options: options),
+              if (full) mspw(),
+              // underline
+              if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.underline, options: options),
+              if (full) mspw(),
+              // clear formatting
+              if (full) QuillToolbarClearFormatButton(controller: controller, options: options),
+              if (full) mspw(),
+              // list numbered
+              QuillToolbarToggleCheckListButton(
+                controller: controller,
+                options: QuillToolbarToggleCheckListButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
+              ),
+              mspw(),
+              // list bullets
+              if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ul, options: options),
+              if (full) mspw(),
+              // check list
+              QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ol, options: options),
+              mspw(),
+              // link
+              if (full)
+                QuillToolbarLinkStyleButton(
+                    controller: controller, options: QuillToolbarLinkStyleButtonOptions(iconTheme: iconTheme, iconSize: iconSize)),
+              if (full) mspw(),
+              // code
+              if (full) QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.codeBlock, options: options),
+              if (full) mspw(),
+              // divider
+              if (full)
+                AppButton(
+                  onPressed: () => addQuillEmbedDividerBlock(),
+                  tooltip: 'Insert Divider',
+                  noStyling: true,
+                  isSquare: true,
+                  child: AppIcon(Icons.remove, faded: true),
+                ),
+              if (full) mspw(),
+              // font sizes
+              // if (full) sizeButton('H1', Attribute.h1),
+              // if (full) mspw(),
+              // if (full) sizeButton('H2', Attribute.h2),
+              // if (full) mspw(),
+              // if (full) sizeButton('H3', Attribute.h3),
+              // if (full) mspw(),
+              if (full) sizeButton('H4', Attribute.h4),
+              if (full) mspw(),
+              if (full) sizeButton('H5', Attribute.h5),
+              if (full) mspw(),
+              if (full) sizeButton('H6', Attribute.h6),
+              if (full) mspw(),
+              if (full) sizeButton(' N ', Attribute.header),
+              if (full) mspw(),
+              // image
+              AppButton(
+                onPressed: () => addQuillEmbedImageBlock(),
+                tooltip: 'Insert Image',
+                noStyling: true,
+                isSquare: true,
+                child: AppIcon(Icons.image, faded: true),
+              ),
+              // more options
+              tpw(),
+              AppButton(
+                onPressed: () => quill.showFullToolBar(!full),
+                tooltip: full ? 'Minimize' : 'More Styling',
+                noStyling: !full,
+                isSquare: true,
+                child: AppIcon(full ? Icons.keyboard_arrow_right : Icons.more_horiz, faded: true),
+              ),
+            ],
           ),
-        if (full) mspw(),
-        // font sizes
-        // if (full) sizeButton('H1', Attribute.h1),
-        // if (full) mspw(),
-        // if (full) sizeButton('H2', Attribute.h2),
-        // if (full) mspw(),
-        // if (full) sizeButton('H3', Attribute.h3),
-        // if (full) mspw(),
-        if (full) sizeButton('H4', Attribute.h4),
-        if (full) mspw(),
-        if (full) sizeButton('H5', Attribute.h5),
-        if (full) mspw(),
-        if (full) sizeButton('H6', Attribute.h6),
-        if (full) mspw(),
-        if (full) sizeButton(' N ', Attribute.header),
-        if (full) mspw(),
-        // image
-        AppButton(
-          onPressed: () => addQuillEmbedImageBlock(),
-          tooltip: 'Insert Image',
-          noStyling: true,
-          isSquare: true,
-          child: AppIcon(Icons.image, faded: true),
-        ),
-        // more options
-        tpw(),
-        AppButton(
-          onPressed: () => quill.showFullToolBar(!full),
-          tooltip: full ? 'Minimize' : 'More Styling',
-          noStyling: !full,
-          isSquare: true,
-          child: AppIcon(full ? Icons.close_rounded : Icons.more_horiz, faded: true),
         ),
       ],
     );

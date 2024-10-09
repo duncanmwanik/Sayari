@@ -28,7 +28,7 @@ class Item {
       [feature.notes, feature.tasks, feature.links, feature.bookings, feature.habits].firstWhere((key) => data[key] != null);
   String title() => data['t'] != null && data['t'] != '' ? data['t'] : 'Untitled';
   String color() => data['c'] ?? '';
-  String emoji() => data['j'] ?? '';
+  String emoji() => data['ej'] ?? '';
   String content() => data['n'] ?? '';
   String reminder() => data['r'] ?? '';
   String sessionType() => data['y'] ?? 'Session';
@@ -50,7 +50,7 @@ class Item {
   bool exists() => data.isNotEmpty;
   bool hasTitle() => data['t'] != null && data['t'] != '';
   bool hasColor() => hasColour(data['c']);
-  bool hasEmoji() => data['j'] != null;
+  bool hasEmoji() => data['ej'] != null;
   bool hasReminder() => reminder().isNotEmpty;
   bool hasDetails() => reminder().isNotEmpty || labels().isNotEmpty || files().isNotEmpty;
   bool hasOverview() => data['w'] != null && data['w'] != '';

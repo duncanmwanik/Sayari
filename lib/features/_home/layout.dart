@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/breakpoints.dart';
@@ -43,7 +42,6 @@ class AppLayout extends StatelessWidget {
                         color: styler.accentColor(),
                         child: NoScrollBars(
                           child: Column(
-                            mainAxisSize: MainAxisSize.min,
                             children: [
                               // appbar
                               CustomAppBar(),

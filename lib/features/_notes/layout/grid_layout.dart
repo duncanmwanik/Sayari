@@ -19,9 +19,10 @@ class GridLayout extends StatelessWidget {
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       bool isGrid = state.views.isGrid();
 
-      return Align(
-        alignment: isGrid ? Alignment.topLeft : Alignment.topCenter,
+      return SizedBox(
+        width: double.maxFinite,
         child: ReorderableWrap(
+          alignment: isGrid ? WrapAlignment.start : WrapAlignment.center,
           key: UniqueKey(),
           enableReorder: !isShare(),
           ignorePrimaryScrollController: true,

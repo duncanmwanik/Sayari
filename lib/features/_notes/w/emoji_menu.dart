@@ -26,7 +26,7 @@ List<Widget> emojiMenu(Item item) {
         AppButton(
           onPressed: () {
             popWhatsOnTop(); // close menu
-            editItemExtras(parent: item.parent, id: item.id, key: 'd/j');
+            editItemExtras(parent: item.parent, id: item.id, key: 'd/ej');
           },
           width: 30,
           height: 30,
@@ -39,7 +39,7 @@ List<Widget> emojiMenu(Item item) {
           AppButton(
             onPressed: () {
               popWhatsOnTop(); // close menu
-              editItemExtras(parent: item.parent, id: item.id, key: 'j', value: emoji);
+              editItemExtras(parent: item.parent, id: item.id, key: 'ej', value: emoji);
             },
             width: 30,
             height: 30,

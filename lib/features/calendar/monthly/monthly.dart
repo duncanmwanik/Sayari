@@ -69,48 +69,49 @@ class MonthlyView extends StatelessWidget {
                                       width: width / 7,
                                       height: height / 6,
                                       decoration: BoxDecoration(
-                                        color: date.isToday()
-                                            ? styler.accentColor(0.3)
-                                            : date.isWeekend()
-                                                ? styler.appColor(isDarkOnly() ? 0.25 : 0.5)
-                                                : null,
+                                        color: date.isWeekend() ? styler.appColor(isDarkOnly() ? 0.25 : 0.5) : null,
                                         border: Border.all(color: styler.borderColor(), width: styler.isDark ? 0.1 : 0.2),
                                       ),
-                                      child: Stack(
-                                        children: [
-                                          // box
-                                          Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            crossAxisAlignment: CrossAxisAlignment.end,
-                                            children: [
-                                              MonthDayNumberLabel(date: date),
-                                              MonthDaySessionList(date: date.date, todaySessionsMap: todaySessionsMap),
-                                            ],
-                                          ),
-                                          // more menu
-                                          if (todaySessionsMap.length > 3)
-                                            Align(
-                                              alignment: Alignment.bottomRight,
-                                              child: AppButton(
-                                                menuItems: sessionListMenu(date.date),
-                                                dryWidth: true,
-                                                smallRightPadding: true,
-                                                smallVerticalPadding: true,
-                                                borderRadius: borderRadiusSuperTiny,
-                                                color: styler.tertiaryColor(),
-                                                child: Row(
-                                                  mainAxisSize: MainAxisSize.max,
-                                                  children: [
-                                                    AppText(text: 'More', size: small),
-                                                    tpw(),
-                                                    AppIcon(Icons.keyboard_arrow_down, size: medium),
-                                                  ],
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          border: date.isToday() ? Border.all(color: styler.accentColor(), width: 0.2) : null,
+                                        ),
+                                        child: Stack(
+                                          children: [
+                                            // box
+                                            Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              crossAxisAlignment: CrossAxisAlignment.end,
+                                              children: [
+                                                MonthDayNumberLabel(date: date),
+                                                MonthDaySessionList(date: date.date, todaySessionsMap: todaySessionsMap),
+                                              ],
+                                            ),
+                                            // more menu
+                                            if (todaySessionsMap.length > 3)
+                                              Align(
+                                                alignment: Alignment.bottomRight,
+                                                child: AppButton(
+                                                  menuItems: sessionListMenu(date.date),
+                                                  dryWidth: true,
+                                                  smallRightPadding: true,
+                                                  smallVerticalPadding: true,
+                                                  borderRadius: borderRadiusSuperTiny,
+                                                  color: styler.tertiaryColor(),
+                                                  child: Row(
+                                                    mainAxisSize: MainAxisSize.max,
+                                                    children: [
+                                                      AppText(text: 'More', size: small),
+                                                      tpw(),
+                                                      AppIcon(Icons.keyboard_arrow_down, size: medium),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          //
-                                        ],
+                                            //
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   );

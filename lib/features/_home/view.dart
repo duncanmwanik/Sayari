@@ -22,8 +22,6 @@ class AppView extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadiusSmall),
       ),
       //
-      //
-      //
       child: feature.isCalendar(view)
           ? SessionsView()
           : feature.isNote(view)
@@ -33,8 +31,6 @@ class AppView extends StatelessWidget {
                   : feature.isChat(view)
                       ? ChatView()
                       : SessionsView(),
-      //
-      //
       //
     );
   }

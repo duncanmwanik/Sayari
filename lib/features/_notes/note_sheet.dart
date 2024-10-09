@@ -30,7 +30,7 @@ import 'w_actions/input_actions.dart';
 Future<void> showNoteBottomSheet(Item item) async {
   await showAppBottomSheet(
     title: item.title(),
-    isMinimized: item.isTask() && isSmallPC(),
+    isFloater: item.isTask() && isSmallPC(),
     isShort: item.isTask() && !isSmallPC(),
     noContentHorizontalPadding: true,
     //

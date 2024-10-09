@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../__styling/helpers.dart';
@@ -10,7 +9,7 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/checkbox.dart';
 import '../../../_widgets/others/text.dart';
-import '../../files/file_list.dart';
+import '../../files/file_list_overview.dart';
 import '../../reminders/reminder.dart';
 import '../_helpers/quick_edit.dart';
 import 'w_items/edit_subitem.dart';
@@ -76,7 +75,6 @@ class _ItemState extends State<SubItem> {
                       //
                       ItemFlagList(flagList: widget.sitem.flags(), isTinyFlag: true),
                       if (widget.sitem.hasFlags()) sph(),
-                      FileList(fileData: widget.sitem.files()),
                       //
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,13 +106,23 @@ class _ItemState extends State<SubItem> {
                         ],
                       ),
                       //
-                      if (reminder.isNotEmpty) kIsWeb ? mph() : msph(),
-                      if (reminder.isNotEmpty)
-                        Reminder(
-                          id: widget.sitem.id,
-                          sid: widget.sitem.sid,
-                          reminder: reminder,
-                          bgColor: widget.item.color(),
+                      if (widget.sitem.hasReminder() || widget.sitem.hasFiles()) msph(),
+                      if (widget.sitem.hasReminder() || widget.sitem.hasFiles())
+                        Wrap(
+                          spacing: tinyWidth(),
+                          runSpacing: tinyWidth(),
+                          children: [
+                            // files
+                            if (widget.sitem.hasFiles()) FileListOverview(item: widget.sitem),
+                            // reminder
+                            if (reminder.isNotEmpty)
+                              Reminder(
+                                id: widget.sitem.id,
+                                sid: widget.sitem.sid,
+                                reminder: widget.sitem.reminder(),
+                                bgColor: widget.item.color(),
+                              ),
+                          ],
                         ),
                     ],
                   ),
