@@ -71,6 +71,7 @@ class _MenuItemState extends State<MenuItem> {
             : null,
         menuWidth: widget.menuWidth,
         menuItems: widget.menuItems,
+        keepMenuPosition: widget.menuItems != null,
         popMenu: widget.menuItems != null,
         padding: padding(
           l: 8,

@@ -4,6 +4,7 @@ import '../../../_helpers/helpers.dart';
 import '../../../_providers/_providers.dart';
 
 String getQuills() => jsonEncode(state.quill.controller.document.toDelta().toJson());
+void clearQuills() => state.quill.controller.clear();
 
 String quillDescription() {
   return isShare()

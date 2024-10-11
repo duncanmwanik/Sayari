@@ -75,9 +75,7 @@ class _MyWidgetState extends State<MyWidget> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //
                 // date
-                //
                 AppButton(
                   onPressed: () async {
                     await showDateDialog(initialDate: date).then((dates) {
@@ -102,9 +100,7 @@ class _MyWidgetState extends State<MyWidget> {
                 ),
                 //
                 AppDivider(height: smallHeight()),
-                //
                 // time
-                //
                 AppButton(
                   onPressed: () async {
                     await showTimePicker(
@@ -138,11 +134,11 @@ class _MyWidgetState extends State<MyWidget> {
           ),
           //
           AppDivider(height: smallHeight()),
-          sph(),
           //
           Align(
             alignment: Alignment.bottomRight,
             child: Wrap(
+              alignment: WrapAlignment.spaceBetween,
               children: [
                 //
                 ActionButton(isCancel: true, label: 'Close'),

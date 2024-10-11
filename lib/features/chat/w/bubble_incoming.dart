@@ -1,16 +1,23 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
 
 import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
+import '../../../_variables/colors.dart';
 import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/others/images.dart';
 import '../../../_widgets/others/text.dart';
+import '../../_notes/quill/editor_style.dart';
+import '../../_notes/quill/embed_divider.dart';
+import '../../_notes/quill/embed_image.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
 import '../../files/file_list.dart';
-import '../w/actions.dart';
+import 'actions.dart';
 
 class IncomingMessageBubble extends StatefulWidget {
   const IncomingMessageBubble({super.key, required this.item});
@@ -22,10 +29,18 @@ class IncomingMessageBubble extends StatefulWidget {
 
 class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
   bool showMore = false;
+  bool isEdit = false;
+  QuillController quillController = QuillController.basic();
+
+  @override
+  void initState() {
+    quillController.document = Document.fromJson(jsonDecode(widget.item.data['n']));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    String userName = widget.item.data['u'] ?? 'User';
+    String userName = widget.item.data['t'] ?? 'Member';
     String message = widget.item.data['n'];
     Map files = widget.item.files();
     bool isLong = message.length > 1000;
@@ -44,7 +59,12 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
                 onPressed: () {},
                 noStyling: true,
                 isRound: true,
-                child: AppImage('sayari.png', size: title),
+                padding: noPadding,
+                child: CircleAvatar(
+                  backgroundColor: backgroundColors['${Random().nextInt(backgroundColors.length - 1)}']!.color.withOpacity(0.5),
+                  radius: normal,
+                  child: AppText(text: userName[0], size: normal, faded: true),
+                ),
               ),
             ),
             // message
@@ -80,10 +100,17 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
                       FileList(fileData: files),
                       if (files.isNotEmpty) mph(),
                       // message
-                      AppText(
-                        size: small,
-                        text: isLong && !showMore ? message.substring(0, 1000) : message,
-                        weight: isDark() ? FontWeight.w400 : FontWeight.w500,
+                      QuillEditor.basic(
+                        configurations: QuillEditorConfigurations(
+                          controller: quillController,
+                          showCursor: isEdit,
+                          scrollable: false,
+                          customStyles: getQuillEditorStyle(fontSize: 13),
+                          embedBuilders: [
+                            QuillEmbedImageBuilder(addQuillEmbedImageBlock: addQuillEmbedImageBlock),
+                            QuillEmbedDividerBuilder(addQuillEmbedDividerBlock: addQuillEmbedDividerBlock),
+                          ],
+                        ),
                       ),
                       // read more
                       if (isLong)

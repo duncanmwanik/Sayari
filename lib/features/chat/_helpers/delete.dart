@@ -7,6 +7,7 @@ import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../_spaces/_helpers/common.dart';
+import '../../files/_helpers/handler.dart';
 
 Future<void> deleteMessage(Item item, {bool forAll = false}) async {
   try {
@@ -18,6 +19,7 @@ Future<void> deleteMessage(Item item, {bool forAll = false}) async {
         dateChats.remove(item.sid);
         box.put(item.id, dateChats);
         await pendingBox.delete(item.sid);
+        if (forAll) handleFilesDeletion(liveSpace(), item.files());
         if (forAll) await syncToCloud(db: 'spaces', space: liveSpace(), parent: feature.chat, action: 'd', id: item.id, sid: item.sid);
       },
     );

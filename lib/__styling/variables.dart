@@ -48,8 +48,8 @@ const Color black = Colors.black;
 const Color white = Colors.white;
 const Color red = Colors.red;
 
-const List<IconData> toastIcons = [Icons.info_rounded, Icons.check_circle_rounded, Icons.info_rounded, Icons.info_rounded];
-const List<Color> toastColors = [Colors.red, Colors.green, Colors.blue, Colors.pink];
+const List<IconData> toastIcons = [Icons.info, Icons.check_circle, Icons.info, Icons.info];
+const List<Color> toastColors = [Colors.red, Colors.green, Colors.blue, Colors.yellow];
 
 // icons
 const IconData sessionsIcon = Icons.looks_one_rounded;

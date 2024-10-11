@@ -27,7 +27,7 @@ class Item {
   String itemType() =>
       [feature.notes, feature.tasks, feature.links, feature.bookings, feature.habits].firstWhere((key) => data[key] != null);
   String title() => data['t'] != null && data['t'] != '' ? data['t'] : 'Untitled';
-  String color() => data['c'] ?? '';
+  String? color() => data['c'];
   String emoji() => data['ej'] ?? '';
   String content() => data['n'] ?? '';
   String reminder() => data['r'] ?? '';

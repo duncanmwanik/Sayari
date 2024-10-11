@@ -48,13 +48,13 @@ bool isSuperAdmin() {
 
 bool isAdmin() {
   try {
-    return ['1', '2'].contains(storage('admins').get(liveUser(), defaultValue: '2'));
+    return ['1', '2'].contains(storage('members').get(liveUser(), defaultValue: '2'));
   } catch (e) {
     errorPrint('isAdmin', e);
     return false;
   }
 }
 
-String adminPriviledge(String userId) {
-  return storage('admins').get(userId, defaultValue: '2');
+String memberPriviledge(String userId) {
+  return storage('members').get(userId, defaultValue: '2');
 }

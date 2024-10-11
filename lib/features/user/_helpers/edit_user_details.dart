@@ -11,19 +11,16 @@ import 'helpers.dart';
 Future<void> editUserDetails(String userName, String password) async {
   try {
     showToast(2, 'Updating details...');
+    if (await noInternet()) return;
 
-    bool hasInternet = await hasAccessToInternet();
-
-    if (hasInternet) {
-      FirebaseAuth auth = FirebaseAuth.instance;
-      User? user = auth.currentUser;
-      if (user != null) {
-        AuthCredential credential = EmailAuthProvider.credential(email: liveEmail(), password: password);
-        await user.reauthenticateWithCredential(credential);
-        await user.updateDisplayName(userName);
-        await Hive.box(liveUser()).putAll({'n': userName});
-        showToast(1, 'Success. Updated details.');
-      }
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user = auth.currentUser;
+    if (user != null) {
+      AuthCredential credential = EmailAuthProvider.credential(email: liveEmail(), password: password);
+      await user.reauthenticateWithCredential(credential);
+      await user.updateDisplayName(userName);
+      await Hive.box(liveUser()).putAll({'n': userName});
+      showToast(1, 'Success. Updated details.');
     }
   } on FirebaseAuthException catch (e) {
     showToast(0, handleFirebaseAuthError(e, process: 'update details'));
@@ -38,23 +35,21 @@ Future<void> editUserPassword(String currentPassword, String newPassword, String
 
     if (newPassword == confirmNewPassword) {
       if (currentPassword != newPassword) {
-        hasAccessToInternet().then((value) async {
-          if (value) {
-            FirebaseAuth auth = FirebaseAuth.instance;
-            User? user;
+        if (await noInternet()) return;
 
-            UserCredential userCredential = await auth.signInWithEmailAndPassword(
-              email: liveEmail(),
-              password: currentPassword,
-            );
-            user = userCredential.user;
+        FirebaseAuth auth = FirebaseAuth.instance;
+        User? user;
 
-            if (user != null) {
-              await user.updatePassword(newPassword);
-              showToast(1, 'Success. Password updated...');
-            }
-          }
-        });
+        UserCredential userCredential = await auth.signInWithEmailAndPassword(
+          email: liveEmail(),
+          password: currentPassword,
+        );
+        user = userCredential.user;
+
+        if (user != null) {
+          await user.updatePassword(newPassword);
+          showToast(1, 'Success. Password updated...');
+        }
       } else {
         showToast(2, 'Current password is same as new password');
       }

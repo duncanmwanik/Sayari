@@ -55,9 +55,9 @@ Future<void> handleFilesCloud(String spaceId, Map source, {String? items}) async
   }
 }
 
-Future<void> handleFilesDeletion(String spaceId, Map source) async {
+Future<void> handleFilesDeletion(String spaceId, Map fileMap) async {
   //
-  source.forEach((key, value) async {
+  fileMap.forEach((key, value) async {
     try {
       printThis(':::DELETING file forever -- $value');
       String fileNameCloud = getFileNameCloud(key, value);

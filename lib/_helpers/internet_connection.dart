@@ -6,7 +6,7 @@ import 'dart:async';
 
 // import '../../_widgets/components/toast.dart';
 
-Future<bool> hasAccessToInternet() async {
+Future<bool> noInternet() async {
   // try {
   //   final url = Uri.https('google.com');
 
@@ -34,5 +34,5 @@ Future<bool> hasAccessToInternet() async {
   //   return false;
   // }
 
-  return true;
+  return false;
 }

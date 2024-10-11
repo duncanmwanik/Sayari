@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
+import '../../__styling/styler.dart';
 import '../../__styling/variables.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/text.dart';
@@ -19,7 +20,7 @@ class PomodoroChooser extends StatelessWidget {
         children: [
           //
           sph(),
-          AppText(text: 'pomodoro', size: 30, weight: FontWeight.bold, faded: true),
+          AppText(text: 'pomodoro', size: 30, weight: FontWeight.bold, color: AppColors.darkTextFaded),
           elph(),
           //
           AppButton(

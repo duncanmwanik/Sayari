@@ -13,8 +13,8 @@ import 'spacing.dart';
 import 'variables.dart';
 
 List<Widget> themeMenu() {
-  Map<String, ColorObject> accentColors = {...backgroundColors};
-  accentColors.removeWhere((key, value) => !value.isThemeAccent);
+  Map<String, ColorObject> themeColors = {...backgroundColors};
+  themeColors.removeWhere((key, value) => !value.isTheme);
 
   return [
     //
@@ -65,8 +65,8 @@ List<Widget> themeMenu() {
       mainAxisSpacing: tinyWidth(),
       crossAxisSpacing: tinyWidth(),
       crossAxisCount: 8,
-      children: List.generate(accentColors.length, (index) {
-        String color = accentColors.keys.toList()[index];
+      children: List.generate(themeColors.length, (index) {
+        String color = themeColors.keys.toList()[index];
 
         return ColorItem(
           color: color,

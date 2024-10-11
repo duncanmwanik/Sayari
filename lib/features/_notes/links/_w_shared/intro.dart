@@ -70,7 +70,7 @@ class LinksIntro extends StatelessWidget {
           ),
         ),
         //
-        if (!state.quill.isEmpty()) lph(),
+        if (!state.quill.isEmpty) lph(),
         //
       ],
     );

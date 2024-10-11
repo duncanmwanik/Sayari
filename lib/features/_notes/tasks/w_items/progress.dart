@@ -18,7 +18,13 @@ class ProgressBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           // count
-          Expanded(child: AppText(text: '${item.checkedCount()} / ${item.taskCount()}', size: tinySmall, faded: true)),
+          Expanded(
+              child: AppText(
+            text: '${item.checkedCount()} / ${item.taskCount()}',
+            size: tinySmall,
+            faded: true,
+            bgColor: item.color(),
+          )),
           // progress
           SizedBox(
             height: small,

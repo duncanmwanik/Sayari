@@ -6,6 +6,7 @@ import '../../../_helpers/global.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
+import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/forms/input.dart';
 import '../../../_widgets/others/icons.dart';
@@ -74,6 +75,7 @@ class _NewItemInputState extends State<NewItemInput> {
                 smallVerticalPadding: true,
                 smallLeftPadding: true,
                 showBorder: widget.item.hasColor(),
+                bgColor: widget.item.color(),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -121,29 +123,22 @@ class _NewItemInputState extends State<NewItemInput> {
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      //
-                      AppButton(
+                      ActionButton(
+                        isCancel: true,
                         onPressed: () async {
                           controller.clear();
                           newItemFocusNode.unfocus();
                           setState(() => showSaveButton = false);
                         },
-                        smallVerticalPadding: true,
-                        child: AppText(text: 'Cancel', bgColor: widget.item.color(), size: small),
                       ),
-                      //
                       spw(),
-                      //
-                      AppButton(
+                      ActionButton(
                         onPressed: () async {
                           if (controller.text.trim().isNotEmpty) await createItem();
                           prepareNext();
                         },
-                        color: styler.accentColor(),
-                        smallVerticalPadding: true,
-                        child: AppText(text: 'Add', size: small, color: white),
+                        label: 'Add',
                       ),
-                      //
                     ],
                   ),
                   //

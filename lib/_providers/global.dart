@@ -20,4 +20,10 @@ class GlobalProvider with ChangeNotifier {
     isKeyboardOpen = value;
     notifyListeners();
   }
+
+  // keeps track of last menu position
+  RelativeRect menuPosition = RelativeRect.fromLTRB(0, 0, 0, 0);
+  void updateMenuPosition(RelativeRect newPosition) {
+    menuPosition = newPosition;
+  }
 }

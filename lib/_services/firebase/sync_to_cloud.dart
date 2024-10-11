@@ -20,8 +20,8 @@ Future<bool> syncToCloud({
   bool log = true,
   bool isShare = false,
 }) async {
-  //
-  bool hasInternet = await hasAccessToInternet();
+  //!
+  bool hasInternet = !(await noInternet());
   bool success = false;
   //
   if (hasInternet) {

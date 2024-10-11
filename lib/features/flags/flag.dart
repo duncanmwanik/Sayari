@@ -143,7 +143,7 @@ class _FlagItemState extends State<Flag> {
                   menuWidth: 200,
                   menuItems: [
                     MenuItem(label: 'Edit', leading: Icons.edit, onTap: () => setState(() => isEdit = true)),
-                    MenuItem(label: 'Delete', leading: Icons.delete, onTap: () => deleteFlag(widget.flag)),
+                    MenuItem(label: 'Delete', leading: Icons.delete, onTap: () => deleteFlag(widget.flagId)),
                   ],
                   noStyling: true,
                   isSquare: true,
@@ -168,13 +168,8 @@ class _FlagItemState extends State<Flag> {
                   }),
                   isCancel: true,
                 ),
-                //
                 spw(),
-                //
-                ActionButton(
-                  onPressed: () => update(),
-                  label: widget.flag.isNotEmpty ? 'Save' : 'Add',
-                ),
+                ActionButton(onPressed: () => update(), label: widget.flag.isNotEmpty ? 'Save' : 'Add'),
                 //
               ],
             ),

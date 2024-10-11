@@ -6,12 +6,15 @@ import '../../../__styling/variables.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/other.dart';
 
-DefaultStyles getQuillEditorStyle({bool isOverview = false, String? bgColor}) {
+DefaultStyles getQuillEditorStyle({
+  bool isOverview = false,
+  String? bgColor,
+  double fontSize = 15,
+}) {
   Color quillTextColor = styler.textColor(bgColor: bgColor);
   Color quillFadedTextColor = styler.textColor(faded: true, bgColor: bgColor);
   FontWeight weight = FontWeight.w500;
   FontWeight bold = FontWeight.bold;
-  double fontSize = 15;
 
   return DefaultStyles(
     placeHolder: DefaultTextBlockStyle(

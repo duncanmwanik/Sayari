@@ -65,6 +65,7 @@ class Reminder extends StatelessWidget {
             smallVerticalPadding: true,
             smallLeftPadding: true,
             smallRightPadding: true,
+            showBorder: hasColour(bgColor),
             color: hasColour(bgColor) ? Colors.white24 : null,
             child: Row(
               mainAxisSize: MainAxisSize.min,

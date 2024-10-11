@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
+import '../../__styling/styler.dart';
+import '../../__styling/variables.dart';
+import '../../_helpers/navigation.dart';
 import '../../_widgets/buttons/button.dart';
-import '../../_widgets/buttons/close.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/scroll.dart';
 import '../../_widgets/sheets/bottom_sheet.dart';
@@ -19,13 +21,18 @@ Future<void> showPomodoroSheet() async {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         //
-        AppCloseButton(),
+        AppButton(
+          onPressed: () => popWhatsOnTop(),
+          noStyling: true,
+          isSquare: true,
+          child: AppIcon(closeIcon, color: AppColors.darkTextFaded),
+        ),
         // settings
         AppButton(
           onPressed: () => showPomodoroSettingsDialog(),
           noStyling: true,
           isSquare: true,
-          child: AppIcon(Icons.settings_rounded, faded: true),
+          child: AppIcon(Icons.settings_rounded, color: AppColors.darkTextFaded),
         ),
         //
       ],

@@ -7,8 +7,8 @@ import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../_notes/w/picker_type.dart';
-import '../../_helpers/admin_helpers.dart';
 import '../../_helpers/checks_space.dart';
+import '../../_helpers/member_helpers.dart';
 import '../../var/variables.dart';
 
 class AdminChip extends StatelessWidget {
@@ -33,8 +33,8 @@ class AdminChip extends StatelessWidget {
             AppTypePicker(
               type: feature.calendar,
               subType: 'y',
-              initial: superPriviledges.keys.firstWhere((key) => superPriviledges[key] == adminPriviledge(userId)),
-              typeEntries: isSuperAdmin() ? superPriviledges : adminPriviledges,
+              initial: superPriviledges.keys.firstWhere((key) => superPriviledges[key] == memberPriviledge(userId)),
+              typeEntries: isSuperAdmin() ? superPriviledges : memberPriviledges,
               onSelect: (chosenType, chosenValue) async {
                 await changePersonPriviledge(userId, chosenValue);
               },

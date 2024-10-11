@@ -25,7 +25,7 @@ class MessageActions extends StatelessWidget {
       builder: (context, hover, child) => Visibility(
         visible: hover.id == item.sid,
         child: Padding(
-          padding: paddingC('t5'),
+          padding: paddingC('t2'),
           child: AppButton(
             menuItems: [
               //
@@ -73,6 +73,7 @@ class MessageActions extends StatelessWidget {
               //
             ],
             isRound: true,
+            noStyling: true,
             child: AppIcon(Icons.more_horiz, size: normal),
           ),
         ),

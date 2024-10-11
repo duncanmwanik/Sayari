@@ -12,7 +12,7 @@ Future<void> getAllSpaceData(String spaceId, {bool? isFirstTime}) async {
 
   await getSpaceInfo(spaceId);
   await getSpaceNameFromCloud(spaceId);
-  await getSpaceAdminData(spaceId);
+  await getSpaceMemberData(spaceId);
   await getSpaceData(spaceId, feature.notes);
   await getSpaceData(spaceId, feature.labels);
   await getSpaceData(spaceId, feature.flags);
@@ -39,18 +39,18 @@ Future<void> getSpaceInfo(String spaceId) async {
   }
 }
 
-Future<void> getSpaceAdminData(String spaceId) async {
+Future<void> getSpaceMemberData(String spaceId) async {
   try {
-    await cloudService.getData(db: 'spaces', '$spaceId/admins').then((snapshot) async {
-      Map spaceAdminData = snapshot.value != null ? snapshot.value as Map : {};
-      if (spaceAdminData.isNotEmpty) {
-        Box box = await Hive.openBox('${spaceId}_admins');
+    await cloudService.getData(db: 'spaces', '$spaceId/members').then((snapshot) async {
+      Map spaceMemberData = snapshot.value != null ? snapshot.value as Map : {};
+      if (spaceMemberData.isNotEmpty) {
+        Box box = await Hive.openBox('${spaceId}_members');
         await box.clear();
-        box.putAll(spaceAdminData);
+        box.putAll(spaceMemberData);
       }
     });
   } catch (e) {
-    errorPrint('get-space-admin-data-from-firebase', e);
+    errorPrint('get-space-member-data-from-firebase', e);
   }
 }
 

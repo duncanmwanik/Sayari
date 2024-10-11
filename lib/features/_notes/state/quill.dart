@@ -8,38 +8,33 @@ import '../../../_helpers/debug.dart';
 class QuillProvider with ChangeNotifier {
   QuillController controller = QuillController.basic();
   bool isChanged = false;
-
-  bool isEmpty() => controller.document.isEmpty();
+  bool isEmpty = false;
 
   Future<void> reset({String? quills}) async {
     controller = QuillController.basic();
     isChanged = false;
+    isEmpty = true;
 
     try {
-      if (quills != null && quills.isNotEmpty) {
+      if (quills != null) {
         var json = jsonDecode(quills);
         controller.document = Document.fromJson(json);
       }
-
-      //
-      controller.document.changes.listen((event) {
-        isChanged = true;
-        // controller.moveCursorToPosition(controller.selection.base.offset);
-        notifyListeners();
-      });
+      listenToChanges();
     } catch (e) {
-      errorPrint('quill-controller-set-json-doc', e);
+      errorPrint('quill-controller-set', e);
     }
   }
 
-  //
-
-  bool fullToolbar = false;
-
-  void showFullToolBar(bool show) {
-    fullToolbar = show;
-    notifyListeners();
+  void listenToChanges() {
+    try {
+      controller.document.changes.listen((event) {
+        isChanged = true;
+        isEmpty = controller.document.isEmpty();
+        notifyListeners();
+      });
+    } catch (e) {
+      errorPrint('quill-controller-listening', e);
+    }
   }
-
-  //
 }

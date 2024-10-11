@@ -29,13 +29,13 @@ Future<String> getUserEmailFromCloud(String userId) async {
 Future<bool> isSpaceAdminCloud() async {
   String userId = liveUser();
   String spaceId = liveSpace();
-  DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/admins/$userId');
+  DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/members/$userId');
   return snapshot.exists;
 }
 
 Future<bool> isSpaceOwnerFirebase(String spaceId, String userId) async {
   try {
-    DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/admins/$userId');
+    DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/members/$userId');
     return snapshot.value as String == '1';
   } catch (_) {
     return false;
@@ -43,7 +43,7 @@ Future<bool> isSpaceOwnerFirebase(String spaceId, String userId) async {
 }
 
 Future<bool> isAlreadyAdmin(String spaceId, String userId) async {
-  DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/admins/$userId');
+  DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/members/$userId');
   return snapshot.exists;
 }
 

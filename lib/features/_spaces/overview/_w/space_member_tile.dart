@@ -5,7 +5,7 @@ import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/list_tile.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../_helpers/checks_space.dart';
-import '../admins_sheet.dart';
+import '../members_sheet.dart';
 
 class SpaceAdminTile extends StatelessWidget {
   const SpaceAdminTile({super.key});

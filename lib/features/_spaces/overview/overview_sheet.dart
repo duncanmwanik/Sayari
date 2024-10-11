@@ -21,7 +21,7 @@ import '../_helpers/checks_space.dart';
 import '../_helpers/common.dart';
 import '../_helpers/helpers.dart';
 import '../published/button.dart';
-import '_w/space_admin_tile.dart';
+import '_w/space_member_tile.dart';
 import '_w/space_name.dart';
 import '_w/space_notfications_tile.dart';
 import '_w/space_owner_tile.dart';

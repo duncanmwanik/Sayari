@@ -38,8 +38,8 @@ Future<void> signInUsingEmailPassword({required String email, required String pa
       printThis('::::SIGN IN COMPLETE! - $email - ${user?.displayName}');
     }
   } on FirebaseAuthException catch (error) {
-    showToast(0, handleFirebaseAuthError(error, process: 'sign in'), smallTopMargin: true);
+    showToast(0, handleFirebaseAuthError(error, process: 'sign in'), smallTopMargin: true, duration: 5000);
   } catch (error) {
-    showToast(0, handleOtherErrors(error, process: 'sign in'), smallTopMargin: true);
+    showToast(0, handleOtherErrors(error, process: 'sign in'), smallTopMargin: true, duration: 5000);
   }
 }

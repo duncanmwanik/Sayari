@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../__styling/spacing.dart';
+import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
 import '../../_providers/_providers.dart';
 import '../../_services/hive/get_data.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/action.dart';
+import '../../_widgets/others/text.dart';
 import '../_spaces/_helpers/checks_space.dart';
 import 'label.dart';
 import 'new_label.dart';
@@ -96,14 +98,17 @@ class _LabelManagerState extends State<LabelManager> {
                               setState(() => selectedLabels.contains(label) ? selectedLabels.remove(label) : selectedLabels.add(label)),
                           isPopup: widget.isPopup,
                         ),
+                      // empty user labels
+                      if (box.isEmpty && widget.isSelection)
+                        Padding(padding: padding(p: 15), child: AppText(text: 'No labels yet', size: tiny, faded: true)),
                       //
                     ],
                   ),
                 ),
               ),
               //
-              if (widget.isSelection) sph(),
-              if (widget.isSelection)
+              if (box.isNotEmpty && widget.isSelection) sph(),
+              if (box.isNotEmpty && widget.isSelection)
                 Align(
                   alignment: Alignment.bottomRight,
                   child: Wrap(

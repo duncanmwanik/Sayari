@@ -113,7 +113,7 @@ class _ItemState extends State<SubItem> {
                           runSpacing: tinyWidth(),
                           children: [
                             // files
-                            if (widget.sitem.hasFiles()) FileListOverview(item: widget.sitem),
+                            if (widget.sitem.hasFiles()) FileListOverview(item: widget.item, sitem: widget.sitem),
                             // reminder
                             if (reminder.isNotEmpty)
                               Reminder(

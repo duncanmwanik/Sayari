@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -57,54 +59,60 @@ class Note extends StatelessWidget {
                   width: isSelected ? 2 : (styler.isDark ? 0.3 : 0.7),
                 ),
               ),
-              child: InkWell(
-                onTap: item.isTask() && !isSelection ? null : () => onTapNote(item),
-                onLongPress: isSelected || (item.isTask() && !isSelection) ? null : () => onLongPressNote(item),
+              child: ClipRRect(
                 borderRadius: BorderRadius.circular(borderRadiusTinySmall),
-                hoverColor: styler.appColor(isImage() ? 0.5 : (styler.isDark ? 0.2 : 0.3)),
-                focusColor: transparent,
-                splashColor: transparent,
-                highlightColor: transparent,
-                child: IgnorePointer(
-                  ignoring: selection.isSelection,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      //
-                      ImageOverview(item: item),
-                      ItemHeader(item: item),
-                      tph(),
-                      Padding(padding: paddingS('lr'), child: AppDivider()),
-                      //
-                      Flexible(
-                        child: Padding(
-                          padding: padding(s: 'lrb'),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              // if note is published
-                              SharedInfo(item: item),
-                              ItemDetails(item: item),
-                              if (item.hasFinances()) FinanceOverview(item: item),
-                              if (item.hasBookings()) BookingOverview(item: item),
-                              if (item.hasHabits()) HabitOverview(item: item),
-                              if (item.hasLinks()) LinksOverview(item: item),
-                              if (item.showEditorOverview()) Flexible(child: NoteEditorOverview(item: item)),
-                              if (item.isTask()) Flexible(child: NoteTask(item: item)),
-                              if ((item.isPublished() || item.id == '1724578910529') && !isShare()) tph(),
-                              if ((item.isPublished() || item.id == '1724578910529') && !isShare())
-                                PreviewNote(
-                                  item: item,
-                                  label: item.id == '1724578910529' ? 'View Published Book' : null,
-                                  path: item.id == '1724578910529' ? publishedSpaceLink() : null,
-                                ),
-                              //`
-                            ],
+                child: ImageFiltered(
+                  imageFilter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
+                  child: InkWell(
+                    onTap: item.isTask() && !isSelection ? null : () => onTapNote(item),
+                    onLongPress: isSelected || (item.isTask() && !isSelection) ? null : () => onLongPressNote(item),
+                    borderRadius: BorderRadius.circular(borderRadiusTinySmall),
+                    hoverColor: styler.appColor(isImage() ? 0.5 : (styler.isDark ? 0.2 : 0.3)),
+                    focusColor: transparent,
+                    splashColor: transparent,
+                    highlightColor: transparent,
+                    child: IgnorePointer(
+                      ignoring: selection.isSelection,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          //
+                          ImageOverview(item: item),
+                          ItemHeader(item: item),
+                          tph(),
+                          Padding(padding: paddingS('lr'), child: AppDivider()),
+                          //
+                          Flexible(
+                            child: Padding(
+                              padding: padding(s: 'lrb'),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // if note is published
+                                  SharedInfo(item: item),
+                                  ItemDetails(item: item),
+                                  if (item.hasFinances()) FinanceOverview(item: item),
+                                  if (item.hasBookings()) BookingOverview(item: item),
+                                  if (item.hasHabits()) HabitOverview(item: item),
+                                  if (item.hasLinks()) LinksOverview(item: item),
+                                  if (item.showEditorOverview()) Flexible(child: NoteEditorOverview(item: item)),
+                                  if (item.isTask()) Flexible(child: NoteTask(item: item)),
+                                  if ((item.isPublished() || item.id == '1724578910529') && !isShare()) tph(),
+                                  if ((item.isPublished() || item.id == '1724578910529') && !isShare())
+                                    PreviewNote(
+                                      item: item,
+                                      label: item.id == '1724578910529' ? 'View Published Book' : null,
+                                      path: item.id == '1724578910529' ? publishedSpaceLink() : null,
+                                    ),
+                                  //`
+                                ],
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),

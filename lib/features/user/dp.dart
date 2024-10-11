@@ -91,6 +91,7 @@ class UserDp extends StatelessWidget {
 
                                           return CircleAvatar(
                                             backgroundImage: MemoryImage(bytes!),
+                                            backgroundColor: transparent,
                                             radius: radius,
                                             child: isTiny || noViewer ? NoWidget() : AppIcon(Icons.edit, size: 16, faded: true),
                                           );

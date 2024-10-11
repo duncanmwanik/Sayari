@@ -26,6 +26,7 @@ class AppButton extends StatelessWidget {
     this.customBorder,
     this.color,
     this.hoverColor,
+    this.bgColor,
     this.textColor,
     this.borderColor,
     this.showBorder = false,
@@ -48,6 +49,7 @@ class AppButton extends StatelessWidget {
     this.tooltipDirection,
     this.menuItems = const [],
     this.menuWidth,
+    this.keepMenuPosition = false,
     this.popMenu = false,
     this.mouseCursor,
   });
@@ -64,6 +66,7 @@ class AppButton extends StatelessWidget {
   final Color? color;
   final Color? hoverColor;
   final Color? textColor;
+  final String? bgColor;
   final Color? borderColor;
   final double? borderRadius;
   final ShapeBorder? customBorder;
@@ -88,6 +91,7 @@ class AppButton extends StatelessWidget {
   final List<Widget>? menuItems;
   final double? menuWidth;
   final bool popMenu;
+  final bool keepMenuPosition;
   final MouseCursor? mouseCursor;
 
   @override
@@ -95,7 +99,7 @@ class AppButton extends StatelessWidget {
     bool isMenu = menuItems != null && menuItems!.isNotEmpty;
 
     Widget button = Material(
-      color: noStyling ? transparent : color ?? styler.appColor(styler.isDark ? 1.3 : 1.5),
+      color: noStyling ? transparent : color ?? (hasColour(bgColor) ? Colors.white24 : styler.appColor(styler.isDark ? 1.3 : 1.5)),
       shape: customBorder != null
           ? CircleBorder()
           : RoundedRectangleBorder(
@@ -111,7 +115,7 @@ class AppButton extends StatelessWidget {
         onTapDown: isMenu
             ? (details) {
                 if (popMenu) popWhatsOnTop(); //pops popupmenu
-                showAppMenu(details.globalPosition, menuItems!, width: menuWidth);
+                showAppMenu(details.globalPosition, menuItems!, width: menuWidth, keepMenuPosition: keepMenuPosition);
               }
             : null,
         customBorder: customBorder,
@@ -141,11 +145,11 @@ class AppButton extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (leading != null) AppIcon(leading, size: iconSize, faded: iconFaded, color: textColor),
+                  if (leading != null) AppIcon(leading, size: iconSize, faded: iconFaded, color: textColor, bgColor: bgColor),
                   if (leading != null && label != null) spw(),
-                  if (label != null) AppText(text: label ?? '', size: textSize, color: textColor),
+                  if (label != null) AppText(text: label ?? '', size: textSize, color: textColor, bgColor: bgColor),
                   if (trailing != null && label != null) spw(),
-                  if (trailing != null) AppIcon(trailing, size: iconSize, faded: iconFaded, color: textColor),
+                  if (trailing != null) AppIcon(trailing, size: iconSize, faded: iconFaded, color: textColor, bgColor: bgColor),
                 ],
               ),
         ),

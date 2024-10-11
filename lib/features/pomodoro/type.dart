@@ -29,7 +29,7 @@ class PomodoroType extends StatelessWidget {
         child: AppText(
           text: pomodoroTitles[type] ?? 'focus',
           size: normal,
-          color: !isDark() && isCurrent ? white : null,
+          color: !isDark() && isCurrent ? white : white,
           weight: FontWeight.bold,
           textAlign: TextAlign.center,
         ),

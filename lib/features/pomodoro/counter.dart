@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/spacing.dart';
+import '../../__styling/styler.dart';
 import '../../__styling/variables.dart';
 import '../../_variables/colors.dart';
 import '../../_widgets/buttons/button.dart';
@@ -63,17 +64,19 @@ class PomodoroCounter extends StatelessWidget {
                     size: 40,
                     text: isTiming ? getRemainingTimeString() : getTimerString(timer),
                     weight: FontWeight.w900,
-                    faded: !isTiming && pomo.isTiming,
+                    color: !isTiming && pomo.isTiming ? AppColors.darkTextFaded : AppColors.darkText,
                   ),
                   // stopping time
                   tph(),
                   HtmlText(
-                    text: 'Stops at <b>${pomo.isTiming ? get12HourTimeFrom24HourTime(
-                        getTimePartFromTimeOfDay(TimeOfDay.fromDateTime(pomo.end)),
-                        showSeconds: true,
-                        islonger: true,
-                      ) : ' --'}</b>',
-                    color: styler.textColor(extraFaded: !pomo.isTiming),
+                    text: pomo.isTiming
+                        ? 'Stops at <b>${get12HourTimeFrom24HourTime(
+                            getTimePartFromTimeOfDay(TimeOfDay.fromDateTime(pomo.end)),
+                            showSeconds: true,
+                            islonger: true,
+                          )}</b>'
+                        : '...',
+                    color: !pomo.isTiming ? AppColors.darkTextExtraFaded : AppColors.darkText,
                   ),
                   // pause/play
                   mph(),
@@ -87,7 +90,7 @@ class PomodoroCounter extends StatelessWidget {
                     onPressed: pomo.isTiming ? () => pomo.reset() : null,
                     noStyling: true,
                     isRound: true,
-                    child: AppIcon(Icons.stop_rounded, size: 30, extraFaded: !pomo.isTiming),
+                    child: AppIcon(Icons.stop_rounded, size: 30, color: !pomo.isTiming ? AppColors.darkTextExtraFaded : AppColors.darkText),
                   ),
                   //
                 ],

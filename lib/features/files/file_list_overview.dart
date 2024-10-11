@@ -8,9 +8,10 @@ import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 
 class FileListOverview extends StatelessWidget {
-  const FileListOverview({super.key, required this.item});
+  const FileListOverview({super.key, required this.sitem, required this.item});
 
   final Item item;
+  final Item sitem;
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +21,13 @@ class FileListOverview extends StatelessWidget {
         smallVerticalPadding: true,
         smallLeftPadding: true,
         smallRightPadding: true,
-        color: item.hasColor() ? Colors.white24 : null,
+        noStyling: true,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            AppIcon(Icons.folder_open_rounded, size: medium, faded: true),
+            AppIcon(Icons.folder_open_rounded, size: medium, faded: true, bgColor: item.color()),
             tpw(),
-            AppText(text: '${item.files().length}', size: tiny, faded: true),
+            AppText(text: '${sitem.files().length}', size: tiny, faded: true, bgColor: item.color()),
           ],
         ),
       ),

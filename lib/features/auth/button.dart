@@ -35,11 +35,9 @@ class SignInButton extends StatelessWidget {
           : Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                //
                 if (imagePath != null) AppImage(imagePath ?? '', size: normal),
                 if (imagePath != null) spw(),
-                Flexible(child: AppText(text: label, weight: FontWeight.w500)),
-                //
+                Flexible(child: AppText(text: label)),
               ],
             ),
     );

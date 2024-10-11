@@ -40,7 +40,7 @@ class SpaceName extends StatelessWidget {
                         tooltip: 'View Workspaces',
                         showBorder: true,
                         borderWidth: 0.3,
-                        color: styler.appColor(1),
+                        color: styler.appColor(0.5),
                         isSquare: isMin,
                         smallRightPadding: !isMin,
                         child: Row(

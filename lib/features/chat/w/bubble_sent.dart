@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-import '../../../__styling/helpers.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_quill/flutter_quill.dart';
+
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
@@ -9,10 +11,13 @@ import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
+import '../../_notes/quill/editor_style.dart';
+import '../../_notes/quill/embed_divider.dart';
+import '../../_notes/quill/embed_image.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
 import '../../files/_helpers/helper.dart';
 import '../../files/file_list.dart';
-import '../w/actions.dart';
+import 'actions.dart';
 
 class SentMessageBubble extends StatefulWidget {
   const SentMessageBubble({super.key, required this.item});
@@ -24,6 +29,14 @@ class SentMessageBubble extends StatefulWidget {
 
 class _SentMessageBubbleState extends State<SentMessageBubble> {
   bool showMore = false;
+  bool isEdit = false;
+  QuillController quillController = QuillController.basic();
+
+  @override
+  void initState() {
+    quillController.document = Document.fromJson(jsonDecode(widget.item.data['n']));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,10 +77,17 @@ class _SentMessageBubbleState extends State<SentMessageBubble> {
                       FileList(fileData: files),
                       if (files.isNotEmpty) mph(),
                       // message
-                      AppText(
-                        size: small,
-                        text: isLong && !showMore ? message.substring(0, 1000) : message.padRight((maxWidth * 0.05).toInt()),
-                        weight: isDark() ? FontWeight.w400 : FontWeight.w500,
+                      QuillEditor.basic(
+                        configurations: QuillEditorConfigurations(
+                          controller: quillController,
+                          showCursor: isEdit,
+                          scrollable: false,
+                          customStyles: getQuillEditorStyle(fontSize: 13),
+                          embedBuilders: [
+                            QuillEmbedImageBuilder(addQuillEmbedImageBlock: addQuillEmbedImageBlock),
+                            QuillEmbedDividerBuilder(addQuillEmbedDividerBlock: addQuillEmbedDividerBlock),
+                          ],
+                        ),
                       ),
                       // read more
                       if (isLong)

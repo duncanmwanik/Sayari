@@ -29,7 +29,7 @@ class Share extends StatelessWidget {
       return Visibility(
           visible: data[feature.share] != null && input.item.isNote() && !isShare(),
           child: Padding(
-            padding: paddingC('t8,b4'),
+            padding: paddingC('t8'),
             child: AppButton(
               noStyling: true,
               showBorder: true,

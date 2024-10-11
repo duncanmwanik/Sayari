@@ -52,9 +52,9 @@ Future<void> signUpUsingEmailPassword({
     }
   } on FirebaseAuthException catch (error) {
     //
-    showToast(0, handleFirebaseAuthError(error, process: 'sign up'), smallTopMargin: true);
+    showToast(0, handleFirebaseAuthError(error, process: 'sign up'), smallTopMargin: true, duration: 5000);
   } catch (error) {
     //
-    showToast(0, handleOtherErrors(error, process: 'sign up'), smallTopMargin: true);
+    showToast(0, handleOtherErrors(error, process: 'sign up'), smallTopMargin: true, duration: 5000);
   }
 }

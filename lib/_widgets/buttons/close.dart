@@ -23,7 +23,6 @@ class AppCloseButton extends StatelessWidget {
       onPressed: onPressed ?? () => popWhatsOnTop(),
       noStyling: true,
       isSquare: true,
-      borderRadius: borderRadiusTiny,
       child: AppIcon(isX ? closeIcon : Icons.arrow_back_rounded, faded: faded),
     );
   }

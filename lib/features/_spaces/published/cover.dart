@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../../../__styling/variables.dart';
 import '../../../__styling/breakpoints.dart';
 import '../../../_services/firebase/database.dart';
 import '../../files/image.dart';
@@ -24,9 +23,8 @@ class PublishedCover extends StatelessWidget {
               return ImageFile(
                 '',
                 '',
-                radius: borderRadiusSmall,
                 height: (isTabAndBelow() ? 15.h : 20.h) / 0.7092,
-                // width: isTabAndBelow() ? 15.h : 20.h,
+                width: isTabAndBelow() ? 15.h : 20.h,
                 showOptions: false,
               );
             } else if (snapshot.hasData) {
@@ -36,7 +34,6 @@ class PublishedCover extends StatelessWidget {
                 fileId,
                 fileName,
                 images: {fileId: fileName},
-                radius: borderRadiusSmall,
                 height: (isTabAndBelow() ? 15.h : 20.h) / 0.7092,
                 width: isTabAndBelow() ? 15.h : 20.h,
                 showOptions: false,
@@ -46,7 +43,6 @@ class PublishedCover extends StatelessWidget {
           return ImageFile(
             '',
             '',
-            radius: borderRadiusSmall,
             height: (isTabAndBelow() ? 15.h : 20.h) / 0.7092,
             width: isTabAndBelow() ? 15.h : 20.h,
             showOptions: false,

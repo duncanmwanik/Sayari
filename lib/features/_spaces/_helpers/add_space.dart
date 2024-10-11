@@ -14,21 +14,18 @@ Future<void> addSpaceFromId(String spaceId) async {
       if (isValidSpaceId(spaceId)) {
         hideKeyboard();
         showToast(2, 'Adding workspace...');
+        if (await noInternet()) return;
 
         if (!isSpaceAlreadyAdded(spaceId)) {
-          hasAccessToInternet().then((hasInternet) async {
-            if (hasInternet) {
-              await doesSpaceExist(spaceId).then((spaceName) async {
-                if (spaceName != 'none') {
-                  await spaceNamesBox.put(spaceId, spaceName);
+          await doesSpaceExist(spaceId).then((spaceName) async {
+            if (spaceName != 'none') {
+              await spaceNamesBox.put(spaceId, spaceName);
 
-                  await addSpaceToUserData(liveUser(), spaceId, []);
-                  popWhatsOnTop();
-                  showToast(1, 'Added workspace $spaceName');
-                } else {
-                  showToast(0, 'That workspace does not exist');
-                }
-              });
+              await addSpaceToUserData(liveUser(), spaceId, []);
+              popWhatsOnTop();
+              showToast(1, 'Added workspace $spaceName');
+            } else {
+              showToast(0, 'That workspace does not exist');
             }
           });
         } else {

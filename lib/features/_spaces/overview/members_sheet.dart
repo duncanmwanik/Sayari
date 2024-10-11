@@ -11,11 +11,11 @@ import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/text.dart';
 import '../../../_widgets/sheets/bottom_sheet.dart';
-import '../_helpers/admin_helpers.dart';
 import '../_helpers/checks_space.dart';
 import '../_helpers/common.dart';
-import '_w/admin_chip.dart';
-import '_w/dialog_add_admin.dart';
+import '../_helpers/member_helpers.dart';
+import '_w/add_member.dart';
+import '_w/member_chip.dart';
 
 Future<void> showAdminsBottomSheet({required String title}) async {
   String spaceId = liveSpace();
@@ -57,16 +57,16 @@ Future<void> showAdminsBottomSheet({required String title}) async {
         //
         NoOverScroll(
           child: ValueListenableBuilder(
-              valueListenable: Hive.box('${spaceId}_admins').listenable(),
+              valueListenable: Hive.box('${spaceId}_members').listenable(),
               builder: (context, box, widget) {
-                Map adminData = box.toMap();
-                if (adminData.isEmpty) {
-                  getSpaceAdminData(spaceId);
+                Map memberData = box.toMap();
+                if (memberData.isEmpty) {
+                  getSpaceMemberData(spaceId);
                 }
 
                 return Wrap(
-                  children: List.generate(adminData.length, (index) {
-                    String userId = adminData.keys.toList()[index];
+                  children: List.generate(memberData.length, (index) {
+                    String userId = memberData.keys.toList()[index];
                     if (userEmailsBox.get(userId, defaultValue: null) == null) {
                       getAdminEmail(userId);
                     }

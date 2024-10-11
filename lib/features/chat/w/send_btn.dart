@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../__styling/variables.dart';
-import '../../../_providers/input.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
+import '../../_notes/state/quill.dart';
 import '../_helpers/send.dart';
 
 class SendMessageButton extends StatelessWidget {
@@ -12,18 +11,13 @@ class SendMessageButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<InputProvider>(builder: (context, input, child) {
-      bool enabled = input.item.data['n'] != null && input.item.data['n'].toString().isNotEmpty;
-
+    return Consumer<QuillProvider>(builder: (context, quill, child) {
       return AppButton(
-        onPressed: enabled ? () => sendMessage() : null,
-        noStyling: !enabled,
+        onPressed: !quill.isEmpty ? () => sendMessage() : null,
+        noStyling: true,
         tooltip: 'Send',
-        height: 45,
-        width: 45,
         isSquare: true,
-        borderRadius: borderRadiusSmall,
-        child: AppIcon(Icons.send, extraFaded: !enabled),
+        child: AppIcon(Icons.send, extraFaded: quill.isEmpty),
       );
     });
   }

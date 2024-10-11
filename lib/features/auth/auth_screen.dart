@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../__styling/breakpoints.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
@@ -68,11 +69,8 @@ class _SignInScreenState extends State<AuthScreen> {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: AssetImage('assets/images/${introFeatures[index].title.toLowerCase()}.png'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.2),
-              BlendMode.darken,
-            ),
+            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
+            fit: isPhone() ? BoxFit.cover : BoxFit.fill,
           ),
         ),
         child: BackdropFilter(
@@ -184,7 +182,6 @@ class _SignInScreenState extends State<AuthScreen> {
                                       //
                                       if (isNewAccount && !isBusy) {
                                         setState(() => isBusy = true);
-
                                         printThis('Creating new account......');
                                         await signUpUsingEmailPassword(
                                           name: userNameController.text.trim(),
@@ -198,7 +195,6 @@ class _SignInScreenState extends State<AuthScreen> {
                                       //
                                       if (isSignIn && !isBusy) {
                                         setState(() => isBusy = true);
-
                                         printThis('Signing in......');
                                         await signInUsingEmailPassword(
                                           email: emailController.text.trim(),
@@ -210,7 +206,7 @@ class _SignInScreenState extends State<AuthScreen> {
                                       //
                                       if (isResetPassword && !isBusy) {
                                         setState(() => isBusy = true);
-                                        printThis('Resetting pass......');
+                                        printThis('Resetting password......');
                                         await resetPassword(email: emailController.text.trim());
                                         setState(() => isBusy = false);
                                       }
@@ -231,16 +227,15 @@ class _SignInScreenState extends State<AuthScreen> {
                                                 Flexible(
                                                   child: AppText(
                                                     text: isNewAccount
-                                                        ? 'Sign Up'
+                                                        ? 'Create Account'
                                                         : isResetPassword
                                                             ? 'Send Reset Link'
                                                             : isSignIn
                                                                 ? 'Sign In'
                                                                 : 'Continue',
-                                                    weight: FontWeight.bold,
                                                   ),
                                                 ),
-                                                mpw(),
+                                                spw(),
                                                 AppIcon(Icons.arrow_forward, size: medium),
                                               ],
                                             ),
@@ -278,21 +273,14 @@ class _SignInScreenState extends State<AuthScreen> {
                                                 isSignIn = false;
                                               });
                                             },
-                                            color: styler.accentColor(0.1),
+                                            color: styler.appColor(0.5),
                                             showBorder: true,
-                                            borderColor: styler.accentColor(9),
-                                            hoverColor: styler.accentColor(1),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
-                                                AppIcon(Icons.person_add, color: styler.accent, size: normal),
+                                                AppIcon(Icons.person_add, size: mediumSmall),
                                                 spw(),
-                                                Flexible(
-                                                    child: AppText(
-                                                  text: 'Create Account',
-                                                  color: styler.accent,
-                                                  weight: FontWeight.bold,
-                                                )),
+                                                Flexible(child: AppText(text: 'Create Account')),
                                               ],
                                             ),
                                           ),
@@ -311,7 +299,7 @@ class _SignInScreenState extends State<AuthScreen> {
                                         });
                                       },
                                       noStyling: true,
-                                      child: AppText(text: 'Go back', decoration: TextDecoration.underline),
+                                      child: AppText(text: 'Go back', faded: true),
                                     ),
                                   //
                                 ],

@@ -42,16 +42,12 @@ String handleFirebaseAuthError(FirebaseAuthException e, {String process = 'proce
     return 'Incorrect email or password.';
   }
   //
-  else if (message.startsWith('A network error') || message.contains('auth/network-request-failed')) {
-    return 'Check your internet connection.';
-  }
-  //
-  else if (message.startsWith('com.google.firebase.FirebaseException: An internal error has occurred')) {
+  else if (e.code == 'network-request-failed' || message.startsWith('A network AuthError ')) {
     return 'Check your internet connection.';
   }
   //
   else {
-    return 'Failed to $process. Please try again.';
+    return 'Could not $process. Please try again.';
   }
 }
 
@@ -60,10 +56,8 @@ String handleOtherErrors(dynamic error, {String process = 'process'}) {
   errorPrint(process, message);
 
   if (message.contains('firebase_database/permission-denied')) {
-    return 'Failed to fatech some data.';
-  }
-  //
-  else {
+    return 'No access.';
+  } else {
     return 'Could not $process. Please try again.';
   }
 }
