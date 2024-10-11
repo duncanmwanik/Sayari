@@ -13,10 +13,10 @@ class NewType extends StatefulWidget {
   final String subType;
 
   @override
-  State<NewType> createState() => _NewlabelInputState();
+  State<NewType> createState() => _NewTagState();
 }
 
-class _NewlabelInputState extends State<NewType> {
+class _NewTagState extends State<NewType> {
   final TextEditingController controller = TextEditingController();
   FocusNode focusNode = FocusNode();
   bool showSaveButton = false;

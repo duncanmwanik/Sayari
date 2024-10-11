@@ -19,7 +19,7 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
     String extras = activityData[6];
     String userName = activityData[7];
 
-    printThis('::Updating-> $db,$type,$action,$id,$sid,$keys,$extras,$userName');
+    printThis('::syncFromCloud-> $db,$space,$type,$action,$id,$sid,$keys,$extras,$userName');
 
     Box box = await Hive.openBox('${space}_$type');
 
@@ -46,18 +46,6 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
         });
       }
       //
-      //
-      else if (db == 'users') {
-        if (sid.isNotEmpty) {
-          Map itemData = box.get(id, defaultValue: {});
-          itemData[sid] = 0;
-          await box.put(id, itemData);
-          box.put(id, {sid: 0});
-        } else {
-          await box.put(id, 0);
-        }
-      }
-      //
       // others
       //
       else {
@@ -67,16 +55,9 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
           var data = snapshot.value;
 
           if (data != null) {
-            bool isMap = data.runtimeType.toString().contains('Map');
-            if (isMap) {
-              (data as Map)['z'] = timestamp; // set time of edit
-              // if (sid.isEmpty) title = (data)['t'];
-            }
-
             if (sid.isNotEmpty) {
-              Map itemData = box.get(id);
+              Map itemData = box.get(id, defaultValue: {});
               itemData[sid] = data;
-              itemData['z'] = timestamp; // set time of edit
               await box.put(id, itemData);
             } else {
               if (id.isNotEmpty) {
@@ -104,13 +85,11 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
           if (sid.isNotEmpty) {
             Map subItemData = itemData[sid];
             subItemData.remove(key);
-            subItemData['z'] = timestamp; // set time of edit
             itemData[sid] = subItemData;
             await box.put(id, itemData);
           } else {
             if (id.isNotEmpty) {
               itemData.remove(key);
-              itemData['z'] = timestamp; // set time of edit
               await box.put(id, itemData);
             } else {
               await box.delete(key);
@@ -133,13 +112,11 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
               if (sid.isNotEmpty) {
                 Map subItemData = itemData[sid];
                 subItemData[editedKey] = value;
-                subItemData['z'] = timestamp; // set time of edit
                 itemData[sid] = subItemData;
                 await box.put(id, itemData);
               } else {
                 if (id.isNotEmpty) {
                   itemData[editedKey] = value;
-                  itemData['z'] = timestamp; // set time of edit
                   await box.put(id, itemData);
                 } else {
                   await box.put(editedKey, value);

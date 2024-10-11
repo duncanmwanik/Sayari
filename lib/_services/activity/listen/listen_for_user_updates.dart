@@ -16,6 +16,7 @@ StreamSubscription<DatabaseEvent>? listenForUserUpdates() {
     return cloudService.listen(db: 'users', '$userId/activity/0').listen((event) async {
       String newVersion = event.snapshot.value != null ? event.snapshot.value as String : '';
       String lastVersion = lastActivity(userId);
+      // print('from: $lastVersion');
 
       if (lastVersion.isNotEmpty) {
         if (newVersion != lastVersion) {

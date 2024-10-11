@@ -27,7 +27,7 @@ class ListOfItems extends StatelessWidget {
           builder: (context, box, wdgt) {
             state.data.setAll(
               data ?? box.toMap(),
-              isPublish ? 'All' : views.selectedLabel,
+              isPublish ? 'All' : views.selectedTag,
               type,
             );
 

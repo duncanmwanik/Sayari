@@ -10,12 +10,12 @@ import '../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../_widgets/others/checkbox.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
-import '_helpers/delete_label.dart';
+import '_helpers/delete_tag.dart';
 
-class LabelItem extends StatefulWidget {
-  const LabelItem({
+class TagItem extends StatefulWidget {
+  const TagItem({
     super.key,
-    required this.label,
+    required this.tag,
     this.isSelection = false,
     this.isSelected = false,
     this.onSelect,
@@ -24,7 +24,7 @@ class LabelItem extends StatefulWidget {
     this.iconData = labelIcon,
   });
 
-  final String label;
+  final String tag;
   final bool isSelection;
   final bool isSelected;
   final Function()? onSelect;
@@ -33,15 +33,15 @@ class LabelItem extends StatefulWidget {
   final IconData iconData;
 
   @override
-  State<LabelItem> createState() => _LabelItemState();
+  State<TagItem> createState() => _TagItemState();
 }
 
-class _LabelItemState extends State<LabelItem> {
+class _TagItemState extends State<TagItem> {
   bool isHovered = false;
 
   @override
   Widget build(BuildContext context) {
-    bool isCurrentLabel = widget.label == state.views.selectedLabel;
+    bool isCurrentTag = widget.tag == state.views.selectedTag;
     bool showDelete = !widget.isDefault && !widget.isSelection && isHovered;
 
     return Padding(
@@ -50,7 +50,7 @@ class _LabelItemState extends State<LabelItem> {
         onPressed: widget.isSelection
             ? widget.onSelect
             : () {
-                state.views.updateSelectedLabel(widget.label);
+                state.views.updateSelectedTag(widget.tag);
                 if (widget.isPopup) {
                   popWhatsOnTop();
                 }
@@ -62,7 +62,7 @@ class _LabelItemState extends State<LabelItem> {
           top: kIsWeb ? 1 : 6,
           bottom: kIsWeb ? 1 : 6,
         ),
-        noStyling: !isCurrentLabel && !widget.isSelection,
+        noStyling: !isCurrentTag && !widget.isSelection,
         child: Row(
           children: [
             //
@@ -70,14 +70,14 @@ class _LabelItemState extends State<LabelItem> {
                 ? AppCheckBox(smallPadding: true, isChecked: widget.isSelected, onTap: widget.onSelect)
                 : AppIcon(widget.iconData, faded: true, size: 16),
             mpw(),
-            Expanded(child: AppText(text: widget.label, weight: FontWeight.w500, overflow: TextOverflow.ellipsis)),
+            Expanded(child: AppText(text: widget.tag, weight: FontWeight.w500, overflow: TextOverflow.ellipsis)),
             tpw(),
             AppButton(
               onPressed: showDelete
                   ? () => showConfirmationDialog(
-                        title: 'Delete label: <b>${widget.label}</b>?',
+                        title: 'Delete tag: <b>${widget.tag}</b>?',
                         yeslabel: 'Delete',
-                        onAccept: () => deleteLabel(widget.label),
+                        onAccept: () => deleteTag(widget.tag),
                       )
                   : null,
               noStyling: true,

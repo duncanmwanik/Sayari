@@ -38,7 +38,7 @@ Future<void> loadSelectedSpaceBoxes(String spaceId) async {
   await Hive.openBox('${spaceId}_${feature.calendar}');
   await Hive.openBox('${spaceId}_${feature.notes}');
   await Hive.openBox('${spaceId}_${feature.flags}');
-  await Hive.openBox('${spaceId}_${feature.labels}');
+  await Hive.openBox('${spaceId}_${feature.tags}');
 }
 
 Future<void> loadUserBoxes(String userId) async {

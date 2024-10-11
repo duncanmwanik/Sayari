@@ -12,7 +12,7 @@ import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
-import '../../labels/menu.dart';
+import '../../tags/menu.dart';
 import '../_helpers/delete_item.dart';
 import '../_helpers/quick_edit.dart';
 import '../state/selection.dart';
@@ -23,8 +23,8 @@ class SelectedItemOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<SelectionProvider>(builder: (context, selection, child) {
-      bool isArchive = state.views.selectedLabel == 'Archive';
-      bool isTrash = state.views.selectedLabel == 'Trash';
+      bool isArchive = state.views.selectedTag == 'Archive';
+      bool isTrash = state.views.selectedTag == 'Trash';
 
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,18 +73,18 @@ class SelectedItemOptions extends StatelessWidget {
                     spw(),
                     //
                     AppButton(
-                      menuItems: labelsMenu(
+                      menuItems: tagsMenu(
                         isSelection: true,
-                        onDone: (newLabels) async {
+                        onDone: (newTags) async {
                           selection.selected.forEach((item) async {
-                            await editItemExtras(parent: item.parent, id: item.id, key: 'l', value: joinList(newLabels));
+                            await editItemExtras(parent: item.parent, id: item.id, key: 'l', value: joinList(newTags));
                           });
                           state.selection.clear();
                         },
                       ),
                       noStyling: true,
                       isSquare: true,
-                      tooltip: 'Label',
+                      tooltip: 'Tag',
                       child: AppIcon(labelIcon, faded: true),
                     ),
                     //

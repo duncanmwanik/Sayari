@@ -15,7 +15,7 @@ class ItemSelectionMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<SelectionProvider>(builder: (context, selection, child) {
-      bool isArchive = state.views.selectedLabel == 'Archive';
+      bool isArchive = state.views.selectedTag == 'Archive';
 
       return AppButton(
         tooltip: 'More',

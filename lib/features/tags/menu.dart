@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import '../../_widgets/menu/menu_item.dart';
 import 'manager.dart';
 
-List<Widget> labelsMenu({
+List<Widget> tagsMenu({
   String title = '',
   List alreadySelected = const [],
-  Function(List newLabels)? onDone,
+  Function(List newTags)? onDone,
   bool isSelection = false,
 }) {
   return [
@@ -14,7 +14,7 @@ List<Widget> labelsMenu({
     MenuItem(label: title, smallHeight: true, popTrailing: true),
     menuDivider(),
     //
-    LabelManager(isPopup: true, isSelection: isSelection, alreadySelected: alreadySelected, onDone: onDone),
+    TagManager(isPopup: true, isSelection: isSelection, alreadySelected: alreadySelected, onDone: onDone),
     //
   ];
 }

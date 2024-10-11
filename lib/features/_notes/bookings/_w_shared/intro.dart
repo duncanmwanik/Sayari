@@ -40,7 +40,7 @@ class BookingIntro extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             //
-            UserDp(onPressed: () {}, userId: userId, noViewer: true, size: 40),
+            UserDp(onPressed: () {}, userId: userId, size: 40),
             sph(),
             AppText(text: userName, size: 22, weight: FontWeight.bold),
             mph(),

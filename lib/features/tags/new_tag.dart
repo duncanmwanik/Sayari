@@ -5,20 +5,20 @@ import '../../_helpers/navigation.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/forms/input.dart';
 import '../../_widgets/others/icons.dart';
-import '_helpers/add_label.dart';
+import '_helpers/add_new_tag.dart';
 
-class NewlabelInput extends StatefulWidget {
-  const NewlabelInput({super.key, this.isPopup = false, this.isSelection = false});
+class NewTag extends StatefulWidget {
+  const NewTag({super.key, this.isPopup = false, this.isSelection = false});
 
   final bool isPopup;
   final bool isSelection;
 
   @override
-  State<NewlabelInput> createState() => _NewlabelInputState();
+  State<NewTag> createState() => _NewTagState();
 }
 
-class _NewlabelInputState extends State<NewlabelInput> {
-  final TextEditingController newLabelController = TextEditingController();
+class _NewTagState extends State<NewTag> {
+  final TextEditingController newTagController = TextEditingController();
   FocusNode focusNode = FocusNode();
   bool isAdd = false;
 
@@ -31,7 +31,7 @@ class _NewlabelInputState extends State<NewlabelInput> {
           onPressed: () {
             if (isAdd) {
               setState(() => isAdd = false);
-              newLabelController.clear();
+              newTagController.clear();
               focusNode.unfocus();
             } else {
               setState(() => isAdd = true);
@@ -47,17 +47,17 @@ class _NewlabelInputState extends State<NewlabelInput> {
           child: Padding(
             padding: const EdgeInsets.only(top: 2, left: 2),
             child: DataInput(
-              hintText: 'Add Label',
+              hintText: 'Add Tag',
               onFieldSubmitted: (value) async {
                 if (value.trim().isNotEmpty) {
-                  await addLabel(value.trim());
-                  newLabelController.clear();
+                  await addNewTag(value.trim());
+                  newTagController.clear();
                   setState(() => isAdd = false);
                   hideKeyboard();
                 }
               },
               onTap: () => setState(() => isAdd = true),
-              controller: newLabelController,
+              controller: newTagController,
               focusNode: focusNode,
               fontSize: 12,
               maxLines: 3,
@@ -74,10 +74,10 @@ class _NewlabelInputState extends State<NewlabelInput> {
         if (isAdd)
           AppButton(
             onPressed: () async {
-              if (newLabelController.text.trim().isNotEmpty) {
+              if (newTagController.text.trim().isNotEmpty) {
                 hideKeyboard();
-                addLabel(newLabelController.text.trim());
-                newLabelController.clear();
+                addNewTag(newTagController.text.trim());
+                newTagController.clear();
               }
               focusNode.unfocus();
               setState(() => isAdd = false);

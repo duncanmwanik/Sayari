@@ -10,8 +10,8 @@ import '../../../_widgets/others/color.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../files/_helpers/upload.dart';
-import '../../labels/menu.dart';
 import '../../reminders/reminder_menu.dart';
+import '../../tags/menu.dart';
 import '../finance/graphs_sheet.dart';
 import '../habits/header.dart';
 import 'input_actions_more.dart';
@@ -68,12 +68,12 @@ class CommonInputActions extends StatelessWidget {
           //
           spw(),
           AppButton(
-            menuItems: labelsMenu(
+            menuItems: tagsMenu(
               isSelection: true,
               alreadySelected: splitList(input.item.data['l']),
-              onDone: (newLabels) => input.update('l', newLabels.join('|')),
+              onDone: (newTags) => input.update('l', newTags.join('|')),
             ),
-            tooltip: 'Label',
+            tooltip: 'Tag',
             noStyling: true,
             isSquare: true,
             child: AppIcon(labelIcon, faded: true),

@@ -58,9 +58,9 @@ class ViewsProvider with ChangeNotifier {
   }
 
   // selected label
-  String selectedLabel = globalBox.get('${liveSpace()}_selected_label', defaultValue: 'All');
-  void updateSelectedLabel(String label) {
-    selectedLabel = label;
+  String selectedTag = globalBox.get('${liveSpace()}_selected_label', defaultValue: 'All');
+  void updateSelectedTag(String label) {
+    selectedTag = label;
     globalBox.put('${liveSpace()}_selected_label', label);
     notifyListeners();
   }

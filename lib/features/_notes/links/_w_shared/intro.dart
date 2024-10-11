@@ -46,7 +46,7 @@ class LinksIntro extends StatelessWidget {
                   hoverColor: transparent,
                 ),
               )
-            : UserDp(userId: userId, noViewer: true),
+            : UserDp(userId: userId),
         //
         mph(),
         //

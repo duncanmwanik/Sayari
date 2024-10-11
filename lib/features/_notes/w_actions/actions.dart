@@ -11,8 +11,8 @@ import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/color_menu.dart';
-import '../../labels/menu.dart';
 import '../../reminders/reminder_menu.dart';
+import '../../tags/menu.dart';
 import '../_helpers/delete_item.dart';
 import '../_helpers/quick_edit.dart';
 import '../state/selection.dart';
@@ -63,14 +63,14 @@ class ItemActions extends StatelessWidget {
                 //
                 if (!item.isDeleted())
                   MenuItem(
-                    label: 'Label',
+                    label: 'Tag',
                     leading: labelIcon,
-                    menuItems: labelsMenu(
+                    menuItems: tagsMenu(
                       title: item.title(),
                       isSelection: true,
                       alreadySelected: splitList(item.labels()),
-                      onDone: (newLabels) async {
-                        await editItemExtras(parent: item.parent, id: item.id, key: 'l', value: joinList(newLabels));
+                      onDone: (newTags) async {
+                        await editItemExtras(parent: item.parent, id: item.id, key: 'l', value: joinList(newTags));
                       },
                     ),
                   ),

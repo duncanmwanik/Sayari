@@ -11,19 +11,19 @@ import '../../_widgets/others/svg.dart';
 import '../../_widgets/others/text.dart';
 import 'menu.dart';
 
-class LabelSelector extends StatelessWidget {
-  const LabelSelector({super.key});
+class TagSelector extends StatelessWidget {
+  const TagSelector({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ViewsProvider>(builder: (context, labels, child) {
+    return Consumer<ViewsProvider>(builder: (context, tags, child) {
       return AppButton(
-        menuItems: labelsMenu(onDone: (newLabels) => labels.updateSelectedLabel(newLabels.first)),
+        menuItems: tagsMenu(onDone: (newTags) => tags.updateSelectedTag(newTags.first)),
         isDropDown: true,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Flexible(child: AppText(text: labels.selectedLabel)),
+            Flexible(child: AppText(text: tags.selectedTag)),
             spw(),
             AppSvg(dropDownSvg),
           ],

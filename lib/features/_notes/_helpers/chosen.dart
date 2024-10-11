@@ -1,7 +1,7 @@
 import '../../../_helpers/global.dart';
 import '../../../_variables/features.dart';
 
-List getChosenItems(Map data, String currentLabel, String type) {
+List getChosenItems(Map data, String currentTag, String type) {
   List allIds = data.keys.toList();
   allIds.sort((a, b) => int.parse(data[a]['o']).compareTo(int.parse(data[b]['o'])));
   List finalIds = allIds.reversed.toList();
@@ -21,20 +21,20 @@ List getChosenItems(Map data, String currentLabel, String type) {
 
     if (isPinned) pinned.add(id);
 
-    if (currentLabel == 'All') {
+    if (currentTag == 'All') {
       if (!isDeleted && !isArchived) {
         chosen.add(id);
       }
-    } else if (currentLabel == 'Trash') {
+    } else if (currentTag == 'Trash') {
       if (isDeleted) {
         chosen.add(id);
       }
-    } else if (currentLabel == 'Archive') {
+    } else if (currentTag == 'Archive') {
       if (isArchived && !isDeleted) {
         chosen.add(id);
       }
     } else {
-      if (labelList.contains(currentLabel) && !isDeleted && !isArchived) {
+      if (labelList.contains(currentTag) && !isDeleted && !isArchived) {
         chosen.add(id);
       }
     }

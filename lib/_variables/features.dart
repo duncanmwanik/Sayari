@@ -15,7 +15,7 @@ class Features {
   String share = 'shared';
   String publish = 'published';
   String chat = 'chat';
-  String labels = 'labels';
+  String tags = 'tags';
   String flags = 'flags';
   String subTypes = 'subtypes';
   String pomodoro = 'pomodoro';

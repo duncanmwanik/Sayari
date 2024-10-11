@@ -87,11 +87,13 @@ Future<bool> syncToCloud({
             db: db, '$space${parent.isNotEmpty ? '/$parent' : ''}${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}');
       }
       // --------------------------------------------------------------------------
-      // if action is to , we don't log anymore
+      // if action is to delete space, we don't log anymore
       if (db == 'spaces' && parent.isEmpty && isDelete) {
         log = false;
       }
 
+      // Logging activity
+      //
       // This will log the sync operation to update listening users by updating the latest space activity version
       if (log) {
         String timeStamp = getUniqueId();
@@ -101,6 +103,7 @@ Future<bool> syncToCloud({
         // save activity as latest to avoid sync-from-cloud since local data is already updated
         // if its from shared screen, we dont
         if (!isShare) activityVersionBox.put(space, timeStamp);
+        // print('to: $timeStamp');
 
         await cloudService.writeData(db: db, '$space/activity/$timeStamp', activity);
         await cloudService.writeData(db: db, '$space/activity/0', timeStamp);

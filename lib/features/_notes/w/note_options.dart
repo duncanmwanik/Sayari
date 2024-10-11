@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../_providers/views.dart';
-import '../../labels/selector.dart';
+import '../../tags/selector.dart';
 import '../layout/layout_button.dart';
 import 'new.dart';
 
@@ -14,12 +14,12 @@ class NoteOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ViewsProvider>(builder: (context, views, child) {
-      bool showLabelSelector = !views.showPanelOptions || !showPanelOptions();
+      bool showTagSelector = !views.showPanelOptions || !showPanelOptions();
 
       return Row(
         children: [
           //
-          if (showLabelSelector) LabelSelector(),
+          if (showTagSelector) TagSelector(),
           //
           Expanded(child: spw()),
           //

@@ -10,7 +10,7 @@ import '../../../_providers/views.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/sfcalendar.dart';
-import '../../labels/manager.dart';
+import '../../tags/manager.dart';
 import '../navbars/navbar_vertical.dart';
 import 'space.dart';
 
@@ -22,7 +22,7 @@ class Panel extends StatelessWidget {
     return Consumer2<ViewsProvider, GlobalProvider>(builder: (context, views, global, child) {
       bool showPanel = views.showPanelOptions && showPanelOptions();
       bool showCalendar = views.isCalendar() || views.isChat();
-      bool showLabelManager = views.isNotes() || views.isTasks();
+      bool showTagManager = views.isNotes() || views.isTasks();
 
       return Container(
         width: showPanel ? 253 : 53,
@@ -59,7 +59,7 @@ class Panel extends StatelessWidget {
                           children: [
                             //
                             if (showCalendar) Center(child: SfCalendar(isOverview: true)),
-                            if (showLabelManager) LabelManager(),
+                            if (showTagManager) TagManager(),
                             //
                           ],
                         ),

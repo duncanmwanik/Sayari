@@ -14,7 +14,7 @@ Future<void> getAllSpaceData(String spaceId, {bool? isFirstTime}) async {
   await getSpaceNameFromCloud(spaceId);
   await getSpaceMemberData(spaceId);
   await getSpaceData(spaceId, feature.notes);
-  await getSpaceData(spaceId, feature.labels);
+  await getSpaceData(spaceId, feature.tags);
   await getSpaceData(spaceId, feature.flags);
   await getSpaceData(spaceId, feature.subTypes);
   await getSpaceData(spaceId, feature.chat);

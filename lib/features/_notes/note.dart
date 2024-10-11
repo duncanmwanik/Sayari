@@ -12,9 +12,7 @@ import '../../_helpers/helpers.dart';
 import '../../_models/item.dart';
 import '../../_providers/_providers.dart';
 import '../../_widgets/others/others/divider.dart';
-import '../_spaces/_helpers/common.dart';
 import '../files/overview.dart';
-import '../share/w/preview.dart';
 import '_helpers/ontap.dart';
 import 'bookings/_w/overview.dart';
 import 'finance/_w/overview.dart';
@@ -48,21 +46,21 @@ class Note extends StatelessWidget {
           child: MouseRegion(
             onEnter: (event) => isShare() ? null : state.hover.set(item.id),
             onExit: (event) => isShare() ? null : state.hover.reset(),
-            child: Card(
-              elevation: 0,
-              margin: EdgeInsets.zero,
-              color: styler.getItemColor(item.color(), false, isShadeColor: true),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(borderRadiusTinySmall),
-                side: BorderSide(
-                  color: isSelected ? styler.accentColor() : Colors.grey.withOpacity(0.4),
-                  width: isSelected ? 2 : (styler.isDark ? 0.3 : 0.7),
-                ),
-              ),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(borderRadiusTinySmall),
-                child: ImageFiltered(
-                  imageFilter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(borderRadiusTinySmall),
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 50, sigmaY: 50),
+                child: Card(
+                  elevation: 0,
+                  margin: EdgeInsets.zero,
+                  color: styler.getItemColor(item.color(), false, isShadeColor: true),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(borderRadiusTinySmall),
+                    side: BorderSide(
+                      color: isSelected ? styler.accentColor() : Colors.grey.withOpacity(0.4),
+                      width: isSelected ? 2 : (styler.isDark ? 0.3 : 0.7),
+                    ),
+                  ),
                   child: InkWell(
                     onTap: item.isTask() && !isSelection ? null : () => onTapNote(item),
                     onLongPress: isSelected || (item.isTask() && !isSelection) ? null : () => onLongPressNote(item),
@@ -89,7 +87,6 @@ class Note extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // if note is published
                                   SharedInfo(item: item),
                                   ItemDetails(item: item),
                                   if (item.hasFinances()) FinanceOverview(item: item),
@@ -98,14 +95,6 @@ class Note extends StatelessWidget {
                                   if (item.hasLinks()) LinksOverview(item: item),
                                   if (item.showEditorOverview()) Flexible(child: NoteEditorOverview(item: item)),
                                   if (item.isTask()) Flexible(child: NoteTask(item: item)),
-                                  if ((item.isPublished() || item.id == '1724578910529') && !isShare()) tph(),
-                                  if ((item.isPublished() || item.id == '1724578910529') && !isShare())
-                                    PreviewNote(
-                                      item: item,
-                                      label: item.id == '1724578910529' ? 'View Published Book' : null,
-                                      path: item.id == '1724578910529' ? publishedSpaceLink() : null,
-                                    ),
-                                  //`
                                 ],
                               ),
                             ),

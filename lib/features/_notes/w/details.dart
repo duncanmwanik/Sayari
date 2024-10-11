@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../_helpers/helpers.dart';
 import '../../../_models/item.dart';
 import '../../files/file_list.dart';
-import '../../labels/list_of_labels.dart';
 import '../../reminders/reminder.dart';
+import '../../tags/list_of_tags.dart';
 
 class ItemDetails extends StatelessWidget {
   const ItemDetails({super.key, required this.item});
@@ -22,7 +22,7 @@ class ItemDetails extends StatelessWidget {
                 //
                 if (item.reminder().isNotEmpty) Reminder(id: item.id, reminder: item.reminder(), bgColor: item.color()),
                 //
-                if (item.labels().isNotEmpty) LabelList(id: item.id, labels: item.labels(), bgColor: item.color()),
+                if (item.labels().isNotEmpty) TagList(id: item.id, tags: item.labels(), bgColor: item.color()),
                 //
                 if (item.hasFiles()) FileList(fileData: item.files(), bgColor: item.color(), isOverview: true),
                 //
@@ -33,7 +33,7 @@ class ItemDetails extends StatelessWidget {
               children: [
                 //
                 Reminder(),
-                LabelList(),
+                TagList(),
                 FileList(),
                 //
               ],

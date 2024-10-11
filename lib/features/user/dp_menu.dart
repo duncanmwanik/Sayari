@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../__styling/spacing.dart';
 import '../../__styling/theme_menu.dart';
 import '../../__styling/variables.dart';
+import '../../_helpers/navigation.dart';
 import '../../_widgets/menu/menu_item.dart';
 import '../auth/_helpers/sign_out.dart';
 import '../files/_helpers/download.dart';
@@ -11,7 +12,7 @@ import '../files/viewer.dart';
 import '../pomodoro/sheet.dart';
 import '../saved/saved_sheet.dart';
 import '../settings/settings_sheet.dart';
-import '_helpers/choose_dp.dart';
+import '_helpers/dp.dart';
 import '_helpers/helpers.dart';
 import 'dp.dart';
 
@@ -19,10 +20,17 @@ List<Widget> dpMenu() {
   return [
     //
     MenuItem(label: '', popTrailing: true, smallHeight: true),
-    Center(child: UserDp(noViewer: true, onPressed: null, hoverColor: transparent, size: 50)),
+    Center(
+        child: UserDp(
+            onPressed: () {
+              popWhatsOnTop();
+              showSettingsBottomSheet();
+            },
+            hoverColor: transparent,
+            size: 50)),
     sph(),
-    MenuItem(label: liveUserName(), labelSize: tiny, faded: true, smallHeight: true),
-    MenuItem(label: liveEmail(), labelSize: tiny, faded: true, smallHeight: true),
+    MenuItem(label: liveUserName(), labelSize: tinySmall, faded: true, smallHeight: true),
+    MenuItem(label: liveEmail(), labelSize: tinySmall, faded: true, smallHeight: true),
     tph(),
     menuDivider(color: styler.accentColor()),
     MenuItem(onTap: () => showSettingsBottomSheet(), label: 'Account & Settings', leading: Icons.settings_rounded),

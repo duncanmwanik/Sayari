@@ -6,9 +6,9 @@ class DataProvider with ChangeNotifier {
   Map data = {};
   List ids = [];
 
-  Future<void> setAll(Map data_, String selectedLabel, String type) async {
+  Future<void> setAll(Map data_, String selectedTag, String type) async {
     data = data_;
-    ids = getChosenItems(data_, selectedLabel, type);
+    ids = getChosenItems(data_, selectedTag, type);
   }
 
   void clear() {

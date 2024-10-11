@@ -25,7 +25,7 @@ class BlogInfo extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       children: [
         //
-        UserDp(onPressed: () {}, userId: userId, noViewer: true, isTiny: true, size: normal),
+        UserDp(onPressed: () {}, userId: userId, isTiny: true, size: normal),
         mpw(),
         //
         Expanded(

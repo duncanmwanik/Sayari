@@ -56,7 +56,7 @@ class PublishedBookIntro extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  UserDp(onPressed: () {}, userId: sharedData['u'], tooltip: userName, noViewer: true, isTiny: true, size: tiny),
+                  UserDp(onPressed: () {}, userId: sharedData['u'], tooltip: userName, isTiny: true, size: tiny),
                   spw(),
                   Flexible(child: AppText(text: userName, size: small)),
                 ],

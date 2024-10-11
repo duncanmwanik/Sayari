@@ -10,11 +10,11 @@ import '../../_variables/features.dart';
 import '../../_widgets/buttons/action.dart';
 import '../../_widgets/others/text.dart';
 import '../_spaces/_helpers/checks_space.dart';
-import 'label.dart';
-import 'new_label.dart';
+import 'new_tag.dart';
+import 'tag.dart';
 
-class LabelManager extends StatefulWidget {
-  const LabelManager({
+class TagManager extends StatefulWidget {
+  const TagManager({
     super.key,
     this.isPopup = false,
     this.isSelection = false,
@@ -25,19 +25,19 @@ class LabelManager extends StatefulWidget {
   final bool isPopup;
   final bool isSelection;
   final List alreadySelected;
-  final Function(List newLabels)? onDone;
+  final Function(List newTags)? onDone;
 
   @override
-  State<LabelManager> createState() => _LabelManagerState();
+  State<TagManager> createState() => _TagManagerState();
 }
 
-class _LabelManagerState extends State<LabelManager> {
-  List selectedLabels = [];
+class _TagManagerState extends State<TagManager> {
+  List selectedTags = [];
 
   @override
   void initState() {
     if (widget.alreadySelected.isNotEmpty) {
-      selectedLabels = widget.alreadySelected;
+      selectedTags = widget.alreadySelected;
     }
     super.initState();
   }
@@ -45,9 +45,9 @@ class _LabelManagerState extends State<LabelManager> {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: storage(feature.labels).listenable(),
+        valueListenable: storage(feature.tags).listenable(),
         builder: (context, box, wdgt) {
-          String selected = state.views.selectedLabel;
+          String selected = state.views.selectedTag;
 
           return Column(
             mainAxisSize: MainAxisSize.min,
@@ -61,46 +61,45 @@ class _LabelManagerState extends State<LabelManager> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       //
-                      if (isAdmin() && !widget.isSelection) NewlabelInput(isPopup: widget.isPopup, isSelection: widget.isSelection),
+                      if (isAdmin() && !widget.isSelection) NewTag(isPopup: widget.isPopup, isSelection: widget.isSelection),
                       if (isAdmin() && !widget.isSelection) tph(),
-                      // default labels -----------------------------------------
+                      // default tags -----------------------------------------
                       if (!widget.isSelection)
-                        LabelItem(
-                          label: 'All',
-                          iconData: Icons.label_rounded,
+                        TagItem(
+                          tag: 'All',
+                          iconData: Icons.tag_rounded,
                           isSelected: selected == 'All',
                           isPopup: widget.isPopup,
                           isDefault: true,
                         ),
                       if (!widget.isSelection)
-                        LabelItem(
-                          label: 'Archive',
+                        TagItem(
+                          tag: 'Archive',
                           iconData: Icons.archive_rounded,
                           isSelected: selected == 'Archive',
                           isPopup: widget.isPopup,
                           isDefault: true,
                         ),
                       if (!widget.isSelection)
-                        LabelItem(
-                          label: 'Trash',
+                        TagItem(
+                          tag: 'Trash',
                           iconData: Icons.delete_rounded,
                           isSelected: selected == 'Trash',
                           isPopup: widget.isPopup,
                           isDefault: true,
                         ),
-                      // user labels  -----------------------------------------
-                      for (String label in box.keys.toList())
-                        LabelItem(
-                          label: label,
+                      // user tags  -----------------------------------------
+                      for (String tag in box.keys.toList())
+                        TagItem(
+                          tag: tag,
                           isSelection: widget.isSelection,
-                          isSelected: selectedLabels.contains(label),
-                          onSelect: () =>
-                              setState(() => selectedLabels.contains(label) ? selectedLabels.remove(label) : selectedLabels.add(label)),
+                          isSelected: selectedTags.contains(tag),
+                          onSelect: () => setState(() => selectedTags.contains(tag) ? selectedTags.remove(tag) : selectedTags.add(tag)),
                           isPopup: widget.isPopup,
                         ),
-                      // empty user labels
+                      // empty user tags
                       if (box.isEmpty && widget.isSelection)
-                        Padding(padding: padding(p: 15), child: AppText(text: 'No labels yet', size: tiny, faded: true)),
+                        Padding(padding: padding(p: 15), child: AppText(text: 'No tags yet', size: tiny, faded: true)),
                       //
                     ],
                   ),
@@ -120,7 +119,7 @@ class _LabelManagerState extends State<LabelManager> {
                         label: 'Save',
                         onPressed: () {
                           popWhatsOnTop();
-                          widget.onDone!(selectedLabels);
+                          widget.onDone!(selectedTags);
                         },
                       ),
                       //
