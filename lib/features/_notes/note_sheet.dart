@@ -70,7 +70,7 @@ Future<void> showNoteBottomSheet(Item item) async {
                 children: [
                   //
                   DataInput(
-                    hintText: 'Title',
+                    hintText: 'Title ',
                     initialValue: item.isNew() ? null : item.title(),
                     onChanged: (value) {
                       state.input.update('t', value.trim());
