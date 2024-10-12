@@ -9,7 +9,7 @@ import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/svg.dart';
 import '../../../_widgets/others/text.dart';
-import '../finance/_w/new_type.dart';
+import '../../finance/_w/new_type.dart';
 
 class AppTypePicker extends StatelessWidget {
   const AppTypePicker({

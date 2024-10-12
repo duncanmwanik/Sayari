@@ -6,7 +6,6 @@ import '../../__styling/variables.dart';
 import '../../_variables/features.dart';
 import '../_notes/notes_view.dart';
 import '../calendar/session_view.dart';
-import '../chat/chat_view.dart';
 
 class AppView extends StatelessWidget {
   const AppView({super.key, required this.view});
@@ -28,9 +27,7 @@ class AppView extends StatelessWidget {
               ? ListOfItems(type: feature.notes)
               : feature.isTask(view)
                   ? ListOfItems(type: feature.tasks)
-                  : feature.isChat(view)
-                      ? ChatView()
-                      : SessionsView(),
+                  : SessionsView(),
       //
     );
   }

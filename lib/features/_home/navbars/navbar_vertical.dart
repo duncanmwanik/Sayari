@@ -7,7 +7,6 @@ import '../../../__styling/variables.dart';
 import '../../../_providers/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
-import '../_helpers/nav.dart';
 import '../panel/toggle.dart';
 import '../panel/user_options.dart';
 import 'nav_item.dart';
@@ -38,8 +37,6 @@ class VeticalNavigationBox extends StatelessWidget {
                   mph(),
                   navItem(sessionsIcon, size: 17, feature.calendar, views.view == feature.calendar),
                   mph(),
-                  if (showNavItem(feature.chat)) navItem(chatIcon, feature.chat, views.view == feature.chat),
-                  if (showNavItem(feature.chat)) mph(),
                   //
                   PanelToggle(),
                   //

@@ -13,7 +13,7 @@ import '../../../_widgets/others/checkbox.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/text.dart';
-import '../../_notes/bookings/_w/copy_link.dart';
+import '../../bookings/_w/copy_link.dart';
 import '../../files/_helpers/upload.dart';
 import '../../files/image.dart';
 import '../_helpers/common.dart';

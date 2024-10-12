@@ -8,7 +8,6 @@ import '../../../_providers/theme.dart';
 import '../../../_providers/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_variables/features.dart';
-import '../_helpers/nav.dart';
 import 'nav_item.dart';
 import 'nav_menu.dart';
 
@@ -37,9 +36,6 @@ class HorizontalNavigationBox extends StatelessWidget {
                         navItem(notesIcon, feature.notes, views.view == feature.notes),
                         navItem(tasksIcon, size: 20.5, feature.tasks, views.view == feature.tasks),
                         navItem(sessionsIcon, size: 17, feature.calendar, views.view == feature.calendar),
-                        //
-                        if (showNavItem(feature.chat)) navItem(chatIcon, feature.chat, views.view == feature.chat),
-                        //
                         NavMenu(),
                         //
                       ],

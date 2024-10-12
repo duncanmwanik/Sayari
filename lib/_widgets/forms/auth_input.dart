@@ -76,12 +76,12 @@ class _EmailFormInputState extends State<FormInput> {
                   noStyling: isPassword || widget.isBusy,
                   isSquare: true,
                   dryWidth: true,
-                  borderRadius: borderRadiusTiny,
+                  borderRadius: borderRadiusSuperTiny,
                   child: showButton
                       ? widget.isBusy
                           ? AppLoader(color: styler.accentColor())
                           : const AppIcon(Icons.arrow_forward, tiny: true)
-                      : AppIcon(hidePassword ? Icons.visibility_rounded : Icons.visibility_off_rounded, faded: true, size: 18),
+                      : AppIcon(hidePassword ? Icons.visibility_rounded : Icons.visibility_off_rounded, faded: true, size: 16),
                 )
               : null,
           suffixIconConstraints: const BoxConstraints(minHeight: 0, minWidth: 0),

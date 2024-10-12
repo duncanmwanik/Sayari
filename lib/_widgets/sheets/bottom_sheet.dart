@@ -70,7 +70,7 @@ Future<void> showAppBottomSheet({
                       filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
                       child: Card(
                         elevation: 0,
-                        color: (isImage() || isBlack() || showBlur ? white.withOpacity(0.1) : styler.secondaryColor()),
+                        color: (isImage() || isBlack() || showBlur ? white.withOpacity(0.1) : styler.primaryColor()),
                         margin: EdgeInsets.zero,
                         shape: RoundedRectangleBorder(
                           borderRadius: isFull

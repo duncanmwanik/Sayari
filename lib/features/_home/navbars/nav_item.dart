@@ -38,7 +38,7 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Functi
                     child: Stack(
                       children: [
                         Padding(
-                          padding: paddingC('l1,r1,t1'),
+                          padding: paddingC('l1,r1,t1.5'),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
@@ -47,7 +47,7 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Functi
                             ],
                           ),
                         ),
-                        Center(child: AppText(text: DateTime.now().day.toString(), size: 11, color: styler.invertedTextColor())),
+                        Center(child: AppText(text: DateTime.now().day.toString(), size: 9, color: styler.invertedTextColor())),
                       ],
                     ),
                   ),

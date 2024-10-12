@@ -86,11 +86,10 @@ class CalendarOptions extends StatelessWidget {
             AppButton(
               onPressed: () => createSession(),
               smallLeftPadding: !isTabAndBelow(),
-              color: styler.accentColor(2),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AppIcon(Icons.add),
+                  AppIcon(Icons.add, color: styler.accent),
                   if (isNotPhone()) spw(),
                   if (isNotPhone()) Flexible(child: AppText(text: 'New Session', overflow: TextOverflow.ellipsis)),
                 ],

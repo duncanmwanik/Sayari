@@ -6,9 +6,11 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
+import '../../_providers/_providers.dart';
 import '../../features/calendar/_helpers/date_time/jump_to_date.dart';
 import '../../features/calendar/_helpers/date_time/misc.dart';
 import '../../features/calendar/state/datetime.dart';
+import '../../features/chat/_helpers/jump_to_date.dart';
 
 class SfCalendar extends StatelessWidget {
   const SfCalendar(
@@ -131,12 +133,12 @@ class SfCalendar extends StatelessWidget {
             }
             // For web calendar, we jump to date
             else if (isOverview) {
-              jumpToDate(dates.value);
+              if (state.views.isCalendar()) jumpToDate(dates.value);
+              if (state.views.isChat()) jumpToChatDate(dates.value);
             }
             // Else, we select dates
             else {
               selectedDates.clear();
-
               if (isMultiple) {
                 for (int d = 0; d < dates.value.length; d++) {
                   String date = getDatePart(dates.value[d]);

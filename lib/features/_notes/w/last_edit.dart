@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_widgets/others/others/other.dart';
 import '../../../_widgets/others/text.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
 
@@ -12,13 +13,15 @@ class LastEdit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: paddingS('l'),
-      child: AppText(
-        size: small,
-        text: timestamp != null ? getEditDateTime(timestamp!) : '',
-        faded: true,
-      ),
-    );
+    return timestamp != null
+        ? Padding(
+            padding: paddingS('l'),
+            child: AppText(
+              size: tiny,
+              text: 'Edited ${getEditDateTime(timestamp!)}',
+              faded: true,
+            ),
+          )
+        : NoWidget();
   }
 }

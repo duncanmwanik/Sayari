@@ -2,6 +2,8 @@
 //
 //
 
+import 'package:flutter/material.dart';
+
 class Feature {
   const Feature({required this.t});
   final String t;
@@ -23,7 +25,8 @@ class FeatureData {
 //
 
 class IntroFeature {
-  const IntroFeature({required this.title, required this.description});
+  const IntroFeature({required this.title, required this.description, required this.icon});
   final String title;
   final String description;
+  final IconData icon;
 }

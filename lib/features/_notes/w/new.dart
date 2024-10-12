@@ -25,11 +25,11 @@ class NewOptions extends StatelessWidget {
           AppButton(
             onPressed: () => createNote(views.view),
             smallLeftPadding: !isTabAndBelow(),
-            color: styler.accentColor(2),
+            showBorder: true,
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                AppIcon(Icons.add),
+                AppIcon(Icons.add, color: styler.accent),
                 if (isNotPhone()) spw(),
                 if (isNotPhone()) Flexible(child: AppText(text: features[views.view]!.message, overflow: TextOverflow.ellipsis)),
               ],

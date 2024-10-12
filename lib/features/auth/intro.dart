@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../__styling/spacing.dart';
+import '../../__styling/variables.dart';
 import '../../_variables/intro_features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
@@ -27,24 +28,36 @@ class AuthIntro extends StatelessWidget {
               onPressed: previous,
               noStyling: true,
               isSquare: true,
+              borderRadius: borderRadiusSmall,
               child: AppIcon(Icons.keyboard_arrow_left, extraFaded: true),
             ),
-            mpw(),
+            spw(),
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AppText(text: introFeatures[index].title, size: 20, weight: FontWeight.bold),
+                  AppIcon(introFeatures[index].icon, faded: true),
+                  sph(),
+                  AppText(text: introFeatures[index].title, size: normal, faded: true, weight: FontWeight.w800),
                   tph(),
-                  AppText(text: introFeatures[index].description, faded: true, weight: FontWeight.w400),
+                  SizedBox(
+                    height: 40,
+                    child: AppText(
+                      text: introFeatures[index].description,
+                      faded: true,
+                      weight: FontWeight.w400,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ],
               ),
             ),
-            mpw(),
+            spw(),
             AppButton(
               onPressed: next,
               noStyling: true,
               isSquare: true,
+              borderRadius: borderRadiusSmall,
               child: AppIcon(Icons.keyboard_arrow_right, extraFaded: true),
             ),
           ],

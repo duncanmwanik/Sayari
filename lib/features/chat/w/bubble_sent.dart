@@ -77,18 +77,19 @@ class _SentMessageBubbleState extends State<SentMessageBubble> {
                       FileList(fileData: files),
                       if (files.isNotEmpty) mph(),
                       // message
-                      QuillEditor.basic(
-                        configurations: QuillEditorConfigurations(
-                          controller: quillController,
-                          showCursor: isEdit,
-                          scrollable: false,
-                          customStyles: getQuillEditorStyle(fontSize: 13),
-                          embedBuilders: [
-                            QuillEmbedImageBuilder(addQuillEmbedImageBlock: addQuillEmbedImageBlock),
-                            QuillEmbedDividerBuilder(addQuillEmbedDividerBlock: addQuillEmbedDividerBlock),
-                          ],
+                      if (!quillController.document.isEmpty())
+                        QuillEditor.basic(
+                          configurations: QuillEditorConfigurations(
+                            controller: quillController,
+                            showCursor: isEdit,
+                            scrollable: false,
+                            customStyles: getQuillEditorStyle(fontSize: 13),
+                            embedBuilders: [
+                              QuillEmbedImageBuilder(addQuillEmbedImageBlock: addQuillEmbedImageBlock),
+                              QuillEmbedDividerBuilder(addQuillEmbedDividerBlock: addQuillEmbedDividerBlock),
+                            ],
+                          ),
                         ),
-                      ),
                       // read more
                       if (isLong)
                         AppButton(

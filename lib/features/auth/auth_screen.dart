@@ -34,8 +34,8 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<AuthScreen> {
-  final TextEditingController emailController = TextEditingController(); // mo@gmail.com
-  final TextEditingController passwordController = TextEditingController(); // 1234567
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
   final TextEditingController userNameController = TextEditingController();
 
@@ -43,6 +43,8 @@ class _SignInScreenState extends State<AuthScreen> {
   bool isNewAccount = false;
   bool isResetPassword = false;
   bool isBusy = false;
+
+  bool showDemo = true;
   bool isBusyDemo = false;
 
   Timer? timer;
@@ -50,7 +52,7 @@ class _SignInScreenState extends State<AuthScreen> {
 
   @override
   void initState() {
-    timer = Timer.periodic(Duration(seconds: 5), (_) => setState(() => index = index < introFeatures.length - 1 ? index + 1 : 0));
+    timer = Timer.periodic(Duration(seconds: 10), (_) => setState(() => index = index < introFeatures.length - 1 ? index + 1 : 0));
     super.initState();
   }
 
@@ -68,7 +70,7 @@ class _SignInScreenState extends State<AuthScreen> {
       return Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/images/${introFeatures[index].title.toLowerCase()}.png'),
+            image: AssetImage('assets/images/${index == 4 ? 'notes' : introFeatures[index].title.toLowerCase()}.png'),
             colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.2), BlendMode.darken),
             fit: isPhone() ? BoxFit.cover : BoxFit.fill,
           ),
@@ -83,6 +85,10 @@ class _SignInScreenState extends State<AuthScreen> {
                 child: Container(
                   margin: paddingL(),
                   constraints: BoxConstraints(maxWidth: 400),
+                  decoration: BoxDecoration(
+                    // color: styler.appColor(1),
+                    borderRadius: BorderRadius.circular(borderRadiusMedium),
+                  ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(borderRadiusMedium),
                     child: BackdropFilter(
@@ -102,7 +108,7 @@ class _SignInScreenState extends State<AuthScreen> {
                                 next: () => setState(() => index = index < introFeatures.length - 1 ? index + 1 : 0),
                                 previous: () => setState(() => index = index > 0 ? index - 1 : introFeatures.length - 1),
                               ),
-                              lph(),
+                              msph(),
                               //
                               if (!isNewAccount && !isResetPassword)
                                 Column(
@@ -110,21 +116,22 @@ class _SignInScreenState extends State<AuthScreen> {
                                   children: [
                                     //
                                     SignInButton(
-                                      onPressed: () => showToast(1, 'Try the demo.', smallTopMargin: true),
+                                      onPressed: () => showToast(1, 'Not available at the moment.', smallTopMargin: true),
                                       imagePath: 'google.png',
                                       label: 'Continue with Google',
                                     ),
-                                    ph(6),
-                                    SignInButton(
-                                      onPressed: () async {
-                                        setState(() => isBusyDemo = true);
-                                        await signInUsingEmailPassword(
-                                            email: 'duncanmwanik@gmail.com', password: '12345678', validate: false);
-                                        setState(() => isBusyDemo = false);
-                                      },
-                                      isBusy: isBusyDemo,
-                                      label: 'Try the Demo',
-                                    ),
+                                    if (showDemo) ph(6),
+                                    if (showDemo)
+                                      SignInButton(
+                                        onPressed: () async {
+                                          setState(() => isBusyDemo = true);
+                                          await signInUsingEmailPassword(
+                                              email: 'duncanmwanik@gmail.com', password: '12345678', validate: false);
+                                          setState(() => isBusyDemo = false);
+                                        },
+                                        isBusy: isBusyDemo,
+                                        label: 'Try the Demo',
+                                      ),
                                     //
                                   ],
                                 ),
@@ -160,7 +167,7 @@ class _SignInScreenState extends State<AuthScreen> {
                                       hintText: 'Password',
                                       controller: passwordController,
                                       keyboardType: TextInputType.visiblePassword,
-                                      textInputAction: isSignIn ? TextInputAction.done : null,
+                                      textInputAction: isSignIn ? TextInputAction.done : TextInputAction.next,
                                       validator: (value) => Validator.validatePassword(password: value!),
                                     ),
                                   //
@@ -242,7 +249,7 @@ class _SignInScreenState extends State<AuthScreen> {
                                     ),
                                   ),
                                   //
-                                  if (isNewAccount || isSignIn || isResetPassword) mph(),
+                                  if (isNewAccount || isSignIn || isResetPassword) msph(),
                                   if (isNewAccount || isSignIn || isResetPassword)
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.center,

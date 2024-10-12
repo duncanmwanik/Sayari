@@ -3,9 +3,9 @@ import '../_helpers/global.dart';
 import '../_helpers/helpers.dart';
 import '../_variables/constants.dart';
 import '../_variables/features.dart';
-import '../features/_notes/tasks/_helpers/helper.dart';
 import '../features/_spaces/_helpers/common.dart';
 import '../features/files/_helpers/helper.dart';
+import '../features/tasks/_helpers/helper.dart';
 
 class Item {
   Item({
@@ -30,6 +30,7 @@ class Item {
   String? color() => data['c'];
   String emoji() => data['ej'] ?? '';
   String content() => data['n'] ?? '';
+  Map chats() => {};
   String reminder() => data['r'] ?? '';
   String sessionType() => data['y'] ?? 'Session';
   String labels() => data['l'] ?? '';

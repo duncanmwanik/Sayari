@@ -88,30 +88,26 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
                         noStyling: true,
                         padding: EdgeInsets.zero,
                         hoverColor: transparent,
-                        child: AppText(
-                          size: tiny,
-                          text: userName,
-                          weight: FontWeight.bold,
-                          overflow: TextOverflow.ellipsis,
-                        ),
+                        child: AppText(size: tiny, text: userName, overflow: TextOverflow.ellipsis),
                       ),
                       // files
                       tph(),
                       FileList(fileData: files),
                       if (files.isNotEmpty) mph(),
                       // message
-                      QuillEditor.basic(
-                        configurations: QuillEditorConfigurations(
-                          controller: quillController,
-                          showCursor: isEdit,
-                          scrollable: false,
-                          customStyles: getQuillEditorStyle(fontSize: 13),
-                          embedBuilders: [
-                            QuillEmbedImageBuilder(addQuillEmbedImageBlock: addQuillEmbedImageBlock),
-                            QuillEmbedDividerBuilder(addQuillEmbedDividerBlock: addQuillEmbedDividerBlock),
-                          ],
+                      if (!quillController.document.isEmpty())
+                        QuillEditor.basic(
+                          configurations: QuillEditorConfigurations(
+                            controller: quillController,
+                            showCursor: isEdit,
+                            scrollable: false,
+                            customStyles: getQuillEditorStyle(fontSize: 13),
+                            embedBuilders: [
+                              QuillEmbedImageBuilder(addQuillEmbedImageBlock: addQuillEmbedImageBlock),
+                              QuillEmbedDividerBuilder(addQuillEmbedDividerBlock: addQuillEmbedDividerBlock),
+                            ],
+                          ),
                         ),
-                      ),
                       // read more
                       if (isLong)
                         AppButton(
@@ -121,7 +117,7 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
                           smallVerticalPadding: true,
                           child: AppText(text: showMore ? 'Show less' : 'Read more', size: small, color: Colors.blue),
                         ),
-                      ph(2),
+                      if (!quillController.document.isEmpty()) ph(2),
                       // time
                       Align(
                         alignment: Alignment.centerRight,
