@@ -24,7 +24,7 @@ class QuickNote extends StatelessWidget {
     state.quill.reset();
 
     return Padding(
-      padding: paddingL('tb'),
+      padding: paddingL('b'),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,8 +71,6 @@ class QuickNote extends StatelessWidget {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          QuickNoteFormartingButton(),
-                          mpw(),
                           Expanded(
                             child: Padding(
                               padding: paddingC('t6'),
@@ -84,6 +82,8 @@ class QuickNote extends StatelessWidget {
                               ),
                             ),
                           ),
+                          mpw(),
+                          QuickNoteFormartingButton(),
                           mpw(),
                           SaveQuickNoteBtn(),
                         ],

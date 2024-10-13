@@ -24,7 +24,7 @@ class NewQuickTaskItem extends StatelessWidget {
         return Visibility(
           visible: hasFocus,
           child: AppButton(
-            padding: paddingC('l6,t6,r6,b6'),
+            padding: paddingC('l4,t2,r4,b2'),
             child: Row(
               children: [
                 if (!hasFocus)

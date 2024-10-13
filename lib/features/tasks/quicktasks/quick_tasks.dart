@@ -23,7 +23,7 @@ class QuickTasks extends StatelessWidget {
         children: [
           //
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisSize: MainAxisSize.min,
             children: [
               //
               Row(
@@ -34,25 +34,31 @@ class QuickTasks extends StatelessWidget {
                   AppText(text: 'Quick Tasks', extraFaded: true),
                 ],
               ),
-              //
+              mpw(),
               Consumer<FocusProvider>(
                 builder: (context, focus, child) {
                   bool hasFocus = focus.id == 'quickTask';
 
                   return AppButton(
                     onPressed: hasFocus ? null : () => focus.set('quickTask'),
-                    isSquare: true,
-                    child: AppIcon(Icons.add, size: normal, extraFaded: true),
+                    svp: true,
+                    slp: true,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        AppIcon(Icons.add, size: normal, extraFaded: true),
+                        spw(),
+                        AppText(text: 'Add Quick Task', size: small, extraFaded: true)
+                      ],
+                    ),
                   );
                 },
               ),
               //
             ],
           ),
-          mph(),
           //
           NewQuickTaskItem(),
-          // tasks
           ListOfQuickTasks(),
           //
         ],

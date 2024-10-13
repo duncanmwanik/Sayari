@@ -6,6 +6,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_widgets/buttons/button.dart';
+import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../state/quill.dart';
@@ -114,11 +115,18 @@ Widget getQuillToolbar({bool isMin = false}) {
             QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.codeBlock, options: options),
             // divider
             AppButton(
-              onPressed: () => addQuillEmbedDividerBlock(),
+              menuItems: colorMenu(
+                title: 'Add Divider',
+                onSelect: (newColor) => addQuillEmbedDividerBlock(),
+              ),
               tooltip: 'Insert Divider',
               noStyling: true,
               isSquare: true,
-              child: AppIcon(Icons.remove, faded: true),
+              child: SizedBox(
+                width: 30,
+                height: 2,
+                child: AppButton(color: styler.accentColor()),
+              ),
             ),
             // font sizes
             sizeButton('H1', Attribute.h4),
@@ -133,15 +141,6 @@ Widget getQuillToolbar({bool isMin = false}) {
               noStyling: true,
               isSquare: true,
               child: AppIcon(Icons.image, faded: true),
-            ),
-            // more options
-            AppButton(
-              onPressed: () {},
-              tooltip: 'More',
-              tooltipDirection: AxisDirection.up,
-              noStyling: true,
-              isSquare: true,
-              child: AppIcon(Icons.more_horiz, faded: true),
             ),
           ],
         ),

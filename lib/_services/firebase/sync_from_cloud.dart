@@ -8,7 +8,7 @@ import 'database.dart';
 
 Future<bool> syncFromCloud(String space, String timestamp, String activity) async {
   try {
-    // '$db,$type,$action,$id,$sid,$keys,$extras,$userName'
+    // order: '$db,$type,$action,$id,$sid,$keys,$extras,$userName'
     List<String> activityData = splitList(activity, separator: ',', clearEmpties: false);
     String db = activityData[0];
     String type = activityData[1];
@@ -19,18 +19,21 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
     String extras = activityData[6];
     String userName = activityData[7];
 
+    bool isNew = action.startsWith('c');
+    bool isEdit = action.startsWith('e');
+    bool isDelete = action.startsWith('d');
+    bool isForSession = feature.isCalendar(type);
+
     printThis('::syncFromCloud-> $db,$space,$type,$action,$id,$sid,$keys,$extras,$userName');
 
     Box box = await Hive.openBox('${space}_$type');
 
     //
-    // create --------------------------------------------------
+    // new
     //
-    if (action == 'c') {
-      //
-      // for session ops
-      //
-      if (feature.isCalendar(type)) {
+    if (isNew) {
+      // for sessions
+      if (isForSession) {
         String firstDate = splitList(extras).first;
 
         await cloudService.getData(db: db, '$space/$type/$firstDate/$id').then((snapshot) async {
@@ -45,9 +48,7 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
           }
         });
       }
-      //
       // others
-      //
       else {
         await cloudService
             .getData(db: db, '$space/$type${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}')
@@ -71,13 +72,11 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
       }
     }
     //
-    // edit -------------------------------------------------- edit
+    // edit
     //
-    if (action == 'e') {
+    if (isEdit) {
       splitList(keys).forEach((editedKey) async {
-        //
         // delete key
-        //
         if (editedKey.startsWith('d')) {
           String key = editedKey.split('/')[1];
           Map itemData = box.get(id, defaultValue: {});
@@ -96,11 +95,8 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
             }
           }
         }
-        //
         // add/edit item key
-        //
         else {
-          //
           await cloudService
               .getData(db: db, '$space/$type${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}/$editedKey')
               .then((snapshot) async {
@@ -125,14 +121,12 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
             }
           });
         }
-
-        //
       });
     }
     //
-    // delete --------------------------------------------------
+    // delete
     //
-    if (action == 'd') {
+    if (isDelete) {
       if (sid.isNotEmpty) {
         Map itemData = box.get(id);
         itemData.remove(sid);
@@ -146,7 +140,7 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
 
     return true;
   } catch (e) {
-    errorPrint('sync-from-cloud', e);
+    errorPrint('syncFromCloud', e);
     return false;
   }
 }

@@ -33,3 +33,7 @@ Future<void> addQuillEmbedDividerBlock() async {
   final length = state.quill.controller.selection.extentOffset - index;
   state.quill.controller.replaceText(index, length, block, null);
 }
+
+List<Widget> embedDividerMenu() {
+  return [];
+}

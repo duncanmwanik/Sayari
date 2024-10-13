@@ -25,22 +25,18 @@ Future<bool> syncToCloud({
   bool success = false;
   //
   if (hasInternet) {
-    // ********** ********** ********* ********* ******** ********** START OF SYNC
     try {
       // printThis('SYNC: $parent - $action - $id - $sid - $keys - $data - $extras   ----------');
       bool isNew = action.startsWith('c');
       bool isEdit = action.startsWith('e');
       bool isDelete = action.startsWith('d');
-      bool isUpdate = action.startsWith('u');
       bool isForSession = parent == feature.calendar;
+
       //
-      //
-      //
-      // ----------------------------------------------
-      // New stuff/ Creation
+      // new
       //
       if (isNew) {
-        // creating/copying/moving a session
+        // for sessions
         if (isForSession) {
           for (String date in splitList(extras)) {
             await cloudService.writeData(db: db, '$space/$parent/$date/$id', data);
@@ -52,17 +48,8 @@ Future<bool> syncToCloud({
               db: db, '$space/${parent.isNotEmpty ? '/$parent' : ''}${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}', data);
         }
       }
-      // ----------------------------------------------
-      // Updating stuff
       //
-      else if (isUpdate) {
-        //
-        await cloudService.updateData(
-            db: db, '$space/${parent.isNotEmpty ? '/$parent' : ''}${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}', data);
-        //
-      }
-      // ----------------------------------------------
-      // Editing stuff
+      // editing
       //
       else if (isEdit) {
         // items is a string list of the edits made to a note, session etc.
@@ -79,21 +66,21 @@ Future<bool> syncToCloud({
           }
         });
       }
-      // ----------------------------------------------
-      // Deleting items: Session/Note/Note/List
+      //
+      // deleting items
       //
       else if (isDelete) {
         await cloudService.deleteData(
             db: db, '$space${parent.isNotEmpty ? '/$parent' : ''}${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}');
       }
-      // --------------------------------------------------------------------------
+
+      //
       // if action is to delete space, we don't log anymore
       if (db == 'spaces' && parent.isEmpty && isDelete) {
         log = false;
       }
 
-      // Logging activity
-      //
+      // logging activity
       // This will log the sync operation to update listening users by updating the latest space activity version
       if (log) {
         String timeStamp = getUniqueId();
@@ -107,20 +94,16 @@ Future<bool> syncToCloud({
 
         await cloudService.writeData(db: db, '$space/activity/$timeStamp', activity);
         await cloudService.writeData(db: db, '$space/activity/0', timeStamp);
-
         printThis('::Synced to cloud -> log: $timeStamp > $activity');
       }
 
-      // ********** ********** ********* ********* ******** ********** END OF SYNC
-
-      success = true; // successful
-      //
+      success = true;
       //
     } catch (e) {
       // If syncing fails, we add the sync action to pending actions for later retries.
       await addToPendingActions(
           db: db, space: space, parent: parent, action: action, data: data, id: id, sid: sid, keys: keys, extras: extras, log: log);
-      errorPrint('sync-to-cloud-$parent-$action-$id-$sid-$keys-$extras-$data', e);
+      errorPrint('syncToCloud-$parent-$action-$id-$sid-$keys-$extras-$data', e);
       //
     }
   }

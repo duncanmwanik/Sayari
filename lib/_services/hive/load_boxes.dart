@@ -29,15 +29,15 @@ Future<void> loadAllBoxes() async {
 
 Future<void> loadSelectedSpaceBoxes(String spaceId) async {
   await Hive.openBox(spaceId);
-  await Hive.openBox('${spaceId}_timeline');
   await Hive.openBox('${spaceId}_info');
   await Hive.openBox('${spaceId}_members');
   await Hive.openBox('${spaceId}_activity');
   await Hive.openBox('${spaceId}_notifications');
   await Hive.openBox('${spaceId}_subtypes');
-  await Hive.openBox('${spaceId}_${feature.chat}');
+  await Hive.openBox('${spaceId}_${feature.timeline}');
   await Hive.openBox('${spaceId}_${feature.calendar}');
   await Hive.openBox('${spaceId}_${feature.notes}');
+  await Hive.openBox('${spaceId}_${feature.chat}');
   await Hive.openBox('${spaceId}_${feature.flags}');
   await Hive.openBox('${spaceId}_${feature.tags}');
 }

@@ -1,7 +1,8 @@
-import '../../_helpers/debug.dart';
-import '../../_variables/features.dart';
+import 'package:hive/hive.dart';
 
-bool updateStore({
+import '../../_helpers/debug.dart';
+
+Future<bool> updateStore({
   required String db,
   required String space,
   String parent = '',
@@ -10,7 +11,7 @@ bool updateStore({
   String id = '',
   String sid = '',
   String keys = '',
-}) {
+}) async {
   //!
   bool success = false;
   //
@@ -18,31 +19,43 @@ bool updateStore({
     bool isNew = action.startsWith('c');
     bool isEdit = action.startsWith('e');
     bool isDelete = action.startsWith('d');
-    bool isUpdate = action.startsWith('u');
-    bool isForSession = parent == feature.calendar;
+    // bool isForSession = parent == feature.calendar;
+
+    Box box = await Hive.openBox('${space}_$parent');
     //
-    //
-    // ----------------------------------------------
-    // New stuff/ Creation
+    // new stuff
     //
     if (isNew) {
+      if (sid.isNotEmpty) {
+        Map itemData = box.get(id, defaultValue: {});
+        itemData[sid] = data;
+        await box.put(id, itemData);
+      } else {
+        await box.put(id, data);
+      }
     }
-    // ----------------------------------------------
-    // Editing
+    //
+    // editing
     //
     else if (isEdit) {
     }
-    // ----------------------------------------------
-    // Deleting items
     //
-    else if (isDelete) {}
-
-    // ********** ********** ********* ********* ******** ********** END OF SYNC
-
+    //deleting items
+    //
+    else if (isDelete) {
+      if (sid.isNotEmpty) {
+        Map itemData = box.get(id);
+        itemData.remove(sid);
+        await box.put(id, itemData);
+      } else {
+        await box.delete(id);
+      }
+    }
+    //
     success = true; // successful
     //
   } catch (e) {
-    errorPrint('sync-to-cloud-$parent-$action-$id-$sid-$keys-$data', e);
+    errorPrint('updateStore-$parent-$action-$id-$sid-$keys-$data', e);
     //
   }
 

@@ -13,6 +13,7 @@ Future<void> getAllSpaceData(String spaceId, {bool? isFirstTime}) async {
   await getSpaceInfo(spaceId);
   await getSpaceNameFromCloud(spaceId);
   await getSpaceMemberData(spaceId);
+  await getSpaceData(spaceId, feature.timeline);
   await getSpaceData(spaceId, feature.notes);
   await getSpaceData(spaceId, feature.tags);
   await getSpaceData(spaceId, feature.flags);

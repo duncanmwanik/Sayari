@@ -6,6 +6,7 @@ import '../../__styling/spacing.dart';
 import '../../__styling/theme_btn.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/views.dart';
+import '../../_widgets/others/others/other.dart';
 import '../../_widgets/others/others/sync_indicator.dart';
 import '../_notes/state/selection.dart';
 import '../_notes/w/note_options.dart';
@@ -42,9 +43,16 @@ class CustomAppBar extends StatelessWidget {
                       children: [
                         //
                         if (!isSmallPC()) Expanded(child: SpaceName()),
-                        if (isSmallPC() && views.isCalendar()) Expanded(child: CalendarOptions()),
-                        if (isSmallPC() && (views.isNotes() || views.isTasks())) Expanded(child: NoteOptions()),
-                        if (isSmallPC() && views.isChat()) Expanded(child: ChatFilters()),
+                        if (isSmallPC())
+                          Expanded(
+                            child: views.isCalendar()
+                                ? CalendarOptions()
+                                : views.isNotes() || views.isTasks()
+                                    ? NoteOptions()
+                                    : views.isChat()
+                                        ? ChatFilters()
+                                        : NoWidget(),
+                          ),
                         //
                         Row(
                           children: [
@@ -65,9 +73,14 @@ class CustomAppBar extends StatelessWidget {
             ),
             //
             if (!isSmallPC() && (views.isCalendar() || views.isNotes() || views.isTasks() || views.isChat())) sph(),
-            if (!isSmallPC() && (views.isNotes() || views.isTasks())) NoteOptions(),
-            if (!isSmallPC() && views.isCalendar()) CalendarOptions(),
-            if (!isSmallPC() && views.isChat()) ChatFilters(),
+            if (!isSmallPC())
+              views.isCalendar()
+                  ? CalendarOptions()
+                  : views.isNotes() || views.isTasks()
+                      ? NoteOptions()
+                      : views.isChat()
+                          ? ChatFilters()
+                          : NoWidget(),
             //
           ],
         ),
