@@ -4,6 +4,7 @@ Features feature = Features();
 
 class Features {
   String space = 'space';
+  String timeline = 'timeline';
   String calendar = 'calendar';
   String notes = 'notes';
   String tasks = 'tasks';
@@ -22,6 +23,7 @@ class Features {
   String explore = 'explore';
   String saved = 'saved';
 
+  bool isTimeline(String type) => timeline == type;
   bool isCalendar(String type) => calendar == type;
   bool isNote(String type) => notes == type;
   bool isTask(String type) => tasks == type;
@@ -33,13 +35,12 @@ class Features {
   bool isPublish(String type) => publish == type;
   bool isSpace(String type) => space == type;
 
-  FeatureData data(String type) {
-    return features[type] ?? FeatureData();
-  }
+  FeatureData data(String type) => features[type] ?? FeatureData();
 }
 
 Map<String, FeatureData> features = {
-  feature.space: const FeatureData(title: 'Spaces', path: 'book', message: 'Create Workspace'),
+  feature.space: const FeatureData(title: 'Spaces', path: 'book'),
+  feature.timeline: const FeatureData(title: 'Timeline'),
   feature.calendar: const FeatureData(title: 'Calendar', message: 'New Session'),
   feature.notes: const FeatureData(title: 'Notes', path: 'shared', message: 'New Note'),
   feature.tasks: const FeatureData(title: 'Tasks', message: 'New Task'),
@@ -60,4 +61,3 @@ const int sessionsViewDailyNo = 0;
 const int sessionsViewWeeklyNo = 1;
 const int sessionsViewMonthlyNo = 2;
 const int sessionsViewYearlyNo = 3;
-const int sessionsViewOmniNo = 0;

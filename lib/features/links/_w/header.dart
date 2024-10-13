@@ -110,7 +110,7 @@ class LinkHeader extends StatelessWidget {
                 //
                 AppButton(
                   onPressed: () => input.update(feature.share, isActive ? '0' : '1'),
-                  smallRightPadding: true,
+                  srp: true,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

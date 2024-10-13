@@ -40,7 +40,7 @@ class BookingDateTimes extends StatelessWidget {
                   });
                 },
                 color: styler.accentColor(1),
-                smallLeftPadding: true,
+                slp: true,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -95,7 +95,7 @@ class BookingDateTimes extends StatelessWidget {
                   }
                 },
                 color: styler.accentColor(1),
-                smallLeftPadding: true,
+                slp: true,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

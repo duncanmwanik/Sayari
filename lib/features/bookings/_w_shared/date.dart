@@ -24,7 +24,7 @@ class BookingDate extends StatelessWidget {
           //
           AppButton(
             noStyling: true,
-            smallRightPadding: true,
+            srp: true,
             borderRadius: borderRadiusSmall,
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Row(
@@ -49,7 +49,7 @@ class BookingDate extends StatelessWidget {
                 children: List.generate(availableDates.length, (index) {
                   return AppButton(
                     onPressed: () => dateTime.updateDateTime('date', availableDates[index]),
-                    smallRightPadding: true,
+                    srp: true,
                     borderRadius: borderRadiusSmall,
                     color: availableDates[index] == dateTime.date ? styler.accentColor() : null,
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -66,7 +66,7 @@ class BookingDate extends StatelessWidget {
             AppButton(
               onPressed: () => showDateDialog(title: 'Choose a Date', showTitle: true)
                   .then((date) => state.dateTime.updateDateTime('date', getDatePart(date.first))),
-              smallRightPadding: true,
+              srp: true,
               borderRadius: borderRadiusSmall,
               color: dateTime.date.isNotEmpty ? styler.accentColor() : null,
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),

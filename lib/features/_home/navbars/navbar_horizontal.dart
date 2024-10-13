@@ -33,9 +33,11 @@ class HorizontalNavigationBox extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         //
-                        navItem(notesIcon, feature.notes, views.view == feature.notes),
-                        navItem(tasksIcon, size: 20.5, feature.tasks, views.view == feature.tasks),
-                        navItem(sessionsIcon, size: 17, feature.calendar, views.view == feature.calendar),
+                        navItem(timelineIcon, feature.timeline),
+                        navItem(notesIcon, feature.notes),
+                        navItem(tasksIcon, size: 20.5, feature.tasks),
+                        navItem(calendarIcon, size: 17, feature.calendar),
+                        navItem(chatIcon, size: 17, feature.chat),
                         NavMenu(),
                         //
                       ],

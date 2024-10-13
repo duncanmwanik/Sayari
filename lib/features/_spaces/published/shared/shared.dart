@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/breakpoints.dart';
-import '../../../__styling/helpers.dart';
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
-import '../../../_variables/features.dart';
-import '../../../_widgets/others/others/divider.dart';
-import '../../../_widgets/others/others/scroll.dart';
-import '../../_notes/notes_view.dart';
-import '../../share/w/header.dart';
+import '../../../../__styling/breakpoints.dart';
+import '../../../../__styling/helpers.dart';
+import '../../../../__styling/spacing.dart';
+import '../../../../__styling/variables.dart';
+import '../../../../_variables/features.dart';
+import '../../../../_widgets/others/others/divider.dart';
+import '../../../../_widgets/others/others/scroll.dart';
+import '../../../_notes/notes_view.dart';
+import '../../../share/w/header.dart';
 import 'shared_intro.dart';
 
 class PublishBookBody extends StatelessWidget {

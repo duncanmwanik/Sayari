@@ -42,7 +42,7 @@ class Groups extends StatelessWidget {
 
                 return AppButton(
                     onPressed: () => showSelectGroupsDialog(),
-                    smallVerticalPadding: true,
+                    svp: true,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [

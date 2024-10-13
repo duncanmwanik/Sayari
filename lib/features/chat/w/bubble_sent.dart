@@ -48,15 +48,17 @@ class _SentMessageBubbleState extends State<SentMessageBubble> {
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       double maxWidth = constraints.maxWidth * 0.7;
 
+      //  onLongPressDown: (details) => showAppMenu(details.localPosition, chatMenu(widget.item)),
+
       return MouseRegion(
-        onEnter: (value) => state.hover.set(widget.item.sid),
-        onExit: (value) => state.hover.reset(),
+        onEnter: (value) => state.focus.set(widget.item.sid),
+        onExit: (value) => state.focus.reset(),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // options
-            MessageActions(item: widget.item, isSent: true),
+            MessageActionBtn(item: widget.item, isSent: true),
             // message
             tpw(),
             Flexible(
@@ -96,7 +98,7 @@ class _SentMessageBubbleState extends State<SentMessageBubble> {
                           onPressed: () => setState(() => showMore = !showMore),
                           noStyling: true,
                           hoverColor: transparent,
-                          smallVerticalPadding: true,
+                          svp: true,
                           child: AppText(text: showMore ? 'Show less' : 'Read more', size: small, color: Colors.blue),
                         ),
                       //

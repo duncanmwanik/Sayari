@@ -12,7 +12,7 @@ class DataInput extends StatefulWidget {
   const DataInput({
     super.key,
     this.controller,
-    this.inputKey = '',
+    this.inputKey = 't',
     required this.hintText,
     this.initialValue,
     this.focusNode,

@@ -6,6 +6,8 @@ import '../../__styling/variables.dart';
 import '../../_variables/features.dart';
 import '../_notes/notes_view.dart';
 import '../calendar/session_view.dart';
+import '../chat/chat_view.dart';
+import '../timeline/timeline.dart';
 
 class AppView extends StatelessWidget {
   const AppView({super.key, required this.view});
@@ -21,13 +23,17 @@ class AppView extends StatelessWidget {
         borderRadius: BorderRadius.circular(borderRadiusSmall),
       ),
       //
-      child: feature.isCalendar(view)
-          ? SessionsView()
-          : feature.isNote(view)
-              ? ListOfItems(type: feature.notes)
-              : feature.isTask(view)
-                  ? ListOfItems(type: feature.tasks)
-                  : SessionsView(),
+      child: feature.isTimeline(view)
+          ? Timeline()
+          : feature.isCalendar(view)
+              ? SessionsView()
+              : feature.isNote(view)
+                  ? ListOfItems(type: feature.notes)
+                  : feature.isTask(view)
+                      ? ListOfItems(type: feature.tasks)
+                      : feature.isChat(view)
+                          ? ChatView()
+                          : SessionsView(),
       //
     );
   }

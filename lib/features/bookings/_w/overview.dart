@@ -25,7 +25,7 @@ class BookingOverview extends StatelessWidget {
           // no of bookings
           AppButton(
             borderRadius: borderRadiusTiny,
-            smallLeftPadding: true,
+            slp: true,
             child: Row(
               children: [
                 AppIcon(Icons.calendar_month_rounded, size: 16, faded: true, bgColor: item.color()),

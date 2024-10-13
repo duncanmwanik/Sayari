@@ -36,7 +36,7 @@ class TagList extends StatelessWidget {
         if (isInput) {
           state.input.update('l', joinList(tagList));
         } else {
-          await editItemExtras(parent: feature.notes, id: id!, key: 'l', value: joinList(tagList));
+          await quickEdit(parent: feature.notes, id: id!, key: 'l', value: joinList(tagList));
         }
       }
 
@@ -61,12 +61,12 @@ class TagList extends StatelessWidget {
                             ? newTags.isNotEmpty
                                 ? state.input.update('l', joinList(newTags))
                                 : state.input.remove('l')
-                            : await editItemExtras(
+                            : await quickEdit(
                                 parent: feature.notes, id: id!, key: newTags.isNotEmpty ? 'l' : 'd/l', value: joinList(newTags));
                       },
                     ),
                     color: hasColour(bgColor) ? Colors.white24 : null,
-                    smallVerticalPadding: true,
+                    svp: true,
                     child: AppText(size: 11, text: tag.name(), bgColor: bgColor),
                   );
                 }

@@ -36,7 +36,7 @@ Future<bool> isSpaceAdminCloud() async {
 Future<bool> isSpaceOwnerFirebase(String spaceId, String userId) async {
   try {
     DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/members/$userId');
-    return snapshot.value as String == '1';
+    return snapshot.value as String == '2';
   } catch (_) {
     return false;
   }
@@ -47,6 +47,4 @@ Future<bool> isAlreadyAdmin(String spaceId, String userId) async {
   return snapshot.exists;
 }
 
-String emailAsKey(String email) {
-  return email.replaceAll(RegExp('[^A-Za-z0-9]'), '_');
-}
+String emailAsKey(String email) => email.replaceAll(RegExp('[^A-Za-z0-9]'), '_');

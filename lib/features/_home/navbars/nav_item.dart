@@ -5,6 +5,7 @@ import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/navigation.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
@@ -12,8 +13,9 @@ import '../../../_widgets/others/svg.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/go_to_view.dart';
 
-Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Function()? onPressed}) {
+Widget navItem(dynamic icon, String type, {double? size, Function()? onPressed}) {
   bool isCalendar = feature.isCalendar(type);
+  bool isSelected = state.views.view == type;
 
   return Stack(
     children: [
@@ -35,21 +37,13 @@ Widget navItem(dynamic icon, String type, bool isSelected, {double? size, Functi
                     padding: noPadding,
                     color: styler.textColor(faded: true),
                     borderRadius: 2,
-                    child: Stack(
-                      children: [
-                        Padding(
-                          padding: paddingC('l1,r1,t1.5'),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              AppIcon(Icons.circle, size: isDark() ? 2 : 1, color: styler.invertedTextColor()),
-                              AppIcon(Icons.circle, size: isDark() ? 2 : 1, color: styler.invertedTextColor()),
-                            ],
-                          ),
-                        ),
-                        Center(child: AppText(text: DateTime.now().day.toString(), size: 9, color: styler.invertedTextColor())),
-                      ],
-                    ),
+                    child: Center(
+                        child: AppText(
+                      text: DateTime.now().day.toString(),
+                      size: 11,
+                      bold: true,
+                      color: styler.invertedTextColor(),
+                    )),
                   ),
                 )
               : icon.runtimeType == String

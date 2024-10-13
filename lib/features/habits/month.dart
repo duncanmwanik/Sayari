@@ -109,7 +109,7 @@ class HabitMonth extends StatelessWidget {
                                     if (isInput) {
                                       isChecked ? input.remove(checkedKey) : input.update(checkedKey, getUniqueId());
                                     } else {
-                                      editItemExtras(
+                                      quickEdit(
                                         parent: item!.parent,
                                         id: item!.id,
                                         key: isChecked ? 'd/$checkedKey' : checkedKey,

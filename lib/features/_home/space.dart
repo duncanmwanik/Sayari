@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../__styling/breakpoints.dart';
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
-import '../../../_helpers/navigation.dart';
-import '../../../_services/hive/local_storage_service.dart';
-import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/others/icons.dart';
-import '../../../_widgets/others/text.dart';
-import '../../_spaces/_helpers/common.dart';
-import '../../_spaces/overview/overview_sheet.dart';
+import '../../__styling/breakpoints.dart';
+import '../../__styling/spacing.dart';
+import '../../__styling/variables.dart';
+import '../../_helpers/navigation.dart';
+import '../../_services/hive/local_storage_service.dart';
+import '../../_widgets/buttons/button.dart';
+import '../../_widgets/others/icons.dart';
+import '../../_widgets/others/text.dart';
+import '../_spaces/_helpers/common.dart';
+import '../_spaces/overview/overview_sheet.dart';
 
 class SpaceName extends StatelessWidget {
   const SpaceName({super.key, this.isMin = false});
@@ -37,12 +37,12 @@ class SpaceName extends StatelessWidget {
                     Flexible(
                       child: AppButton(
                         onPressed: () => openDrawer(),
-                        tooltip: 'View Workspaces',
+                        tooltip: 'View All Spaces',
                         showBorder: true,
                         borderWidth: 0.3,
                         color: styler.appColor(0.5),
                         isSquare: isMin,
-                        smallRightPadding: !isMin,
+                        srp: !isMin,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -60,15 +60,15 @@ class SpaceName extends StatelessWidget {
                         ),
                       ),
                     ),
-                  if (!isMin) AppText(size: small, text: ' | ', weight: FontWeight.w300, extraFaded: true),
+                  if (!isMin) AppText(size: medium, text: ' |', weight: FontWeight.w400, extraFaded: true),
                   // workspace settings
                   if (!isMin)
                     AppButton(
                       onPressed: () => isASpaceSelected ? showSpaceOverviewBottomSheet() : openDrawer(),
-                      tooltip: 'Manage Workspace',
+                      tooltip: 'Manage Space',
                       isSquare: true,
                       noStyling: true,
-                      child: AppIcon(moreIcon, faded: true),
+                      child: AppIcon(Icons.settings, faded: true),
                     ),
                   //
                 ],
@@ -78,7 +78,7 @@ class SpaceName extends StatelessWidget {
               if (isSmallPC() && isMin)
                 AppButton(
                   onPressed: () => openDrawer(),
-                  tooltip: 'Choose Workspace',
+                  tooltip: 'Choose Space',
                   color: styler.accentColor(1),
                   isSquare: true,
                   child: AppIcon(Icons.arrow_drop_down, faded: true),
@@ -88,7 +88,7 @@ class SpaceName extends StatelessWidget {
               if (isSmallPC() && isMin)
                 AppButton(
                   onPressed: () => isASpaceSelected ? showSpaceOverviewBottomSheet() : openDrawer(),
-                  tooltip: 'Manage Workspace',
+                  tooltip: 'Manage Space',
                   isSquare: true,
                   noStyling: true,
                   child: AppIcon(moreIcon, faded: true),

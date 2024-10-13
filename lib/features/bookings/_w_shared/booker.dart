@@ -149,7 +149,7 @@ class _ShareScreenState extends State<Booker> {
 
                               share.updateIsLoading(false);
                             },
-                            smallRightPadding: true,
+                            srp: true,
                             borderRadius: borderRadiusSmall,
                             color: styler.accentColor(),
                             height: 40,

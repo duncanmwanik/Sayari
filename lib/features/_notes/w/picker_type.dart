@@ -22,7 +22,7 @@ class AppTypePicker extends StatelessWidget {
     this.bgColor,
     this.textColor,
     this.borderRadius,
-    this.smallVerticalPadding = false,
+    this.svp = false,
     this.showNew = false,
   });
 
@@ -34,7 +34,7 @@ class AppTypePicker extends StatelessWidget {
   final Color? bgColor;
   final Color? textColor;
   final double? borderRadius;
-  final bool smallVerticalPadding;
+  final bool svp;
   final bool showNew;
 
   @override
@@ -73,7 +73,7 @@ class AppTypePicker extends StatelessWidget {
       color: bgColor,
       borderRadius: borderRadius,
       isDropDown: true,
-      smallVerticalPadding: smallVerticalPadding,
+      svp: svp,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         mainAxisSize: MainAxisSize.min,

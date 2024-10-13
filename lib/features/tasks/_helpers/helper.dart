@@ -1,6 +1,4 @@
 //
-//
-//
 
 Map getSubItems(Map data) {
   Map map = {...data};

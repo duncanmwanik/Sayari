@@ -5,7 +5,7 @@ import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../_spaces/_helpers/common.dart';
 
-Future<void> editItemExtras({
+Future<void> quickEdit({
   String? space,
   required String parent,
   required String id,

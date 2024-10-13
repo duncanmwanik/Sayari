@@ -61,7 +61,7 @@ class ReminderItem extends StatelessWidget {
                 },
                 initial: reminderPeriodsMap[reminderPeriod],
                 typeEntries: {'minutes': 'm', 'hours': 'h', 'days': 'd', 'weeks': 'w'},
-                smallVerticalPadding: true,
+                svp: true,
               ),
             ),
             // remove reminder

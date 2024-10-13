@@ -9,13 +9,15 @@ import '../../../_providers/input.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
+import '../../../_widgets/menu/confirmation.dart';
+import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/checkbox.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/text.dart';
 import '../../bookings/_w/copy_link.dart';
 import '../../files/_helpers/upload.dart';
 import '../../files/image.dart';
+import '../../files/viewer.dart';
 import '../_helpers/common.dart';
 
 class PublishedSpace extends StatefulWidget {
@@ -51,7 +53,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                   //
                   AppButton(
                     onPressed: () => input.update(feature.share, isPublished ? '0' : '1'),
-                    smallRightPadding: true,
+                    srp: true,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -66,9 +68,7 @@ class _PublishSpaceState extends State<PublishedSpace> {
                     onPressed: () => showConfirmationDialog(
                       title: 'Unpublish as book?',
                       yeslabel: 'Unpublish',
-                      onAccept: () {
-                        input.remove(feature.share);
-                      },
+                      onAccept: () => input.remove(feature.share),
                     ),
                     noStyling: true,
                     showBorder: true,
@@ -79,60 +79,55 @@ class _PublishSpaceState extends State<PublishedSpace> {
                   //
                 ],
               ),
-              //
               mph(),
-              ImageFile(
-                fileId,
-                fileName,
-                images: {fileId: fileName},
-                height: (isTabAndBelow() ? 15.h : 20.h) / 0.7092,
-                fit: BoxFit.fitHeight,
-                showOptions: false,
-              ),
-              //
-              mph(),
-              Wrap(
-                spacing: smallWidth(),
-                runSpacing: smallWidth(),
-                children: [
-                  //
-                  AppButton(
-                    onPressed: () async {
-                      await getFilesToUpload(
-                        allowMultiple: false,
-                        imagesOnly: true,
-                        onDone: (stash) {
-                          input.remove(fileId);
-                          input.addAll({'w': stash.fileId()});
+              // cover image
+              AppButton(
+                menuItems: [
+                  MenuItem(
+                      leading: Icons.edit,
+                      label: 'Edit Cover',
+                      onTap: () async => await getFilesToUpload(
+                            allowMultiple: false,
+                            imagesOnly: true,
+                            onDone: (stash) {
+                              input.remove(fileId);
+                              input.addAll({'w': stash.fileId()});
+                            },
+                          )),
+                  MenuItem(leading: Icons.image, label: 'View Cover', onTap: () => showImageViewer(images: {fileId: fileName})),
+                  MenuItem(
+                      leading: Icons.delete_outline,
+                      label: 'Remove Cover',
+                      menuItems: confirmationMenu(
+                        title: 'Remove cover?',
+                        yeslabel: 'Remove',
+                        onConfirm: () {
+                          input.removeMatch('fl');
+                          input.remove('w');
                         },
-                      );
-                    },
-                    noStyling: true,
-                    showBorder: true,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AppIcon(Icons.edit, size: small),
-                        spw(),
-                        AppText(text: 'Edit cover', size: small, faded: true),
-                      ],
-                    ),
-                  ),
-                  //
-                  AppButton(
-                    onPressed: () {
-                      input.removeMatch('fl');
-                      input.remove('w');
-                    },
-                    noStyling: true,
-                    showBorder: true,
-                    child: AppText(text: 'Remove cover', size: small, faded: true),
-                  ),
-                  //
+                      ))
                 ],
+                noStyling: true,
+                padding: noPadding,
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    SizedBox(
+                      height: (isTabAndBelow() ? 15.h : 20.h) / 0.7092,
+                      width: (isTabAndBelow() ? 15.h : 20.h),
+                      child: ImageFile(
+                        fileId,
+                        fileName,
+                        images: {fileId: fileName},
+                        fit: BoxFit.fitHeight,
+                        showOptions: false,
+                        ignore: true,
+                      ),
+                    ),
+                    AppIcon(Icons.edit, faded: true)
+                  ],
+                ),
               ),
-              //
-              AppDivider(height: mediumHeight()),
               //
             ],
           ),

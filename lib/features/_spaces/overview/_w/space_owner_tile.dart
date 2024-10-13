@@ -15,7 +15,7 @@ class SpaceOwnerTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppListTile(
-      onTap: () async => await copyText(ownerId),
+      onTap: () async => await copyText(ownerId, description: 'Copied email.'),
       leading: AppText(
         text: 'Owner',
       ),

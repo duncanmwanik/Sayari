@@ -9,7 +9,7 @@ import '../../_providers/theme.dart';
 import '../../_services/firebase/database.dart';
 import '../../_variables/features.dart';
 import '../_spaces/_helpers/common.dart';
-import '../_spaces/published/shared.dart';
+import '../_spaces/published/shared/shared.dart';
 import 'state/share.dart';
 import 'w/shared_info.dart';
 

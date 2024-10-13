@@ -12,7 +12,7 @@ import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/sfcalendar.dart';
 import '../../tags/manager.dart';
 import '../navbars/navbar_vertical.dart';
-import 'space.dart';
+import '../space.dart';
 
 class Panel extends StatelessWidget {
   const Panel({super.key});

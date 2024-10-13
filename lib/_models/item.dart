@@ -30,7 +30,6 @@ class Item {
   String? color() => data['c'];
   String emoji() => data['ej'] ?? '';
   String content() => data['n'] ?? '';
-  Map chats() => {};
   String reminder() => data['r'] ?? '';
   String sessionType() => data['y'] ?? 'Session';
   String labels() => data['l'] ?? '';

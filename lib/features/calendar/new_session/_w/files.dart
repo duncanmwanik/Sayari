@@ -30,7 +30,7 @@ class Files extends StatelessWidget {
                   onPressed: () async => await getFilesToUpload(),
                   noStyling: true,
                   showBorder: true,
-                  smallLeftPadding: true,
+                  slp: true,
                   child: Row(
                     children: [
                       AppIcon(Icons.add_rounded, size: 16),

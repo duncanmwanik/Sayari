@@ -5,7 +5,6 @@ import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
-import '../../../../_widgets/others/images.dart';
 import '../../../../_widgets/others/loader.dart';
 import '../../../../_widgets/others/others/other.dart';
 import '../../../../_widgets/others/text.dart';
@@ -30,6 +29,7 @@ class _SpaceTileState extends State<SpaceTile> {
   @override
   Widget build(BuildContext context) {
     bool isSelected = widget.spaceId == liveSpace();
+    bool isDefault = isDefaultSpace(widget.spaceId);
 
     return FutureBuilder(
         future: getSpaceNameFuture(widget.spaceId),
@@ -59,11 +59,14 @@ class _SpaceTileState extends State<SpaceTile> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           //
-                          AppImage('sayari.png', size: 16),
-                          spw(),
+                          // AppImage('sayari.png', size: 16),
+                          // spw(),
                           // space name
                           Expanded(child: AppText(text: spaceName, textAlign: TextAlign.start, faded: true)),
                           spw(),
+                          // default spaces
+                          if (isDefault) AppIcon(Icons.lock, size: medium, color: styler.accent),
+                          if (isDefault) spw(),
                           // indicator, if space is selected
                           if (isSelected) AppIcon(Icons.done_rounded, size: 18, faded: true),
                           if (isSelected) tpw(),
@@ -71,17 +74,18 @@ class _SpaceTileState extends State<SpaceTile> {
                         ],
                       ),
                     ),
-                    //
-                    isLoading
-                        ? Padding(
-                            padding: EdgeInsets.only(right: 5),
-                            child: AppLoader(color: isImage() ? white : styler.accentColor()),
-                          )
-                        : SpaceOptions(
-                            spaceId: widget.spaceId,
-                            spaceName: spaceName,
-                            spaceGroupName: widget.spaceGroupName,
-                          ),
+                    if (isLoading)
+                      if (isLoading)
+                        Padding(
+                          padding: EdgeInsets.only(right: 5),
+                          child: AppLoader(color: isImage() ? white : styler.accentColor()),
+                        ),
+                    if (!isLoading)
+                      SpaceOptions(
+                        spaceId: widget.spaceId,
+                        spaceName: spaceName,
+                        spaceGroupName: widget.spaceGroupName,
+                      ),
                     //
                     //
                   ],

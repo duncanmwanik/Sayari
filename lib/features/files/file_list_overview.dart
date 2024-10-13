@@ -18,9 +18,9 @@ class FileListOverview extends StatelessWidget {
     return Padding(
       padding: paddingM('t'),
       child: AppButton(
-        smallVerticalPadding: true,
-        smallLeftPadding: true,
-        smallRightPadding: true,
+        svp: true,
+        slp: true,
+        srp: true,
         noStyling: true,
         child: Row(
           mainAxisSize: MainAxisSize.min,

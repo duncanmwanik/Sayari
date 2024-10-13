@@ -10,7 +10,6 @@ import '../published/details.dart';
 import '_w/description.dart';
 import '_w/group.dart';
 import '_w/header.dart';
-import '_w/title.dart';
 
 Future<void> showSpaceBottomSheet({required bool isNewSpace}) async {
   await showAppBottomSheet(
@@ -23,7 +22,6 @@ Future<void> showSpaceBottomSheet({required bool isNewSpace}) async {
       padding: EdgeInsets.zero,
       children: [
         //
-        TitleInput(isNewSpace),
         sph(),
         Description(),
         msph(),

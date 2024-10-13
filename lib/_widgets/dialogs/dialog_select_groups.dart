@@ -24,8 +24,8 @@ Future showSelectGroupsDialog() {
         AppText(text: 'Select groups'),
         AppButton(
           onPressed: () => showCreateGroupDialog(),
-          smallVerticalPadding: true,
-          smallLeftPadding: true,
+          svp: true,
+          slp: true,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -52,7 +52,7 @@ Future showSelectGroupsDialog() {
                     return Consumer<InputProvider>(
                         builder: (context, input, child) => AppButton(
                               onPressed: () => input.updateSelectedGroups(group),
-                              smallRightPadding: true,
+                              srp: true,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [

@@ -13,17 +13,14 @@ class TitleInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      return Padding(
-        padding: EdgeInsets.only(left: 30),
-        child: DataInput(
-          inputKey: 't',
-          hintText: 'Workspace Title',
-          autofocus: isNewSpace,
-          fontSize: normal,
-          weight: FontWeight.bold,
-          keyboardType: TextInputType.name,
-          filled: false,
-        ),
+      return DataInput(
+        inputKey: 't',
+        hintText: 'Space Title',
+        autofocus: isNewSpace,
+        fontSize: normal,
+        weight: FontWeight.bold,
+        keyboardType: TextInputType.name,
+        filled: false,
       );
     });
   }

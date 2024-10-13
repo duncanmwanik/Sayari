@@ -23,6 +23,7 @@ Future<void> showAppBottomSheet({
   bool isFloater = false,
   bool isFull = false,
   bool showTopDivider = true,
+  bool showBottomDivider = true,
   bool showBlur = false,
   bool noContentHorizontalPadding = false,
   FutureOr<void> Function()? whenComplete,
@@ -109,7 +110,7 @@ Future<void> showAppBottomSheet({
                               Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  AppDivider(),
+                                  if (showBottomDivider) AppDivider(),
                                   Padding(padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6), child: footer),
                                 ],
                               )

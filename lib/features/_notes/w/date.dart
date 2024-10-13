@@ -47,7 +47,7 @@ class Dates extends StatelessWidget {
                           }
                         });
                       },
-                      smallRightPadding: startDate.isNotEmpty && showIcon,
+                      srp: startDate.isNotEmpty && showIcon,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -80,7 +80,7 @@ class Dates extends StatelessWidget {
                           }
                         });
                       },
-                      smallRightPadding: endDate.isNotEmpty && showIcon,
+                      srp: endDate.isNotEmpty && showIcon,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [

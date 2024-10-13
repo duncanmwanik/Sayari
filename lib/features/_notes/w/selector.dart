@@ -6,7 +6,7 @@ import '../../../../__styling/variables.dart';
 import '../../../__styling/helpers.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
-import '../../../_providers/hover.dart';
+import '../../../_providers/focus.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/other.dart';
 import '../state/selection.dart';
@@ -20,10 +20,10 @@ class ItemSelector extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isChecked = state.selection.isSelected(item.id);
 
-    return Consumer2<SelectionProvider, HoverProvider>(builder: (context, selection, hover, child) {
+    return Consumer2<SelectionProvider, FocusProvider>(builder: (context, selection, focus, child) {
       bool isSelection = selection.isSelection;
       bool isSelected = selection.isSelected(item.id);
-      bool isHovered = hover.id == item.id;
+      bool isHovered = focus.id == item.id;
 
       return Visibility(
         visible: kIsWeb && (isSelection || isSelected || isHovered),

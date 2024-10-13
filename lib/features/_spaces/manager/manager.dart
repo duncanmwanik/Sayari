@@ -22,13 +22,9 @@ class SpaceManager extends StatelessWidget {
             children: [
               //
               CreateOptions(),
-              //
               sph(),
-              //
               GroupList(),
-              //
               SpaceList(),
-              //
               spph(),
               //
             ],

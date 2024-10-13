@@ -20,7 +20,7 @@ Future<void> createNewSpace({bool isNewUser = false, bool isDefault = false}) as
   try {
     //
     // if from sign-up, we set space input data manually
-    if (isNewUser) state.input.set(Item(parent: 'info', data: {'t': 'My Workspace'}));
+    if (isNewUser) state.input.set(Item(parent: 'info', data: {'t': 'My Space'}));
     //
     if (validateInput(state.input.item)) {
       // close the create space bottom sheet if not from sign-up

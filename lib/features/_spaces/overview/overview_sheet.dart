@@ -21,7 +21,8 @@ import '../_helpers/checks_space.dart';
 import '../_helpers/common.dart';
 import '../_helpers/helpers.dart';
 import '../published/button.dart';
-import '_w/space_member_tile.dart';
+import '_w/delete_btn.dart';
+import '_w/members.dart';
 import '_w/space_name.dart';
 import '_w/space_notfications_tile.dart';
 import '_w/space_owner_tile.dart';
@@ -70,14 +71,12 @@ Future<void> showSpaceOverviewBottomSheet() async {
                           AppListTile(
                             leading: 'Space Id',
                             trailing: spaceId,
-                            onTap: () async => await copyText(spaceId),
+                            onTap: () async => await copyText(spaceId, description: 'Copied space ID.'),
                           ),
                           kIsWeb ? sph() : tsph(),
                           SpaceOwnerTile(ownerId: spaceData['o'] ?? '-'),
                           kIsWeb ? sph() : tsph(),
                           SpaceNotificationsTile(spaceName: spaceData['t'] ?? '-'),
-                          kIsWeb ? sph() : tsph(),
-                          SpaceAdminTile(),
                           kIsWeb ? sph() : tsph(),
                           //
                           if (isAdmin())
@@ -87,7 +86,7 @@ Future<void> showSpaceOverviewBottomSheet() async {
                                 children: [
                                   AppIcon(Icons.edit, size: medium),
                                   spw(),
-                                  Flexible(child: AppText(text: 'Edit Workspace')),
+                                  Flexible(child: AppText(text: 'Edit Space Details')),
                                 ],
                               ),
                               trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: 18),
@@ -95,9 +94,22 @@ Future<void> showSpaceOverviewBottomSheet() async {
                             ),
                           //
                           if (isAdmin()) mph(),
-                          if (isAdmin()) AppText(text: 'Other Actions', size: small, faded: true),
+                          if (isAdmin()) AppText(text: 'Actions', size: small, faded: true),
                           if (isAdmin()) AppDivider(height: mediumHeight()),
-                          if (isAdmin()) PublishButton(spaceData: spaceData),
+                          if (isAdmin())
+                            Wrap(
+                              spacing: mediumWidth(),
+                              runSpacing: smallWidth(),
+                              children: [
+                                PublishButton(spaceData: spaceData),
+                                DeleteSpaceBtn(),
+                              ],
+                            ),
+
+                          if (isAdmin()) mph(),
+                          if (isAdmin()) AppText(text: 'Members', size: small, faded: true),
+                          if (isAdmin()) AppDivider(height: mediumHeight()),
+                          if (isAdmin()) SpaceMembers(),
                           lpph(),
                           //
                         ],
@@ -105,10 +117,7 @@ Future<void> showSpaceOverviewBottomSheet() async {
                     ),
                   )
                 : EmptyBox(
-                    onPressed: () {
-                      popWhatsOnTop();
-                      openDrawer();
-                    },
+                    onPressed: () => popWhatsOnTop(todoLast: () => openDrawer()),
                     label: 'Tap to select a space',
                   ),
           );

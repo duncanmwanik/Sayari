@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../__styling/spacing.dart';
-import '../../../../../__styling/variables.dart';
-import '../../../../../_widgets/others/text.dart';
-import '../../../__styling/breakpoints.dart';
-import '../../../_widgets/buttons/button.dart';
-import '../../user/dp.dart';
+import '../../../../../../__styling/spacing.dart';
+import '../../../../../../__styling/variables.dart';
+import '../../../../../../_widgets/others/text.dart';
+import '../../../../__styling/breakpoints.dart';
+import '../../../../_widgets/buttons/button.dart';
+import '../../../user/dp.dart';
 import 'cover.dart';
 
 class PublishedBookIntro extends StatelessWidget {
@@ -50,8 +50,8 @@ class PublishedBookIntro extends StatelessWidget {
             AppButton(
               onPressed: () {},
               noStyling: true,
-              smallVerticalPadding: true,
-              smallLeftPadding: true,
+              svp: true,
+              slp: true,
               borderRadius: borderRadiusLarge,
               child: Row(
                 mainAxisSize: MainAxisSize.min,

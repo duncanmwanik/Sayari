@@ -38,7 +38,7 @@ class ItemFlag extends StatelessWidget {
       padding: isTinyFlag ? noPadding : padding(l: 8, t: 2, b: 2, r: 4),
       width: isTinyFlag ? 30 : null,
       height: isTinyFlag ? 8 : null,
-      smallVerticalPadding: true,
+      svp: true,
       child: isTinyFlag
           ? null
           : Row(

@@ -14,7 +14,7 @@ import '../calendar/info_header.dart';
 import '../chat/w/filters.dart';
 import '../pomodoro/w/pomo_indicator.dart';
 import '../user/dp.dart';
-import 'panel/space.dart';
+import 'space.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});

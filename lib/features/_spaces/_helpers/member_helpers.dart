@@ -12,7 +12,7 @@ import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/others/toast.dart';
 import 'common.dart';
 
-Future<void> addAdminToSpace(String email) async {
+Future<void> addMemberToSpace(String email) async {
   try {
     if (email.isNotEmpty) {
       if (isValidEmail(email)) {
@@ -27,13 +27,11 @@ Future<void> addAdminToSpace(String email) async {
               if (!isAlreadyAdmin) {
                 userEmailsBox.put(userId, email);
                 Hive.box('${spaceId}_members').put(userId, '0');
-
                 await syncToCloud(db: 'spaces', space: spaceId, parent: 'members', action: 'c', id: userId, data: '0');
-
                 closeDialog();
                 showToast(1, 'Added new member <b>$email</b>');
               } else {
-                showToast(1, 'User is already member');
+                showToast(1, 'User is already a member');
               }
             });
           } else {
@@ -61,12 +59,10 @@ Future<void> removeMemberFromSpace(String userId, String userEmail) async {
         await isSpaceOwnerFirebase(spaceId, userId).then((isOwner) async {
           if (!isOwner) {
             Hive.box('${spaceId}_members').delete(userId);
-
             await syncToCloud(db: 'spaces', space: spaceId, parent: 'members', action: 'd', id: userId);
-
             showToast(1, 'Removed member <b>$userEmail</b>');
           } else {
-            showToast(2, 'Workspace owner cannot be removed.');
+            showToast(2, 'Space owner cannot be removed.');
           }
         });
       },
@@ -77,12 +73,11 @@ Future<void> removeMemberFromSpace(String userId, String userEmail) async {
   }
 }
 
-Future<void> changePersonPriviledge(String userId, String value) async {
+Future<void> changeMemberPriviledge(String userId, String priviledge) async {
   try {
     String spaceId = liveSpace();
-    Hive.box('${spaceId}_members').put(userId, value);
-    await syncToCloud(db: 'spaces', space: spaceId, parent: 'members', action: 'e', id: userId, data: value);
-    // await syncToCloud(db: 'spaces', space: spaceId, parent: 'members', action: 'c', id: userId, data: '0');
+    Hive.box('${spaceId}_members').put(userId, priviledge);
+    await syncToCloud(db: 'spaces', space: spaceId, parent: 'members', action: 'e', id: userId, data: priviledge);
   } catch (e) {
     errorPrint('remove-member', e);
     showToast(0, 'Could not remove member');

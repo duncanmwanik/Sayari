@@ -43,7 +43,7 @@ class EntriesFilter extends StatelessWidget {
         //
       ],
       isDropDown: true,
-      smallVerticalPadding: true,
+      svp: true,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

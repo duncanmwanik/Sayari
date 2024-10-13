@@ -10,9 +10,10 @@ import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 
 class CopyLink extends StatelessWidget {
-  const CopyLink({super.key, this.label, required this.path, this.isMinimized = false});
+  const CopyLink({super.key, this.label, this.description, required this.path, this.isMinimized = false});
 
   final String? label;
+  final String? description;
   final String path;
   final bool isMinimized;
 
@@ -20,8 +21,8 @@ class CopyLink extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
       return AppButton(
-        onPressed: () async => await copyText(path, description: 'Copied booking link.'),
-        smallLeftPadding: !isMinimized,
+        onPressed: () async => await copyText(path, description: description ?? 'Copied link.'),
+        slp: !isMinimized,
         noStyling: isMinimized,
         isSquare: isMinimized,
         dryWidth: true,

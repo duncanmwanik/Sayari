@@ -47,6 +47,7 @@ Future<void> showNoteBottomSheet(Item item) async {
         AppButton(
           onPressed: () => popWhatsOnTop(),
           isSquare: true,
+          noStyling: true,
           child: AppIcon(closeIcon, faded: true),
         ),
       ],

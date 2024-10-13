@@ -28,19 +28,11 @@ class AboutApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             //
-            AppButton(
-                onPressed: () {},
-                noStyling: true,
-                smallVerticalPadding: true,
-                child: const AppText(size: small, text: 'Terms', faded: true)),
+            AppButton(onPressed: () {}, noStyling: true, svp: true, child: const AppText(size: small, text: 'Terms', faded: true)),
             tpw(),
             const AppIcon(Icons.lens, size: 5),
             tpw(),
-            AppButton(
-                onPressed: () {},
-                noStyling: true,
-                smallVerticalPadding: true,
-                child: const AppText(size: small, text: 'Privacy Policy', faded: true)),
+            AppButton(onPressed: () {}, noStyling: true, svp: true, child: const AppText(size: small, text: 'Privacy Policy', faded: true)),
             //
           ],
         ),

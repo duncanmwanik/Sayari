@@ -51,7 +51,7 @@ class DatePicker extends StatelessWidget {
                                   },
                                   noStyling: true,
                                   showBorder: true,
-                                  smallLeftPadding: true,
+                                  slp: true,
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [

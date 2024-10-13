@@ -8,7 +8,7 @@ import 'pinned_option.dart';
 List<Widget> pinnedNavOptions() {
   return [
     // workspace
-    MenuItem(label: 'Workspace', faded: true),
+    MenuItem(label: 'Space', faded: true),
     PinnedNavOption(type: feature.chat),
     //
     menuDivider(),

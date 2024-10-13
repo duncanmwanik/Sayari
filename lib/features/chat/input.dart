@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
@@ -23,8 +24,8 @@ import 'w/formatting_btn.dart';
 import 'w/scroll_btn.dart';
 import 'w/send_btn.dart';
 
-class MessageInputBar extends StatelessWidget {
-  const MessageInputBar({super.key});
+class ChatInput extends StatelessWidget {
+  const ChatInput({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +92,17 @@ class MessageInputBar extends StatelessWidget {
                                 ChatFormarttingButton(),
                                 spw(),
                                 // message input
-                                Expanded(child: Padding(padding: paddingC('b2'), child: SuperEditor())),
+                                Expanded(
+                                  child: Padding(
+                                    padding: paddingC('b2'),
+                                    child: SuperEditor(
+                                      maxHeight: 40.h,
+                                      padding: noPadding,
+                                      placeholder: 'Type a message...',
+                                      scrollable: true,
+                                    ),
+                                  ),
+                                ),
                                 spw(),
                                 // send
                                 SendMessageButton(),

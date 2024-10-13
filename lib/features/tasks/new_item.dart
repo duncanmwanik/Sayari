@@ -72,8 +72,8 @@ class _NewItemInputState extends State<NewItemInput> {
                   setState(() => showSaveButton = true);
                   newItemFocusNode.requestFocus();
                 },
-                smallVerticalPadding: true,
-                smallLeftPadding: true,
+                svp: true,
+                slp: true,
                 showBorder: widget.item.hasColor(),
                 bgColor: widget.item.color(),
                 child: Row(

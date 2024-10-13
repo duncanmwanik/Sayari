@@ -1,7 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
+import '../../../../_variables/colors.dart';
 import '../../../../_variables/features.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
@@ -22,34 +25,57 @@ class AdminChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton(
         onPressed: null,
-        smallRightPadding: isAdmin(),
+        srp: isSuperAdmin(),
+        slp: true,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           mainAxisSize: MainAxisSize.max,
           children: [
+            //
+            AppButton(
+              onPressed: () {},
+              noStyling: true,
+              isRound: true,
+              padding: noPadding,
+              margin: paddingM('r'),
+              child: CircleAvatar(
+                backgroundColor: backgroundColors['${Random().nextInt(backgroundColors.length - 1)}']!.color.withOpacity(0.5),
+                radius: small,
+                child: AppText(text: userEmail[0].toUpperCase(), size: small, faded: true),
+              ),
+            ),
+            // email
             Expanded(child: AppText(text: userEmail)),
             // change priviledges
-
-            AppTypePicker(
-              type: feature.calendar,
-              subType: 'y',
-              initial: superPriviledges.keys.firstWhere((key) => superPriviledges[key] == memberPriviledge(userId)),
-              typeEntries: isSuperAdmin() ? superPriviledges : memberPriviledges,
-              onSelect: (chosenType, chosenValue) async {
-                await changePersonPriviledge(userId, chosenValue);
-              },
-            ),
+            isSuperAdmin()
+                ? AppButton(
+                    svp: true,
+                    color: styler.accentColor(6),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        AppIcon(Icons.lock, size: small),
+                        spw(),
+                        AppText(text: 'Owner', size: small),
+                      ],
+                    ),
+                  )
+                : AppTypePicker(
+                    type: feature.calendar,
+                    subType: 'y',
+                    initial: superPriviledges.keys.firstWhere((key) => superPriviledges[key] == memberPriviledge(userId)),
+                    typeEntries: isSuperAdmin() ? superPriviledges : memberPriviledges,
+                    onSelect: (chosenType, chosenValue) => changeMemberPriviledge(userId, chosenValue),
+                  ),
             if (isAdmin()) spw(),
             // remove person
-            if (isAdmin())
+            if (!isSuperAdmin() && isAdmin())
               AppButton(
-                onPressed: () async {
-                  if (isAdmin()) {
-                    await removeMemberFromSpace(userId, userEmail);
-                  }
-                },
+                onPressed: () => removeMemberFromSpace(userId, userEmail),
                 noStyling: true,
                 isSquare: true,
+                padding: noPadding,
+                margin: paddingM('l'),
                 child: AppIcon(closeIcon, faded: true, size: 18),
               )
           ],

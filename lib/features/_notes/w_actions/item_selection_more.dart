@@ -27,11 +27,11 @@ class ItemSelectionMore extends StatelessWidget {
             onTap: () async {
               if (isArchive) {
                 selection.selected.forEach((item) async {
-                  await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: '0');
+                  await quickEdit(parent: item.parent, id: item.id, key: 'a', value: '0');
                 });
               } else {
                 selection.selected.forEach((item) async {
-                  await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: '1');
+                  await quickEdit(parent: item.parent, id: item.id, key: 'a', value: '1');
                 });
               }
               state.selection.clear();
@@ -43,7 +43,7 @@ class ItemSelectionMore extends StatelessWidget {
             leading: deleteIcon,
             onTap: () async {
               selection.selected.forEach((item) async {
-                await editItemExtras(parent: item.parent, id: item.id, key: 'x', value: '1');
+                await quickEdit(parent: item.parent, id: item.id, key: 'x', value: '1');
               });
               state.selection.clear();
             },

@@ -12,6 +12,7 @@ Future<void> chooseUserDp() async {
   try {
     await getFilesToUpload(
       allowMultiple: false,
+      addToInput: false,
       imagesOnly: true,
       onDone: (stash) async {
         if (hasUserDp()) await removeUserDp();

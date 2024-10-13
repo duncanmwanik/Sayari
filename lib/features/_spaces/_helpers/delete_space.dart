@@ -14,93 +14,93 @@ import 'common.dart';
 Future<void> deleteSpace({required String spaceId, required String spaceName}) async {
   try {
     //
-    // Never delete the default workspace eg. 'My Workspace': has a value of 1
+    // Never delete the default space eg. 'My Space': has a value of 1
     //
     if (isDefaultSpace(spaceId)) {
-      showToast(2, 'Your default workspace cannot be deleted.');
+      showToast(2, 'Your default space cannot be deleted.');
       return;
     }
 
     await showConfirmationDialog(
-      title: 'Delete workspace <b>$spaceName</b>?',
+      title: 'Delete space <b>$spaceName</b>?',
       yeslabel: 'Delete',
-      content: 'You will lose all data. The workspace will be removed from other users when they open it the next time.',
+      content: 'You will lose all data. The space will be removed from other users when they open it the next time.',
       onAccept: () async {
         String userId = liveUser();
-        // Check if user is the workspace's owner
+        // Check if user is the space's owner
         await isSpaceOwnerFirebase(spaceId, userId).then((isSpaceOwner) async {
           if (isSpaceOwner) {
-            // delete workspace from cloud
+            // delete space from cloud
             await syncToCloud(db: 'spaces', space: spaceId, action: 'd');
-            // remove workspace from local and cloud user data
+            // remove space from local and cloud user data
             await removeSpaceFromUserSpaceData(userId, spaceId);
-            // unselect workspace if it was the app-wide selectesd workspace
+            // unselect space if it was the app-wide selectesd space
             await updateSelectedSpace('none');
             //
           } else {
-            // Alert user they don't have the priviledge to delete the workspace
+            // Alert user they don't have the priviledge to delete the space
             // *Note this point is not expected to be reached as the buttons to delete
-            // the workspace should only be available for workspace owner
-            showToast(0, 'Only workspace owner can delete the workspace');
+            // the space should only be available for space owner
+            showToast(0, 'Only space owner can delete the space');
             //
           }
         });
       },
     );
   } catch (e) {
-    errorPrint('delete-workspace', e);
-    showToast(0, 'Could not delete workspace.');
+    errorPrint('delete-space', e);
+    showToast(0, 'Could not delete space.');
     await addToPendingActions(db: 'spaces', space: spaceId, parent: 'user', action: 'd', data: {'spaceName': spaceName});
   }
 }
 
 Future<void> removeSpace({required String spaceId, required String spaceName}) async {
   try {
-    // Removes a workspace from non-workspace owners
+    // Removes a space from non-space owners
     // Confirm for removal
     //
     await showConfirmationDialog(
-      title: 'Remove workspace <b>$spaceName</b>?',
+      title: 'Remove space <b>$spaceName</b>?',
       yeslabel: 'Remove',
-      content: 'The workspace will be completely removed from all your devices.',
+      content: 'The space will be completely removed from all your devices.',
       onAccept: () async {
-        // Prevent workspace owners from removing their own spaces, they can only delete them
-        // *Not expected to be reached as the remove workspace button should be hidden from workspace owners
+        // Prevent space owners from removing their own spaces, they can only delete them
+        // *Not expected to be reached as the remove space button should be hidden from space owners
         await isSpaceOwnerFirebase(spaceId, liveUser()).then((isSpaceOwner) async {
           if (!isSpaceOwner) {
-            // remove workspace from local and cloud user data
+            // remove space from local and cloud user data
             await removeSpaceFromUserSpaceData(liveUser(), spaceId);
-            // unselect workspace if it was the app-wide selectesd workspace
+            // unselect space if it was the app-wide selectesd space
             await updateSelectedSpace('none');
             //
           }
           //
           else {
-            showToast(0, 'You cannot remove a workspace you created. Delete the workspace instead.');
+            showToast(0, 'You cannot remove a space you created. Delete the space instead.');
           }
         });
       },
     );
   } catch (e) {
-    errorPrint('remove-workspace', e);
-    showToast(0, 'Could not remove workspace');
+    errorPrint('remove-space', e);
+    showToast(0, 'Could not remove space');
   }
 }
 
 Future<void> removeMissingSpace({required String spaceId}) async {
   try {
     //
-    // If the workspace data from the cloud is missing, it has been deleted by it's owner
-    // So we remove the workspace form all other users still having the workspace
+    // If the space data from the cloud is missing, it has been deleted by it's owner
+    // So we remove the space form all other users still having the space
     //
     String spaceName = spaceNamesBox.get(spaceId, defaultValue: '');
-    showToast(2, 'The workspace $spaceName is no longer available.');
+    showToast(2, 'The space $spaceName is no longer available.');
 
     await removeSpaceFromUserSpaceData(liveUser(), spaceId);
-    // unselect workspace if it was the app-wide selectesd workspace
+    // unselect space if it was the app-wide selectesd space
     if (spaceId == liveSpace()) await updateSelectedSpace('none');
     //
   } catch (e) {
-    errorPrint('delete-missing-workspace', e);
+    errorPrint('delete-missing-space', e);
   }
 }

@@ -44,8 +44,8 @@ class Note extends StatelessWidget {
         child: ConstrainedBox(
           constraints: BoxConstraints(minHeight: isRow ? 200 : 320),
           child: MouseRegion(
-            onEnter: (event) => isShare() ? null : state.hover.set(item.id),
-            onExit: (event) => isShare() ? null : state.hover.reset(),
+            onEnter: (event) => isShare() ? null : state.focus.set(item.id),
+            onExit: (event) => isShare() ? null : state.focus.reset(),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(borderRadiusTinySmall),
               child: BackdropFilter(

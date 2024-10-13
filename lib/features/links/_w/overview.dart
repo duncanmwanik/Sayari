@@ -24,7 +24,7 @@ class LinksOverview extends StatelessWidget {
           //
           AppButton(
             borderRadius: borderRadiusTiny,
-            smallLeftPadding: true,
+            slp: true,
             child: Row(
               children: [
                 AppIcon(Icons.dataset_linked_outlined, size: 16, faded: true, bgColor: item.color()),

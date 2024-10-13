@@ -52,7 +52,8 @@ const List<IconData> toastIcons = [Icons.info, Icons.check_circle, Icons.info, I
 const List<Color> toastColors = [Colors.red, Colors.green, Colors.blue, Colors.yellow];
 
 // icons
-const IconData sessionsIcon = Icons.looks_one_rounded;
+const IconData timelineIcon = Icons.bolt;
+const IconData calendarIcon = Icons.looks_one_rounded;
 const String notesIcon = 'note-sticky-solid';
 const IconData tasksIcon = Icons.check_box_rounded;
 const String chatIcon = 'comment-solid';

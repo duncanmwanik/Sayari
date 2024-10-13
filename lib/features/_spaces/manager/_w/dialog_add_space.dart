@@ -9,9 +9,9 @@ Future<dynamic> showAddSpaceDialog() {
   final TextEditingController nameController = TextEditingController();
 
   return showAppDialog(
-    title: 'Add Workspace',
+    title: 'Add Space',
     content: DataInput(
-      hintText: 'Workspace ID',
+      hintText: 'Space ID',
       controller: nameController,
       keyboardType: TextInputType.name,
       autofocus: true,

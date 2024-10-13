@@ -51,20 +51,20 @@ class Reminder extends StatelessWidget {
                 if (isInput) {
                   input.update('r', newReminder);
                 } else {
-                  await editItemExtras(parent: feature.notes, id: id, key: 'r', value: newReminder, sid: sid);
+                  await quickEdit(parent: feature.notes, id: id, key: 'r', value: newReminder, sid: sid);
                 }
               },
               onRemove: () async {
                 if (isInput) {
                   input.remove('r');
                 } else {
-                  await editItemExtras(parent: feature.notes, id: id, sid: sid, key: 'd/r', value: '');
+                  await quickEdit(parent: feature.notes, id: id, sid: sid, key: 'd/r', value: '');
                 }
               },
             ),
-            smallVerticalPadding: true,
-            smallLeftPadding: true,
-            smallRightPadding: true,
+            svp: true,
+            slp: true,
+            srp: true,
             showBorder: hasColour(bgColor),
             color: hasColour(bgColor) ? Colors.white24 : null,
             child: Row(

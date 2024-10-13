@@ -22,7 +22,7 @@ class BookingTime extends StatelessWidget {
           //
           AppButton(
             noStyling: true,
-            smallRightPadding: true,
+            srp: true,
             borderRadius: borderRadiusSmall,
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Row(
@@ -45,7 +45,7 @@ class BookingTime extends StatelessWidget {
             children: List.generate(availableTimes.length, (index) {
               return AppButton(
                 onPressed: () => dateTime.updateDateTime('time', availableTimes[index]),
-                smallRightPadding: true,
+                srp: true,
                 borderRadius: borderRadiusSmall,
                 color: availableTimes[index] == dateTime.time ? styler.accentColor() : null,
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -60,7 +60,7 @@ class BookingTime extends StatelessWidget {
           if (availableTimes.isEmpty && dateTime.time.isNotEmpty)
             AppButton(
               onPressed: () {},
-              smallRightPadding: true,
+              srp: true,
               borderRadius: borderRadiusSmall,
               color: styler.accentColor(),
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -89,7 +89,7 @@ class BookingTime extends StatelessWidget {
                     return null;
                   });
                 },
-                smallRightPadding: true,
+                srp: true,
                 borderRadius: borderRadiusSmall,
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 child: Row(

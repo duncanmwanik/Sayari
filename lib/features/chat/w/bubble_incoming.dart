@@ -47,33 +47,36 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
 
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       return MouseRegion(
-        onEnter: (value) => state.hover.set(widget.item.sid),
-        onExit: (value) => state.hover.reset(),
+        onEnter: (value) => state.focus.set(widget.item.sid),
+        onExit: (value) => state.focus.reset(),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // user dp
             Align(
               alignment: Alignment.topLeft,
-              child: AppButton(
-                onPressed: () {},
-                noStyling: true,
-                isRound: true,
-                padding: noPadding,
-                child: CircleAvatar(
-                  backgroundColor: backgroundColors['${Random().nextInt(backgroundColors.length - 1)}']!.color.withOpacity(0.5),
-                  radius: normal,
-                  child: AppText(text: userName[0], size: normal, faded: true),
+              child: Padding(
+                padding: paddingC('t3'),
+                child: AppButton(
+                  onPressed: () {},
+                  noStyling: true,
+                  isRound: true,
+                  padding: noPadding,
+                  child: CircleAvatar(
+                    backgroundColor: backgroundColors['${Random().nextInt(backgroundColors.length - 1)}']!.color.withOpacity(0.5),
+                    radius: small,
+                    child: AppText(text: userName[0], size: small, faded: true),
+                  ),
                 ),
               ),
             ),
-            // message
             tpw(),
+            // message
             Flexible(
               child: AppButton(
                 hoverColor: transparent,
                 padding: EdgeInsets.zero,
-                borderRadius: borderRadiusTinySmall,
+                borderRadius: borderRadiusTiny,
                 color: Color.alphaBlend(styler.appColor(isImage() ? 1 : (isDark() ? 0.1 : 0.5)), styler.appColor(1)),
                 child: Container(
                   padding: paddingM(),
@@ -114,7 +117,7 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
                           onPressed: () => setState(() => showMore = !showMore),
                           noStyling: true,
                           hoverColor: transparent,
-                          smallVerticalPadding: true,
+                          svp: true,
                           child: AppText(text: showMore ? 'Show less' : 'Read more', size: small, color: Colors.blue),
                         ),
                       if (!quillController.document.isEmpty()) ph(2),
@@ -131,7 +134,7 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
             ),
             // options
             tpw(),
-            MessageActions(item: widget.item),
+            MessageActionBtn(item: widget.item),
             //
           ],
         ),

@@ -33,7 +33,7 @@ class Share extends StatelessWidget {
             child: AppButton(
               noStyling: true,
               showBorder: true,
-              smallRightPadding: true,
+              srp: true,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +118,7 @@ class Share extends StatelessWidget {
                           onPressed: () {
                             input.update(feature.publish, isPublished ? '0' : '1');
                           },
-                          smallRightPadding: true,
+                          srp: true,
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [

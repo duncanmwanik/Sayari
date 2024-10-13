@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HoverProvider with ChangeNotifier {
+class FocusProvider with ChangeNotifier {
   String id = '';
 
-  void set(String id_) {
-    id = id_;
+  void set(String newId) {
+    id = newId;
     notifyListeners();
   }
 

@@ -29,8 +29,8 @@ class AddEntry extends StatelessWidget {
                 AppButton(
                   onPressed: () => showPeriodEntryDialog(financeType: 'Income'),
                   color: Colors.green.shade100,
-                  smallLeftPadding: true,
-                  smallVerticalPadding: true,
+                  slp: true,
+                  svp: true,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -44,8 +44,8 @@ class AddEntry extends StatelessWidget {
                 AppButton(
                   onPressed: () => showPeriodEntryDialog(financeType: 'Expense'),
                   color: Colors.red.shade100,
-                  smallLeftPadding: true,
-                  smallVerticalPadding: true,
+                  slp: true,
+                  svp: true,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -59,8 +59,8 @@ class AddEntry extends StatelessWidget {
                 AppButton(
                   onPressed: () => showPeriodEntryDialog(financeType: 'Saving'),
                   color: Colors.blue.shade100,
-                  smallLeftPadding: true,
-                  smallVerticalPadding: true,
+                  slp: true,
+                  svp: true,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [

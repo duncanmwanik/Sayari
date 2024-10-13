@@ -18,7 +18,7 @@ class AddLink extends StatelessWidget {
         //
         AppButton(
           onPressed: () => addLink(),
-          smallLeftPadding: true,
+          slp: true,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +32,7 @@ class AddLink extends StatelessWidget {
         //
         AppButton(
           onPressed: () => addLink(isTitle: true),
-          smallLeftPadding: true,
+          slp: true,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,

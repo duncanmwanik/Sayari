@@ -45,8 +45,8 @@ class ChatFilter extends StatelessWidget {
         onPressed: () => chat.setType(type),
         noStyling: !isSelected,
         showBorder: !isSelected,
-        smallLeftPadding: iconData != null,
-        smallVerticalPadding: true,
+        slp: iconData != null,
+        svp: true,
         color: isSelected ? styler.accentColor(isDark() ? 4 : 2) : null,
         child: Row(
           mainAxisSize: MainAxisSize.min,

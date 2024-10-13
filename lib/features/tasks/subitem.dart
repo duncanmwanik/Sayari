@@ -87,7 +87,7 @@ class _ItemState extends State<SubItem> {
                                 isChecked: isChecked,
                                 margin: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
                                 onTap: () {
-                                  editItemExtras(
+                                  quickEdit(
                                       parent: feature.notes,
                                       id: widget.sitem.id,
                                       sid: widget.sitem.sid,

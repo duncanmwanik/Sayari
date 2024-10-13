@@ -10,8 +10,8 @@ import '../features/files/state/data.dart';
 import '../features/pomodoro/state/pomodoro.dart';
 import '../features/share/state/share.dart';
 import '../features/tts/_state/tts_provider.dart';
+import 'focus.dart';
 import 'global.dart';
-import 'hover.dart';
 import 'input.dart';
 import 'theme.dart';
 import 'views.dart';
@@ -35,7 +35,7 @@ List<SingleChildWidget> allProviders = [
   ChangeNotifierProvider(create: (context) => DateTimeProvider()),
   ChangeNotifierProvider(create: (context) => SelectionProvider()),
   // misc
-  ChangeNotifierProvider(create: (context) => HoverProvider()),
+  ChangeNotifierProvider(create: (context) => FocusProvider()),
   ChangeNotifierProvider(create: (context) => ShareProvider()),
 ];
 
@@ -55,7 +55,7 @@ class AppState {
   late TTSProvider tts;
   late PomodoroProvider pomodoro;
   late ChatProvider chat;
-  late HoverProvider hover;
+  late FocusProvider focus;
   late ShareProvider share;
 
   void setContext(BuildContext appContext) {
@@ -70,7 +70,7 @@ class AppState {
     tts = appContext.read<TTSProvider>();
     pomodoro = appContext.read<PomodoroProvider>();
     chat = appContext.read<ChatProvider>();
-    hover = appContext.read<HoverProvider>();
+    focus = appContext.read<FocusProvider>();
     share = appContext.read<ShareProvider>();
   }
 }

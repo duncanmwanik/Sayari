@@ -25,7 +25,7 @@ class PeriodFooter extends StatelessWidget {
           AppButton(
             onPressed: () => showFinanceGraphsBottomSheet(),
             noStyling: true,
-            smallLeftPadding: true,
+            slp: true,
             child: AppText(
                 size: normal,
                 text: 'Ksh. ${formatThousands(getTotalAmount(state.input.item, 'in'))}',
@@ -40,7 +40,7 @@ class PeriodFooter extends StatelessWidget {
           AppButton(
             onPressed: () => showFinanceGraphsBottomSheet(),
             noStyling: true,
-            smallLeftPadding: true,
+            slp: true,
             child: AppText(
                 size: normal,
                 text: 'Ksh. ${formatThousands(getTotalAmount(state.input.item, 'ex'))}',
@@ -55,7 +55,7 @@ class PeriodFooter extends StatelessWidget {
           AppButton(
             onPressed: () => showFinanceGraphsBottomSheet(),
             noStyling: true,
-            smallLeftPadding: true,
+            slp: true,
             child: AppText(
                 size: normal,
                 text: 'Ksh. ${formatThousands(getTotalAmount(state.input.item, 'sa'))}',

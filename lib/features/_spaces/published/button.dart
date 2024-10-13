@@ -19,10 +19,8 @@ class PublishButton extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isPublished = spaceData[feature.share] == '1';
 
-    return Wrap(
-      spacing: mediumWidth(),
-      runSpacing: smallWidth(),
-      crossAxisAlignment: WrapCrossAlignment.center,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         //
         AppButton(
@@ -30,7 +28,7 @@ class PublishButton extends StatelessWidget {
             prepareSpaceForEdit(spaceData);
             if (!isPublished) state.input.update(feature.share, '1');
           },
-          smallLeftPadding: true,
+          slp: true,
           color: isPublished ? styler.accentColor(5) : null,
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -44,6 +42,7 @@ class PublishButton extends StatelessWidget {
           ),
         ),
         //
+        if (isPublished) spw(),
         if (isPublished) CopyLink(path: publishedSpaceLink(true), isMinimized: true),
         //
       ],

@@ -51,7 +51,7 @@ class SpaceOptions extends StatelessWidget {
                     return isOwner
                         ? NoWidget()
                         : MenuItem(
-                            label: 'Remove Workspace',
+                            label: 'Remove Space',
                             leading: Icons.remove_circle_outlined,
                             onTap: () => removeSpace(spaceId: spaceId, spaceName: spaceName),
                           );
@@ -73,7 +73,7 @@ class SpaceOptions extends StatelessWidget {
 
                     return isOwner
                         ? MenuItem(
-                            label: 'Delete Workspace',
+                            label: 'Delete Space',
                             leading: Icons.delete_forever_rounded,
                             onTap: () => deleteSpace(spaceId: spaceId, spaceName: spaceName),
                           )

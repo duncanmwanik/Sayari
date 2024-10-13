@@ -24,7 +24,7 @@ class NewOptions extends StatelessWidget {
           // new note
           AppButton(
             onPressed: () => createNote(views.view),
-            smallLeftPadding: !isTabAndBelow(),
+            slp: !isTabAndBelow(),
             showBorder: true,
             child: Row(
               mainAxisSize: MainAxisSize.min,

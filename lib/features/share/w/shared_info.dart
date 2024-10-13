@@ -36,7 +36,7 @@ class SharedAction extends StatelessWidget {
           if (hasInfo) mph(),
           AppButton(
             onPressed: () => context.go('/'),
-            smallRightPadding: true,
+            srp: true,
             color: styler.accentColor(),
             borderRadius: borderRadiusCrazy,
             child: Row(

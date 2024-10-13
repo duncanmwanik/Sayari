@@ -95,8 +95,8 @@ class MonthlyView extends StatelessWidget {
                                                 child: AppButton(
                                                   menuItems: sessionListMenu(date.date),
                                                   dryWidth: true,
-                                                  smallRightPadding: true,
-                                                  smallVerticalPadding: true,
+                                                  srp: true,
+                                                  svp: true,
                                                   borderRadius: borderRadiusSuperTiny,
                                                   color: styler.tertiaryColor(),
                                                   child: Row(

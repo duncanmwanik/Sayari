@@ -16,7 +16,7 @@ class FinanceToggler extends StatelessWidget {
         return AppButton(
           isSquare: true,
           noStyling: true,
-          smallVerticalPadding: true,
+          svp: true,
           tooltip: isExpanded ? 'Show more' : 'Show less',
           leading: isExpanded ? Icons.more_horiz : Icons.keyboard_arrow_up,
           onPressed: () => input.update('cx', isExpanded ? '0' : '1'),

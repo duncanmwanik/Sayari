@@ -3,17 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:styled_text/styled_text.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
-import '../../../_services/hive/get_data.dart';
-import '../../../_widgets/buttons/close.dart';
-import '../../../_widgets/others/empty_box.dart';
-import '../../../_widgets/others/others/divider.dart';
-import '../../../_widgets/others/others/scroll.dart';
-import '../../../_widgets/others/text.dart';
-import '../../../_widgets/sheets/bottom_sheet.dart';
-import '../../calendar/_helpers/date_time/misc.dart';
-import '_w/dialog_space_activity.dart';
+import '../../../../__styling/spacing.dart';
+import '../../../../__styling/variables.dart';
+import '../../../../_services/hive/get_data.dart';
+import '../../../../_widgets/buttons/close.dart';
+import '../../../../_widgets/others/empty_box.dart';
+import '../../../../_widgets/others/others/divider.dart';
+import '../../../../_widgets/others/others/scroll.dart';
+import '../../../../_widgets/others/text.dart';
+import '../../../../_widgets/sheets/bottom_sheet.dart';
+import '../../../calendar/_helpers/date_time/misc.dart';
+import 'dialog_space_activity.dart';
 
 Future<void> showActivityBottomSheet() async {
   await showAppBottomSheet(

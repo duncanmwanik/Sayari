@@ -21,7 +21,7 @@ class NavMenu extends StatelessWidget {
     return AppButton(
       menuItems: [
         // workspace
-        if (showWorkspace) MenuItem(label: 'Workspace', faded: true),
+        if (showWorkspace) MenuItem(label: 'Space', faded: true),
         if (!showNavItem(feature.chat)) MenuItem(label: 'Chat', leading: Icons.message_rounded, onTap: () => goToView(feature.chat)),
         if (showWorkspace) menuDivider(),
         // user

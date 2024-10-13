@@ -4,7 +4,7 @@ import '../../../../__styling/spacing.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/list_tile.dart';
 import '../../../../_widgets/others/text.dart';
-import '../activity_sheet.dart';
+import 'activity_sheet.dart';
 
 class SpaceActivityTile extends StatelessWidget {
   const SpaceActivityTile({super.key});

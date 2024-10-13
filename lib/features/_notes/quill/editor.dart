@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../_helpers/helpers.dart';
@@ -11,7 +10,20 @@ import 'embed_divider.dart';
 import 'embed_image.dart';
 
 class SuperEditor extends StatelessWidget {
-  const SuperEditor({super.key});
+  const SuperEditor({
+    super.key,
+    this.maxHeight,
+    this.minHeight,
+    this.padding,
+    this.placeholder,
+    this.scrollable = false,
+  });
+
+  final double? minHeight;
+  final double? maxHeight;
+  final EdgeInsetsGeometry? padding;
+  final String? placeholder;
+  final bool scrollable;
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +33,17 @@ class SuperEditor extends StatelessWidget {
     return IgnorePointer(
       ignoring: isShare(),
       child: Padding(
-        padding: paddingC(state.views.isChat() ? '' : 't20'),
+        padding: padding ?? paddingC('t20'),
         child: QuillEditor.basic(
           scrollController: scrollController,
           configurations: QuillEditorConfigurations(
             editorKey: editorKey,
             controller: state.quill.controller,
             showCursor: !isShare(),
-            maxHeight: state.views.isChat() ? 40.h : null,
-            scrollable: state.views.isChat(),
-            placeholder: state.views.isChat() ? 'Type a message...' : quillDescription(),
+            maxHeight: maxHeight,
+            minHeight: minHeight,
+            scrollable: scrollable,
+            placeholder: placeholder ?? quillDescription(),
             customStyles: getQuillEditorStyle(),
             embedBuilders: [
               QuillEmbedImageBuilder(addQuillEmbedImageBlock: addQuillEmbedImageBlock),

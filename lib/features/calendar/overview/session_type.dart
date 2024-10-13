@@ -18,7 +18,7 @@ class SessionType extends StatelessWidget {
         // session type
         AppButton(
           color: backgroundColors[item.color()]!.color,
-          smallVerticalPadding: true,
+          svp: true,
           child: AppText(
             text: item.sessionType(),
             weight: FontWeight.bold,

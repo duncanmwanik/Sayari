@@ -85,7 +85,7 @@ class CalendarOptions extends StatelessWidget {
           if (isNotPhone())
             AppButton(
               onPressed: () => createSession(),
-              smallLeftPadding: !isTabAndBelow(),
+              slp: !isTabAndBelow(),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

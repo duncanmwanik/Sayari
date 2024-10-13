@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../__styling/breakpoints.dart';
-import '../../../_services/firebase/database.dart';
-import '../../files/image.dart';
+import '../../../../__styling/breakpoints.dart';
+import '../../../../_services/firebase/database.dart';
+import '../../../files/image.dart';
 
 class PublishedCover extends StatelessWidget {
   const PublishedCover({super.key, required this.sharedData});

@@ -10,15 +10,18 @@ Future showAddAdminDialog() {
 
   return showAppDialog(
     title: 'Enter the user email',
-    content: DataInput(hintText: 'Email', controller: nameController, keyboardType: TextInputType.text),
+    content: DataInput(
+      hintText: 'Email',
+      controller: nameController,
+      keyboardType: TextInputType.text,
+      autofocus: true,
+    ),
     actions: [
-      ActionButton(
-        isCancel: true,
-      ),
+      ActionButton(isCancel: true),
       ActionButton(
           label: 'Add',
           onPressed: (() async {
-            await addAdminToSpace(nameController.text.trim());
+            await addMemberToSpace(nameController.text.trim());
           })),
     ],
   );

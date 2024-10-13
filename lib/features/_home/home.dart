@@ -32,21 +32,20 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     state.share.unset();
     retryPendingActions();
     listenForKeyboard();
+    initializeUserSync();
   }
 
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
-    disposeSync();
+    disposeSpaceSync();
+    disposeUserSync();
     cancelKeyboardSubscription();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    disposeSync();
-    initializeSync();
-
     return WillPopScope(
       onWillPop: () => confirmExitApp(),
       child: Scaffold(

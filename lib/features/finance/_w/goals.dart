@@ -59,9 +59,9 @@ class Goal extends StatelessWidget {
 
       return AppButton(
         onPressed: () => showPeriodBudgetDialog(type: title, key: 'g$type'),
-        smallVerticalPadding: true,
-        smallLeftPadding: !hasGoal,
-        smallRightPadding: hasGoal,
+        svp: true,
+        slp: !hasGoal,
+        srp: hasGoal,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

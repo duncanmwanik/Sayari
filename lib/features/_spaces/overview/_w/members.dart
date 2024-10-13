@@ -1,48 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
-import '../../../_services/firebase/get_space_data.dart';
-import '../../../_services/hive/local_storage_service.dart';
-import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/buttons/close.dart';
-import '../../../_widgets/others/icons.dart';
-import '../../../_widgets/others/others/scroll.dart';
-import '../../../_widgets/others/text.dart';
-import '../../../_widgets/sheets/bottom_sheet.dart';
-import '../_helpers/checks_space.dart';
-import '../_helpers/common.dart';
-import '../_helpers/member_helpers.dart';
-import '_w/add_member.dart';
-import '_w/member_chip.dart';
+import '../../../../__styling/spacing.dart';
+import '../../../../_services/firebase/get_space_data.dart';
+import '../../../../_services/hive/local_storage_service.dart';
+import '../../../../_widgets/buttons/button.dart';
+import '../../../../_widgets/others/icons.dart';
+import '../../../../_widgets/others/others/scroll.dart';
+import '../../../../_widgets/others/text.dart';
+import '../../_helpers/checks_space.dart';
+import '../../_helpers/common.dart';
+import '../../_helpers/member_helpers.dart';
+import 'add_member.dart';
+import 'member_chip.dart';
 
-Future<void> showAdminsBottomSheet({required String title}) async {
-  String spaceId = liveSpace();
+class SpaceMembers extends StatelessWidget {
+  const SpaceMembers({super.key});
 
-  await showAppBottomSheet(
-    //
-    header: Row(
-      children: [
-        AppCloseButton(isX: false),
-        spw(),
-        Flexible(child: AppText(size: normal, text: title)),
-      ],
-    ),
-    //
-    content: ListView(
+  @override
+  Widget build(BuildContext context) {
+    String spaceId = liveSpace();
+
+    return ListView(
       shrinkWrap: true,
       physics: TopBlockedBouncingScrollPhysics(),
       children: [
         //
-        mph(),
-        //
+        tph(),
+        // add members
         if (isAdmin())
           Align(
             alignment: Alignment.topRight,
             child: AppButton(
                 onPressed: () async => await showAddAdminDialog(),
-                smallLeftPadding: true,
+                showBorder: true,
+                slp: true,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -82,7 +74,6 @@ Future<void> showAdminsBottomSheet({required String title}) async {
         ),
         //
       ],
-    ),
-    //
-  );
+    );
+  }
 }

@@ -3,9 +3,9 @@ import '../../../_variables/features.dart';
 import '../../_notes/_helpers/quick_edit.dart';
 
 Future<void> pinMessage(Item item) async {
-  await editItemExtras(parent: feature.chat, id: item.id, sid: item.sid, key: 'p', value: '1');
+  await quickEdit(parent: feature.chat, id: item.id, sid: item.sid, key: 'p', value: '1');
 }
 
 Future<void> unPinMessage(Item item) async {
-  await editItemExtras(parent: feature.chat, id: item.id, sid: item.sid, key: 'd/p');
+  await quickEdit(parent: feature.chat, id: item.id, sid: item.sid, key: 'd/p');
 }

@@ -17,7 +17,7 @@ class ViewsProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  bool isView(String type) => view == type;
+  bool isTimeline() => view == feature.timeline;
   bool isCalendar() => view == feature.calendar;
   bool isNotes() => view == feature.notes;
   bool isTasks() => view == feature.tasks;

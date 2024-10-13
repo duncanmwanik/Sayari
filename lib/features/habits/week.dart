@@ -134,7 +134,7 @@ class _HabitWeekState extends State<HabitWeek> {
                                   if (isInput) {
                                     isChecked ? input.remove(checkedKey) : input.update(checkedKey, getUniqueId());
                                   } else {
-                                    editItemExtras(
+                                    quickEdit(
                                       parent: widget.item!.parent,
                                       id: widget.item!.id,
                                       key: isChecked ? 'd/$checkedKey' : checkedKey,

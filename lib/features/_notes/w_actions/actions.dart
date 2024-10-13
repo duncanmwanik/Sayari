@@ -6,7 +6,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/global.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/hover.dart';
+import '../../../_providers/focus.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/menu/menu_item.dart';
@@ -26,9 +26,9 @@ class ItemActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer2<SelectionProvider, HoverProvider>(builder: (context, selection, hover, child) {
+    return Consumer2<SelectionProvider, FocusProvider>(builder: (context, selection, focus, child) {
       bool isNotSelection = selection.selected.isEmpty;
-      bool isHovered = hover.id == item.id;
+      bool isHovered = focus.id == item.id;
 
       return Visibility(
         visible: isPersistent || (isNotSelection && isHovered),
@@ -58,7 +58,7 @@ class ItemActions extends StatelessWidget {
                   MenuItem(
                     label: item.isPinned() ? 'Unpin' : 'Pin',
                     leading: item.isPinned() ? Icons.push_pin : Icons.push_pin_outlined,
-                    onTap: () => editItemExtras(parent: item.parent, id: item.id, key: item.isPinned() ? 'd/p' : 'p', value: '1'),
+                    onTap: () => quickEdit(parent: item.parent, id: item.id, key: item.isPinned() ? 'd/p' : 'p', value: '1'),
                   ),
                 //
                 if (!item.isDeleted())
@@ -70,7 +70,7 @@ class ItemActions extends StatelessWidget {
                       isSelection: true,
                       alreadySelected: splitList(item.labels()),
                       onDone: (newTags) async {
-                        await editItemExtras(parent: item.parent, id: item.id, key: 'l', value: joinList(newTags));
+                        await quickEdit(parent: item.parent, id: item.id, key: 'l', value: joinList(newTags));
                       },
                     ),
                   ),
@@ -83,7 +83,7 @@ class ItemActions extends StatelessWidget {
                       title: item.title(),
                       reminder: item.reminder(),
                       onSet: (newReminder) async {
-                        await editItemExtras(parent: item.parent, id: item.id, key: 'r', value: newReminder);
+                        await quickEdit(parent: item.parent, id: item.id, key: 'r', value: newReminder);
                       },
                     ),
                   ),
@@ -96,7 +96,7 @@ class ItemActions extends StatelessWidget {
                       title: item.title(),
                       selectedColor: item.color(),
                       onSelect: (newColor) async {
-                        await editItemExtras(
+                        await quickEdit(
                           parent: item.parent,
                           id: item.id,
                           key: newColor.isEmpty ? 'd/c' : 'c',
@@ -120,7 +120,7 @@ class ItemActions extends StatelessWidget {
                     label: item.isArchived() ? 'Unarchive' : 'Archive',
                     leading: item.isArchived() ? unarchiveIcon : archiveIcon,
                     onTap: () async {
-                      await editItemExtras(parent: item.parent, id: item.id, key: 'a', value: item.isArchived() ? '0' : '1');
+                      await quickEdit(parent: item.parent, id: item.id, key: 'a', value: item.isArchived() ? '0' : '1');
                     },
                   ),
                 //
@@ -132,7 +132,7 @@ class ItemActions extends StatelessWidget {
                     leading: deleteIcon,
                     color: Colors.red,
                     onTap: () async {
-                      await editItemExtras(parent: item.parent, id: item.id, key: 'x', value: '1');
+                      await quickEdit(parent: item.parent, id: item.id, key: 'x', value: '1');
                     },
                   ),
                 //
@@ -142,7 +142,7 @@ class ItemActions extends StatelessWidget {
                     leading: restoreIcon,
                     color: Colors.green,
                     onTap: () async {
-                      await editItemExtras(parent: item.parent, id: item.id, key: 'x', value: '0');
+                      await quickEdit(parent: item.parent, id: item.id, key: 'x', value: '0');
                     },
                   ),
                 //

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
-import '../../../_providers/hover.dart';
+import '../../../_providers/focus.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 
@@ -15,8 +15,8 @@ class PinnedIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<HoverProvider>(builder: (context, hover, child) {
-      bool isHovered = hover.id == item.id;
+    return Consumer<FocusProvider>(builder: (context, focus, child) {
+      bool isHovered = focus.id == item.id;
 
       return Visibility(
         visible: item.isPinned(),

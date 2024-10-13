@@ -158,9 +158,7 @@ class ImageFile extends StatelessWidget {
               child: Container(
                 padding: paddingS(),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(radius ?? borderRadiusSmall)),
-                child: showLoading
-                    ? Center(child: CircularProgressIndicator(color: styler.appColor(2), strokeWidth: 2))
-                    : AppIcon(Icons.image, extraFaded: true),
+                child: Center(child: showLoading ? AppLoader() : AppIcon(Icons.image, extraFaded: true)),
               ),
             ),
           //

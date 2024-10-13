@@ -80,7 +80,7 @@ class BookingsList extends StatelessWidget {
                         child: AppButton(
                             borderRadius: borderRadiusSmall,
                             color: styler.appColor(1),
-                            smallRightPadding: true,
+                            srp: true,
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,
