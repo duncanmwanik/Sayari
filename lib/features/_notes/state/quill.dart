@@ -37,4 +37,6 @@ class QuillProvider with ChangeNotifier {
       errorPrint('quill-controller-listening', e);
     }
   }
+
+  void clear() => controller.clear();
 }

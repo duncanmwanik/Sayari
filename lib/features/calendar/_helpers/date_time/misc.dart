@@ -78,6 +78,9 @@ String getEditDateTimeShort(String timestamp) => DateFormat('MMM d, yyy').format
 bool isCurrentMonth(String date) => DateTime.parse(date).month == state.dateTime.selectedMonth;
 bool isCurrentYear(String date) => DateTime.parse(date).year == DateTime.now().year;
 
+String nowDate() => getDatePart(DateTime.now());
+int nowHour() => DateTime.now().hour;
+
 String getTimePartFromTimeOfDay(var time) {
   try {
     if (time is TimeOfDay) {

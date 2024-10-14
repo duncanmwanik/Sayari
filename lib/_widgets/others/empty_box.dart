@@ -25,28 +25,20 @@ class EmptyBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            //
-            if (showImage) AppImage('sayari.png', size: size ?? 15.h),
-            if (showImage) sph(),
-            //
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                AppButton(
-                  onPressed: onPressed,
-                  noStyling: onPressed == null,
-                  child: AppText(text: label, faded: true),
-                ),
-              ],
-            ),
-            //
-          ],
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          //
+          if (showImage) AppImage('sayari.png', size: size ?? 15.h),
+          if (showImage) sph(),
+          //
+          AppButton(
+            onPressed: onPressed,
+            noStyling: onPressed == null,
+            child: AppText(text: label, faded: true),
+          ),
+          //
+        ],
       ),
     );
   }

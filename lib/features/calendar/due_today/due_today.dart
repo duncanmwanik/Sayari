@@ -6,10 +6,12 @@ import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
 import '../../../_services/hive/get_data.dart';
 import '../../../_variables/features.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/date_time/misc.dart';
+import '../_helpers/prepare.dart';
 import '../_helpers/sort.dart';
 import '../w/daily_box.dart';
 
@@ -27,13 +29,27 @@ class DueToday extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //
-          mph(),
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AppIcon(Icons.calendar_month, size: normal, extraFaded: true),
-              spw(),
-              AppText(text: 'Due Today', extraFaded: true),
+              //
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  AppIcon(Icons.calendar_month, size: normal, faded: true),
+                  spw(),
+                  AppText(text: 'Due Today', faded: true),
+                ],
+              ),
+              mpw(),
+              // new session
+              AppButton(
+                onPressed: () => createSession(date: nowDate(), hour: nowHour()),
+                svp: true,
+                isSquare: true,
+                child: AppIcon(Icons.add, size: normal, faded: true),
+              )
+              //
             ],
           ),
           mph(),

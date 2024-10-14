@@ -24,8 +24,8 @@ class QuillEmbedImageBuilder extends EmbedBuilder {
   @override
   Widget build(BuildContext context, QuillController controller, Embed node, bool readOnly, bool inline, TextStyle textStyle) {
     bool isInput = state.global.isBottomSheetOpen;
-    String fileId = splitList(QuillEmbedImage(node.value.data).data ?? '')[0];
-    String fileName = splitList(QuillEmbedImage(node.value.data).data ?? '')[1];
+    String fileId = splitList(node.value.data)[0];
+    String fileName = splitList(node.value.data)[1];
 
     return ImageFile(
       key: Key(fileId),

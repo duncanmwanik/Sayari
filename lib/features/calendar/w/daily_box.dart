@@ -35,7 +35,7 @@ class DayBox extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // title
-            AppText(text: item.data['t'], weight: FontWeight.bold, color: textColor),
+            AppText(text: item.data['t'], weight: FontWeight.w600, color: textColor),
             //
             Wrap(
               spacing: smallWidth(),

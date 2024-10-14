@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../_providers/input.dart';
-import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/others/icons.dart';
-import '../_notes/state/quill.dart';
-import '_helpers/send.dart';
+import '../../../../_providers/input.dart';
+import '../../../../_widgets/buttons/button.dart';
+import '../../../../_widgets/others/icons.dart';
+import '../_helpers/save_quicknote.dart';
+import '../state/quill.dart';
 
 class SaveQuickNoteBtn extends StatelessWidget {
   const SaveQuickNoteBtn({super.key});
@@ -16,11 +16,12 @@ class SaveQuickNoteBtn extends StatelessWidget {
       bool enabled = !quill.isEmpty || input.item.hasFiles();
 
       return AppButton(
-        onPressed: enabled ? () => saveQuickNote() : null,
+        enabled: enabled,
+        menuItems: saveQuickNoteMenu(),
         noStyling: true,
-        tooltip: 'Send',
+        tooltip: 'Save Quick Note',
         isSquare: true,
-        child: AppIcon(Icons.send, extraFaded: !enabled),
+        child: AppIcon(Icons.arrow_forward, extraFaded: !enabled),
       );
     });
   }

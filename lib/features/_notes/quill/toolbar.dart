@@ -6,7 +6,6 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../state/quill.dart';
@@ -115,10 +114,7 @@ Widget getQuillToolbar({bool isMin = false}) {
             QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.codeBlock, options: options),
             // divider
             AppButton(
-              menuItems: colorMenu(
-                title: 'Add Divider',
-                onSelect: (newColor) => addQuillEmbedDividerBlock(),
-              ),
+              onPressed: () => addQuillEmbedDividerBlock(),
               tooltip: 'Insert Divider',
               noStyling: true,
               isSquare: true,

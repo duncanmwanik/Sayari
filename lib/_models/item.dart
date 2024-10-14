@@ -22,11 +22,11 @@ class Item {
   String sid;
   Map data;
 
-  void update() {}
+  Item.empty() : this(data: {});
 
   String itemType() =>
       [feature.notes, feature.tasks, feature.links, feature.bookings, feature.habits].firstWhere((key) => data[key] != null);
-  String title() => data['t'] != null && data['t'] != '' ? data['t'] : 'Untitled';
+  String title([String? place]) => data['t'] != null && data['t'] != '' ? data['t'] : (place ?? 'Untitled');
   String? color() => data['c'];
   String emoji() => data['ej'] ?? '';
   String content() => data['n'] ?? '';

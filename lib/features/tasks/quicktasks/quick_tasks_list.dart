@@ -18,25 +18,40 @@ class ListOfQuickTasks extends StatelessWidget {
         valueListenable: storage(feature.timeline).listenable(keys: [feature.tasks]),
         builder: (context, box, child) {
           Map tasks = box.get(feature.tasks, defaultValue: {});
+          List taskKeys = tasks.keys.toList();
+          taskKeys.sort((a, b) => int.parse(tasks[a]['o']).compareTo(int.parse(tasks[b]['o'])));
 
-          return tasks.isNotEmpty
-              ? Padding(
-                  padding: paddingL('tb'),
-                  child: ValueListenableBuilder(
-                      valueListenable: storage(feature.timeline).listenable(),
-                      builder: (context, box, child) {
-                        return ReorderableWrap(
-                          maxMainAxisCount: 1,
-                          onReorder: (oldIndex, newIndex) {},
-                          children: List.generate(box.length, (index) {
-                            String id = tasks.keys.toList()[index];
-
-                            return QuickTaskItem(item: Item(id: id, data: tasks[id]));
-                          }),
-                        );
-                      }),
-                )
-              : EmptyBox(label: 'No quick tasks yet...', showImage: false);
+          return Padding(
+            padding: paddingM('tb'),
+            child: ValueListenableBuilder(
+                valueListenable: storage(feature.timeline).listenable(),
+                builder: (context, box, child) {
+                  return ReorderableWrap(
+                    maxMainAxisCount: 1,
+                    spacing: smallWidth(),
+                    runSpacing: smallWidth(), onReorder: (oldIndex, newIndex) {},
+                    // onReorder: (oldIndex, newIndex) => orderSubItem(
+                    //   parent: feature.timeline,
+                    //   itemId: feature.tasks,
+                    //   oldItemId: taskKeys[oldIndex - 1],
+                    //   newItemId: taskKeys[newIndex - 1],
+                    //   itemsLength: taskKeys.length,
+                    //   oldIndex: oldIndex,
+                    //   newIndex: newIndex,
+                    // ),
+                    children: [
+                      // new task
+                      QuickTaskItem(item: Item.empty()),
+                      // task list
+                      for (String id in taskKeys)
+                        QuickTaskItem(item: Item(parent: feature.timeline, id: feature.tasks, sid: id, data: tasks[id])),
+                      //
+                      if (taskKeys.isEmpty) EmptyBox(label: 'No quick tasks ...', showImage: false)
+                      //
+                    ],
+                  );
+                }),
+          );
         });
   }
 }

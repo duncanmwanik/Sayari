@@ -3,11 +3,14 @@ import 'package:provider/provider.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
+import '../../../_helpers/global.dart';
+import '../../../_models/item.dart';
+import '../../../_providers/_providers.dart';
 import '../../../_providers/focus.dart';
+import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
-import 'new_qt_item.dart';
 import 'quick_tasks_list.dart';
 
 class QuickTasks extends StatelessWidget {
@@ -29,28 +32,29 @@ class QuickTasks extends StatelessWidget {
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AppIcon(Icons.task_alt, size: normal, extraFaded: true),
+                  AppIcon(Icons.task_alt, size: normal, faded: true),
                   spw(),
-                  AppText(text: 'Quick Tasks', extraFaded: true),
+                  AppText(text: 'Quick Tasks', faded: true),
                 ],
               ),
               mpw(),
               Consumer<FocusProvider>(
                 builder: (context, focus, child) {
-                  bool hasFocus = focus.id == 'quickTask';
+                  bool hasFocus = focus.id == 'newQuickTask';
 
                   return AppButton(
-                    onPressed: hasFocus ? null : () => focus.set('quickTask'),
+                    enabled: !hasFocus,
+                    onPressed: () {
+                      state.input.set(Item(
+                        parent: feature.timeline,
+                        id: feature.tasks,
+                        data: {'o': getUniqueId(), 'z': getUniqueId()},
+                      ));
+                      focus.set('newQuickTask');
+                    },
                     svp: true,
-                    slp: true,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AppIcon(Icons.add, size: normal, extraFaded: true),
-                        spw(),
-                        AppText(text: 'Add Quick Task', size: small, extraFaded: true)
-                      ],
-                    ),
+                    isSquare: true,
+                    child: AppIcon(Icons.add, size: normal, faded: true),
                   );
                 },
               ),
@@ -58,7 +62,6 @@ class QuickTasks extends StatelessWidget {
             ],
           ),
           //
-          NewQuickTaskItem(),
           ListOfQuickTasks(),
           //
         ],

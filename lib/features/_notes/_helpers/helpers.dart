@@ -4,6 +4,7 @@ import '../../../_helpers/helpers.dart';
 import '../../../_providers/_providers.dart';
 
 String getQuills() => jsonEncode(state.quill.controller.document.toDelta().toJson());
+String getQuillsText() => jsonEncode(state.quill.controller.document.toPlainText());
 void clearQuills() => state.quill.controller.clear();
 
 String quillDescription() {

@@ -22,6 +22,7 @@ class Timeline extends StatelessWidget {
           QuickNote(),
           QuickTasks(),
           DueToday(),
+          //
         ],
       ),
     );

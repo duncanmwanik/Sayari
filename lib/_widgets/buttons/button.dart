@@ -13,6 +13,7 @@ import '../others/tooltip.dart';
 class AppButton extends StatelessWidget {
   const AppButton({
     super.key,
+    this.enabled = true,
     this.onPressed,
     this.onLongPress,
     this.onHover,
@@ -56,6 +57,7 @@ class AppButton extends StatelessWidget {
     this.mouseCursor,
   });
 
+  final bool enabled;
   final Function()? onPressed;
   final Function()? onLongPress;
   final Function(bool)? onHover;
@@ -102,8 +104,8 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isMenu = menuItems != null && menuItems!.isNotEmpty;
 
-    Widget button = Padding(
-      padding: margin ?? noPadding,
+    Widget button = IgnorePointer(
+      ignoring: !enabled,
       child: Material(
         color: noStyling ? transparent : color ?? (hasColour(bgColor) ? Colors.white24 : styler.appColor(styler.isDark ? 1.3 : 1.5)),
         shape: customBorder != null
@@ -169,10 +171,13 @@ class AppButton extends StatelessWidget {
       ),
     );
 
-    return AppTooltip(
-      message: tooltip,
-      axisDirection: tooltipDirection,
-      child: dryWidth ? DryIntrinsicWidth(child: button) : button,
+    return Padding(
+      padding: margin ?? noPadding,
+      child: AppTooltip(
+        message: tooltip,
+        axisDirection: tooltipDirection,
+        child: dryWidth ? DryIntrinsicWidth(child: button) : button,
+      ),
     );
   }
 }

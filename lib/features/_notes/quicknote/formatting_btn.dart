@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../_services/hive/local_storage_service.dart';
-import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/others/icons.dart';
+import '../../../../_services/hive/local_storage_service.dart';
+import '../../../../_widgets/buttons/button.dart';
+import '../../../../_widgets/others/icons.dart';
 
 class QuickNoteFormartingButton extends StatelessWidget {
   const QuickNoteFormartingButton({super.key});

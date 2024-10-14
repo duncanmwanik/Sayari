@@ -46,5 +46,3 @@ Future<bool> isAlreadyAdmin(String spaceId, String userId) async {
   DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/members/$userId');
   return snapshot.exists;
 }
-
-String emailAsKey(String email) => email.replaceAll(RegExp('[^A-Za-z0-9]'), '_');

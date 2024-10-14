@@ -30,6 +30,7 @@ class TimePicker extends StatelessWidget {
           Flexible(
             child: Wrap(
               spacing: smallWidth(),
+              runSpacing: smallWidth(),
               children: [
                 //
                 AppButton(
@@ -52,6 +53,12 @@ class TimePicker extends StatelessWidget {
                         AppText(text: startTime),
                       ],
                     )),
+                //
+                AppButton(
+                  noStyling: true,
+                  isSquare: true,
+                  child: AppIcon(Icons.arrow_forward, faded: true, size: normal),
+                ),
                 //
                 Row(
                   mainAxisSize: MainAxisSize.min,

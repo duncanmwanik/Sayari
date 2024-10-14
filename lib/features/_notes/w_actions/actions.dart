@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -146,7 +147,7 @@ class ItemActions extends StatelessWidget {
                     },
                   ),
                 //
-                if (item.isDeleted() && isNotSelection)
+                if ((item.isDeleted() && isNotSelection) || kDebugMode)
                   // if (isNotSelection)
                   MenuItem(
                     label: 'Delete Forever',

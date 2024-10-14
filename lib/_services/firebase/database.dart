@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 
+import '../../_helpers/extentions/strings.dart';
 import '../../firebase_options.dart';
-import '_helpers/helpers.dart';
 
 CloudData cloudService = CloudData();
 
@@ -60,7 +60,7 @@ class CloudData {
   }
 
   Future<String> doesUserExist(String email) async {
-    DataSnapshot snapshot = await ref('default').child('emails/${emailAsKey(email)}').get();
+    DataSnapshot snapshot = await ref('default').child('emails/${email.naked()}').get();
     return snapshot.value != null ? snapshot.value as String : '';
   }
 

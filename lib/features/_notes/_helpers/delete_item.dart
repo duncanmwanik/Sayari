@@ -12,10 +12,7 @@ Future<void> deleteItemForever(Item item) async {
     where: 'deleteItemForever',
     () async {
       printThis('delete ${item.parent} ${item.id} ${item.sid}');
-      String spaceId = liveSpace();
-
       Box box = storage(item.parent);
-
       if (item.sid.isNotEmpty) {
         Map itemData = box.get(item.id);
         itemData.remove(item.sid);
@@ -24,8 +21,8 @@ Future<void> deleteItemForever(Item item) async {
         await box.delete(item.id);
       }
 
-      syncToCloud(db: 'spaces', space: spaceId, parent: item.parent, action: 'd', id: item.id, sid: item.sid);
-      handleFilesDeletion(spaceId, item.files());
+      syncToCloud(db: 'spaces', space: liveSpace(), parent: item.parent, action: 'd', id: item.id, sid: item.sid);
+      handleFilesDeletion(liveSpace(), item.files());
     },
   );
 }

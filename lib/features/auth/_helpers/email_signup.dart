@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../_helpers/debug.dart';
+import '../../../_helpers/extentions/strings.dart';
 import '../../../_helpers/navigation.dart';
+import '../../../_services/firebase/database.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/toast.dart';
@@ -34,7 +36,7 @@ Future<void> signUpUsingEmailPassword({
         if (user != null) {
           // save user data to cloud
           await syncToCloud(db: 'users', space: user.uid, parent: 'info', action: 'c', data: {'n': name, 'e': email});
-          // await cloudService.writeData(db: 'default', 'users/${emailAsKey(email)}', user.uid);
+          await cloudService.writeData(db: 'emails', 'emails/${email.naked()}', user.uid);
           showToast(1, 'Sign up successful...', smallTopMargin: true);
 
           // we save user data in the local

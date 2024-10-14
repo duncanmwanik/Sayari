@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../__styling/helpers.dart';
 import '../../../__styling/variables.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/other.dart';
@@ -13,7 +14,7 @@ DefaultStyles getQuillEditorStyle({
 }) {
   Color quillTextColor = styler.textColor(bgColor: bgColor);
   Color quillFadedTextColor = styler.textColor(faded: true, bgColor: bgColor);
-  FontWeight weight = FontWeight.w500;
+  FontWeight weight = isDark() ? FontWeight.w400 : FontWeight.w500;
   FontWeight bold = FontWeight.bold;
 
   return DefaultStyles(

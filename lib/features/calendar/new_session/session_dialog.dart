@@ -66,20 +66,13 @@ Future<void> showSessionBottomSheet() async {
               ),
             ),
             //
-            sph(),
-            Lead(),
-            sph(),
-            Venue(),
-            sph(),
-            About(),
             mph(),
             TimePicker(),
             mph(),
             if (isNew) DatePicker(),
-            if (isNew) ph(15),
+            if (isNew) mph(),
             Reminders(),
-            ph(15),
-            //
+            mph(),
             Row(
               children: [
                 AppIcon(Icons.more_horiz, faded: true, size: 17),
@@ -92,9 +85,15 @@ Future<void> showSessionBottomSheet() async {
                 ),
               ],
             ),
-            //
-            ph(15),
+            sph(),
             Files(),
+            sph(),
+            Lead(),
+            sph(),
+            Venue(),
+            sph(),
+            About(),
+            elph()
             //
           ],
         ),
