@@ -47,7 +47,7 @@ Future<void> signUpUsingEmailPassword({
           navigatorState.currentContext!.replace('/');
         }
 
-        printThis('::::SIGN UP COMPLETE! - $email - ${user?.displayName}');
+        show('::::SIGN UP COMPLETE! - $email - ${user?.displayName}');
       } else {
         showToast(0, 'Passwords should match', smallTopMargin: true);
       }

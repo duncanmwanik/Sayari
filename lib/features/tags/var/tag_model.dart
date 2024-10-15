@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import '../../../__styling/variables.dart';
 import '../../../_helpers/global.dart';
-import '../../../_services/hive/get_data.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
 
 class Tag {

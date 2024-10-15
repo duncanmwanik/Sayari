@@ -9,4 +9,6 @@ extension StringExtentions on String {
 
   String fewWords() => (length > 30 ? '${substring(0, 30)}...' : this);
   String naked() => replaceAll(RegExp('[^A-Za-z0-9]'), '_');
+
+  String cash() => 'Ksh. $this';
 }

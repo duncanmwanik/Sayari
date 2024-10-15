@@ -1,6 +1,6 @@
 import '../../../_helpers/debug.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
-import '../../../_services/hive/get_data.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/common.dart';
 
@@ -10,6 +10,6 @@ Future<void> deleteFlag(String flag) async {
     storage(feature.flags).delete(flag);
     await syncToCloud(db: 'spaces', space: spaceId, parent: feature.flags, action: 'd', id: flag);
   } catch (e) {
-    errorPrint('delete-flag', e);
+    logError('delete-flag', e);
   }
 }

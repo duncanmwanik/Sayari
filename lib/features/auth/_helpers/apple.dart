@@ -31,7 +31,7 @@ Future<void> signInWithApple() async {
   //   if (user != null) {}
   // } catch (e) {
   //   popLoading(context);
-  //   errorPrint('sign-in', e.toString());
+  //   logError('sign-in', e.toString());
   //   showToast(0, 'Could not Sign In. Try again later.');
   // }
 }

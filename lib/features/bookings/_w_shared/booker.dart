@@ -124,20 +124,19 @@ class _ShareScreenState extends State<Booker> {
                                 if (state.dateTime.date.isNotEmpty && state.dateTime.time.isNotEmpty) {
                                   String bookingId = 'bb${getUniqueId()}';
                                   await syncToCloud(
-                                    isShare: true,
                                     db: 'spaces',
                                     space: widget.spaceId,
+                                    action: 'e',
                                     parent: feature.notes,
                                     id: widget.id,
-                                    action: 'e',
                                     keys: bookingId,
                                     data: {
                                       bookingId: jsonEncode({
-                                        'bbd': state.dateTime.date,
-                                        'bbt': state.dateTime.time,
-                                        'bbn': nameController.text.trim(),
-                                        'bbe': emailController.text.trim(),
-                                        'bbs': subjectController.text.trim(),
+                                        'd': state.dateTime.date,
+                                        't': state.dateTime.time,
+                                        'n': nameController.text.trim(),
+                                        'e': emailController.text.trim(),
+                                        's': subjectController.text.trim(),
                                       })
                                     },
                                   );

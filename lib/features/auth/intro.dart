@@ -38,7 +38,7 @@ class AuthIntro extends StatelessWidget {
                 children: [
                   AppIcon(introFeatures[index].icon, faded: true),
                   sph(),
-                  AppText(text: introFeatures[index].title, size: normal, faded: true, weight: FontWeight.w800),
+                  AppText(text: introFeatures[index].title, size: normal, faded: true, weight: FontWeight.w700),
                   tph(),
                   SizedBox(
                     height: 40,

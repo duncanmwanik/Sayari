@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../_providers/_providers.dart';
 import '../../_providers/views.dart';
-import '../../_services/hive/get_data.dart';
+import '../../_services/hive/store.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/others/empty_box.dart';
 import 'layout/column_layout.dart';

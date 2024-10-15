@@ -22,10 +22,10 @@ Future<void> signInWithGoogle() async {
     idToken: googleAuth?.idToken,
   );
 
-  printThis(googleUser?.email);
-  printThis(googleUser?.displayName);
-  printThis(credential.idToken);
-  printThis(credential.providerId);
+  show(googleUser?.email);
+  show(googleUser?.displayName);
+  show(credential.idToken);
+  show(credential.providerId);
 
   // Once signed in, return the UserCredential
   // return await FirebaseAuth.instance.signInWithCredential(credential);

@@ -29,7 +29,7 @@ Future<void> showNotification(
       }
     }
   } catch (e) {
-    errorPrint('show-notification', e);
+    logError('show-notification', e);
   }
 }
 

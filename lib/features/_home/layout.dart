@@ -62,7 +62,7 @@ class AppLayout extends StatelessWidget {
                             ),
                           ),
                           // bottom navbar
-                          HorizontalNavigationBox(),
+                          if (!isSmallPC()) HorizontalNavigationBox(),
                           //
                         ],
                       ),

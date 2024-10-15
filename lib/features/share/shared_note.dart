@@ -40,7 +40,7 @@ class _ShareScreenState extends State<SharedNote> {
     id = sharedId(widget.params);
     spaceId = sharedSpaceId(widget.params);
     state.share.set(widget.type);
-    printThis('$spaceId : $id');
+    show('$spaceId : $id');
     getSharedData();
   }
 
@@ -77,7 +77,7 @@ class _ShareScreenState extends State<SharedNote> {
 
   @override
   Widget build(BuildContext context) {
-    printThis(isActive);
+    show(isActive);
 
     return Title(
       title: noteData['t'] ?? 'Sayari',

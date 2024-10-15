@@ -24,6 +24,8 @@ class SpaceOptions extends StatelessWidget {
       tooltip: 'Options',
       isSquare: true,
       menuItems: [
+        MenuItem(label: spaceName, faded: true, smallHeight: true, popTrailing: true),
+        menuDivider(),
         //
         MenuItem(
           label: 'Add To Group',

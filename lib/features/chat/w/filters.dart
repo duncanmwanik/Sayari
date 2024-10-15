@@ -15,13 +15,14 @@ class ChatFilters extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ChatProvider>(builder: (context, chat, child) {
-      return Wrap(
-        spacing: smallWidth(),
-        runSpacing: smallWidth(),
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //
           ChatFilter(type: 'All'),
+          spw(),
           ChatFilter(type: 'Pinned', iconData: Icons.push_pin_outlined),
+          spw(),
           // ChatFilter(type: 'Starred', iconData: Icons.star_outlined),
           //
         ],

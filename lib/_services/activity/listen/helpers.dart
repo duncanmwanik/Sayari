@@ -13,7 +13,7 @@ Future<void> disposeSpaceSync() async {
   try {
     await spaceSync?.cancel();
   } catch (e) {
-    // errorPrint('disposeSpaceSync', e);
+    // logError('disposeSpaceSync', e);
   }
 }
 
@@ -26,6 +26,6 @@ Future<void> disposeUserSync() async {
   try {
     await userSync?.cancel();
   } catch (e) {
-    // errorPrint('disposeUserSync', e);
+    // logError('disposeUserSync', e);
   }
 }

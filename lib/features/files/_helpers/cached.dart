@@ -35,7 +35,7 @@ Future<cfile.File?> getCachedFile({
       return file;
       //
     } catch (e) {
-      errorPrint('get-cached-file', e);
+      logError('get-cached-file', e);
     }
   }
   return null;

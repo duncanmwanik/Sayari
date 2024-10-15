@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:styled_text/styled_text.dart';
 
+import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
 
 class AppText extends StatelessWidget {
@@ -45,7 +46,7 @@ class AppText extends StatelessWidget {
       maxLines: maxlines,
       style: GoogleFonts.inter(
         fontSize: size ?? 13,
-        fontWeight: weight ?? (bold ? FontWeight.bold : FontWeight.w500),
+        fontWeight: weight ?? (bold ? FontWeight.bold : (isDark() ? FontWeight.w400 : FontWeight.w500)),
         color: color ?? styler.textColor(faded: faded, extraFaded: extraFaded, bgColor: bgColor),
         decoration: decoration ?? (isCrossed ? TextDecoration.lineThrough : null),
         decorationColor: styler.textColor(faded: faded, extraFaded: extraFaded, bgColor: bgColor),

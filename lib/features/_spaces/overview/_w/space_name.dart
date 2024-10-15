@@ -17,7 +17,7 @@ class SpaceName extends StatelessWidget {
           return AppText(
             size: normal,
             text: liveSpace() != 'none' ? box.get(liveSpace(), defaultValue: 'Untitled') : '',
-            bold: true,
+            weight: FontWeight.w600,
           );
         });
   }

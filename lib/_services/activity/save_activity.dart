@@ -1,7 +1,7 @@
 // ignore_for_file: unused_local_variable
 
 import '../../_helpers/debug.dart';
-import '../hive/get_data.dart';
+import '../hive/store.dart';
 
 Future saveActivity(String spaceId, String timestamp, String activity) async {
   try {
@@ -15,7 +15,7 @@ Future saveActivity(String spaceId, String timestamp, String activity) async {
     // String extras = activityData[6];
     // String userName = activityData[7];
 
-    storage('activity', spaceId: spaceId).put(timestamp, activity);
+    storage('activity', space: spaceId).put(timestamp, activity);
 
     // if (db == 'spaces' && itemTitle.isNotEmpty) {
     //   String activityDescription = '';
@@ -40,6 +40,6 @@ Future saveActivity(String spaceId, String timestamp, String activity) async {
     // }
     // }
   } catch (e) {
-    errorPrint('save-activity', e);
+    logError('save-activity', e);
   }
 }

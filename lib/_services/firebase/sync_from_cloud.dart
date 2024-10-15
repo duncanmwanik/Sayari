@@ -4,14 +4,15 @@ import '../../_helpers/debug.dart';
 import '../../_helpers/global.dart';
 import '../../_variables/features.dart';
 import '../activity/save_activity.dart';
+import '../hive/store.dart';
 import 'database.dart';
 
 Future<bool> syncFromCloud(String space, String timestamp, String activity) async {
+  bool success = false;
   try {
-    // order: '$db,$type,$action,$id,$sid,$keys,$extras,$userName'
     List<String> activityData = splitList(activity, separator: ',', clearEmpties: false);
     String db = activityData[0];
-    String type = activityData[1];
+    String parent = activityData[1];
     String action = activityData[2];
     String id = activityData[3];
     String sid = activityData[4];
@@ -22,11 +23,10 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
     bool isNew = action.startsWith('c');
     bool isEdit = action.startsWith('e');
     bool isDelete = action.startsWith('d');
-    bool isForSession = feature.isCalendar(type);
+    bool isForSession = feature.isCalendar(parent);
 
-    printThis('::syncFromCloud-> $db,$space,$type,$action,$id,$sid,$keys,$extras,$userName');
-
-    Box box = await Hive.openBox('${space}_$type');
+    show('::syncFromCloud: $db,$space,$parent,$action,$id,$sid,$keys,$extras,$userName');
+    Box box = storage(parent, space: space);
 
     //
     // new
@@ -34,9 +34,7 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
     if (isNew) {
       // for sessions
       if (isForSession) {
-        String firstDate = splitList(extras).first;
-
-        await cloudService.getData(db: db, '$space/$type/$firstDate/$id').then((snapshot) async {
+        await cloudService.getData(db: db, '$space/$parent/${splitList(extras).first}/$id').then((snapshot) async {
           var data = snapshot.value as Map;
 
           if (data.isNotEmpty) {
@@ -51,7 +49,7 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
       // others
       else {
         await cloudService
-            .getData(db: db, '$space/$type${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}')
+            .getData(db: db, '$space/$parent${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}')
             .then((snapshot) async {
           var data = snapshot.value;
 
@@ -98,7 +96,7 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
         // add/edit item key
         else {
           await cloudService
-              .getData(db: db, '$space/$type${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}/$editedKey')
+              .getData(db: db, '$space/$parent${id.isNotEmpty ? '/$id' : ''}${sid.isNotEmpty ? '/$sid' : ''}/$editedKey')
               .then((snapshot) async {
             var value = snapshot.value;
 
@@ -138,9 +136,11 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
 
     await saveActivity(space, timestamp, activity);
 
-    return true;
+    success = true;
   } catch (e) {
-    errorPrint('syncFromCloud', e);
-    return false;
+    logError('syncFromCloud', e);
+    success = false;
   }
+
+  return success;
 }

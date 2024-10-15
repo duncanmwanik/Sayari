@@ -11,15 +11,15 @@ void handleUnhandledExceptions(error, StackTrace stackTrace) {
     toastMessage = 'Network error. Please check your internet connection.';
   } else {}
 
-  // printThis('--------------------------- UNHANDLED');
-  // printThis('$error :: $stackTrace');
-  // printThis('--------------------------- UNHANDLED');
+  // show('--------------------------- UNHANDLED');
+  // show('$error :: $stackTrace');
+  // show('--------------------------- UNHANDLED');
   if (toastMessage.isNotEmpty) showToast(0, toastMessage);
 }
 
 String handleOtherErrors(dynamic error, {String process = 'process'}) {
   String message = error.toString();
-  errorPrint(process, message);
+  logError(process, message);
 
   if (message.contains('firebase_database/permission-denied')) {
     return 'Failed operation.';

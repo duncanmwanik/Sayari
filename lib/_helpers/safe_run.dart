@@ -5,6 +5,6 @@ void safeRun(Function() operation, {String where = 'app-run', Function()? onErro
     operation();
   } catch (e) {
     if (onError != null) onError();
-    errorPrint(where, e);
+    logError(where, e);
   }
 }

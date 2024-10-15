@@ -6,6 +6,7 @@ import '../../../_helpers/debug.dart';
 import '../../../_helpers/global.dart';
 import '../../../_services/firebase/storage.dart';
 import '../../../_services/hive/local_storage_service.dart';
+import '../../_spaces/_helpers/common.dart';
 import 'helper.dart';
 
 Future<void> handleFilesCloud(String spaceId, Map source, {String? items}) async {
@@ -23,7 +24,7 @@ Future<void> handleFilesCloud(String spaceId, Map source, {String? items}) async
           }
         }
       } catch (e) {
-        errorPrint('upload-file-new-[$value]', e);
+        logError('upload-file-new-[$value]', e);
       }
     });
   }
@@ -45,25 +46,25 @@ Future<void> handleFilesCloud(String spaceId, Map source, {String? items}) async
         if (item.toString().startsWith('d/f')) {
           String fileId = item.toString().substring(2);
           String fileNameCloud = getFileNameCloud(fileId, source[fileId]);
-          printThis(':::DELETING file -- ${fileNamesBox.get(fileId)}');
+          show(':::DELETING file -- ${fileNamesBox.get(fileId)}');
           cloudStorage.deleteFile(db: 'spaces', path: '$spaceId/$fileNameCloud');
         }
       } catch (e) {
-        errorPrint('upload-file-edit-[$item]', e);
+        logError('upload-file-edit-[$item]', e);
       }
     });
   }
 }
 
-Future<void> handleFilesDeletion(String spaceId, Map fileMap) async {
+Future<void> handleFilesDeletion(Map fileMap) async {
   //
   fileMap.forEach((key, value) async {
     try {
-      printThis(':::DELETING file forever -- $value');
+      show(':::DELETING file forever -- $value');
       String fileNameCloud = getFileNameCloud(key, value);
-      cloudStorage.deleteFile(db: 'spaces', path: '$spaceId/$fileNameCloud');
+      cloudStorage.deleteFile(db: 'spaces', path: '${liveSpace()}/$fileNameCloud');
     } catch (e) {
-      errorPrint('delete-file-forever-[$key : $value]', e);
+      logError('delete-file-forever-[$key : $value]', e);
     }
   });
   //

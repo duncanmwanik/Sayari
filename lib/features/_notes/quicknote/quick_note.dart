@@ -67,7 +67,6 @@ class QuickNote extends StatelessWidget {
                         child: Padding(
                           padding: paddingM('lrb'),
                           child: SuperEditor(
-                            // minHeight: 5.h,
                             padding: paddingC('t5'),
                             placeholder: 'Add a quick note...',
                             scrollable: true,

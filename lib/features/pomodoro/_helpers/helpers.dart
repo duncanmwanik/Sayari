@@ -41,7 +41,7 @@ void startTimer(String type, {int? remainingTime}) {
   state.pomodoro.updateCounter(Timer.periodic(Duration(seconds: 1), (counter_) {
     // if timer is done`
     if (getRemainingTime() == 0) {
-      printThis('done timing');
+      show('done timing');
       counter_.cancel();
       state.pomodoro.reset();
       autoPlayTimers(type);
@@ -61,7 +61,7 @@ void startTimer(String type, {int? remainingTime}) {
     state.pomodoro.updateTimerLoops();
   }
 
-  printThis('${remainingTime != null ? 'resuming' : 'started'} timing: ${pomodoroTitles[type]}');
+  show('${remainingTime != null ? 'resuming' : 'started'} timing: ${pomodoroTitles[type]}');
 }
 
 void playPauseTimer(String type) {

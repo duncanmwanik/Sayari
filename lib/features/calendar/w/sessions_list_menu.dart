@@ -4,7 +4,7 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_models/item.dart';
-import '../../../_services/hive/get_data.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/buttons/close.dart';

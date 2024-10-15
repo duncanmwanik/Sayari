@@ -57,7 +57,7 @@ class DatePicker extends StatelessWidget {
                                     children: [
                                       AppIcon(Icons.add_rounded, size: 16),
                                       tpw(),
-                                      AppText(text: 'Add Date'),
+                                      AppText(text: 'Choose Date'),
                                     ],
                                   )),
                               // custom date

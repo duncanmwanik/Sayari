@@ -25,7 +25,7 @@ Future<void> addSpaceToGroup(String spaceId) async {
       }
     }
   } catch (e) {
-    errorPrint('add-space-to-group', e);
+    logError('add-space-to-group', e);
   }
 }
 
@@ -41,7 +41,7 @@ Future<void> removeSpaceFromGroup(String spaceId, String groupName) async {
     syncToCloud(db: 'users', space: userId, parent: 'groups', action: 'd', id: groupName, sid: spaceId);
     //
   } catch (e) {
-    errorPrint('remove-space-from-group', e);
+    logError('remove-space-from-group', e);
   }
 }
 
@@ -72,7 +72,7 @@ Future<void> addSpaceToUserData(
 
     //
   } catch (e) {
-    errorPrint('add-new-space-to-user-data', e);
+    logError('add-new-space-to-user-data', e);
   }
 }
 
@@ -101,7 +101,7 @@ Future<void> removeSpaceFromUserSpaceData(String userId, String spaceId) async {
     });
     //
   } catch (e) {
-    errorPrint('remove-space-from-user-data', e);
+    logError('remove-space-from-user-data', e);
   }
 }
 
@@ -122,7 +122,7 @@ Future<void> createGroup(String groupName) async {
       showToast(0, "Group name can't be empty");
     }
   } catch (e) {
-    errorPrint('create-group', e);
+    logError('create-group', e);
   }
 }
 
@@ -137,6 +137,6 @@ Future<void> deleteGroup(String groupName) async {
       },
     );
   } catch (e) {
-    errorPrint('delete-group', e);
+    logError('delete-group', e);
   }
 }

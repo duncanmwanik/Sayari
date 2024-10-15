@@ -27,15 +27,17 @@ class FinanceOverview extends StatelessWidget {
             //
             Row(
               children: [
-                AppIcon(Icons.circle, size: 8, color: Colors.green),
+                AppIcon(Icons.circle, size: 8, extraFaded: true),
+                spw(),
+                AppText(text: 'Income', bgColor: item.color()),
                 tpw(),
-                AppText(text: 'Income    :', bgColor: item.color()),
-                tpw(),
-                Flexible(
+                Expanded(
                   child: AppText(
                     text: 'Ksh. ${formatThousands(item.totalIncome())}',
+                    color: Colors.green,
                     bgColor: item.color(),
                     weight: FontWeight.w600,
+                    textAlign: TextAlign.end,
                   ),
                 ),
               ],
@@ -45,15 +47,17 @@ class FinanceOverview extends StatelessWidget {
             //
             Row(
               children: [
-                AppIcon(Icons.circle, size: 8, color: Colors.red),
+                AppIcon(Icons.circle, size: 8, extraFaded: true),
+                spw(),
+                AppText(text: 'Expenses', bgColor: item.color()),
                 tpw(),
-                AppText(text: 'Expenses:', bgColor: item.color()),
-                tpw(),
-                Flexible(
+                Expanded(
                   child: AppText(
                     text: 'Ksh. ${formatThousands(item.totalExpense())}',
+                    color: Colors.red,
                     bgColor: item.color(),
                     weight: FontWeight.w600,
+                    textAlign: TextAlign.end,
                   ),
                 ),
               ],
@@ -63,15 +67,17 @@ class FinanceOverview extends StatelessWidget {
             //
             Row(
               children: [
-                AppIcon(Icons.circle, size: 8, color: Colors.blue),
+                AppIcon(Icons.circle, size: 8, extraFaded: true),
+                spw(),
+                AppText(text: 'Savings', bgColor: item.color()),
                 tpw(),
-                AppText(text: 'Savings   :', bgColor: item.color()),
-                tpw(),
-                Flexible(
+                Expanded(
                   child: AppText(
                     text: 'Ksh. ${formatThousands(item.totalSavings())}',
+                    color: Colors.blue,
                     bgColor: item.color(),
                     weight: FontWeight.w600,
+                    textAlign: TextAlign.end,
                   ),
                 ),
               ],

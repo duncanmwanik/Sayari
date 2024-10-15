@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../_services/hive/get_data.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
 import '../w/var.dart';

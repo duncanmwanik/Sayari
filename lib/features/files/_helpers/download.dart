@@ -94,6 +94,6 @@ Future<void> downloadFile(
     //
   } catch (e) {
     showToast(1, 'Could not download $fileName.');
-    errorPrint('download-file', e);
+    logError('download-file', e);
   }
 }

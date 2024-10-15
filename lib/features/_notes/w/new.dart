@@ -36,11 +36,11 @@ class NewOptions extends StatelessWidget {
             ),
           ),
           // new note from template
-          if (views.isNotes()) spw(),
           if (views.isNotes())
             AppButton(
               menuItems: templatesMenu(),
               isDropDown: true,
+              margin: paddingM('l'),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

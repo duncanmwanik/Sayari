@@ -33,7 +33,7 @@ class CloudStorage {
     } on FirebaseException catch (e) {
       showToast(0, handleFirebaseStorageError(e, process: 'upload file'));
     } catch (e) {
-      errorPrint('upload-file-[$path]', e);
+      logError('upload-file-[$path]', e);
     }
     return false;
   }
@@ -62,7 +62,7 @@ class CloudStorage {
     } on FirebaseException catch (e) {
       showToast(0, handleFirebaseStorageError(e, process: 'download file'));
     } catch (e) {
-      errorPrint('donload-file', e);
+      logError('donload-file', e);
     }
     return false;
   }
@@ -85,11 +85,11 @@ class CloudStorage {
 
   Future<void> deleteFile({required String db, required String path}) async {
     try {
-      await (db == 'spaces' ? spacesRef : usersRef).child('$db/$path').delete().then((value) => printThis('Deleted file $path'));
+      await (db == 'spaces' ? spacesRef : usersRef).child('$db/$path').delete().then((value) => show('Deleted file $path'));
     } on FirebaseException catch (e) {
-      errorPrint('firebase-delete-file', e);
+      logError('firebase-delete-file', e);
     } catch (e) {
-      errorPrint('deleteFile', e);
+      logError('deleteFile', e);
     }
   }
   //
@@ -100,23 +100,23 @@ void fileProgress(dynamic taskSnapshot, String db, String fileName, String proce
     switch (taskSnapshot.state) {
       case TaskState.running:
         // TODOs: Handle this case.
-        printThis('....$process $db file: $fileName');
+        show('....$process $db file: $fileName');
         break;
       case TaskState.paused:
         // TODOs: Handle this case.
-        printThis('....paused $process $db file: $fileName');
+        show('....paused $process $db file: $fileName');
         break;
       case TaskState.success:
         // TODOs: Handle this case.
-        printThis('....done $process $db file: $fileName');
+        show('....done $process $db file: $fileName');
         break;
       case TaskState.canceled:
         // TODOs: Handle this case.
-        printThis('....canceled $process $db file: $fileName');
+        show('....canceled $process $db file: $fileName');
         break;
       case TaskState.error:
         // TODOs: Handle this case.
-        printThis('....error $process $db file: $fileName');
+        show('....error $process $db file: $fileName');
         break;
     }
   }

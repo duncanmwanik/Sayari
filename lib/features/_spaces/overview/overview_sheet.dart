@@ -6,8 +6,8 @@ import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/clipboard.dart';
 import '../../../_helpers/navigation.dart';
-import '../../../_services/hive/get_data.dart';
 import '../../../_services/hive/local_storage_service.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/icons.dart';
@@ -36,9 +36,10 @@ Future<void> showSpaceOverviewBottomSheet() async {
     //
     header: Row(
       children: [
-        AppCloseButton(),
         spw(),
         Expanded(child: SpaceName()),
+        spw(),
+        AppCloseButton(),
       ],
     ),
     //
@@ -74,9 +75,9 @@ Future<void> showSpaceOverviewBottomSheet() async {
                             onTap: () async => await copyText(spaceId, description: 'Copied space ID.'),
                           ),
                           kIsWeb ? sph() : tsph(),
-                          SpaceOwnerTile(ownerId: spaceData['o'] ?? '-'),
+                          SpaceOwnerTile(),
                           kIsWeb ? sph() : tsph(),
-                          SpaceNotificationsTile(spaceName: spaceData['t'] ?? '-'),
+                          SpaceNotificationsTile(),
                           kIsWeb ? sph() : tsph(),
                           //
                           if (isAdmin())
@@ -86,7 +87,7 @@ Future<void> showSpaceOverviewBottomSheet() async {
                                 children: [
                                   AppIcon(Icons.edit, size: medium),
                                   spw(),
-                                  Flexible(child: AppText(text: 'Edit Space Details')),
+                                  Flexible(child: AppText(text: 'Edit Space')),
                                 ],
                               ),
                               trailing: AppIcon(Icons.keyboard_arrow_right_rounded, size: 18),
@@ -105,7 +106,6 @@ Future<void> showSpaceOverviewBottomSheet() async {
                                 DeleteSpaceBtn(),
                               ],
                             ),
-
                           if (isAdmin()) mph(),
                           if (isAdmin()) AppText(text: 'Members', size: small, faded: true),
                           if (isAdmin()) AppDivider(height: mediumHeight()),

@@ -65,7 +65,7 @@ class _SpaceTileState extends State<SpaceTile> {
                           Expanded(child: AppText(text: spaceName, textAlign: TextAlign.start, faded: true)),
                           spw(),
                           // default spaces
-                          if (isDefault) AppIcon(Icons.lock, size: medium, color: styler.accent),
+                          if (isDefault) AppIcon(Icons.lock, size: medium, faded: true),
                           if (isDefault) spw(),
                           // indicator, if space is selected
                           if (isSelected) AppIcon(Icons.done_rounded, size: 18, faded: true),

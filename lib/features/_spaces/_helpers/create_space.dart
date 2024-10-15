@@ -32,16 +32,11 @@ Future<void> createNewSpace({bool isNewUser = false, bool isDefault = false}) as
       state.input.item.data['o'] = userId;
       // save space info data locally
       await Hive.openBox('${spaceId}_info').then((box) async => await box.putAll(state.input.item.data));
-      // add space creator to space members list as a super-member
-      // super-member has a value of '2' (space owner)
-      // other members have a value of '1'
-      // members have a value of '0'
+      // space owner: '2' , admin: '1' , viewer: '0'
       await Hive.openBox('${spaceId}_members').then((box) async => await box.put(userId, '2'));
       // add space name to space names tracking box
       await spaceNamesBox.put(spaceId, state.input.item.data['t']);
-      // add space to cloud user data
       await addSpaceToUserData(userId, spaceId, groupList, isDefault: isDefault);
-      // create space in the cloud
       await syncToCloud(db: 'spaces', space: spaceId, parent: 'info', action: 'c', data: state.input.item.data);
       await syncToCloud(db: 'spaces', space: spaceId, parent: 'members', action: 'c', id: userId, data: '2');
       await syncToCloud(db: 'spaces', space: spaceId, parent: 'activity', id: '0', action: 'c', data: '1');
@@ -50,6 +45,6 @@ Future<void> createNewSpace({bool isNewUser = false, bool isDefault = false}) as
       //
     }
   } catch (e) {
-    errorPrint('create-space', e);
+    logError('create-space', e);
   }
 }

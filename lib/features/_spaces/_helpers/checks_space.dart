@@ -1,7 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../_services/hive/get_data.dart';
 import '../../../_services/hive/local_storage_service.dart';
+import '../../../_services/hive/store.dart';
 import '../../user/_helpers/helpers.dart';
 import 'common.dart';
 
@@ -21,7 +21,7 @@ Future<String> getSpaceNameFuture(String spaceId) async {
 
 bool isSpaceOpened(String spaceId) {
   try {
-    return Hive.box('${spaceId}_info').isOpen;
+    return storage('info', space: spaceId).isOpen;
   } catch (e) {
     return false;
   }

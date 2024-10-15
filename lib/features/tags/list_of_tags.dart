@@ -6,7 +6,7 @@ import '../../__styling/spacing.dart';
 import '../../_helpers/global.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
-import '../../_services/hive/get_data.dart';
+import '../../_services/hive/store.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/others/other.dart';

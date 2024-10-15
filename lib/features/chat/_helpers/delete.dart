@@ -2,11 +2,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_models/item.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
-import '../../../_services/hive/get_data.dart';
 import '../../../_services/hive/local_storage_service.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
-import '../../_spaces/_helpers/common.dart';
 import '../../files/_helpers/handler.dart';
 
 Future<void> deleteMessage(Item item, {bool forAll = false}) async {
@@ -19,8 +18,8 @@ Future<void> deleteMessage(Item item, {bool forAll = false}) async {
         dateChats.remove(item.sid);
         box.put(item.id, dateChats);
         await pendingBox.delete(item.sid);
-        if (forAll) handleFilesDeletion(liveSpace(), item.files());
-        if (forAll) await syncToCloud(db: 'spaces', space: liveSpace(), parent: feature.chat, action: 'd', id: item.id, sid: item.sid);
+        if (forAll) handleFilesDeletion(item.files());
+        if (forAll) await syncToCloud(db: 'spaces', parent: feature.chat, action: 'd', id: item.id, sid: item.sid);
       },
     );
   } catch (e) {

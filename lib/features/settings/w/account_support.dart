@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/url_launcher.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/list_tile.dart';
 import '../../../_widgets/others/text.dart';
@@ -17,7 +18,7 @@ class AccountSupport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
-        valueListenable: Hive.box(liveUser()).listenable(),
+        valueListenable: storage('', space: liveUser()).listenable(),
         builder: (context, box, widget) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,

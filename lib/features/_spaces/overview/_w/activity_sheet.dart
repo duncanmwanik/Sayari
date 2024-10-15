@@ -5,7 +5,7 @@ import 'package:styled_text/styled_text.dart';
 
 import '../../../../__styling/spacing.dart';
 import '../../../../__styling/variables.dart';
-import '../../../../_services/hive/get_data.dart';
+import '../../../../_services/hive/store.dart';
 import '../../../../_widgets/buttons/close.dart';
 import '../../../../_widgets/others/empty_box.dart';
 import '../../../../_widgets/others/others/divider.dart';

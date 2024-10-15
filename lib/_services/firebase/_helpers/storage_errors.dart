@@ -4,7 +4,7 @@ import '../../../_helpers/debug.dart';
 
 String handleFirebaseStorageError(FirebaseException e, {String process = 'process'}) {
   String message = e.message ?? '';
-  errorPrint('firebase-database-error', 'code: ${e.code}');
+  logError('firebase-database-error', 'code: ${e.code}');
 
   if (e.code == 'storage/object-not-found') {
     return 'The file does not exist.';

@@ -25,10 +25,10 @@ Future<void> selectNewSpace(String spaceId, {bool isFirstTime = false}) async {
       closeDrawerIfOpened();
     }
 
-    printThis('Selected space: $spaceId');
+    show('Selected space: $spaceId');
   } catch (e) {
     showToast(0, 'Could not load space');
-    errorPrint('select-space', e);
+    logError('selectNewSpace', e);
   }
 }
 

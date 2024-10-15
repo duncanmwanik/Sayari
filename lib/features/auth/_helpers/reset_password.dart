@@ -14,7 +14,7 @@ Future<void> resetPassword({required String email, bool validate = true}) async 
       showToast(1, 'Check your email for reset link.', smallTopMargin: true);
     }).catchError((e) {
       showToast(0, handleFirebaseAuthError(e, process: 'reset password'), smallTopMargin: true, duration: 5000);
-      errorPrint('reset_password', e);
+      logError('reset_password', e);
     });
   }
 }

@@ -24,26 +24,32 @@ class PublishButton extends StatelessWidget {
       children: [
         //
         AppButton(
-          onPressed: () {
-            prepareSpaceForEdit(spaceData);
-            if (!isPublished) state.input.update(feature.share, '1');
-          },
-          slp: true,
+          padding: noPadding,
           color: isPublished ? styler.accentColor(5) : null,
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              AppIcon(Icons.book, size: normal),
-              spw(),
-              Flexible(child: AppText(text: isPublished ? 'Published as Book' : 'Publish as Book')),
-              spw(),
-              AppIcon(Icons.arrow_forward, tiny: true),
+              AppButton(
+                onPressed: () {
+                  prepareSpaceForEdit(spaceData);
+                  if (!isPublished) state.input.update(feature.share, '1');
+                },
+                noStyling: true,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AppIcon(Icons.book, size: normal),
+                    spw(),
+                    Flexible(child: AppText(text: isPublished ? 'Published as Book' : 'Publish as Book')),
+                    spw(),
+                    AppIcon(Icons.arrow_forward, tiny: true),
+                  ],
+                ),
+              ),
+              if (isPublished) CopyLink(path: publishedSpaceLink(true), isMinimized: true),
             ],
           ),
         ),
-        //
-        if (isPublished) spw(),
-        if (isPublished) CopyLink(path: publishedSpaceLink(true), isMinimized: true),
         //
       ],
     );

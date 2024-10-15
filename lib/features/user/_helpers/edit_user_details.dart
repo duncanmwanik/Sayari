@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_helpers/debug.dart';
 import '../../../_helpers/internet_connection.dart';
 import '../../../_helpers/navigation.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../auth/_helpers/auth_error_handler.dart';
 import 'helpers.dart';
@@ -19,7 +19,7 @@ Future<void> editUserDetails(String userName, String password) async {
       AuthCredential credential = EmailAuthProvider.credential(email: liveEmail(), password: password);
       await user.reauthenticateWithCredential(credential);
       await user.updateDisplayName(userName);
-      await Hive.box(liveUser()).putAll({'n': userName});
+      await storage('', space: liveUser()).putAll({'n': userName});
       showToast(1, 'Success. Updated details.');
     }
   } on FirebaseAuthException catch (e) {
@@ -57,7 +57,7 @@ Future<void> editUserPassword(String currentPassword, String newPassword, String
       showToast(0, 'New passwords not matching');
     }
   } catch (e) {
-    errorPrint('change-user-password', e);
+    logError('change-user-password', e);
     showToast(0, 'Could not change password...');
   }
 }

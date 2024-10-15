@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../../__styling/spacing.dart';
 import '../../../../_services/firebase/get_space_data.dart';
 import '../../../../_services/hive/local_storage_service.dart';
+import '../../../../_services/hive/store.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/scroll.dart';
@@ -49,7 +50,7 @@ class SpaceMembers extends StatelessWidget {
         //
         NoOverScroll(
           child: ValueListenableBuilder(
-              valueListenable: Hive.box('${spaceId}_members').listenable(),
+              valueListenable: storage('members', space: spaceId).listenable(),
               builder: (context, box, widget) {
                 Map memberData = box.toMap();
                 if (memberData.isEmpty) {

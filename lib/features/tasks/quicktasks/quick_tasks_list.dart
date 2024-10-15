@@ -4,7 +4,7 @@ import 'package:reorderables/reorderables.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../_models/item.dart';
-import '../../../_services/hive/get_data.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/empty_box.dart';
 import 'qt_item.dart';
@@ -29,7 +29,8 @@ class ListOfQuickTasks extends StatelessWidget {
                   return ReorderableWrap(
                     maxMainAxisCount: 1,
                     spacing: smallWidth(),
-                    runSpacing: smallWidth(), onReorder: (oldIndex, newIndex) {},
+                    runSpacing: tinyWidth(),
+                    onReorder: (oldIndex, newIndex) {},
                     // onReorder: (oldIndex, newIndex) => orderSubItem(
                     //   parent: feature.timeline,
                     //   itemId: feature.tasks,

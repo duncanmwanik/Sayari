@@ -74,6 +74,6 @@ Future<void> registerReminder({
     }
     //
   } catch (e) {
-    errorPrint('register-$type-notification', e);
+    logError('register-$type-notification', e);
   }
 }

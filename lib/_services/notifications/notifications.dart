@@ -1,4 +1,4 @@
-import '../hive/get_data.dart';
+import '../hive/store.dart';
 
 bool isNotificationAllowed(String type) {
   try {

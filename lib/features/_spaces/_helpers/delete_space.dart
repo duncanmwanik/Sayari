@@ -48,7 +48,7 @@ Future<void> deleteSpace({required String spaceId, required String spaceName}) a
       },
     );
   } catch (e) {
-    errorPrint('delete-space', e);
+    logError('delete-space', e);
     showToast(0, 'Could not delete space.');
     await addToPendingActions(db: 'spaces', space: spaceId, parent: 'user', action: 'd', data: {'spaceName': spaceName});
   }
@@ -82,7 +82,7 @@ Future<void> removeSpace({required String spaceId, required String spaceName}) a
       },
     );
   } catch (e) {
-    errorPrint('remove-space', e);
+    logError('remove-space', e);
     showToast(0, 'Could not remove space');
   }
 }
@@ -101,6 +101,6 @@ Future<void> removeMissingSpace({required String spaceId}) async {
     if (spaceId == liveSpace()) await updateSelectedSpace('none');
     //
   } catch (e) {
-    errorPrint('delete-missing-space', e);
+    logError('delete-missing-space', e);
   }
 }

@@ -1,7 +1,7 @@
 import '../../../_helpers/debug.dart';
 import '../../../_helpers/global.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
-import '../../../_services/hive/get_data.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
 import '../../_spaces/_helpers/common.dart';
 
@@ -12,7 +12,7 @@ Future<void> createFlag(String flagData) async {
     storage(feature.flags).put(flagId, flagData);
     await syncToCloud(db: 'spaces', space: spaceId, parent: feature.flags, action: 'c', id: flagId, data: flagData);
   } catch (e) {
-    errorPrint('add-flag', e);
+    logError('add-flag', e);
   }
 }
 
@@ -22,7 +22,7 @@ Future<void> editFlag(String flagId, String flagData) async {
     storage(feature.flags).put(flagId, flagData);
     await syncToCloud(db: 'spaces', space: spaceId, parent: feature.flags, action: 'c', id: flagId, data: flagData);
   } catch (e) {
-    errorPrint('edit-flag', e);
+    logError('edit-flag', e);
   }
 }
 
@@ -32,6 +32,6 @@ Future<void> deleteFlag(String flagId) async {
     storage(feature.flags).delete(flagId);
     await syncToCloud(db: 'spaces', space: spaceId, parent: feature.flags, action: 'd', id: flagId);
   } catch (e) {
-    errorPrint('delete-flag', e);
+    logError('delete-flag', e);
   }
 }

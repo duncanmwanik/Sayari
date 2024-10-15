@@ -22,7 +22,7 @@ class QuillProvider with ChangeNotifier {
       }
       listenToChanges();
     } catch (e) {
-      errorPrint('quill-controller-set', e);
+      logError('quill-controller-set', e);
     }
   }
 
@@ -34,7 +34,7 @@ class QuillProvider with ChangeNotifier {
         notifyListeners();
       });
     } catch (e) {
-      errorPrint('quill-controller-listening', e);
+      logError('quill-controller-listening', e);
     }
   }
 

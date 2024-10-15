@@ -50,7 +50,9 @@ class TimePicker extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         if (!hasStart) AppText(text: 'Starts at'),
-                        AppText(text: startTime),
+                        if (!hasStart) spw(),
+                        if (!hasStart) AppIcon(Icons.more_horiz, faded: true, size: medium),
+                        Flexible(child: AppText(text: startTime)),
                       ],
                     )),
                 //
@@ -80,8 +82,10 @@ class TimePicker extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            if (!hasEnd) AppText(text: 'Ends at '),
-                            AppText(text: stopTime),
+                            if (!hasEnd) AppText(text: 'Ends at'),
+                            if (!hasEnd) spw(),
+                            if (!hasEnd) AppIcon(Icons.more_horiz, faded: true, size: medium),
+                            Flexible(child: AppText(text: stopTime)),
                           ],
                         )),
                     //

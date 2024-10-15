@@ -5,7 +5,7 @@ import '../../../_helpers/global.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
-import '../../../_services/hive/get_data.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
 import '../../_notes/_helpers/helpers.dart';
 import '../../_spaces/_helpers/common.dart';
@@ -32,9 +32,9 @@ Future<void> sendMessage() async {
       box.put(date, dateChats);
 
       handleFilesCloud(liveSpace(), messageData);
-      syncToCloud(db: 'spaces', space: liveSpace(), parent: feature.chat, action: 'c', id: date, sid: messageId, data: messageData);
+      syncToCloud(db: 'spaces', parent: feature.chat, action: 'c', id: date, sid: messageId, data: messageData);
     }
   } catch (e) {
-    errorPrint('send-chat', e);
+    logError('send-chat', e);
   }
 }

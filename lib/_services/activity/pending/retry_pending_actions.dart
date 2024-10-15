@@ -25,9 +25,9 @@ Future<void> retryPendingActions() async {
         sid: syncAction['sid'],
         keys: syncAction['keys'],
         extras: syncAction['extras'],
-        log: syncAction['log'],
+        logActivity: syncAction['logActivity'],
       ).then((successful) {
-        printThis('.......Pending Action [ $pendingId : $syncAction ] successful');
+        show('.......Pending Action [ $pendingId : $syncAction ] successful');
         if (successful) {
           // we remove the sync action if it has been retried successsfully
           pendingBox.delete(pendingId);
@@ -36,7 +36,7 @@ Future<void> retryPendingActions() async {
           // else it stays, to be retried again
           // TODOs: maybe we should add a max retry number to avoid infinity loops
           //
-          printThis('.......Pending Action [ $pendingId : $syncAction ] failed');
+          show('.......Pending Action [ $pendingId : $syncAction ] failed');
         }
       });
     });

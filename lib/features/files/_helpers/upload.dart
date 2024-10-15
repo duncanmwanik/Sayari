@@ -50,6 +50,6 @@ Future<void> getFilesToUpload({
       if (stash.isValid()) onDone!(stash);
     }
   } catch (e) {
-    errorPrint('get-files-to-upload', e);
+    logError('get-files-to-upload', e);
   }
 }

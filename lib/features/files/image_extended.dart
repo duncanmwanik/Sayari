@@ -50,8 +50,8 @@ class ImageFile extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isLocal = 1 == 0;
     // bool isLocal = fileBox.containsKey(fileId);
-    // printThis('image-$fileId-$fileName-$isLocal');
-    // printThis(fileBox.get(fileId));
+    // show('image-$fileId-$fileName-$isLocal');
+    // show(fileBox.get(fileId));
     double imageSize = size ?? (isOverview ? 40 : 80);
 
     return SizedBox(

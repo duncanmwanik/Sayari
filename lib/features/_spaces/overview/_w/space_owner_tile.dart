@@ -6,14 +6,15 @@ import '../../../../_services/hive/local_storage_service.dart';
 import '../../../../_widgets/others/loader.dart';
 import '../../../../_widgets/others/others/list_tile.dart';
 import '../../../../_widgets/others/text.dart';
+import '../../_helpers/common.dart';
 
 class SpaceOwnerTile extends StatelessWidget {
-  const SpaceOwnerTile({super.key, required this.ownerId});
-
-  final String ownerId;
+  const SpaceOwnerTile({super.key});
 
   @override
   Widget build(BuildContext context) {
+    String ownerId = liveSpaceOwner();
+
     return AppListTile(
       onTap: () async => await copyText(ownerId, description: 'Copied email.'),
       leading: AppText(

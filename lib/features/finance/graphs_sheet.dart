@@ -19,10 +19,8 @@ Future<void> showFinanceGraphsBottomSheet() async {
     //
     header: Row(
       children: [
-        AppCloseButton(faded: true),
+        Expanded(child: AppText(text: '${state.input.item.data['t'] ?? '-'}', weight: FontWeight.bold)),
         spw(),
-        AppText(text: '${state.input.item.data['t'] ?? '-'}', weight: FontWeight.bold),
-        Spacer(),
         AppButton(
           menuItems: graphMenu(),
           noStyling: true,
@@ -31,6 +29,8 @@ Future<void> showFinanceGraphsBottomSheet() async {
           iconSize: 18,
           leading: moreIcon,
         ),
+        spw(),
+        AppCloseButton(faded: true),
       ],
     ),
     //
@@ -44,19 +44,19 @@ Future<void> showFinanceGraphsBottomSheet() async {
             data: [
               {
                 'title':
-                    'Income: Ksh. ${formatThousands(getTotalAmount(state.input.item, 'in'))}   ${((getTotalAmount(state.input.item, 'in') / allAmounts) * 100).toStringAsFixed(2)}%',
+                    'Income: Ksh. ${formatThousands(getTotalAmount(state.input.item, 'in'))}   ${((getTotalAmount(state.input.item, 'in') / allAmounts) * 100).truncate()}%',
                 'color': Colors.green,
                 'value': (getTotalAmount(state.input.item, 'in') / allAmounts) * 100,
               },
               {
                 'title':
-                    'Expenses: Ksh. ${formatThousands(getTotalAmount(state.input.item, 'ex'))}   ${((getTotalAmount(state.input.item, 'ex') / allAmounts) * 100).toStringAsFixed(2)}%',
+                    'Expenses: Ksh. ${formatThousands(getTotalAmount(state.input.item, 'ex'))}   ${((getTotalAmount(state.input.item, 'ex') / allAmounts) * 100).truncate()}%',
                 'color': Colors.red,
                 'value': (getTotalAmount(state.input.item, 'ex') / allAmounts) * 100,
               },
               {
                 'title':
-                    'Savings: Ksh. ${formatThousands(getTotalAmount(state.input.item, 'sa'))}   ${((getTotalAmount(state.input.item, 'sa') / allAmounts) * 100).toStringAsFixed(2)}%',
+                    'Savings: Ksh. ${formatThousands(getTotalAmount(state.input.item, 'sa'))}   ${((getTotalAmount(state.input.item, 'sa') / allAmounts) * 100).truncate()}%',
                 'color': Colors.blue,
                 'value': (getTotalAmount(state.input.item, 'sa') / allAmounts) * 100,
               },

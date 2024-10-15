@@ -15,21 +15,21 @@ Future<bool> noInternet() async {
   //   if (response.statusCode == 200) {
   //     return true;
   //   } else {
-  //     errorPrint('internet-checker', 'Bad internet connection');
+  //     logError('internet-checker', 'Bad internet connection');
   //     return false;
   //   }
   // } on TimeoutException catch (_) {
-  //   errorPrint('internet-checker', 'Slow internet connection.');
+  //   logError('internet-checker', 'Slow internet connection.');
   //   return false;
   // } on SocketException catch (_) {
   //   showToast(0, 'Check your internet connection.');
-  //   errorPrint('internet-checker', 'Check internet connection.');
+  //   logError('internet-checker', 'Check internet connection.');
 
   //   return false;
   // } catch (e) {
-  //   errorPrint('internet-checker', e);
+  //   logError('internet-checker', e);
   //   showToast(0, 'No internet connection.');
-  //   errorPrint('internet-checker', 'No internet connection.');
+  //   logError('internet-checker', 'No internet connection.');
 
   //   return false;
   // }

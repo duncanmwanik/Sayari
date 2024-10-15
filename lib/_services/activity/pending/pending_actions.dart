@@ -14,7 +14,7 @@ Future<void> addToPendingActions({
   String sid = '',
   String keys = '',
   String extras = '',
-  bool log = true,
+  bool logActivity = true,
 }) async {
   String pendingActionId = getUniqueId();
 
@@ -28,9 +28,9 @@ Future<void> addToPendingActions({
     'sid': sid,
     'keys': keys,
     'extras': extras,
-    'log': log,
+    'logActivity': logActivity,
   });
-  printThis('New pending action: $pendingActionId > $parent $action $keys : $id');
+  show('New pending action: $pendingActionId > $parent $action $keys : $id');
 }
 
 // remove this
@@ -44,5 +44,5 @@ bool isPendingItem(String id) {
 
 void removeFromPendingActions(String id) {
   pendingBox.delete(id);
-  printThis('Removed pending action: $id');
+  show('Removed pending action: $id');
 }

@@ -6,7 +6,7 @@ import '../hive/local_storage_service.dart';
 import 'database.dart';
 
 Future<void> getAllUserDataFromCloud(String userId) async {
-  printThis(':::: Getting All user data...');
+  show(':::: Getting All user data...');
   showSyncingLoader(true);
 
   if (await noInternet()) {
@@ -56,9 +56,9 @@ Future<void> getAllUserDataFromCloud(String userId) async {
         activityVersionBox.put(userId, latest);
       }
     });
-    printThis(':::: Updated all user data...');
+    show(':::: Updated all user data...');
   } catch (e) {
-    errorPrint('get-all-user-data', e);
+    logError('get-all-user-data', e);
   }
 
   showSyncingLoader(false);

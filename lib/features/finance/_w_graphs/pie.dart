@@ -40,7 +40,7 @@ class _AppPieState extends State<AppPie> {
                 children: [
                   AppIcon(Icons.circle, size: small, faded: true),
                   spw(),
-                  AppText(text: widget.label, faded: true, weight: FontWeight.bold),
+                  AppText(text: widget.label, faded: true),
                 ],
               ),
             ),

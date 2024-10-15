@@ -7,9 +7,7 @@ import '../../../../_widgets/others/text.dart';
 import 'notifications.dart';
 
 class SpaceNotificationsTile extends StatelessWidget {
-  const SpaceNotificationsTile({super.key, required this.spaceName});
-
-  final String spaceName;
+  const SpaceNotificationsTile({super.key});
 
   @override
   Widget build(BuildContext context) {

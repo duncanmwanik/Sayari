@@ -17,7 +17,7 @@ List<Widget> saveQuickNoteMenu() {
       label: 'Save To New Note',
       leading: Icons.note_add,
       onTap: () {
-        printThis(getQuillsText().fewWords());
+        show(getQuillsText().fewWords());
         state.input.set(Item(
           parent: feature.notes,
           type: feature.notes,

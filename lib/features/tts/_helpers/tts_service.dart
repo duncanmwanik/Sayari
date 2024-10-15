@@ -21,7 +21,7 @@ class TTSService {
         });
       }
     } catch (e) {
-      errorPrint('start-tts', e);
+      logError('start-tts', e);
     }
   }
 
@@ -31,7 +31,7 @@ class TTSService {
       await flutterTts.stop();
       state.tts.updateIsPlaying(false);
     } catch (e) {
-      errorPrint('stop-tts', e);
+      logError('stop-tts', e);
     }
   }
 
@@ -39,7 +39,7 @@ class TTSService {
     try {
       await flutterTts.setSpeechRate(1.0);
     } catch (e) {
-      errorPrint('stop-tts', e);
+      logError('stop-tts', e);
     }
   }
 
@@ -47,7 +47,7 @@ class TTSService {
     try {
       await flutterTts.setVoice({});
     } catch (e) {
-      errorPrint('stop-tts', e);
+      logError('stop-tts', e);
     }
   }
 }

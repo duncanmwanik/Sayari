@@ -23,7 +23,7 @@ Future<void> chooseUserDp() async {
       },
     );
   } catch (e) {
-    errorPrint('chooseUserDp', e);
+    logError('chooseUserDp', e);
   }
 }
 
@@ -34,7 +34,7 @@ Future<void> removeUserDp() async {
     await syncToCloud(db: 'users', space: liveUser(), parent: 'info', action: 'd', id: 'p');
     await cloudStorage.deleteFile(db: 'users', path: '${liveUser()}/$dp');
   } catch (e) {
-    errorPrint('removeUserDp', e);
+    logError('removeUserDp', e);
   }
 }
 

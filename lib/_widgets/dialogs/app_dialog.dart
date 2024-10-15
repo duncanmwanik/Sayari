@@ -75,6 +75,7 @@ Future<dynamic> showAppDialog({
                                 if (showClose)
                                   AppButton(
                                     onPressed: () => popWhatsOnTop(),
+                                    margin: paddingS('l'),
                                     padding: paddingS(),
                                     isSquare: true,
                                     child: AppIcon(closeIcon, size: 16, faded: true),

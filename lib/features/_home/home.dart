@@ -46,15 +46,17 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () => confirmExitApp(),
-      child: Scaffold(
-        body: AppLayout(),
-        drawer: AppDrawer(),
-        endDrawer: AppEndDrawer(),
-        floatingActionButton: HomeFab(),
-        key: scaffoldState,
-      ),
-    );
+    return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
+      return WillPopScope(
+        onWillPop: () => confirmExitApp(),
+        child: Scaffold(
+          body: AppLayout(),
+          drawer: AppDrawer(),
+          endDrawer: AppEndDrawer(),
+          floatingActionButton: HomeFab(),
+          key: scaffoldState,
+        ),
+      );
+    });
   }
 }

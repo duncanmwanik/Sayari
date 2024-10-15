@@ -2,8 +2,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_helpers/debug.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
-import '../../../_services/hive/get_data.dart';
-import '../../_spaces/_helpers/common.dart';
+import '../../../_services/hive/store.dart';
 
 Future<void> quickEdit({
   String? space,
@@ -14,12 +13,10 @@ Future<void> quickEdit({
   String sid = '',
 }) async {
   try {
-    String spaceId = space ?? liveSpace();
-
     Box box = storage(parent);
     Map itemData = box.get(id);
 
-    printThis('edit $id --- $sid --- $key --- $value');
+    show('edit $id --- $sid --- $key --- $value');
 
     bool isRemoveKey = key.startsWith('d');
     String removedKey = isRemoveKey ? key.split('/')[1] : key;
@@ -44,9 +41,9 @@ Future<void> quickEdit({
 
     box.put(id, itemData);
 
-    await syncToCloud(db: 'spaces', space: spaceId, parent: parent, action: 'e', id: id, sid: sid, keys: key, data: {key: value});
+    await syncToCloud(db: 'spaces', space: space, parent: parent, action: 'e', id: id, sid: sid, keys: key, data: {key: value});
     //
   } catch (e) {
-    errorPrint('quick-edit-$parent-$key-$value', e);
+    logError('quick-edit-$parent-$key-$value', e);
   }
 }

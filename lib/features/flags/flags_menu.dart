@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../__styling/spacing.dart';
 import '../../_helpers/navigation.dart';
-import '../../_services/hive/get_data.dart';
+import '../../_services/hive/store.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/action.dart';
 import '../../_widgets/others/empty_box.dart';

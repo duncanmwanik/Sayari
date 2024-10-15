@@ -1,5 +1,6 @@
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_services/hive/local_storage_service.dart';
+import 'common.dart';
 
 List getGroupNamesAsList(Map userData) {
   List groupNames = List.generate(userData.keys.length, (index) {
@@ -43,3 +44,5 @@ Future<String> saveSpacesNamesToLocalStorage(Map userData) async {
 
   return defaultSpace;
 }
+
+void updateSpaceName({String? space, String? name}) => spaceNamesBox.put(space ?? liveSpace(), name);

@@ -4,7 +4,7 @@ import '../../../_helpers/debug.dart';
 
 String handleFirebaseAuthError(FirebaseAuthException e, {String process = 'process'}) {
   String message = e.message ?? '';
-  errorPrint('sign-in-firebaseAuth: code: ${e.code}', e);
+  logError('sign-in-firebaseAuth: code: ${e.code}', e);
 
   if (e.code == 'user-not-found' || e.code == 'invalid-login-credentials') {
     return 'No account found for that email.';
@@ -53,7 +53,7 @@ String handleFirebaseAuthError(FirebaseAuthException e, {String process = 'proce
 
 String handleOtherErrors(dynamic error, {String process = 'process'}) {
   String message = error.toString();
-  errorPrint(process, message);
+  logError(process, message);
 
   if (message.contains('firebase_database/permission-denied')) {
     return 'No access.';

@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
-import '../../../_services/hive/get_data.dart';
+import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/empty_box.dart';
@@ -41,13 +41,22 @@ class DueToday extends StatelessWidget {
                   AppText(text: 'Due Today', faded: true),
                 ],
               ),
-              mpw(),
+              //
+              Spacer(),
               // new session
               AppButton(
                 onPressed: () => createSession(date: nowDate(), hour: nowHour()),
                 svp: true,
                 isSquare: true,
-                child: AppIcon(Icons.add, size: normal, faded: true),
+                noStyling: true,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AppIcon(Icons.add, size: normal, faded: true),
+                    spw(),
+                    AppText(text: 'New', size: small, faded: true),
+                  ],
+                ),
               )
               //
             ],
