@@ -10,21 +10,21 @@ class EmptyBox extends StatelessWidget {
   const EmptyBox({
     super.key,
     this.label = 'Nothing here...',
-    this.isSpaced = true,
+    this.centered = true,
     this.showImage = true,
     this.onPressed,
     this.size,
   });
 
   final String label;
-  final bool isSpaced;
+  final bool centered;
   final bool showImage;
   final double? size;
   final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    var column = Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -40,5 +40,6 @@ class EmptyBox extends StatelessWidget {
         //
       ],
     );
+    return centered ? Center(child: column) : column;
   }
 }

@@ -71,7 +71,7 @@ List<Widget> sessionListMenu(String date) {
               return DayBox(item: item);
             }),
           )
-        : EmptyBox(label: 'No sessions today', showImage: false),
+        : EmptyBox(label: 'No sessions today', centered: false, showImage: false),
     //
     sph(),
     //

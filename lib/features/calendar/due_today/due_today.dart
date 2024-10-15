@@ -85,7 +85,7 @@ class DueToday extends StatelessWidget {
                           return DayBox(item: item);
                         }),
                       )
-                    : EmptyBox(label: 'All clear today', showImage: false);
+                    : EmptyBox(label: 'All clear today', centered: false, showImage: false);
               }),
           //
         ],

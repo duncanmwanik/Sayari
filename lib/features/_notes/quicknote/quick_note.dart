@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
@@ -67,6 +68,7 @@ class QuickNote extends StatelessWidget {
                         child: Padding(
                           padding: paddingM('lrb'),
                           child: SuperEditor(
+                            minHeight: 5.h,
                             padding: paddingC('t5'),
                             placeholder: 'Add a quick note...',
                             scrollable: true,

@@ -22,7 +22,7 @@ class ItemFlagList extends StatelessWidget {
           spacing: 2,
           runSpacing: 2,
           children: List.generate(flagList.length, (index) {
-            String flagId = flagList[index] ?? '---';
+            String flagId = flagList[index];
 
             // If the flag is not deleted
             if (storage(feature.flags).containsKey(flagId)) {

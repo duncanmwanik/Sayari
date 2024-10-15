@@ -72,7 +72,7 @@ class _FlagsManagerState extends State<FlagsManager> {
                         }),
                       );
                     } else {
-                      return EmptyBox(label: 'No flags yet', isSpaced: false, size: 50);
+                      return EmptyBox(label: 'No flags yet', centered: false, size: 50);
                     }
                   },
                 ),

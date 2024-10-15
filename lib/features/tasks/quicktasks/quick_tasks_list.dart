@@ -47,7 +47,7 @@ class ListOfQuickTasks extends StatelessWidget {
                       for (String id in taskKeys)
                         QuickTaskItem(item: Item(parent: feature.timeline, id: feature.tasks, sid: id, data: tasks[id])),
                       //
-                      if (taskKeys.isEmpty) EmptyBox(label: 'No quick tasks ...', showImage: false)
+                      if (taskKeys.isEmpty) EmptyBox(label: 'No quick tasks ...', centered: false, showImage: false)
                       //
                     ],
                   );
