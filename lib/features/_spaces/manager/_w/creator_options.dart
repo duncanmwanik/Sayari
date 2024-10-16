@@ -6,7 +6,7 @@ import '../../../../_widgets/buttons/close.dart';
 import '../../../../_widgets/menu/menu_item.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../_helpers/helpers.dart';
+import '../../_helpers/prepare.dart';
 import 'dialog_add_space.dart';
 import 'dialog_create_group.dart';
 

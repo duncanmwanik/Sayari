@@ -26,7 +26,7 @@ class CustomAppBar extends StatelessWidget {
       bool isItemSelection = selection.isSelection;
 
       return Padding(
-        padding: isTabAndBelow() ? paddingM() : paddingS(),
+        padding: isTabAndBelow() ? paddingC('l8,r8,t4,b4') : paddingS(),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -72,7 +72,7 @@ class CustomAppBar extends StatelessWidget {
                     ),
             ),
             //
-            if (!isSmallPC() && (views.isCalendar() || views.isNotes() || views.isTasks() || views.isChat())) sph(),
+            if (!isSmallPC() && (views.isCalendar() || views.isNotes() || views.isTasks() || views.isChat())) tph(),
             if (!isSmallPC())
               views.isCalendar()
                   ? CalendarOptions()

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../_theme/helpers.dart';
-import '../../_theme/spacing.dart';
 import '../../_theme/variables.dart';
 import '../buttons/button.dart';
 import 'icons.dart';
-import 'svg.dart';
 
 class ColorButton extends StatelessWidget {
   const ColorButton({super.key, this.color, required this.menuItems, this.isSmall = false});
@@ -36,8 +34,8 @@ class ColorButton extends StatelessWidget {
                   size: 20,
                   color: hasColor ? styler.getItemColor(color, false) : (styler.isDark ? Colors.white24 : Colors.black54),
                 ),
-                pw(3),
-                const AppSvg(dropDownSvg, size: 14),
+                // pw(3),
+                // const AppSvg(dropDownSvg, size: 14),
               ],
             ),
     );

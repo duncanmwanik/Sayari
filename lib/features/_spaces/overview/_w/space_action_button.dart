@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../_theme/spacing.dart';
 import '../../../../_theme/variables.dart';
 import '../../../../_widgets/others/icons.dart';
-import '../../_helpers/checks_space.dart';
+import '../../_helpers/common.dart';
 
 Widget spaceActionButton({required String label, required IconData iconData, Function()? onPressed}) {
   return Visibility(

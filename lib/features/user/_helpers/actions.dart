@@ -47,8 +47,8 @@ Future<void> removeSpaceFromGroup(String spaceId, String groupName) async {
 
 Future<void> addSpaceToUserData(
   String userId,
-  String spaceId,
-  List groupList, {
+  String spaceId, {
+  List groups = const [],
   bool isDefault = false,
 }) async {
   try {
@@ -59,8 +59,8 @@ Future<void> addSpaceToUserData(
     // save default space id to user info
     if (isDefault) syncToCloud(db: 'users', space: userId, parent: 'info', action: 'c', id: 's', data: spaceId);
     // add space to the selected groups
-    if (groupList.isNotEmpty) {
-      for (String group in groupList) {
+    if (groups.isNotEmpty) {
+      for (String group in groups) {
         // add space to local
         Map groupSpaces = userGroupsBox.get(group, defaultValue: {});
         groupSpaces[spaceId] = 0;
@@ -69,14 +69,13 @@ Future<void> addSpaceToUserData(
         syncToCloud(db: 'users', space: liveUser(), parent: 'groups', action: 'c', id: group, sid: spaceId, data: 0);
       }
     }
-
     //
   } catch (e) {
     logError('add-new-space-to-user-data', e);
   }
 }
 
-Future<void> removeSpaceFromUserSpaceData(String userId, String spaceId) async {
+Future<void> removeSpaceForUser(String userId, String spaceId) async {
   try {
     // remove space from all spaces folder
     if (userSpacesBox.containsKey(spaceId)) {

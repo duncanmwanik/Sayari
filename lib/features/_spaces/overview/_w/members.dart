@@ -9,9 +9,8 @@ import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/scroll.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../_helpers/checks_space.dart';
 import '../../_helpers/common.dart';
-import '../../_helpers/member_helpers.dart';
+import '../../_helpers/members.dart';
 import 'add_member.dart';
 import 'member_chip.dart';
 

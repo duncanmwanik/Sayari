@@ -7,6 +7,7 @@ import '../../../_widgets/quill/toolbar.dart';
 import '../state/quill.dart';
 import '../types/finance/_w/footer.dart';
 import 'formatting_btn.dart';
+import 'last_edit.dart';
 
 class NoteFooter extends StatelessWidget {
   const NoteFooter({super.key});
@@ -21,10 +22,9 @@ class NoteFooter extends StatelessWidget {
           : Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                //
+                if (!showToolbar) Expanded(child: LastEdit(timestamp: input.item.data['z'])),
                 if (showToolbar) Expanded(child: QuillToolbar(child: getQuillToolbar())),
                 NoteFormarttingButton(),
-                //
               ],
             );
     });

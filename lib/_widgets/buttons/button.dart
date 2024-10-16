@@ -20,11 +20,11 @@ class AppButton extends StatelessWidget {
     this.onHover,
     this.showMenuOnLongPress = false,
     this.leading,
-    this.label,
+    this.content,
     this.trailing,
     this.child,
     this.iconSize = 18,
-    this.textSize = medium,
+    this.textSize,
     this.borderRadius,
     this.customBorder,
     this.color,
@@ -35,7 +35,7 @@ class AppButton extends StatelessWidget {
     this.showBorder = false,
     this.isRound = false,
     this.isSquare = false,
-    this.iconFaded = false,
+    this.faded = false,
     this.margin,
     this.padding,
     this.slp = false,
@@ -44,6 +44,7 @@ class AppButton extends StatelessWidget {
     this.isDropDown = false,
     this.dryWidth = false,
     this.noStyling = false,
+    this.expand = false,
     this.blur = false,
     this.borderWidth,
     this.maxWidth,
@@ -64,12 +65,12 @@ class AppButton extends StatelessWidget {
   final Function()? onLongPress;
   final Function(bool)? onHover;
   final bool showMenuOnLongPress;
-  final IconData? leading;
-  final String? label;
-  final IconData? trailing;
+  final dynamic leading;
+  final dynamic content;
+  final dynamic trailing;
   final Widget? child;
   final double iconSize;
-  final double textSize;
+  final double? textSize;
   final Color? color;
   final Color? hoverColor;
   final Color? textColor;
@@ -80,7 +81,7 @@ class AppButton extends StatelessWidget {
   final bool showBorder;
   final bool isRound;
   final bool isSquare;
-  final bool iconFaded;
+  final bool faded;
   final EdgeInsets? margin;
   final EdgeInsets? padding;
   final bool slp;
@@ -89,6 +90,7 @@ class AppButton extends StatelessWidget {
   final bool isDropDown;
   final bool dryWidth;
   final bool noStyling;
+  final bool expand;
   final bool blur;
   final double? borderWidth;
   final double? maxWidth;
@@ -162,14 +164,35 @@ class AppButton extends StatelessWidget {
                         )),
               child: child ??
                   Row(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: expand ? MainAxisSize.max : MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      if (leading != null) AppIcon(leading, size: iconSize, faded: iconFaded, color: textColor, bgColor: bgColor),
-                      if (leading != null && label != null) spw(),
-                      if (label != null) AppText(text: label ?? '', size: textSize, color: textColor, bgColor: bgColor),
-                      if (trailing != null && label != null) spw(),
-                      if (trailing != null) AppIcon(trailing, size: iconSize, faded: iconFaded, color: textColor, bgColor: bgColor),
+                      // leading
+                      if (leading != null)
+                        leading.runtimeType == String
+                            ? AppText(text: leading, size: textSize, faded: faded, color: textColor, bgColor: bgColor)
+                            : leading.runtimeType == IconData
+                                ? AppIcon(leading, size: iconSize, faded: faded, color: textColor, bgColor: bgColor)
+                                : leading,
+                      if (leading != null && content != null) spw(),
+                      // content
+                      if (content != null)
+                        Flexible(
+                          fit: expand ? FlexFit.tight : FlexFit.loose,
+                          child: content.runtimeType == String
+                              ? AppText(text: content, size: textSize, faded: faded, color: textColor, bgColor: bgColor)
+                              : content.runtimeType == IconData
+                                  ? AppIcon(content, size: iconSize, faded: faded, color: textColor, bgColor: bgColor)
+                                  : content,
+                        ),
+                      // trailing
+                      if (trailing != null && content != null) spw(),
+                      if (trailing != null)
+                        trailing.runtimeType == String
+                            ? AppText(text: trailing, size: textSize, faded: faded, color: textColor, bgColor: bgColor)
+                            : trailing.runtimeType == IconData
+                                ? AppIcon(trailing, size: iconSize, faded: faded, color: textColor, bgColor: bgColor)
+                                : trailing,
                     ],
                   ),
             ),

@@ -8,9 +8,9 @@ import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/loader.dart';
 import '../../../../_widgets/others/others/other.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../_helpers/checks_space.dart';
 import '../../_helpers/common.dart';
-import '../../_helpers/select_space.dart';
+import '../../_helpers/names.dart';
+import '../../_helpers/select.dart';
 import 'space_options.dart';
 
 class SpaceTile extends StatefulWidget {
@@ -32,7 +32,7 @@ class _SpaceTileState extends State<SpaceTile> {
     bool isDefault = isDefaultSpace(widget.spaceId);
 
     return FutureBuilder(
-        future: getSpaceNameFuture(widget.spaceId),
+        future: getSpaceName(widget.spaceId),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasError) {

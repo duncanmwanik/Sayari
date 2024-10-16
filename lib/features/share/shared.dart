@@ -31,9 +31,8 @@ class Share extends StatelessWidget {
           child: Padding(
             padding: paddingC('t8'),
             child: AppButton(
-              noStyling: true,
-              showBorder: true,
-              srp: true,
+              padding: paddingC('l6,r6,t6,b6'),
+              color: styler.appColor(0.5),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,7 +40,7 @@ class Share extends StatelessWidget {
                   //
                   AppButton(
                     onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
-                    padding: EdgeInsets.zero,
+                    padding: noPadding,
                     noStyling: true,
                     hoverColor: transparent,
                     child: Row(
@@ -52,21 +51,13 @@ class Share extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             AppIcon(Icons.share_rounded, size: medium, faded: true),
-                            spw(),
-                            AppText(text: 'Share settings'),
+                            mpw(),
+                            AppText(text: 'Share Settings'),
                           ],
                         ),
                         //
                         Spacer(),
                         //
-                        AppButton(
-                          onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
-                          noStyling: true,
-                          isSquare: true,
-                          hoverColor: transparent,
-                          child: AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, size: 18, faded: true),
-                        ),
-                        spw(),
                         AppButton(
                           menuItems: [
                             MenuItem(
@@ -87,6 +78,15 @@ class Share extends StatelessWidget {
                           noStyling: true,
                           isSquare: true,
                           child: AppIcon(moreIcon, size: 18, faded: true),
+                        ),
+                        //
+                        tpw(),
+                        AppButton(
+                          onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
+                          noStyling: true,
+                          isSquare: true,
+                          hoverColor: transparent,
+                          child: AppIcon(isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down, size: 18, faded: true),
                         ),
                         //
                       ],

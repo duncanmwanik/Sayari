@@ -20,3 +20,5 @@ String liveUserName() => userInfoBox.get('n', defaultValue: '');
 String userDp() => userInfoBox.get('p', defaultValue: '');
 String userDpId() => getfileNameOnly(userDp());
 bool hasUserDp() => userInfoBox.get('p', defaultValue: '') != '';
+
+bool isSpaceAlreadyAdded(String spaceId) => userSpacesBox.containsKey(spaceId);

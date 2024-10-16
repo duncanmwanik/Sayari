@@ -20,6 +20,7 @@ class TagSelector extends StatelessWidget {
       return AppButton(
         menuItems: tagsMenu(onDone: (newTags) => tags.updateSelectedTag(newTags.first)),
         isDropDown: true,
+        svp: true,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

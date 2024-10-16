@@ -6,7 +6,7 @@ import '../../../_helpers/navigation.dart';
 import '../../../_services/firebase/database.dart';
 import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/toast.dart';
-import '../../_spaces/_helpers/select_space.dart';
+import '../../_spaces/_helpers/select.dart';
 import '../../user/_helpers/helpers.dart';
 import 'auth_error_handler.dart';
 
@@ -33,7 +33,7 @@ Future<bool> signInUsingEmailPassword({
           Map userInfo = snapshot.value != null ? snapshot.value as Map : {};
           if (userInfo.isNotEmpty) {
             await setUserData(user!.uid, userInfo);
-            await selectNewSpace(userInfo['s'], isFirstTime: true);
+            await selectNewSpace(userInfo['s'], pop: false);
             // we go to homepage
             navigatorState.currentContext!.replace('/');
           }

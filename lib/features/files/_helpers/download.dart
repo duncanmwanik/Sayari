@@ -82,7 +82,7 @@ Future<void> downloadFile(
             io.File file = io.File(
               downloadPath != null
                   ? '/storage/emulated/0/Sayari/$fileName'
-                  : '/storage/emulated/0/Sayari/${liveSpaceTitle(other: 'Others')}/$fileName',
+                  : '/storage/emulated/0/Sayari/${liveSpaceTitle(defaultValue: 'Others')}/$fileName',
             );
             await file.create(recursive: true);
             await file.writeAsBytes(bytes);

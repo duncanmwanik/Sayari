@@ -52,94 +52,77 @@ Widget getQuillToolbar({bool isMin = false}) {
       );
   //
   QuillToolbarToggleStyleButtonOptions options = QuillToolbarToggleStyleButtonOptions(iconTheme: iconTheme, iconSize: iconSize);
-  //
-  //
 
-  return Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
+  return Wrap(
+    alignment: WrapAlignment.end,
+    runSpacing: tinyHeight(),
+    spacing: smallWidth(),
     children: [
-      //
-
+      // undo
       Consumer<QuillProvider>(
         builder: (context, quill, child) => Visibility(
           visible: quill.isChanged,
-          child: Wrap(
-            children: [
-              // undo
-              QuillToolbarHistoryButton(
-                controller: controller,
-                isUndo: true,
-                options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize, tooltip: ''),
-              ),
-
-              // redo
-              QuillToolbarHistoryButton(
-                controller: controller,
-                isUndo: false,
-                options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize, tooltip: ''),
-              ),
-            ],
+          child: QuillToolbarHistoryButton(
+            controller: controller,
+            isUndo: true,
+            options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize, tooltip: ''),
           ),
         ),
       ),
-      //
-      Expanded(
-        child: Wrap(
-          alignment: WrapAlignment.end,
-          crossAxisAlignment: WrapCrossAlignment.center,
-          runSpacing: tinyHeight(),
-          spacing: smallWidth(),
-          children: [
-            // bold
-            QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.bold, options: options),
-            // italic
-            QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.italic, options: options),
-            // underline
-            QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.underline, options: options),
-            // clear formatting
-            QuillToolbarClearFormatButton(controller: controller, options: options),
-            // list numbered
-            QuillToolbarToggleCheckListButton(
-              controller: controller,
-              options: QuillToolbarToggleCheckListButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
-            ),
-            // list bullets
-            QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ul, options: options),
-            // check list
-            QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ol, options: options),
-            // link
-            QuillToolbarLinkStyleButton(
-                controller: controller, options: QuillToolbarLinkStyleButtonOptions(iconTheme: iconTheme, iconSize: iconSize)),
-            // code
-            QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.codeBlock, options: options),
-            // divider
-            AppButton(
-              onPressed: () => addQuillEmbedDividerBlock(),
-              tooltip: 'Insert Divider',
-              noStyling: true,
-              isSquare: true,
-              child: SizedBox(
-                width: 30,
-                height: 2,
-                child: AppButton(color: styler.accentColor()),
-              ),
-            ),
-            // font sizes
-            sizeButton('H1', Attribute.h4),
-            sizeButton('H2', Attribute.h5),
-            sizeButton('H3', Attribute.h6),
-            sizeButton(' N ', Attribute.header),
-            // image
-            AppButton(
-              onPressed: () => addQuillEmbedImageBlock(),
-              tooltip: 'Insert Image',
-              tooltipDirection: AxisDirection.up,
-              noStyling: true,
-              isSquare: true,
-              child: AppIcon(Icons.image, faded: true),
-            ),
-          ],
+      // redo
+      Consumer<QuillProvider>(
+        builder: (context, quill, child) => Visibility(
+          visible: quill.isChanged,
+          child: QuillToolbarHistoryButton(
+            controller: controller,
+            isUndo: false,
+            options: QuillToolbarHistoryButtonOptions(iconTheme: iconTheme, iconSize: iconSize, tooltip: ''),
+          ),
         ),
+      ),
+      // bold
+      QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.bold, options: options),
+      // italic
+      QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.italic, options: options),
+      // underline
+      QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.underline, options: options),
+      // clear formatting
+      QuillToolbarClearFormatButton(controller: controller, options: options),
+      // list numbered
+      QuillToolbarToggleCheckListButton(
+        controller: controller,
+        options: QuillToolbarToggleCheckListButtonOptions(iconTheme: iconTheme, iconSize: iconSize),
+      ),
+      // list bullets
+      QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ul, options: options),
+      // check list
+      QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.ol, options: options),
+      // link
+      QuillToolbarLinkStyleButton(
+          controller: controller, options: QuillToolbarLinkStyleButtonOptions(iconTheme: iconTheme, iconSize: iconSize)),
+      // code
+      QuillToolbarToggleStyleButton(controller: controller, attribute: Attribute.codeBlock, options: options),
+      // divider
+      AppButton(
+        onPressed: () => addQuillEmbedDividerBlock(),
+        tooltip: 'Insert Divider',
+        padding: paddingC('l6,r6,t14,b14'),
+        noStyling: true,
+        child: AppButton(color: red, padding: padding(p: 1), width: 30),
+      ),
+      // font sizes
+      sizeButton('H1', Attribute.h4),
+      sizeButton('H2', Attribute.h5),
+      sizeButton('H3', Attribute.h6),
+      sizeButton(' N ', Attribute.header),
+      // image
+      AppButton(
+        onPressed: () => addQuillEmbedImageBlock(),
+        tooltip: 'Insert Image',
+        tooltipDirection: AxisDirection.up,
+        noStyling: true,
+        isSquare: true,
+        child: AppIcon(Icons.image, faded: true),
       ),
     ],
   );

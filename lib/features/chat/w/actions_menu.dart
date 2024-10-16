@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../_helpers/clipboard.dart';
 import '../../../_models/item.dart';
 import '../../../_widgets/menu/menu_item.dart';
-import '../../_spaces/_helpers/checks_space.dart';
+import '../../_spaces/_helpers/common.dart';
 import '../_helpers/delete.dart';
 import '../_helpers/helpers.dart';
 

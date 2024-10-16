@@ -6,7 +6,7 @@ import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../_helpers/common.dart';
-import '../../_helpers/delete_space.dart';
+import '../../_helpers/delete.dart';
 
 class DeleteSpaceBtn extends StatelessWidget {
   const DeleteSpaceBtn({super.key});

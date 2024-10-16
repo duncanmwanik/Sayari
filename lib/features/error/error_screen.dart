@@ -8,10 +8,8 @@ import '../../_theme/spacing.dart';
 import '../../_theme/variables.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/background.dart';
-import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/images.dart';
 import '../../_widgets/others/text.dart';
-import '../user/_helpers/helpers.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({super.key});
@@ -31,10 +29,10 @@ class ErrorScreen extends StatelessWidget {
                 child: AppButton(
                   onPressed: () async => context.go('/'),
                   isSquare: true,
-                  child: AppIcon(Icons.arrow_back_rounded),
+                  leading: Icons.arrow_back_rounded,
                 ),
               ),
-              //
+              // content
               Expanded(
                 child: Align(
                   alignment: Alignment.center,
@@ -44,22 +42,16 @@ class ErrorScreen extends StatelessWidget {
                       children: [
                         AppImage('oops.png', height: 25.h, fit: BoxFit.fitHeight),
                         sph(),
-                        AppText(size: normal, text: 'Lost in space.\n...', textAlign: TextAlign.center),
+                        AppText(size: normal, text: 'Lost in space :(', textAlign: TextAlign.center),
                         mph(),
                         AppButton(
                           onPressed: () => context.go('/'),
                           srp: true,
                           color: styler.accentColor(),
                           borderRadius: borderRadiusCrazy,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              AppText(text: isSignedIn() ? 'Go Home' : 'Join Sayari', color: white, weight: FontWeight.bold),
-                              spw(),
-                              AppIcon(Icons.arrow_forward_rounded, size: 16, color: white),
-                            ],
-                          ),
+                          textColor: white,
+                          leading: 'Go back',
+                          trailing: Icons.arrow_forward_rounded,
                         ),
                         elph(),
                       ],

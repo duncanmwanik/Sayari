@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../_helpers/global.dart';
 import '../../../_providers/input.dart';
 import '../../../_theme/spacing.dart';
 import '../../../_theme/variables.dart';
@@ -9,11 +8,7 @@ import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/color.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../files/_helpers/upload.dart';
-import '../../reminders/reminder_menu.dart';
-import '../../tags/menu.dart';
 import '../types/finance/graphs_sheet.dart';
-import '../types/habits/header.dart';
 import '../w/emoji_menu.dart';
 import 'input_actions_more.dart';
 
@@ -23,9 +18,7 @@ class CommonInputActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      String? reminder = input.item.data['r'];
-      String? bgColor = input.item.data['c'];
-      bool isPinned = input.item.data['p'] == '1';
+      bool isPinned = input.item.isPinned();
 
       return Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
@@ -41,16 +34,14 @@ class CommonInputActions extends StatelessWidget {
             child: AppIcon(Icons.emoji_emotions_outlined, tiny: true, faded: true),
           ),
           //
-          if (input.item.isHabit()) HabitHeader(),
-          //
-          if (input.item.isFinance())
-            AppButton(
-              onPressed: () => showFinanceGraphsBottomSheet(),
-              tooltip: 'View Graphs',
-              noStyling: true,
-              isSquare: true,
-              child: AppIcon(Icons.insert_chart_outlined_rounded, tiny: true, faded: true),
+          ColorButton(
+            menuItems: colorMenu(
+              selectedColor: input.item.color(),
+              onSelect: (newColor) => input.update('c', newColor),
             ),
+            color: input.item.color(),
+          ),
+
           //
           AppButton(
             onPressed: () => input.update('p', isPinned ? '0' : '1'),
@@ -60,48 +51,16 @@ class CommonInputActions extends StatelessWidget {
             child: AppIcon(isPinned ? pinIcon : unpinIcon, tiny: true, faded: true),
           ),
           //
-          AppButton(
-            tooltip: 'Reminder',
-            menuWidth: 200,
-            menuItems: reminderMenu(
-              reminder: reminder,
-              onSet: (newReminder) => input.update('r', newReminder),
-              onRemove: () => input.remove('r'),
-            ),
-            noStyling: true,
-            isSquare: true,
-            child: AppIcon(Icons.notifications_none, tiny: true, faded: true),
-          ),
-          //
-          AppButton(
-            menuItems: tagsMenu(
-              isSelection: true,
-              alreadySelected: splitList(input.item.data['l']),
-              onDone: (newTags) => input.update('l', newTags.join('|')),
-            ),
-            tooltip: 'Tag',
-            noStyling: true,
-            isSquare: true,
-            child: AppIcon(labelIcon, tiny: true, faded: true),
-          ),
-          //
-          ColorButton(
-            menuItems: colorMenu(
-              selectedColor: bgColor,
-              onSelect: (newColor) => input.update('c', newColor),
-            ),
-            color: bgColor,
-          ),
-          //
-          AppButton(
-            onPressed: () async => await getFilesToUpload(),
-            tooltip: 'Attach File',
-            noStyling: true,
-            isSquare: true,
-            child: AppIcon(Icons.attach_file, tiny: true, faded: true),
-          ),
-          //
           MoreInputActions(),
+          //
+          if (input.item.isFinance())
+            AppButton(
+              onPressed: () => showFinanceGraphsBottomSheet(),
+              tooltip: 'View Graphs',
+              noStyling: true,
+              isSquare: true,
+              child: AppIcon(Icons.insert_chart_outlined_rounded, tiny: true, faded: true),
+            ),
           //
         ],
       );

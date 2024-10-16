@@ -33,7 +33,7 @@ class SharedInfo extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    AppIcon(Icons.share, faded: true, size: tiny),
+                    AppIcon(Icons.share, bgColor: item.color(), faded: true, size: tiny),
                     tpw(),
                     AppText(text: 'Shared', bgColor: item.color(), size: tiny),
                   ],
@@ -48,7 +48,7 @@ class SharedInfo extends StatelessWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    AppIcon(Icons.article, faded: true, size: tiny),
+                    AppIcon(Icons.article, bgColor: item.color(), faded: true, size: tiny),
                     tpw(),
                     AppText(text: 'Published', bgColor: item.color(), size: tiny),
                   ],

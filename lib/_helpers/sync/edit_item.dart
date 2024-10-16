@@ -3,7 +3,7 @@ import '../../_services/firebase/sync_to_cloud.dart';
 import '../../_services/hive/sync.dart';
 import '../../_variables/features.dart';
 import '../../features/_spaces/_helpers/common.dart';
-import '../../features/_spaces/_helpers/space_names.dart';
+import '../../features/_spaces/_helpers/names.dart';
 import '../../features/calendar/_helpers/helpers.dart';
 import '../../features/files/_helpers/handler.dart';
 import '../../features/reminders/_helpers/register_reminder.dart';

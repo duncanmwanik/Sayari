@@ -31,20 +31,17 @@ Widget navItem(dynamic icon, String type, {double? size, Function()? onPressed})
           width: 19,
           height: 19,
           child: isCalendar
-              ? Padding(
-                  padding: padding(p: 1.5),
-                  child: AppButton(
-                    padding: noPadding,
-                    color: styler.textColor(faded: true),
-                    borderRadius: 2,
-                    child: Center(
-                        child: AppText(
-                      text: DateTime.now().day.toString(),
-                      size: 11,
-                      bold: true,
-                      color: styler.invertedTextColor(),
-                    )),
-                  ),
+              ? AppButton(
+                  padding: noPadding,
+                  color: styler.textColor(faded: true),
+                  borderRadius: 2,
+                  child: Center(
+                      child: AppText(
+                    text: DateTime.now().day.toString(),
+                    size: 11,
+                    bold: true,
+                    color: styler.invertedTextColor(),
+                  )),
                 )
               : icon.runtimeType == String
                   ? AppSvg(icon, size: size ?? 19, faded: true)

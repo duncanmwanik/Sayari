@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../_helpers/global.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_providers/input.dart';
@@ -9,6 +10,9 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
+import '../../files/_helpers/upload.dart';
+import '../../reminders/reminder_menu.dart';
+import '../../tags/menu.dart';
 import '../../tts/_helpers/tts_service.dart';
 import '../../tts/_state/tts_provider.dart';
 import '../../user/_helpers/helpers.dart';
@@ -25,6 +29,32 @@ class MoreInputActions extends StatelessWidget {
       return AppButton(
         tooltip: 'More Actions',
         menuItems: [
+          //
+          MenuItem(
+            label: 'Add Tags',
+            leading: labelIcon,
+            menuItems: tagsMenu(
+              isSelection: true,
+              alreadySelected: splitList(input.item.tags()),
+              onDone: (newTags) => input.update('l', newTags.join('|')),
+            ),
+          ),
+          //
+          MenuItem(
+            label: 'Add Reminder',
+            leading: reminderIcon,
+            menuItems: reminderMenu(
+              reminder: input.item.reminder(),
+              onSet: (newReminder) => input.update('r', newReminder),
+              onRemove: () => input.remove('r'),
+            ),
+          ),
+          //
+          MenuItem(
+            onTap: () async => await getFilesToUpload(),
+            label: 'Attach Files',
+            leading: reminderIcon,
+          ),
           //
           if (input.item.isHabit()) HabitOptions(),
           //
@@ -50,7 +80,9 @@ class MoreInputActions extends StatelessWidget {
               },
             ),
           //
-          if (input.item.exists())
+          menuDivider(),
+          //
+          if (!input.item.isNew())
             MenuItem(
               label: isArchived ? 'Unarchive' : 'Archive',
               leading: isArchived ? unarchiveIcon : archiveIcon,
@@ -60,12 +92,13 @@ class MoreInputActions extends StatelessWidget {
               },
             ),
           //
-          if (input.item.exists())
+          if (!input.item.isNew())
             MenuItem(
               label: 'Move To Trash',
               leading: Icons.delete_outlined,
               onTap: () async {
                 input.update('x', '1');
+                if (!isArchived) closeBottomSheetIfOpen();
               },
             ),
           //

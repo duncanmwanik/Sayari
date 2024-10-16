@@ -10,7 +10,7 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../_notes/_helpers/prepare.dart';
-import '../../_spaces/_helpers/checks_space.dart';
+import '../../_spaces/_helpers/common.dart';
 import '../../calendar/_helpers/prepare.dart';
 
 class HomeFab extends StatelessWidget {

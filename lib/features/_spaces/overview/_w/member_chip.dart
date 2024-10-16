@@ -10,8 +10,8 @@ import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../_notes/w/picker_type.dart';
-import '../../_helpers/checks_space.dart';
-import '../../_helpers/member_helpers.dart';
+import '../../_helpers/common.dart';
+import '../../_helpers/members.dart';
 import '../../var/variables.dart';
 
 class AdminChip extends StatelessWidget {

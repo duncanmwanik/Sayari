@@ -6,8 +6,8 @@ import '../../../../_widgets/menu/menu_item.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/others/other.dart';
 import '../../../user/_helpers/actions.dart';
-import '../../_helpers/checks_space.dart';
-import '../../_helpers/delete_space.dart';
+import '../../_helpers/common.dart';
+import '../../_helpers/delete.dart';
 
 class SpaceOptions extends StatelessWidget {
   const SpaceOptions({super.key, required this.spaceId, required this.spaceName, required this.spaceGroupName});

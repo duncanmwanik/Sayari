@@ -21,14 +21,7 @@ Future<void> showFinanceGraphsBottomSheet() async {
       children: [
         Expanded(child: AppText(text: '${state.input.item.data['t'] ?? '-'}', weight: FontWeight.bold)),
         spw(),
-        AppButton(
-          menuItems: graphMenu(),
-          noStyling: true,
-          iconFaded: true,
-          isSquare: true,
-          iconSize: 18,
-          leading: moreIcon,
-        ),
+        AppButton(menuItems: graphMenu(), noStyling: true, faded: true, isSquare: true, leading: moreIcon),
         spw(),
         AppCloseButton(faded: true),
       ],

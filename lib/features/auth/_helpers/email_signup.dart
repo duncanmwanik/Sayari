@@ -8,7 +8,7 @@ import '../../../_services/firebase/database.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/toast.dart';
-import '../../_spaces/_helpers/create_space.dart';
+import '../../_spaces/_helpers/create.dart';
 import '../../user/_helpers/helpers.dart';
 import 'auth_error_handler.dart';
 

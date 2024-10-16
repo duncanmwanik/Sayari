@@ -8,7 +8,6 @@ import '../../../_services/hive/local_storage_service.dart';
 import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
 import 'nav_item.dart';
-import 'nav_menu.dart';
 
 class HorizontalNavigationBox extends StatelessWidget {
   const HorizontalNavigationBox({super.key});
@@ -27,12 +26,12 @@ class HorizontalNavigationBox extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   //
-                  navItem(timelineIcon, feature.timeline),
+                  navItem(timelineIcon, size: 22, feature.timeline),
                   navItem(notesIcon, feature.notes),
-                  navItem(tasksIcon, size: 20.5, feature.tasks),
-                  navItem(calendarIcon, size: 17, feature.calendar),
-                  navItem(chatIcon, size: 17, feature.chat),
-                  NavMenu(),
+                  navItem(tasksIcon, feature.tasks),
+                  navItem(calendarIcon, feature.calendar),
+                  navItem(chatIcon, feature.chat),
+                  // NavMenu(),
                   //
                 ],
               ),

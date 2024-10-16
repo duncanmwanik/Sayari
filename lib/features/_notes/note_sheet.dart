@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../_helpers/helpers.dart';
 import '../../_helpers/navigation.dart';
@@ -27,7 +28,6 @@ import 'types/links/_w/links.dart';
 import 'types/tasks/task_options.dart';
 import 'w/details.dart';
 import 'w/footer.dart';
-import 'w/last_edit.dart';
 import 'w_actions/input_actions.dart';
 
 Future<void> showNoteBottomSheet(Item item) async {
@@ -42,8 +42,6 @@ Future<void> showNoteBottomSheet(Item item) async {
       children: [
         if (!isShare()) CommonInputActions(),
         Spacer(),
-        LastEdit(timestamp: item.data['z']),
-        spw(),
         AppButton(
           onPressed: () => popWhatsOnTop(),
           isSquare: true,
@@ -78,7 +76,7 @@ Future<void> showNoteBottomSheet(Item item) async {
                       setWebTitle(capitalFirst(value.trim().isNotEmpty ? value : 'Untitled'));
                     },
                     onFieldSubmitted: (_) => state.quill.controller.moveCursorToEnd(),
-                    fontSize: title,
+                    fontSize: 2.5.h,
                     weight: FontWeight.bold,
                     textCapitalization: TextCapitalization.sentences,
                     filled: false,

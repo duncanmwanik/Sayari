@@ -11,7 +11,7 @@ import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/text.dart';
-import '../../_spaces/_helpers/checks_space.dart';
+import '../../_spaces/_helpers/common.dart';
 import '../_helpers/date_time/date_info.dart';
 import '../_helpers/prepare.dart';
 import '../_helpers/sort.dart';

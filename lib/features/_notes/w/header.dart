@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
@@ -29,7 +30,7 @@ class ItemHeader extends StatelessWidget {
         children: [
           // header
           Padding(
-            padding: paddingC(item.hasEmoji() ? 'l5,t5,r5,b5' : 'l10,t5,r5,b5'),
+            padding: paddingC(item.hasEmoji() ? 'l5,r5,t3,b3' : 'l10,r5,t3,b3'),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -47,7 +48,7 @@ class ItemHeader extends StatelessWidget {
                           child: Padding(
                         padding: EdgeInsets.only(top: 2),
                         child: AppText(
-                          size: medium,
+                          size: 1.75.h,
                           text: item.title(),
                           faded: !item.hasTitle(),
                           bgColor: item.color(),

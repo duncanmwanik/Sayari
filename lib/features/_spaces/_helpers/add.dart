@@ -4,7 +4,6 @@ import '../../../_helpers/navigation.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/others/toast.dart';
-import '../../_spaces/_helpers/checks_space.dart';
 import '../../user/_helpers/actions.dart';
 import '../../user/_helpers/helpers.dart';
 
@@ -18,10 +17,9 @@ Future<void> addSpaceFromId(String spaceId) async {
 
         if (!isSpaceAlreadyAdded(spaceId)) {
           await doesSpaceExist(spaceId).then((spaceName) async {
-            if (spaceName != 'none') {
+            if (spaceName.isNotEmpty) {
               await spaceNamesBox.put(spaceId, spaceName);
-
-              await addSpaceToUserData(liveUser(), spaceId, []);
+              await addSpaceToUserData(liveUser(), spaceId);
               popWhatsOnTop();
               showToast(1, 'Added workspace $spaceName');
             } else {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';
 import '../../../../_widgets/forms/input.dart';
-import '../../_helpers/add_space.dart';
+import '../../_helpers/add.dart';
 
 Future<dynamic> showAddSpaceDialog() {
   final TextEditingController nameController = TextEditingController();
@@ -18,9 +18,7 @@ Future<dynamic> showAddSpaceDialog() {
       onFieldSubmitted: (_) async => await addSpaceFromId(nameController.text.trim()),
     ),
     actions: [
-      ActionButton(
-        isCancel: true,
-      ),
+      ActionButton(isCancel: true),
       ActionButton(
         label: 'Add',
         onPressed: (() async => await addSpaceFromId(nameController.text.trim())),

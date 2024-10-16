@@ -3,9 +3,8 @@ import 'dart:async';
 import 'package:firebase_database/firebase_database.dart';
 
 import '../../../_helpers/helpers.dart';
-import '../../../features/_spaces/_helpers/checks_space.dart';
 import '../../../features/_spaces/_helpers/common.dart';
-import '../../../features/_spaces/_helpers/delete_space.dart';
+import '../../../features/_spaces/_helpers/delete.dart';
 import '../../firebase/database.dart';
 import '../../firebase/get_space_data.dart';
 import '../../firebase/sync_from_cloud.dart';

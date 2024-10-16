@@ -33,7 +33,7 @@ class SuperEditor extends StatelessWidget {
     return IgnorePointer(
       ignoring: isShare(),
       child: Padding(
-        padding: padding ?? paddingC('t20'),
+        padding: padding ?? paddingL('t'),
         child: QuillEditor.basic(
           scrollController: scrollController,
           configurations: QuillEditorConfigurations(

@@ -2,7 +2,7 @@ import '../../_helpers/debug.dart';
 import '../../_helpers/helpers.dart';
 import '../../_variables/features.dart';
 import '../../features/_spaces/_helpers/common.dart';
-import '../../features/_spaces/_helpers/space_names.dart';
+import '../../features/_spaces/_helpers/names.dart';
 import '../hive/local_storage_service.dart';
 import '../hive/store.dart';
 import 'database.dart';
@@ -24,7 +24,7 @@ Future<void> getAllSpaceData(String spaceId, {bool? isFirstTime}) async {
 
   showSyncingLoader(false);
 
-  show('::AllSpaceData "${liveSpaceTitle(id: spaceId)}"');
+  show('::AllSpaceData ${liveSpaceTitle(spaceId: spaceId)}');
 }
 
 Future<void> getSpaceInfo(String spaceId) async {

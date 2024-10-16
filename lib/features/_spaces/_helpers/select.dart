@@ -9,10 +9,9 @@ import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../user/_helpers/helpers.dart';
 
-Future<void> selectNewSpace(String spaceId, {bool isFirstTime = false}) async {
+Future<void> selectNewSpace(String spaceId, {bool pop = true}) async {
   try {
-    // if the chosen space is not the currently selected space
-    // we clear any item selection from previous space
+    // we do some cleaning
     state.selection.clear();
     // we load all boxes for the chosen space
     await loadSelectedSpaceBoxes(spaceId);
@@ -20,18 +19,18 @@ Future<void> selectNewSpace(String spaceId, {bool isFirstTime = false}) async {
     await updateSelectedSpace(spaceId);
     // we restart view at home screen again
     // so as to run the initState function in home screen
-    if (!isFirstTime) {
+    if (pop) {
       navigatorState.currentState!.context.replace('/');
       closeDrawerIfOpened();
     }
 
     show('Selected space: $spaceId');
   } catch (e) {
-    showToast(0, 'Could not load space');
+    showToast(0, 'Could not load space.');
     logError('selectNewSpace', e);
   }
 }
 
-Future<void> updateSelectedSpace(String spaceId, {String? signUpUserId}) async {
-  await globalBox.put('${signUpUserId ?? liveUser()}_currentSpaceId', spaceId);
+Future<void> updateSelectedSpace(String spaceId) async {
+  await globalBox.put('${liveUser()}_currentSpaceId', spaceId);
 }

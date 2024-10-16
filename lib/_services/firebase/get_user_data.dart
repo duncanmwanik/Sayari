@@ -1,7 +1,7 @@
 import '../../_helpers/debug.dart';
 import '../../_helpers/helpers.dart';
 import '../../_helpers/internet_connection.dart';
-import '../../features/_spaces/_helpers/space_names.dart';
+import '../../features/_spaces/_helpers/names.dart';
 import '../hive/local_storage_service.dart';
 import 'database.dart';
 

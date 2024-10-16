@@ -55,7 +55,7 @@ Future<void> removeMemberFromSpace(String userId, String userEmail) async {
       yeslabel: 'Remove',
       onAccept: () async {
         String spaceId = liveSpace();
-        await isSpaceOwnerFirebase(spaceId, userId).then((isOwner) async {
+        await isSpaceOwnerCloud(spaceId, userId).then((isOwner) async {
           if (!isOwner) {
             storage('members', space: spaceId).delete(userId);
             await syncToCloud(db: 'spaces', space: spaceId, parent: 'members', action: 'd', id: userId);

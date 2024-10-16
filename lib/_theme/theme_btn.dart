@@ -6,8 +6,7 @@ import 'theme_menu.dart';
 import 'variables.dart';
 
 class ThemeButton extends StatelessWidget {
-  const ThemeButton({super.key, this.showText = false, this.rightPadding = true});
-  final bool showText;
+  const ThemeButton({super.key, this.rightPadding = true});
   final bool rightPadding;
 
   @override
@@ -15,16 +14,13 @@ class ThemeButton extends StatelessWidget {
     return Padding(
       padding: rightPadding ? paddingM('r') : noPadding,
       child: AppButton(
-        menuWidth: 300,
         menuItems: themeMenu(),
+        menuWidth: 300,
         tooltip: 'Theme',
         isSquare: true,
         noStyling: true,
-        iconSize: showText ? normal : 18,
-        textSize: small,
-        iconFaded: !showText,
+        iconSize: 22,
         leading: Icons.dark_mode,
-        label: showText ? 'Change Theme' : null,
       ),
     );
   }

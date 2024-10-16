@@ -12,7 +12,7 @@ import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/forms/input.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../../_spaces/_helpers/checks_space.dart';
+import '../../../_spaces/_helpers/common.dart';
 
 class NewItemInput extends StatefulWidget {
   const NewItemInput({super.key, required this.item});

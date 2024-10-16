@@ -53,10 +53,7 @@ class Note extends StatelessWidget {
                 color: styler.getItemColor(item.color(), false, isShadeColor: true),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(borderRadiusTinySmall),
-                  side: BorderSide(
-                    color: isSelected ? styler.accentColor() : Colors.grey.withOpacity(0.4),
-                    width: isSelected ? 2 : (styler.isDark ? 0.3 : 0.7),
-                  ),
+                  side: isSelected ? BorderSide(color: styler.accentColor(), width: 2) : BorderSide.none,
                 ),
                 child: InkWell(
                   onTap: item.isTask() && !isSelection ? null : () => onTapNote(item),

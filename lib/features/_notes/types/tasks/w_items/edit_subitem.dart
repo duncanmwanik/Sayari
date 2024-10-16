@@ -14,7 +14,7 @@ import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/dialogs/app_dialog.dart';
 import '../../../../../_widgets/forms/input.dart';
 import '../../../../../_widgets/others/icons.dart';
-import '../../../../_spaces/_helpers/checks_space.dart';
+import '../../../../_spaces/_helpers/common.dart';
 import '../../../../files/_helpers/upload.dart';
 import '../../../../files/file_list.dart';
 import '../../../../flags/flags_menu.dart';

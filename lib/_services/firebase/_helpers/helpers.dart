@@ -7,13 +7,9 @@ import '../database.dart';
 Future<String> doesSpaceExist(String spaceId) async {
   try {
     DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/info/t');
-    if (snapshot.value != null) {
-      return snapshot.value as String;
-    } else {
-      return 'none';
-    }
+    return snapshot.value != null ? snapshot.value as String : '';
   } catch (e) {
-    return 'none';
+    return '';
   }
 }
 
@@ -33,10 +29,10 @@ Future<bool> isSpaceAdminCloud() async {
   return snapshot.exists;
 }
 
-Future<bool> isSpaceOwnerFirebase(String spaceId, String userId) async {
+Future<bool> isSpaceOwnerCloud(String spaceId, String userId) async {
   try {
     DataSnapshot snapshot = await cloudService.getData(db: 'spaces', '$spaceId/members/$userId');
-    return snapshot.value as String == '2';
+    return (snapshot.value as String) == '2';
   } catch (_) {
     return false;
   }

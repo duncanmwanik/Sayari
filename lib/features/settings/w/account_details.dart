@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../_services/hive/store.dart';
 import '../../../_theme/spacing.dart';
-import '../../../_widgets/others/others/list_tile.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/text.dart';
 import '../../user/_helpers/helpers.dart';
 import '../../user/dp.dart';
@@ -25,16 +25,16 @@ class AccountDetails extends StatelessWidget {
               Center(child: UserDp(isTiny: false, menuItems: dpEditMenu())),
               mph(),
               SettingTitle('ACCOUNT'),
-              AppListTile(
-                leading: AppText(text: 'Name'),
+              AppButton(
+                onPressed: () {},
+                leading: 'Name',
                 trailing: AppText(text: liveUserName()),
-                onTap: () {},
               ),
               tsph(),
-              AppListTile(
-                leading: AppText(text: 'Email'),
-                trailing: AppText(text: liveEmail()),
-                onTap: () {},
+              AppButton(
+                onPressed: () {},
+                leading: 'Email',
+                trailing: liveEmail(),
               ),
               //
             ],

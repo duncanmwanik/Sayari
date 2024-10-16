@@ -5,10 +5,10 @@ import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_theme/spacing.dart';
 import '../../../_widgets/buttons/action.dart';
+import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
 import '../../../_widgets/others/checkbox.dart';
 import '../../../_widgets/others/others/divider.dart';
-import '../../../_widgets/others/others/list_tile.dart';
 import '../_helpers/save_settings.dart';
 import '../state/pomodoro.dart';
 import 'alarm_chooser.dart';
@@ -38,8 +38,8 @@ Future<void> showPomodoroSettingsDialog() async {
             PomodoroSetting(type: 'l'),
             tph(), AppDivider(height: smallHeight()),
             //
-            AppListTile(
-              onTap: () => pomodoroProvider.updatedata('ap', isAutoPlayOn ? '0' : '1'),
+            AppButton(
+              onPressed: () => pomodoroProvider.updatedata('ap', isAutoPlayOn ? '0' : '1'),
               leading: 'Auto-Repeat',
               trailing: AppCheckBox(
                 isChecked: isAutoPlayOn,
@@ -49,8 +49,8 @@ Future<void> showPomodoroSettingsDialog() async {
             //
             AppDivider(height: smallHeight()),
             //
-            AppListTile(
-              onTap: () => pomodoroProvider.updatedata('ao', isAlarmOn ? '0' : '1'),
+            AppButton(
+              onPressed: () => pomodoroProvider.updatedata('ao', isAlarmOn ? '0' : '1'),
               leading: 'Alarm',
               trailing: AppCheckBox(
                 isChecked: isAlarmOn,

@@ -15,7 +15,7 @@ import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '../../_widgets/quill/editor.dart';
 import '../../_widgets/quill/toolbar.dart';
-import '../_spaces/_helpers/checks_space.dart';
+import '../_spaces/_helpers/common.dart';
 import '../files/_helpers/helper.dart';
 import '../files/_helpers/upload.dart';
 import '../files/file_list.dart';

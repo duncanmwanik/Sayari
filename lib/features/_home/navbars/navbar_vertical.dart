@@ -8,7 +8,6 @@ import '../../../_theme/spacing.dart';
 import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
 import '../panel/toggle.dart';
-import '../panel/user_options.dart';
 import 'nav_item.dart';
 
 class VeticalNavigationBox extends StatelessWidget {
@@ -46,7 +45,7 @@ class VeticalNavigationBox extends StatelessWidget {
                   //
                   Spacer(),
                   //
-                  UserOptions(),
+                  // UserOptions(),
                   //
                 ],
               ),
