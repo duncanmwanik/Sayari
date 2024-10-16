@@ -30,15 +30,12 @@ Future<void> showPomodoroSettingsDialog() async {
           children: [
             //
             PomodoroSetting(type: 'f'),
-            //
             tph(), AppDivider(height: smallHeight()),
             //
             PomodoroSetting(type: 's'),
-            //
             tph(), AppDivider(height: smallHeight()),
             //
             PomodoroSetting(type: 'l'),
-            //
             tph(), AppDivider(height: smallHeight()),
             //
             AppListTile(
@@ -60,9 +57,7 @@ Future<void> showPomodoroSettingsDialog() async {
                 onTap: () => pomodoroProvider.updatedata('ao', isAlarmOn ? '0' : '1'),
               ),
             ),
-            //
             sph(),
-            //
             AlarmChooser(),
             //
             elph(),

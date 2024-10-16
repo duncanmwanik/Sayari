@@ -3,9 +3,9 @@ import 'package:flutter_quill/flutter_quill.dart';
 import 'package:provider/provider.dart';
 
 import '../../../_providers/input.dart';
-import '../../finance/_w/footer.dart';
-import '../quill/toolbar.dart';
+import '../../../_widgets/quill/toolbar.dart';
 import '../state/quill.dart';
+import '../types/finance/_w/footer.dart';
 import 'formatting_btn.dart';
 
 class NoteFooter extends StatelessWidget {

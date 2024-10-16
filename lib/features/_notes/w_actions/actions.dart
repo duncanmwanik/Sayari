@@ -6,6 +6,8 @@ import '../../../__styling/helpers.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/global.dart';
+import '../../../_helpers/sync/delete_item.dart';
+import '../../../_helpers/sync/quick_edit.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/focus.dart';
 import '../../../_widgets/buttons/button.dart';
@@ -14,8 +16,6 @@ import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../reminders/reminder_menu.dart';
 import '../../tags/menu.dart';
-import '../_helpers/delete_item.dart';
-import '../_helpers/quick_edit.dart';
 import '../state/selection.dart';
 import '../w/emoji_menu.dart';
 
@@ -69,7 +69,7 @@ class ItemActions extends StatelessWidget {
                     menuItems: tagsMenu(
                       title: item.title(),
                       isSelection: true,
-                      alreadySelected: splitList(item.labels()),
+                      alreadySelected: splitList(item.tags()),
                       onDone: (newTags) async {
                         await quickEdit(parent: item.parent, id: item.id, key: 'l', value: joinList(newTags));
                       },

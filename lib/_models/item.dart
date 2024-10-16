@@ -3,9 +3,9 @@ import '../_helpers/global.dart';
 import '../_helpers/helpers.dart';
 import '../_variables/constants.dart';
 import '../_variables/features.dart';
+import '../features/_notes/types/tasks/_helpers/helper.dart';
 import '../features/_spaces/_helpers/common.dart';
 import '../features/files/_helpers/helper.dart';
-import '../features/tasks/_helpers/helper.dart';
 
 class Item {
   Item({
@@ -32,7 +32,7 @@ class Item {
   String content() => data['n'] ?? '';
   String reminder() => data['r'] ?? '';
   String sessionType() => data['y'] ?? 'Session';
-  String labels() => data['l'] ?? '';
+  String tags() => data['l'] ?? '';
   String coverId() => data['w'] ?? '';
   String coverName() => data[coverId()] ?? '';
   String sharedLink() => '$sayariDefaultPath/${features[itemType()]!.path}/${minString(title())}-${liveSpace()}$id';
@@ -52,7 +52,7 @@ class Item {
   bool hasColor() => hasColour(data['c']);
   bool hasEmoji() => data['ej'] != null;
   bool hasReminder() => reminder().isNotEmpty;
-  bool hasDetails() => reminder().isNotEmpty || labels().isNotEmpty || files().isNotEmpty;
+  bool hasDetails() => reminder().isNotEmpty || tags().isNotEmpty || files().isNotEmpty;
   bool hasOverview() => data['w'] != null && data['w'] != '';
   bool hasFiles() => files().isNotEmpty;
   bool hasFlags() => flags().isNotEmpty;

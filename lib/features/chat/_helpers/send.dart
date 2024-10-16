@@ -7,7 +7,7 @@ import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
-import '../../_notes/_helpers/helpers.dart';
+import '../../../_widgets/quill/helpers.dart';
 import '../../_spaces/_helpers/common.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
 import '../../files/_helpers/handler.dart';

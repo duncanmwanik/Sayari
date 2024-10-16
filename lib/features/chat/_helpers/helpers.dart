@@ -1,6 +1,6 @@
+import '../../../_helpers/sync/quick_edit.dart';
 import '../../../_models/item.dart';
 import '../../../_variables/features.dart';
-import '../../_notes/_helpers/quick_edit.dart';
 
 Future<void> pinMessage(Item item) async {
   await quickEdit(parent: feature.chat, id: item.id, sid: item.sid, key: 'p', value: '1');

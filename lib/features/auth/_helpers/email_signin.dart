@@ -10,7 +10,13 @@ import '../../_spaces/_helpers/select_space.dart';
 import '../../user/_helpers/helpers.dart';
 import 'auth_error_handler.dart';
 
-Future<void> signInUsingEmailPassword({required String email, required String password, bool validate = true}) async {
+Future<bool> signInUsingEmailPassword({
+  required String email,
+  required String password,
+  bool validate = true,
+}) async {
+  bool success = false;
+
   try {
     hideKeyboard();
 
@@ -27,7 +33,6 @@ Future<void> signInUsingEmailPassword({required String email, required String pa
           Map userInfo = snapshot.value != null ? snapshot.value as Map : {};
           if (userInfo.isNotEmpty) {
             await setUserData(user!.uid, userInfo);
-            print(userInfo['s']);
             await selectNewSpace(userInfo['s'], isFirstTime: true);
             // we go to homepage
             navigatorState.currentContext!.replace('/');
@@ -35,11 +40,14 @@ Future<void> signInUsingEmailPassword({required String email, required String pa
         });
       }
 
-      show('::::SIGN IN COMPLETE! - $email - ${user?.displayName}');
+      success = true;
+      show('::signInUsingEmailPassword: $email - ${user?.displayName}');
     }
   } on FirebaseAuthException catch (error) {
     showToast(0, handleFirebaseAuthError(error, process: 'sign in'), smallTopMargin: true, duration: 5000);
   } catch (error) {
     showToast(0, handleOtherErrors(error, process: 'sign in'), smallTopMargin: true, duration: 5000);
   }
+
+  return success;
 }

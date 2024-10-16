@@ -4,9 +4,9 @@ import 'package:flutter/widgets.dart';
 
 import '../../__styling/spacing.dart';
 import '../../_widgets/others/others/divider.dart';
-import '../_notes/quicknote/quick_note.dart';
+import '../_notes/types/quicknote/quick_note.dart';
+import '../_notes/types/tasks/quicktasks/quick_tasks.dart';
 import '../calendar/due_today/due_today.dart';
-import '../tasks/quicktasks/quick_tasks.dart';
 
 class Timeline extends StatelessWidget {
   const Timeline({super.key});

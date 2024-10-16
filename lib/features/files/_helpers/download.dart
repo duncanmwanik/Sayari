@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages, implementation_imports, avoid_web_libraries_in_flutter, duplicate_ignore
+// ignore_for_file: implementation_imports
 
 import 'dart:io' as io;
 
@@ -22,7 +22,7 @@ Future<void> downloadFile(
     // local
     //
     if (fileBox.containsKey(fileId) && (kIsWeb || await io.File(fileBox.get(fileId)).exists()) && !fromCloud) {
-      print('downloading from local fileBox...');
+      show('downloading from local fileBox...');
       if (kIsWeb) {
         var bytes = fileBox.get(fileId);
         await FileSaver.instance.saveFile(name: fileName, bytes: bytes);
@@ -41,7 +41,7 @@ Future<void> downloadFile(
     // cached
     //
     else if (cachedFileBox.containsKey(fileId) && !fromCloud) {
-      print('downloading from cache...');
+      show('downloading from cache...');
       cfile.File? cachedFile = await getCachedFile(fileId: fileId, fileName: fileName);
       if (cachedFile != null) {
         var bytes = await cachedFile.readAsBytes();
@@ -59,7 +59,7 @@ Future<void> downloadFile(
 
         showToast(1, 'Downloaded $fileName.');
       } else {
-        print('Redownloading from cloud...');
+        show('Redownloading from cloud...');
         downloadFile(fileId: fileId, fileName: fileName, db: db, cloudFilePath: cloudFilePath, downloadPath: downloadPath, fromCloud: true);
       }
     }
@@ -67,7 +67,7 @@ Future<void> downloadFile(
     // cloud
     //
     else {
-      print('downloading from cloud...');
+      show('downloading from cloud...');
       await cloudStorage
           .getFileBytes(
         db: db ?? 'spaces',

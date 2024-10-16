@@ -20,7 +20,7 @@ class _PomodoroIndicatorState extends State<PomodoroIndicator> {
   Widget build(BuildContext context) {
     return Consumer<PomodoroProvider>(builder: (context, pomo, child) {
       return Visibility(
-        visible: pomo.isTiming,
+        visible: pomo.isCounting,
         child: Padding(
           padding: paddingM('r'),
           child: AppButton(
@@ -28,8 +28,8 @@ class _PomodoroIndicatorState extends State<PomodoroIndicator> {
             tooltip: 'Open Pomodoro',
             isRound: true,
             showBorder: true,
-            color: backgroundColors[pomo.data['${pomo.currentTimer}c']]!.color,
-            child: AppIcon(Icons.timer),
+            borderColor: backgroundColors[pomo.data['${pomo.currentTimer}c']]!.color,
+            child: AppIcon(Icons.timer, tiny: true),
           ),
         ),
       );

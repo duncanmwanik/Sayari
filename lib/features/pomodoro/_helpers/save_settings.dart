@@ -13,19 +13,16 @@ Future<void> savePomodoroSettings(Map previousdata) async {
     if (!DeepCollectionEquality().equals(previousdata, state.pomodoro.data)) {
       state.pomodoro.reset();
       settingBox.put('pm', jsonEncode(state.pomodoro.data));
-
       syncToCloud(
         db: 'users',
         space: liveUser(),
         parent: 'settings',
-        action: 'c',
         id: 'pm',
         data: jsonEncode(state.pomodoro.data),
+        action: 'c',
       );
     }
-  }
-  //
-  catch (e) {
+  } catch (e) {
     showToast(0, 'Could not save settings.');
   }
 }

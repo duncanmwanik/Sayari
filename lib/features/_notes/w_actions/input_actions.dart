@@ -10,10 +10,10 @@ import '../../../_widgets/others/color.dart';
 import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../files/_helpers/upload.dart';
-import '../../finance/graphs_sheet.dart';
-import '../../habits/header.dart';
 import '../../reminders/reminder_menu.dart';
 import '../../tags/menu.dart';
+import '../types/finance/graphs_sheet.dart';
+import '../types/habits/header.dart';
 import '../w/emoji_menu.dart';
 import 'input_actions_more.dart';
 

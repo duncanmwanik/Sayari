@@ -55,7 +55,7 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
             ),
             spw(),
             // text
-            Expanded(child: Padding(padding: const EdgeInsets.only(top: 3), child: HtmlText(text: message))),
+            Expanded(child: Padding(padding: const EdgeInsets.only(top: 3), child: AppText(text: message))),
             // close
             spw(),
             AppButton(

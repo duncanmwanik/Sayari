@@ -20,32 +20,24 @@ class ListItem extends StatelessWidget {
       padding: paddingS('b'),
       child: AppButton(
         onPressed: () => editNote(item),
-        color: styler.appColor(isDarkOnly() ? 0.2 : 0.5),
+        blur: isImage(),
+        color: styler.appColor(0.5),
         hoverColor: styler.appColor(0.5),
-        padding: paddingC('l12,r8,t6,b6'),
+        padding: paddingC('l14,r8,t6,b6'),
         child: Row(
           children: [
             //
-            Expanded(
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  AppButton(
-                    width: 15,
-                    height: 15,
-                    padding: noPadding,
-                    borderRadius: borderRadiusSuperTiny,
-                    color: item.hasColor() ? styler.getItemColor(item.color(), false) : styler.appColor(2),
-                  ),
-                  spw(),
-                  // title
-                  Flexible(child: AppText(size: medium, text: item.title())),
-                ],
-              ),
+            AppButton(
+              width: 15,
+              height: 15,
+              padding: noPadding,
+              borderRadius: borderRadiusSuperTiny,
+              color: item.hasColor() ? styler.getItemColor(item.color(), false) : styler.appColor(2),
             ),
-            //
+            mspw(),
+            // title
+            Expanded(child: AppText(size: medium, text: item.title())),
             spw(),
-            //
             ItemActions(item: item, isPersistent: true),
             //
           ],

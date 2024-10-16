@@ -1,9 +1,9 @@
 import 'package:hive/hive.dart';
 
 import '../../../_helpers/debug.dart';
+import '../../../_helpers/sync/quick_edit.dart';
 import '../../../_services/hive/store.dart';
 import '../../../_variables/features.dart';
-import 'quick_edit.dart';
 
 Future<void> orderItems({
   required String oldItemId,

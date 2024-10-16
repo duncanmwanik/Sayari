@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../__styling/helpers.dart';
+import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_providers/theme.dart';
-import 'w/shared_info.dart';
+import '../../_widgets/others/icons.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key, required this.id});
@@ -25,8 +26,14 @@ class _ShareScreenState extends State<TestScreen> {
         child: SafeArea(
           child: Scaffold(
             backgroundColor: transparent,
-            body: Center(
-              child: SharedAction(label: 'This is a test screen for: ${widget.id}.'),
+            body: SingleChildScrollView(
+              child: Wrap(
+                spacing: tinyWidth(),
+                runSpacing: tinyWidth(),
+                children: List.generate(50, (index) {
+                  return AppIcon(Icons.circle, size: 6, extraFaded: true);
+                }),
+              ),
             ),
           ),
         ),

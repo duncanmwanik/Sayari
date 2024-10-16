@@ -14,7 +14,7 @@ import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/checkbox.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
-import '../../bookings/_w/copy_link.dart';
+import '../../_notes/types/bookings/_w/copy_link.dart';
 import '../../files/_helpers/upload.dart';
 import '../../files/image.dart';
 import '../../files/viewer.dart';

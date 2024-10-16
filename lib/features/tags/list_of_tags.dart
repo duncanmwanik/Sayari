@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import '../../__styling/helpers.dart';
 import '../../__styling/spacing.dart';
 import '../../_helpers/global.dart';
+import '../../_helpers/sync/quick_edit.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
 import '../../_services/hive/store.dart';
@@ -11,7 +12,6 @@ import '../../_variables/features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/others/other.dart';
 import '../../_widgets/others/text.dart';
-import '../_notes/_helpers/quick_edit.dart';
 import 'menu.dart';
 import 'var/tag_model.dart';
 

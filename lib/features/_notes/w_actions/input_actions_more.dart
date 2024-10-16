@@ -9,10 +9,10 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
-import '../../habits/habit_options.dart';
 import '../../tts/_helpers/tts_service.dart';
 import '../../tts/_state/tts_provider.dart';
 import '../../user/_helpers/helpers.dart';
+import '../types/habits/habit_options.dart';
 
 class MoreInputActions extends StatelessWidget {
   const MoreInputActions({super.key});

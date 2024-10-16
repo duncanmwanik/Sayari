@@ -5,6 +5,8 @@ import '../../../__styling/breakpoints.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/global.dart';
+import '../../../_helpers/sync/delete_item.dart';
+import '../../../_helpers/sync/quick_edit.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
@@ -13,8 +15,6 @@ import '../../../_widgets/others/color_menu.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../tags/menu.dart';
-import '../_helpers/delete_item.dart';
-import '../_helpers/quick_edit.dart';
 import '../state/selection.dart';
 
 class SelectedItemOptions extends StatelessWidget {

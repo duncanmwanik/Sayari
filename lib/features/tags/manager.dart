@@ -46,7 +46,7 @@ class _TagManagerState extends State<TagManager> {
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
         valueListenable: storage(feature.tags).listenable(),
-        builder: (context, box, wdgt) {
+        builder: (context, box, wgt) {
           String selected = state.views.selectedTag;
 
           return Column(

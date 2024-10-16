@@ -13,6 +13,7 @@ import '../../../_widgets/others/sfcalendar.dart';
 import '../../tags/manager.dart';
 import '../navbars/navbar_vertical.dart';
 import '../space.dart';
+import 'placeholder.dart';
 
 class Panel extends StatelessWidget {
   const Panel({super.key});
@@ -23,6 +24,7 @@ class Panel extends StatelessWidget {
       bool showPanel = views.showPanelOptions && showPanelOptions();
       bool showCalendar = views.isCalendar() || views.isChat();
       bool showTagManager = views.isNotes() || views.isTasks();
+      bool showPlaceholder = !showTagManager && !showCalendar;
 
       return Container(
         width: showPanel ? 253 : 53,
@@ -52,16 +54,18 @@ class Panel extends StatelessWidget {
                     SizedBox(
                       width: 200,
                       child: NoScrollBars(
-                        child: ListView(
-                          shrinkWrap: true,
-                          padding: EdgeInsets.zero,
+                        child: SingleChildScrollView(
                           physics: BouncingScrollPhysics(),
-                          children: [
-                            //
-                            if (showCalendar) Center(child: SfCalendar(isOverview: true)),
-                            if (showTagManager) TagManager(),
-                            //
-                          ],
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              //
+                              if (showCalendar) Center(child: SfCalendar(isOverview: true)),
+                              if (showTagManager) TagManager(),
+                              if (showPlaceholder) PanelPlaceholder(),
+                              //
+                            ],
+                          ),
                         ),
                       ),
                     ),

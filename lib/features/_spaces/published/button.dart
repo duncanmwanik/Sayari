@@ -7,7 +7,7 @@ import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
-import '../../bookings/_w/copy_link.dart';
+import '../../_notes/types/bookings/_w/copy_link.dart';
 import '../_helpers/common.dart';
 import '../_helpers/helpers.dart';
 

@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../../../__styling/spacing.dart';
 import '../../../__styling/variables.dart';
 import '../../../_helpers/navigation.dart';
+import '../../../_helpers/sync/quick_edit.dart';
 import '../../../_models/item.dart';
 import '../../../_variables/emojis.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/images.dart';
-import '../_helpers/quick_edit.dart';
 
 List<Widget> emojiMenu(Item item) {
   return [

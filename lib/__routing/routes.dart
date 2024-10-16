@@ -20,10 +20,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) => HomeScreen(),
-      redirect: (context, state) async => await isFirstTimer() ? '/getstarted' : null,
+      redirect: (context, state) async => await isFirstTimer() ? '/welcome' : null,
     ),
     // start
-    GoRoute(path: '/getstarted', builder: (context, state) => AuthScreen()),
+    GoRoute(path: '/welcome', builder: (context, state) => AuthScreen()),
     // test
     GoRoute(path: '/test/:params', builder: (context, state) => TestScreen(id: state.pathParameters['params'] ?? '')),
     // shared item

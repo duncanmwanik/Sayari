@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -12,6 +11,7 @@ import '../../_helpers/navigation.dart';
 import '../../_helpers/ui.dart';
 import '../../_providers/_providers.dart';
 import '../../_variables/navigation.dart';
+import '../others/blur.dart';
 import '../others/others/divider.dart';
 
 Future<void> showAppBottomSheet({
@@ -25,6 +25,7 @@ Future<void> showAppBottomSheet({
   bool showTopDivider = true,
   bool showBottomDivider = true,
   bool showBlur = false,
+  Color? color,
   bool noContentHorizontalPadding = false,
   FutureOr<void> Function()? whenComplete,
   FutureOr<dynamic> Function(dynamic)? then,
@@ -47,8 +48,8 @@ Future<void> showAppBottomSheet({
       ),
       //
       builder: (context) {
-        return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
+        return Blur(
+          blur: 2,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -59,7 +60,7 @@ Future<void> showAppBottomSheet({
               Flexible(
                 child: Align(
                   alignment: Alignment.topCenter,
-                  child: ClipRRect(
+                  child: Blur(
                     borderRadius: isFull
                         ? BorderRadius.zero
                         : isShort
@@ -67,56 +68,52 @@ Future<void> showAppBottomSheet({
                             : showFloatingSheet()
                                 ? BorderRadius.circular(borderRadiusTinySmall)
                                 : BorderRadius.zero,
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
-                      child: Card(
-                        elevation: 0,
-                        color: (isImage() || isBlack() || showBlur ? white.withOpacity(0.1) : styler.primaryColor()),
-                        margin: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: isFull
-                              ? BorderRadius.zero
-                              : isShort
-                                  ? const BorderRadius.only(
-                                      topLeft: Radius.circular(borderRadiusSmall), topRight: Radius.circular(borderRadiusSmall))
-                                  : showFloatingSheet()
-                                      ? BorderRadius.circular(borderRadiusTinySmall)
-                                      : BorderRadius.zero,
-                        ),
-                        //
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            // Header ----------
-                            if (header != null) Padding(padding: EdgeInsets.only(top: 6, left: 6, right: 6), child: header),
-                            if (header != null) ph(6),
-                            if (header != null && showTopDivider) AppDivider(),
-                            // Content ----------
-                            isFloater
-                                ? Flexible(
-                                    child: Padding(
-                                    padding: noContentHorizontalPadding ? noPadding : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
-                                    child: content,
-                                  ))
-                                : Expanded(
-                                    child: Padding(
-                                    padding: noContentHorizontalPadding
-                                        ? EdgeInsets.zero
-                                        : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
-                                    child: content,
-                                  )),
-                            // Footer ----------
-                            if (footer != null)
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  if (showBottomDivider) AppDivider(),
-                                  Padding(padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6), child: footer),
-                                ],
-                              )
-                            //
-                          ],
-                        ),
+                    child: Card(
+                      elevation: 0,
+                      color: color ?? (isImage() || isBlack() || showBlur ? white.withOpacity(0.1) : styler.primaryColor()),
+                      margin: EdgeInsets.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: isFull
+                            ? BorderRadius.zero
+                            : isShort
+                                ? const BorderRadius.only(
+                                    topLeft: Radius.circular(borderRadiusSmall), topRight: Radius.circular(borderRadiusSmall))
+                                : showFloatingSheet()
+                                    ? BorderRadius.circular(borderRadiusTinySmall)
+                                    : BorderRadius.zero,
+                      ),
+                      //
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          // Header ----------
+                          if (header != null) Padding(padding: EdgeInsets.only(top: 6, left: 6, right: 6), child: header),
+                          if (header != null) ph(6),
+                          if (header != null && showTopDivider) AppDivider(),
+                          // Content ----------
+                          isFloater
+                              ? Flexible(
+                                  child: Padding(
+                                  padding: noContentHorizontalPadding ? noPadding : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
+                                  child: content,
+                                ))
+                              : Expanded(
+                                  child: Padding(
+                                  padding:
+                                      noContentHorizontalPadding ? EdgeInsets.zero : EdgeInsets.symmetric(horizontal: isPhone() ? 10 : 20),
+                                  child: content,
+                                )),
+                          // Footer ----------
+                          if (footer != null)
+                            Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (showBottomDivider) AppDivider(),
+                                Padding(padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6), child: footer),
+                              ],
+                            )
+                          //
+                        ],
                       ),
                     ),
                   ),

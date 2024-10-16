@@ -1,69 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
+import '../../_providers/focus.dart';
 import '../../_variables/intro_features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 
 class AuthIntro extends StatelessWidget {
-  const AuthIntro({super.key, required this.index, required this.next, required this.previous});
-
-  final int index;
-  final Function() next;
-  final Function() previous;
+  const AuthIntro({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        //
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AppButton(
-              onPressed: previous,
-              noStyling: true,
-              isSquare: true,
-              borderRadius: borderRadiusSmall,
-              child: AppIcon(Icons.keyboard_arrow_left, extraFaded: true),
-            ),
-            spw(),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  AppIcon(introFeatures[index].icon, faded: true),
-                  sph(),
-                  AppText(text: introFeatures[index].title, size: normal, faded: true, weight: FontWeight.w700),
-                  tph(),
-                  SizedBox(
-                    height: 40,
-                    child: AppText(
-                      text: introFeatures[index].description,
-                      faded: true,
-                      weight: FontWeight.w400,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ],
+    return Consumer<FocusProvider>(builder: (context, focus, child) {
+      int index = focus.index;
+
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          //
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // previous button
+              AppButton(
+                onPressed: () => focus.setIndex(index > 0 ? index - 1 : introFeatures.length - 1),
+                noStyling: true,
+                isSquare: true,
+                borderRadius: borderRadiusTinySmall,
+                child: AppIcon(Icons.keyboard_arrow_left, extraFaded: true),
               ),
-            ),
-            spw(),
-            AppButton(
-              onPressed: next,
-              noStyling: true,
-              isSquare: true,
-              borderRadius: borderRadiusSmall,
-              child: AppIcon(Icons.keyboard_arrow_right, extraFaded: true),
-            ),
-          ],
-        ),
-        //
-      ],
-    );
+              spw(),
+              // feature
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    AppIcon(introFeatures[index].icon, faded: true),
+                    sph(),
+                    AppText(text: introFeatures[index].title, size: normal, faded: true, weight: FontWeight.w700),
+                    tph(),
+                    SizedBox(
+                      height: 40,
+                      child: AppText(
+                        text: introFeatures[index].description,
+                        faded: true,
+                        weight: FontWeight.w400,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              spw(),
+              // next button
+              AppButton(
+                onPressed: () => focus.setIndex(index < introFeatures.length - 1 ? index + 1 : 0),
+                noStyling: true,
+                isSquare: true,
+                borderRadius: borderRadiusTinySmall,
+                child: AppIcon(Icons.keyboard_arrow_right, extraFaded: true),
+              ),
+            ],
+          ),
+          //
+          msph(),
+          //
+        ],
+      );
+    });
   }
 }

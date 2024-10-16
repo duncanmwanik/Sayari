@@ -14,7 +14,7 @@ import '../../_widgets/others/checkbox.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/divider.dart';
 import '../../_widgets/others/text.dart';
-import '../bookings/_w/copy_link.dart';
+import '../_notes/types/bookings/_w/copy_link.dart';
 
 class Share extends StatelessWidget {
   const Share({super.key});

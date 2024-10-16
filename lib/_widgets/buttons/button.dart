@@ -5,6 +5,7 @@ import '../../__styling/spacing.dart';
 import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
 import '../menu/menu.dart';
+import '../others/blur.dart';
 import '../others/icons.dart';
 import '../others/others/dry_intrinsic_size.dart';
 import '../others/text.dart';
@@ -43,6 +44,7 @@ class AppButton extends StatelessWidget {
     this.isDropDown = false,
     this.dryWidth = false,
     this.noStyling = false,
+    this.blur = false,
     this.borderWidth,
     this.maxWidth,
     this.maxHeight,
@@ -87,6 +89,7 @@ class AppButton extends StatelessWidget {
   final bool isDropDown;
   final bool dryWidth;
   final bool noStyling;
+  final bool blur;
   final double? borderWidth;
   final double? maxWidth;
   final double? maxHeight;
@@ -106,66 +109,70 @@ class AppButton extends StatelessWidget {
 
     Widget button = IgnorePointer(
       ignoring: !enabled,
-      child: Material(
-        color: noStyling ? transparent : color ?? (hasColour(bgColor) ? Colors.white24 : styler.appColor(styler.isDark ? 1.3 : 1.5)),
-        shape: customBorder != null
-            ? CircleBorder()
-            : RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusTiny)),
-                side: showBorder
-                    ? BorderSide(color: borderColor ?? Colors.grey.withOpacity(0.3), width: borderWidth ?? (isDark() ? 0.4 : 0.8))
-                    : BorderSide.none,
-              ),
-        child: InkWell(
-          onTap: isMenu ? () {} : onPressed,
-          onLongPress: showMenuOnLongPress
-              ? () {
-                  if (popMenu) popWhatsOnTop(); //pops popupmenu
-                  showAppMenu(Offset(0, 0), menuItems!, width: menuWidth, keepMenuPosition: keepMenuPosition);
-                }
-              : onLongPress,
-          onHover: onHover,
-          onTapDown: isMenu
-              ? (details) {
-                  if (popMenu) popWhatsOnTop(); //pops popupmenu
-                  showAppMenu(details.globalPosition, menuItems!, width: menuWidth, keepMenuPosition: keepMenuPosition);
-                }
-              : null,
-          customBorder: customBorder,
-          borderRadius:
-              customBorder != null ? null : BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusTiny)),
-          hoverColor: hoverColor,
-          highlightColor: hoverColor,
-          splashColor: hoverColor,
-          mouseCursor: mouseCursor,
-          child: Container(
-            constraints: BoxConstraints(
-              minHeight: height ?? 0,
-              minWidth: width ?? 0,
-              maxWidth: maxWidth ?? double.infinity,
-              maxHeight: maxHeight ?? double.infinity,
-            ),
-            padding: padding ??
-                (isRound
-                    ? const EdgeInsets.all(6)
-                    : EdgeInsets.only(
-                        left: slp || isSquare ? 8 : 12,
-                        right: srp || isSquare ? 8 : (isDropDown ? 9 : 12),
-                        top: svp ? 3 : 6,
-                        bottom: svp ? 3 : 6,
-                      )),
-            child: child ??
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (leading != null) AppIcon(leading, size: iconSize, faded: iconFaded, color: textColor, bgColor: bgColor),
-                    if (leading != null && label != null) spw(),
-                    if (label != null) AppText(text: label ?? '', size: textSize, color: textColor, bgColor: bgColor),
-                    if (trailing != null && label != null) spw(),
-                    if (trailing != null) AppIcon(trailing, size: iconSize, faded: iconFaded, color: textColor, bgColor: bgColor),
-                  ],
+      child: Blur(
+        enabled: blur,
+        radius: isRound ? borderRadiusCrazy : borderRadiusTiny,
+        child: Material(
+          color: noStyling ? transparent : color ?? (hasColour(bgColor) ? Colors.white24 : styler.appColor(styler.isDark ? 1.3 : 1.5)),
+          shape: customBorder != null
+              ? CircleBorder()
+              : RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusTiny)),
+                  side: showBorder
+                      ? BorderSide(color: borderColor ?? Colors.grey.withOpacity(0.3), width: borderWidth ?? (isDark() ? 0.4 : 0.8))
+                      : BorderSide.none,
                 ),
+          child: InkWell(
+            onTap: isMenu ? () {} : onPressed,
+            onLongPress: showMenuOnLongPress
+                ? () {
+                    if (popMenu) popWhatsOnTop(); //pops popupmenu
+                    showAppMenu(Offset(0, 0), menuItems!, width: menuWidth, keepMenuPosition: keepMenuPosition);
+                  }
+                : onLongPress,
+            onHover: onHover,
+            onTapDown: isMenu
+                ? (details) {
+                    if (popMenu) popWhatsOnTop(); //pops popupmenu
+                    showAppMenu(details.globalPosition, menuItems!, width: menuWidth, keepMenuPosition: keepMenuPosition);
+                  }
+                : null,
+            customBorder: customBorder,
+            borderRadius:
+                customBorder != null ? null : BorderRadius.circular(borderRadius ?? (isRound ? borderRadiusCrazy : borderRadiusTiny)),
+            hoverColor: hoverColor,
+            highlightColor: hoverColor,
+            splashColor: hoverColor,
+            mouseCursor: mouseCursor,
+            child: Container(
+              constraints: BoxConstraints(
+                minHeight: height ?? 0,
+                minWidth: width ?? 0,
+                maxWidth: maxWidth ?? double.infinity,
+                maxHeight: maxHeight ?? double.infinity,
+              ),
+              padding: padding ??
+                  (isRound
+                      ? const EdgeInsets.all(6)
+                      : EdgeInsets.only(
+                          left: slp || isSquare ? 8 : 12,
+                          right: srp || isSquare ? 8 : (isDropDown ? 9 : 12),
+                          top: svp ? 3 : 6,
+                          bottom: svp ? 3 : 6,
+                        )),
+              child: child ??
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (leading != null) AppIcon(leading, size: iconSize, faded: iconFaded, color: textColor, bgColor: bgColor),
+                      if (leading != null && label != null) spw(),
+                      if (label != null) AppText(text: label ?? '', size: textSize, color: textColor, bgColor: bgColor),
+                      if (trailing != null && label != null) spw(),
+                      if (trailing != null) AppIcon(trailing, size: iconSize, faded: iconFaded, color: textColor, bgColor: bgColor),
+                    ],
+                  ),
+            ),
           ),
         ),
       ),

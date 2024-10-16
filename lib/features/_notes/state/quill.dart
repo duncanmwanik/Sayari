@@ -10,7 +10,7 @@ class QuillProvider with ChangeNotifier {
   bool isChanged = false;
   bool isEmpty = false;
 
-  Future<void> reset({String? quills}) async {
+  Future<void> reset({String? quills, String? savePath}) async {
     controller = QuillController.basic();
     isChanged = false;
     isEmpty = true;

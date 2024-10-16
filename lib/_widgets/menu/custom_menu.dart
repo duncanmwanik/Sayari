@@ -13,6 +13,7 @@ import 'package:flutter/rendering.dart';
 
 import '../../__styling/helpers.dart';
 import '../../__styling/variables.dart';
+import '../others/blur.dart';
 
 const Duration _kMenuDuration = Duration(milliseconds: 300);
 const double _kMenuCloseIntervalEnd = 2.0 / 3.0;
@@ -187,27 +188,24 @@ class _PopupMenu<T> extends StatelessWidget {
         builder: (BuildContext context, Widget? child) {
           return FadeTransition(
             opacity: opacity.animate(route.animation!),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(borderRadiusTiny + 1),
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
-                child: Material(
-                  elevation: 0,
-                  clipBehavior: Clip.antiAlias,
-                  type: MaterialType.card,
-                  color: styler.secondaryColor().withOpacity(isImage() ? 0.4 : 0.8),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(borderRadiusTiny + 1),
-                    side: BorderSide(color: Colors.grey.withOpacity(styler.isDark ? 0.1 : 0.2), width: styler.isDark ? 1 : 1.5),
-                  ),
-                  shadowColor: route.shadowColor ?? popupMenuTheme.shadowColor ?? defaults.shadowColor,
-                  surfaceTintColor: route.surfaceTintColor ?? popupMenuTheme.surfaceTintColor ?? defaults.surfaceTintColor,
-                  child: Align(
-                    alignment: AlignmentDirectional.topEnd,
-                    widthFactor: width.evaluate(route.animation!),
-                    heightFactor: height.evaluate(route.animation!),
-                    child: child,
-                  ),
+            child: Blur(
+              radius: borderRadiusTiny + 1,
+              child: Material(
+                elevation: 0,
+                clipBehavior: Clip.antiAlias,
+                type: MaterialType.card,
+                color: styler.secondaryColor().withOpacity(isImage() ? 0.4 : 0.8),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(borderRadiusTiny + 1),
+                  side: BorderSide(color: Colors.grey.withOpacity(styler.isDark ? 0.1 : 0.2), width: styler.isDark ? 1 : 1.5),
+                ),
+                shadowColor: route.shadowColor ?? popupMenuTheme.shadowColor ?? defaults.shadowColor,
+                surfaceTintColor: route.surfaceTintColor ?? popupMenuTheme.surfaceTintColor ?? defaults.surfaceTintColor,
+                child: Align(
+                  alignment: AlignmentDirectional.topEnd,
+                  widthFactor: width.evaluate(route.animation!),
+                  heightFactor: height.evaluate(route.animation!),
+                  child: child,
                 ),
               ),
             ),

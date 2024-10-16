@@ -48,7 +48,7 @@ Future<void> showDateRangeDialog() async {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            HtmlText(text: 'Start Date: <b>${getDayInfo(input.dateRangeStart)}</b>'),
+                            AppText(text: 'Start Date: <b>${getDayInfo(input.dateRangeStart)}</b>'),
                             if (input.dateRangeStart.isEmpty) SizedBox(width: mediumWidth()),
                             if (input.dateRangeStart.isEmpty) AppIcon(Icons.calendar_month_rounded),
                           ],
@@ -67,7 +67,7 @@ Future<void> showDateRangeDialog() async {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            HtmlText(text: 'End Date: <b>${getDayInfo(input.dateRangeEnd)}</b>'),
+                            AppText(text: 'End Date: <b>${getDayInfo(input.dateRangeEnd)}</b>'),
                             if (input.dateRangeEnd.isEmpty) mpw(),
                             if (input.dateRangeEnd.isEmpty) AppIcon(Icons.calendar_month_rounded),
                           ],

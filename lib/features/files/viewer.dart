@@ -1,6 +1,5 @@
 import 'dart:io' as io;
 import 'dart:math' as math;
-import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,7 @@ import '../../_helpers/navigation.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../../_variables/navigation.dart';
 import '../../_widgets/buttons/button.dart';
+import '../../_widgets/others/blur.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '_helpers/cached.dart';
@@ -29,8 +29,8 @@ Future<void> showImageViewer({required Map images, Function()? onDownload, int s
       backgroundColor: transparent,
       constraints: BoxConstraints(minWidth: 100.w),
       builder: (context) {
-        return BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+        return Blur(
+          blur: 20,
           child: Viewer(images: images, onDownload: onDownload, selectedIndex: selectedIndex),
         );
       });

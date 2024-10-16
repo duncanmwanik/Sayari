@@ -1,11 +1,11 @@
 import '../../../_helpers/debug.dart';
 import '../../../_helpers/navigation.dart';
+import '../../../_helpers/sync/create_item.dart';
+import '../../../_helpers/sync/delete_item.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../_widgets/others/snackbar.dart';
-import '../../_notes/_helpers/create_item.dart';
-import '../../_notes/_helpers/delete_item.dart';
 
 void copySessionToDates({required Item item, required bool move}) async {
   safeRun(

@@ -28,7 +28,7 @@ Future<cfile.File?> getCachedFile({
           cloudFilePath: cloudFilePath ?? '$spaceId/${getFileNameCloud(fileId, fileName)}',
         );
         if (fileUrl.isNotEmpty) cachedFileBox.put(fileId, fileUrl);
-        print(':: Gotten file url: $fileUrl');
+        show('::Gotten file url for cache: $fileUrl');
       }
 
       var file = await cache.DefaultCacheManager().getSingleFile(fileUrl);

@@ -7,7 +7,6 @@ import '../../_helpers/keyboard.dart';
 import '../../_helpers/navigation.dart';
 import '../../_providers/_providers.dart';
 import '../../_services/activity/listen/helpers.dart';
-import '../../_services/activity/pending/retry_pending_actions.dart';
 import '../../_variables/navigation.dart';
 import 'drawer/drawer.dart';
 import 'drawer/drawer_end.dart';
@@ -30,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     state.share.unset();
-    retryPendingActions();
+    // retryPendingActions();
     listenForKeyboard();
     initializeUserSync();
   }

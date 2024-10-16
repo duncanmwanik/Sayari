@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../_helpers/navigation.dart';
+import '../../../../_helpers/sync/edit_item.dart';
 import '../../../../_widgets/buttons/action.dart';
-import '../../../_notes/_helpers/edit_item.dart';
 import '../../_helpers/create_space.dart';
 import 'title.dart';
 

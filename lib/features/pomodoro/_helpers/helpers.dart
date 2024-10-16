@@ -1,90 +1,71 @@
 import 'dart:async';
 
-import '../../../_helpers/debug.dart';
+import 'package:intl/intl.dart';
+
 import '../../../_providers/_providers.dart';
 import '../../../_variables/colors.dart';
 import '../../../_widgets/others/toast.dart';
 import '../var/variables.dart';
 
-int getRemainingTime() => state.pomodoro.end.difference(DateTime.now()).inSeconds;
-
-String getRemainingTimeString() {
-  int remainingTime = state.pomodoro.end.difference(DateTime.now()).inSeconds;
-
-  String seconds = (remainingTime % 60).toString();
-  String minutes = (remainingTime / 60).truncate().toString();
-
-  return '${minutes.length < 2 ? '0$minutes' : minutes}:${seconds.length < 2 ? '0$seconds' : seconds}';
+String getStoppingTime() {
+  return DateFormat('h:mm a').format(DateTime.now().add(Duration(seconds: state.pomodoro.remainingTime)));
 }
 
-String getTimerString(Duration timer) {
-  int time = timer.inSeconds;
-
+String getCounter() {
+  int time = state.pomodoro.remainingTime;
   String seconds = (time % 60).toString();
   String minutes = (time / 60).truncate().toString();
-
   return '${minutes.length < 2 ? '0$minutes' : minutes}:${seconds.length < 2 ? '0$seconds' : seconds}';
 }
 
-void chooseTimer(String type) {
-  state.pomodoro.reset();
-  state.pomodoro.updateCurrentTimer(type);
-}
-
-void startTimer(String type, {int? remainingTime}) {
-  Duration timer = Duration(
-    minutes: int.parse(state.pomodoro.data['${type}t'] ?? '1'),
-  );
-
-  state.pomodoro.updateStartStop(remainingTime != null ? Duration(seconds: remainingTime) : timer);
-
-  state.pomodoro.updateCounter(Timer.periodic(Duration(seconds: 1), (counter_) {
-    // if timer is done`
-    if (getRemainingTime() == 0) {
-      show('done timing');
-      counter_.cancel();
+void startTimer() {
+  String type = state.pomodoro.currentTimer;
+  // if not counting
+  if (state.pomodoro.remainingTime == 0) {
+    Duration time = Duration(minutes: int.parse(state.pomodoro.data['${type}t'] ?? '1'));
+    state.pomodoro.updateRemainingTime(time.inSeconds);
+  }
+  // start timer
+  state.pomodoro.updateCounter(Timer.periodic(Duration(seconds: 1), (counter) {
+    // count down
+    if (state.pomodoro.remainingTime != 0) {
+      state.pomodoro.updateRemainingTime(state.pomodoro.remainingTime - 1);
+    }
+    // if timer is done
+    if (state.pomodoro.remainingTime == 0) {
       state.pomodoro.reset();
       autoPlayTimers(type);
     }
-    // show reminder if 5 minutes is left to stop timer
-    if ((getRemainingTime() / 60) == 5) {
-      showToast(2, '5 minutes left!');
-    }
-    if (getRemainingTime() == 5) {
-      showToast(2, '5 seconds left!');
-    }
-
-    state.pomodoro.updateRemainingTime(getRemainingTime());
+    // show reminder if 5 minutes/seconds is left to stop timer
+    if ((state.pomodoro.remainingTime / 60) == 5) showToast(2, '5 minutes left!');
+    if (state.pomodoro.remainingTime == 5) showToast(2, '5 seconds left!');
   }));
 
+  // keep track of types for long break interval
   if (type == 'f' || type == 'l') {
     state.pomodoro.updateTimerLoops();
   }
-
-  show('${remainingTime != null ? 'resuming' : 'started'} timing: ${pomodoroTitles[type]}');
 }
 
 void playPauseTimer(String type) {
-  // if it's not counting yet
-  if (!state.pomodoro.isTiming) {
-    startTimer(type);
-    return;
-  }
-
-  if (state.pomodoro.isPaused) {
-    // resume timimg
-    state.pomodoro.updateIsPaused(false);
-    startTimer(type, remainingTime: state.pomodoro.remainingTime);
+  if (state.pomodoro.isCounting) {
+    if (state.pomodoro.isPaused) {
+      // pause timimg
+      startTimer();
+      state.pomodoro.updateIsPaused(false);
+    } else {
+      // resume timimg
+      state.pomodoro.cancelCounter();
+      state.pomodoro.updateIsPaused(true);
+    }
   } else {
-    // pause timimg
-    state.pomodoro.updateIsPaused(true);
-    state.pomodoro.cancelCounter();
+    startTimer(); // if not counting yet
   }
 }
 
 void autoPlayTimers(String previousType) {
   if (state.pomodoro.data['ap'] == '1') {
-    String type = state.pomodoro.timerLoops == int.parse(state.pomodoro.data['longBreakInterval'] ?? '4')
+    String newType = state.pomodoro.timerLoops == int.parse(state.pomodoro.data['longBreakInterval'] ?? '4')
         ? 'l'
         : previousType == 'f'
             ? 's'
@@ -92,10 +73,11 @@ void autoPlayTimers(String previousType) {
 
     showToast(
       2,
-      'Time ${type == 'f' ? 'to' : 'for a'} <b>${pomodoroTitles[type]?.toLowerCase()}!</b>',
-      color: backgroundColors[state.pomodoro.data['${type}c']]!.color,
+      'Time ${newType == 'f' ? 'to' : 'for a'} <b>${pomodoroTitles[newType]?.toLowerCase()}!</b>',
+      color: backgroundColors[state.pomodoro.data['${newType}c']]!.color,
     );
-    startTimer(type);
+    state.pomodoro.reset(newType);
+    startTimer();
   } else {
     String type = state.pomodoro.currentTimer;
     showToast(

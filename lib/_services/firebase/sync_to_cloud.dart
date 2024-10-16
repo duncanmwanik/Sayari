@@ -92,7 +92,7 @@ Future<bool> syncToCloud({
         // save activity as latest to avoid sync-from-cloud since local data is already updated
         // if its from shared screen, we dont
         if (!isShare()) activityVersionBox.put(space, timeStamp);
-        // print('to: $timeStamp');
+        // show('to: $timeStamp');
         await cloudService.writeData(db: db, '$space/activity/$timeStamp', activity);
         await cloudService.writeData(db: db, '$space/activity/0', timeStamp);
       }

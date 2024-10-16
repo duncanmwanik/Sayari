@@ -8,13 +8,10 @@ Future<bool> isFirstTimer() async {
   try {
     User? user = FirebaseAuth.instance.currentUser;
     bool isFirstTime = user == null;
-    if (!isFirstTime) {
-      await loadUserBoxes(liveUser());
-    }
+    if (!isFirstTime) await loadUserBoxes(liveUser());
     changeStatusAndNavigationBarColor(getThemeType());
-
     return isFirstTime;
   } catch (_) {
-    return false;
+    return true;
   }
 }

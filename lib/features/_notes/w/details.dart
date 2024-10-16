@@ -4,7 +4,6 @@ import '../../../_helpers/helpers.dart';
 import '../../../_models/item.dart';
 import '../../files/file_list.dart';
 import '../../reminders/reminder.dart';
-import '../../tags/list_of_tags.dart';
 
 class ItemDetails extends StatelessWidget {
   const ItemDetails({super.key, required this.item});
@@ -22,7 +21,7 @@ class ItemDetails extends StatelessWidget {
                 //
                 if (item.reminder().isNotEmpty) Reminder(id: item.id, reminder: item.reminder(), bgColor: item.color()),
                 //
-                if (item.labels().isNotEmpty) TagList(id: item.id, tags: item.labels(), bgColor: item.color()),
+                if (item.tags().isNotEmpty) TagList(id: item.id, tags: item.tags(), bgColor: item.color()),
                 //
                 if (item.hasFiles()) FileList(fileData: item.files(), bgColor: item.color(), isOverview: true),
                 //
