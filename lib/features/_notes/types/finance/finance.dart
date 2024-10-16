@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../__styling/spacing.dart';
 import '../../../../_providers/input.dart';
+import '../../../../_theme/spacing.dart';
 import '../../../../_variables/features.dart';
 import '../../w/date.dart';
 import '_w/add_entry.dart';

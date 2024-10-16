@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/breakpoints.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/theme_btn.dart';
-import '../../__styling/variables.dart';
 import '../../_providers/views.dart';
+import '../../_theme/breakpoints.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/theme_btn.dart';
+import '../../_theme/variables.dart';
 import '../../_widgets/others/others/other.dart';
 import '../../_widgets/others/others/sync_indicator.dart';
 import '../_notes/state/selection.dart';

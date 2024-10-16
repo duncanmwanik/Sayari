@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../__styling/breakpoints.dart';
-import '../../../__styling/helpers.dart';
-import '../../../__styling/variables.dart';
+import '../../../_theme/breakpoints.dart';
+import '../../../_theme/variables.dart';
+import '../../../_widgets/others/background.dart';
 import '../../_spaces/manager/manager.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -17,8 +17,7 @@ class AppDrawer extends StatelessWidget {
       elevation: 0,
       surfaceTintColor: transparent,
       shape: RoundedRectangleBorder(),
-      child: Container(
-        decoration: backgroundImage(),
+      child: AppBackground(
         child: SpaceManager(),
       ),
     );

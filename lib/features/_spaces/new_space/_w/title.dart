@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../__styling/variables.dart';
 import '../../../../_providers/input.dart';
+import '../../../../_theme/variables.dart';
 import '../../../../_widgets/forms/input.dart';
 
 class TitleInput extends StatelessWidget {

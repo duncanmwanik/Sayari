@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_helpers/sync/create_item.dart';
 import '../../../_helpers/sync/edit_item.dart';
 import '../../../_providers/_providers.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/buttons/action.dart';
 import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';

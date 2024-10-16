@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import '../../__styling/breakpoints.dart';
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
+import '../../_theme/breakpoints.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../buttons/button.dart';
 import '../others/blur.dart';
 import '../others/others/divider.dart';

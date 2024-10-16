@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../__styling/breakpoints.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
 import '../../_services/hive/local_storage_service.dart';
+import '../../_theme/breakpoints.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';

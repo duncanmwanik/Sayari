@@ -1,8 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../__styling/spacing.dart';
-import '../../../../../__styling/variables.dart';
+import '../../../../../_theme/spacing.dart';
+import '../../../../../_theme/variables.dart';
 import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/icons.dart';
 import '../../../../../_widgets/others/text.dart';

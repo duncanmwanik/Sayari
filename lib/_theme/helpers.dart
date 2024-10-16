@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../__styling/variables.dart';
 import '../../_services/hive/local_storage_service.dart';
 import '../_providers/_providers.dart';
 import '../_variables/colors.dart';
 import 'styler.dart';
+import 'variables.dart';
 
 void changeStatusAndNavigationBarColor(String theme, {bool isSecondary = false}) {
   bool isDark = isDarkTheme(theme);
@@ -41,14 +41,10 @@ void changeStatusAndNavigationBarColor(String theme, {bool isSecondary = false})
 
 bool isDark() => 'dark' == state.theme.themeType;
 bool isDarkOnly() => 'dark' == state.theme.themeType && !isImage() && !isBlack();
-bool isImage() => !['dark', 'light', 'black'].contains(state.theme.themeImage);
 bool isBlack() => 'black' == state.theme.themeImage;
+bool isImage() => !['dark', 'light', 'black'].contains(state.theme.themeImage);
 
-String getThemeImage(String themeImage, {bool isSmall = false}) {
-  return 'assets/images/$themeImage${isSmall ? '_small' : ''}.jpg';
-}
-
-String getDefaultThemeImage() => getThemeImage(state.theme.themeImage);
+String getThemeImage(String themeImage) => 'assets/images/$themeImage.jpg';
 String getThemeType() => settingBox.get('themeType', defaultValue: 'dark');
 bool isDarkTheme(String theme) => theme == 'dark';
 
@@ -60,6 +56,15 @@ bool hasColour(String? bgColor) {
   }
 }
 
-BoxDecoration backgroundImage() {
-  return BoxDecoration(image: DecorationImage(image: AssetImage(getDefaultThemeImage()), fit: BoxFit.cover));
+BoxDecoration backgroundDecoration() {
+  return BoxDecoration(
+    color: isImage() ? transparent : (isBlack() ? black : styler.primaryColor()),
+    image: isImage()
+        ? DecorationImage(
+            image: AssetImage(
+              getThemeImage(state.theme.themeImage),
+            ),
+            fit: BoxFit.cover)
+        : null,
+  );
 }

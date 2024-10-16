@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/breakpoints.dart';
-import '../../../__styling/helpers.dart';
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
+import '../../../_theme/breakpoints.dart';
+import '../../../_theme/helpers.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
@@ -24,7 +24,7 @@ Widget navItem(dynamic icon, String type, {double? size, Function()? onPressed})
         onPressed: onPressed ?? () => goToView(type),
         tooltip: getNavigationItemTitle(features[type]!.title),
         tooltipDirection: isSmallPC() ? AxisDirection.right : AxisDirection.up,
-        noStyling: !isSelected,
+        noStyling: true,
         color: styler.appColor(isDark() ? 1 : 2),
         padding: padding(p: isSmallPC() ? 8 : 12),
         child: SizedBox(

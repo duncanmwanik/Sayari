@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:styled_text/styled_text.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/variables.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/variables.dart';
 
 class AppText extends StatelessWidget {
   const AppText({

@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
 import '../../_providers/_providers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../_widgets/others/checkbox.dart';

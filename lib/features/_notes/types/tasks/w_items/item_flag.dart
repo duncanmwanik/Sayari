@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../__styling/spacing.dart';
-import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/global.dart';
 import '../../../../../_providers/_providers.dart';
 import '../../../../../_services/hive/store.dart';
+import '../../../../../_theme/spacing.dart';
+import '../../../../../_theme/variables.dart';
 import '../../../../../_variables/colors.dart';
 import '../../../../../_variables/features.dart';
 import '../../../../../_widgets/buttons/button.dart';

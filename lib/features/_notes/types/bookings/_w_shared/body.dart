@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../__styling/spacing.dart';
+import '../../../../../_theme/spacing.dart';
 import '../../../../../_widgets/others/others/scroll.dart';
 import '../../../../share/w/header.dart';
 import '../../../../share/w/shared_info.dart';

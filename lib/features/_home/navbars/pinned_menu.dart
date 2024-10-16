@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/breakpoints.dart';
+import '../../../_theme/breakpoints.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/menu/menu_item.dart';
 import 'pinned_option.dart';

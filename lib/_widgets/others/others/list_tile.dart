@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/variables.dart';
+import '../../../_theme/variables.dart';
 import '../text.dart';
 
 class AppListTile extends StatelessWidget {

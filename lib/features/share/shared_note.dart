@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/debug.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/theme.dart';
 import '../../_services/firebase/database.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/features.dart';
+import '../../_widgets/others/background.dart';
 import '../_notes/blog/blog_body.dart';
 import '../_notes/types/bookings/_w_shared/body.dart';
 import '../_notes/types/links/_w_shared/links_body.dart';
@@ -83,47 +83,46 @@ class _ShareScreenState extends State<SharedNote> {
       title: noteData['t'] ?? 'Sayari',
       color: styler.accentColor(),
       child: Consumer2<ThemeProvider, ShareProvider>(
-        builder: (context, dateTime, share, child) => Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(getDefaultThemeImage()), fit: BoxFit.cover),
-          ),
-          child: SafeArea(
-            child: Scaffold(
-              backgroundColor: transparent,
-              body: isActive.isEmpty
-                  ? Center(child: SpinKitFadingCube(color: styler.accentColor(), size: 50.0))
-                  : isActive == '1'
-                      ? Align(
-                          alignment: Alignment.topCenter,
-                          child:
-                              // shared or published
-                              feature.isShare(widget.type) || (feature.isPublish(widget.type) && isPublished)
-                                  ? BlogBody(id: id, userId: userId, userName: userName, data: noteData)
-                                  // booking
-                                  : feature.isBooking(widget.type)
-                                      ? BookingBody(
-                                          spaceId: spaceId,
-                                          id: id,
-                                          userId: userId,
-                                          userName: userName,
-                                          data: noteData,
-                                        )
-                                      // links
-                                      : feature.isLink(widget.type)
-                                          ? LinksBody(
-                                              spaceId: spaceId,
-                                              id: id,
-                                              userId: userId,
-                                              userName: userName,
-                                              data: noteData,
-                                            )
-                                          // else
-                                          : SharedAction(),
-                        )
-                      : SharedAction(),
+        builder: (context, dateTime, share, child) {
+          return AppBackground(
+            child: SafeArea(
+              child: Scaffold(
+                backgroundColor: transparent,
+                body: isActive.isEmpty
+                    ? Center(child: SpinKitFadingCube(color: styler.accentColor(), size: 50.0))
+                    : isActive == '1'
+                        ? Align(
+                            alignment: Alignment.topCenter,
+                            child:
+                                // shared or published
+                                feature.isShare(widget.type) || (feature.isPublish(widget.type) && isPublished)
+                                    ? BlogBody(id: id, userId: userId, userName: userName, data: noteData)
+                                    // booking
+                                    : feature.isBooking(widget.type)
+                                        ? BookingBody(
+                                            spaceId: spaceId,
+                                            id: id,
+                                            userId: userId,
+                                            userName: userName,
+                                            data: noteData,
+                                          )
+                                        // links
+                                        : feature.isLink(widget.type)
+                                            ? LinksBody(
+                                                spaceId: spaceId,
+                                                id: id,
+                                                userId: userId,
+                                                userName: userName,
+                                                data: noteData,
+                                              )
+                                            // else
+                                            : SharedAction(),
+                          )
+                        : SharedAction(),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

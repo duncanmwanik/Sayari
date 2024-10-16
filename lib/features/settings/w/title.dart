@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/spacing.dart';
+import '../../../_theme/spacing.dart';
 import '../../../_widgets/others/others/dry_intrinsic_size.dart';
 import '../../../_widgets/others/text.dart';
 

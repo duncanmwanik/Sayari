@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/images.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../../__styling/spacing.dart';
-import '../../../../../../__styling/variables.dart';
 import '../../../../../../_widgets/others/text.dart';
-import '../../../../__styling/breakpoints.dart';
+import '../../../../_theme/breakpoints.dart';
+import '../../../../_theme/spacing.dart';
+import '../../../../_theme/variables.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../user/dp.dart';
 import 'cover.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/spacing.dart';
 import '../../../_helpers/sync/edit_item.dart';
+import '../../../_theme/spacing.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/sheets/bottom_sheet.dart';

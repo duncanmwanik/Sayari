@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/colors.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';

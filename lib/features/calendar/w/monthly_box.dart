@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
+import '../../../_theme/variables.dart';
 import '../../../_variables/colors.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/text.dart';

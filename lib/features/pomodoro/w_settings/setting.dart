@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_providers/_providers.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/forms/numeric.dart';
 import '../../../_widgets/others/color.dart';
 import '../../../_widgets/others/color_menu.dart';

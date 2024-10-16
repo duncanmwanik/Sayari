@@ -3,10 +3,10 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
 import '../../../_services/hive/store.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
-import '../../../../../__styling/spacing.dart';
-import '../../../../../__styling/variables.dart';
 import '../../../../../_providers/_providers.dart';
+import '../../../../../_theme/spacing.dart';
+import '../../../../../_theme/variables.dart';
 import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/others/text.dart';
 import '../../../../../_widgets/quill/editor_style.dart';

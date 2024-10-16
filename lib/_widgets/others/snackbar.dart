@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:styled_text/styled_text.dart';
 
-import '../../__styling/breakpoints.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
+import '../../_theme/breakpoints.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/navigation.dart';
 import '../buttons/button.dart';
 import 'icons.dart';

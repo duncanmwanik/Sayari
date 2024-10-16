@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/divider.dart';

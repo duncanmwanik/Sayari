@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_providers/_providers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../features/_notes/state/quill.dart';
 import '../buttons/button.dart';
 import '../others/icons.dart';

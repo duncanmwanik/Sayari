@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/theme_menu.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/theme_menu.dart';
+import '../../_theme/variables.dart';
 import '../../_widgets/menu/menu_item.dart';
 import '../auth/_helpers/sign_out.dart';
 import '../files/_helpers/download.dart';

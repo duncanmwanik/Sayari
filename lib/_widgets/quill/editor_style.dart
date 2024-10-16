@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/variables.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/variables.dart';
 import '../others/icons.dart';
 import '../others/others/other.dart';
 

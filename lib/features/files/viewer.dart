@@ -7,10 +7,10 @@ import 'package:flutter_cache_manager/file.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
 import '../../_services/hive/local_storage_service.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/navigation.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/blur.dart';

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 
 class NumericFormInput extends StatelessWidget {
   const NumericFormInput(

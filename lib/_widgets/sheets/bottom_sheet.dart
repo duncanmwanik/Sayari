@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../__styling/breakpoints.dart';
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
 import '../../_helpers/ui.dart';
 import '../../_providers/_providers.dart';
+import '../../_theme/breakpoints.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/navigation.dart';
 import '../others/blur.dart';
 import '../others/others/divider.dart';

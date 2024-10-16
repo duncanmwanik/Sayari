@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/variables.dart';
+import '../../../_theme/variables.dart';
 
 class AppDivider extends StatelessWidget {
   const AppDivider({super.key, this.thickness, this.color, this.height});

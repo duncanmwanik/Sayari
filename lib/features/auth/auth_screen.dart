@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/debug.dart';
 import '../../_helpers/forms/form_validation_helper.dart';
 import '../../_helpers/navigation.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/navigation.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/forms/auth_input.dart';
@@ -13,7 +13,7 @@ import '../../_widgets/others/blur.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';
 import '../../_widgets/others/text.dart';
-import '../pomodoro/sheet.dart';
+import '../../_widgets/others/toast.dart';
 import '_helpers/email_signin.dart';
 import '_helpers/email_signup.dart';
 import '_helpers/reset_password.dart';
@@ -82,8 +82,7 @@ class _SignInScreenState extends State<AuthScreen> {
                               children: [
                                 //
                                 SignInButton(
-                                  onPressed: () => showPomodoroSheet(),
-                                  // onPressed: () => showToast(1, 'Not available at the moment.', smallTopMargin: true),
+                                  onPressed: () => showToast(1, 'Not available at the moment.', smallTopMargin: true),
                                   imagePath: 'google.png',
                                   label: 'Continue with Google',
                                 ),

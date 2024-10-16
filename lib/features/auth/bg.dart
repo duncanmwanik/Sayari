@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/breakpoints.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/focus.dart';
+import '../../_theme/breakpoints.dart';
 import '../../_variables/intro_features.dart';
 import '../../_widgets/others/blur.dart';
 import '../../_widgets/others/others/other.dart';

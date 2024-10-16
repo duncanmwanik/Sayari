@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
-import '../../__styling/variables.dart';
 import '../../_helpers/global.dart';
 import '../../_helpers/helpers.dart';
 import '../../_providers/_providers.dart';
+import '../../_theme/variables.dart';
 import '../../features/files/_helpers/upload.dart';
 import '../../features/files/image.dart';
 

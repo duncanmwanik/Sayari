@@ -2,11 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../__styling/variables.dart';
-import '../../../__styling/helpers.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_providers/focus.dart';
+import '../../../_theme/helpers.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/other.dart';
 import '../state/selection.dart';

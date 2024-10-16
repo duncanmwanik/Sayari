@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../__styling/spacing.dart';
-import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/forms/form_validation_helper.dart';
 import '../../../../../_helpers/global.dart';
 import '../../../../../_providers/_providers.dart';
 import '../../../../../_services/firebase/sync_to_cloud.dart';
+import '../../../../../_theme/spacing.dart';
+import '../../../../../_theme/variables.dart';
 import '../../../../../_variables/features.dart';
 import '../../../../../_variables/navigation.dart';
 import '../../../../../_widgets/buttons/button.dart';

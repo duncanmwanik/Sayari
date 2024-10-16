@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../__styling/helpers.dart';
 import '../../../_services/hive/load_boxes.dart';
+import '../../../_theme/helpers.dart';
 import '../../user/_helpers/helpers.dart';
 
 Future<bool> isFirstTimer() async {

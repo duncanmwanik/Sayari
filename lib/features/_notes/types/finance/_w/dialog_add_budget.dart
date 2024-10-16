@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../../../../__styling/spacing.dart';
-import '../../../../../__styling/variables.dart';
 import '../../../../../_helpers/navigation.dart';
 import '../../../../../_providers/_providers.dart';
+import '../../../../../_theme/spacing.dart';
+import '../../../../../_theme/variables.dart';
 import '../../../../../_widgets/buttons/action.dart';
 import '../../../../../_widgets/dialogs/app_dialog.dart';
 import '../../../../../_widgets/forms/input.dart';

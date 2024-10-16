@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/variables.dart';
+import '../../_theme/variables.dart';
 
 class AppIcon extends StatelessWidget {
   const AppIcon(

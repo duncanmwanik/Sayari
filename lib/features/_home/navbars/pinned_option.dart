@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../__styling/variables.dart';
 import '../../../_helpers/helpers.dart';
 import '../../../_services/hive/local_storage_service.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/menu/menu_item.dart';
 
 class PinnedNavOption extends StatelessWidget {

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
 import '../../_helpers/global.dart';
 import '../../_helpers/sync/quick_edit.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
 import '../../_services/hive/store.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/spacing.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/others/other.dart';

@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
 import '../../_services/hive/local_storage_service.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../features/_spaces/manager/_w/dialog_create_group.dart';
 import '../buttons/action.dart';
 import '../buttons/button.dart';

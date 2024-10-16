@@ -7,15 +7,15 @@ import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '__routing/routes.dart';
-import '__styling/helpers.dart';
-import '__styling/theme.dart';
-import '__styling/variables.dart';
 import '_helpers/error_handler.dart';
 import '_providers/_providers.dart';
 import '_providers/theme.dart';
 import '_services/firebase/database.dart';
 import '_services/hive/load_boxes.dart';
 import '_services/notifications/init_notifications.dart';
+import '_theme/helpers.dart';
+import '_theme/theme.dart';
+import '_theme/variables.dart';
 import '_widgets/others/others/scroll.dart';
 
 Future<void> main() async {

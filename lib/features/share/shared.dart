@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/helpers.dart';
 import '../../_providers/input.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/dialogs/confirmation_dialog.dart';

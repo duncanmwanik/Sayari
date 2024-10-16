@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/spacing.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/buttons/close.dart';
 import '../../_widgets/others/icons.dart';
@@ -29,7 +29,7 @@ Future<void> showPomodoroSheet() async {
           child: AppIcon(Icons.settings_rounded, faded: true),
         ),
         spw(),
-        AppCloseButton(noStyling: false)
+        AppCloseButton(),
         //
       ],
     ),

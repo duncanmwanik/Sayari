@@ -2,10 +2,10 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../__styling/breakpoints.dart';
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
+import '../../_theme/breakpoints.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../buttons/button.dart';
 import 'icons.dart';
 import 'text.dart';

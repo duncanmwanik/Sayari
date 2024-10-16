@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/theme_btn.dart';
-import '../../../__styling/variables.dart';
 import '../../../_providers/_providers.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/theme_btn.dart';
+import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/images.dart';

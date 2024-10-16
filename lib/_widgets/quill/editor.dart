@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
-import '../../__styling/spacing.dart';
 import '../../_helpers/helpers.dart';
 import '../../_providers/_providers.dart';
+import '../../_theme/spacing.dart';
 import 'editor_style.dart';
 import 'embed_divider.dart';
 import 'embed_image.dart';

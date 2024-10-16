@@ -3,11 +3,11 @@ import 'package:flutter_quill/flutter_quill.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../../../__styling/helpers.dart';
-import '../../../../__styling/spacing.dart';
-import '../../../../__styling/variables.dart';
 import '../../../../_providers/_providers.dart';
 import '../../../../_services/hive/local_storage_service.dart';
+import '../../../../_theme/helpers.dart';
+import '../../../../_theme/spacing.dart';
+import '../../../../_theme/variables.dart';
 import '../../../../_widgets/buttons/button.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';

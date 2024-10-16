@@ -11,8 +11,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/variables.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/variables.dart';
 import '../others/blur.dart';
 
 const Duration _kMenuDuration = Duration(milliseconds: 300);

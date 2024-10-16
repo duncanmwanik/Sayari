@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import '../../../__styling/variables.dart';
 import '../../../_helpers/global.dart';
 import '../../../_services/hive/store.dart';
+import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
 
 class Tag {

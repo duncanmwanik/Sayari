@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_helpers/url_launcher.dart';
 import '../../../_services/hive/store.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/list_tile.dart';
 import '../../../_widgets/others/text.dart';

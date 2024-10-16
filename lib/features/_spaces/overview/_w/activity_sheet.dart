@@ -3,9 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:styled_text/styled_text.dart';
 
-import '../../../../__styling/spacing.dart';
-import '../../../../__styling/variables.dart';
 import '../../../../_services/hive/store.dart';
+import '../../../../_theme/spacing.dart';
+import '../../../../_theme/variables.dart';
 import '../../../../_widgets/buttons/close.dart';
 import '../../../../_widgets/others/empty_box.dart';
 import '../../../../_widgets/others/others/divider.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/variables.dart';
 import '../../_helpers/navigation.dart';
+import '../../_theme/variables.dart';
 import '../others/icons.dart';
 import 'button.dart';
 

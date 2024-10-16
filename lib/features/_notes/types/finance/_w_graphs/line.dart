@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../__styling/variables.dart';
+import '../../../../../_theme/variables.dart';
 
 class Lines extends StatelessWidget {
   const Lines({super.key, this.isShowingMainData = true});

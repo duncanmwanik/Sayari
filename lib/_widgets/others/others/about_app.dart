@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../buttons/button.dart';
 import '../icons.dart';
 import '../images.dart';

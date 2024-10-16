@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/variables.dart';
+import '../../_theme/variables.dart';
 
 class AppLoader extends StatelessWidget {
   const AppLoader({super.key, this.size = 18, this.stroke = 2.5, this.color});

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_providers/theme.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
+import '../../_widgets/others/background.dart';
 import '../../_widgets/others/icons.dart';
 
 class TestScreen extends StatefulWidget {
@@ -19,25 +19,25 @@ class _ShareScreenState extends State<TestScreen> {
   @override
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(
-      builder: (context, dateTime, child) => Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(getDefaultThemeImage()), fit: BoxFit.cover),
-        ),
-        child: SafeArea(
-          child: Scaffold(
-            backgroundColor: transparent,
-            body: SingleChildScrollView(
-              child: Wrap(
-                spacing: tinyWidth(),
-                runSpacing: tinyWidth(),
-                children: List.generate(50, (index) {
-                  return AppIcon(Icons.circle, size: 6, extraFaded: true);
-                }),
+      builder: (context, theme, child) {
+        return AppBackground(
+          child: SafeArea(
+            child: Scaffold(
+              backgroundColor: transparent,
+              body: SingleChildScrollView(
+                padding: padding(p: tinyWidth()),
+                child: Wrap(
+                  spacing: mediumWidth(),
+                  runSpacing: mediumWidth(),
+                  children: List.generate(2550, (index) {
+                    return AppIcon(Icons.circle, size: 6, extraFaded: true);
+                  }),
+                ),
               ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

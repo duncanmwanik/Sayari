@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../__styling/variables.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/date_time/date_info.dart';
 import '../_helpers/date_time/misc.dart';

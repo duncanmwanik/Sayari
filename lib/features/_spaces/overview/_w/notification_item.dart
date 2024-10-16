@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../__styling/spacing.dart';
 import '../../../../_services/hive/store.dart';
+import '../../../../_theme/spacing.dart';
 import '../../../../_variables/features.dart';
 import '../../../../_widgets/others/checkbox.dart';
 import '../../../../_widgets/others/text.dart';

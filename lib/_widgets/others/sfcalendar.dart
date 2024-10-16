@@ -4,9 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_providers/_providers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../features/calendar/_helpers/date_time/jump_to_date.dart';
 import '../../features/calendar/_helpers/date_time/misc.dart';
 import '../../features/calendar/state/datetime.dart';

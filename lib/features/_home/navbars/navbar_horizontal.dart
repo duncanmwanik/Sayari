@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../../__styling/variables.dart';
 import '../../../_providers/theme.dart';
 import '../../../_providers/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
+import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
 import 'nav_item.dart';
 import 'nav_menu.dart';

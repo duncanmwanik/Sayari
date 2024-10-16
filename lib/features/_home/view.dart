@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../__styling/breakpoints.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
+import '../../_theme/breakpoints.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/features.dart';
 import '../_notes/notes_view.dart';
 import '../calendar/session_view.dart';

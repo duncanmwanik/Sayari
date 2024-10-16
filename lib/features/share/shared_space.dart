@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
-import '../../__styling/helpers.dart';
-import '../../__styling/variables.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/theme.dart';
 import '../../_services/firebase/database.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/features.dart';
+import '../../_widgets/others/background.dart';
 import '../_spaces/_helpers/common.dart';
 import '../_spaces/published/shared/shared.dart';
 import 'state/share.dart';
@@ -72,30 +72,29 @@ class _ShareScreenState extends State<SharedSpace> {
       title: sharedData['t'] ?? 'Sayari',
       color: styler.accentColor(),
       child: Consumer2<ThemeProvider, ShareProvider>(
-        builder: (context, dateTime, share, child) => Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage(getDefaultThemeImage()), fit: BoxFit.cover),
-          ),
-          child: SafeArea(
-            child: Scaffold(
-              backgroundColor: transparent,
-              body: isActive.isEmpty
-                  ? Center(child: SpinKitFadingCube(color: styler.accentColor(), size: 50.0))
-                  : isActive == '1'
-                      ? sharedData.isNotEmpty
-                          ? Align(
-                              alignment: Alignment.topCenter,
-                              child: PublishBookBody(
-                                sharedData: sharedData,
-                                userName: userName,
-                                data: noteData,
-                              ),
-                            )
-                          : SharedAction()
-                      : SharedAction(),
+        builder: (context, theme, share, child) {
+          return AppBackground(
+            child: SafeArea(
+              child: Scaffold(
+                backgroundColor: transparent,
+                body: isActive.isEmpty
+                    ? Center(child: SpinKitFadingCube(color: styler.accentColor(), size: 50.0))
+                    : isActive == '1'
+                        ? sharedData.isNotEmpty
+                            ? Align(
+                                alignment: Alignment.topCenter,
+                                child: PublishBookBody(
+                                  sharedData: sharedData,
+                                  userName: userName,
+                                  data: noteData,
+                                ),
+                              )
+                            : SharedAction()
+                        : SharedAction(),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

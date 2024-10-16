@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../../__styling/spacing.dart';
 import '../../../../_services/hive/store.dart';
+import '../../../../_theme/spacing.dart';
 import '../../../../_variables/features.dart';
 import '../../../../_widgets/buttons/action.dart';
 import '../../../../_widgets/dialogs/app_dialog.dart';

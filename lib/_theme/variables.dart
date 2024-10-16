@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'styler.dart';
 
@@ -54,11 +55,9 @@ const List<Color> toastColors = [Colors.red, Colors.green, Colors.blue, Colors.y
 // icons
 const IconData timelineIcon = Icons.bolt;
 const IconData calendarIcon = Icons.looks_one_rounded;
-const String notesIcon = 'note-sticky-solid';
-const IconData tasksIcon = Icons.check_box_rounded;
-const String chatIcon = 'comment-solid';
-const String exploreIcon = 'compass-solid';
-const IconData savedSeledctedIcon = Icons.bookmark_rounded;
+const IconData notesIcon = FontAwesomeIcons.solidNoteSticky;
+const IconData tasksIcon = FontAwesomeIcons.solidCircleCheck;
+const IconData chatIcon = FontAwesomeIcons.solidComment;
 const String datePlusSvg = 'calendar-plus-regular';
 const String dropDownSvg = 'dropdown';
 

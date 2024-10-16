@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:just_the_tooltip/just_the_tooltip.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/styler.dart';
-import '../../__styling/variables.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/styler.dart';
+import '../../_theme/variables.dart';
 import 'text.dart';
 
 class AppTooltip extends StatelessWidget {

@@ -4,11 +4,11 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
 import '../../_services/hive/local_storage_service.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/blur.dart';
 import '../../_widgets/others/icons.dart';

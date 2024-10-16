@@ -10,6 +10,7 @@ import '../_widgets/others/others/divider.dart';
 import '../_widgets/others/text.dart';
 import 'helpers.dart';
 import 'spacing.dart';
+import 'styler.dart';
 import 'variables.dart';
 
 List<Widget> themeMenu() {
@@ -31,20 +32,21 @@ List<Widget> themeMenu() {
         String themeImage = themeImages.keys.toList()[index];
         String themeType = themeImages[themeImage] ?? 'light';
         Color color = themeType == 'light' ? black : white;
+        bool isImage = !['light', 'dark', 'black'].contains(themeImage);
+        bool isDark = ['dark'].contains(themeImage);
+        bool isBlack = ['black'].contains(themeImage);
 
         return AppButton(
-          onPressed: () {
-            popWhatsOnTop(); // close theme menu
-            state.theme.setThemeImage(themeImage, themeType, state.theme.themeAccent);
-          },
+          onPressed: () => popWhatsOnTop(todoLast: () => state.theme.setThemeImage(themeImage, themeType, state.theme.themeAccent)),
           noStyling: true,
           padding: EdgeInsets.zero,
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 15),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(borderRadiusTiny),
-              image: DecorationImage(image: AssetImage(getThemeImage(themeImage)), fit: BoxFit.cover),
+              image: isImage ? DecorationImage(image: AssetImage(getThemeImage(themeImage)), fit: BoxFit.cover) : null,
               border: Border.all(color: themeImage == state.theme.themeImage ? styler.borderColor() : transparent),
+              color: isBlack ? black : (isDark ? AppColors.darkPrimary : white),
             ),
             child: Center(
               child: AppText(

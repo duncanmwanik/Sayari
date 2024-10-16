@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../__styling/breakpoints.dart';
-import '../../../__styling/helpers.dart';
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_providers/global.dart';
 import '../../../_providers/views.dart';
+import '../../../_theme/breakpoints.dart';
+import '../../../_theme/helpers.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/sfcalendar.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_quill/flutter_quill.dart';
 
-import '../../__styling/spacing.dart';
 import '../../_providers/_providers.dart';
+import '../../_theme/spacing.dart';
 import '../../_variables/colors.dart';
 import '../menu/menu.dart';
 import '../others/color_menu.dart';

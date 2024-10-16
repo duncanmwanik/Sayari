@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import '../../__styling/breakpoints.dart';
-import '../../__styling/helpers.dart';
-import '../../__styling/spacing.dart';
-import '../../__styling/variables.dart';
 import '../../_helpers/helpers.dart';
 import '../../_models/item.dart';
 import '../../_providers/_providers.dart';
+import '../../_theme/breakpoints.dart';
+import '../../_theme/helpers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_widgets/others/blur.dart';
 import '../../_widgets/others/others/divider.dart';
 import '../../_widgets/quill/overview_editor.dart';

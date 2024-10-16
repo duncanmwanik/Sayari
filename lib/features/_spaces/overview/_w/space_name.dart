@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../../__styling/variables.dart';
 import '../../../../_services/hive/local_storage_service.dart';
+import '../../../../_theme/variables.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../_helpers/common.dart';
 

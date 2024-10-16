@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../__styling/spacing.dart';
+import '../../_theme/spacing.dart';
 import '../../_widgets/others/others/divider.dart';
 import '../_notes/types/quicknote/quick_note.dart';
 import '../_notes/types/tasks/quicktasks/quick_tasks.dart';

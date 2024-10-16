@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/file.dart';
 
-import '../../../../__styling/variables.dart';
-import '../../__styling/spacing.dart';
 import '../../_models/item.dart';
 import '../../_providers/_providers.dart';
+import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/loader.dart';

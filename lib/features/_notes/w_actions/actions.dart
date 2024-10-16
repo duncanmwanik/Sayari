@@ -2,14 +2,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../__styling/helpers.dart';
-import '../../../__styling/spacing.dart';
-import '../../../__styling/variables.dart';
 import '../../../_helpers/global.dart';
 import '../../../_helpers/sync/delete_item.dart';
 import '../../../_helpers/sync/quick_edit.dart';
 import '../../../_models/item.dart';
 import '../../../_providers/focus.dart';
+import '../../../_theme/helpers.dart';
+import '../../../_theme/spacing.dart';
+import '../../../_theme/variables.dart';
 import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
 import '../../../_widgets/menu/menu_item.dart';
