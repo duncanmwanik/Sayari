@@ -89,12 +89,13 @@ class _TagManagerState extends State<TagManager> {
                           isDefault: true,
                         ),
                       // user tags  -----------------------------------------
-                      for (String tag in box.keys.toList())
+                      for (String tagId in box.keys.toList())
                         TagItem(
-                          tag: tag,
+                          tag: tagId,
                           isSelection: widget.isSelection,
-                          isSelected: selectedTags.contains(tag),
-                          onSelect: () => setState(() => selectedTags.contains(tag) ? selectedTags.remove(tag) : selectedTags.add(tag)),
+                          isSelected: selectedTags.contains(tagId),
+                          onSelect: () =>
+                              setState(() => selectedTags.contains(tagId) ? selectedTags.remove(tagId) : selectedTags.add(tagId)),
                           isPopup: widget.isPopup,
                         ),
                       // empty user tags

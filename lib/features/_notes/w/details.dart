@@ -4,6 +4,7 @@ import '../../../_helpers/helpers.dart';
 import '../../../_models/item.dart';
 import '../../files/file_list.dart';
 import '../../reminders/reminder.dart';
+import '../../tags/list_of_tags.dart';
 
 class ItemDetails extends StatelessWidget {
   const ItemDetails({super.key, required this.item});

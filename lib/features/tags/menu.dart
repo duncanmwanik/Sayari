@@ -14,7 +14,12 @@ List<Widget> tagsMenu({
     MenuItem(label: title, smallHeight: true, popTrailing: true),
     menuDivider(),
     //
-    TagManager(isPopup: true, isSelection: isSelection, alreadySelected: alreadySelected, onDone: onDone),
+    TagManager(
+      isPopup: true,
+      isSelection: isSelection,
+      alreadySelected: alreadySelected,
+      onDone: onDone,
+    ),
     //
   ];
 }
