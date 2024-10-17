@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../_helpers/navigation.dart';
-import '../../_providers/_providers.dart';
-import '../../_providers/input.dart';
-import '../../_services/hive/local_storage_service.dart';
-import '../../_theme/spacing.dart';
-import '../../_theme/variables.dart';
-import '../../features/_spaces/manager/_w/dialog_create_group.dart';
-import '../buttons/action.dart';
-import '../buttons/button.dart';
-import '../others/checkbox.dart';
-import '../others/icons.dart';
-import '../others/text.dart';
-import 'app_dialog.dart';
+import '../../../../_helpers/navigation.dart';
+import '../../../../_providers/_providers.dart';
+import '../../../../_providers/input.dart';
+import '../../../../_services/hive/local_storage_service.dart';
+import '../../../../_theme/spacing.dart';
+import '../../../../_theme/variables.dart';
+import '../../../../_widgets/buttons/action.dart';
+import '../../../../_widgets/buttons/button.dart';
+import '../../../../_widgets/dialogs/app_dialog.dart';
+import '../../../../_widgets/others/checkbox.dart';
+import '../../../../_widgets/others/icons.dart';
+import '../../../../_widgets/others/text.dart';
+import 'dialog_create_group.dart';
 
 Future showSelectGroupsDialog() {
   return showAppDialog(
@@ -53,6 +53,7 @@ Future showSelectGroupsDialog() {
                         builder: (context, input, child) => AppButton(
                               onPressed: () => input.updateSelectedGroups(group),
                               srp: true,
+                              noStyling: true,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [

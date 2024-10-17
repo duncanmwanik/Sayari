@@ -6,9 +6,9 @@ import '../../../../_providers/input.dart';
 import '../../../../_theme/spacing.dart';
 import '../../../../_theme/variables.dart';
 import '../../../../_widgets/buttons/button.dart';
-import '../../../../_widgets/dialogs/dialog_select_groups.dart';
 import '../../../../_widgets/others/icons.dart';
 import '../../../../_widgets/others/text.dart';
+import '../../manager/_w/dialog_select_groups.dart';
 
 class Groups extends StatelessWidget {
   const Groups({super.key});

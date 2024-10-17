@@ -61,7 +61,7 @@ class _TagManagerState extends State<TagManager> {
                       //
                       if (isAdmin() && !widget.isSelection) NewTag(isPopup: widget.isPopup, isSelection: widget.isSelection),
                       if (isAdmin() && !widget.isSelection) tph(),
-                      // default tags -----------------------------------------
+                      // defaults
                       if (!widget.isSelection)
                         TagItem(
                           tag: Tag(id: 'All'),
@@ -83,7 +83,7 @@ class _TagManagerState extends State<TagManager> {
                           isPopup: widget.isPopup,
                           isDefault: true,
                         ),
-                      // user tags  -----------------------------------------
+                      // user tags
                       for (String tagId in box.keys.toList())
                         TagItem(
                           tag: Tag(id: tagId),
@@ -93,7 +93,7 @@ class _TagManagerState extends State<TagManager> {
                               setState(() => selectedTags.contains(tagId) ? selectedTags.remove(tagId) : selectedTags.add(tagId)),
                           isPopup: widget.isPopup,
                         ),
-                      // empty user tags
+                      // no user tags
                       if (box.isEmpty && widget.isSelection)
                         Padding(padding: pad(p: 15), child: AppText(text: 'No tags yet', size: tiny, faded: true)),
                       //

@@ -5,9 +5,9 @@ import '../../../_providers/_providers.dart';
 import '../../../_services/firebase/sync_to_cloud.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/dialogs/confirmation_dialog.dart';
-import '../../../_widgets/dialogs/dialog_select_groups.dart';
 import '../../../_widgets/others/snackbar.dart';
 import '../../../_widgets/others/toast.dart';
+import '../../_spaces/manager/_w/dialog_select_groups.dart';
 import 'helpers.dart';
 
 Future<void> addSpaceToGroup(String spaceId) async {

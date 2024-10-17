@@ -1,5 +1,3 @@
-// ignore_for_file: dead_code
-
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/file.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -16,11 +14,11 @@ import '_helpers/helpers.dart';
 import 'dp_menu.dart';
 
 class UserDp extends StatelessWidget {
-  const UserDp({super.key, this.isTiny = true, this.userId, this.tooltip, this.size, this.onPressed, this.menuItems, this.hoverColor});
+  const UserDp({super.key, this.userId, this.tooltip, this.isTiny = true, this.size, this.onPressed, this.menuItems, this.hoverColor});
 
-  final bool isTiny;
   final String? userId;
   final String? tooltip;
+  final bool isTiny;
   final double? size;
   final Function()? onPressed;
   final List<Widget>? menuItems;
