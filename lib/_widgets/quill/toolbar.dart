@@ -106,9 +106,9 @@ Widget getQuillToolbar({bool isMin = false}) {
       AppButton(
         onPressed: () => addQuillEmbedDividerBlock(),
         tooltip: 'Insert Divider',
-        padding: paddingC('l6,r6,t14,b14'),
+        padding: pad(c: 'l6,r6,t14,b14'),
         noStyling: true,
-        child: AppButton(color: red, padding: padding(p: 1), width: 30),
+        child: AppButton(color: red, padding: pad(p: 1), width: 30),
       ),
       // font sizes
       sizeButton('H1', Attribute.h4),

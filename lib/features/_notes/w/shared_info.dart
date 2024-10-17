@@ -29,7 +29,7 @@ class SharedInfo extends StatelessWidget {
               AppButton(
                 onPressed: () => copyText(item.sharedLink(), description: 'Copied shared link'),
                 tooltip: 'Copy shared link',
-                padding: paddingC('l5,r5,t3,b3'),
+                padding: pad(c: 'l5,r5,t3,b3'),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -44,7 +44,7 @@ class SharedInfo extends StatelessWidget {
               AppButton(
                 onPressed: () => copyText(item.publishedLink(), description: 'Copied blog link'),
                 tooltip: 'Copy blog link',
-                padding: paddingC('l5,r5,t3,b3'),
+                padding: pad(c: 'l5,r5,t3,b3'),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [

@@ -21,7 +21,7 @@ class Indicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppButton(
       color: color.withOpacity(0.3),
-      margin: paddingS('t'),
+      margin: padS('t'),
       svp: true,
       slp: true,
       srp: true,

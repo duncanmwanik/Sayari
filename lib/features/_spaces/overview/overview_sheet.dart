@@ -54,7 +54,7 @@ Future<void> showSpaceOverviewBottomSheet() async {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (description.isNotEmpty) Padding(padding: padding(), child: AppText(text: description, faded: true)),
+                          if (description.isNotEmpty) Padding(padding: pad(), child: AppText(text: description, faded: true)),
                           description.isNotEmpty ? tph() : sph(),
                           AppButton(
                             leading: 'Starts',

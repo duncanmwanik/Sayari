@@ -4,10 +4,10 @@ import 'package:provider/provider.dart';
 import '../../_providers/focus.dart';
 import '../../_theme/spacing.dart';
 import '../../_theme/variables.dart';
-import '../../_variables/intro_features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
+import 'var/intro_features.dart';
 
 class AuthIntro extends StatelessWidget {
   const AuthIntro({super.key});

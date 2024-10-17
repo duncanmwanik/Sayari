@@ -142,7 +142,7 @@ class ImageFile extends StatelessWidget {
                         borderRadius: radius ?? borderRadiusSmall,
                         padding: EdgeInsets.zero,
                         child: Container(
-                          padding: paddingS(),
+                          padding: padS(),
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(radius ?? borderRadiusSmall)),
                           child: Center(child: CircularProgressIndicator(color: styler.appColor(2), strokeWidth: 2)),
                         ),
@@ -156,7 +156,7 @@ class ImageFile extends StatelessWidget {
               borderRadius: radius ?? borderRadiusSmall,
               padding: EdgeInsets.zero,
               child: Container(
-                padding: paddingS(),
+                padding: padS(),
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(radius ?? borderRadiusSmall)),
                 child: Center(child: showLoading ? AppLoader() : AppIcon(Icons.image, extraFaded: true)),
               ),

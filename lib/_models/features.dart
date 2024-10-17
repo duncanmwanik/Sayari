@@ -1,7 +1,3 @@
-//
-//
-//
-
 import 'package:flutter/material.dart';
 
 class Feature {
@@ -9,20 +5,12 @@ class Feature {
   final String t;
 }
 
-//
-//
-//
-
 class FeatureData {
   const FeatureData({this.title = '', this.path = '', this.message = ''});
   final String title;
   final String path;
   final String message;
 }
-
-//
-//
-//
 
 class IntroFeature {
   const IntroFeature({required this.title, required this.description, required this.icon});

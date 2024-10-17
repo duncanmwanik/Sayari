@@ -25,7 +25,7 @@ class _ShareScreenState extends State<TestScreen> {
             child: Scaffold(
               backgroundColor: transparent,
               body: SingleChildScrollView(
-                padding: padding(p: tinyWidth()),
+                padding: pad(p: tinyWidth()),
                 child: Wrap(
                   spacing: mediumWidth(),
                   runSpacing: mediumWidth(),

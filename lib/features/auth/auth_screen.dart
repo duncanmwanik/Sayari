@@ -6,7 +6,6 @@ import '../../_helpers/navigation.dart';
 import '../../_theme/helpers.dart';
 import '../../_theme/spacing.dart';
 import '../../_theme/variables.dart';
-import '../../_variables/navigation.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/forms/auth_input.dart';
 import '../../_widgets/others/blur.dart';
@@ -20,6 +19,7 @@ import '_helpers/reset_password.dart';
 import 'bg.dart';
 import 'button.dart';
 import 'intro.dart';
+import 'var/var.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -57,7 +57,7 @@ class _SignInScreenState extends State<AuthScreen> {
             alignment: Alignment.center,
             child: SingleChildScrollView(
               child: Container(
-                margin: paddingL(),
+                margin: padL(),
                 constraints: BoxConstraints(maxWidth: 400),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(borderRadiusMediumSmall),
@@ -67,9 +67,9 @@ class _SignInScreenState extends State<AuthScreen> {
                   child: AppButton(
                     borderRadius: borderRadiusMediumSmall,
                     color: styler.appColor(1),
-                    padding: paddingL(),
+                    padding: padL(),
                     child: Form(
-                      key: signInFormKey,
+                      key: authFormKey,
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [

@@ -13,7 +13,7 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: paddingM('r'),
+      padding: padM('r'),
       child: AppButton(
         onPressed: () => showSearchSheet(),
         tooltip: 'Search',

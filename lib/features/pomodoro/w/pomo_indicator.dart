@@ -22,7 +22,7 @@ class _PomodoroIndicatorState extends State<PomodoroIndicator> {
       return Visibility(
         visible: pomo.isCounting,
         child: Padding(
-          padding: paddingM('r'),
+          padding: padM('r'),
           child: AppButton(
             onPressed: () => showPomodoroSheet(),
             tooltip: 'Open Pomodoro',

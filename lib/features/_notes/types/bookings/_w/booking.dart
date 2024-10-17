@@ -24,7 +24,7 @@ class Booking extends StatelessWidget {
       return Visibility(
         visible: input.item.data[feature.bookings] != null,
         child: Padding(
-          padding: paddingM('t'),
+          padding: padM('t'),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,7 +32,7 @@ class Booking extends StatelessWidget {
               //
               AppButton(
                 onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
-                padding: paddingM(),
+                padding: padM(),
                 color: styler.appColor(0.5),
                 hoverColor: transparent,
                 child: Column(

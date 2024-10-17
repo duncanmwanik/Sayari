@@ -18,22 +18,22 @@ class AppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: isSmallPC() ? paddingM('rb') : noPadding,
+      margin: isSmallPC() ? padM('rb') : noPadding,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadiusSmall),
       ),
       //
-      child: feature.isTimeline(view)
+      child: view.isTimeline()
           ? Timeline()
-          : feature.isCalendar(view)
+          : view.isCalendar()
               ? SessionsView()
-              : feature.isNote(view)
+              : view.isNote()
                   ? ListOfItems(type: feature.notes)
-                  : feature.isTask(view)
+                  : view.isTask()
                       ? ListOfItems(type: feature.tasks)
-                      : feature.isChat(view)
+                      : view.isChat()
                           ? ChatView()
-                          : SessionsView(),
+                          : Timeline(),
       //
     );
   }

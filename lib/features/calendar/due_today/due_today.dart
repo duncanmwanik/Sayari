@@ -23,7 +23,7 @@ class DueToday extends StatelessWidget {
     String date = getDatePart(DateTime.now());
 
     return Padding(
-      padding: paddingL('tb'),
+      padding: padL('tb'),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

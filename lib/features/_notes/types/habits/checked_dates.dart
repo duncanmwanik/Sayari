@@ -25,7 +25,7 @@ class CheckedDates extends StatelessWidget {
         children: [
           // hide/show checked dates
           Padding(
-            padding: padding(s: 'tb'),
+            padding: padN('tb'),
             child: AppButton(
               onPressed: () => input.update('ep', isExpanded ? '0' : '1'),
               noStyling: true,
@@ -53,7 +53,7 @@ class CheckedDates extends StatelessWidget {
                         padding: EdgeInsets.only(top: 4),
                         child: AppButton(
                           onPressed: () {},
-                          padding: paddingC('l8,t6,r4,b6'),
+                          padding: pad(c: 'l8,t6,r4,b6'),
                           color: styler.appColor(1),
                           child: Row(
                             children: [

@@ -47,7 +47,7 @@ class HabitMonth extends StatelessWidget {
               noStyling: true,
               padding: noPadding,
               child: Padding(
-                padding: isInput ? paddingL('lrb') : noPadding,
+                padding: isInput ? padL('lrb') : noPadding,
                 child: ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: width),
                   child: Column(

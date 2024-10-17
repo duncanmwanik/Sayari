@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../_helpers/global.dart';
 import '../../../_helpers/sync/delete_item.dart';
 import '../../../_helpers/sync/quick_edit.dart';
 import '../../../_providers/_providers.dart';
@@ -75,9 +74,9 @@ class SelectedItemOptions extends StatelessWidget {
                     AppButton(
                       menuItems: tagsMenu(
                         isSelection: true,
-                        onDone: (newTags) async {
+                        onUpdate: (newTags) async {
                           selection.selected.forEach((item) async {
-                            await quickEdit(parent: item.parent, id: item.id, key: 'l', value: joinList(newTags));
+                            await quickEdit(parent: item.parent, id: item.id, key: 'l', value: newTags);
                           });
                           state.selection.clear();
                         },

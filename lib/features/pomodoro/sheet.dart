@@ -7,7 +7,7 @@ import '../../_widgets/buttons/close.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/scroll.dart';
 import '../../_widgets/sheets/bottom_sheet.dart';
-import '../_notes/types/tasks/quicktasks/quick_tasks.dart';
+import '../_notes/types/quicktasks/quick_tasks.dart';
 import 'chooser.dart';
 import 'counter.dart';
 import 'w_settings/settings_dialog.dart';

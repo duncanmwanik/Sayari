@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../_theme/spacing.dart';
-import '../../_variables/ui.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/buttons/close.dart';
 import '../../_widgets/forms/input.dart';
 import '../../_widgets/others/icons.dart';
 import '_helpers/prompt.dart';
+import 'var/var.dart';
 
 class AIBar extends StatelessWidget {
   const AIBar({super.key});

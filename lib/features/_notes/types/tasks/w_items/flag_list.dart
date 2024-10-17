@@ -27,7 +27,7 @@ class ItemFlagList extends StatelessWidget {
             // If the flag is not deleted
             if (storage(feature.flags).containsKey(flagId)) {
               return Padding(
-                padding: padding(p: 2, s: 'r'),
+                padding: padT('r'),
                 child: ItemFlag(
                   flagId: flagId,
                   isTinyFlag: isTinyFlag,

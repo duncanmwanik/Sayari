@@ -20,8 +20,8 @@ class Habit extends StatelessWidget {
       return Visibility(
         visible: input.item.data[feature.habits] != null,
         child: Container(
-          margin: padding(s: 'b'),
-          padding: paddingM(),
+          margin: padN('b'),
+          padding: padM(),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(borderRadiusSmall),
           ),

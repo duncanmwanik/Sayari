@@ -12,7 +12,7 @@ class ThemeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: rightPadding ? paddingM('r') : noPadding,
+      padding: rightPadding ? padM('r') : noPadding,
       child: AppButton(
         menuItems: themeMenu(),
         menuWidth: 300,

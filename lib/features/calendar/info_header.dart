@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../_helpers/helpers.dart';
 import '../../_helpers/navigation.dart';
 import '../../_providers/views.dart';
 import '../../_theme/breakpoints.dart';
@@ -73,7 +72,8 @@ class CalendarOptions extends StatelessWidget {
                 // go to today
                 spw(),
                 AppButton(
-                  onPressed: () => date.isToday_ ? doNothing() : goToToday(views.calendarView),
+                  enabled: !date.isToday_,
+                  onPressed: () => goToToday(views.calendarView),
                   tooltip: getDateInfo(getDatePart(date.now)),
                   child: AppText(text: 'Today'),
                 ),

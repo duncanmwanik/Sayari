@@ -26,7 +26,7 @@ class Reminders extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Icon
-              Padding(padding: paddingS('t'), child: AppIcon(Icons.notification_add, faded: true, size: normal)),
+              Padding(padding: padS('t'), child: AppIcon(Icons.notification_add, faded: true, size: normal)),
               mpw(),
               //
               Expanded(
@@ -60,7 +60,7 @@ class Reminders extends StatelessWidget {
                             return ReminderItem(reminder: reminder);
                           }))
                         : Padding(
-                            padding: paddingM('lt'),
+                            padding: padM('lt'),
                             child: AppText(size: small, text: 'No reminders set', faded: true),
                           ),
                   ],

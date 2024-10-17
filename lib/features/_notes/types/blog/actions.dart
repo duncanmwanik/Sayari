@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../../_providers/_providers.dart';
-import '../../../_services/hive/local_storage_service.dart';
-import '../../../_theme/spacing.dart';
-import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/others/icons.dart';
-import '../../share/w/share_link.dart';
-import '../../tts/_helpers/tts_service.dart';
-import '../../tts/_state/tts_provider.dart';
-import '../../user/_helpers/saved.dart';
+import '../../../../_providers/_providers.dart';
+import '../../../../_services/hive/local_storage_service.dart';
+import '../../../../_theme/spacing.dart';
+import '../../../../_widgets/buttons/button.dart';
+import '../../../../_widgets/others/icons.dart';
+import '../../../share/w/share_link.dart';
+import '../../../tts/_helpers/tts_service.dart';
+import '../../../tts/_state/tts_provider.dart';
+import '../../../user/_helpers/saved.dart';
 
 class SharedActions extends StatelessWidget {
   const SharedActions({super.key, required this.id, required this.userId, required this.data});

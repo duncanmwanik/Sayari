@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-import '../../_helpers/helpers.dart';
+import '../../_helpers/extentions/strings.dart';
 import '../../_providers/theme.dart';
 import '../../_providers/views.dart';
 import '../../_services/activity/listen/helpers.dart';
@@ -45,7 +45,7 @@ class AppLayout extends StatelessWidget {
                           //
                           Expanded(
                             child: Title(
-                              title: 'Sayari • ${capitalFirst(views.isCalendar() ? getDayInfo(dates.selectedDate) : views.view)}',
+                              title: 'Sayari • ${(views.isCalendar() ? getDayInfo(dates.selectedDate) : views.view).cap()}',
                               color: styler.accentColor(),
                               child: NoScrollBars(
                                 child: Column(

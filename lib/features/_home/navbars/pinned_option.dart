@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-import '../../../_helpers/helpers.dart';
+import '../../../_helpers/extentions/strings.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_theme/variables.dart';
 import '../../../_widgets/menu/menu_item.dart';
@@ -25,7 +25,7 @@ class PinnedNavOption extends StatelessWidget {
 
           return MenuItem(
             onTap: isDefault ? null : () => box.put('showNavItem_$type', show ? '0' : '1'),
-            label: capitalFirst(type),
+            label: type.cap(),
             trailing: show ? Icons.push_pin : Icons.push_pin_outlined,
             trailingColor: isDefault
                 ? styler.appColor(3)

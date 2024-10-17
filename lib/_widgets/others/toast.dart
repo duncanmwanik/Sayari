@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../_theme/breakpoints.dart';
-import '../../_theme/helpers.dart';
 import '../../_theme/spacing.dart';
 import '../../_theme/variables.dart';
 import '../buttons/button.dart';
@@ -31,16 +30,16 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
         decoration: BoxDecoration(
           color: styler.tertiaryColor(),
           borderRadius: BorderRadius.circular(borderRadiusTinySmall),
-          boxShadow: isDark()
-              ? null
-              : [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.3),
-                    spreadRadius: 1,
-                    blurRadius: 1.5,
-                    offset: const Offset(0, 0),
-                  )
-                ],
+          // boxShadow: isDark()
+          //     ? null
+          //     : [
+          //         BoxShadow(
+          //           color: Colors.grey.withOpacity(0.3),
+          //           spreadRadius: 1,
+          //           blurRadius: 1.5,
+          //           offset: const Offset(0, 0),
+          //         )
+          //       ],
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +49,7 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
             AppButton(
               noStyling: true,
               isRound: true,
-              padding: paddingS(),
+              padding: padS(),
               child: AppIcon(toastIcons[type], color: color ?? toastColors[type]),
             ),
             spw(),
@@ -62,7 +61,7 @@ void showToast(int type, String message, {int duration = 3500, Color? color, boo
               onPressed: () => closeToast(),
               noStyling: true,
               isSquare: true,
-              padding: paddingS(),
+              padding: padS(),
               child: const AppIcon(Icons.close, size: 18),
             ),
             //

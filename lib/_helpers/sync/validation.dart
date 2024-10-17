@@ -8,13 +8,13 @@ bool validateInput(Item item, [bool isNew = false]) {
   String title = state.input.item.data['t'] ?? '';
   bool hasTitle = title.isNotEmpty;
 
-  if (feature.isSpace(item.type)) {
+  if (item.type.isSpace()) {
     if (!hasTitle) {
       message = 'Enter space name';
     }
   }
 
-  if (feature.isCalendar(item.type)) {
+  if (item.type.isCalendar()) {
     String startTime = state.input.item.data['s'] ?? '';
 
     if (!hasTitle) {
@@ -26,19 +26,19 @@ bool validateInput(Item item, [bool isNew = false]) {
     }
   }
 
-  if (feature.isNote(item.type)) {
+  if (item.type.isNote()) {
     if (isNew && !hasTitle && state.quill.controller.document.toPlainText().trim().isEmpty) {
       return false;
     }
   }
 
-  if (feature.isTask(item.type)) {
+  if (item.type.isTask()) {
     if (isNew && !hasTitle && item.taskCount() == 0) {
       return false;
     }
   }
 
-  if (feature.isFinance(item.type)) {
+  if (item.type.isFinance()) {
     if (isNew && !hasTitle && state.input.item.data.isEmpty) {
       return false;
     }

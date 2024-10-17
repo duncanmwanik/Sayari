@@ -14,7 +14,6 @@ import '../../../_widgets/others/text.dart';
 import '../_helpers/go_to_view.dart';
 
 Widget navItem(dynamic icon, String type, {double? size, Function()? onPressed}) {
-  bool isCalendar = feature.isCalendar(type);
   bool isSelected = state.views.view == type;
 
   return Stack(
@@ -22,15 +21,15 @@ Widget navItem(dynamic icon, String type, {double? size, Function()? onPressed})
       // nav item
       AppButton(
         onPressed: onPressed ?? () => goToView(type),
-        tooltip: getNavigationItemTitle(features[type]!.title),
+        tooltip: getNavigationItemTitle(type.title()),
         tooltipDirection: isSmallPC() ? AxisDirection.right : AxisDirection.up,
         noStyling: true,
         color: styler.appColor(isDark() ? 1 : 2),
-        padding: padding(p: isSmallPC() ? 8 : 12),
+        padding: pad(p: isSmallPC() ? 8 : 12),
         child: SizedBox(
           width: 19,
           height: 19,
-          child: isCalendar
+          child: type.isCalendar()
               ? AppButton(
                   padding: noPadding,
                   color: styler.textColor(faded: true),

@@ -51,7 +51,7 @@ class _EmailFormInputState extends State<FormInput> {
         // AppButton(
         //   noStyling: true,
         //   svp: true,
-        //   padding: paddingC('l4,b4'),
+        //   padding: pad('l4,b4'),
         //   child: AppText(text: widget.hintText, size: tinySmall, extraFaded: true),
         // ),
         //z

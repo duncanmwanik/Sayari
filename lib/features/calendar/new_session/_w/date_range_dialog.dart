@@ -24,7 +24,7 @@ Future<void> showDateRangeDialog() async {
       //
       content: Consumer<InputProvider>(builder: (context, input, child) {
         return Padding(
-          padding: paddingM('lr'),
+          padding: padM('lr'),
           child: NoOverScroll(
             child: ListView(
               shrinkWrap: true,

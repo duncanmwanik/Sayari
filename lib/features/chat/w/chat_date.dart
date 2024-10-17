@@ -22,20 +22,18 @@ class ChatDate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ChatProvider>(builder: (context, chat, child) {
-      return Padding(
-        padding: paddingL('tb'),
-        child: AppButton(
-          onPressed: () => showDateDialog(onSelect: (date) => jumpToChatDate(date), pop: true),
-          menuItems: isPhone() ? null : jumpToDateMenu((date) => popWhatsOnTop(todo: () => jumpToChatDate(date))),
-          color: isDark() ? Colors.black26 : Colors.black12,
-          child: AppText(
-            text: date.isToday()
-                ? 'Today'
-                : date.isYesterday()
-                    ? 'Yesterday'
-                    : date.formatFull(),
-            size: tiny,
-          ),
+      return AppButton(
+        margin: padL('tb'),
+        onPressed: () => showDateDialog(onSelect: (date) => jumpToChatDate(date), pop: true),
+        menuItems: isPhone() ? null : jumpToDateMenu((date) => popWhatsOnTop(todo: () => jumpToChatDate(date))),
+        color: isDark() ? Colors.black26 : Colors.black12,
+        child: AppText(
+          text: date.isToday()
+              ? 'Today'
+              : date.isYesterday()
+                  ? 'Yesterday'
+                  : date.formatFull(),
+          size: tiny,
         ),
       );
     });

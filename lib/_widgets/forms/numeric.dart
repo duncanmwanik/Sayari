@@ -34,7 +34,7 @@ class NumericFormInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 25,
-      padding: padding ?? paddingM('lr'),
+      padding: padding ?? padM('lr'),
       decoration: BoxDecoration(
         color: bgColor ?? styler.appColor(1),
         borderRadius: BorderRadius.circular(borderRadius ?? borderRadiusTiny),

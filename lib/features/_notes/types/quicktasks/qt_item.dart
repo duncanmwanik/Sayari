@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../_helpers/sync/quick_edit.dart';
-import '../../../../../_models/item.dart';
-import '../../../../../_providers/focus.dart';
-import '../../../../../_providers/input.dart';
-import '../../../../../_theme/helpers.dart';
-import '../../../../../_theme/spacing.dart';
-import '../../../../../_theme/variables.dart';
-import '../../../../../_widgets/buttons/button.dart';
-import '../../../../../_widgets/forms/input.dart';
-import '../../../../../_widgets/others/checkbox.dart';
-import '../../../../../_widgets/others/icons.dart';
-import '../_helpers/quicktask_helpers.dart';
+import '../../../../_helpers/sync/quick_edit.dart';
+import '../../../../_models/item.dart';
+import '../../../../_providers/focus.dart';
+import '../../../../_providers/input.dart';
+import '../../../../_theme/helpers.dart';
+import '../../../../_theme/spacing.dart';
+import '../../../../_theme/variables.dart';
+import '../../../../_widgets/buttons/button.dart';
+import '../../../../_widgets/forms/input.dart';
+import '../../../../_widgets/others/checkbox.dart';
+import '../../../../_widgets/others/icons.dart';
+import '../tasks/_helpers/quicktask_helpers.dart';
 import 'qt_menu.dart';
 
 class QuickTaskItem extends StatelessWidget {
@@ -34,9 +34,9 @@ class QuickTaskItem extends StatelessWidget {
           visible: isNew || item.data.isNotEmpty,
           child: AppButton(
             blur: isImage(),
-            color: styler.appColor(0.5),
-            hoverColor: styler.appColor(0.5),
-            padding: paddingC('l6,t2,r6,b2'),
+            color: styler.appColor(0.3),
+            hoverColor: styler.appColor(0.3),
+            padding: pad(c: 'l8,t1,r6,b1'),
             onPressed:
                 isAction ? null : () => quickEdit(parent: item.parent, id: item.id, sid: item.sid, key: 'v', value: isChecked ? '0' : '1'),
             child: Row(

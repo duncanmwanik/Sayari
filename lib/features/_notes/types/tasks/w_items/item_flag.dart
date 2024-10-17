@@ -35,7 +35,7 @@ class ItemFlag extends StatelessWidget {
               onDone: (newFlags) => newFlags.isNotEmpty ? state.input.update('g', joinList(newFlags)) : state.input.remove('g'),
             ),
       color: backgroundColors[color]!.color,
-      padding: isTinyFlag ? noPadding : padding(l: 8, t: 2, b: 2, r: 4),
+      padding: isTinyFlag ? noPadding : pad(c: 'l8,r4,t2,b2'),
       width: isTinyFlag ? 30 : null,
       height: isTinyFlag ? 8 : null,
       svp: true,

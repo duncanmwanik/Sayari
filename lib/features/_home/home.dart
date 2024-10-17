@@ -11,7 +11,6 @@ import '../../_variables/navigation.dart';
 import 'drawer/drawer.dart';
 import 'drawer/drawer_end.dart';
 import 'layout.dart';
-import 'w/fab.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -30,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     state.share.unset();
     // retryPendingActions();
-    listenForKeyboard();
+    keyboard.listen();
     initializeUserSync();
   }
 
@@ -39,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
     WidgetsBinding.instance.removeObserver(this);
     disposeSpaceSync();
     disposeUserSync();
-    cancelKeyboardSubscription();
+    keyboard.cancel();
     super.dispose();
   }
 
@@ -52,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> with WidgetsBindingObserver {
           body: AppLayout(),
           drawer: AppDrawer(),
           endDrawer: AppEndDrawer(),
-          floatingActionButton: HomeFab(),
+          // floatingActionButton: HomeFab(),
           key: scaffoldState,
         ),
       );

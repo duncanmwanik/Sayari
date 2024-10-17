@@ -20,14 +20,14 @@ Future<void> createItem() async {
     // only continue if data has required data
     if (validateInput(state.input.item, true)) {
       String id = state.input.item.isNew() ? getUniqueId() : state.input.item.id;
-      String sid = state.input.item.isNew() ? '' : '${feature.isTask(state.input.item.type) ? 'i' : ''}${getUniqueId()}';
+      String sid = state.input.item.isNew() ? '' : '${state.input.item.type.isTask() ? 'i' : ''}${getUniqueId()}';
       String extras = '';
       data['z'] = getUniqueId(); // creation time
 
-      if (feature.isCalendar(parent)) closeDialog();
+      if (parent.isCalendar()) closeDialog();
 
       // for sessions only ----------
-      if (feature.isCalendar(parent)) {
+      if (parent.isCalendar()) {
         removeDuplicateReminders(state.input.item);
         List selectedDates = state.input.selectedDates;
 

@@ -20,7 +20,7 @@ class PreviewNote extends StatelessWidget {
     return Align(
       alignment: Alignment.topCenter,
       child: Padding(
-        padding: padding(s: 't'),
+        padding: padN('t'),
         child: AppButton(
           onPressed: () => context.go(path ?? item.demoLink()),
           showBorder: true,

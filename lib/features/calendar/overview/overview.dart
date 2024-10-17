@@ -24,14 +24,14 @@ Future showSessionOverviewDialog(Item item) {
 
   return showAppDialog(
     showTitleColor: false,
-    contentPadding: paddingM('lrb'),
+    contentPadding: padM('lrb'),
     //
     title: SessionType(item: item),
     //
     content: NoOverScroll(
       child: ListView(
         shrinkWrap: true,
-        padding: paddingS('lr'),
+        padding: padS('lr'),
         children: [
           // title
           AppText(size: title, text: item.data['t'], weight: FontWeight.bold),
@@ -78,7 +78,7 @@ Future showSessionOverviewDialog(Item item) {
           Visibility(
             visible: fileMap.isNotEmpty,
             child: Padding(
-              padding: padding(s: 't'),
+              padding: padN('t'),
               child: FileList(fileData: fileMap, isOverview: true),
             ),
           ),

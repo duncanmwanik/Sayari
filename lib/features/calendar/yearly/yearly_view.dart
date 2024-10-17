@@ -57,7 +57,7 @@ class YearlyView extends StatelessWidget {
                             return Container(
                               height: 47.w,
                               width: 47.w,
-                              padding: paddingM(),
+                              padding: padM(),
                               constraints: BoxConstraints(maxWidth: 230, maxHeight: 245),
                               decoration: BoxDecoration(
                                 color: styler.appColor(1),

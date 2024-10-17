@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../../_providers/_providers.dart';
-import '../../../_theme/spacing.dart';
-import '../../../_theme/variables.dart';
-import '../../../_widgets/others/others/divider.dart';
-import '../../../_widgets/others/others/scroll.dart';
-import '../../../_widgets/others/text.dart';
-import '../../../_widgets/quill/editor.dart';
-import '../../share/w/header.dart';
+import '../../../../_providers/_providers.dart';
+import '../../../../_theme/spacing.dart';
+import '../../../../_theme/variables.dart';
+import '../../../../_widgets/others/others/divider.dart';
+import '../../../../_widgets/others/others/scroll.dart';
+import '../../../../_widgets/others/text.dart';
+import '../../../../_widgets/quill/editor.dart';
+import '../../../share/w/header.dart';
 import 'blog_info.dart';
 
 class BlogBody extends StatelessWidget {
@@ -39,7 +39,7 @@ class BlogBody extends StatelessWidget {
                   children: [
                     //
                     Padding(
-                      padding: padding(s: 'lr'),
+                      padding: padN('lr'),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,

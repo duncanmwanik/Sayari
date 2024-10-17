@@ -22,7 +22,7 @@ class AppTooltip extends StatelessWidget {
             waitDuration: const Duration(milliseconds: 500),
             offset: 10,
             content: Padding(
-              padding: paddingC('l5,r5,t2,b2'),
+              padding: pad(c: 'l5,r5,t2,b2'),
               child: AppText(size: small, text: message ?? '', color: styler.isDark ? black : white),
             ),
             preferredDirection: axisDirection ?? AxisDirection.down,

@@ -23,7 +23,7 @@ Future<bool> syncFromCloud(String space, String timestamp, String activity) asyn
     bool isNew = action.startsWith('c');
     bool isEdit = action.startsWith('e');
     bool isDelete = action.startsWith('d');
-    bool isForSession = feature.isCalendar(parent);
+    bool isForSession = parent.isCalendar();
 
     show('::syncFromCloud: $db,$space,$parent,$action,$id,$sid,$keys,$extras,$userName');
     Box box = storage(parent, space: space);

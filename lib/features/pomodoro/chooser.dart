@@ -22,7 +22,7 @@ class PomodoroChooser extends StatelessWidget {
           mph(),
           //
           AppButton(
-            padding: paddingS(),
+            padding: padS(),
             borderRadius: borderRadiusLarge,
             child: Wrap(
               spacing: tinyWidth(),

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../../_providers/views.dart';
 import '../../../_theme/breakpoints.dart';
 import '../../../_theme/spacing.dart';
-import '../../tags/selector.dart';
+import '../../tags/switcher.dart';
 import '../layout/layout_button.dart';
 import 'new.dart';
 
@@ -19,7 +19,7 @@ class NoteOptions extends StatelessWidget {
       return Row(
         children: [
           //
-          if (showTagSelector) TagSelector(),
+          if (showTagSelector) TagSwitcher(),
           //
           Expanded(child: spw()),
           //

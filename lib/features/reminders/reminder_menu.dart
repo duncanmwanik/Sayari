@@ -84,7 +84,7 @@ class _MyWidgetState extends State<MyWidget> {
                   },
                   noStyling: true,
                   child: Padding(
-                    padding: padding(p: 2.5),
+                    padding: pad(p: 2.5),
                     child: Row(
                       children: [
                         AppSvg(datePlusSvg, size: normal),
@@ -114,7 +114,7 @@ class _MyWidgetState extends State<MyWidget> {
                   },
                   noStyling: true,
                   child: Padding(
-                    padding: padding(p: 2.5),
+                    padding: pad(p: 2.5),
                     child: Row(
                       children: [
                         AppIcon(Icons.access_time, size: normal),

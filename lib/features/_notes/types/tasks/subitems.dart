@@ -24,7 +24,7 @@ class ListOfSubItems extends StatelessWidget {
     }
 
     return Padding(
-      padding: paddingM('t'),
+      padding: padM('t'),
       child: subItemsKeys.isNotEmpty
           ? ReorderableWrap(
               key: UniqueKey(),
@@ -52,7 +52,7 @@ class ListOfSubItems extends StatelessWidget {
               }),
             )
           : Padding(
-              padding: paddingM('ltb'),
+              padding: padM('ltb'),
               child: AppText(text: 'No task items yet...', size: small, faded: true),
             ),
     );

@@ -30,7 +30,7 @@ class ItemHeader extends StatelessWidget {
         children: [
           // header
           Padding(
-            padding: paddingC(item.hasEmoji() ? 'l5,r5,t3,b3' : 'l10,r5,t3,b3'),
+            padding: pad(c: item.hasEmoji() ? 'l5,r5,t3,b3' : 'l10,r5,t3,b3'),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

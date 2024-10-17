@@ -44,8 +44,8 @@ class SfCalendar extends StatelessWidget {
         height: isOverview ? 220 : 80.w,
         width: isOverview ? 220 : 80.w,
         constraints: BoxConstraints(maxHeight: 300, maxWidth: 300),
-        margin: isOverview ? paddingS() : null,
-        padding: isOverview ? null : (isBookingCalendar ? padding() : paddingS()),
+        margin: isOverview ? padS() : null,
+        padding: isOverview ? null : (isBookingCalendar ? pad() : padS()),
         decoration: isOverview
             ? null
             : BoxDecoration(

@@ -11,6 +11,7 @@ import '../../_models/item.dart';
 import '../../_services/hive/store.dart';
 import '../../_theme/breakpoints.dart';
 import '../../_theme/spacing.dart';
+import '../../_theme/variables.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/others/empty_box.dart';
 import '../calendar/_helpers/date_time/date_info.dart';
@@ -70,7 +71,7 @@ class _ChatViewState extends State<ChatView> {
                                   : dateChats.keys.toList();
 
                           return Padding(
-                            padding: padding(p: isSmallPC() ? 15.w : 0, s: 'lr'),
+                            padding: isSmallPC() ? pad(p: 15.w, s: 'lr') : noPadding,
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: List.generate(chatIds.length, (index) {

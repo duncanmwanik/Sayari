@@ -33,10 +33,7 @@ void popWhatsOnTop({dynamic value, void Function()? todo, void Function()? todoL
 }
 
 void closeDialog() => popWhatsOnTop();
-
-void closeAllSnackBars() {
-  ScaffoldMessenger.of(navigatorState.currentContext!).clearSnackBars();
-}
+void closeAllSnackBars() => ScaffoldMessenger.of(navigatorState.currentContext!).clearSnackBars();
 
 void closeBottomSheetIfOpen() {
   if (state.global.isBottomSheetOpen) {
@@ -51,9 +48,7 @@ Future<void> closeDrawerIfOpened() async {
 }
 
 void openDrawer() => scaffoldState.currentState!.openDrawer();
-
 void openEndDrawer() => scaffoldState.currentState!.openEndDrawer();
-
 bool isDrawerOpened() => scaffoldState.currentState?.isDrawerOpen == true;
 
 Future<bool> confirmExitApp() async {

@@ -10,10 +10,10 @@ Widget spaceActionButton({required String label, required IconData iconData, Fun
   return Visibility(
     visible: isAdmin(),
     child: Padding(
-      padding: paddingM('lr'),
+      padding: padM('lr'),
       child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            padding: padding(),
+            padding: pad(),
           ),
           onPressed: onPressed,
           child: Row(

@@ -21,7 +21,7 @@ class MessageActionBtn extends StatelessWidget {
       builder: (context, focus, child) => Visibility(
         visible: focus.id == item.sid,
         child: Padding(
-          padding: paddingC('t2'),
+          padding: padT('t'),
           child: AppButton(
             menuItems: chatMenu(item),
             isRound: true,

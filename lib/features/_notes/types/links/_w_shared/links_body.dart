@@ -39,7 +39,7 @@ class LinksBody extends StatelessWidget {
                 Expanded(
                   child: NoScrollBars(
                     child: SingleChildScrollView(
-                      padding: padding(),
+                      padding: pad(),
                       child: ConstrainedBox(
                         constraints: BoxConstraints(maxWidth: 500),
                         child: Column(
@@ -63,7 +63,7 @@ class LinksBody extends StatelessWidget {
                                 return AppButton(
                                   onPressed: isTitle ? null : () => openLink(link),
                                   borderRadius: borderRadiusMediumSmall,
-                                  padding: paddingC('l8,t8,r3,b8'),
+                                  padding: pad(c: 'l8,t8,r3,b8'),
                                   noStyling: isTitle,
                                   child: Row(
                                     children: [

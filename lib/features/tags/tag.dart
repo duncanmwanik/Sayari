@@ -11,6 +11,8 @@ import '../../_widgets/others/checkbox.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
 import '_helpers/delete_tag.dart';
+import '_helpers/helpers.dart';
+import 'var/tag_model.dart';
 
 class TagItem extends StatefulWidget {
   const TagItem({
@@ -24,7 +26,7 @@ class TagItem extends StatefulWidget {
     this.iconData = labelIcon,
   });
 
-  final String tag;
+  final Tag tag;
   final bool isSelection;
   final bool isSelected;
   final Function()? onSelect;
@@ -41,7 +43,6 @@ class _TagItemState extends State<TagItem> {
 
   @override
   Widget build(BuildContext context) {
-    bool isCurrentTag = widget.tag == state.views.selectedTag;
     bool showDelete = !widget.isDefault && !widget.isSelection && isHovered;
 
     return Padding(
@@ -50,10 +51,8 @@ class _TagItemState extends State<TagItem> {
         onPressed: widget.isSelection
             ? widget.onSelect
             : () {
-                state.views.updateSelectedTag(widget.tag);
-                if (widget.isPopup) {
-                  popWhatsOnTop();
-                }
+                state.views.updateSelectedTag(widget.tag.id);
+                if (widget.isPopup) popWhatsOnTop();
               },
         onHover: (value) => setState(() => isHovered = value),
         padding: EdgeInsets.only(
@@ -62,7 +61,7 @@ class _TagItemState extends State<TagItem> {
           top: kIsWeb ? 1 : 6,
           bottom: kIsWeb ? 1 : 6,
         ),
-        noStyling: !isCurrentTag && !widget.isSelection,
+        noStyling: !isSelectedTag(widget.tag.id) && !widget.isSelection,
         child: Row(
           children: [
             //
@@ -70,25 +69,19 @@ class _TagItemState extends State<TagItem> {
                 ? AppCheckBox(smallPadding: true, isChecked: widget.isSelected, onTap: widget.onSelect)
                 : AppIcon(widget.iconData, faded: true, size: 16),
             mpw(),
-            Expanded(child: AppText(text: widget.tag, weight: FontWeight.w500, overflow: TextOverflow.ellipsis)),
+            Expanded(child: AppText(text: widget.tag.name(), weight: FontWeight.w500, overflow: TextOverflow.ellipsis)),
             tpw(),
             AppButton(
               onPressed: showDelete
                   ? () => showConfirmationDialog(
                         title: 'Delete tag: <b>${widget.tag}</b>?',
                         yeslabel: 'Delete',
-                        onAccept: () => deleteTag(widget.tag),
+                        onAccept: () => deleteTag(widget.tag.id),
                       )
                   : null,
               noStyling: true,
               isSquare: true,
-              child: AppIcon(
-                Icons.close,
-                color: showDelete ? null : transparent,
-                faded: kIsWeb,
-                extraFaded: !kIsWeb,
-                size: 16,
-              ),
+              child: AppIcon(Icons.close, color: showDelete ? null : transparent, faded: true, size: 16),
             ),
             //
           ],

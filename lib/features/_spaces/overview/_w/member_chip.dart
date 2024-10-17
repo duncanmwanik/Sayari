@@ -37,7 +37,7 @@ class AdminChip extends StatelessWidget {
               noStyling: true,
               isRound: true,
               padding: noPadding,
-              margin: paddingM('r'),
+              margin: padM('r'),
               child: CircleAvatar(
                 backgroundColor: backgroundColors['${Random().nextInt(backgroundColors.length - 1)}']!.color.withOpacity(0.5),
                 radius: small,
@@ -75,7 +75,7 @@ class AdminChip extends StatelessWidget {
                 noStyling: true,
                 isSquare: true,
                 padding: noPadding,
-                margin: paddingM('l'),
+                margin: padM('l'),
                 child: AppIcon(closeIcon, faded: true, size: 18),
               )
           ],

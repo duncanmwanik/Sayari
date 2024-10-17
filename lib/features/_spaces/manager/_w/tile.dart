@@ -44,7 +44,7 @@ class Tile extends StatelessWidget {
         dense: true,
         initiallyExpanded: initiallyExpanded,
         tilePadding: EdgeInsets.only(left: 10, right: 5),
-        childrenPadding: paddingM(),
+        childrenPadding: padM(),
         shape: Border(),
         iconColor: styler.textColor(faded: true),
         trailing: trailing,

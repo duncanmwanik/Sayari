@@ -18,10 +18,7 @@ class ColumnLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      padding: padding(
-        t: isSmallPC() ? mediumHeight() : null,
-        r: 250 / 2,
-      ),
+      padding: pad(t: isSmallPC() ? mediumHeight() : null, r: 250 / 2),
       physics: isPhone() ? const SnapScrollPhysics(snapSize: 300) : null,
       child: ReorderableRow(
         ignorePrimaryScrollController: true,

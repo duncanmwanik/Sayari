@@ -18,28 +18,14 @@ class Features {
   String chat = 'chat';
   String tags = 'tags';
   String flags = 'flags';
-  String subTypes = 'subtypes';
+  String subTypes = 'subthiss';
   String pomodoro = 'pomodoro';
   String explore = 'explore';
   String saved = 'saved';
-
-  bool isTimeline(String type) => timeline == type;
-  bool isCalendar(String type) => calendar == type;
-  bool isNote(String type) => notes == type;
-  bool isTask(String type) => tasks == type;
-  bool isChat(String type) => chat == type;
-  bool isFinance(String type) => finances == type;
-  bool isLink(String type) => links == type;
-  bool isBooking(String type) => bookings == type;
-  bool isShare(String type) => share == type;
-  bool isPublish(String type) => publish == type;
-  bool isSpace(String type) => space == type;
-
-  FeatureData data(String type) => features[type] ?? FeatureData();
 }
 
-Map<String, FeatureData> features = {
-  feature.space: const FeatureData(title: 'Spaces', path: 'book'),
+Map<String, FeatureData> featureData = {
+  feature.space: const FeatureData(title: 'Spaces', path: 'spaces'),
   feature.timeline: const FeatureData(title: 'Timeline'),
   feature.calendar: const FeatureData(title: 'Calendar', message: 'New Session'),
   feature.notes: const FeatureData(title: 'Notes', path: 'shared', message: 'New Note'),
@@ -50,14 +36,27 @@ Map<String, FeatureData> features = {
   feature.portfolios: const FeatureData(title: 'Portfolios', path: 'portfolio'),
   feature.bookings: const FeatureData(title: 'Bookings', path: 'booking'),
   feature.explore: const FeatureData(title: 'Explore'),
-  feature.chat: const FeatureData(title: 'Chat', message: 'Send Message'),
-  feature.pomodoro: const FeatureData(title: 'Pomodoro', message: 'Pomodoro'),
+  feature.chat: const FeatureData(title: 'Chat'),
+  feature.pomodoro: const FeatureData(title: 'Pomodoro'),
   feature.saved: const FeatureData(title: 'Saved'),
   feature.share: const FeatureData(title: 'Shared', path: 'shared'),
   feature.publish: const FeatureData(title: 'Published', path: 'blog'),
 };
 
-const int sessionsViewDailyNo = 0;
-const int sessionsViewWeeklyNo = 1;
-const int sessionsViewMonthlyNo = 2;
-const int sessionsViewYearlyNo = 3;
+extension FeatureExtentions on String {
+  String title() => featureData[this]!.title;
+  String message() => featureData[this]!.message;
+  String path() => featureData[this]!.path;
+
+  bool isTimeline() => feature.timeline == this;
+  bool isNote() => feature.notes == this;
+  bool isCalendar() => feature.calendar == this;
+  bool isTask() => feature.tasks == this;
+  bool isChat() => feature.chat == this;
+  bool isFinance() => feature.finances == this;
+  bool isLink() => feature.links == this;
+  bool isBooking() => feature.bookings == this;
+  bool isShare() => feature.share == this;
+  bool isPublish() => feature.publish == this;
+  bool isSpace() => feature.space == this;
+}

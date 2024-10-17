@@ -21,7 +21,7 @@ class FileOptions extends StatelessWidget {
       tooltip: 'Options',
       menuItems: fileOptions(fileId, fileName),
       isRound: isImageFile(fileName),
-      padding: padding(p: 3),
+      padding: pad(p: 3),
       color: styler.secondaryColor(),
       noStyling: !isImageFile(fileName),
       child: AppIcon(moreIcon),

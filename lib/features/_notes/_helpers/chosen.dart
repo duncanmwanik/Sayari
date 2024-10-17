@@ -15,7 +15,7 @@ List getChosenItems(Map data, String currentTag, String type) {
     bool isPinned = noteData['p'] == '1';
     bool isDeleted = noteData['x'] == '1';
     bool isArchived = noteData['a'] == '1';
-    bool isChosenType = feature.isTask(type) ? noteData.containsKey(type) : !noteData.containsKey(feature.tasks);
+    bool isChosenType = type.isTask() ? noteData.containsKey(type) : !noteData.containsKey(feature.tasks);
 
     if (!isChosenType) continue;
 

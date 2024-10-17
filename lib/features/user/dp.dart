@@ -44,7 +44,7 @@ class UserDp extends StatelessWidget {
             width: radius,
             isRound: true,
             dryWidth: true,
-            padding: paddingS(),
+            padding: padS(),
             color: hoverColor,
             hoverColor: hoverColor,
             child: hasDp

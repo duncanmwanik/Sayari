@@ -40,11 +40,11 @@ class ChatInput extends StatelessWidget {
           ScrollChatsButton(),
           //
           Padding(
-            padding: paddingS(),
+            padding: padS(),
             child: Blur(
               radius: borderRadiusTiny,
               child: Container(
-                padding: paddingC('l5,t5,r5,b5'),
+                padding: padS(),
                 decoration: BoxDecoration(
                   color: styler.appColor(1),
                   borderRadius: BorderRadius.circular(borderRadiusTiny),
@@ -71,7 +71,7 @@ class ChatInput extends StatelessWidget {
                           //
                           Consumer<InputProvider>(
                               builder: (context, input, child) => Padding(
-                                    padding: paddingM(input.item.hasFiles() ? 'b' : ''),
+                                    padding: padM(input.item.hasFiles() ? 'b' : ''),
                                     child: FileList(fileData: getFiles(input.item.data), isOverview: false),
                                   )),
                           //
@@ -91,7 +91,7 @@ class ChatInput extends StatelessWidget {
                               // message input
                               Expanded(
                                 child: Padding(
-                                  padding: paddingC('b2'),
+                                  padding: padT('b'),
                                   child: SuperEditor(
                                     maxHeight: 40.h,
                                     padding: noPadding,
@@ -110,7 +110,7 @@ class ChatInput extends StatelessWidget {
                         ],
                       )
                     : Padding(
-                        padding: paddingM(),
+                        padding: padM(),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

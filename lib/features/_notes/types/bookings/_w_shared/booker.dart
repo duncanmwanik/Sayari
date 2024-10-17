@@ -10,7 +10,6 @@ import '../../../../../_services/firebase/sync_to_cloud.dart';
 import '../../../../../_theme/spacing.dart';
 import '../../../../../_theme/variables.dart';
 import '../../../../../_variables/features.dart';
-import '../../../../../_variables/navigation.dart';
 import '../../../../../_widgets/buttons/button.dart';
 import '../../../../../_widgets/forms/input.dart';
 import '../../../../../_widgets/others/icons.dart';
@@ -20,6 +19,7 @@ import '../../../../../_widgets/others/text.dart';
 import '../../../../../_widgets/others/toast.dart';
 import '../../../../share/state/share.dart';
 import '../../../../share/w/shared_info.dart';
+import '../var/var.dart';
 import 'date.dart';
 import 'time.dart';
 
@@ -71,7 +71,7 @@ class _ShareScreenState extends State<Booker> {
                   // mph(),
                   //
                   Container(
-                    padding: paddingL(),
+                    padding: padL(),
                     decoration: BoxDecoration(
                       color: styler.appColor(styler.isDark ? 0.5 : 0.7),
                       borderRadius: BorderRadius.circular(borderRadiusMedium),

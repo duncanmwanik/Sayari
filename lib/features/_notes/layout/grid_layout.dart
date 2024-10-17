@@ -29,7 +29,7 @@ class GridLayout extends StatelessWidget {
           spacing: 12,
           runSpacing: 12,
           maxMainAxisCount: isGrid ? null : 1,
-          padding: padding(
+          padding: pad(
             t: isSmallPC() ? mediumHeight() : null,
             b: largeHeight(),
           ),

@@ -45,7 +45,7 @@ class HabitOverview extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Padding(
-        padding: paddingM('t'),
+        padding: padM('t'),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

@@ -17,7 +17,7 @@ class NoteEditorOverview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: paddingM('t'),
+      padding: padM('t'),
       child: IgnorePointer(
         child: QuillEditor.basic(
           configurations: QuillEditorConfigurations(

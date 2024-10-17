@@ -33,7 +33,7 @@ class BookingsList extends StatelessWidget {
           //
           // hide/show booked sessions
           Padding(
-            padding: padding(s: 't'),
+            padding: padN('t'),
             child: AppButton(
               onPressed: () => input.update('ep0', isBookingsExpanded ? '0' : '1'),
               noStyling: true,

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../../_providers/focus.dart';
-import '../../../../../_theme/spacing.dart';
-import '../../../../../_theme/variables.dart';
-import '../../../../../_widgets/buttons/button.dart';
-import '../../../../../_widgets/others/icons.dart';
-import '../../../../../_widgets/others/text.dart';
-import '../_helpers/quicktask_helpers.dart';
+import '../../../../_providers/focus.dart';
+import '../../../../_theme/spacing.dart';
+import '../../../../_theme/variables.dart';
+import '../../../../_widgets/buttons/button.dart';
+import '../../../../_widgets/others/icons.dart';
+import '../../../../_widgets/others/text.dart';
+import '../tasks/_helpers/quicktask_helpers.dart';
 import 'quick_tasks_list.dart';
 
 class QuickTasks extends StatelessWidget {
@@ -16,7 +16,7 @@ class QuickTasks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: paddingL('tb'),
+      padding: padL('tb'),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,

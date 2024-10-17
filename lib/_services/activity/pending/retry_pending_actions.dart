@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import '../../../_helpers/debug.dart';
-import '../../../_helpers/internet_connection.dart';
+import '../../../_helpers/internet.dart';
 import '../../firebase/sync_to_cloud.dart';
 import '../../hive/local_storage_service.dart';
 

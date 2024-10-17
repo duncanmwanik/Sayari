@@ -81,7 +81,7 @@ class ImageOverview extends StatelessWidget {
                         borderRadius: 8,
                         padding: EdgeInsets.zero,
                         child: Container(
-                          padding: paddingS(),
+                          padding: padS(),
                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(borderRadiusSmall)),
                           child: Center(child: AppLoader(color: styler.appColor(2))),
                         ),
@@ -104,7 +104,7 @@ class ImageOverview extends StatelessWidget {
                       ),
                       child: Center(
                           child: Padding(
-                        padding: paddingL(),
+                        padding: padL(),
                         child: AppText(
                           text: fileName,
                           textAlign: TextAlign.center,

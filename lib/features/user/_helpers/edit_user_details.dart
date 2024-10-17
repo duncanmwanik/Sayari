@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../_helpers/debug.dart';
-import '../../../_helpers/internet_connection.dart';
+import '../../../_helpers/internet.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_services/hive/store.dart';
 import '../../../_widgets/others/toast.dart';

@@ -7,6 +7,7 @@ import '../../../_providers/views.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
+import 'nav_add.dart';
 import 'nav_item.dart';
 
 class HorizontalNavigationBox extends StatelessWidget {
@@ -31,7 +32,7 @@ class HorizontalNavigationBox extends StatelessWidget {
                   navItem(tasksIcon, feature.tasks),
                   navItem(calendarIcon, feature.calendar),
                   navItem(chatIcon, feature.chat),
-                  // NavMenu(),
+                  NavAdd(),
                   //
                 ],
               ),

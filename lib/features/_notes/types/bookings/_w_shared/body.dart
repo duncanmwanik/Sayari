@@ -30,7 +30,7 @@ class BookingBody extends StatelessWidget {
                   SharedHeader(userId: userId, data: data),
                   //
                   Padding(
-                    padding: padding(),
+                    padding: pad(),
                     child: Wrap(
                       runSpacing: mediumHeight(),
                       children: [

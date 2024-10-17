@@ -8,6 +8,7 @@ import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../_spaces/_helpers/select.dart';
 import '../../user/_helpers/helpers.dart';
+import '../var/var.dart';
 import 'auth_error_handler.dart';
 
 Future<bool> signInUsingEmailPassword({
@@ -21,7 +22,7 @@ Future<bool> signInUsingEmailPassword({
     hideKeyboard();
 
     // Validate the Sign In Form Input
-    if (!validate || signInFormKey.currentState!.validate()) {
+    if (!validate || authFormKey.currentState!.validate()) {
       FirebaseAuth auth = FirebaseAuth.instance;
       User? user;
       UserCredential userCredential = await auth.signInWithEmailAndPassword(email: email, password: password);

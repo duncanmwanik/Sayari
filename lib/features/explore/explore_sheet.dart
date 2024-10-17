@@ -22,7 +22,7 @@ Future<void> showExploreSheet() async {
     //
     content: NoScrollBars(
       child: SingleChildScrollView(
-        padding: padding(s: 't'),
+        padding: padN('t'),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [

@@ -62,7 +62,7 @@ Future<dynamic> showAppDialog({
                         alignment: Alignment.topLeft,
                         child: Container(
                           color: showTitleColor ? styler.appColor(isDark() ? 0.5 : 1) : null,
-                          padding: paddingM(),
+                          padding: padM(),
                           width: double.infinity,
                           child: Row(
                             children: [
@@ -72,8 +72,8 @@ Future<dynamic> showAppDialog({
                               if (showClose)
                                 AppButton(
                                   onPressed: () => popWhatsOnTop(),
-                                  margin: paddingS('l'),
-                                  padding: paddingS(),
+                                  margin: padS('l'),
+                                  padding: padS(),
                                   isSquare: true,
                                   child: AppIcon(closeIcon, size: 16, faded: true),
                                 )
@@ -85,13 +85,12 @@ Future<dynamic> showAppDialog({
                     if (content != null)
                       Flexible(
                           child: Padding(
-                        padding: contentPadding ?? paddingM(),
+                        padding: contentPadding ?? padM(),
                         child: content,
                       )),
                     //
                     if (actions != null) tph(),
-                    if (actions != null)
-                      Padding(padding: paddingM(), child: Row(mainAxisAlignment: MainAxisAlignment.end, children: actions)),
+                    if (actions != null) Padding(padding: padM(), child: Row(mainAxisAlignment: MainAxisAlignment.end, children: actions)),
                     //
                   ],
                 ),

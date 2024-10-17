@@ -152,7 +152,7 @@ class _ViewerState extends State<Viewer> {
                     borderRadius: 8,
                     padding: EdgeInsets.zero,
                     child: Container(
-                      padding: paddingS(),
+                      padding: padS(),
                       decoration: BoxDecoration(borderRadius: BorderRadius.circular(borderRadiusSmall)),
                       child: Center(child: CircularProgressIndicator(color: styler.appColor(2), strokeWidth: 2)),
                     ),
@@ -166,7 +166,7 @@ class _ViewerState extends State<Viewer> {
         Align(
           alignment: Alignment.topCenter,
           child: Padding(
-            padding: paddingM(),
+            padding: padM(),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -254,7 +254,7 @@ class _ViewerState extends State<Viewer> {
           Align(
             alignment: Alignment.center,
             child: Padding(
-              padding: padding(),
+              padding: pad(),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

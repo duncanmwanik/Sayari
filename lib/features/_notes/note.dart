@@ -46,6 +46,7 @@ class Note extends StatelessWidget {
             onEnter: (event) => isShare() ? null : state.focus.set(item.id),
             onExit: (event) => isShare() ? null : state.focus.reset(),
             child: Blur(
+              enabled: isImage(),
               radius: borderRadiusTinySmall,
               child: Card(
                 elevation: 0,
@@ -72,11 +73,11 @@ class Note extends StatelessWidget {
                         ImageOverview(item: item),
                         ItemHeader(item: item),
                         tph(),
-                        Padding(padding: paddingS('lr'), child: AppDivider()),
+                        Padding(padding: padS('lr'), child: AppDivider()),
                         //
                         Flexible(
                           child: Padding(
-                            padding: padding(s: 'lrb'),
+                            padding: padN('lrb'),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               crossAxisAlignment: CrossAxisAlignment.start,

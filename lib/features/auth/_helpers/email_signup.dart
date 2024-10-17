@@ -10,6 +10,7 @@ import '../../../_variables/navigation.dart';
 import '../../../_widgets/others/toast.dart';
 import '../../_spaces/_helpers/create.dart';
 import '../../user/_helpers/helpers.dart';
+import '../var/var.dart';
 import 'auth_error_handler.dart';
 
 Future<bool> signUpUsingEmailPassword({
@@ -23,7 +24,7 @@ Future<bool> signUpUsingEmailPassword({
   try {
     hideKeyboard();
     // Validate the Sign Up Form Input
-    if (signInFormKey.currentState!.validate()) {
+    if (authFormKey.currentState!.validate()) {
       // Check for password equality
       if (password == confirmPassword) {
         FirebaseAuth auth = FirebaseAuth.instance;

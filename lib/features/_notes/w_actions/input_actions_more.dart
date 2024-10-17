@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../_helpers/global.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_providers/_providers.dart';
 import '../../../_providers/input.dart';
@@ -34,9 +33,9 @@ class MoreInputActions extends StatelessWidget {
             label: 'Add Tags',
             leading: labelIcon,
             menuItems: tagsMenu(
+              item: input.item,
               isSelection: true,
-              alreadySelected: splitList(input.item.tags()),
-              onDone: (newTags) => input.update('l', newTags.join('|')),
+              onUpdate: (newTags) => input.update('l', newTags),
             ),
           ),
           //

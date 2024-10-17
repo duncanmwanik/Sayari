@@ -25,7 +25,7 @@ class Dates extends StatelessWidget {
       return Visibility(
         visible: input.item.data['cx'] != '1',
         child: Padding(
-          padding: paddingS('b'),
+          padding: padS('b'),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [

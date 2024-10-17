@@ -29,7 +29,7 @@ class PublishBookBody extends StatelessWidget {
           Expanded(
             child: isTabAndBelow()
                 ? Padding(
-                    padding: padding(),
+                    padding: pad(),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -46,13 +46,13 @@ class PublishBookBody extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: padding(s: 'lt'),
+                        padding: padN('lt'),
                         child: PublishedBookIntro(sharedData: sharedData, data: data, userName: userName),
                       ),
                       Expanded(
                           child: Container(
-                        // margin: padding(s: 'l'),
-                        // padding: padding(s: 'ltr'),
+                        // margin: padN( 'l'),
+                        // padding: padN( 'ltr'),
                         decoration: BoxDecoration(
                           border: Border(left: BorderSide(color: styler.borderColor(), width: isDark() ? 0.5 : 1)),
                         ),

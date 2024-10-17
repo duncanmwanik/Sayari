@@ -21,7 +21,7 @@ class SharedHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: paddingM('ltb'),
+      padding: padM('ltb'),
       decoration: BoxDecoration(
         border: Border(bottom: BorderSide(color: styler.borderColor(), width: 0.5)),
       ),
@@ -45,7 +45,7 @@ class SharedHeader extends StatelessWidget {
           ),
           //
           Spacer(),
-          if (feature.isSpace(state.share.type)) LayoutButton(),
+          if (state.share.type.isShare()) LayoutButton(),
           ThemeButton(),
           tpw(),
           SharedAction(hasInfo: false),

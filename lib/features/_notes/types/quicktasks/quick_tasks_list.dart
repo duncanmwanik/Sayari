@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:reorderables/reorderables.dart';
 
-import '../../../../../_models/item.dart';
-import '../../../../../_services/hive/store.dart';
-import '../../../../../_theme/spacing.dart';
-import '../../../../../_variables/features.dart';
-import '../../../../../_widgets/others/empty_box.dart';
+import '../../../../_models/item.dart';
+import '../../../../_services/hive/store.dart';
+import '../../../../_theme/spacing.dart';
+import '../../../../_variables/features.dart';
+import '../../../../_widgets/others/empty_box.dart';
 import 'qt_item.dart';
 
 class ListOfQuickTasks extends StatelessWidget {
@@ -22,7 +22,7 @@ class ListOfQuickTasks extends StatelessWidget {
           taskKeys.sort((a, b) => int.parse(tasks[a]['o']).compareTo(int.parse(tasks[b]['o'])));
 
           return Padding(
-            padding: paddingM('tb'),
+            padding: padM('tb'),
             child: ValueListenableBuilder(
                 valueListenable: storage(feature.timeline).listenable(),
                 builder: (context, box, child) {

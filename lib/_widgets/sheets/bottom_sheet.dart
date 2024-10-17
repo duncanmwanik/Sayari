@@ -33,7 +33,7 @@ Future<void> showAppBottomSheet({
   // we record that the bottom sheet is open
   state.global.updateIsBottomSheetOpen(true);
   changeStatusAndNavigationBarColor(getThemeType(), isSecondary: true);
-  if (title != null) setWebTitle(title);
+  if (title != null) setWindowTitle(title);
 
   await showModalBottomSheet(
       context: navigatorState.currentContext!,
@@ -130,5 +130,5 @@ Future<void> showAppBottomSheet({
 
   state.global.updateIsBottomSheetOpen(false);
   changeStatusAndNavigationBarColor(getThemeType());
-  if (title != null) resetWebTitle();
+  if (title != null) resetWindowTitle();
 }

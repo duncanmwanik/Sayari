@@ -1,11 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_sizer/responsive_sizer.dart';
 
 import '../../_helpers/helpers.dart';
 import '../../_helpers/navigation.dart';
-import '../../_helpers/ui.dart';
 import '../../_models/item.dart';
 import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
@@ -13,7 +11,6 @@ import '../../_theme/breakpoints.dart';
 import '../../_theme/spacing.dart';
 import '../../_theme/variables.dart';
 import '../../_widgets/buttons/button.dart';
-import '../../_widgets/forms/input.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/others/scroll.dart';
 import '../../_widgets/quill/editor.dart';
@@ -28,6 +25,7 @@ import 'types/links/_w/links.dart';
 import 'types/tasks/task_options.dart';
 import 'w/details.dart';
 import 'w/footer.dart';
+import 'w/title.dart';
 import 'w_actions/input_actions.dart';
 
 Future<void> showNoteBottomSheet(Item item) async {
@@ -62,32 +60,17 @@ Future<void> showNoteBottomSheet(Item item) async {
             //
             sph(),
             Padding(
-              padding: padding(p: isPhone() ? 10 : 15, s: 'lr'),
+              padding: padL('lr'),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //
-                  DataInput(
-                    hintText: 'Title ',
-                    initialValue: item.isNew() ? null : item.title(),
-                    onChanged: (value) {
-                      state.input.update('t', value.trim());
-                      setWebTitle(capitalFirst(value.trim().isNotEmpty ? value : 'Untitled'));
-                    },
-                    onFieldSubmitted: (_) => state.quill.controller.moveCursorToEnd(),
-                    fontSize: 2.5.h,
-                    weight: FontWeight.bold,
-                    textCapitalization: TextCapitalization.sentences,
-                    filled: false,
-                    autofocus: item.isNew(),
-                    contentPadding: EdgeInsets.zero,
-                  ),
-                  //
+                  NoteTitle(item: item),
                   Share(),
                   Finance(),
                   Links(),
-                  ItemDetails(item: Item(data: {})),
+                  ItemDetails(item: Item.empty()),
                   TaskOptions(),
                   Habit(),
                   Booking(),

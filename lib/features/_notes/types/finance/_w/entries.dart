@@ -20,7 +20,7 @@ class Entries extends StatelessWidget {
 
       return ListView.separated(
         shrinkWrap: true,
-        padding: padding(s: 't'),
+        padding: padN('t'),
         physics: NeverScrollableScrollPhysics(),
         itemCount: entriesKeys.length,
         separatorBuilder: (context, index) => sph(),

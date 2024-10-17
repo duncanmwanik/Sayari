@@ -1,7 +1,7 @@
 import '../../_helpers/debug.dart';
 import '../../_helpers/global.dart';
 import '../../_helpers/helpers.dart';
-import '../../_helpers/internet_connection.dart';
+import '../../_helpers/internet.dart';
 import '../../_variables/features.dart';
 import '../../features/_spaces/_helpers/common.dart';
 import '../../features/user/_helpers/helpers.dart';

@@ -9,7 +9,7 @@ Map getHourMap(Map source, int hour) {
 }
 
 void removeDuplicateReminders(Item item) {
-  if (feature.isCalendar(item.parent) && item.hasReminder()) {
+  if (item.parent.isCalendar() && item.hasReminder()) {
     item.data['r'] = joinList(splitList(item.reminder()).toSet().toList());
   }
 }

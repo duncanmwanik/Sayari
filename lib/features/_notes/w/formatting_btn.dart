@@ -15,7 +15,7 @@ class NoteFormarttingButton extends StatelessWidget {
       bool showToolbar = input.item.data['et'] == '1';
 
       return Padding(
-        padding: paddingM('l'),
+        padding: padM('l'),
         child: AppButton(
           onPressed: () => input.update('et', showToolbar ? '0' : '1'),
           noStyling: !showToolbar,

@@ -9,7 +9,7 @@ import '../../_services/firebase/database.dart';
 import '../../_theme/variables.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/others/background.dart';
-import '../_notes/blog/blog_body.dart';
+import '../_notes/types/blog/blog_body.dart';
 import '../_notes/types/bookings/_w_shared/body.dart';
 import '../_notes/types/links/_w_shared/links_body.dart';
 import '_helpers/helpers.dart';
@@ -52,7 +52,7 @@ class _ShareScreenState extends State<SharedNote> {
         if (isShared) {
           isActive = '1';
           // is publish active
-          if (feature.isPublish(widget.type)) {
+          if (widget.type.isPublish()) {
             await cloudService.getData(db: 'spaces', '$spaceId/${feature.notes}/$id/${feature.publish}').then((snapshot) async {
               isPublished = (snapshot.value != null ? snapshot.value as String : '0') == '1';
               if (!isPublished) isActive = '0';
@@ -95,10 +95,10 @@ class _ShareScreenState extends State<SharedNote> {
                             alignment: Alignment.topCenter,
                             child:
                                 // shared or published
-                                feature.isShare(widget.type) || (feature.isPublish(widget.type) && isPublished)
+                                widget.type.isShare() || (widget.type.isPublish() && isPublished)
                                     ? BlogBody(id: id, userId: userId, userName: userName, data: noteData)
                                     // booking
-                                    : feature.isBooking(widget.type)
+                                    : widget.type.isBooking()
                                         ? BookingBody(
                                             spaceId: spaceId,
                                             id: id,
@@ -107,7 +107,7 @@ class _ShareScreenState extends State<SharedNote> {
                                             data: noteData,
                                           )
                                         // links
-                                        : feature.isLink(widget.type)
+                                        : widget.type.isLink()
                                             ? LinksBody(
                                                 spaceId: spaceId,
                                                 id: id,

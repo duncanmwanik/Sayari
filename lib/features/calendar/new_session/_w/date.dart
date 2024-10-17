@@ -27,7 +27,7 @@ class DatePicker extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //
-                    Padding(padding: paddingS('t'), child: AppIcon(Icons.calendar_today, faded: true, size: normal)),
+                    Padding(padding: padS('t'), child: AppIcon(Icons.calendar_today, faded: true, size: normal)),
                     mpw(),
                     //
                     Expanded(

@@ -12,7 +12,7 @@ class ViewsProvider with ChangeNotifier {
   void setView(String type) {
     view = type;
     globalBox.put('view', type);
-    layout = globalBox.get('${liveSpace()}_layout_$view', defaultValue: feature.isTask(type) ? 'column' : 'grid');
+    layout = globalBox.get('${liveSpace()}_layout_$view', defaultValue: type.isTask() ? 'column' : 'grid');
     state.selection.clear();
     notifyListeners();
   }
@@ -35,7 +35,7 @@ class ViewsProvider with ChangeNotifier {
   // layout for notes
   String layout = globalBox.get(
     '${liveSpace()}_layout_${globalBox.get('view', defaultValue: feature.notes)}',
-    defaultValue: feature.isTask(globalBox.get('view', defaultValue: feature.notes)) ? 'column' : 'grid',
+    defaultValue: (globalBox.get('view', defaultValue: feature.notes) == feature.tasks) ? 'column' : 'grid',
   );
 
   void setLayout(String type, String newLayout) {

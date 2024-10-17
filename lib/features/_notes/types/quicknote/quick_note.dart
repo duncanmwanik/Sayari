@@ -24,7 +24,7 @@ class QuickNote extends StatelessWidget {
     state.quill.reset();
 
     return Padding(
-      padding: paddingL('b'),
+      padding: padL('b'),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,14 +36,18 @@ class QuickNote extends StatelessWidget {
               AppIcon(Icons.bolt, size: normal, faded: true),
               spw(),
               AppText(text: 'Quick Note', faded: true),
+              Spacer(),
+              QuickNoteFormartingButton(),
+              spw(),
+              SaveQuickNoteBtn(),
             ],
           ),
           mph(),
           //
           AppButton(
               blur: isImage(),
-              padding: paddingS(),
-              color: styler.appColor(0.5),
+              padding: padS(),
+              color: styler.appColor(0.3),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,31 +59,20 @@ class QuickNote extends StatelessWidget {
                         return Visibility(
                           visible: box.get('timelineShowToolbar', defaultValue: false),
                           child: Padding(
-                            padding: paddingM('b'),
+                            padding: padL('b'),
                             child: QuillToolbar(child: getQuillToolbar(isMin: true)),
                           ),
                         );
                       }),
                   // input
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: paddingM('lrb'),
-                          child: SuperEditor(
-                            minHeight: 5.h,
-                            padding: paddingC('t5'),
-                            placeholder: 'Add a quick note...',
-                            scrollable: true,
-                          ),
-                        ),
-                      ),
-                      mpw(),
-                      QuickNoteFormartingButton(),
-                      spw(),
-                      SaveQuickNoteBtn(),
-                    ],
+                  Padding(
+                    padding: padM('lrb'),
+                    child: SuperEditor(
+                      minHeight: 5.h,
+                      padding: padS('t'),
+                      placeholder: 'Type something quick...',
+                      scrollable: true,
+                    ),
                   ),
                   //
                 ],

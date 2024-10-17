@@ -30,7 +30,7 @@ class BookingIntro extends StatelessWidget {
     return ConstrainedBox(
       constraints: BoxConstraints(maxWidth: 500),
       child: Container(
-        padding: paddingL(),
+        padding: padL(),
         decoration: BoxDecoration(
           color: styler.appColor(styler.isDark ? 0.5 : 0.7),
           borderRadius: BorderRadius.circular(borderRadiusMedium),

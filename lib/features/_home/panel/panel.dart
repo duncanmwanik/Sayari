@@ -29,7 +29,7 @@ class Panel extends StatelessWidget {
       return Container(
         width: showPanel ? 253 : 53,
         height: double.maxFinite,
-        margin: paddingM(),
+        margin: padM(),
         decoration: BoxDecoration(
             color: isDarkOnly() ? styler.appColor(0.3) : null,
             borderRadius: BorderRadius.circular(borderRadiusTiny),
@@ -38,9 +38,9 @@ class Panel extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             //
-            Padding(padding: paddingS('ltrb'), child: SpaceName(isMin: !showPanel)),
+            Padding(padding: padS('ltrb'), child: SpaceName(isMin: !showPanel)),
             if (!showPanel) tph(),
-            Padding(padding: paddingS('lr'), child: AppDivider()),
+            Padding(padding: padS('lr'), child: AppDivider()),
             //
             msph(),
             Expanded(

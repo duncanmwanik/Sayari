@@ -61,7 +61,7 @@ class _HabitWeekState extends State<LinkItem> {
     return AppButton(
       borderRadius: borderRadiusMediumSmall,
       color: styler.appColor(styler.isDark ? 0.5 : 1),
-      padding: padding(),
+      padding: pad(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisSize: MainAxisSize.min,

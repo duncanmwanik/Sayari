@@ -1,8 +1,5 @@
-import 'dart:ui';
-
 import '../../../_helpers/global.dart';
 import '../../../_services/hive/store.dart';
-import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
 
 class Tag {
@@ -10,7 +7,7 @@ class Tag {
   final String id;
 
   String data() => storage(feature.tags).get(id, defaultValue: 'x,tag');
-  String name() => splitList(data(), separator: ',').last;
-  String color() => splitList(data(), separator: ',').first;
-  Color bgColor() => transparent;
+  String name() => isDefault() ? id : splitList(data(), separator: ',').last;
+  String color() => isDefault() ? 'x' : splitList(data(), separator: ',').first;
+  bool isDefault() => ['All', 'Archive', 'Trash'].contains(id);
 }

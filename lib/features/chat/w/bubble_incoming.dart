@@ -56,7 +56,7 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
             Align(
               alignment: Alignment.topLeft,
               child: Padding(
-                padding: paddingC('t3'),
+                padding: padT('t'),
                 child: AppButton(
                   onPressed: () {},
                   noStyling: true,
@@ -79,7 +79,7 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
                 borderRadius: borderRadiusTiny,
                 color: Color.alphaBlend(styler.appColor(isImage() ? 1 : (isDark() ? 0.1 : 0.5)), styler.appColor(1)),
                 child: Container(
-                  padding: paddingM(),
+                  padding: padM(),
                   constraints: BoxConstraints(maxWidth: constraints.maxWidth * 0.7, minWidth: 100),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,

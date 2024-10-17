@@ -19,7 +19,7 @@ class Finance extends StatelessWidget {
         return Visibility(
           visible: input.item.data[feature.finances] != null,
           child: Padding(
-            padding: paddingS('t'),
+            padding: padS('t'),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,

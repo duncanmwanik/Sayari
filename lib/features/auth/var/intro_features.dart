@@ -1,6 +1,6 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../_models/features.dart';
+import '../../../_models/features.dart';
 
 List<IntroFeature> introFeatures = [
   const IntroFeature(title: 'Notes', description: 'Write anything.', icon: FontAwesomeIcons.solidNoteSticky),

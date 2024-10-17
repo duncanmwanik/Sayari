@@ -1,7 +1,8 @@
+import '../_helpers/extentions/strings.dart';
 import '../_helpers/global.dart';
 import '../_helpers/helpers.dart';
 import '../_theme/helpers.dart';
-import '../_variables/constants.dart';
+import '../_variables/as.dart';
 import '../_variables/features.dart';
 import '../features/_notes/types/tasks/_helpers/helper.dart';
 import '../features/_spaces/_helpers/common.dart';
@@ -35,9 +36,9 @@ class Item {
   String tags() => data['l'] ?? '';
   String coverId() => data['w'] ?? '';
   String coverName() => data[coverId()] ?? '';
-  String sharedLink() => '$sayariDefaultPath/${features[itemType()]!.path}/${minString(title())}-${liveSpace()}$id';
-  String publishedLink() => '$sayariDefaultPath/${features[feature.publish]!.path}/${minString(title())}-${liveSpace()}$id';
-  String demoLink() => '/${features[itemType()]!.path}/${minString(title())}-${liveSpace()}$id';
+  String sharedLink() => '$sayariDefaultPath/${itemType().path}/${title().bare()}-${liveSpace()}$id';
+  String publishedLink() => '$sayariDefaultPath/${feature.publish.path}/${title().bare()}-${liveSpace()}$id';
+  String demoLink() => '/${itemType().path}/${title().bare()}-${liveSpace()}$id';
   Map files() => getFiles(data);
   List<String> flags() => splitList(data['g']);
   Map subItems() => getSubItems(data);
@@ -51,6 +52,7 @@ class Item {
   bool hasTitle() => data['t'] != null && data['t'] != '';
   bool hasColor() => hasColour(data['c']);
   bool hasEmoji() => data['ej'] != null;
+  bool hasTags() => tags().isNotEmpty;
   bool hasReminder() => reminder().isNotEmpty;
   bool hasDetails() => reminder().isNotEmpty || tags().isNotEmpty || files().isNotEmpty;
   bool hasOverview() => data['w'] != null && data['w'] != '';

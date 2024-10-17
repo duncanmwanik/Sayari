@@ -29,9 +29,9 @@ class Share extends StatelessWidget {
       return Visibility(
           visible: data[feature.share] != null && input.item.isNote() && !isShare(),
           child: Padding(
-            padding: paddingC('t8'),
+            padding: padM('t'),
             child: AppButton(
-              padding: paddingC('l6,r6,t6,b6'),
+              padding: padMS(),
               color: styler.appColor(0.5),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -99,7 +99,7 @@ class Share extends StatelessWidget {
                   //
                   if (isExpanded)
                     Padding(
-                      padding: paddingM('l'),
+                      padding: padM('l'),
                       child: AppText(
                         text: 'A published note will appear in the Sayari Blog.',
                         faded: true,

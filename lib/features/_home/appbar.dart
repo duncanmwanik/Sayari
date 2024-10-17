@@ -26,13 +26,13 @@ class CustomAppBar extends StatelessWidget {
       bool isItemSelection = selection.isSelection;
 
       return Padding(
-        padding: isTabAndBelow() ? paddingC('l8,r8,t4,b4') : paddingS(),
+        padding: isTabAndBelow() ? pad(c: 'l8,r8,t4,b4') : padS(),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             //
             Container(
-              padding: paddingS(),
+              padding: padS(),
               decoration: BoxDecoration(
                 color: isSmallPC() ? null : styler.appColor(0.5),
                 borderRadius: BorderRadius.circular(borderRadiusTiny),

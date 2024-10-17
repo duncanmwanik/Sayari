@@ -13,7 +13,7 @@ class ProgressBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: paddingC('l4'),
+      padding: padS('l'),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [

@@ -13,7 +13,7 @@ class MonthlyWeekdayLabels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: paddingS('t'),
+      padding: padS('t'),
       child: Row(
         children: List.generate(
           7,
@@ -28,7 +28,7 @@ class MonthlyWeekdayLabels extends StatelessWidget {
                     width: double.maxFinite,
                     decoration: BoxDecoration(),
                     child: Padding(
-                      padding: paddingS('tb'),
+                      padding: padS('tb'),
                       child: AppText(
                         size: isInitials ? tiny : small,
                         text: isInitials ? weekDaysList[index].superShortName : weekDaysList[index].shortName,

@@ -25,7 +25,7 @@ class ErrorScreen extends StatelessWidget {
             children: [
               // appbar
               Padding(
-                padding: paddingM(),
+                padding: padM(),
                 child: AppButton(
                   onPressed: () async => context.go('/'),
                   isSquare: true,

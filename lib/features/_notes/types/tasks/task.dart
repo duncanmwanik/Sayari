@@ -16,7 +16,7 @@ class NoteTask extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<SelectionProvider>(builder: (context, selection, child) {
       return Padding(
-        padding: item.showChecks() ? paddingM('t') : paddingC('t1'),
+        padding: item.showChecks() ? padM('t') : padT('t'),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.min,

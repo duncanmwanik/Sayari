@@ -18,8 +18,8 @@ class NotificationItem extends StatelessWidget {
     return ListTile(
       onTap: () => storage('notifications').put(type, !value),
       dense: true,
-      contentPadding: paddingM('lr'),
-      leading: AppText(text: features[label]!.title),
+      contentPadding: padM('lr'),
+      leading: AppText(text: label.title()),
       trailing: AppCheckBox(
         isChecked: value,
         onTap: () => storage('notifications').put(type, !value),

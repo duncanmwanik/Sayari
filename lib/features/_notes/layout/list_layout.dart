@@ -20,7 +20,7 @@ class ListLayout extends StatelessWidget {
       ignorePrimaryScrollController: true,
       maxMainAxisCount: 1,
       alignment: WrapAlignment.center,
-      padding: padding(
+      padding: pad(
         t: isSmallPC() ? mediumHeight() : null,
         b: largeHeight(),
       ),

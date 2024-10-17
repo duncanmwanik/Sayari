@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../_helpers/global.dart';
 import '../../../_helpers/sync/delete_item.dart';
 import '../../../_helpers/sync/quick_edit.dart';
 import '../../../_models/item.dart';
@@ -36,13 +35,13 @@ class ItemActions extends StatelessWidget {
         child: Align(
           alignment: Alignment.topRight,
           child: Padding(
-            padding: paddingC(isPersistent ? '' : 't4,r4'),
+            padding: isPersistent ? noPadding : padS('tr'),
             child: AppButton(
               noStyling: isPersistent,
               isSquare: true,
               leading: moreIcon,
               color: isImage() && !item.hasOverview() ? styler.appColor(3) : styler.tertiaryColor(),
-              padding: isPersistent ? null : padding(p: 3),
+              padding: isPersistent ? null : pad(p: 3),
               menuItems: [
                 //
                 MenuItem(label: item.title(), faded: true, smallHeight: true, popTrailing: true),
@@ -67,11 +66,11 @@ class ItemActions extends StatelessWidget {
                     label: 'Tag',
                     leading: labelIcon,
                     menuItems: tagsMenu(
+                      item: item,
                       title: item.title(),
                       isSelection: true,
-                      alreadySelected: splitList(item.tags()),
-                      onDone: (newTags) async {
-                        await quickEdit(parent: item.parent, id: item.id, key: 'l', value: joinList(newTags));
+                      onUpdate: (newTags) async {
+                        await quickEdit(parent: item.parent, id: item.id, key: newTags.isEmpty ? 'd/l' : 'l', value: newTags);
                       },
                     ),
                   ),
@@ -84,7 +83,7 @@ class ItemActions extends StatelessWidget {
                       title: item.title(),
                       reminder: item.reminder(),
                       onSet: (newReminder) async {
-                        await quickEdit(parent: item.parent, id: item.id, key: 'r', value: newReminder);
+                        await quickEdit(parent: item.parent, id: item.id, key: newReminder.isEmpty ? 'd/r' : 'r', value: newReminder);
                       },
                     ),
                   ),

@@ -1,6 +1,6 @@
 import '../../../_helpers/debug.dart';
 import '../../../_helpers/forms/regex_checks.dart';
-import '../../../_helpers/internet_connection.dart';
+import '../../../_helpers/internet.dart';
 import '../../../_helpers/navigation.dart';
 import '../../../_services/firebase/_helpers/helpers.dart';
 import '../../../_services/firebase/database.dart';

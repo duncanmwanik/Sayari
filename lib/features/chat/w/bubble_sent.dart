@@ -69,7 +69,7 @@ class _SentMessageBubbleState extends State<SentMessageBubble> {
                 hoverColor: transparent,
                 color: Color.alphaBlend(styler.accentColor(3), black.withOpacity(0.01)),
                 child: Container(
-                  padding: paddingM(),
+                  padding: padM(),
                   constraints: BoxConstraints(maxWidth: maxWidth),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,

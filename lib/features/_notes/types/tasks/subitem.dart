@@ -45,7 +45,7 @@ class _ItemState extends State<SubItem> {
         noStyling: true,
         padding: noPadding,
         child: Container(
-          padding: padding(l: widget.item.showChecks() ? 4 : 7, t: 6, r: 6, b: 6),
+          padding: widget.item.showChecks() ? pad(c: 'l4,r6,t6,b6') : padMS(),
           decoration: BoxDecoration(
             color: styler.listItemColor(bgColor: widget.item.color()),
             borderRadius: BorderRadius.circular(borderRadiusTiny),

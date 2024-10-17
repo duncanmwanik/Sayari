@@ -84,7 +84,7 @@ class _FlagItemState extends State<Flag> {
     Color? cursorColor = isNew ? white : backgroundColors[flagColor]!.textColor;
 
     return Padding(
-      padding: paddingS('lrb'),
+      padding: padS('lrb'),
       child: Column(
         children: [
           //

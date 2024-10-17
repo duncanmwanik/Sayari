@@ -17,13 +17,13 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: paddingS('b'),
+      padding: padS('b'),
       child: AppButton(
         onPressed: () => editNote(item),
         blur: isImage(),
         color: styler.appColor(0.5),
         hoverColor: styler.appColor(0.5),
-        padding: paddingC('l14,r8,t6,b6'),
+        padding: pad(c: 'l14,r8,t6,b6'),
         child: Row(
           children: [
             //

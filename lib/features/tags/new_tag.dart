@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../_helpers/extentions/strings.dart';
 import '../../_helpers/navigation.dart';
 import '../../_theme/variables.dart';
 import '../../_widgets/buttons/button.dart';
@@ -50,10 +51,10 @@ class _NewTagState extends State<NewTag> {
               hintText: 'Add Tag',
               onFieldSubmitted: (value) async {
                 if (value.trim().isNotEmpty) {
-                  await addNewTag(value.trim());
+                  hideKeyboard();
+                  await addNewTag('x', value.trim());
                   newTagController.clear();
                   setState(() => isAdd = false);
-                  hideKeyboard();
                 }
               },
               onTap: () => setState(() => isAdd = true),
@@ -74,12 +75,10 @@ class _NewTagState extends State<NewTag> {
         if (isAdd)
           AppButton(
             onPressed: () async {
-              if (newTagController.text.trim().isNotEmpty) {
-                hideKeyboard();
-                addNewTag(newTagController.text.trim());
-                newTagController.clear();
-              }
+              hideKeyboard();
+              if (newTagController.text.isValid()) addNewTag('x', newTagController.text.trim());
               focusNode.unfocus();
+              newTagController.clear();
               setState(() => isAdd = false);
             },
             noStyling: true,

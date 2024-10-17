@@ -29,7 +29,7 @@ class FileList extends StatelessWidget {
       return Visibility(
         visible: fileData_.isNotEmpty,
         child: Padding(
-          padding: paddingM('t'),
+          padding: padM('t'),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +67,7 @@ class FileList extends StatelessWidget {
                     // overview hidden image count
                     if (imageIds.length > 4 && isOverview)
                       Padding(
-                        padding: paddingM(),
+                        padding: padM(),
                         child: AppText(text: '+ ${imageIds.length - 4}', faded: true),
                       ),
                     //

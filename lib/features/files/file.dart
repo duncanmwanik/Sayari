@@ -45,7 +45,7 @@ class FileItem extends StatelessWidget {
                       bottomLeft: Radius.circular(borderRadiusTiny),
                     ),
                   ),
-                  padding: paddingC('l5,r5,t5,b5'),
+                  padding: padS(),
                   child: AppText(text: getfileExtension(fileName).toUpperCase(), color: white, size: tiny),
                 ),
                 // name

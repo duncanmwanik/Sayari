@@ -46,7 +46,7 @@ class _HabitWeekState extends State<LinksList> {
               Map linkData = jsonDecode(input.item.data[linkId]);
 
               return Padding(
-                padding: paddingM('t'),
+                padding: padM('t'),
                 child: LinkItem(index: index, linkId: linkId, linkData: linkData),
               );
             }),

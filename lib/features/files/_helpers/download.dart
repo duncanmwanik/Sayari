@@ -5,9 +5,9 @@ import 'dart:io' as io;
 import 'package:file/src/interface/file.dart' as cfile;
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../../_helpers/debug.dart';
-import '../../../_helpers/helpers.dart';
 import '../../../_services/firebase/storage.dart';
 import '../../../_services/hive/local_storage_service.dart';
 import '../../../_widgets/others/toast.dart';
@@ -27,7 +27,7 @@ Future<void> downloadFile(
         var bytes = fileBox.get(fileId);
         await FileSaver.instance.saveFile(name: fileName, bytes: bytes);
       } else {
-        await checkForStoragePermissions();
+        await Permission.storage.request();
         io.File file = io.File(
           downloadPath != null ? '/storage/emulated/0/Sayari/$fileName' : '/storage/emulated/0/Sayari/${liveSpaceTitle()}/$fileName',
         );
@@ -49,7 +49,7 @@ Future<void> downloadFile(
         if (kIsWeb) {
           await FileSaver.instance.saveFile(name: fileName, bytes: bytes);
         } else {
-          await checkForStoragePermissions();
+          await Permission.storage.request();
           io.File file = io.File(
             downloadPath != null ? '/storage/emulated/0/Sayari/$fileName' : '/storage/emulated/0/Sayari/${liveSpaceTitle()}/$fileName',
           );
@@ -78,7 +78,7 @@ Future<void> downloadFile(
           if (kIsWeb) {
             await FileSaver.instance.saveFile(name: fileName, bytes: bytes);
           } else {
-            await checkForStoragePermissions();
+            await Permission.storage.request();
             io.File file = io.File(
               downloadPath != null
                   ? '/storage/emulated/0/Sayari/$fileName'

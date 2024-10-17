@@ -1,15 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../../_helpers/debug.dart';
-import '../../../_helpers/internet_connection.dart';
-import '../../../_variables/navigation.dart';
+import '../../../_helpers/internet.dart';
 import '../../../_widgets/others/toast.dart';
+import '../var/var.dart';
 import 'auth_error_handler.dart';
 
 Future<bool> resetPassword({required String email, bool validate = true}) async {
   bool success = false;
 
-  if (!validate || signInFormKey.currentState!.validate()) {
+  if (!validate || authFormKey.currentState!.validate()) {
     if (await noInternet()) return success;
 
     await FirebaseAuth.instance.sendPasswordResetEmail(email: email).then((_) {

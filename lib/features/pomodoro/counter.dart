@@ -27,7 +27,7 @@ class PomodoroCounter extends StatelessWidget {
       Color color = backgroundColors[pomo.data['${type}c']]!.color;
 
       return Padding(
-        padding: paddingM('t'),
+        padding: padM('t'),
         child: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 300, maxHeight: 300),
@@ -70,7 +70,7 @@ class PomodoroCounter extends StatelessWidget {
                               color: styler.textColor(faded: true),
                             )
                           : Padding(
-                              padding: paddingM('b'),
+                              padding: padM('b'),
                               child: AppIcon(Icons.bolt, extraFaded: true),
                             ),
                     ),

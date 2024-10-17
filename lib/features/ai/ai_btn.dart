@@ -11,7 +11,7 @@ class AIButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: paddingM('r'),
+      padding: padM('r'),
       child: AppButton(
         onPressed: () => showAISheet(),
         tooltip: 'AI Prompt',

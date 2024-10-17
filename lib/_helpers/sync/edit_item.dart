@@ -34,7 +34,7 @@ Future<void> editItem() async {
         removeDuplicateReminders(state.input.item);
 
         // for spaces only ----------
-        if (feature.isSpace(type)) {
+        if (type.isSpace()) {
           await syncStore(parent: parent, action: 'c', data: validatedData);
           updateSpaceName(name: validatedData['t']);
         }

@@ -1,9 +1,9 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../../../_services/hive/local_storage_service.dart';
-import '../../../_helpers/helpers.dart';
+import '../../../_helpers/extentions/strings.dart';
 import '../../../_services/hive/store.dart';
-import '../../../_variables/constants.dart';
+import '../../../_variables/as.dart';
 import '../../../_variables/features.dart';
 import '../../user/_helpers/helpers.dart';
 
@@ -39,8 +39,8 @@ Future<bool> isOwner([String? spaceId]) async {
 }
 
 String publishedSpaceLink([bool link = false]) => link
-    ? '$sayariDefaultPath/${features[feature.space]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}'
-    : '/${features[feature.space]!.path}/${minString(liveSpaceTitle())}_${liveSpace()}';
+    ? '$sayariDefaultPath/${feature.space.path}/${liveSpaceTitle().bare()}_${liveSpace()}'
+    : '/${feature.space.path}/${liveSpaceTitle().bare()}_${liveSpace()}';
 
 String publishedSpaceId(String path) {
   try {

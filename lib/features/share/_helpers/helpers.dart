@@ -1,17 +1,12 @@
+import '../../../_helpers/extentions/strings.dart';
 import '../../../_variables/features.dart';
 
 String getWindowTitle(String type, String itemTitle) {
-  return feature.isSpace(type)
+  return type.isSpace()
       ? itemTitle
-      : feature.isShare(type)
-          ? 'Shared - $itemTitle'
-          : feature.isNote(type)
-              ? 'Blog - $itemTitle'
-              : feature.isBooking(type)
-                  ? 'Booking - $itemTitle'
-                  : feature.isLink(type)
-                      ? 'Links - $itemTitle'
-                      : 'Sayari';
+      : type.isNote()
+          ? 'Blog - $itemTitle'
+          : '${type.cap()} - $itemTitle';
 }
 
 String sharedId(String path) {

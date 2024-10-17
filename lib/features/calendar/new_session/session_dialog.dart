@@ -46,13 +46,13 @@ Future<void> showSessionBottomSheet() async {
     //
     content: NoScrollBars(
       child: SingleChildScrollView(
-        padding: paddingS(),
+        padding: padS(),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             //
             Padding(
-              padding: paddingM('l'),
+              padding: padM('l'),
               child: DataInput(
                 inputKey: 't',
                 hintText: 'Title',

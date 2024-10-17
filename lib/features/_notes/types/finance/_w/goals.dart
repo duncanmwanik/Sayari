@@ -21,7 +21,7 @@ class Goals extends StatelessWidget {
       return Visibility(
         visible: input.item.data['cx'] != '1',
         child: Padding(
-          padding: paddingS('b'),
+          padding: padS('b'),
           child: Wrap(
             spacing: smallWidth(),
             runSpacing: smallWidth(),

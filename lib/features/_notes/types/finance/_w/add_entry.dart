@@ -15,7 +15,7 @@ class AddEntry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: paddingM('t'),
+      padding: padM('t'),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

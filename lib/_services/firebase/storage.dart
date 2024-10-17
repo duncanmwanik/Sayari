@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../_helpers/debug.dart';
-import '../../_helpers/helpers.dart';
 import '../../_widgets/others/toast.dart';
 import '../hive/local_storage_service.dart';
 import '_helpers/storage_errors.dart';
@@ -51,8 +51,8 @@ class CloudStorage {
       }
       //
       else {
+        await Permission.storage.request();
         String filePath = '/storage/emulated/0/Sayari/$downloadPath';
-        await checkForStoragePermissions();
         final file = File(filePath);
         await file.create(recursive: true);
         final downloadTask = fileRef.writeToFile(file);

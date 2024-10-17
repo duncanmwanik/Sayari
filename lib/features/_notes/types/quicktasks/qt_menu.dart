@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../_helpers/sync/delete_item.dart';
-import '../../../../../_models/item.dart';
-import '../../../../../_providers/_providers.dart';
-import '../../../../../_variables/features.dart';
-import '../../../../../_widgets/menu/menu_item.dart';
+import '../../../../_helpers/sync/delete_item.dart';
+import '../../../../_models/item.dart';
+import '../../../../_providers/_providers.dart';
+import '../../../../_variables/features.dart';
+import '../../../../_widgets/menu/menu_item.dart';
 
 List<Widget> qtMenu(Item item) {
   return [

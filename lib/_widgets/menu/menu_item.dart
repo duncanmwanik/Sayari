@@ -73,7 +73,7 @@ class _MenuItemState extends State<MenuItem> {
         menuItems: widget.menuItems,
         keepMenuPosition: widget.menuItems != null,
         popMenu: widget.menuItems != null,
-        padding: padding(
+        padding: pad(
           l: 8,
           t: widget.smallHeight ? 1 : 6,
           b: widget.smallHeight ? 1 : 6,
@@ -111,7 +111,7 @@ class _MenuItemState extends State<MenuItem> {
             if (widget.popTrailing)
               AppButton(
                 onPressed: () => popWhatsOnTop(),
-                padding: paddingS(),
+                padding: padS(),
                 noStyling: true,
                 isSquare: true,
                 child: AppIcon(closeIcon, size: widget.trailingSize ?? 16, faded: true),

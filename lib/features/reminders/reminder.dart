@@ -42,7 +42,7 @@ class Reminder extends StatelessWidget {
       return Visibility(
         visible: hasReminder(reminder_),
         child: Padding(
-          padding: paddingM('t'),
+          padding: padM('t'),
           child: AppButton(
             menuWidth: 200,
             menuItems: reminderMenu(

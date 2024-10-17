@@ -23,7 +23,7 @@ class PinnedIcon extends StatelessWidget {
         child: AppButton(
           noStyling: true,
           isSquare: true,
-          padding: padding(p: 3),
+          padding: pad(p: 3),
           child: AppIcon(
             item.isPinned() ? pinIcon : unpinIcon,
             color: item.isPinned() || isHovered ? null : transparent,

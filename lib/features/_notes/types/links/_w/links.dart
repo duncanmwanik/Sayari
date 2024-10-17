@@ -19,7 +19,7 @@ class Links extends StatelessWidget {
       return Visibility(
         visible: input.item.data[feature.links] != null,
         child: Container(
-          margin: padding(s: 'tb'),
+          margin: padN('tb'),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(borderRadiusSmall),
           ),

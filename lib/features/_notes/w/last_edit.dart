@@ -15,7 +15,7 @@ class LastEdit extends StatelessWidget {
   Widget build(BuildContext context) {
     return timestamp != null
         ? Padding(
-            padding: paddingS('l'),
+            padding: padS('l'),
             child: AppText(
               size: tiny,
               text: 'Edited ${getEditDateTime(timestamp!)}',

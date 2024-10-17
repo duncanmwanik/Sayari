@@ -18,7 +18,7 @@ class BookingOverview extends StatelessWidget {
     bool isActive = item.data[feature.share] == '1';
 
     return Padding(
-      padding: paddingM('t'),
+      padding: padM('t'),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -46,7 +46,7 @@ class BookingOverview extends StatelessWidget {
           Align(
             alignment: Alignment.topLeft,
             child: Padding(
-              padding: paddingM('lt'),
+              padding: padM('lt'),
               child: Row(
                 children: [
                   AppIcon(isActive ? Icons.rocket_launch_rounded : Icons.cancel, size: small, faded: true),

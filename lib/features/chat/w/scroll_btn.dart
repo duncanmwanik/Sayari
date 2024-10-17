@@ -32,19 +32,17 @@ class _ScrollChatsButtonState extends State<ScrollChatsButton> {
   Widget build(BuildContext context) {
     return Visibility(
       visible: visible,
-      child: Padding(
-        padding: paddingM('b'),
-        child: AppButton(
-          // onPressed: () => chatScrollController.animateTo(
-          //   chatScrollController.position.minScrollExtent,
-          //   curve: Curves.easeOut,
-          //   duration: const Duration(milliseconds: 100),
-          // ),
-          height: 45,
-          width: 45,
-          isSquare: true,
-          child: AppIcon(Icons.arrow_downward_rounded, extraFaded: true),
-        ),
+      child: AppButton(
+        margin: padM('b'),
+        // onPressed: () => chatScrollController.animateTo(
+        //   chatScrollController.position.minScrollExtent,
+        //   curve: Curves.easeOut,
+        //   duration: const Duration(milliseconds: 100),
+        // ),
+        height: 45,
+        width: 45,
+        isSquare: true,
+        child: AppIcon(Icons.arrow_downward_rounded, extraFaded: true),
       ),
     );
   }
