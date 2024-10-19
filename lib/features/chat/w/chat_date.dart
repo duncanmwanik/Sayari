@@ -17,7 +17,7 @@ import '../state/chat.dart';
 class ChatDate extends StatelessWidget {
   const ChatDate({super.key, required this.date});
 
-  final DateInfo date;
+  final DateItem date;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class ChatDate extends StatelessWidget {
               ? 'Today'
               : date.isYesterday()
                   ? 'Yesterday'
-                  : date.formatFull(),
+                  : date.info(),
           size: tiny,
         ),
       );

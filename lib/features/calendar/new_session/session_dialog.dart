@@ -7,14 +7,12 @@ import '../../../_providers/_providers.dart';
 import '../../../_theme/spacing.dart';
 import '../../../_theme/variables.dart';
 import '../../../_widgets/buttons/action.dart';
-import '../../../_widgets/buttons/close.dart';
 import '../../../_widgets/dialogs/app_dialog.dart';
 import '../../../_widgets/forms/input.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '_w/about.dart';
 import '_w/color.dart';
-import '_w/date.dart';
 import '_w/files.dart';
 import '_w/lead.dart';
 import '_w/reminders.dart';
@@ -31,8 +29,8 @@ Future<void> showSessionBottomSheet() async {
     title: Row(
       children: [
         //
-        AppCloseButton(faded: true, onPressed: isNew ? null : () => editItem()),
         Spacer(),
+        ActionButton(isCancel: true),
         ActionButton(
           onPressed: () {
             hideKeyboard();
@@ -67,10 +65,10 @@ Future<void> showSessionBottomSheet() async {
             ),
             //
             mph(),
-            TimePicker(),
+            TimePicker(type: 's'),
+            sph(),
+            TimePicker(type: 'e'),
             mph(),
-            if (isNew) DatePicker(),
-            if (isNew) mph(),
             Reminders(),
             mph(),
             Row(

@@ -26,14 +26,16 @@ class Reminders extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Icon
-              Padding(padding: padS('t'), child: AppIcon(Icons.notification_add, faded: true, size: normal)),
+              Padding(padding: pad(c: 't6'), child: AppIcon(Icons.notification_add, faded: true, size: normal)),
               mpw(),
               //
               Expanded(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: Wrap(
+                  spacing: smallWidth(),
+                  runSpacing: smallWidth(),
                   children: [
+                    // reminders
+                    for (String reminder in remindersList) ReminderItem(reminder: reminder),
                     // add
                     AppButton(
                         onPressed: () async {
@@ -41,28 +43,16 @@ class Reminders extends StatelessWidget {
                           remindersList.add('30.m');
                           input.update('r', joinList(remindersList));
                         },
-                        noStyling: true,
-                        showBorder: true,
-                        slp: true,
+                        isSquare: true,
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            AppIcon(Icons.add_rounded, size: 16),
-                            tpw(),
-                            AppText(text: 'Add Reminder'),
+                            AppIcon(Icons.notification_add, size: 16),
+                            if (remindersList.isEmpty) spw(),
+                            if (remindersList.isEmpty) AppText(text: 'Add Reminder'),
                           ],
                         )),
-                    // reminder list
-                    remindersList.isNotEmpty
-                        ? Column(
-                            children: List.generate(remindersList.length, (index) {
-                            String reminder = remindersList[index];
-                            return ReminderItem(reminder: reminder);
-                          }))
-                        : Padding(
-                            padding: padM('lt'),
-                            child: AppText(size: small, text: 'No reminders set', faded: true),
-                          ),
+                    //
                   ],
                 ),
               ),

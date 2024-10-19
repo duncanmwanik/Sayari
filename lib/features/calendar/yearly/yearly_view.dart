@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
+import '../../../_helpers/extentions/dateTime.dart';
 import '../../../_theme/spacing.dart';
 import '../../../_theme/variables.dart';
 import '../../../_widgets/buttons/button.dart';
@@ -74,7 +75,7 @@ class YearlyView extends StatelessWidget {
                                     Flexible(
                                       child: Wrap(
                                         children: List.generate(42, (indexDate) {
-                                          DateInfo date = DateInfo(monthMap[indexDate] ?? getDatePart(DateTime.now()));
+                                          DateItem date = DateItem(monthMap[indexDate] ?? now().part());
                                           bool isSelectedMonth = date.month() == month;
 
                                           return AppButton(
@@ -97,7 +98,7 @@ class YearlyView extends StatelessWidget {
                                                     child: Center(
                                                       child: AppText(
                                                         size: small,
-                                                        text: date.dayString(),
+                                                        text: date.day().toString(),
                                                         color: isSelectedMonth ? null : styler.appColor(2),
                                                       ),
                                                     ),

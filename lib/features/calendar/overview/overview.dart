@@ -9,18 +9,15 @@ import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/others/divider.dart';
 import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/text.dart';
-import '../../files/_helpers/helper.dart';
 import '../../files/file_list.dart';
-import '../_helpers/date_time/misc.dart';
 import 'session_options.dart';
 import 'session_reminders.dart';
 import 'session_time.dart';
 import 'session_type.dart';
 
 Future showSessionOverviewDialog(Item item) {
-  updateSelectedDate(item.id);
+  state.dateTime.updateSelectedDate(item.id);
   state.input.set(item);
-  Map fileMap = getFiles(item.data);
 
   return showAppDialog(
     showTitleColor: false,
@@ -76,11 +73,8 @@ Future showSessionOverviewDialog(Item item) {
             ),
           // files
           Visibility(
-            visible: fileMap.isNotEmpty,
-            child: Padding(
-              padding: padN('t'),
-              child: FileList(fileData: fileMap, isOverview: true),
-            ),
+            visible: item.hasFiles(),
+            child: Padding(padding: padN('t'), child: FileList(item: item, isOverview: true)),
           ),
           //
         ],

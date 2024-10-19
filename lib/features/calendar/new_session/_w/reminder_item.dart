@@ -22,8 +22,8 @@ class ReminderItem extends StatelessWidget {
     String reminderPeriod = reminder.split('.')[1];
 
     return Consumer<InputProvider>(builder: (context, input, child) {
-      return Padding(
-        padding: EdgeInsets.only(top: 5),
+      return AppButton(
+        padding: padT(),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

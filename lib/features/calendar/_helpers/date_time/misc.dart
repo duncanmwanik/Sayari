@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 
 import '../../../../_providers/_providers.dart';
 import '../../_vars/date_time.dart';
-import '../../state/datetime.dart';
 
 String get12HourTimeFrom24HourTime(String? time, {bool? islonger, bool showSeconds = false}) {
   if (time != null && time.isNotEmpty) {
@@ -26,16 +25,6 @@ String get12HourTimeFrom24HourTime(String? time, {bool? islonger, bool showSecon
   } else {
     return '';
   }
-}
-
-String getWeekDay(DateTimeProvider dateProvider) {
-  int dayNo = dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].weekday == 7
-      ? 0
-      : dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].weekday;
-  String day = weekDaysList[dayNo].name;
-  String month = monthNamesList[dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].month - 1];
-  int date = dateProvider.currentWeekDates[DateTime.parse(dateProvider.selectedDate).weekday].day;
-  return '$day, $month $date';
 }
 
 int getHour(String time) {
@@ -62,7 +51,7 @@ int getSeconds(String time) {
   }
 }
 
-String getTimePartFromDateTime(String dateTime) {
+String getTimePartFromDdateTime(String dateTime) {
   return dateTime.split(' ')[1];
 }
 
@@ -78,8 +67,7 @@ String getEditDateTimeShort(String timestamp) => DateFormat('MMM d, yyy').format
 bool isCurrentMonth(String date) => DateTime.parse(date).month == state.dateTime.selectedMonth;
 bool isCurrentYear(String date) => DateTime.parse(date).year == DateTime.now().year;
 
-String nowDate() => getDatePart(DateTime.now());
-int nowHour() => DateTime.now().hour;
+DateTime now() => DateTime.now();
 
 String getTimePartFromTimeOfDay(var time) {
   try {
@@ -96,35 +84,6 @@ String getTimePartFromTimeOfDay(var time) {
   } catch (_) {
     return '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
   }
-}
-
-String getDatePart(var date) {
-  try {
-    return date is DateTime ? date.toString().split(' ')[0] : date.split(' ')[0];
-  } catch (_) {
-    return DateTime.now().toString().split(' ')[0];
-  }
-}
-
-void updateSelectedDate(String newDate) {
-  state.dateTime.updateSelectedDate(newDate);
-}
-
-List<String> getDaysInBetweenRange(DateTime startDate, DateTime endDate, List weekdays) {
-  List<String> dates = [];
-  for (int i = 0; i <= endDate.difference(startDate).inDays; i++) {
-    DateTime dateTime = startDate.add(Duration(days: i));
-    String date = getDatePart(dateTime);
-    int dateWeekdayNo = dateTime.weekday == 7 ? 0 : dateTime.weekday;
-
-    if (weekdays.contains(dateWeekdayNo)) {
-      if (!dates.contains(date)) {
-        dates.add(date);
-      }
-    }
-  }
-
-  return dates;
 }
 
 String getTimeFromTimestamp(String timestamp) {

@@ -9,7 +9,6 @@ import '../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../../calendar/_helpers/date_time/date_info.dart';
-import '../../calendar/_helpers/date_time/misc.dart';
 
 class Dates extends StatelessWidget {
   const Dates({super.key, this.showIcon = true});
@@ -43,7 +42,7 @@ class Dates extends StatelessWidget {
                       onPressed: () async {
                         await showDateDialog(initialDate: input.item.data['j']).then((date) async {
                           if (date.isNotEmpty) {
-                            input.update('j', getDatePart(date.first));
+                            input.update('j', date.first);
                           }
                         });
                       },
@@ -76,7 +75,7 @@ class Dates extends StatelessWidget {
                       onPressed: () async {
                         await showDateDialog(initialDate: input.item.data['k']).then((date) async {
                           if (date.isNotEmpty) {
-                            input.update('k', getDatePart(date.first));
+                            input.update('k', date.first);
                           }
                         });
                       },

@@ -24,8 +24,10 @@ class QuillProvider with ChangeNotifier {
       }
       listenToChanges(savePath);
     } catch (e) {
-      logError('quill-controller-set', e);
+      logError('quillControllerReset', e);
     }
+
+    isEmpty = controller.document.isEmpty();
   }
 
   void listenToChanges(String? savePath) {
@@ -34,10 +36,11 @@ class QuillProvider with ChangeNotifier {
         isChanged = true;
         isEmpty = controller.document.isEmpty();
         if (savePath != null) globalBox.put(savePath, getQuills());
+        show(controller.document.toPlainText());
         notifyListeners();
       });
     } catch (e) {
-      logError('quill-controller-listening', e);
+      logError('quillControllerListening', e);
     }
   }
 

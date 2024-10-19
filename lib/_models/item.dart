@@ -6,6 +6,7 @@ import '../_variables/as.dart';
 import '../_variables/features.dart';
 import '../features/_notes/types/tasks/_helpers/helper.dart';
 import '../features/_spaces/_helpers/common.dart';
+import '../features/calendar/_helpers/date_time/misc.dart';
 import '../features/files/_helpers/helper.dart';
 
 class Item {
@@ -54,6 +55,7 @@ class Item {
   bool hasEmoji() => data['ej'] != null;
   bool hasTags() => tags().isNotEmpty;
   bool hasReminder() => reminder().isNotEmpty;
+  bool hasReminderPassed() => DateTime.parse(reminder()).isBefore(now());
   bool hasDetails() => reminder().isNotEmpty || tags().isNotEmpty || files().isNotEmpty;
   bool hasOverview() => data['w'] != null && data['w'] != '';
   bool hasFiles() => files().isNotEmpty;

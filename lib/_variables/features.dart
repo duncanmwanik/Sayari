@@ -18,7 +18,7 @@ class Features {
   String chat = 'chat';
   String tags = 'tags';
   String flags = 'flags';
-  String subTypes = 'subthiss';
+  String subTypes = 'subTypes';
   String pomodoro = 'pomodoro';
   String explore = 'explore';
   String saved = 'saved';

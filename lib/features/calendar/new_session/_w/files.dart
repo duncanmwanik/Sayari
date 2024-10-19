@@ -41,13 +41,9 @@ class Files extends StatelessWidget {
               //
             ],
           ),
-          //
           sph(),
-          //
-          Padding(
-            padding: EdgeInsets.only(left: 30),
-            child: FileList(),
-          ),
+          // files
+          Padding(padding: EdgeInsets.only(left: 30), child: FileList(item: input.item)),
           //
         ],
       );

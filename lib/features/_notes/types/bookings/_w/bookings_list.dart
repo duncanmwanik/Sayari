@@ -73,7 +73,7 @@ class BookingsList extends StatelessWidget {
                       String email = booking['bbe'];
                       String subject = booking['bbs'];
                       bool isDone = booking['bbc'] == '1';
-                      bool isMissed = DateInfo(date).isPast();
+                      bool isMissed = DateItem(date).isPast();
 
                       return Padding(
                         padding: EdgeInsets.only(top: 4),

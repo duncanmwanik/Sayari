@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../_theme/spacing.dart';
-import '../../_widgets/others/others/divider.dart';
 import '../_notes/types/quicknote/quick_note.dart';
 import '../_notes/types/quicktasks/quick_tasks.dart';
 import '../calendar/due_today/due_today.dart';
@@ -21,9 +20,7 @@ class Timeline extends StatelessWidget {
         children: [
           //
           QuickNote(),
-          AppDivider(),
           QuickTasks(),
-          AppDivider(),
           DueToday(),
           //
         ],

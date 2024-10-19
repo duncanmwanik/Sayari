@@ -1,10 +1,10 @@
-import 'misc.dart';
+import '../../../../_helpers/extentions/dateTime.dart';
 
-bool doesCurrentWeekListContainToday(List currentWeekDates, DateTime today) {
+bool doesCurrentWeekListCodntainToday(List<DateTime> currentWeekDates, DateTime today) {
   bool itContains = false;
 
-  for (var date in currentWeekDates) {
-    if (getDatePart(date) == getDatePart(today)) {
+  for (DateTime date in currentWeekDates) {
+    if (date.part() == today.part()) {
       itContains = true;
       break;
     }

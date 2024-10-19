@@ -8,7 +8,7 @@ import '../_helpers/date_time/misc.dart';
 class YearViewTitleInput extends StatelessWidget {
   const YearViewTitleInput({super.key, required this.date});
 
-  final DateInfo date;
+  final DateItem date;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class YearViewTitleInput extends StatelessWidget {
       child: Center(
         child: AppText(
           size: small,
-          text: date.dayString(),
+          text: date.day().toString(),
           weight: isSelectedMonth ? FontWeight.w600 : null,
           faded: !isSelectedMonth,
           color: isToday ? white : null,

@@ -61,7 +61,7 @@ Widget getQuillToolbar({bool isMin = false}) {
       // undo
       Consumer<QuillProvider>(
         builder: (context, quill, child) => Visibility(
-          visible: quill.isChanged,
+          visible: true,
           child: QuillToolbarHistoryButton(
             controller: controller,
             isUndo: true,
@@ -72,7 +72,7 @@ Widget getQuillToolbar({bool isMin = false}) {
       // redo
       Consumer<QuillProvider>(
         builder: (context, quill, child) => Visibility(
-          visible: quill.isChanged,
+          visible: true,
           child: QuillToolbarHistoryButton(
             controller: controller,
             isUndo: false,

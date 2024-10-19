@@ -26,9 +26,6 @@ import 'flag_list.dart';
 Future<void> showItemDialog(Item sitem) async {
   await showAppDialog(
     content: Consumer<InputProvider>(builder: (context, input, child) {
-      List<String> alreadySelectedFlags = input.item.flags();
-      String reminder = input.item.reminder();
-
       return ListView(
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
@@ -64,7 +61,7 @@ Future<void> showItemDialog(Item sitem) async {
                         tooltip: 'Set Reminder',
                         menuWidth: 200,
                         menuItems: reminderMenu(
-                          reminder: reminder,
+                          reminder: input.item.reminder(),
                           onSet: (newReminder) => input.update('r', newReminder),
                           onRemove: () => input.remove('r'),
                         ),
@@ -83,7 +80,7 @@ Future<void> showItemDialog(Item sitem) async {
                         tooltip: 'Add Flag',
                         menuWidth: 300,
                         menuItems: flagsMenu(
-                          alreadySelected: alreadySelectedFlags,
+                          alreadySelected: input.item.flags(),
                           onDone: (newFlags) => input.update('g', joinList(newFlags)),
                         ),
                         isSquare: true,
@@ -108,13 +105,11 @@ Future<void> showItemDialog(Item sitem) async {
             ),
           //
           mph(),
-          if (reminder.isNotEmpty) Align(alignment: Alignment.centerLeft, child: Reminder(reminder: reminder)),
-          if (reminder.isNotEmpty && alreadySelectedFlags.isNotEmpty) sph(),
+          if (input.item.hasReminder()) Align(alignment: Alignment.centerLeft, child: Reminder(item: input.item)),
+          if (input.item.hasReminder() && input.item.hasFlags()) sph(),
           //
-          ItemFlagList(flagList: alreadySelectedFlags),
-          //
-          Padding(padding: padN('t'), child: FileList()),
-          //
+          ItemFlagList(flagList: input.item.flags()),
+          Padding(padding: padN('t'), child: FileList(item: input.item)),
           elph(),
           //
         ],

@@ -21,13 +21,13 @@ class ItemDetails extends StatelessWidget {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (item.hasReminder()) Reminder(id: item.id, reminder: item.reminder(), bgColor: item.color()),
+          if (item.hasReminder()) Reminder(item: item),
           if (item.hasTags())
             TagList(
               item: item,
               onUpdate: (newTags) => quickEdit(parent: feature.notes, id: item.id, key: newTags.isEmpty ? 'd/l' : 'l', value: newTags),
             ),
-          if (item.hasFiles()) FileList(fileData: item.files(), bgColor: item.color(), isOverview: true),
+          if (item.hasFiles()) FileList(item: item, isOverview: true),
         ],
       );
     } else {
@@ -35,12 +35,12 @@ class ItemDetails extends StatelessWidget {
           builder: (x, input, c) => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Reminder(),
+                  Reminder(item: input.item),
                   TagList(
                     item: input.item,
                     onUpdate: (newTags) => newTags.isEmpty ? state.input.remove('l') : state.input.update('l', newTags),
                   ),
-                  FileList(),
+                  FileList(item: input.item),
                 ],
               ));
     }

@@ -96,7 +96,7 @@ class HabitMonth extends StatelessWidget {
                         spacing: 2,
                         runSpacing: 2,
                         children: List.generate(42, (indexDate) {
-                          DateInfo date = DateInfo(getDatePart(dateTime.monthDatesMap[indexDate]));
+                          DateItem date = DateItem(dateTime.monthDatesMap[indexDate]!);
                           String checkedKey = 'hc${date.date}';
                           bool isCustomDate = customDates.contains(date.date);
                           bool isChecked = data[checkedKey] != null && data[checkedKey] != '0';
@@ -134,7 +134,7 @@ class HabitMonth extends StatelessWidget {
                                 //
                                 AppText(
                                   size: medium,
-                                  text: date.dayString(),
+                                  text: date.day().toString(),
                                   weight: FontWeight.w400,
                                   color: isSelectedMonth ? (isChecked ? white : null) : null,
                                   extraFaded: !isSelectedMonth,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../../_helpers/extentions/dateTime.dart';
 import '../../../../_providers/_providers.dart';
 import '../../../../_widgets/others/sfcalendar.dart';
-import 'misc.dart';
 
 Future<void> jumpToDate(DateTime? date) async {
   if (date != null) {
-    state.dateTime.updateSelectedDate(getDatePart(date));
+    state.dateTime.updateSelectedDate(date.part());
     switch (state.views.calendarView) {
       case 0:
         break;

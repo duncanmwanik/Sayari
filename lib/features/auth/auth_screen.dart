@@ -63,6 +63,7 @@ class _SignInScreenState extends State<AuthScreen> {
                   borderRadius: BorderRadius.circular(borderRadiusMediumSmall),
                 ),
                 child: Blur(
+                  blur: 200,
                   radius: borderRadiusMediumSmall,
                   child: AppButton(
                     borderRadius: borderRadiusMediumSmall,

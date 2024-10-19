@@ -14,25 +14,29 @@ import '../../../../_widgets/others/text.dart';
 import '../../../../_widgets/quill/editor.dart';
 import '../../../../_widgets/quill/toolbar.dart';
 import 'formatting_btn.dart';
-import 'save_quicknote_btn.dart';
+import 'save_btn.dart';
 
 class QuickNote extends StatelessWidget {
   const QuickNote({super.key});
 
   @override
   Widget build(BuildContext context) {
-    state.quill.reset();
+    state.quill.reset(quills: globalBox.get('quickNoteQuills'), savePath: 'quickNoteQuills');
 
-    return Padding(
-      padding: padL('b'),
+    return AppButton(
+      margin: padL('tb'),
+      padding: padM(),
+      color: styler.appColor(0.3),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
+              pw(1),
               AppIcon(Icons.bolt, size: normal, faded: true),
               spw(),
               AppText(text: 'Quick Note', faded: true),
@@ -47,7 +51,7 @@ class QuickNote extends StatelessWidget {
           AppButton(
               blur: isImage(),
               padding: padS(),
-              color: styler.appColor(0.3),
+              color: styler.appColor(isDark() ? 0.1 : 0.3),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,

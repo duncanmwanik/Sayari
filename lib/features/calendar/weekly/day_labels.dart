@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../_helpers/extentions/dateTime.dart';
 import '../../../_theme/spacing.dart';
 import '../../../_theme/variables.dart';
 import '../../../_widgets/buttons/button.dart';
@@ -23,7 +24,7 @@ class WeekDayLabels extends StatelessWidget {
           SizedBox(
             width: 45,
             child: AppText(
-              text: getWeekNo(getDatePart(dates.currentWeekDates[3])),
+              text: getWeekNo(dates.currentWeekDates[3].part()),
               faded: true,
               weight: FontWeight.w600,
               textAlign: TextAlign.center,
@@ -35,7 +36,7 @@ class WeekDayLabels extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: List.generate(weekDaysList.length, (index) {
-                  DateInfo date = DateInfo(getDatePart(dates.currentWeekDates[index]));
+                  DateItem date = DateItem(dates.currentWeekDates[index].part());
 
                   return Expanded(
                     child: AppButton(

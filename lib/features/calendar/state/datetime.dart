@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../_helpers/extentions/dateTime.dart';
 import '../_helpers/date_time/misc.dart';
 import '../_helpers/date_time/months.dart';
 import '../_helpers/date_time/weeks.dart';
 
 class DateTimeProvider with ChangeNotifier {
-  String selectedDate = getDatePart(DateTime.now());
+  String selectedDate = now().part();
 
   void updateSelectedDate(String date) {
     selectedDate = date;

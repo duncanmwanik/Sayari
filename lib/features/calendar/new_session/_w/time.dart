@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../_helpers/extentions/dateTime.dart';
 import '../../../../_helpers/navigation.dart';
 import '../../../../_providers/input.dart';
 import '../../../../_theme/spacing.dart';
-import '../../../../_theme/variables.dart';
 import '../../../../_widgets/buttons/button.dart';
-import '../../../../_widgets/others/icons.dart';
+import '../../../../_widgets/dialogs/dialog_select_date.dart';
 import '../../../../_widgets/others/text.dart';
-import '../../_helpers/date_time/misc.dart';
+import '../../_helpers/date_time/date_info.dart';
 
 class TimePicker extends StatelessWidget {
-  const TimePicker({super.key});
+  const TimePicker({super.key, required this.type});
+  final String type;
 
   @override
   Widget build(BuildContext context) {
     return Consumer<InputProvider>(builder: (context, input, child) {
-      String startTime = get12HourTimeFrom24HourTime(input.item.data['s'], islonger: true);
-      String stopTime = get12HourTimeFrom24HourTime(input.item.data['e'], islonger: true);
-      bool hasStart = input.item.data['s'] != null && input.item.data['s'] != '';
-      bool hasEnd = input.item.data['e'] != null && input.item.data['e'] != '';
+      DateItem date = DateItem(input.item.data[type] ?? DateTime.now().toString());
 
       return Row(
         children: [
           //
-          AppIcon(Icons.access_time, faded: true, size: 18),
+          SizedBox(width: 40, child: AppText(text: type == 's' ? 'From:' : 'To:')),
           mpw(),
           //
           Flexible(
@@ -32,73 +30,27 @@ class TimePicker extends StatelessWidget {
               spacing: smallWidth(),
               runSpacing: smallWidth(),
               children: [
-                //
+                // date
                 AppButton(
                     onPressed: () async {
-                      hideKeyboard();
-                      String time = hasStart ? input.item.data['s'] : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
-                      TimeOfDay? startDayTime = await showTimePicker(
-                          context: context,
-                          cancelText: 'Cancel',
-                          confirmText: 'Done',
-                          initialTime: TimeOfDay(hour: getHour(time), minute: getMinute(time)));
-                      if (startDayTime != null) {
-                        input.update('s', '${startDayTime.hour}:${startDayTime.minute}');
-                      }
+                      await showDateDialog(isMultiple: true, initialDates: input.selectedDates, showTitle: true).then((dates) async {
+                        if (dates.isNotEmpty) {
+                          input.update(type, '${dates.first} ${date.time24()}');
+                        }
+                      });
                     },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        if (!hasStart) AppText(text: 'Starts at'),
-                        if (!hasStart) spw(),
-                        if (!hasStart) AppIcon(Icons.more_horiz, faded: true, size: medium),
-                        Flexible(child: AppText(text: startTime)),
-                      ],
-                    )),
-                //
+                    child: AppText(text: date.info())),
+                // time
                 AppButton(
-                  noStyling: true,
-                  isSquare: true,
-                  child: AppIcon(Icons.arrow_forward, faded: true, size: normal),
-                ),
-                //
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    //
-                    AppButton(
-                        onPressed: () async {
-                          hideKeyboard();
-                          String time = hasEnd ? input.item.data['e'] : '${TimeOfDay.now().hour}:${TimeOfDay.now().minute}';
-                          TimeOfDay? stopDayTime = await showTimePicker(
-                              context: context,
-                              cancelText: 'Cancel',
-                              confirmText: 'Done',
-                              initialTime: TimeOfDay(hour: getHour(time), minute: getMinute(time)));
-                          if (stopDayTime != null) {
-                            input.update('e', '${stopDayTime.hour}:${stopDayTime.minute}');
-                          }
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            if (!hasEnd) AppText(text: 'Ends at'),
-                            if (!hasEnd) spw(),
-                            if (!hasEnd) AppIcon(Icons.more_horiz, faded: true, size: medium),
-                            Flexible(child: AppText(text: stopTime)),
-                          ],
-                        )),
-                    //
-                    if (hasEnd) spw(),
-                    if (hasEnd)
-                      AppButton(
-                        onPressed: () => input.remove('e'),
-                        noStyling: true,
-                        isSquare: true,
-                        child: AppIcon(closeIcon, size: 14),
-                      ),
-                    //
-                  ],
+                  onPressed: () async {
+                    hideKeyboard();
+                    TimeOfDay? time =
+                        await showTimePicker(context: context, cancelText: 'Cancel', confirmText: 'Done', initialTime: date.time());
+                    if (time != null) {
+                      input.update(type, '${date.only()} ${time.to24Hrs()}');
+                    }
+                  },
+                  child: AppText(text: date.time12()),
                 ),
                 //
               ],

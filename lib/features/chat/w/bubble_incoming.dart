@@ -42,7 +42,6 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
   Widget build(BuildContext context) {
     String userName = widget.item.data['t'] ?? 'Member';
     String message = widget.item.data['n'];
-    Map files = widget.item.files();
     bool isLong = message.length > 1000;
 
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
@@ -95,8 +94,8 @@ class _IncomingMessageBubbleState extends State<IncomingMessageBubble> {
                       ),
                       // files
                       tph(),
-                      FileList(fileData: files),
-                      if (files.isNotEmpty) mph(),
+                      FileList(item: widget.item),
+                      if (widget.item.hasFiles()) mph(),
                       // message
                       if (!quillController.document.isEmpty())
                         QuillEditor.basic(

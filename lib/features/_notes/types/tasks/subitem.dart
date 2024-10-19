@@ -30,9 +30,6 @@ class _ItemState extends State<SubItem> {
 
   @override
   Widget build(BuildContext context) {
-    String reminder = widget.sitem.reminder();
-    bool isChecked = widget.sitem.isChecked();
-
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 1, vertical: 1),
       child: AppButton(
@@ -84,15 +81,15 @@ class _ItemState extends State<SubItem> {
                             Padding(
                               padding: EdgeInsets.only(right: 6),
                               child: AppCheckBox(
-                                isChecked: isChecked,
-                                margin: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+                                isChecked: widget.sitem.isChecked(),
+                                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 4),
                                 onTap: () {
                                   quickEdit(
                                       parent: feature.notes,
                                       id: widget.sitem.id,
                                       sid: widget.sitem.sid,
                                       key: 'v',
-                                      value: isChecked ? '0' : '1');
+                                      value: widget.sitem.isChecked() ? '0' : '1');
                                 },
                               ),
                             ),
@@ -115,13 +112,7 @@ class _ItemState extends State<SubItem> {
                             // files
                             if (widget.sitem.hasFiles()) FileListOverview(item: widget.item, sitem: widget.sitem),
                             // reminder
-                            if (reminder.isNotEmpty)
-                              Reminder(
-                                id: widget.sitem.id,
-                                sid: widget.sitem.sid,
-                                reminder: widget.sitem.reminder(),
-                                bgColor: widget.item.color(),
-                              ),
+                            if (widget.sitem.hasReminder()) Reminder(item: widget.sitem),
                           ],
                         ),
                     ],

@@ -89,7 +89,7 @@ class _ChatViewState extends State<ChatView> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     ph(isPreviousSimilar ? 2 : 5), // spacing
-                                    if (index == 0) ChatDate(date: DateInfo(date)), // date
+                                    if (index == 0) ChatDate(date: DateItem(date)), // date
                                     Align(
                                       alignment: isSent ? Alignment.centerRight : Alignment.centerLeft,
                                       child: isSent ? SentMessageBubble(item: item) : IncomingMessageBubble(item: item),

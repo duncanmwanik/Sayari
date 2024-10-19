@@ -2,84 +2,70 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../_helpers/sync/quick_edit.dart';
+import '../../_models/item.dart';
+import '../../_providers/_providers.dart';
 import '../../_providers/input.dart';
-import '../../_theme/helpers.dart';
 import '../../_theme/spacing.dart';
 import '../../_theme/variables.dart';
 import '../../_variables/features.dart';
 import '../../_widgets/buttons/button.dart';
 import '../../_widgets/others/icons.dart';
 import '../../_widgets/others/text.dart';
-import '_helpers/helper.dart';
 import '_helpers/reminders.dart';
 import 'reminder_menu.dart';
 
 class Reminder extends StatelessWidget {
-  const Reminder({
-    super.key,
-    this.reminder,
-    this.bgColor,
-    this.id = '',
-    this.sid = '',
-    this.isInput = true,
-  });
+  const Reminder({super.key, required this.item});
 
-  final String? reminder;
-  final String? bgColor;
-
-  final String id;
-  final String sid;
-  final bool isInput;
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<InputProvider>(builder: (context, input, child) {
-      String reminder_ = reminder ?? input.item.data['r'] ?? '';
+    bool isInput = !item.exists();
 
-      bool hasPassed = isLive(reminder_);
-      bool isInput = id.isEmpty;
+    return Consumer<InputProvider>(builder: (context, input, child) {
+      bool hasPassed = item.hasReminderPassed();
 
       return Visibility(
-        visible: hasReminder(reminder_),
+        visible: item.hasReminder(),
         child: Padding(
           padding: padM('t'),
           child: AppButton(
             menuWidth: 200,
             menuItems: reminderMenu(
-              reminder: reminder_,
+              reminder: item.reminder(),
               onSet: (newReminder) async {
                 if (isInput) {
-                  input.update('r', newReminder);
+                  state.input.update('r', newReminder);
                 } else {
-                  await quickEdit(parent: feature.notes, id: id, key: 'r', value: newReminder, sid: sid);
+                  await quickEdit(parent: feature.notes, id: item.id, key: 'r', value: newReminder, sid: item.sid);
                 }
               },
               onRemove: () async {
                 if (isInput) {
-                  input.remove('r');
+                  state.input.remove('r');
                 } else {
-                  await quickEdit(parent: feature.notes, id: id, sid: sid, key: 'd/r', value: '');
+                  await quickEdit(parent: feature.notes, id: item.id, sid: item.sid, key: 'd/r', value: '');
                 }
               },
             ),
             svp: true,
             slp: true,
             srp: true,
-            showBorder: hasColour(bgColor),
-            color: hasColour(bgColor) ? Colors.white24 : null,
+            showBorder: item.hasColor(),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
                 // icon
-                AppIcon(Icons.notifications_active, size: 12, faded: hasPassed, bgColor: bgColor),
+                AppIcon(Icons.notifications_active, size: 12, faded: hasPassed, bgColor: item.color()),
                 tpw(),
                 // text
                 Flexible(
                   child: AppText(
                     size: tiny,
-                    text: formatReminder(reminder_),
+                    text: formatReminder(item.reminder()),
                     faded: true,
-                    bgColor: bgColor,
+                    bgColor: item.color(),
                     isCrossed: hasPassed,
                   ),
                 ),

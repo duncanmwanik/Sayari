@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../_helpers/extentions/dateTime.dart';
 import '../../../../_helpers/global.dart';
 import '../../../../_helpers/sync/quick_edit.dart';
 import '../../../../_models/item.dart';
@@ -14,7 +15,6 @@ import '../../../../_widgets/others/others/divider.dart';
 import '../../../../_widgets/others/others/swipe_detector.dart';
 import '../../../../_widgets/others/text.dart';
 import '../../../calendar/_helpers/date_time/date_info.dart';
-import '../../../calendar/_helpers/date_time/get_week_no.dart';
 import '../../../calendar/_helpers/date_time/misc.dart';
 import '../../../calendar/_helpers/swipe.dart';
 import '../../../calendar/state/datetime.dart';
@@ -45,7 +45,7 @@ class _HabitWeekState extends State<HabitWeek> {
       if (isCustom) {
         days = customDates.sublist(startDate >= customDates.length ? 0 : startDate).take(7).toList();
       } else {
-        days = [for (var day in weekDays) getDatePart(day)];
+        days = [for (var day in weekDays) day.part()];
       }
 
       return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
@@ -100,7 +100,7 @@ class _HabitWeekState extends State<HabitWeek> {
                         child: AppText(
                           size: medium,
                           faded: true,
-                          text: isCustom ? '7 Days' : 'Week ${getWeekNumber(weekDays[6])}',
+                          text: isCustom ? '7 Days' : 'Week ${weekDays[6].weekNo()}',
                         ),
                       ),
                       //
@@ -122,7 +122,7 @@ class _HabitWeekState extends State<HabitWeek> {
                   children: List.generate(
                     days.length,
                     (index) {
-                      DateInfo date = DateInfo(days[index]);
+                      DateItem date = DateItem(days[index]);
                       String checkedKey = 'hc${date.date}';
                       bool isCustomDate = customDates.contains(date.date);
                       bool isChecked = data[checkedKey] != null && data[checkedKey] != '0';

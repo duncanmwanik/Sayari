@@ -6,7 +6,6 @@ import '../../../_widgets/buttons/button.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../pomodoro/sheet.dart';
 import '../_helpers/nav.dart';
-import '../navbars/nav_menu.dart';
 
 class UserOptions extends StatelessWidget {
   const UserOptions({super.key});
@@ -16,28 +15,6 @@ class UserOptions extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        //
-        // if (showNavItem(feature.explore)) mph(),
-        // if (showNavItem(feature.explore))
-        //   AppButton(
-        //     onPressed: () => showExploreSheet(),
-        //     tooltip: 'Explore',
-        //     tooltipDirection: AxisDirection.right,
-        //     isSquare: true,
-        //     noStyling: true,
-        //     child: AppIcon(Icons.explore_rounded, faded: true),
-        //   ),
-        //
-        // if (showNavItem(feature.saved)) mph(),
-        // if (showNavItem(feature.saved))
-        //   AppButton(
-        //     onPressed: () => showSavedSheet(),
-        //     tooltip: 'Saved',
-        //     tooltipDirection: AxisDirection.right,
-        //     isSquare: true,
-        //     noStyling: true,
-        //     child: AppIcon(Icons.bookmark, faded: true),
-        //   ),
         //
         if (showNavItem(feature.pomodoro)) mph(),
         if (showNavItem(feature.pomodoro))
@@ -49,9 +26,8 @@ class UserOptions extends StatelessWidget {
             noStyling: true,
             child: AppIcon(Icons.timer, faded: true),
           ),
-        //
-        mph(),
-        NavMenu(),
+        // mph(),
+        // NavMenu(),
         mph(),
       ],
     );

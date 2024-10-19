@@ -32,11 +32,3 @@ int reminderTimeInMinutes(String reminder) {
     return 30;
   }
 }
-
-bool isLive(String reminder) {
-  try {
-    return DateTime.parse(reminder).isBefore(DateTime.now());
-  } catch (e) {
-    return false;
-  }
-}

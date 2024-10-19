@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../_providers/focus.dart';
@@ -15,21 +16,25 @@ class QuickTasks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: padL('tb'),
+    return AppButton(
+      margin: padL('tb'),
+      padding: padM(),
+      color: styler.appColor(0.3),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               //
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AppIcon(Icons.task_alt, size: normal, faded: true),
+                  pw(2),
+                  AppIcon(FontAwesomeIcons.solidCircleCheck, size: small, faded: true),
                   spw(),
                   AppText(text: 'Quick Tasks', faded: true),
                 ],
@@ -44,17 +49,10 @@ class QuickTasks extends StatelessWidget {
                   return AppButton(
                     enabled: !hasFocus,
                     onPressed: () => showNewQuickTask(),
-                    svp: true,
                     isSquare: true,
-                    noStyling: true,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        AppIcon(Icons.add, size: normal, faded: true),
-                        spw(),
-                        AppText(text: 'New', size: small, faded: true),
-                      ],
-                    ),
+                    svp: true,
+                    faded: true,
+                    leading: Icons.add,
                   );
                 },
               ),

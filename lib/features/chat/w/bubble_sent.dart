@@ -15,7 +15,6 @@ import '../../../_widgets/quill/editor_style.dart';
 import '../../../_widgets/quill/embed_divider.dart';
 import '../../../_widgets/quill/embed_image.dart';
 import '../../calendar/_helpers/date_time/misc.dart';
-import '../../files/_helpers/helper.dart';
 import '../../files/file_list.dart';
 import 'actions.dart';
 
@@ -42,7 +41,6 @@ class _SentMessageBubbleState extends State<SentMessageBubble> {
   Widget build(BuildContext context) {
     String message = widget.item.data['n'];
     bool isPending = pendingBox.containsKey(widget.item.sid);
-    Map files = getFiles(widget.item.data);
     bool isLong = message.length > 1000;
 
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
@@ -76,8 +74,8 @@ class _SentMessageBubbleState extends State<SentMessageBubble> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       // files
-                      FileList(fileData: files),
-                      if (files.isNotEmpty) mph(),
+                      FileList(item: widget.item),
+                      if (widget.item.hasFiles()) mph(),
                       // message
                       if (!quillController.document.isEmpty())
                         QuillEditor.basic(

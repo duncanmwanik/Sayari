@@ -8,7 +8,7 @@ import '../_helpers/date_time/misc.dart';
 class MonthDayNumberLabel extends StatelessWidget {
   const MonthDayNumberLabel({super.key, required this.date});
 
-  final DateInfo date;
+  final DateItem date;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class MonthDayNumberLabel extends StatelessWidget {
         ),
         child: AppText(
           size: small,
-          text: '${(date.isToday() || date.day() == 1) ? date.monthString() : ''} ${date.dayString()}',
+          text: '${(date.isToday() || date.day() == 1) ? date.monthString() : ''} ${date.day()}',
           weight: isSelectedMonth ? FontWeight.w600 : FontWeight.w100,
           extraFaded: !isSelectedMonth,
           color: isToday ? styler.accentColor() : null,

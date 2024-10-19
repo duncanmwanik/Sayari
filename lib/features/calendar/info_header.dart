@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../_helpers/extentions/dateTime.dart';
 import '../../_helpers/navigation.dart';
 import '../../_providers/views.dart';
 import '../../_theme/breakpoints.dart';
@@ -25,7 +26,7 @@ class CalendarOptions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer2<DateTimeProvider, ViewsProvider>(builder: (context, dates, views, child) {
-      DateInfo date = DateInfo(dates.selectedDate);
+      DateItem date = DateItem(dates.selectedDate);
       List infoList = [
         getDayInfo(dates.selectedDate),
         getWeekInfo(dates.currentWeekDates[0], dates.currentWeekDates[6]),
@@ -74,7 +75,7 @@ class CalendarOptions extends StatelessWidget {
                 AppButton(
                   enabled: !date.isToday_,
                   onPressed: () => goToToday(views.calendarView),
-                  tooltip: getDateInfo(getDatePart(date.now)),
+                  tooltip: getDateInfo(now().part()),
                   child: AppText(text: 'Today'),
                 ),
               ],

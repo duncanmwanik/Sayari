@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import '../../../../_helpers/extentions/dateTime.dart';
 import '../../../../_providers/_providers.dart';
 import '../../_vars/date_time.dart';
 import 'misc.dart';
@@ -70,10 +74,10 @@ String getDateInfoForReminder(String date) {
   }
 }
 
-class DateInfo {
+class DateItem {
   final String date;
 
-  DateInfo(this.date) {
+  DateItem(this.date) {
     dateTime = DateTime.parse(date);
   }
 
@@ -84,20 +88,21 @@ class DateInfo {
   int day() => dateTime.day;
   int month() => dateTime.month;
   int year() => dateTime.year;
+  String monthString() => monthNamesListShort[dateTime.month - 1];
+  String weekday() => weekDaysList[dateTime.weekday == 7 ? 0 : dateTime.weekday].shortName;
+  TimeOfDay time() => TimeOfDay.fromDateTime(dateTime);
+  String time12() => DateFormat.jm().format(dateTime);
+  String time24() => DateFormat.Hm().format(dateTime);
 
-  bool isToday() => date == getDatePart(now);
+  bool isToday() => date == now.part();
   bool isCurrentMonth() => state.dateTime.selectedMonth == now.month && state.dateTime.selectedYear == now.year;
   bool isCurrentYear() => state.dateTime.selectedYear == now.year;
   bool isWeekend() => [6, 7].contains(dateTime.weekday);
   bool isSelectedMonth(String refDate) => dateTime.month == DateTime.parse(refDate).month;
-
   bool isFuture() => dateTime.isAfter(now.add(const Duration(days: 1)));
   bool isPast() => dateTime.isBefore(now.subtract(const Duration(days: 1)));
-  bool isYesterday() => date == getDatePart(now.subtract(const Duration(days: 1)));
+  bool isYesterday() => date == now.subtract(const Duration(days: 1)).part();
   //
-  String dayString() => dateTime.day.toString();
-  String monthString() => monthNamesListShort[dateTime.month - 1];
-  String weekday() => weekDaysList[dateTime.weekday == 7 ? 0 : dateTime.weekday].shortName;
-  //
-  String formatFull() => getDateFull(date);
+  String info() => getDateFull(date);
+  String only() => dateTime.part();
 }

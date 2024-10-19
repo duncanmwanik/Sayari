@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../_helpers/extentions/strings.dart';
 import '../../_helpers/navigation.dart';
 import '../../_theme/spacing.dart';
 import '../../_theme/variables.dart';
@@ -52,8 +53,8 @@ class _MyWidgetState extends State<MyWidget> {
     setState(() {
       reminder = widget.reminder ?? '';
       if (reminder.isNotEmpty) {
-        date = getDatePart(reminder);
-        time = getTimePartFromDateTime(reminder);
+        date = reminder.datePart();
+        time = reminder.timePart();
       }
     });
 
@@ -79,7 +80,7 @@ class _MyWidgetState extends State<MyWidget> {
                 AppButton(
                   onPressed: () async {
                     await showDateDialog(initialDate: date).then((dates) {
-                      if (dates.isNotEmpty) setState(() => date = getDatePart(dates.first));
+                      if (dates.isNotEmpty) setState(() => date = dates.first);
                     });
                   },
                   noStyling: true,

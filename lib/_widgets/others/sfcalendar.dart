@@ -8,7 +8,6 @@ import '../../_providers/_providers.dart';
 import '../../_theme/spacing.dart';
 import '../../_theme/variables.dart';
 import '../../features/calendar/_helpers/date_time/jump_to_date.dart';
-import '../../features/calendar/_helpers/date_time/misc.dart';
 import '../../features/calendar/state/datetime.dart';
 import '../../features/chat/_helpers/jump_to_date.dart';
 
@@ -141,11 +140,11 @@ class SfCalendar extends StatelessWidget {
               selectedDates.clear();
               if (isMultiple) {
                 for (int d = 0; d < dates.value.length; d++) {
-                  String date = getDatePart(dates.value[d]);
+                  String date = dates.value[d].part();
                   selectedDates.add(date);
                 }
               } else {
-                selectedDates.add(getDatePart(dates.value));
+                selectedDates.add(dates.value.part());
               }
             }
             //

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../../_helpers/extentions/dateTime.dart';
 import '../../../_models/item.dart';
 import '../../../_services/hive/store.dart';
 import '../../../_theme/spacing.dart';
 import '../../../_theme/variables.dart';
 import '../../../_variables/features.dart';
 import '../../../_widgets/buttons/button.dart';
-import '../../../_widgets/others/empty_box.dart';
 import '../../../_widgets/others/icons.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/date_time/misc.dart';
@@ -20,43 +21,42 @@ class DueToday extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String date = getDatePart(DateTime.now());
+    String date = now().part();
 
-    return Padding(
-      padding: padL('tb'),
+    return AppButton(
+      margin: padL('tb'),
+      padding: padM(),
+      color: styler.appColor(0.3),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           //
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               //
               Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  AppIcon(Icons.calendar_month, size: normal, faded: true),
+                  pw(2),
+                  AppIcon(FontAwesomeIcons.solidCalendarDays, size: small, faded: true),
                   spw(),
-                  AppText(text: 'Due Today', faded: true),
+                  Flexible(child: AppText(text: 'Today - ', faded: true)),
+                  tpw(),
+                  Flexible(child: AppText(text: getDateFull(now().part()), faded: true)),
                 ],
               ),
               //
               Spacer(),
               // new session
               AppButton(
-                onPressed: () => createSession(date: nowDate(), hour: nowHour()),
+                onPressed: () => createSession(date: now().part(), hour: now().hour),
                 svp: true,
                 isSquare: true,
-                noStyling: true,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AppIcon(Icons.add, size: normal, faded: true),
-                    spw(),
-                    AppText(text: 'New', size: small, faded: true),
-                  ],
-                ),
+                faded: true,
+                leading: Icons.add,
               )
               //
             ],
@@ -85,7 +85,7 @@ class DueToday extends StatelessWidget {
                           return DayBox(item: item);
                         }),
                       )
-                    : EmptyBox(label: 'All clear today', centered: false, showImage: false);
+                    : Padding(padding: padL('lb'), child: AppText(text: 'No sessions today...', extraFaded: true));
               }),
           //
         ],

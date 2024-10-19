@@ -16,7 +16,6 @@ import '../../_widgets/others/text.dart';
 import '../../_widgets/quill/editor.dart';
 import '../../_widgets/quill/toolbar.dart';
 import '../_spaces/_helpers/common.dart';
-import '../files/_helpers/helper.dart';
 import '../files/_helpers/upload.dart';
 import '../files/file_list.dart';
 import 'w/formatting_btn.dart';
@@ -72,10 +71,11 @@ class ChatInput extends StatelessWidget {
                           Consumer<InputProvider>(
                               builder: (context, input, child) => Padding(
                                     padding: padM(input.item.hasFiles() ? 'b' : ''),
-                                    child: FileList(fileData: getFiles(input.item.data), isOverview: false),
+                                    child: FileList(item: input.item, isOverview: false),
                                   )),
                           //
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               // attach files
                               AppButton(
@@ -91,9 +91,10 @@ class ChatInput extends StatelessWidget {
                               // message input
                               Expanded(
                                 child: Padding(
-                                  padding: padT('b'),
+                                  padding: pad(c: 'l4,t4,b2'),
                                   child: SuperEditor(
                                     maxHeight: 40.h,
+                                    minHeight: 40,
                                     padding: noPadding,
                                     placeholder: 'Type a message...',
                                     scrollable: true,

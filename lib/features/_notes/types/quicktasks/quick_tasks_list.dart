@@ -6,7 +6,7 @@ import '../../../../_models/item.dart';
 import '../../../../_services/hive/store.dart';
 import '../../../../_theme/spacing.dart';
 import '../../../../_variables/features.dart';
-import '../../../../_widgets/others/empty_box.dart';
+import '../../../../_widgets/others/text.dart';
 import 'qt_item.dart';
 
 class ListOfQuickTasks extends StatelessWidget {
@@ -22,7 +22,7 @@ class ListOfQuickTasks extends StatelessWidget {
           taskKeys.sort((a, b) => int.parse(tasks[a]['o']).compareTo(int.parse(tasks[b]['o'])));
 
           return Padding(
-            padding: padM('tb'),
+            padding: padM('t'),
             child: ValueListenableBuilder(
                 valueListenable: storage(feature.timeline).listenable(),
                 builder: (context, box, child) {
@@ -47,7 +47,7 @@ class ListOfQuickTasks extends StatelessWidget {
                       for (String id in taskKeys)
                         QuickTaskItem(item: Item(parent: feature.timeline, id: feature.tasks, sid: id, data: tasks[id])),
                       //
-                      if (taskKeys.isEmpty) EmptyBox(label: 'No quick tasks ...', centered: false, showImage: false)
+                      if (taskKeys.isEmpty) Padding(padding: padL('lb'), child: AppText(text: 'No quick tasks...', extraFaded: true)),
                       //
                     ],
                   );

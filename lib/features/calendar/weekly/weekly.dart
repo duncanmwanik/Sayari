@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
+import '../../../_helpers/extentions/dateTime.dart';
 import '../../../_models/item.dart';
 import '../../../_services/hive/store.dart';
 import '../../../_theme/spacing.dart';
@@ -12,7 +13,6 @@ import '../../../_widgets/others/others/scroll.dart';
 import '../../../_widgets/others/others/swipe_detector.dart';
 import '../../../_widgets/others/text.dart';
 import '../_helpers/date_time/date_info.dart';
-import '../_helpers/date_time/misc.dart';
 import '../_helpers/helpers.dart';
 import '../_helpers/prepare.dart';
 import '../_helpers/sort.dart';
@@ -76,7 +76,7 @@ class WeeklyView extends StatelessWidget {
                                   child: Row(
                                     crossAxisAlignment: CrossAxisAlignment.stretch,
                                     children: List.generate(7, (indexWeekDay) {
-                                      DateInfo date = DateInfo(getDatePart(dates.currentWeekDates[indexWeekDay]));
+                                      DateItem date = DateItem(dates.currentWeekDates[indexWeekDay].part());
 
                                       return ValueListenableBuilder(
                                           valueListenable: storage(feature.calendar).listenable(),
